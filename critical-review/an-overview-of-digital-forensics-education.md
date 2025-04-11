@@ -102,4 +102,5 @@ icon: book-open
 * what are the open problems raised by this work?
 * _<mark style="color:blue;">**If you were to do the research, how would you do it differently?**</mark>_
   * get an understanding from the students point of view
+  * what is actually happening in the modules - names might not match content
   * interviewed lecturers and relevant work force within the industry
