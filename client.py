@@ -23,7 +23,8 @@ def run_client():
             break
 
         print(f"Recieved: {response}")
-    client.shutdown(socket.SHUT_WR)
+
+    #client.shutdown(socket.SHUT_WR)
     client.close()
     print("connection to server closed")
 
