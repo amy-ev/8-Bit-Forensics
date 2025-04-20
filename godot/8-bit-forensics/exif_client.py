@@ -32,9 +32,15 @@ class exif_client(Node):
 					client.send(data)
 					data = f_input.read(1024)
 				f_input.close()
+				print("hello")
 				break
 
 			except IOError:
 				print("invalid filename!\
 				Please enter a valid name")
+
+			#response = client.recv(1024)
+			#response = response.decode("utf-8")
+		#
+			#print(response)
 		client.close()

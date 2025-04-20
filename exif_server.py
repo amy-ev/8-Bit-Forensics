@@ -31,6 +31,7 @@ def run_server():
         file_idx.write(str(file_no))
     file_idx.close()
 
+
     data = client_socket.recv(1024)
 
     file_name = "image"+str(file_no)+".jpeg"
@@ -43,29 +44,36 @@ def run_server():
         else:
             f_output.write(data)
             data = client_socket.recv(1024)
+            print(data.hex())
+            #client_socket.send(data)
+        print("hello")
 
 
     f_output.close()
+    metadata = exif_read(file_name)
+    server.send(metadata.encode('utf-8'))
     client_socket.close()
 
     print("connection to client closed")
+
     server.close()
-    exif_read(file_name)
+
+
 
 def exif_read(img_file):
     img = Image.open(img_file)
     
     img_exif = img.getexif()
-    print(type(img_exif))
+    #print(type(img_exif))
     if img_exif:
 
         img_exif_dict = dict(img_exif)
         for k, v in img_exif_dict.items():
             tag = TAGS.get(k,k)
-            print(tag,v)
+            #print(tag,v)
 
         for ifd_id in IFD:
-            print(ifd_id.name)
+            #print(ifd_id.name)
             try:
                 ifd = img_exif.get_ifd(ifd_id)
                 if ifd_id == IFD.GPSInfo:
@@ -74,11 +82,15 @@ def exif_read(img_file):
                     resolve = TAGS
                 for k, v in ifd.items():
                     tag = resolve.get(k,k)
-                    print(tag + " : " + str(v))
+                    #print(tag + " : " + str(v))
                     exifKeys.append((TAGS[k],v))
             except KeyError:
                 pass
+
+        print("method called")
     else:
         print("no exif data")
-
+    exif_string = ",".join("(%s,%s)" % tup for tup in exifKeys)
+    return exif_string
+                           
 run_server()
