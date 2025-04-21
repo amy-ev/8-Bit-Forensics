@@ -16,13 +16,13 @@ def run_client():
         client.send(jpeg_packet)
         jpeg_packet = msg.read(1024)
 
-        response = client.recv(1024)
-        response = response.decode("utf-8")
+        # response = client.recv(1024)
+        # response = response.decode("utf-8")
 
-        if response.lower() == "closed":
-            break
+        # if response.lower() == "closed":
+        #     break
 
-        print(f"Recieved: {response}")
+        # print(f"Recieved: {response}")
 
     #client.shutdown(socket.SHUT_WR)
     client.close()
