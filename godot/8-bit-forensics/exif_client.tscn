@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://crt2debr6ni0k"]
-
-[ext_resource type="Script" path="res://exif_client.py" id="1_5hmg3"]
-
-[node name="exif_client" type="Node"]
-script = ExtResource("1_5hmg3")

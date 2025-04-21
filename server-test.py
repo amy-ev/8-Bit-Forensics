@@ -16,6 +16,10 @@ def _ready():
 
     print("server listening")
 
+    with open("index.txt", "r") as file_idx:
+        file_no = int(file_idx.read())
+    file_idx.close()
+
     while True:
         client_socket, client_address = server.accept()
         
@@ -36,7 +40,14 @@ def _ready():
             img_data += data
         print("recieved img")
 
-        with open("sent.jpg", "wb") as img_f:
+        file_no = file_no+1
+        
+        with open("index.txt", "w") as file_idx:
+            file_idx.write(str(file_no))
+        file_idx.close()
+
+        file_name = "image"+str(file_no)+".jpeg"
+        with open(file_name, "wb") as img_f:
             img_f.write(img_data)
             file_name = img_f.name
         print("img saved to file")
