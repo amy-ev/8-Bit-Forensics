@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://kre4yvcpejq7"]
+
+[ext_resource type="Script" uid="uid://gnp35tq7jvie" path="res://web_client.gd" id="1_py3le"]
+
+[node name="web_client" type="Node"]
+script = ExtResource("1_py3le")
