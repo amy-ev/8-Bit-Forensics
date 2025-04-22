@@ -1,5 +1,4 @@
 import socket
-import struct
 from PIL import Image
 from PIL.ExifTags import TAGS
 
@@ -12,7 +11,7 @@ def _ready():
 
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((host, port))
-    server.listen(1) # maybe 0
+    server.listen(2) # maybe 0
 
     print("server listening")
 
@@ -22,22 +21,16 @@ def _ready():
 
     while True:
         client_socket, client_address = server.accept()
-        
-        b_size = client_socket.recv(4)
-
-        # if not b_size:
-        #     print("No response.")
-        #     break
-
-        img_size= struct.unpack('!I', b_size)[0]
 
         img_data = b''
+        data = client_socket.recv(4096)
 
-        while len(img_data) < img_size:
-            data = client_socket.recv(4096)
+        while data:
             if not data:
                 break
             img_data += data
+            data = client_socket.recv(4096)
+
         print("recieved img")
 
         file_no = file_no+1
@@ -46,21 +39,14 @@ def _ready():
             file_idx.write(str(file_no))
         file_idx.close()
 
-        file_name = "image"+str(file_no)+".jpeg"
+        file_name = "image"+str(file_no)+".jpg"
         with open(file_name, "wb") as img_f:
             img_f.write(img_data)
             file_name = img_f.name
         print("img saved to file")
 
-        # response_str = respond(file_name)
-        # response_bytes = response_str.encode('utf-8')
-
-        # client_socket.sendall(struct.pack('!I', len(response_bytes)))
-        # client_socket.sendall(response_bytes)
-        # print("hex result returned")
-
+       
         client_socket.close()
-
 
 def respond(filename):
     img = Image.open(filename)
@@ -71,6 +57,4 @@ def respond(filename):
         img_str += str(TAGS[k])
 
     return img_str
-
-if __name__ == "__main__":
-    _ready()
+_ready()

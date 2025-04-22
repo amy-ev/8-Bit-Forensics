@@ -1,1 +1,0 @@
-            data = client_socket.recv(4096)
