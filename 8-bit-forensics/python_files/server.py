@@ -15,11 +15,9 @@ def _ready():
 
     while True:
         client_socket, client_address = server.accept()
-        print(f"accepted connection from: {client_address}")
+        print(f"[+] accepted connection from: {client_address}")
         msg = recv_msg(client_socket)
 
-        #print(binascii.hexlify(msg).decode())
-    
         # will ONLY reach this point if the client disconnects
 
         # print("recieved")
@@ -27,6 +25,7 @@ def _ready():
         # print("sending response")
         # send_data(client_socket, response)
         # print("sent")
+        #print(binascii.hexlify(msg).decode())
 
         with open("hex.txt","w") as hex_text:
             hex_text.write(binascii.hexlify(msg).decode())
@@ -37,8 +36,8 @@ def _ready():
         img.close()
 
         response = "accepted".encode("utf-8")
-        client_socket.send(response)
-    print("got here")
+        send_data(client_socket, response)
+        print("got here")
     client_socket.close()
 
 

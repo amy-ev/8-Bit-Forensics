@@ -14,26 +14,47 @@ def _ready():
 
     with open("example.jpg", "rb") as img:
         msg = img.read()
+
+
     send_data(client, msg)
-    print(binascii.hexlify(msg).decode())
 
 
-def recv_msg(client_socket):
-    msg_len = recv_data(client_socket, 4)
-    if not msg_len:
-        return None
-    msg_len = struct.unpack("!I", msg_len)[0] #big-endian unsigned int
-    return recv_data(client_socket, msg_len)
+    #print(binascii.hexlify(msg).decode())
+    response = recv_data(client)
+    print(response)
+    print("got here")
 
-def recv_data(client_socket, num_bytes):
+    client.close()
+
+
+# def recv_msg(client_socket):
+#     msg_len = recv_data(client_socket, 4)
+#     if not msg_len:
+#         return None
+#     msg_len = struct.unpack("!I", msg_len)[0] #big-endian unsigned int
+#     return recv_data(client_socket, msg_len)
+
+def recv_data(client_socket): # num_bytes
+    p_len = client_socket.recv(4)
+    response_len = struct.unpack('!I', p_len)[0]
+
     data = bytearray()
-    while len(data) < num_bytes:
-        packet = client_socket.recv(num_bytes - len(data))
-        if not packet:
+    while len(data) < response_len:
+        packet = client_socket.recv(4096)
+        print(packet)
+        if not data:
             break
-        data.extend(packet) # byte array used extend not append
-        print(data)
+        data.extend(packet)
     return data
+
+    # data = bytearray()
+    # while len(data) < num_bytes:
+    #     packet = client_socket.recv(num_bytes - len(data))
+    #     if not packet:
+    #         break
+    #     data.extend(packet) # byte array used extend not append
+    #     print(data)
+    # return data
 
 def send_data(client_socket, data):
     # append the packet size to the beginning of the data
