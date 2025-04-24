@@ -23,7 +23,9 @@ func _process(delta: float) -> void:
 	
 	var msg_bytes = open_img("res://example.jpg")
 	send_data(msg_bytes)
+	print("before")
 	recv_data()
+	print("after")
 	# --- receive data ---
 		
 func open_img(img_path):
@@ -49,12 +51,15 @@ func send_data(msg_bytes):
 	client.put_data(msg_bytes) # send the packet
 
 func recv_data():
+	#print(client.get_available_bytes())
 	if client.get_available_bytes() != 0:
-
 		var response = client.get_utf8_string(client.get_available_bytes())
+		#print(client.get_available_bytes())
 		print(response)
 		client.disconnect_from_host()
 		queue_free()
 	else:
-		client.poll()
+		while client.get_available_bytes() == 0:
+			client.poll()
+		recv_data()
 		

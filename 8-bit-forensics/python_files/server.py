@@ -1,17 +1,18 @@
 import socket
 import struct
 from PIL import Image
-from PIL.ExifTags import TAGS
+from PIL.ExifTags import TAGS, GPSTAGS, IFD
 
+exif_keys = []
 def _ready():
 
     host = '127.0.0.1'
     port = 8000
 
-    file_name = ""
-    with open("index.txt","r") as i:
-        file_no = int(i.read())
-    i.close()
+    # file_name = ""
+    # with open("index.txt","r") as i:
+    #     file_no = int(i.read())
+    # i.close()
     
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((host, port))
@@ -36,17 +37,41 @@ def _ready():
         print(len(data))
         
         # --- send response ---
-        client_socket.sendall("I might actually cry".encode())
+        #client_socket.sendall("I might actually cry".encode())
 
-        file_name = "file_"+ str(file_no).strip() + ".jpg"
+        #file_name = "file_"+ str(file_no).strip() + ".jpg"
+        file_name = "sent.jpg"
         with open(file_name,"wb") as img_file:
             img_file.write(data)
         img_file.close()
+        
+        img = Image.open(file_name)
+        img_exif = img.getexif()
 
-        file_no = file_no + 1
-        with open("index.txt","w") as i:
-            i.write(str(file_no))
-        i.close()
+        for ifd_id in IFD:
+            try:
+                ifd = img_exif.get_ifd(ifd_id)
+                if ifd_id == IFD.GPSInfo:
+                    resolve = GPSTAGS
+                else:
+                    resolve = TAGS
+                for k, v in ifd.items():
+                    tag = resolve.get(k,k)
+                    #print(tag + " : " + str(v))
+                    exif_keys.append((TAGS[k],v))
+            except KeyError:
+                pass
+
+        #img.close()
+        exif_string = ",".join("(%s,%s)" % tup for tup in exif_keys)
+        #print(exif_string)
+        #client_socket.send(exif_string.encode())
+        client_socket.send(exif_string.encode())
+        print(exif_string)
+        # file_no = file_no + 1
+        # with open("index.txt","w") as i:
+        #     i.write(str(file_no))
+        # i.close()
 
 
 if __name__ == "__main__":
