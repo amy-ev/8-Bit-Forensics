@@ -1,0 +1,1 @@
+start /d "C:\\Users\\Amy\Desktop\\8-Bit-Forensics" HxD.exe
