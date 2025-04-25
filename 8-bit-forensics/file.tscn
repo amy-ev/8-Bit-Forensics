@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://sn8d4o6fhtgr"]
+
+[ext_resource type="Script" uid="uid://bma4ijfyyc2of" path="res://file.gd" id="1_lhbmk"]
+[ext_resource type="Texture2D" uid="uid://d23c68ogjtxv8" path="res://icon.svg" id="2_mel56"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lhbmk"]
+font_size = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvmlw"]
+size = Vector2(64, 64)
+
+[node name="File" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+script = ExtResource("1_lhbmk")
+
+[node name="icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_mel56")
+expand_mode = 1
+
+[node name="file_name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "img_01"
+label_settings = SubResource("LabelSettings_lhbmk")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="select" type="Area2D" parent="."]
+position = Vector2(32, 32)
+collision_layer = 3
+collision_mask = 3
+
+[node name="select_shape" type="CollisionShape2D" parent="select"]
+shape = SubResource("RectangleShape2D_wvmlw")
+
+[connection signal="input_event" from="select" to="." method="_on_select_input_event"]
