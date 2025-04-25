@@ -11,7 +11,7 @@ offset_bottom = 300.0
 mouse_filter = 2
 script = ExtResource("1_gmshg")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="file_dialog" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,4 +42,15 @@ mouse_filter = 2
 theme_override_constants/h_separation = 60
 theme_override_constants/v_separation = 60
 
+[node name="exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_right = 2.0
+offset_bottom = 10.0
+grow_horizontal = 0
+
 [connection signal="pressed" from="load_button" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

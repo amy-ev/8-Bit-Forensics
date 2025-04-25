@@ -11,7 +11,8 @@ var file: File
 
 func _ready() -> void:
 	add_files(file_count("res://jpg_folder/"))
-	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/batch.bat",[],true)
+	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/start.bat",[],true) 
+	# true for debugging 
 	
 func _on_load_button_pressed() -> void:
 	selected_file = $load_button.text
@@ -46,3 +47,7 @@ func file_count(file_path:String) -> int:
 	dir.list_dir_end()
 	return files_no
 	
+
+
+func _on_exit_pressed() -> void:
+	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
