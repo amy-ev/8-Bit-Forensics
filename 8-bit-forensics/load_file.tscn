@@ -59,10 +59,13 @@ offset_bottom = 197.0
 text = "load an image plz and thnx"
 
 [node name="FileDialog" type="FileDialog" parent="."]
-title = "Open an Image"
+title = "Open a File"
 initial_position = 1
 size = Vector2i(320, 360)
 ok_button_text = "Open"
 file_mode = 0
 root_subfolder = "python_files"
 filters = PackedStringArray("*jpg")
+
+[connection signal="pressed" from="load_button" to="." method="_on_load_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
