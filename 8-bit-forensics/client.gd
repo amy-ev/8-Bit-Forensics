@@ -51,15 +51,13 @@ func send_data(msg_bytes):
 	client.put_data(msg_bytes) # send the packet
 
 func recv_data():
-	#print(client.get_available_bytes())
-	if client.get_available_bytes() != 0:
-		var response = client.get_utf8_string(client.get_available_bytes())
-		#print(client.get_available_bytes())
-		print(response)
-		client.disconnect_from_host()
-		queue_free()
-	else:
-		while client.get_available_bytes() == 0:
-			client.poll()
-		recv_data()
+	while client.get_available_bytes() == 0:
+		client.poll()
+		
+	var response = client.get_data(client.get_available_bytes())
+	var byte_array = PackedByteArray(response[1])
+	print(byte_array.hex_encode())	#print(byte_array.get_string_from_utf8())
+
+	client.disconnect_from_host()
+	queue_free()
 		

@@ -66,7 +66,11 @@ def _ready():
         exif_string = ",".join("(%s,%s)" % tup for tup in exif_keys)
         #print(exif_string)
         #client_socket.send(exif_string.encode())
-        client_socket.send(exif_string.encode())
+        with open(file_name,"rb") as ib:
+            bytedata = ib.read()
+        ib.close()
+        client_socket.send(bytedata)
+        #client_socket.send(exif_string.encode())
         print(exif_string)
         # file_no = file_no + 1
         # with open("index.txt","w") as i:
