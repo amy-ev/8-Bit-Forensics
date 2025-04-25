@@ -11,6 +11,7 @@ var file: File
 
 func _ready() -> void:
 	add_files(file_count("res://jpg_folder/"))
+	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/batch.bat",[],true)
 	
 func _on_load_button_pressed() -> void:
 	selected_file = $load_button.text
