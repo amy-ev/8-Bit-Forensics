@@ -1,4 +1,4 @@
-extends Node
+extends Control
 const HOST = "127.0.0.1"
 const PORT = 8000
 var client = StreamPeerTCP.new()
@@ -20,9 +20,9 @@ func _process(delta: float) -> void:
 	# --- send data ---
 	#var msg = "hello"
 	#var msg_bytes = msg.to_utf8_buffer()
-	
-	var msg_bytes = open_img("res://example.jpg")
-	send_data(msg_bytes)
+	var selected_img = open_img("res://jpg_folder/"+get_parent().selected_file)
+	#var msg_bytes = open_img("res://example.jpg")
+	send_data(selected_img)
 	print("before")
 	recv_data()
 	print("after")

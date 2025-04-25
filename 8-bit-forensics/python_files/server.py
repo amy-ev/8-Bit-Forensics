@@ -9,10 +9,10 @@ def _ready():
     host = '127.0.0.1'
     port = 8000
 
-    # file_name = ""
-    # with open("index.txt","r") as i:
-    #     file_no = int(i.read())
-    # i.close()
+    file_name = ""
+    with open("index.txt","r") as i:
+        file_no = int(i.read())
+    i.close()
     
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((host, port))
@@ -39,8 +39,8 @@ def _ready():
         # --- send response ---
         #client_socket.sendall("I might actually cry".encode())
 
-        #file_name = "file_"+ str(file_no).strip() + ".jpg"
-        file_name = "sent.jpg"
+        file_name = "file_"+ str(file_no).strip() + ".jpg"
+        #file_name = "sent.jpg"
         with open(file_name,"wb") as img_file:
             img_file.write(data)
         img_file.close()
@@ -72,10 +72,10 @@ def _ready():
         client_socket.send(bytedata)
         #client_socket.send(exif_string.encode())
         print(exif_string)
-        # file_no = file_no + 1
-        # with open("index.txt","w") as i:
-        #     i.write(str(file_no))
-        # i.close()
+        file_no = file_no + 1
+        with open("index.txt","w") as i:
+            i.write(str(file_no))
+        i.close()
 
 
 if __name__ == "__main__":

@@ -1,11 +1,12 @@
 extends Control
 
+@onready var client_scene = preload("res://client.tscn")
 @onready var files = preload("res://file.tscn")
-@export var _file_name: String
-@export var _file_icon: ImageTexture
+#@export var _file_name: String
+@export var file_icon: ImageTexture
 
 @export var selected_file: String
-var _file: File
+var file: File
 
 
 func _ready() -> void:
@@ -13,17 +14,20 @@ func _ready() -> void:
 	
 	
 func _on_load_button_pressed() -> void:
-	print($load_button.text)
 	selected_file = $load_button.text
+	var client = client_scene.instantiate()
+	add_child(client)
 	
 func add_files(file_no:int):
 	for i in file_no:
-		_file = files.instantiate()
-		$GridContainer.add_child(_file)
-		_file.name = "file"
-		_file.file_name = _file.name
-		_file_icon = ImageTexture.create_from_image(Image.load_from_file("res://jpg_folder/photo"+str(i)+".jpg"))
-		_file.file_icon = _file_icon
+		file = files.instantiate()
+		$GridContainer.add_child(file)
+		file.name = "file"
+		file._file_name = file.name
+		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://jpg_folder/photo"+str(i)+".jpg"))
+		file._file_icon = file_icon
+		file_icon.set_meta("file_name","photo"+str(i)+".jpg")
+		print(file_icon.get_meta("file_name"))
 
 
 func file_count(file_path:String) -> int:
@@ -31,7 +35,7 @@ func file_count(file_path:String) -> int:
 	# print(len(dir)
 	var dir = DirAccess.open(file_path)
 	dir.list_dir_begin()
-	var files_no:int 
+	var files_no:int = 0
 	
 	while true:
 		var f = dir.get_next()
