@@ -1,7 +1,7 @@
 extends Control
 
-@onready var client_scene = preload("res://client.tscn")
-@onready var files = preload("res://file.tscn")
+@onready var client_scene = preload("res://file_dialog/client.tscn")
+@onready var files = preload("res://file_dialog/file.tscn")
 #@export var _file_name: String
 @export var file_icon: ImageTexture
 
@@ -11,7 +11,6 @@ var file: File
 
 func _ready() -> void:
 	add_files(file_count("res://jpg_folder/"))
-	
 	
 func _on_load_button_pressed() -> void:
 	selected_file = $load_button.text
