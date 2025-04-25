@@ -2,12 +2,10 @@ extends Control
 
 @onready var client_scene = preload("res://file_dialog/client.tscn")
 @onready var files = preload("res://file_dialog/file.tscn")
-#@export var _file_name: String
-@export var file_icon: ImageTexture
 
+@export var file_icon: ImageTexture
 @export var selected_file: String
 var file: File
-
 
 func _ready() -> void:
 	add_files(file_count("res://jpg_folder/"))
@@ -23,13 +21,13 @@ func add_files(file_no:int):
 	for i in file_no:
 		file = files.instantiate()
 		$GridContainer.add_child(file)
+		# named file to force automatic naming system = file1, file2 etc
 		file.name = "file"
 		file._file_name = file.name
 		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://jpg_folder/photo"+str(i)+".jpg"))
 		file._file_icon = file_icon
 		file_icon.set_meta("file_name","photo"+str(i)+".jpg")
 		print(file_icon.get_meta("file_name"))
-
 
 func file_count(file_path:String) -> int:
 	#var dir = DirAccess.open("res://jpg_folder/").get_files()
@@ -40,14 +38,15 @@ func file_count(file_path:String) -> int:
 	
 	while true:
 		var f = dir.get_next()
+		# if there is no more files found
 		if f == "":
 			break
+		# if the file is not the godot import 
 		if not f.contains(".import"):
 			files_no += 1
 	dir.list_dir_end()
 	return files_no
 	
-
-
 func _on_exit_pressed() -> void:
 	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
+	queue_free()
