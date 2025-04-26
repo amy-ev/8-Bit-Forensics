@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db63tev55rikc"
-path="res://.godot/imported/icon-x2.png-1f48a25f79a9bb58599d78ae33b8301b.ctex"
+uid="uid://djdji6exs5hlj"
+path="res://.godot/imported/window-bar-x3.png-bdbf43514abcf2ac1870c43355c1a308.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/file_dialog/8-bit-forensics/icon-x2.png"
-dest_files=["res://.godot/imported/icon-x2.png-1f48a25f79a9bb58599d78ae33b8301b.ctex"]
+source_file="res://assets/file_dialog/window-bar-x3.png"
+dest_files=["res://.godot/imported/window-bar-x3.png-bdbf43514abcf2ac1870c43355c1a308.ctex"]
 
 [params]
 

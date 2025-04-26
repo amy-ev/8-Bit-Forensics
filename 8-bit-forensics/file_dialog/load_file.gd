@@ -5,6 +5,7 @@ extends Control
 
 @export var file_icon: ImageTexture
 @export var selected_file: String
+
 var file: File
 
 func _ready() -> void:
@@ -13,7 +14,7 @@ func _ready() -> void:
 	# true for debugging 
 	
 func _on_load_button_pressed() -> void:
-	selected_file = $load_button.text
+	selected_file = $button_border/load_button.text
 	var client = client_scene.instantiate()
 	add_child(client)
 	
@@ -25,13 +26,17 @@ func add_files(file_no:int):
 		# named file to force automatic naming system = file1, file2 etc
 		file.name = "file"
 		file._file_name = file.name
-		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://assets/file_dialog/8-bit-forensics/icon-x3.png"))
+		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://assets/file_dialog/icon-x3.png"))
 		#file_icon = ImageTexture.create_from_image(Image.load_from_file("res://jpg_folder/photo"+str(i)+".jpg"))
 		file._file_icon = file_icon
 		file_icon.set_meta("file_name","photo"+str(i)+".jpg")
 		print(file_icon.get_meta("file_name"))
 		
 		# dynamically size the file_container grid seperations 
+		$file_dialog/window/file_container.size.x = $file_dialog/window.size.x - (6 * Global.magnification) - 1
+		$file_dialog/window/file_container.size.y = $file_dialog/window.size.y - (5 * Global.magnification)
+		$file_dialog/window/file_container.position.x = (3 * Global.magnification)
+		$file_dialog/window/file_container.position.y = (2 * Global.magnification)
 		$file_dialog/window/file_container.add_theme_constant_override("h_separation", file.get_node("select/select_shape").shape.size.x)
 		$file_dialog/window/file_container.add_theme_constant_override("v_separation", (file.get_node("select/select_shape").shape.size.y)+(file.get_node("file_name").size.y))
 

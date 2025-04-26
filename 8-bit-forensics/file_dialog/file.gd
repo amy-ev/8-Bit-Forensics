@@ -9,9 +9,11 @@ class_name File
 func _ready() -> void:
 	
 	#dynamically size and position area2D 
-	$select/select_shape.shape.size.x = $icon.size.x + 4
-	$select/select_shape.shape.size.y = $icon.size.y + 4
+	$select/select_shape.shape.size.x = $icon.size.x + (4 * Global.magnification)
+	$select/select_shape.shape.size.y = $icon.size.y + (3 * Global.magnification)
 	$select.position = $select/select_shape.shape.size / 2
+	
+	print($select/select_shape.shape.size)
 	
 func _process(delta: float) -> void:
 	$file_name.text = _file_name
@@ -22,6 +24,6 @@ func _on_select_input_event(viewport: Node, event: InputEvent, shape_idx: int) -
 		_selected_file = _file_icon.get_meta("file_name")
 		#print(get_parent())
 		#print(get_parent().get_parent().get_parent().get_parent())
-		get_parent().get_parent().get_parent().get_parent().get_node("load_button").text = _selected_file
+		get_parent().get_parent().get_parent().get_parent().get_node("button_border/load_button").text = _selected_file
 		print(_selected_file)
 		#$file_name.text = file_name

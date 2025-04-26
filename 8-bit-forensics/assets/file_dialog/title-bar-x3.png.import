@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by2x878xeraby"
-path="res://.godot/imported/title-bar.png-3e51f091d036e994c447a4c084c2606d.ctex"
+uid="uid://b6mv23cq8bncx"
+path="res://.godot/imported/title-bar-x3.png-9468e80ac9527c94b15c0308a65c76b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/file_dialog/8-bit-forensics/title-bar.png"
-dest_files=["res://.godot/imported/title-bar.png-3e51f091d036e994c447a4c084c2606d.ctex"]
+source_file="res://assets/file_dialog/title-bar-x3.png"
+dest_files=["res://.godot/imported/title-bar-x3.png-9468e80ac9527c94b15c0308a65c76b3.ctex"]
 
 [params]
 
