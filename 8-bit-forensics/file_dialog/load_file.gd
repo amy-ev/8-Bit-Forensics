@@ -18,16 +18,22 @@ func _on_load_button_pressed() -> void:
 	add_child(client)
 	
 func add_files(file_no:int):
+
 	for i in file_no:
 		file = files.instantiate()
-		$GridContainer.add_child(file)
+		$file_dialog/window/file_container.add_child(file)
 		# named file to force automatic naming system = file1, file2 etc
 		file.name = "file"
 		file._file_name = file.name
-		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://jpg_folder/photo"+str(i)+".jpg"))
+		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://assets/file_dialog/8-bit-forensics/icon-x3.png"))
+		#file_icon = ImageTexture.create_from_image(Image.load_from_file("res://jpg_folder/photo"+str(i)+".jpg"))
 		file._file_icon = file_icon
 		file_icon.set_meta("file_name","photo"+str(i)+".jpg")
 		print(file_icon.get_meta("file_name"))
+		
+		# dynamically size the file_container grid seperations 
+		$file_dialog/window/file_container.add_theme_constant_override("h_separation", file.get_node("select/select_shape").shape.size.x)
+		$file_dialog/window/file_container.add_theme_constant_override("v_separation", (file.get_node("select/select_shape").shape.size.y)+(file.get_node("file_name").size.y))
 
 func file_count(file_path:String) -> int:
 	#var dir = DirAccess.open("res://jpg_folder/").get_files()

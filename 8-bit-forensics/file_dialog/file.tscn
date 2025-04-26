@@ -1,13 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://sn8d4o6fhtgr"]
 
 [ext_resource type="Script" uid="uid://bma4ijfyyc2of" path="res://file_dialog/file.gd" id="1_lhbmk"]
-[ext_resource type="Texture2D" uid="uid://dp0n5pwfkrbqy" path="res://jpg_folder/photo0.jpg" id="2_mel56"]
+[ext_resource type="Texture2D" uid="uid://cr06p18ka6mfp" path="res://assets/file_dialog/8-bit-forensics/icon-x3.png" id="2_68pwj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lhbmk"]
 font_size = 10
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mel56"]
-size = Vector2(60, 60)
 
 [node name="File" type="Control"]
 layout_mode = 3
@@ -16,28 +15,28 @@ mouse_filter = 2
 script = ExtResource("1_lhbmk")
 
 [node name="icon" type="TextureRect" parent="."]
+clip_contents = true
 layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 50.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 26.0
+offset_bottom = 32.0
 mouse_filter = 2
-texture = ExtResource("2_mel56")
+texture = ExtResource("2_68pwj")
 expand_mode = 1
 
 [node name="file_name" type="Label" parent="."]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 50.0
-offset_right = 48.0
-offset_bottom = 64.0
-text = "img_01"
+offset_left = 2.0
+offset_top = 30.0
+offset_right = 26.0
+offset_bottom = 44.0
 label_settings = SubResource("LabelSettings_lhbmk")
 horizontal_alignment = 1
-vertical_alignment = 2
+justification_flags = 3
+clip_text = true
 
 [node name="select" type="Area2D" parent="."]
-position = Vector2(30, 30)
 collision_layer = 3
 collision_mask = 3
 

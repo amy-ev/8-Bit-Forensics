@@ -1,56 +1,61 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdewl63aqvs7b"]
+[gd_scene load_steps=5 format=3 uid="uid://cdewl63aqvs7b"]
 
 [ext_resource type="Script" uid="uid://475xqrfyyjia" path="res://file_dialog/load_file.gd" id="1_gmshg"]
-[ext_resource type="Texture2D" uid="uid://d23c68ogjtxv8" path="res://icon.svg" id="2_1r1c0"]
+[ext_resource type="Texture2D" uid="uid://mf4n3pnhcm00" path="res://assets/file_dialog/8-bit-forensics/title-bar-x2.png" id="3_f73wo"]
+[ext_resource type="Texture2D" uid="uid://jyxx4tdrx1wa" path="res://assets/file_dialog/8-bit-forensics/exit-button-x2.png" id="3_r0vae"]
+[ext_resource type="Texture2D" uid="uid://cga3dy54sa8fm" path="res://assets/file_dialog/8-bit-forensics/window-x2.png" id="3_wwmjk"]
 
 [node name="load_file" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 300.0
-offset_bottom = 300.0
+offset_right = 108.0
+offset_bottom = 110.0
 mouse_filter = 2
 script = ExtResource("1_gmshg")
 
-[node name="file_dialog" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_1r1c0")
-expand_mode = 1
-
-[node name="load_button" type="Button" parent="."]
+[node name="file_dialog" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 300.0
-offset_right = 256.0
-offset_bottom = 331.0
-text = "load an image plz and thnx"
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
 
-[node name="GridContainer" type="HFlowContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1.0
-offset_bottom = -1.0
+[node name="title_bar" type="TextureRect" parent="file_dialog"]
+layout_mode = 2
+texture = ExtResource("3_f73wo")
+
+[node name="exit" type="TextureButton" parent="file_dialog/title_bar"]
+layout_mode = 0
+offset_left = 94.0
+offset_right = 108.0
+offset_bottom = 14.0
+texture_normal = ExtResource("3_r0vae")
+texture_pressed = ExtResource("3_r0vae")
+texture_hover = ExtResource("3_r0vae")
+texture_disabled = ExtResource("3_r0vae")
+texture_focused = ExtResource("3_r0vae")
+
+[node name="window" type="TextureRect" parent="file_dialog"]
+layout_mode = 2
+texture = ExtResource("3_wwmjk")
+
+[node name="file_container" type="HFlowContainer" parent="file_dialog/window"]
+layout_mode = 2
+offset_left = 2.0
+offset_right = 106.0
+offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/h_separation = 60
-theme_override_constants/v_separation = 60
+last_wrap_alignment = 1
 
-[node name="exit" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -8.0
-offset_right = 2.0
-offset_bottom = 10.0
-grow_horizontal = 0
+[node name="load_button" type="Button" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 110.0
+offset_right = 85.0
+offset_bottom = 141.0
+text = "confirm"
 
+[connection signal="pressed" from="file_dialog/title_bar/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="load_button" to="." method="_on_load_button_pressed"]
-[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
