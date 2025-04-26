@@ -6,15 +6,18 @@ extends Control
 @export var file_icon: ImageTexture
 @export var selected_file: String
 
+var current_rect: ColorRect
+
 var file: File
 
 func _ready() -> void:
 	add_files(file_count("res://jpg_folder/"))
+	# true = terminal popup (for debugging)
 	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/start.bat",[],true) 
-	# true for debugging 
+	Global.connect("selected",_on_file_selected)
+
 	
 func _on_load_button_pressed() -> void:
-	selected_file = $button_border/load_button.text
 	var client = client_scene.instantiate()
 	add_child(client)
 	
@@ -29,8 +32,10 @@ func add_files(file_no:int):
 		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://assets/file_dialog/icon-x3.png"))
 		#file_icon = ImageTexture.create_from_image(Image.load_from_file("res://jpg_folder/photo"+str(i)+".jpg"))
 		file._file_icon = file_icon
+		
+		#TODO: change to match a variety of files
 		file_icon.set_meta("file_name","photo"+str(i)+".jpg")
-		print(file_icon.get_meta("file_name"))
+		
 		
 		# dynamically size the file_container grid seperations 
 		$file_dialog/window/file_container.size.x = $file_dialog/window.size.x - (6 * Global.magnification) - 1
@@ -39,6 +44,8 @@ func add_files(file_no:int):
 		$file_dialog/window/file_container.position.y = (2 * Global.magnification)
 		$file_dialog/window/file_container.add_theme_constant_override("h_separation", file.get_node("select/select_shape").shape.size.x)
 		$file_dialog/window/file_container.add_theme_constant_override("v_separation", (file.get_node("select/select_shape").shape.size.y)+(file.get_node("file_name").size.y))
+	
+
 
 func file_count(file_path:String) -> int:
 	#var dir = DirAccess.open("res://jpg_folder/").get_files()
@@ -61,3 +68,16 @@ func file_count(file_path:String) -> int:
 func _on_exit_pressed() -> void:
 	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
 	queue_free()
+
+func _on_file_selected(selected_node:File, real_file:String):
+	# obtain the colour rect node of the selected file emitted
+	var selected_rect = selected_node.get_node("selected")
+	# if current_rect is not null and current_rect is not from the file just emitted
+	if current_rect and current_rect != selected_rect:
+		current_rect.visible = false
+	
+	selected_rect.visible = true
+	current_rect = selected_rect
+	
+	selected_file = real_file
+	

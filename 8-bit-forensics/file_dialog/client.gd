@@ -13,21 +13,15 @@ func _process(delta: float) -> void:
 	if status != client.STATUS_CONNECTED:
 		client.poll()
 		print("not connected yet, status: ", status)
-		
-	client.poll()
 	
+	client.poll()
 	print("status: ", status)
-	# --- send data ---
-	#var msg = "hello"
-	#var msg_bytes = msg.to_utf8_buffer()
+	# selected file = the file_name metadata dynamically created
 	var selected_img = open_img("res://jpg_folder/"+get_parent().selected_file)
-	#var msg_bytes = open_img("res://example.jpg")
+	
 	send_data(selected_img)
-	print("before")
 	recv_data()
-	print("after")
-	# --- receive data ---
-		
+
 func open_img(img_path):
 	#print(OS.get_executable_path().get_base_dir().path_join("example.jpg"))
 	#print(ProjectSettings.globalize_path("res://example.jpg"))
@@ -57,7 +51,8 @@ func recv_data():
 	var response = client.get_data(client.get_available_bytes())
 	var byte_array = PackedByteArray(response[1])
 	print(byte_array.hex_encode())	#print(byte_array.get_string_from_utf8())
-
+	
+	# when response has been recieved disconnect and close client.gd (allow for another instance to be created)
 	client.disconnect_from_host()
 	queue_free()
 		
