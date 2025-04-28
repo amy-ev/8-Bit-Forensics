@@ -50,7 +50,7 @@ func recv_data():
 		
 	var response = client.get_data(client.get_available_bytes())
 	var byte_array = PackedByteArray(response[1])
-	print(byte_array.hex_encode())	#print(byte_array.get_string_from_utf8())
+	#print(byte_array.hex_encode())	#print(byte_array.get_string_from_utf8())
 	
 	# when response has been recieved disconnect and close client.gd (allow for another instance to be created)
 	client.disconnect_from_host()

@@ -2,6 +2,7 @@ extends Control
 
 @onready var client_scene = preload("res://file_dialog/client.tscn")
 @onready var files = preload("res://file_dialog/file.tscn")
+@onready var saved_dialog_scene = preload("res://file_dialog/save_file.tscn")
 
 @export var file_icon: ImageTexture
 @export var selected_file: String
@@ -15,11 +16,18 @@ func _ready() -> void:
 	# true = terminal popup (for debugging)
 	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/start.bat",[],true) 
 	Global.connect("selected",_on_file_selected)
-
+	
+	# TODO: REMOVE FROM HERE AND ADD BOTH LOAD_FILE AND SAVE_FILE TO A DIALOG WINDOW SCENE
+	var saved_dialog = saved_dialog_scene.instantiate()
+	add_child(saved_dialog)
+	var dialog_node = saved_dialog.get_node(".")
+	dialog_node.position.x = get_node(".").position.x + (get_node(".").size.x * 2)
+	# ---------------------------
 	
 func _on_load_button_pressed() -> void:
 	var client = client_scene.instantiate()
 	add_child(client)
+	Global.sent.emit()
 	
 func add_files(file_no:int):
 
@@ -35,7 +43,6 @@ func add_files(file_no:int):
 		
 		#TODO: change to match a variety of files
 		file_icon.set_meta("file_name","photo"+str(i)+".jpg")
-		
 		
 		# dynamically size the file_container grid seperations 
 		$file_dialog/window/file_container.size.x = $file_dialog/window.size.x - (6 * Global.magnification) - 1
