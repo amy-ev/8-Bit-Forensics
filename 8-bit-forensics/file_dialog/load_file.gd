@@ -27,7 +27,6 @@ func _ready() -> void:
 func _on_load_button_pressed() -> void:
 	var client = client_scene.instantiate()
 	add_child(client)
-	Global.sent.emit()
 	
 func add_files(file_no:int):
 
