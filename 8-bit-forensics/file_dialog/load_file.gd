@@ -50,8 +50,6 @@ func add_files(file_no:int):
 		$file_dialog/window/file_container.position.y = (2 * Global.magnification)
 		$file_dialog/window/file_container.add_theme_constant_override("h_separation", file.get_node("select/select_shape").shape.size.x)
 		$file_dialog/window/file_container.add_theme_constant_override("v_separation", (file.get_node("select/select_shape").shape.size.y)+(file.get_node("file_name").size.y))
-	
-
 
 func file_count(file_path:String) -> int:
 	#var dir = DirAccess.open("res://jpg_folder/").get_files()
@@ -73,6 +71,7 @@ func file_count(file_path:String) -> int:
 	
 func _on_exit_pressed() -> void:
 	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
+	Global.already_on = false
 	queue_free()
 
 func _on_file_selected(selected_node:File, real_file:String):

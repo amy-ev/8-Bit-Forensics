@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c02ybwmq13qq4"]
+
+[ext_resource type="Texture2D" uid="uid://c8iudgnvx58hr" path="res://assets/file_dialog/window-x3.png" id="1_pavic"]
+[ext_resource type="PackedScene" uid="uid://wxl4c6i1fgsr" path="res://world/interactive_object.tscn" id="2_w3m8c"]
+
+[node name="office" type="Node2D"]
+
+[node name="temp_tilemap" type="Sprite2D" parent="."]
+position = Vector2(81, 72)
+texture = ExtResource("1_pavic")
+
+[node name="computer" parent="." instance=ExtResource("2_w3m8c")]
+position = Vector2(91, 74)
+
+[editable path="computer"]
