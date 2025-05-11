@@ -1,9 +1,11 @@
 extends Node2D
 
 @onready var _file_dialog = preload("res://file_dialog/load_file.tscn")
-	
+
+
 func _ready() -> void:
 	Global.connect("computer",_computer_on)
+	get_node("hitbox/hitbox_shape").shape.size = get_node("object_sprite").texture.get_size()
 	
 func _on_hitbox_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.is_pressed():
