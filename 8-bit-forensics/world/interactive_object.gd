@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var _file_dialog = preload("res://file_dialog/load_file.tscn")
-
+@onready var _file_dialog = preload("res://computer_screen/computer_screen.tscn")
+#@onready var _file_dialog = preload("res://computer_screen/file_dialog/load_file.tscn")
 
 func _ready() -> void:
 	Global.connect("computer",_computer_on)
@@ -17,6 +17,6 @@ func _computer_on(on:bool):
 		if Global.already_on == false:
 			var file_dialog =  _file_dialog.instantiate()
 			get_parent().add_child(file_dialog)
-			get_parent().get_node("load_file").position = Vector2(300,300)
+			get_parent().get_node("computer_screen/load_file").position = Vector2(30,30)
 			
 			Global.already_on = true	

@@ -1,8 +1,8 @@
 extends Control
 
-@onready var client_scene = preload("res://file_dialog/client.tscn")
-@onready var files = preload("res://file_dialog/file.tscn")
-@onready var saved_dialog_scene = preload("res://file_dialog/save_file.tscn")
+@onready var client_scene = preload("res://computer_screen/file_dialog/client.tscn")
+@onready var files = preload("res://computer_screen/file_dialog/file.tscn")
+@onready var saved_dialog_scene = preload("res://computer_screen/file_dialog/save_file.tscn")
 
 @export var file_icon: ImageTexture
 @export var selected_file: String
@@ -72,6 +72,7 @@ func file_count(file_path:String) -> int:
 func _on_exit_pressed() -> void:
 	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
 	Global.already_on = false
+	get_parent().queue_free()
 	queue_free()
 
 func _on_file_selected(selected_node:File, real_file:String):

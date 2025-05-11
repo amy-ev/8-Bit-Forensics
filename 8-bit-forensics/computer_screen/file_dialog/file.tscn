@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://sn8d4o6fhtgr"]
 
-[ext_resource type="Script" uid="uid://bma4ijfyyc2of" path="res://file_dialog/file.gd" id="1_lhbmk"]
+[ext_resource type="Script" uid="uid://bma4ijfyyc2of" path="res://computer_screen/file_dialog/file.gd" id="1_lhbmk"]
 [ext_resource type="Texture2D" uid="uid://cr06p18ka6mfp" path="res://assets/file_dialog/icon-x3.png" id="2_68pwj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lhbmk"]

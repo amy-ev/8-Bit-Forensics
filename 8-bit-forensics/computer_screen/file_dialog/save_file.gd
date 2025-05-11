@@ -1,6 +1,6 @@
 extends Control
 
-@onready var files = preload("res://file_dialog/file.tscn")
+@onready var files = preload("res://computer_screen/file_dialog/file.tscn")
 
 @export var file_icon: ImageTexture
 
