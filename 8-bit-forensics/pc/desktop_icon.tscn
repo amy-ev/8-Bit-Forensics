@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://xyusutygugir"]
 
 [ext_resource type="Script" uid="uid://b3f13n3he2df7" path="res://pc/desktop_icon.gd" id="1_2ftpu"]
-[ext_resource type="Texture2D" uid="uid://cr06p18ka6mfp" path="res://assets/file_dialog/icon-x3.png" id="2_fa2t8"]
+[ext_resource type="Texture2D" uid="uid://cbx1ik57naou5" path="res://assets/pc/folder-icon-x3.png" id="2_fa2t8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fa2t8"]
 

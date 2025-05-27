@@ -21,5 +21,6 @@ func update_size():
 	icon.get_node("icon").size = icon.get_node("icon").size / (Vector2(original_size.x -1, original_size.x -1)/Vector2(size.x-1,size.x-1))
 	icon.get_node("select/select_shape").shape.size = icon.get_node("icon").size
 	icon.get_node("select").position = icon.get_node("select/select_shape").shape.size / 2
+	
 	print(icon.size)
 	print(original_size/size)
