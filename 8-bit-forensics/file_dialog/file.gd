@@ -14,6 +14,8 @@ func _ready() -> void:
 	$select/select_shape.shape.size.y = file_height
 	$selected.size = Vector2(file_width, file_height)
 	$select.position = $select/select_shape.shape.size / 2
+	print("icon size: ", $icon.size)
+	print("icon pos: ", $icon.position)
 
 func _process(delta: float) -> void:
 	$file_name.text = _file_name

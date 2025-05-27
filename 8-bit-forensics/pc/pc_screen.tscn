@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4qcqdfv02pnd"]
+[gd_scene load_steps=4 format=3 uid="uid://b4qcqdfv02pnd"]
 
 [ext_resource type="Texture2D" uid="uid://dqapx11lcd8qk" path="res://assets/pc/wallpaper-x3.png" id="1_srayv"]
 [ext_resource type="Script" uid="uid://bdgjl5jim21kt" path="res://pc/pc_screen.gd" id="2_n1q0v"]
+[ext_resource type="PackedScene" uid="uid://xyusutygugir" path="res://pc/desktop_icon.tscn" id="3_lrtf5"]
 
 [node name="pc" type="Control"]
 layout_mode = 3
@@ -24,3 +25,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 texture = ExtResource("1_srayv")
+
+[node name="DesktopIcon" parent="." instance=ExtResource("3_lrtf5")]
+layout_mode = 1
