@@ -43,12 +43,14 @@ func _on_scroll_changed(value:float):
 	var max_scroll:int = $label.get_content_height() - $label.size.y
 	print("prev: ", prev_value, "current: ", value)
 	print(page)
+	
 	if page != 0:
 		if value == 0 && (prev_value >= 0 && prev_value <= 100):
 			show_page(page - 1)
 			$label.scroll_to_line($label.get_line_count()-1)
+			
 	if page != (hex_table.size()/VIS_ROWS):
-		if value >= max_scroll && (!prev_value <= 10):
+		if value >= max_scroll && (!prev_value <= 100):
 			show_page(page + 1)
 			$label.scroll_to_line(0)
 		
