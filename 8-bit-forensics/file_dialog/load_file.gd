@@ -1,4 +1,5 @@
 extends Control
+class_name LoadFile
 
 @onready var client_scene = preload("res://file_dialog/client.tscn")
 @onready var files = preload("res://file_dialog/file.tscn")
@@ -7,6 +8,7 @@ extends Control
 @export var file_icon: ImageTexture
 @export var selected_file: String
 
+var client:Node
 var current_rect: ColorRect
 
 var file: File
