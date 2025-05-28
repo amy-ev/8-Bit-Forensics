@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://xyusutygugir"]
+
+[ext_resource type="Script" uid="uid://b3f13n3he2df7" path="res://pc/desktop_icon.gd" id="1_2ftpu"]
+[ext_resource type="Texture2D" uid="uid://cbx1ik57naou5" path="res://assets/pc/folder-icon-x3.png" id="2_fa2t8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fa2t8"]
+
+[node name="DesktopIcon" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_2ftpu")
+
+[node name="selected" type="ColorRect" parent="."]
+visible = false
+mouse_filter = 2
+color = Color(1, 1, 1, 0.682353)
+
+[node name="icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 30.0
+mouse_filter = 2
+texture = ExtResource("2_fa2t8")
+
+[node name="select" type="Area2D" parent="."]
+
+[node name="select_shape" type="CollisionShape2D" parent="select"]
+shape = SubResource("RectangleShape2D_fa2t8")
+
+[connection signal="input_event" from="select" to="." method="_on_select_input_event"]

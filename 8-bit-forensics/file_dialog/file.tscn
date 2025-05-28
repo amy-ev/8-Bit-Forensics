@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://sn8d4o6fhtgr"]
+
+[ext_resource type="Script" uid="uid://bma4ijfyyc2of" path="res://file_dialog/file.gd" id="1_lhbmk"]
+[ext_resource type="Texture2D" uid="uid://cr06p18ka6mfp" path="res://assets/file_dialog/icon-x3.png" id="2_68pwj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lhbmk"]
+font_size = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mel56"]
+
+[node name="File" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_lhbmk")
+
+[node name="selected" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+color = Color(1, 1, 1, 0.682353)
+
+[node name="icon" type="TextureRect" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 30.0
+offset_bottom = 36.0
+mouse_filter = 2
+texture = ExtResource("2_68pwj")
+expand_mode = 1
+
+[node name="file_name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 33.0
+offset_right = 30.0
+offset_bottom = 47.0
+label_settings = SubResource("LabelSettings_lhbmk")
+horizontal_alignment = 1
+justification_flags = 3
+clip_text = true
+
+[node name="select" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="select_shape" type="CollisionShape2D" parent="select"]
+shape = SubResource("RectangleShape2D_mel56")
+debug_color = Color(0, 0.6, 0.701961, 0.215686)
+
+[connection signal="input_event" from="select" to="." method="_on_select_input_event"]
