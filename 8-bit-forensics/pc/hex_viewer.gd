@@ -22,7 +22,6 @@ func _ready():
 	var scroll_bar = $label.get_v_scroll_bar()
 	scroll_bar.value_changed.connect(_on_scroll_changed)
 	show_page(0)
-	signature_search("d8 ff")
 
 func show_page(p:int):
 	page = p
@@ -78,7 +77,15 @@ func signature_search(signature:String):
 		print("no")
 		# TODO: REPLACE WITH ERROR HANDLING 
 		search_str = signature
-	
 	print(search_str)
+	
+	# returns the index for the first character
 	var result = $label.search(search_str,0 , 0 ,0)
-	print(result)
+	if result != Vector2i(-1,-1):
+		$label.set_v_scroll(result[1])
+	else:
+		print("not found")
+
+func _on_test_pressed() -> void:
+	var search = $user_search.text
+	signature_search(search)
