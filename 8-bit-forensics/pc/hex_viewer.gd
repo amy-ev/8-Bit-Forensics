@@ -22,6 +22,7 @@ func _ready():
 	var scroll_bar = $label.get_v_scroll_bar()
 	scroll_bar.value_changed.connect(_on_scroll_changed)
 	show_page(0)
+	signature_search("d8 ff")
 
 func show_page(p:int):
 	page = p
@@ -62,11 +63,22 @@ func _on_scroll_changed(value:float):
 	prev_value = value	
 	
 func signature_search(signature:String):
+	var search_str:String
 	print(signature)
-	
+	# formatting string 
 	signature = signature.replace(" ", "")
 	signature = signature.strip_escapes()
 	signature = signature.to_lower()
-	
 	print(signature)
-	var result = $label.search(signature,0, 0 ,0)
+	
+	if signature.length() >= 2:
+		for i in range(0,signature.length(),2):
+			search_str += signature.substr(i,2) + "\t" + " "
+	else:
+		print("no")
+		# TODO: REPLACE WITH ERROR HANDLING 
+		search_str = signature
+	
+	print(search_str)
+	var result = $label.search(search_str,0 , 0 ,0)
+	print(result)
