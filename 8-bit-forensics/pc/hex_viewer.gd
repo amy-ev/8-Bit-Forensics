@@ -2,10 +2,11 @@ extends Control
 
 var hex_table:Array = []
 var hex_data:Array = []
-var page:int = 0
+var page:int
 var prev_value: int = 0
 
-const VIS_ROWS:int = 53
+const VIS_ROWS:int = 18
+const TOTAL_ROWS:int = 53
 
 func _ready():
 	
@@ -22,11 +23,12 @@ func _ready():
 	scroll_bar.value_changed.connect(_on_scroll_changed)
 	show_page(0)
 
-func show_page(page):
-	
+func show_page(p):
+	page = p
 	var display := ""
-	var start = page * VIS_ROWS
-	var end = min(start + VIS_ROWS, hex_table.size())
+	var start = page * TOTAL_ROWS
+	var end = min(start + TOTAL_ROWS, hex_table.size())
+	print(hex_table.size()/TOTAL_ROWS)
 
 	for i in range(start, end):
 		var row = hex_table[i]
@@ -40,18 +42,21 @@ func show_page(page):
 	$label.text = display
 	
 func _on_scroll_changed(value:float):
-	var max_scroll:int = $label.get_content_height() - $label.size.y
+	var max_scroll:int = TOTAL_ROWS - VIS_ROWS
 	print("prev: ", prev_value, "current: ", value)
 	print(page)
 	
 	if page != 0:
-		if value == 0 && (prev_value >= 0 && prev_value <= 100):
-			show_page(page - 1)
-			$label.scroll_to_line($label.get_line_count()-1)
+		if value == 0 && (prev_value >= 0 && prev_value <= 10):
+			page-=1
+			show_page(page)
+			print("top of page")
+			$label.set_v_scroll(max_scroll)
 			
-	if page != (hex_table.size()/VIS_ROWS):
-		if value >= max_scroll && (!prev_value <= 100):
-			show_page(page + 1)
-			$label.scroll_to_line(0)
+	if page != (hex_table.size()/TOTAL_ROWS):
+		if value >= max_scroll && (!prev_value <= 10):
+			print("end of page")
+			page+=1
+			show_page(page)
 		
 	prev_value = value	
