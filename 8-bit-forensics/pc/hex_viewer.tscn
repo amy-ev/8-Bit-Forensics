@@ -18,3 +18,4 @@ grow_horizontal = 2
 grow_vertical = 2
 editable = false
 emoji_menu_enabled = false
+drag_and_drop_selection_enabled = false

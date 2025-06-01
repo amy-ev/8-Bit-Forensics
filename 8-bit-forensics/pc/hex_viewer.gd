@@ -23,7 +23,7 @@ func _ready():
 	scroll_bar.value_changed.connect(_on_scroll_changed)
 	show_page(0)
 
-func show_page(p):
+func show_page(p:int):
 	page = p
 	var display := ""
 	var start = page * TOTAL_ROWS
@@ -45,7 +45,7 @@ func _on_scroll_changed(value:float):
 	var max_scroll:int = TOTAL_ROWS - VIS_ROWS
 	print("prev: ", prev_value, "current: ", value)
 	print(page)
-	
+
 	if page != 0:
 		if value == 0 && (prev_value >= 0 && prev_value <= 10):
 			page-=1
@@ -60,3 +60,13 @@ func _on_scroll_changed(value:float):
 			show_page(page)
 		
 	prev_value = value	
+	
+func signature_search(signature:String):
+	print(signature)
+	
+	signature = signature.replace(" ", "")
+	signature = signature.strip_escapes()
+	signature = signature.to_lower()
+	
+	print(signature)
+	var result = $label.search(signature,0, 0 ,0)
