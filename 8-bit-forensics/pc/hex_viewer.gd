@@ -1,92 +1,46 @@
 extends Control
 
-var hex_table:Array = []
-var hex_data:Array = []
-var page:int
-var prev_value: int = 0
-
-const VIS_ROWS:int = 18
-const TOTAL_ROWS:int = 53
+@onready var data = [
+['14', '4f', 'a6', '4f', '71', '6c', '76', '14', '5f', '95', '14', '8c', 'b3', '80', '7a', '67'],
+['b5', '7a', 'c5', 'a6', 'b1', 'a5', 'ea', '16', '76', 'cf', '66', 'b7', '62', 'e2', 'e0', 'ee'],
+['28', 'c9', 'f7', '07', 'd6', 'be', '6c', '81', '3c', 'c5', '2f', 'b0', '95', '03', '70', '27'],
+['b6', '2b', 'd0', '7c', '34', 'd1', 'c5', '6f', '72', '63', '9b', 'cc', '5b', 'c4', '03', '29'],
+['fc', '00', 'f3', '5e', '46', '67', '27', 'cb', '64', '65', '19', 'ab', 'e8', '7f', 'ff', 'd9']
+]
 
 func _ready():
+	save()
+	print(load_file(0,1))
 	
-	var hex_file = FileAccess.get_file_as_bytes("res://jpg_folder/photo0.jpg")
-	if hex_file:
-		var arr_str = hex_file.hex_encode()
-		for x in range(0, arr_str.length(),2):
-			hex_data.append(arr_str.substr(x,2))
-			
-		for y in range(0,hex_data.size(),16):
-			hex_table.append(hex_data.slice(y,y+16))
-			
-	show_page(0)
-	var scroll_bar = $label.get_v_scroll_bar()
-	scroll_bar.value_changed.connect(_on_scroll_changed)
-
-
-func show_page(p:int):
-	page = p
-	var display := ""
-	var start = page * TOTAL_ROWS
-	var end = min(start + TOTAL_ROWS, hex_table.size())
-	print(hex_table.size()/TOTAL_ROWS)
-
-	for i in range(start, end):
-		var row = hex_table[i]
-		for j in range(row.size()):
-			display+= str(row[j]) + "\t" # change to monospace font and columns should be even
-			if j < row.size() -1:
-				display += " "
-		if i < end - 1:
-			display += "\n"
-			
-	$label.text = display
+func save():
+	var save_file = FileAccess.open("res://pc/test.JSON", FileAccess.WRITE)
+	var results_json = {
+		"rows":[]
+	}
 	
-func _on_scroll_changed(value:float):
-	var max_scroll:int = TOTAL_ROWS - VIS_ROWS
-	print("prev: ", prev_value, "current: ", value)
-	print(page)
-
-	if page != 0:
-		if value == 0 && (prev_value >= 0 && prev_value <= 10):
-			page-=1
-			show_page(page)
-			print("top of page")
-			$label.set_v_scroll(max_scroll)
-			
-	if page != (hex_table.size()/TOTAL_ROWS):
-		if value >= max_scroll && (!prev_value <= 10):
-			print("end of page")
-			page+=1
-			show_page(page)
+	for row in data:
+		var row_dict = {}
+		for i in range(row.size()):
+			row_dict["column_%d" % i] = row[i]
+		results_json["rows"].append(row_dict)
 		
-	prev_value = value	
 	
-func signature_search(signature:String):
-	var search_str:String
-	print(signature)
-	# formatting string 
-	signature = signature.replace(" ", "")
-	signature = signature.strip_escapes()
-	signature = signature.to_lower()
-	print(signature)
-	
-	if signature.length() >= 2:
-		for i in range(0,signature.length(),2):
-			search_str += signature.substr(i,2) + "\t" + " "
-	else:
-		print("no")
-		# TODO: REPLACE WITH ERROR HANDLING 
-		search_str = signature
-	print(search_str)
-	
-	# returns the index for the first character
-	var result = $label.search(search_str,0 , 0 ,0)
-	if result != Vector2i(-1,-1):
-		$label.set_v_scroll(result[1])
-	else:
-		print("not found")
+	var json_string = JSON.stringify(results_json)
+	save_file.store_line(json_string)
 
-func _on_test_pressed() -> void:
-	var search = $user_search.text
-	signature_search(search)
+func load_file(x,y):
+
+	var save_file = FileAccess.open("res://pc/test.JSON", FileAccess.READ)
+	
+	var json_string = save_file.get_as_text()
+	var json = JSON.new()
+	var parse_result = json.parse(json_string)
+	
+#	to retrieve all values
+	#return json.data
+	var json_data = json.data
+	
+	var rows = json_data["rows"][x]
+	var value = rows["column_%d" % y]
+	return value
+	
