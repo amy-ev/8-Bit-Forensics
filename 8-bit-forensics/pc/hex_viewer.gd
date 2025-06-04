@@ -10,7 +10,7 @@ extends Control
 
 func _ready():
 	save()
-	print(load_file(0,1))
+	load_file(4)
 	
 func save():
 	var save_file = FileAccess.open("res://pc/test.JSON", FileAccess.WRITE)
@@ -28,7 +28,7 @@ func save():
 	var json_string = JSON.stringify(results_json)
 	save_file.store_line(json_string)
 
-func load_file(x,y):
+func load_file(x):
 
 	var save_file = FileAccess.open("res://pc/test.JSON", FileAccess.READ)
 	
@@ -38,9 +38,14 @@ func load_file(x,y):
 	
 #	to retrieve all values
 	#return json.data
+	var rows
 	var json_data = json.data
-	
-	var rows = json_data["rows"][x]
-	var value = rows["column_%d" % y]
-	return value
+	for i in range(x):
+		rows = json_data["rows"][i]
+		for j in range(16):
+			var values = rows["column_%d" % j]
+			$label.text += values
+	#return rows
+	#var value = rows["column_%d" % y]
+	#return value
 	
