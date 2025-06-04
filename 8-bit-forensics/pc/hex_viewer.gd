@@ -19,9 +19,10 @@ func _ready():
 		for y in range(0,hex_data.size(),16):
 			hex_table.append(hex_data.slice(y,y+16))
 			
+	show_page(0)
 	var scroll_bar = $label.get_v_scroll_bar()
 	scroll_bar.value_changed.connect(_on_scroll_changed)
-	show_page(0)
+
 
 func show_page(p:int):
 	page = p
