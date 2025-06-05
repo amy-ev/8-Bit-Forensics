@@ -20,8 +20,16 @@ func _ready():
 		for y in range(0,hex_data.size(),16):
 			hex_table.append(hex_data.slice(y,y+16))
 			
+	display_hex()
 	save()
 	print(select(0,1,1,2))
+	
+func display_hex():
+	for row in data.size():
+		for value in data[row].size():
+			$label.text += data[row][value] + "\t"
+			print(data[row][value])
+		$label.text += "\n"
 	
 func save():
 	var save_file = FileAccess.open("res://pc/test.JSON", FileAccess.WRITE)
@@ -38,6 +46,7 @@ func save():
 	
 	var json_string = JSON.stringify(results_json)
 	save_file.store_line(json_string)
+
 
 func load_file(x):
 
