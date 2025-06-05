@@ -7,10 +7,21 @@ extends Control
 ['b6', '2b', 'd0', '7c', '34', 'd1', 'c5', '6f', '72', '63', '9b', 'cc', '5b', 'c4', '03', '29'],
 ['fc', '00', 'f3', '5e', '46', '67', '27', 'cb', '64', '65', '19', 'ab', 'e8', '7f', 'ff', 'd9']
 ]
+var hex_table:Array = []
+var hex_data:Array = []
 
 func _ready():
+	var hex_file = FileAccess.get_file_as_bytes("res://jpg_folder/photo0.jpg")
+	if hex_file:
+		var arr_str = hex_file.hex_encode()
+		for x in range(0, arr_str.length(),2):
+			hex_data.append(arr_str.substr(x,2))
+			
+		for y in range(0,hex_data.size(),16):
+			hex_table.append(hex_data.slice(y,y+16))
+			
 	save()
-	load_file(4)
+	print(select(0,1,1,2))
 	
 func save():
 	var save_file = FileAccess.open("res://pc/test.JSON", FileAccess.WRITE)
@@ -48,4 +59,40 @@ func load_file(x):
 	#return rows
 	#var value = rows["column_%d" % y]
 	#return value
+#	to retrieve all values
+	#return json.data
+	
+func select(x1,y1,x2,y2):
+	var save_file = FileAccess.open("res://pc/test.JSON", FileAccess.READ)
+	var json_string = save_file.get_as_text()
+	var json = JSON.new()
+	var parse_result = json.parse(json_string)
+	var json_data = json.data
+	
+	var rows = json_data["rows"]
+	
+	var reconstructed = []
+	for row in rows:
+		var new_row = []
+		var i = 0
+		while row.has("column_%d" % i):
+			new_row.append(row["column_%d" % i])
+			i += 1
+		reconstructed.append(new_row)
+	var num_cols = reconstructed[0].size()
+	
+	var flat = []
+	for row in reconstructed:
+		flat += row
+	
+	var start = x1 * num_cols + y1
+	var end = x2 * num_cols + y2
+	
+	if start > end:
+		var temp = start
+		start = end
+		end = temp
+		
+	return flat.slice(start, end - start + 1)
+	
 	
