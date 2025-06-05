@@ -9,7 +9,7 @@ const VIS_ROWS:int = 18
 const TOTAL_ROWS:int = 53
 
 func _ready():
-	
+	# will be changed to match the selected file -- file naming to match JSON file = only has to be created once
 	var hex_file = FileAccess.get_file_as_bytes("res://jpg_folder/photo0.jpg")
 	if hex_file:
 		var arr_str = hex_file.hex_encode()
@@ -22,7 +22,6 @@ func _ready():
 	show_page(0)
 	var scroll_bar = $label.get_v_scroll_bar()
 	scroll_bar.value_changed.connect(_on_scroll_changed)
-
 
 func show_page(p:int):
 	page = p
@@ -55,7 +54,7 @@ func _on_scroll_changed(value:float):
 			$label.set_v_scroll(max_scroll)
 			
 	if page != (hex_table.size()/TOTAL_ROWS):
-		if value >= max_scroll && (!prev_value <= 10):
+		if value >= max_scroll && (prev_value >= 30):
 			print("end of page")
 			page+=1
 			show_page(page)
@@ -63,6 +62,8 @@ func _on_scroll_changed(value:float):
 	prev_value = value	
 	
 func signature_search(signature:String):
+	var row:int
+	var column:int
 	var search_str:String
 	print(signature)
 	# formatting string 
@@ -83,10 +84,30 @@ func signature_search(signature:String):
 	# returns the index for the first character
 	var result = $label.search(search_str,0 , 0 ,0)
 	if result != Vector2i(-1,-1):
-		$label.set_v_scroll(result[1])
+		column = result[0]/4
+		row = result[1]
+		
+		var max_scroll = 32
+		if result[1] > 30:
+			$label.set_v_scroll((result[1]-VIS_ROWS)+1)
+		else:
+			$label.set_v_scroll(result[1])
+			
+		if page > 0:
+			row = result[1]+(page*TOTAL_ROWS)
+
+		return [row,column]
 	else:
 		print("not found")
+		return null
 
 func _on_test_pressed() -> void:
-	var search = $user_search.text
-	signature_search(search)
+	var result = signature_search($user_search.text)
+	var block = _select(result[0],result[1],55,6)
+	print(block)
+	
+func _select(x1,y1,x2,y2):
+	var start = (x1 * 16) + y1
+	var end = (x2 * 16) + y2
+	
+	return hex_data.slice(start,end+1)
