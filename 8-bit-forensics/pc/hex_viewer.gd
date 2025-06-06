@@ -71,12 +71,12 @@ func _on_scroll_changed(value:float):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("find"):
 		print(search_open)
-		if search_open == false:
+		if search_open == false && select_open == false:
 			search_open = true
 			add_child(search_window.instantiate())
 			
 	if event.is_action_pressed("select_block"):
 		print(select_open)
-		if select_open == false:
+		if select_open == false && search_open == false:
 			select_open = true
 			add_child(select_window.instantiate())
