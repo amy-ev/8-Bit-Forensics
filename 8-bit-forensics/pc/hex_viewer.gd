@@ -1,12 +1,18 @@
 extends Control
 
-var hex_table:Array = []
-var hex_data:Array = []
-var page:int
-var prev_value: int = 0
+
+@export var page:int
+@export var search_open:bool = false
+
+@onready var search_window = preload("res://pc/search.tscn")
 
 const VIS_ROWS:int = 18
 const TOTAL_ROWS:int = 53
+
+var hex_table:Array = []
+var hex_data:Array = []
+var prev_value: int = 0
+
 
 func _ready():
 	# will be changed to match the selected file -- file naming to match JSON file = only has to be created once
@@ -60,52 +66,17 @@ func _on_scroll_changed(value:float):
 			show_page(page)
 		
 	prev_value = value	
-	
-func signature_search(signature:String):
-	var row:int
-	var column:int
-	var search_str:String
-	print(signature)
-	# formatting string 
-	signature = signature.replace(" ", "")
-	signature = signature.strip_escapes()
-	signature = signature.to_lower()
-	print(signature)
-	
-	if signature.length() >= 2:
-		for i in range(0,signature.length(),2):
-			search_str += signature.substr(i,2) + "\t" + " "
-	else:
-		print("no")
-		# TODO: REPLACE WITH ERROR HANDLING 
-		search_str = signature
-	print(search_str)
-	
-	# returns the index for the first character
-	var result = $label.search(search_str,0 , 0 ,0)
-	if result != Vector2i(-1,-1):
-		column = result[0]/4
-		row = result[1]
-		
-		var max_scroll = 32
-		if result[1] > 30:
-			$label.set_v_scroll((result[1]-VIS_ROWS)+1)
-		else:
-			$label.set_v_scroll(result[1])
-			
-		if page > 0:
-			row = result[1]+(page*TOTAL_ROWS)
 
-		return [row,column]
-	else:
-		print("not found")
-		return null
+# opening other windows
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("find"):
+		print(search_open)
+		if search_open == false:
+			search_open = true
+			add_child(search_window.instantiate())
 
-func _on_test_pressed() -> void:
-	var result = signature_search($user_search.text)
-	var block = _select(result[0],result[1],55,6)
-	print(block)
-	
+
+
 func _select(x1,y1,x2,y2):
 	var start = (x1 * 16) + y1
 	var end = (x2 * 16) + y2

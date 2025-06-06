@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5u2gfwqyuonu"]
+
+[ext_resource type="Script" uid="uid://p3eircxo7i4w" path="res://pc/search.gd" id="1_b4i7w"]
+
+[node name="search" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b4i7w")
+
+[node name="window" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="exit" type="Button" parent="window"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "close"
+
+[node name="ok" type="Button" parent="window"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -15.0
+offset_right = 15.0
+grow_vertical = 0
+
+[node name="cancel" type="Button" parent="window"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="user_input" type="LineEdit" parent="window"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="window/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="window/ok" to="." method="_on_ok_pressed"]
+[connection signal="pressed" from="window/cancel" to="." method="_on_cancel_pressed"]
