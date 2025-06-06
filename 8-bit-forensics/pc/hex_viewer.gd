@@ -1,18 +1,18 @@
 extends Control
 
-
 @export var page:int
 @export var search_open:bool = false
+@export var select_open:bool = false
+@export var hex_data:Array = []
 
 @onready var search_window = preload("res://pc/search.tscn")
+@onready var select_window = preload("res://pc/select.tscn")
 
 const VIS_ROWS:int = 18
 const TOTAL_ROWS:int = 53
 
 var hex_table:Array = []
-var hex_data:Array = []
 var prev_value: int = 0
-
 
 func _ready():
 	# will be changed to match the selected file -- file naming to match JSON file = only has to be created once
@@ -26,7 +26,7 @@ func _ready():
 			hex_table.append(hex_data.slice(y,y+16))
 			
 	show_page(0)
-	var scroll_bar = $label.get_v_scroll_bar()
+	var scroll_bar = $window/label.get_v_scroll_bar()
 	scroll_bar.value_changed.connect(_on_scroll_changed)
 
 func show_page(p:int):
@@ -45,7 +45,7 @@ func show_page(p:int):
 		if i < end - 1:
 			display += "\n"
 			
-	$label.text = display
+	$window/label.text = display
 	
 func _on_scroll_changed(value:float):
 	var max_scroll:int = TOTAL_ROWS - VIS_ROWS
@@ -57,7 +57,7 @@ func _on_scroll_changed(value:float):
 			page-=1
 			show_page(page)
 			print("top of page")
-			$label.set_v_scroll(max_scroll)
+			$window/label.set_v_scroll(max_scroll)
 			
 	if page != (hex_table.size()/TOTAL_ROWS):
 		if value >= max_scroll && (prev_value >= 30):
@@ -74,11 +74,9 @@ func _input(event: InputEvent) -> void:
 		if search_open == false:
 			search_open = true
 			add_child(search_window.instantiate())
-
-
-
-func _select(x1,y1,x2,y2):
-	var start = (x1 * 16) + y1
-	var end = (x2 * 16) + y2
-	
-	return hex_data.slice(start,end+1)
+			
+	if event.is_action_pressed("select_block"):
+		print(select_open)
+		if select_open == false:
+			select_open = true
+			add_child(select_window.instantiate())

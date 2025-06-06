@@ -1,6 +1,5 @@
 extends Control
 
-
 @onready var hex_viewer = get_parent()
 
 func _on_exit_pressed() -> void:
@@ -34,7 +33,7 @@ func signature_search(signature:String) -> Array:
 		# TODO: REPLACE WITH ERROR HANDLING 
 		search_str = signature
 		
-	var hex_text = hex_viewer.get_child(0)
+	var hex_text = hex_viewer.get_node("window/label")
 	
 	var result = hex_text.search(search_str,0 , 0 ,0)
 	if result != Vector2i(-1,-1):
