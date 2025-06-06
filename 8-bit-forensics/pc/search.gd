@@ -11,11 +11,11 @@ func _on_cancel_pressed() -> void:
 	queue_free()
 	
 func _on_ok_pressed() -> void:
-	signature_search($window/user_input.text)
+	print(signature_search($window/user_input.text))
 	hex_viewer.search_open = false
 	queue_free()
 	
-func signature_search(signature:String) -> Array:
+func signature_search(signature:String) -> String:
 	var row:int
 	var column:int
 	var search_str:String
@@ -48,9 +48,45 @@ func signature_search(signature:String) -> Array:
 			
 		if hex_viewer.page > 0:
 			row = result[1]+(hex_viewer.page*hex_viewer.TOTAL_ROWS)
-
-		return [row,column]
+		print([row,column])
+		return dec_to_hex(row,column)
 		
 	else:
 		print("not found")
-		return []
+		return ""
+
+func dec_to_hex(x:int, y:int)-> String:
+	var result = []
+	#row
+	while x != 0:
+		var r = x % 16
+		x = int(x / 16)
+		result.insert(0,str(r))
+		
+	#column
+	while y != 0:
+		var r = y % 16
+		y = int(y / 16)
+		result.append(str(r))
+		
+	for i in range(result.size()):
+		if result[i] == "10":
+			result[i] = "A"
+		if result[i] == "11":
+			result[i] = "B"
+		if result[i] == "12":
+			result[i] = "C"
+		if result[i] == "13":
+			result[i] = "D"
+		if result[i] == "14":
+			result[i] = "E"
+		if result[i] == "15":
+			result[i] = "F"
+			
+	var hex = ''.join(result)
+	var left_padding = 8 - hex.length()
+	
+	if left_padding > 0:
+		return "0".repeat(left_padding) + hex
+	return hex
+		
