@@ -3,16 +3,16 @@ extends Control
 @onready var hex_viewer = get_parent()
 
 func _on_ok_pressed() -> void:
-	hex_viewer.search_open = false
+	hex_viewer.select_open = false
 	_select($window/start.text,$window/end.text)
 	queue_free()
 
 func _on_cancel_pressed() -> void:
-	hex_viewer.search_open = false
+	hex_viewer.select_open = false
 	queue_free()
 
 func _on_exit_pressed() -> void:
-	hex_viewer.search_open = false
+	hex_viewer.select_open = false
 	queue_free()
 
 func _select(start_offset, end_offset):
