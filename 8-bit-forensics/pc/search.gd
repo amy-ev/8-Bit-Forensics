@@ -49,13 +49,13 @@ func signature_search(signature:String) -> String:
 		if hex_viewer.page > 0:
 			row = result[1]+(hex_viewer.page*hex_viewer.TOTAL_ROWS)
 		print([row,column])
-		return dec_to_hex(row,column)
+		return _dec_to_hex(row,column)
 		
 	else:
 		print("not found")
 		return ""
 
-func dec_to_hex(x:int, y:int)-> String:
+func _dec_to_hex(x:int, y:int)-> String:
 	var result = []
 	#row
 	while x != 0:
@@ -89,4 +89,3 @@ func dec_to_hex(x:int, y:int)-> String:
 	if left_padding > 0:
 		return "0".repeat(left_padding) + hex
 	return hex
-		
