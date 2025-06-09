@@ -28,6 +28,7 @@ func _ready():
 	show_page(0)
 	var scroll_bar = $window/label.get_v_scroll_bar()
 	scroll_bar.value_changed.connect(_on_scroll_changed)
+	test()
 
 func show_page(p:int):
 	page = p
@@ -80,3 +81,38 @@ func _input(event: InputEvent) -> void:
 		if select_open == false && search_open == false:
 			select_open = true
 			add_child(select_window.instantiate())
+
+
+func test():
+	var count:int
+	var signature = "ff d8 ff"
+	var row:int
+	var column:int
+	var search_str = []
+	var indicies = []
+	
+	# formatting string 
+	signature = signature.replace(" ", "")
+	signature = signature.strip_escapes()
+	signature = signature.to_lower()
+
+	#if signature.length() >= 2:
+		#for i in range(0,signature.length(),2):
+			#search_str += signature.substr(i,2) + "\t" + " "
+	#else:
+		#print("no")
+		#search_str = signature
+
+	for i in range(0,signature.length(),2):
+		search_str.append(signature.substr(i,2))
+	print(search_str)
+
+	for i in range(hex_table.size()):
+		for j in range(hex_table[i].size() - search_str.size() +1):
+			var matches = true
+			for k in range(search_str.size()):
+				if hex_table[i][j+k] != search_str[k]:
+					matches = false
+					break
+			if matches:
+				print("row %d,column %d" % [i,j])
