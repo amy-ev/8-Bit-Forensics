@@ -25,10 +25,10 @@ func _ready():
 		for y in range(0,hex_data.size(),16):
 			hex_table.append(hex_data.slice(y,y+16))
 			
-	show_page(0)
 	var scroll_bar = $window/label.get_v_scroll_bar()
+	$window/label.set_threaded(true)
+	show_page(0)
 	scroll_bar.value_changed.connect(_on_scroll_changed)
-	test()
 
 func show_page(p:int):
 	page = p
@@ -44,8 +44,9 @@ func show_page(p:int):
 				display += " "
 		if i < end - 1:
 			display += "\n"
-			
-	$window/label.text = display
+
+	# changed from .text += display : far quicker load time
+	$window/label.add_text(display)
 	
 func _on_scroll_changed(value:float):
 	var max_scroll:int = TOTAL_ROWS - VIS_ROWS
@@ -57,7 +58,7 @@ func _on_scroll_changed(value:float):
 			page-=1
 			show_page(page)
 			print("top of page")
-			$window/label.set_v_scroll(max_scroll)
+			#$window/label.set_v_scroll(max_scroll)
 			
 	if page != (hex_table.size()/TOTAL_ROWS):
 		if value >= max_scroll && (prev_value >= 30):
@@ -80,50 +81,3 @@ func _input(event: InputEvent) -> void:
 		if select_open == false && search_open == false:
 			select_open = true
 			add_child(select_window.instantiate())
-
-var indicies:Array = []
-func test():
-	var signature = "ff d8"
-	var search_str:Array = []
-	
-	# formatting string 
-	signature = signature.replace(" ", "")
-	signature = signature.strip_escapes()
-	signature = signature.to_lower()
-
-	for i in range(0,signature.length(),2):
-		search_str.append(signature.substr(i,2))
-	print(search_str)
-
-	var row_lengths:Array = [] 
-	var row_start_indicies:Array = []
-	var total:int = 0
-	
-	for r in hex_table:
-		row_lengths.append(r.size())
-		
-	#would all be 16 except for the last row
-	for l in row_lengths:
-		row_start_indicies.append(total)
-		total+= l
-	
-	print("hex_data size: %d, search_str size: %d" % [hex_data.size(), search_str.size()+1])
-	
-	# checking up until where the full search_str can still be read
-	for i in range(hex_data.size() - search_str.size() + 1):
-		var found = true
-		for j in range(search_str.size()):
-			if hex_data[i+j] != search_str[j]:
-				found = false
-				break # otherwise the bool is still true and continues
-				
-		if found:
-			var hex_data_index = i
-			var row:int = 0
-			while row < row_start_indicies.size()-1 and hex_data_index >= row_lengths[row]:
-				hex_data_index -= row_lengths[row]
-				row +=1
-			var column = hex_data_index
-			indicies.append([row,column])
-			
-	return indicies
