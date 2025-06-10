@@ -1,6 +1,7 @@
 extends Control
 
 @export var page:int
+
 @export var search_open:bool = false
 @export var select_open:bool = false
 @export var hex_data:Array = []
@@ -8,11 +9,11 @@ extends Control
 @onready var search_window = preload("res://pc/search.tscn")
 @onready var select_window = preload("res://pc/select.tscn")
 
-const VIS_ROWS:int = 18
+const VIS_ROWS:int = 22
 const TOTAL_ROWS:int = 53
 
 var hex_table:Array = []
-var prev_value: int = 0
+var value:int = 0
 
 func _ready():
 	# will be changed to match the selected file -- file naming to match JSON file = only has to be created once
@@ -25,11 +26,16 @@ func _ready():
 		for y in range(0,hex_data.size(),16):
 			hex_table.append(hex_data.slice(y,y+16))
 			
-	var scroll_bar = $window/label.get_v_scroll_bar()
 	$window/label.set_threaded(true)
 	show_page(0)
-	scroll_bar.value_changed.connect(_on_scroll_changed)
 
+func _process(delta: float) -> void:
+	while page != 4548:
+		$window/label.get_v_scroll_bar().set_value_no_signal(value)
+		value += 496 # the amount of a full 'page' scroll
+		page += 1
+		show_page(page)
+		
 func show_page(p:int):
 	page = p
 	var display := ""
@@ -48,26 +54,6 @@ func show_page(p:int):
 	# changed from .text += display : far quicker load time
 	$window/label.add_text(display)
 	
-func _on_scroll_changed(value:float):
-	var max_scroll:int = TOTAL_ROWS - VIS_ROWS
-	print("prev: ", prev_value, "current: ", value)
-	print(page)
-
-	if page != 0:
-		if value == 0 && (prev_value >= 0 && prev_value <= 10):
-			page-=1
-			show_page(page)
-			print("top of page")
-			#$window/label.set_v_scroll(max_scroll)
-			
-	if page != (hex_table.size()/TOTAL_ROWS):
-		if value >= max_scroll && (prev_value >= 30):
-			print("end of page")
-			page+=1
-			show_page(page)
-		
-	prev_value = value	
-
 # opening other windows
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("find"):
