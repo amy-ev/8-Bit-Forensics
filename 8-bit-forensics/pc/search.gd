@@ -58,6 +58,7 @@ func signature_search(signature:String):
 				row +=1
 			var column = hex_data_index
 			print([row,column])
+			hex_viewer.get_node("window/label").get_v_scroll_bar().set_value(row*23)
 			
 func _dec_to_hex(x:int, y:int)-> String:
 	var result = []
