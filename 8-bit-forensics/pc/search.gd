@@ -14,6 +14,14 @@ func _on_ok_pressed() -> void:
 	print(signature_search($window/user_input.text))
 	hex_viewer.search_open = false
 	queue_free()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("close") and hex_viewer.search_open:
+		hex_viewer.search_open = false
+		queue_free()
+		
+func _ready() -> void:
+	$window/user_input.grab_focus()
 	
 func signature_search(signature:String):
 	var search_str:Array = []

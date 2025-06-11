@@ -15,7 +15,12 @@ func _on_cancel_pressed() -> void:
 func _on_exit_pressed() -> void:
 	hex_viewer.select_open = false
 	queue_free()
-
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("close") and hex_viewer.select_open:
+		hex_viewer.select_open = false
+		queue_free()
+		
 func _select(start_offset, end_offset):
 	var x1 = int(start_offset.substr(0,2))
 	var y1 = int(start_offset.substr(2,-1))
