@@ -8,12 +8,13 @@ extends Control
 
 @onready var search_window = preload("res://pc/search.tscn")
 @onready var select_window = preload("res://pc/select.tscn")
+@onready var hex_label = $window/label
 
 const VIS_ROWS:int = 22
-const TOTAL_ROWS:int = 53
+const PAGE_ROWS:int = 53
 
+var TOTAL_ROWS:int
 var hex_table:Array = []
-var value:int = 0
 
 func _ready():
 	# will be changed to match the selected file -- file naming to match JSON file = only has to be created once
@@ -26,34 +27,33 @@ func _ready():
 		for y in range(0,hex_data.size(),16):
 			hex_table.append(hex_data.slice(y,y+16))
 			
-	$window/label.set_threaded(true)
+	hex_label.set_threaded(true)
+	
+	TOTAL_ROWS = hex_table.size()/PAGE_ROWS
+	hex_label.custom_minimum_size.y = 505
 	show_page(0)
 
 func _process(delta: float) -> void:
-	while page != 4548:
-		$window/label.get_v_scroll_bar().set_value_no_signal(value)
-		value += 496 # the amount of a full 'page' scroll
+	while page != TOTAL_ROWS:
 		page += 1
 		show_page(page)
 		
 func show_page(p:int):
 	page = p
-	var display := ""
-	var start = page * TOTAL_ROWS
-	var end = min(start + TOTAL_ROWS, hex_table.size())
-
+	var start = page * PAGE_ROWS
+	var end = min(start + PAGE_ROWS, hex_table.size())
+	
 	for i in range(start, end):
 		var row = hex_table[i]
+		
 		for j in range(row.size()):
-			display+= str(row[j]) + "\t" # change to monospace font and columns should be even
-			if j < row.size() -1:
-				display += " "
-		if i < end - 1:
-			display += "\n"
+			hex_label.add_text(str(row[j]))
+			
+			if j < row.size() - 1:
+				hex_label.add_text(" ")
 
-	# changed from .text += display : far quicker load time
-	$window/label.add_text(display)
-	
+		hex_label.add_text("\n")
+		
 # opening other windows
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("find"):
