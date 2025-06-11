@@ -23,6 +23,7 @@ func _input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	$window/start.grab_focus()
+
 func _select(start_offset, end_offset):
 	var x1 = int(start_offset.substr(0,2))
 	var y1 = int(start_offset.substr(2,-1))
