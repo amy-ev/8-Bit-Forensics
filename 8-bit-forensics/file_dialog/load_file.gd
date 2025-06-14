@@ -4,6 +4,7 @@ class_name LoadFile
 @onready var client_scene = preload("res://file_dialog/client.tscn")
 @onready var files = preload("res://file_dialog/file.tscn")
 @onready var saved_dialog_scene = preload("res://file_dialog/save_file.tscn")
+@onready var hex_scene = preload("res://pc/hex_viewer.tscn")
 
 @export var file_icon: ImageTexture
 @export var selected_file: String
@@ -27,8 +28,11 @@ func _ready() -> void:
 	# ---------------------------
 	
 func _on_load_button_pressed() -> void:
-	var client = client_scene.instantiate()
-	add_child(client)
+	var hex_viewer = hex_scene.instantiate()
+	add_child(hex_viewer)
+	
+	#var client = client_scene.instantiate()
+	#add_child(client)
 	
 func add_files(file_no:int):
 

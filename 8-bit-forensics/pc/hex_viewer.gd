@@ -17,27 +17,34 @@ var TOTAL_ROWS:int
 var hex_table:Array = []
 
 func _ready():
-	# will be changed to match the selected file -- file naming to match JSON file = only has to be created once
-	var hex_file = FileAccess.get_file_as_bytes("res://jpg_folder/photo0.jpg")
-	if hex_file:
+	open_file("res://jpg_folder/"+get_parent().selected_file)
+
+func _process(delta: float) -> void:
+	while page != TOTAL_ROWS:
+		page += 1
+		show_page(page)
+	
+func open_file(file_path):
+	if FileAccess.file_exists(file_path):
+		var file = FileAccess.open(file_path, FileAccess.READ)
+		var hex_file = file.get_buffer(file.get_length())
 		var arr_str = hex_file.hex_encode()
 		for x in range(0, arr_str.length(),2):
 			hex_data.append(arr_str.substr(x,2))
 			
 		for y in range(0,hex_data.size(),16):
 			hex_table.append(hex_data.slice(y,y+16))
-			
+	else:
+		print("failed to open file")
+		return
+		
 	hex_label.set_threaded(true)
 	
 	TOTAL_ROWS = hex_table.size()/PAGE_ROWS
-	hex_label.custom_minimum_size.y = 505
+	hex_label.custom_minimum_size.x = 465
+	hex_label.custom_minimum_size.y = 498
 	show_page(0)
 
-func _process(delta: float) -> void:
-	while page != TOTAL_ROWS:
-		page += 1
-		show_page(page)
-		
 func show_page(p:int):
 	page = p
 	var start = page * PAGE_ROWS
@@ -52,7 +59,7 @@ func show_page(p:int):
 			if j < row.size() - 1:
 				hex_label.add_text(" ")
 
-		hex_label.add_text("\n")
+		hex_label.newline()
 		
 # opening other windows
 func _input(event: InputEvent) -> void:
@@ -67,3 +74,7 @@ func _input(event: InputEvent) -> void:
 		if select_open == false && search_open == false:
 			select_open = true
 			add_child(select_window.instantiate())
+
+
+func _on_exit_pressed() -> void:
+	queue_free()

@@ -1,26 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqai7e5o8pqlh"]
+[gd_scene load_steps=5 format=3 uid="uid://cqai7e5o8pqlh"]
 
 [ext_resource type="Script" uid="uid://c4m27nwwq4imj" path="res://pc/hex_viewer.gd" id="1_auk66"]
+[ext_resource type="Texture2D" uid="uid://dkoqtfb5meyq6" path="res://assets/pc/hex-viewer-window-x3.png" id="2_rut17"]
 [ext_resource type="FontFile" uid="uid://gmq5worg46de" path="res://RobotoMono-Regular.ttf" id="2_ysfa7"]
+[ext_resource type="Texture2D" uid="uid://8si5r6fxbidm" path="res://assets/file_dialog/exit-button-x3.png" id="3_12yks"]
 
 [node name="hex_viewer" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 540.0
-offset_bottom = 500.0
-script = ExtResource("1_auk66")
-
-[node name="window" type="PanelContainer" parent="."]
-layout_mode = 0
 offset_right = 465.0
 offset_bottom = 505.0
+script = ExtResource("1_auk66")
+
+[node name="window" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 465.0
+offset_bottom = 522.0
+texture = ExtResource("2_rut17")
+
+[node name="exit" type="TextureButton" parent="window"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -21.0
+offset_bottom = 21.0
+grow_horizontal = 0
+texture_normal = ExtResource("3_12yks")
+texture_pressed = ExtResource("3_12yks")
+texture_hover = ExtResource("3_12yks")
+texture_disabled = ExtResource("3_12yks")
+texture_focused = ExtResource("3_12yks")
 
 [node name="label" type="RichTextLabel" parent="window"]
 layout_mode = 2
+offset_top = 21.0
+offset_right = 465.0
+offset_bottom = 519.0
 focus_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_ysfa7")
 theme_override_fonts/mono_font = ExtResource("2_ysfa7")
+autowrap_mode = 0
 shortcut_keys_enabled = false
 selection_enabled = true
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
+
+[connection signal="pressed" from="window/exit" to="." method="_on_exit_pressed"]
