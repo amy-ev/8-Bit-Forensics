@@ -26,12 +26,15 @@ func _ready() -> void:
 func signature_search(signature:String):
 	var search_str:Array = []
 	var indicies:Array = []
-
+	
 	# formatting string 
 	signature = signature.replace(" ", "")
 	signature = signature.strip_escapes()
 	signature = signature.to_lower()
 
+	if signature == null or signature == "":
+		return
+		
 	for i in range(0,signature.length(),2):
 		search_str.append(signature.substr(i,2))
 	print(search_str)
