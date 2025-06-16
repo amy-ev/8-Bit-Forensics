@@ -21,10 +21,10 @@ func _ready() -> void:
 	Global.connect("selected",_on_file_selected)
 	
 	# TODO: REMOVE FROM HERE AND ADD BOTH LOAD_FILE AND SAVE_FILE TO A DIALOG WINDOW SCENE
-	var saved_dialog = saved_dialog_scene.instantiate()
-	add_child(saved_dialog)
-	var dialog_node = saved_dialog.get_node(".")
-	dialog_node.position.x = get_node(".").position.x + (get_node(".").size.x * 2)
+	#var saved_dialog = saved_dialog_scene.instantiate()
+	#add_child(saved_dialog)
+	#var dialog_node = saved_dialog.get_node(".")
+	#dialog_node.position.x = get_node(".").position.x + (get_node(".").size.x * 2)
 	# ---------------------------
 	
 func _on_load_button_pressed() -> void:

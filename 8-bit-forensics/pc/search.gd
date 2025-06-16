@@ -11,7 +11,8 @@ func _on_cancel_pressed() -> void:
 	queue_free()
 	
 func _on_ok_pressed() -> void:
-	print(signature_search($window/user_input.text))
+	var hex_arr = signature_search($window/user_input.text)
+	print(_dec_to_hex(hex_arr[0], hex_arr[1]))
 	hex_viewer.search_open = false
 	queue_free()
 
@@ -70,6 +71,7 @@ func signature_search(signature:String):
 			var column = hex_data_index
 			print([row,column])
 			hex_viewer.get_node("window/label").get_v_scroll_bar().set_value(row*23)
+			return [row,column]
 			
 func _dec_to_hex(x:int, y:int)-> String:
 	var result = []

@@ -38,10 +38,40 @@ offset_top = 21.0
 offset_right = 465.0
 offset_bottom = 519.0
 focus_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_ysfa7")
-theme_override_fonts/mono_font = ExtResource("2_ysfa7")
 autowrap_mode = 0
 shortcut_keys_enabled = false
+selection_enabled = true
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="output_window" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 500.0
+offset_top = -505.0
+offset_right = 500.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_rut17")
+
+[node name="output" type="RichTextLabel" parent="output_window"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 21.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_ysfa7")
 selection_enabled = true
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
