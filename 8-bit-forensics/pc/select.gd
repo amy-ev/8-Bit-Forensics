@@ -2,13 +2,15 @@ extends Control
 
 @onready var hex_viewer = get_parent()
 
+@export var result = []
+
 func _on_ok_pressed() -> void:
 	hex_viewer.select_open = false
 	_hex_to_dec($window/start.text)
 	var hex_section = _select($window/start.text,$window/end.text)
 	
 	var output = get_parent().get_node("tab/output_window/output")
-	var result = []
+
 	output.clear()
 
 	for i in range(0,hex_section.size(),16):
@@ -21,7 +23,7 @@ func _on_ok_pressed() -> void:
 			if j < row.size() - 1:
 				output.add_text(" ")
 		output.newline()
-		
+	hex_viewer.output = result
 	print(result)
 	get_parent().get_node("tab/output_window").visible = true
 	get_parent().get_node("tab").set_tabs_visible(true)
@@ -44,6 +46,10 @@ func _ready() -> void:
 	$window/start.grab_focus()
 
 func _select(start_offset, end_offset):
+	
+	if (start_offset == null or start_offset == "") or (end_offset == null or end_offset == ""):
+		return
+		
 	var x1 = int(start_offset.substr(0,2))
 	var y1 = int(start_offset.substr(2,-1))
 	
