@@ -16,6 +16,8 @@ const PAGE_ROWS:int = 53
 var TOTAL_ROWS:int
 var hex_table:Array = []
 
+var output = []
+
 func _ready():
 	open_file("res://jpg_folder/"+get_parent().selected_file)
 
@@ -78,3 +80,13 @@ func _input(event: InputEvent) -> void:
 
 func _on_exit_pressed() -> void:
 	queue_free()
+
+
+func _on_save_pressed() -> void:
+	var file = FileAccess.open("res://jpg_folder/tester.txt", FileAccess.WRITE)
+	for i in range(output.size()):
+		var line = output[i]
+		for j in range(line.size()):
+			file.store_string(line[j])
+			
+	

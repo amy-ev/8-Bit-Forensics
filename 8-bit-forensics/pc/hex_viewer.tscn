@@ -74,4 +74,11 @@ selection_enabled = true
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
+[node name="save" type="Button" parent="tab/output_window"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "save"
+
 [connection signal="pressed" from="tab/window/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="tab/output_window/save" to="." method="_on_save_pressed"]
