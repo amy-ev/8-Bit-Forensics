@@ -7,7 +7,7 @@ func _on_ok_pressed() -> void:
 	_hex_to_dec($window/start.text)
 	var hex_section = _select($window/start.text,$window/end.text)
 	
-	var output = get_parent().get_node("output_window/output")
+	var output = get_parent().get_node("tab/output_window/output")
 	var result = []
 	output.clear()
 
@@ -23,6 +23,8 @@ func _on_ok_pressed() -> void:
 		output.newline()
 		
 	print(result)
+	get_parent().get_node("tab/output_window").visible = true
+	get_parent().get_node("tab").set_tabs_visible(true)
 	queue_free()
 	
 func _on_cancel_pressed() -> void:
@@ -51,7 +53,7 @@ func _select(start_offset, end_offset):
 	var start = (x1 * 16) + y1
 	var end = (x2 * 16) + y2
 	
-	var hex_text = hex_viewer.get_node("window/label")
+	var hex_text = hex_viewer.get_node("tab/window/label")
 	print(x1," ", y1, " ", x2, " ", y2)
 	print(start, " ", end)
 	return hex_viewer.hex_data.slice(start,end+1)

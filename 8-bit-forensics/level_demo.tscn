@@ -22,6 +22,7 @@ text = "power on"
 layout_mode = 0
 
 [node name="text" parent="window" index="1"]
+offset_bottom = 140.0
 text = "character dialog of the crime and information of the technique / tool"
 
 [connection signal="pressed" from="on_button" to="." method="_on_on_button_pressed"]

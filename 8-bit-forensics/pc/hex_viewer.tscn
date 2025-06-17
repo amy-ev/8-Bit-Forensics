@@ -9,16 +9,22 @@
 layout_mode = 3
 anchors_preset = 0
 offset_right = 465.0
-offset_bottom = 505.0
+offset_bottom = 553.0
 script = ExtResource("1_auk66")
 
-[node name="window" type="TextureRect" parent="."]
-layout_mode = 2
-offset_right = 465.0
-offset_bottom = 522.0
-texture = ExtResource("2_rut17")
+[node name="tab" type="TabContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+current_tab = 0
+tabs_visible = false
 
-[node name="exit" type="TextureButton" parent="window"]
+[node name="window" type="TextureRect" parent="tab"]
+layout_mode = 2
+texture = ExtResource("2_rut17")
+metadata/_tab_index = 0
+
+[node name="exit" type="TextureButton" parent="tab/window"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -32,7 +38,7 @@ texture_hover = ExtResource("3_12yks")
 texture_disabled = ExtResource("3_12yks")
 texture_focused = ExtResource("3_12yks")
 
-[node name="label" type="RichTextLabel" parent="window"]
+[node name="label" type="RichTextLabel" parent="tab/window"]
 layout_mode = 2
 offset_top = 21.0
 offset_right = 465.0
@@ -46,21 +52,13 @@ selection_enabled = true
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="output_window" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 500.0
-offset_top = -505.0
-offset_right = 500.0
-offset_bottom = 17.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="output_window" type="TextureRect" parent="tab"]
+visible = false
+layout_mode = 2
 texture = ExtResource("2_rut17")
+metadata/_tab_index = 1
 
-[node name="output" type="RichTextLabel" parent="output_window"]
+[node name="output" type="RichTextLabel" parent="tab/output_window"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -76,4 +74,4 @@ selection_enabled = true
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[connection signal="pressed" from="window/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="tab/window/exit" to="." method="_on_exit_pressed"]

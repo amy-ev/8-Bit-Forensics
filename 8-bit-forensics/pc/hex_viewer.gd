@@ -8,7 +8,7 @@ extends Control
 
 @onready var search_window = preload("res://pc/search.tscn")
 @onready var select_window = preload("res://pc/select.tscn")
-@onready var hex_label = $window/label
+@onready var hex_label = $tab/window/label
 
 const VIS_ROWS:int = 22
 const PAGE_ROWS:int = 53
