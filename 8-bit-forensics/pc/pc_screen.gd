@@ -6,6 +6,7 @@ extends Control
 @export var scaled_by: Vector2
 
 @onready var image_file = preload("res://image_file.tscn")
+@onready var _end_day = preload("res://end_day.tscn")
 
 func _ready() -> void:
 	icon.set_position(Vector2(15,15))
@@ -35,3 +36,9 @@ func update_size():
 	icon2.get_node("icon").size = icon2.get_node("icon").size / scaled_by
 	icon2.get_node("select/select_shape").shape.size = icon2.get_node("icon").size
 	icon2.get_node("select").position = icon2.get_node("select/select_shape").shape.size / 2
+
+
+func _on_end_pressed() -> void:
+	var end_day = _end_day.instantiate()
+	add_child(end_day)
+	#queue_free()
