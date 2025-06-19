@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh272xa1et8ou"]
+
+[ext_resource type="PackedScene" uid="uid://ba4obead5wqk6" path="res://quiz/answer.tscn" id="1_onpuo"]
+[ext_resource type="Script" uid="uid://dyfgyyaylctkw" path="res://quiz/quiz_template.gd" id="1_t3t2b"]
+[ext_resource type="ButtonGroup" uid="uid://vw5kw016l5km" path="res://quiz/answer.tres" id="2_t3t2b"]
+
+[node name="quiz_template" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t3t2b")
+answer_buttons = ExtResource("2_t3t2b")
+
+[node name="answers_container" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 218.0
+offset_bottom = 60.0
+theme_override_constants/separation = 1
+
+[node name="question" type="Label" parent="answers_container"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Q. Is this the question label?"
+
+[node name="answer" parent="answers_container" instance=ExtResource("1_onpuo")]
+layout_mode = 2
+
+[node name="checkbox" parent="answers_container/answer" index="0"]
+button_group = ExtResource("2_t3t2b")
+
+[node name="answer_text" parent="answers_container/answer" index="1"]
+text = "yes"
+
+[node name="answer2" parent="answers_container" instance=ExtResource("1_onpuo")]
+layout_mode = 2
+
+[node name="checkbox" parent="answers_container/answer2" index="0"]
+button_group = ExtResource("2_t3t2b")
+
+[node name="answer_text" parent="answers_container/answer2" index="1"]
+text = "no"
+
+[node name="confirm" type="Button" parent="answers_container"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "confirm"
+
+[connection signal="pressed" from="answers_container/confirm" to="." method="_on_confirm_pressed"]
+
+[editable path="answers_container/answer"]
+[editable path="answers_container/answer2"]
