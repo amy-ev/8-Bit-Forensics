@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://3we6fkgy57f7"]
+
+[ext_resource type="Script" uid="uid://bqj7niuugeaqh" path="res://crime_board/board.gd" id="1_k2i71"]
+
+[node name="board" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_k2i71")

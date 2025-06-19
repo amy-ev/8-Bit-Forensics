@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bicxast7ydwqw"]
+
+[ext_resource type="Texture2D" uid="uid://b6mv23cq8bncx" path="res://assets/file_dialog/title-bar-x3.png" id="1_qrhwp"]
+
+[node name="note_background" type="NinePatchRect"]
+offset_right = 225.0
+offset_bottom = 234.0
+texture = ExtResource("1_qrhwp")
+region_rect = Rect2(0, 0, 162, 21)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="note_content" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "place holder text"
+fit_content = true
+shortcut_keys_enabled = false
+drag_and_drop_selection_enabled = false
