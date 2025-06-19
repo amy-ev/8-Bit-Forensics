@@ -17,7 +17,5 @@ func check_answer() -> bool:
 	var answer:String = answer_buttons.get_pressed_button().get_parent().get_child(1).text
 	var correct_answer:String = "yes"
 	if answer == correct_answer:
-		print("correct!!")
 		return true
-	
 	return false
