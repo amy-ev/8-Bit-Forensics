@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://drlfreuf2u18g"]
+[gd_scene load_steps=2 format=3 uid="uid://drlfreuf2u18g"]
+
+[ext_resource type="Script" uid="uid://c8pi0l45cfeqv" path="res://start_menu/menu.gd" id="1_woprb"]
 
 [node name="background" type="TextureRect"]
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_woprb")
 
 [node name="menu" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -20,3 +23,7 @@ text = "crime board"
 [node name="level_select" type="Button" parent="menu"]
 layout_mode = 2
 text = "select level"
+
+[connection signal="pressed" from="menu/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="menu/information" to="." method="_on_information_pressed"]
+[connection signal="pressed" from="menu/level_select" to="." method="_on_level_select_pressed"]
