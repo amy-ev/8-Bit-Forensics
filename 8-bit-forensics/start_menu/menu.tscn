@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://drlfreuf2u18g"]
+
+[node name="background" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="menu" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="start" type="Button" parent="menu"]
+layout_mode = 2
+text = "start"
+
+[node name="information" type="Button" parent="menu"]
+layout_mode = 2
+text = "crime board"
+
+[node name="level_select" type="Button" parent="menu"]
+layout_mode = 2
+text = "select level"
