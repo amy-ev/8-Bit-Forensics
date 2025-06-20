@@ -19,6 +19,7 @@ func _open_note(note_topic:String):
 func _show_note(day:String):
 	Global.days.append(day)
 	# change to loop through array of days and show all unlocked 
+
 	get_node(day).visible = true
 	print(Global.days)
 
@@ -41,5 +42,4 @@ func update_size():
 
 func _on_unlock_debug_pressed() -> void:
 	#moved to the end of the day button + appending day to Global array
-	
 	Global.level_unlocked.emit("hex")
