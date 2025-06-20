@@ -3,24 +3,17 @@
 [ext_resource type="Script" uid="uid://bqw7w5d1hsku0" path="res://crime_board/note.gd" id="1_0jyh1"]
 [ext_resource type="Texture2D" uid="uid://m3yn28bxi6x5" path="res://assets/crime_board/note-x3.png" id="1_0o6ia"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_co72d"]
-size = Vector2(96, 96)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0o6ia"]
 
-[node name="note" type="NinePatchRect"]
+[node name="note" type="TextureRect"]
 offset_right = 96.0
 offset_bottom = 96.0
 texture = ExtResource("1_0o6ia")
-region_rect = Rect2(0, 0, 96, 96)
-patch_margin_left = 3
-patch_margin_top = 18
-patch_margin_right = 3
-patch_margin_bottom = 36
 script = ExtResource("1_0jyh1")
 
 [node name="area" type="Area2D" parent="."]
-position = Vector2(48, 48)
 
 [node name="area_shape" type="CollisionShape2D" parent="area"]
-shape = SubResource("RectangleShape2D_co72d")
+shape = SubResource("RectangleShape2D_0o6ia")
 
 [connection signal="input_event" from="area" to="." method="_on_area_input_event"]

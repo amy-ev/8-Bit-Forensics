@@ -15,7 +15,6 @@ script = ExtResource("1_k2i71")
 
 [node name="note" parent="." instance=ExtResource("2_tnfbr")]
 layout_mode = 1
-offset_left = 148.0
-offset_top = 146.0
-offset_right = 244.0
-offset_bottom = 242.0
+anchors_preset = -1
+offset_left = 150.0
+offset_top = 150.0
