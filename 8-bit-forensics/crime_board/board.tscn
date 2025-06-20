@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://3we6fkgy57f7"]
+[gd_scene load_steps=4 format=3 uid="uid://3we6fkgy57f7"]
 
+[ext_resource type="Texture2D" uid="uid://semg8fu705qg" path="res://assets/crime_board/crime-board-x3.png" id="1_iff0x"]
 [ext_resource type="Script" uid="uid://bqj7niuugeaqh" path="res://crime_board/board.gd" id="1_k2i71"]
 [ext_resource type="PackedScene" uid="uid://d35pcq2imx8ab" path="res://crime_board/note.tscn" id="2_tnfbr"]
 
@@ -9,7 +10,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_iff0x")
 script = ExtResource("1_k2i71")
 
 [node name="note" parent="." instance=ExtResource("2_tnfbr")]
 layout_mode = 1
+offset_left = 148.0
+offset_top = 146.0
+offset_right = 244.0
+offset_bottom = 242.0
