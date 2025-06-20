@@ -4,4 +4,4 @@ extends Node
 
 signal selected(selected_node:File, real_file:String)
 
-signal note_selected()
+signal note_selected(note_topic:String)

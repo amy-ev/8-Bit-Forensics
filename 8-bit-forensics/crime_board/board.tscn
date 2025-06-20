@@ -13,8 +13,15 @@ grow_vertical = 2
 texture = ExtResource("1_iff0x")
 script = ExtResource("1_k2i71")
 
-[node name="note" parent="." instance=ExtResource("2_tnfbr")]
+[node name="hex" parent="." instance=ExtResource("2_tnfbr")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 150.0
 offset_top = 150.0
+
+[node name="meta" parent="." instance=ExtResource("2_tnfbr")]
+layout_mode = 0
+offset_left = 1038.0
+offset_top = 379.0
+offset_right = 1134.0
+offset_bottom = 475.0
