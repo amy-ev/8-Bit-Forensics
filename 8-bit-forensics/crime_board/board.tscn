@@ -1,32 +1,231 @@
-[gd_scene load_steps=4 format=3 uid="uid://3we6fkgy57f7"]
+[gd_scene load_steps=34 format=3 uid="uid://3we6fkgy57f7"]
 
 [ext_resource type="Texture2D" uid="uid://semg8fu705qg" path="res://assets/crime_board/crime-board-x3.png" id="1_iff0x"]
 [ext_resource type="Script" uid="uid://bqj7niuugeaqh" path="res://crime_board/board.gd" id="1_k2i71"]
 [ext_resource type="PackedScene" uid="uid://d35pcq2imx8ab" path="res://crime_board/note.tscn" id="2_tnfbr"]
+[ext_resource type="Texture2D" uid="uid://ci5b0mhrfg2dn" path="res://assets/crime_board/notes/1-note-x3.png" id="4_xd1ls"]
+[ext_resource type="Texture2D" uid="uid://buqfrjpt4ebn8" path="res://assets/crime_board/notes/2-note-x3.png" id="5_boyje"]
+[ext_resource type="Texture2D" uid="uid://c5117qm8u871k" path="res://assets/crime_board/pushpins/2-pin-x3.png" id="6_fxn8l"]
+[ext_resource type="Texture2D" uid="uid://dfi1mpyp6cdnx" path="res://assets/crime_board/strings/2-string-x3.png" id="7_n1grn"]
+[ext_resource type="Texture2D" uid="uid://cx8mb3d6vqk8b" path="res://assets/crime_board/notes/3-note-x3.png" id="8_b6qcv"]
+[ext_resource type="Texture2D" uid="uid://20xj1lamgu4j" path="res://assets/crime_board/pushpins/3-pin-x3.png" id="9_u1wkm"]
+[ext_resource type="Texture2D" uid="uid://d4fgvgsdtbh6e" path="res://assets/crime_board/strings/3-string-x3.png" id="10_06hg8"]
+[ext_resource type="Texture2D" uid="uid://cnmgsnmkj0uif" path="res://assets/crime_board/notes/4-note-x3.png" id="11_dbmes"]
+[ext_resource type="Texture2D" uid="uid://ceivufk52b07l" path="res://assets/crime_board/pushpins/4-pin-x3.png" id="12_2uoej"]
+[ext_resource type="Texture2D" uid="uid://ipq5d7sx5jnm" path="res://assets/crime_board/strings/4-string-x3.png" id="13_rm8ev"]
+[ext_resource type="Texture2D" uid="uid://b8kidlqtg648v" path="res://assets/crime_board/notes/5-note-x3.png" id="14_5c4nk"]
+[ext_resource type="Texture2D" uid="uid://dv6d5g22h32g2" path="res://assets/crime_board/pushpins/5-pin-x3.png" id="15_eevdw"]
+[ext_resource type="Texture2D" uid="uid://k7dok2643ord" path="res://assets/crime_board/strings/5-string-x3.png" id="16_i5a6v"]
+[ext_resource type="Texture2D" uid="uid://xa6i6dppamnk" path="res://assets/crime_board/notes/6-note-x3.png" id="17_fk5vu"]
+[ext_resource type="Texture2D" uid="uid://due6gu6j3ra6v" path="res://assets/crime_board/pushpins/6-pin-x3.png" id="18_0ppt4"]
+[ext_resource type="Texture2D" uid="uid://beq8mw53evogv" path="res://assets/crime_board/strings/6-string-x3.png" id="19_6w4yj"]
+[ext_resource type="Texture2D" uid="uid://bo6hnhbu4q6rw" path="res://assets/crime_board/notes/7-note-x3.png" id="20_lci88"]
+[ext_resource type="Texture2D" uid="uid://gi3g8o3givjg" path="res://assets/crime_board/pushpins/7-pin-x3.png" id="21_mlh5t"]
+[ext_resource type="Texture2D" uid="uid://bavnhr8um51wp" path="res://assets/crime_board/strings/7-string-x3.png" id="22_e72sc"]
+[ext_resource type="Texture2D" uid="uid://6h2i88qy4o11" path="res://assets/crime_board/notes/8-note-x3.png" id="23_hu1fj"]
+[ext_resource type="Texture2D" uid="uid://clqd0cnhsq3n2" path="res://assets/crime_board/pushpins/8-pin-x3.png" id="24_h6bm4"]
+[ext_resource type="Texture2D" uid="uid://bb42j4ewdrs7v" path="res://assets/crime_board/strings/8-string-x3.png" id="25_i1yb3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xd1ls"]
+size = Vector2(108, 138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boyje"]
+size = Vector2(126, 81)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0asa8"]
+size = Vector2(117, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxn8l"]
+size = Vector2(153, 138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1grn"]
+size = Vector2(177, 102)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6qcv"]
+size = Vector2(126, 153)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1wkm"]
+size = Vector2(99, 123)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06hg8"]
+size = Vector2(96, 129)
 
 [node name="board" type="TextureRect"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_top = -2.0
+offset_right = 960.0
+offset_bottom = 538.0
 texture = ExtResource("1_iff0x")
 script = ExtResource("1_k2i71")
 
-[node name="hex" parent="." instance=ExtResource("2_tnfbr")]
+[node name="note1" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
-anchors_preset = -1
-offset_left = 150.0
-offset_top = 150.0
+offset_right = 960.0
+offset_bottom = 540.0
+texture = ExtResource("4_xd1ls")
 
-[node name="meta" parent="." instance=ExtResource("2_tnfbr")]
-visible = false
+[node name="area" parent="note1" index="0"]
+position = Vector2(621, 219)
+
+[node name="area_shape" parent="note1/area" index="0"]
+position = Vector2(54, 69)
+shape = SubResource("RectangleShape2D_xd1ls")
+
+[node name="pin" parent="note1" index="1"]
 layout_mode = 0
-offset_left = 1038.0
-offset_top = 379.0
-offset_right = 1134.0
-offset_bottom = 475.0
+
+[node name="string" parent="note1" index="2"]
+layout_mode = 0
+
+[node name="note2" parent="." instance=ExtResource("2_tnfbr")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_boyje")
+
+[node name="area" parent="note2" index="0"]
+position = Vector2(54, 408)
+
+[node name="area_shape" parent="note2/area" index="0"]
+position = Vector2(63, 40.5)
+shape = SubResource("RectangleShape2D_boyje")
+
+[node name="pin" parent="note2" index="1"]
+layout_mode = 0
+texture = ExtResource("6_fxn8l")
+
+[node name="string" parent="note2" index="2"]
+layout_mode = 0
+texture = ExtResource("7_n1grn")
+
+[node name="note3" parent="." instance=ExtResource("2_tnfbr")]
+visible = false
+layout_mode = 1
+texture = ExtResource("8_b6qcv")
+
+[node name="area" parent="note3" index="0"]
+position = Vector2(801, 300)
+
+[node name="area_shape" parent="note3/area" index="0"]
+position = Vector2(58.5, 64.5)
+shape = SubResource("RectangleShape2D_0asa8")
+
+[node name="pin" parent="note3" index="1"]
+layout_mode = 0
+texture = ExtResource("9_u1wkm")
+
+[node name="string" parent="note3" index="2"]
+layout_mode = 0
+texture = ExtResource("10_06hg8")
+
+[node name="note4" parent="." instance=ExtResource("2_tnfbr")]
+visible = false
+layout_mode = 1
+texture = ExtResource("11_dbmes")
+
+[node name="area" parent="note4" index="0"]
+position = Vector2(450, 336)
+
+[node name="area_shape" parent="note4/area" index="0"]
+position = Vector2(76.5, 69)
+shape = SubResource("RectangleShape2D_fxn8l")
+
+[node name="pin" parent="note4" index="1"]
+layout_mode = 0
+texture = ExtResource("12_2uoej")
+
+[node name="string" parent="note4" index="2"]
+layout_mode = 0
+texture = ExtResource("13_rm8ev")
+
+[node name="note5" parent="." instance=ExtResource("2_tnfbr")]
+visible = false
+layout_mode = 1
+texture = ExtResource("14_5c4nk")
+
+[node name="area" parent="note5" index="0"]
+position = Vector2(330, 99)
+
+[node name="area_shape" parent="note5/area" index="0"]
+position = Vector2(88.5, 51)
+shape = SubResource("RectangleShape2D_n1grn")
+
+[node name="pin" parent="note5" index="1"]
+layout_mode = 0
+texture = ExtResource("15_eevdw")
+
+[node name="string" parent="note5" index="2"]
+layout_mode = 0
+texture = ExtResource("16_i5a6v")
+
+[node name="note6" parent="." instance=ExtResource("2_tnfbr")]
+visible = false
+layout_mode = 1
+texture = ExtResource("17_fk5vu")
+
+[node name="area" parent="note6" index="0"]
+position = Vector2(225, 228)
+
+[node name="area_shape" parent="note6/area" index="0"]
+position = Vector2(63, 76.5)
+shape = SubResource("RectangleShape2D_b6qcv")
+
+[node name="pin" parent="note6" index="1"]
+layout_mode = 0
+texture = ExtResource("18_0ppt4")
+
+[node name="string" parent="note6" index="2"]
+layout_mode = 0
+texture = ExtResource("19_6w4yj")
+
+[node name="note7" parent="." instance=ExtResource("2_tnfbr")]
+visible = false
+layout_mode = 1
+texture = ExtResource("20_lci88")
+
+[node name="area" parent="note7" index="0"]
+position = Vector2(744, 48)
+
+[node name="area_shape" parent="note7/area" index="0"]
+position = Vector2(49.5, 61.5)
+shape = SubResource("RectangleShape2D_u1wkm")
+
+[node name="pin" parent="note7" index="1"]
+layout_mode = 0
+texture = ExtResource("21_mlh5t")
+
+[node name="string" parent="note7" index="2"]
+layout_mode = 0
+texture = ExtResource("22_e72sc")
+
+[node name="note8" parent="." instance=ExtResource("2_tnfbr")]
+visible = false
+layout_mode = 1
+texture = ExtResource("23_hu1fj")
+
+[node name="area" parent="note8" index="0"]
+position = Vector2(51, 57)
+
+[node name="area_shape" parent="note8/area" index="0"]
+position = Vector2(48, 64.5)
+shape = SubResource("RectangleShape2D_06hg8")
+
+[node name="pin" parent="note8" index="1"]
+layout_mode = 0
+texture = ExtResource("24_h6bm4")
+
+[node name="string" parent="note8" index="2"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 960.0
+offset_bottom = 539.0
+texture = ExtResource("25_i1yb3")
 
 [node name="unlock_debug" type="Button" parent="."]
 layout_mode = 1
@@ -44,3 +243,12 @@ grow_vertical = 0
 text = "unlock day"
 
 [connection signal="pressed" from="unlock_debug" to="." method="_on_unlock_debug_pressed"]
+
+[editable path="note1"]
+[editable path="note2"]
+[editable path="note3"]
+[editable path="note4"]
+[editable path="note5"]
+[editable path="note6"]
+[editable path="note7"]
+[editable path="note8"]

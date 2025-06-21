@@ -7,9 +7,9 @@
 offset_right = 615.0
 offset_bottom = 606.0
 texture = ExtResource("1_qrhwp")
-region_rect = Rect2(0, 0, 90, 90)
+region_rect = Rect2(3, 3, 273, 402)
 patch_margin_left = 3
-patch_margin_top = 18
+patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 script = ExtResource("2_84eci")
