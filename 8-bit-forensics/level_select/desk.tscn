@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://o33pyrovolve"]
+[gd_scene load_steps=4 format=3 uid="uid://o33pyrovolve"]
 
 [ext_resource type="Texture2D" uid="uid://b5rgy1naj2b01" path="res://assets/level_select/desk-background-x3.png" id="1_xbiif"]
+[ext_resource type="Script" uid="uid://dk27ei8seemrt" path="res://level_select/desk.gd" id="2_vnxcf"]
+[ext_resource type="PackedScene" uid="uid://cnoav72hte2jx" path="res://level_select/closed_folder.tscn" id="3_q1qqx"]
 
 [node name="desk" type="TextureRect"]
 anchors_preset = 15
@@ -9,3 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_xbiif")
+script = ExtResource("2_vnxcf")
+
+[node name="closed_folder" parent="." instance=ExtResource("3_q1qqx")]
+layout_mode = 1
