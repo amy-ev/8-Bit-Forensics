@@ -19,15 +19,15 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="tabs" type="Area2D" parent="tabs_rect"]
+[node name="tabs" type="Area2D" parent="."]
 
-[node name="tab1" type="CollisionShape2D" parent="tabs_rect/tabs"]
+[node name="tab1" type="CollisionShape2D" parent="tabs"]
 
-[node name="tab2" type="CollisionShape2D" parent="tabs_rect/tabs"]
+[node name="tab2" type="CollisionShape2D" parent="tabs"]
 
-[node name="tab3" type="CollisionShape2D" parent="tabs_rect/tabs"]
+[node name="tab3" type="CollisionShape2D" parent="tabs"]
 
-[node name="tab4" type="CollisionShape2D" parent="tabs_rect/tabs"]
+[node name="tab4" type="CollisionShape2D" parent="tabs"]
 
 [node name="left_content" type="TextureRect" parent="."]
 layout_mode = 1
@@ -47,4 +47,4 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_5nqn2")
 
-[connection signal="input_event" from="tabs_rect/tabs" to="." method="_on_tabs_input_event"]
+[connection signal="input_event" from="tabs" to="." method="_on_tabs_input_event"]

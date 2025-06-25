@@ -15,8 +15,7 @@ func update_size():
 	scaled_by = (Vector2(original_size.x -1, original_size.x -1)/Vector2(size.x-1,size.x-1))
 	size = size /scaled_by
 	
-
-
 func _on_tabs_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouse && event.is_pressed():
-		print(shape_idx)
+		get_parent().add_child(load("res://level_select/level_select_"+ str(shape_idx +1) + ".tscn").instantiate())
+		queue_free()
