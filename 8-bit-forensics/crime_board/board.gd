@@ -11,7 +11,6 @@ func _ready() -> void:
 	Global.connect("note_selected", _open_note)
 	Global.connect("level_unlocked", _show_note)
 
-
 func _open_note(note_topic:String):
 	var note_content = note.instantiate()
 	note_content.get_child(0).text = note_topic
@@ -27,9 +26,7 @@ func _show_note(day:String):
 	
 func _notification(what: int) -> void:
 	if what == 1012:
-		pass
 		update_size()
-
 
 func update_size():
 	var original_size = size
@@ -38,27 +35,17 @@ func update_size():
 	
 	# keeping it scaled to the x axis - prevents distortion of the images
 	scaled_by = (Vector2(original_size.x -1, original_size.x -1)/Vector2(size.x-1,size.x-1))
-	#get_node("note1/area/area_shape").shape.size = get_node("note1/area/area_shape").shape.size / scaled_by
-	#get_node("note1/area/area_shape").position = get_node("note1/area/area_shape").position / scaled_by
-	#print(get_node("note1/area/area_shape").shape.size)
-	#print(get_children())
+	
 	for note_rect in range(get_children().size()-1):
-		get_child(note_rect).get_node("area/area_shape").shape.size = get_child(note_rect).get_node("area/area_shape").shape.size / scaled_by
-		get_child(note_rect).get_node("area/area_shape").position = get_child(note_rect).get_node("area/area_shape").position / scaled_by
-		#get_child(note_rect).size = get_child(note_rect).size / scaled_by
-		#get_child(note_rect).get_node("area/area_shape").shape.size = get_child(note_rect).get_node("area/area_shape").shape.size /scaled_by
-		#get_child(note_rect).get_node("area").position = get_child(note_rect).get_node("area/area_shape").shape.size / 2
+		if get_child(note_rect).name.contains("note"):
+			get_child(note_rect).get_node("area/area_shape").shape.size = get_child(note_rect).get_node("area/area_shape").shape.size / scaled_by
+			get_child(note_rect).get_node("area/area_shape").position = get_child(note_rect).get_node("area/area_shape").position / scaled_by
 
 func _on_unlock_debug_pressed() -> void:
-	#moved to the end of the day button + appending day to Global array
+	#move to the end of the day button + appending day to Global array
 	days_unlocked += 1
 	
 	for i in days_unlocked:
 		for key in Global.levels:
 			var value = Global.levels[i]
 			Global.level_unlocked.emit(value)
-
-		
-	#Global.level_unlocked.emit("hex")
-	#for i in range(Global.days.size()):
-		#print(Global.days[i])

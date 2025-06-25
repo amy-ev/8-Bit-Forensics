@@ -4,7 +4,6 @@ extends TextureRect
 
 
 func _ready() -> void:
-	#print(get_node(".").name)
 	note_topic = get_node(".").name
 	
 func _on_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

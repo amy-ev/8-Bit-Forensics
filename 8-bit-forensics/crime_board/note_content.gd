@@ -11,10 +11,9 @@ func _notification(what: int) -> void:
 
 func update_size():
 	var original_size = size
-	
 	scaled_by = (Vector2(original_size.x -1, original_size.x -1)/Vector2(size.x-1,size.x-1))
-	
-	#var window_size = DisplayServer.window_get_size()
 	size = size / scaled_by
-	
-	# keeping it scaled to the x axis - prevents distortion of the icon image
+
+func _on_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton && event.is_pressed():
+		queue_free()
