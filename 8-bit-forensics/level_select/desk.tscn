@@ -15,3 +15,12 @@ script = ExtResource("2_vnxcf")
 
 [node name="closed_folder" parent="." instance=ExtResource("3_q1qqx")]
 layout_mode = 1
+
+[node name="back_btn" type="Button" parent="."]
+z_index = 6
+layout_mode = 1
+offset_right = 45.0
+offset_bottom = 31.0
+text = "back"
+
+[connection signal="pressed" from="back_btn" to="." method="_on_back_btn_pressed"]

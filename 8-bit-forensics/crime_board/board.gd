@@ -10,6 +10,8 @@ func _ready() -> void:
 	update_size()
 	Global.connect("note_selected", _open_note)
 	Global.connect("level_unlocked", _show_note)
+	
+	_check_unlocked()
 
 func _open_note(note_topic:String):
 	var note_content = note.instantiate()
@@ -43,9 +45,14 @@ func update_size():
 
 func _on_unlock_debug_pressed() -> void:
 	#move to the end of the day button + appending day to Global array
-	days_unlocked += 1
-	
-	for i in days_unlocked:
+	Global.unlocked += 1
+	_check_unlocked()
+
+func _check_unlocked():
+	for i in Global.unlocked:
 		for key in Global.levels:
 			var value = Global.levels[i]
 			Global.level_unlocked.emit(value)
+			
+func _on_back_btn_pressed() -> void:
+	get_tree().change_scene_to_file("res://start_menu/menu.tscn")

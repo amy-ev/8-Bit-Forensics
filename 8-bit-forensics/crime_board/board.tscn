@@ -188,7 +188,14 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "unlock day"
 
+[node name="back_btn" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "back"
+
 [connection signal="pressed" from="unlock_debug" to="." method="_on_unlock_debug_pressed"]
+[connection signal="pressed" from="back_btn" to="." method="_on_back_btn_pressed"]
 
 [editable path="note1"]
 [editable path="note2"]

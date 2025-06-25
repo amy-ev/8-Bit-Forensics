@@ -17,5 +17,7 @@ func update_size():
 func _on_tabs_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouse && event.is_pressed():
 		print(shape_idx)
+	
 		get_parent().add_child(load("res://level_select/level_select_"+ str(shape_idx +1) + ".tscn").instantiate())
+		get_parent().move_child(get_node("../level_select_"+ str(shape_idx +1)),0)
 		queue_free()
