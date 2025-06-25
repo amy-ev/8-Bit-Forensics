@@ -32,7 +32,7 @@ shape = SubResource("ConvexPolygonShape2D_62c0k")
 position = Vector2(1200, 318)
 shape = SubResource("ConvexPolygonShape2D_62c0k")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="tabs"]
+[node name="tab4" type="CollisionShape2D" parent="tabs"]
 position = Vector2(1200, 414)
 shape = SubResource("ConvexPolygonShape2D_4mb7p")
 

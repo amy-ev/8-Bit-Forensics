@@ -62,13 +62,6 @@ script = ExtResource("1_k2i71")
 [node name="note1" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("4_xd1ls")
 
 [node name="area_shape" parent="note1/area" index="0"]
@@ -78,13 +71,6 @@ shape = SubResource("RectangleShape2D_xd1ls")
 [node name="note2" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("5_boyje")
 
 [node name="area_shape" parent="note2/area" index="0"]
@@ -100,13 +86,6 @@ texture = ExtResource("7_n1grn")
 [node name="note3" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("8_b6qcv")
 
 [node name="area_shape" parent="note3/area" index="0"]
@@ -122,13 +101,6 @@ texture = ExtResource("10_06hg8")
 [node name="note4" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("11_dbmes")
 
 [node name="area_shape" parent="note4/area" index="0"]
@@ -144,13 +116,6 @@ texture = ExtResource("13_rm8ev")
 [node name="note5" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("14_5c4nk")
 
 [node name="area_shape" parent="note5/area" index="0"]
@@ -166,13 +131,6 @@ texture = ExtResource("16_i5a6v")
 [node name="note6" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("17_fk5vu")
 
 [node name="area_shape" parent="note6/area" index="0"]
@@ -188,13 +146,6 @@ texture = ExtResource("19_6w4yj")
 [node name="note7" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("20_lci88")
 
 [node name="area_shape" parent="note7/area" index="0"]
@@ -210,13 +161,6 @@ texture = ExtResource("22_e72sc")
 [node name="note8" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("23_hu1fj")
 
 [node name="area_shape" parent="note8/area" index="0"]
