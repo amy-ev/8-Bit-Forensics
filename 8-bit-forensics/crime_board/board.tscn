@@ -27,55 +27,53 @@
 [ext_resource type="Texture2D" uid="uid://bb42j4ewdrs7v" path="res://assets/crime_board/strings/8-string-x3.png" id="25_i1yb3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd1ls"]
-size = Vector2(108, 138)
+size = Vector2(216, 276)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_boyje"]
-size = Vector2(126, 81)
+size = Vector2(252, 162)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0asa8"]
-size = Vector2(117, 129)
+size = Vector2(234, 258)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fxn8l"]
-size = Vector2(153, 138)
+size = Vector2(306, 276)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1grn"]
-size = Vector2(177, 102)
+size = Vector2(353.5, 204)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b6qcv"]
-size = Vector2(126, 153)
+size = Vector2(252, 305.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1wkm"]
-size = Vector2(99, 123)
+size = Vector2(198, 246)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06hg8"]
-size = Vector2(96, 129)
+size = Vector2(192, 258)
 
 [node name="board" type="TextureRect"]
-offset_top = -2.0
-offset_right = 960.0
-offset_bottom = 538.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_iff0x")
 script = ExtResource("1_k2i71")
 
 [node name="note1" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
-offset_right = 960.0
-offset_bottom = 540.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_xd1ls")
 
-[node name="area" parent="note1" index="0"]
-position = Vector2(621, 219)
-
 [node name="area_shape" parent="note1/area" index="0"]
-position = Vector2(54, 69)
+position = Vector2(1350, 576)
 shape = SubResource("RectangleShape2D_xd1ls")
-
-[node name="pin" parent="note1" index="1"]
-layout_mode = 0
-
-[node name="string" parent="note1" index="2"]
-layout_mode = 0
 
 [node name="note2" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
@@ -89,142 +87,146 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_boyje")
 
-[node name="area" parent="note2" index="0"]
-position = Vector2(54, 408)
-
 [node name="area_shape" parent="note2/area" index="0"]
-position = Vector2(63, 40.5)
+position = Vector2(234, 897)
 shape = SubResource("RectangleShape2D_boyje")
 
 [node name="pin" parent="note2" index="1"]
-layout_mode = 0
 texture = ExtResource("6_fxn8l")
 
 [node name="string" parent="note2" index="2"]
-layout_mode = 0
 texture = ExtResource("7_n1grn")
 
 [node name="note3" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("8_b6qcv")
 
-[node name="area" parent="note3" index="0"]
-position = Vector2(801, 300)
-
 [node name="area_shape" parent="note3/area" index="0"]
-position = Vector2(58.5, 64.5)
+position = Vector2(1719, 729)
 shape = SubResource("RectangleShape2D_0asa8")
 
 [node name="pin" parent="note3" index="1"]
-layout_mode = 0
 texture = ExtResource("9_u1wkm")
 
 [node name="string" parent="note3" index="2"]
-layout_mode = 0
 texture = ExtResource("10_06hg8")
 
 [node name="note4" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("11_dbmes")
 
-[node name="area" parent="note4" index="0"]
-position = Vector2(450, 336)
-
 [node name="area_shape" parent="note4/area" index="0"]
-position = Vector2(76.5, 69)
+position = Vector2(1053, 810)
 shape = SubResource("RectangleShape2D_fxn8l")
 
 [node name="pin" parent="note4" index="1"]
-layout_mode = 0
 texture = ExtResource("12_2uoej")
 
 [node name="string" parent="note4" index="2"]
-layout_mode = 0
 texture = ExtResource("13_rm8ev")
 
 [node name="note5" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("14_5c4nk")
 
-[node name="area" parent="note5" index="0"]
-position = Vector2(330, 99)
-
 [node name="area_shape" parent="note5/area" index="0"]
-position = Vector2(88.5, 51)
+position = Vector2(837.25, 300)
 shape = SubResource("RectangleShape2D_n1grn")
 
 [node name="pin" parent="note5" index="1"]
-layout_mode = 0
 texture = ExtResource("15_eevdw")
 
 [node name="string" parent="note5" index="2"]
-layout_mode = 0
 texture = ExtResource("16_i5a6v")
 
 [node name="note6" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("17_fk5vu")
 
-[node name="area" parent="note6" index="0"]
-position = Vector2(225, 228)
-
 [node name="area_shape" parent="note6/area" index="0"]
-position = Vector2(63, 76.5)
+position = Vector2(576, 609.25)
 shape = SubResource("RectangleShape2D_b6qcv")
 
 [node name="pin" parent="note6" index="1"]
-layout_mode = 0
 texture = ExtResource("18_0ppt4")
 
 [node name="string" parent="note6" index="2"]
-layout_mode = 0
 texture = ExtResource("19_6w4yj")
 
 [node name="note7" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("20_lci88")
 
-[node name="area" parent="note7" index="0"]
-position = Vector2(744, 48)
-
 [node name="area_shape" parent="note7/area" index="0"]
-position = Vector2(49.5, 61.5)
+position = Vector2(1587, 219)
 shape = SubResource("RectangleShape2D_u1wkm")
 
 [node name="pin" parent="note7" index="1"]
-layout_mode = 0
 texture = ExtResource("21_mlh5t")
 
 [node name="string" parent="note7" index="2"]
-layout_mode = 0
 texture = ExtResource("22_e72sc")
 
 [node name="note8" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("23_hu1fj")
 
-[node name="area" parent="note8" index="0"]
-position = Vector2(51, 57)
-
 [node name="area_shape" parent="note8/area" index="0"]
-position = Vector2(48, 64.5)
+position = Vector2(198, 243)
 shape = SubResource("RectangleShape2D_06hg8")
 
 [node name="pin" parent="note8" index="1"]
-layout_mode = 0
 texture = ExtResource("24_h6bm4")
 
 [node name="string" parent="note8" index="2"]
-layout_mode = 0
-offset_top = -1.0
-offset_right = 960.0
-offset_bottom = 539.0
 texture = ExtResource("25_i1yb3")
 
 [node name="unlock_debug" type="Button" parent="."]
