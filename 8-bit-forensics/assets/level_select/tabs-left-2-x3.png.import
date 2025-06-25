@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5rgy1naj2b01"
-path="res://.godot/imported/desk-background-x3.png-01c4fe0eb98f923aa560d3cf328b093d.ctex"
+uid="uid://bwltc1bp1543q"
+path="res://.godot/imported/tabs-left-2-x3.png-d23e2239235b0735aa8bdfe120f8afde.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/crime_board/desk-background-x3.png"
-dest_files=["res://.godot/imported/desk-background-x3.png-01c4fe0eb98f923aa560d3cf328b093d.ctex"]
+source_file="res://assets/level_select/tabs-left-2-x3.png"
+dest_files=["res://.godot/imported/tabs-left-2-x3.png-d23e2239235b0735aa8bdfe120f8afde.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2e4o5cr1pfdh"
-path="res://.godot/imported/note-content-x3.png-8446bc9e241a17963c6025d54f607dc8.ctex"
+uid="uid://dmsaeg5fepvcr"
+path="res://.godot/imported/tabs-right-4-x3.png-66042cc55187b4b573baa6250e3f383c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/crime_board/note-content-x3.png"
-dest_files=["res://.godot/imported/note-content-x3.png-8446bc9e241a17963c6025d54f607dc8.ctex"]
+source_file="res://assets/level_select/tabs-right-4-x3.png"
+dest_files=["res://.godot/imported/tabs-right-4-x3.png-66042cc55187b4b573baa6250e3f383c.ctex"]
 
 [params]
 
