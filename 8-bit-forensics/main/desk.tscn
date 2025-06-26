@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3s0jetqw0jpm"]
+
+[ext_resource type="Texture2D" uid="uid://uc7qtxuxfjwk" path="res://assets/office/desk-x3.png" id="1_yrctc"]
+[ext_resource type="Texture2D" uid="uid://dyjpj1hiob0ag" path="res://assets/office/btn-x3.png" id="2_7lduy"]
+[ext_resource type="Script" uid="uid://b7v2yjfpel1ti" path="res://main/desk.gd" id="2_sbb4t"]
+
+[node name="desk" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yrctc")
+script = ExtResource("2_sbb4t")
+
+[node name="pc_btn" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1470.0
+offset_top = 702.0
+offset_right = 1503.0
+offset_bottom = 726.0
+scale = Vector2(2.01, 2)
+texture_normal = ExtResource("2_7lduy")
+texture_pressed = ExtResource("2_7lduy")
+texture_hover = ExtResource("2_7lduy")
+texture_disabled = ExtResource("2_7lduy")
+texture_focused = ExtResource("2_7lduy")
+
+[connection signal="pressed" from="pc_btn" to="." method="_on_pc_btn_pressed"]
