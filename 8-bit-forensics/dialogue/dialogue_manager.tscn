@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnvcbdwsftrn"]
+
+[ext_resource type="Script" uid="uid://c7l366dugnxrd" path="res://dialogue/dialogue_manager.gd" id="1_k6lpl"]
+
+[node name="dialogue_manager" type="CanvasLayer"]
+script = ExtResource("1_k6lpl")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="container" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="day1" type="VBoxContainer" parent="Control/container"]
+layout_mode = 2
+
+[node name="text" type="Label" parent="Control/container/day1"]
+layout_mode = 2
+text = "the dialogue"
+
+[node name="next" type="Button" parent="Control/container/day1"]
+layout_mode = 2
+text = "next"
+
+[node name="prev" type="Button" parent="Control/container/day1"]
+layout_mode = 2
+text = "prev"
+
+[connection signal="pressed" from="Control/container/day1/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Control/container/day1/prev" to="." method="_on_prev_pressed"]
