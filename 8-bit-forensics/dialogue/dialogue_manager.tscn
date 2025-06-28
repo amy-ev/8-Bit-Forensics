@@ -11,25 +11,26 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="container" type="HBoxContainer" parent="Control"]
+[node name="container" type="VBoxContainer" parent="Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 191.0
+offset_bottom = 93.0
 
-[node name="day1" type="VBoxContainer" parent="Control/container"]
+[node name="day_title" type="Label" parent="Control/container"]
 layout_mode = 2
+text = "day x"
 
-[node name="text" type="Label" parent="Control/container/day1"]
+[node name="text" type="Label" parent="Control/container"]
 layout_mode = 2
 text = "the dialogue"
 
-[node name="next" type="Button" parent="Control/container/day1"]
+[node name="next" type="Button" parent="Control/container"]
 layout_mode = 2
 text = "next"
 
-[node name="prev" type="Button" parent="Control/container/day1"]
+[node name="prev" type="Button" parent="Control/container"]
 layout_mode = 2
 text = "prev"
 
-[connection signal="pressed" from="Control/container/day1/next" to="." method="_on_next_pressed"]
-[connection signal="pressed" from="Control/container/day1/prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="Control/container/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Control/container/prev" to="." method="_on_prev_pressed"]

@@ -25,3 +25,8 @@ func update_size():
 	icon.get_node("icon").size = icon.get_node("icon").size / scaled_by
 	icon.get_node("select/select_shape").shape.size = icon.get_node("icon").size
 	icon.get_node("select").position = icon.get_node("select/select_shape").shape.size / 2
+
+
+func _on_debug_pressed() -> void:
+	Global.unlocked += 1
+	get_tree().change_scene_to_file("res://start_menu/menu.tscn")
