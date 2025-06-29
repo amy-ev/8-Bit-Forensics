@@ -20,15 +20,39 @@ func _ready() -> void:
 	Global.connect("selected",_on_file_selected)
 	
 	# TODO: REMOVE FROM HERE AND ADD BOTH LOAD_FILE AND SAVE_FILE TO A DIALOG WINDOW SCENE
-	var saved_dialog = saved_dialog_scene.instantiate()
-	add_child(saved_dialog)
-	var dialog_node = saved_dialog.get_node(".")
-	dialog_node.position.x = get_node(".").position.x + (get_node(".").size.x * 2)
+	#var saved_dialog = saved_dialog_scene.instantiate()
+	#add_child(saved_dialog)
+	#var dialog_node = saved_dialog.get_node(".")
+	#dialog_node.position.x = get_node(".").position.x + (get_node(".").size.x * 2)
 	# ---------------------------
 	
 func _on_load_button_pressed() -> void:
 	var client = client_scene.instantiate()
 	add_child(client)
+	await client.tree_exited
+	print("client gone")
+	var json_dict = open_json("res://python_files/metadata.json")
+	
+	print(json_dict)
+	#var file_idx = selected_file.replacen("photo", "")
+	#file_idx = file_idx.replacen(".jpg", "")
+	print("selected file: %s" %selected_file)
+	#print("file idx: %s" %file_idx)
+	#if json_dict.has("file_%s" %file_idx):
+		##print(json_dict["file_%s" %file_idx])
+		#for key in json_dict["file_%s" % file_idx]:
+			##key
+			##print(key)
+			##value
+			##print(json_dict["file_%s" % file_idx][key])
+			#
+			#$metadata.add_text(key)
+			#$metadata.add_text(" : ")
+			#$metadata.add_text(json_dict["file_%s" % file_idx][key])
+			#$metadata.newline()
+	#else:
+		#pass
+	
 	
 func add_files(file_no:int):
 
@@ -89,3 +113,10 @@ func _on_file_selected(selected_node:File, real_file:String):
 	
 	selected_file = real_file
 	
+func open_json(file_path):
+	if FileAccess.file_exists(file_path):
+		var dialogue = FileAccess.open(file_path, FileAccess.READ)
+		var json_dict = JSON.parse_string(dialogue.get_as_text())
+		dialogue.close()
+		return json_dict
+		#return JSON.parse_string(dialogue.get_as_text())

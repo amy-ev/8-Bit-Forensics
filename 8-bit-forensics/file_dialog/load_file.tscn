@@ -78,5 +78,12 @@ theme_override_font_sizes/font_size = 4
 text = "confirm"
 flat = true
 
+[node name="metadata" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 205.0
+offset_right = 492.0
+offset_bottom = 40.0
+fit_content = true
+
 [connection signal="pressed" from="file_dialog/title_bar/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="button_border/load_button" to="." method="_on_load_button_pressed"]

@@ -12,7 +12,7 @@ var temp:int = 0
 
 func _ready() -> void:
 	pass
-
+	
 func _process(delta):
 	while files_no != file_count(dir_path):
 		files_no = file_count(dir_path)
@@ -50,7 +50,7 @@ func add_files(file_no:int):
 		
 		#TODO: change to open in a HxD type window
 		file_icon.set_meta("file_name","photo"+str(i)+".jpg")
-		
+
 		# dynamically size the file_container grid seperations 
 		$file_dialog/window/file_container.size.x = $file_dialog/window.size.x - (6 * Global.magnification) - 1
 		$file_dialog/window/file_container.size.y = $file_dialog/window.size.y - (5 * Global.magnification)
