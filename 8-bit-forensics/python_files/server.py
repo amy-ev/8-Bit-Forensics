@@ -1,10 +1,11 @@
 import socket
 import struct
 import os
+import json
 from PIL import Image
 from PIL.ExifTags import TAGS, GPSTAGS, IFD
 
-exif_keys = []
+exif_dict = {}
 def _ready():
 
     host = '127.0.0.1'
@@ -36,9 +37,6 @@ def _ready():
                 break
             data.extend(packet)
 
-        print(msg_len)
-        print(len(data))
-        
         # --- save img to specific file ---
         # need to have a way where a new file directory is created/selected with each new 'crime'
         file_name = "file_"+ str(file_no).strip() + ".jpg"
@@ -61,22 +59,35 @@ def _ready():
                     resolve = TAGS
                 for k, v in ifd.items():
                     tag = resolve.get(k,k)
-                    #print(tag + " : " + str(v))
-                    exif_keys.append((TAGS[k],v))
+                    # print(tag + " : " + str(v))
+                    exif_dict[str(tag)] = str(v)
             except KeyError:
                 pass
 
         img.close()
-        exif_string = ",".join("(%s,%s)" % tup for tup in exif_keys)
-        #client_socket.send(exif_string.encode())
 
+        # --- hex data response ---
         with open(file_path,"rb") as ib:
             bytedata = ib.read()
         ib.close()
         client_socket.send(bytedata)
 
-        print(exif_string) # for debugging
+        # --- write metadata to json file ---
+        
+        json_dict = {}
+        # starts as an empty {}
+        with open("metadata.json","r") as j:
+            json_dict = json.load(j)
+        j.close()
 
+        # create a nested dict that appends to itself with the new files metadata
+        json_dict["file_"+str(file_no).strip()] = exif_dict
+
+        with open("metadata.json","w") as j:
+            json.dump(json_dict, j, indent=4)
+        j.close()
+
+        # keep track of file number                
         file_no = file_no + 1
         with open("index.txt","w") as i:
             i.write(str(file_no))
