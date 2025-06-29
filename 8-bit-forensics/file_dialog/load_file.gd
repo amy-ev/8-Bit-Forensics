@@ -32,26 +32,33 @@ func _on_load_button_pressed() -> void:
 	await client.tree_exited
 	print("client gone")
 	var json_dict = open_json("res://python_files/metadata.json")
-	
+	var metadata_text = get_parent().get_node("window/metadata")
 	print(json_dict)
-	#var file_idx = selected_file.replacen("photo", "")
-	#file_idx = file_idx.replacen(".jpg", "")
+	var file_idx = selected_file.replacen("photo", "")
+	file_idx = file_idx.replacen(".jpg", "")
 	print("selected file: %s" %selected_file)
 	#print("file idx: %s" %file_idx)
-	#if json_dict.has("file_%s" %file_idx):
-		##print(json_dict["file_%s" %file_idx])
-		#for key in json_dict["file_%s" % file_idx]:
-			##key
-			##print(key)
-			##value
-			##print(json_dict["file_%s" % file_idx][key])
-			#
+	if json_dict.has("file_%s" %file_idx):
+		#print(json_dict["file_%s" %file_idx])
+		for key in json_dict["file_%s" % file_idx]:
+			
+			#key
+			#print(key)
+			#value
+			#print(json_dict["file_%s" % file_idx][key])
+			metadata_text.add_text(key)
+			metadata_text.add_text(" : ")
+			metadata_text.add_text(json_dict["file_%s" % file_idx][key])
+			metadata_text.newline()
+			
 			#$metadata.add_text(key)
 			#$metadata.add_text(" : ")
 			#$metadata.add_text(json_dict["file_%s" % file_idx][key])
 			#$metadata.newline()
-	#else:
-		#pass
+	else:
+		pass
+	
+	queue_free()
 	
 	
 func add_files(file_no:int):
