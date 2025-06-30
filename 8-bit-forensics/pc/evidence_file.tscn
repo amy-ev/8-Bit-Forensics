@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmyybf4yay1vy"]
+
+[ext_resource type="Script" uid="uid://dtaqn0vjjovcg" path="res://pc/evidence_file.gd" id="1_ioy7m"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_ioy7m")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 159.0
+offset_bottom = 100.0
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="Control/ColorRect"]
+layout_mode = 0
+offset_right = 158.0
+offset_bottom = 101.0
+text = "create evidence file"
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 338.0
+offset_top = 175.0
+offset_right = 823.0
+offset_bottom = 215.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ColorRect2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MD5_label" type="Label" parent="Control/ColorRect2/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "MD5:"
+
+[node name="MD5_hash" type="Label" parent="Control/ColorRect2/HBoxContainer"]
+custom_minimum_size = Vector2(436, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+autowrap_mode = 2
+
+[connection signal="pressed" from="Control/ColorRect/Button" to="." method="_on_button_pressed"]

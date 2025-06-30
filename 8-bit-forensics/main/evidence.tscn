@@ -50,5 +50,25 @@ offset_right = 1086.0
 offset_bottom = 720.0
 text = "remove from evidence bag etc"
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1316.0
+offset_top = 849.0
+offset_right = 1653.0
+offset_bottom = 872.0
+rotation = 0.390609
+text = "informational text about  the evidence item"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 252.0
+offset_right = 599.0
+offset_bottom = 301.0
+rotation = 0.0559535
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "and some more information text maybe about the collection process"
+autowrap_mode = 2
+
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="collect" to="." method="_on_collect_pressed"]

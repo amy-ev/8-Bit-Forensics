@@ -34,7 +34,6 @@ texture_disabled = ExtResource("2_7lduy")
 texture_focused = ExtResource("2_7lduy")
 
 [node name="dialogue_manager" parent="." instance=ExtResource("4_sbb4t")]
-visible = false
 
 [node name="evidence_rect" type="TextureRect" parent="."]
 layout_mode = 0

@@ -1,7 +1,7 @@
 extends Control
 
 @onready var text_rect = $pc_screen
-@onready var icon = $DesktopIcon
+@onready var icon = $pc_screen/DesktopIcon
 @export var scaled_by: Vector2
 
 func _ready() -> void:
@@ -28,5 +28,4 @@ func update_size():
 
 
 func _on_debug_pressed() -> void:
-	Global.unlocked += 1
-	get_tree().change_scene_to_file("res://start_menu/menu.tscn")
+	get_tree().change_scene_to_file("res://end_quiz.tscn")
