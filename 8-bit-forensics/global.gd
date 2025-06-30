@@ -10,3 +10,5 @@ signal selected(selected_node:MyFile, real_file:String)
 signal note_selected(note_topic:String)
 
 signal level_unlocked(day:String)
+
+signal evidence_collected()

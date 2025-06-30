@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3s0jetqw0jpm"]
+[gd_scene load_steps=7 format=3 uid="uid://d3s0jetqw0jpm"]
 
 [ext_resource type="Texture2D" uid="uid://uc7qtxuxfjwk" path="res://assets/office/desk-x3.png" id="1_yrctc"]
 [ext_resource type="Texture2D" uid="uid://dyjpj1hiob0ag" path="res://assets/office/btn-x3.png" id="2_7lduy"]
 [ext_resource type="Script" uid="uid://b7v2yjfpel1ti" path="res://main/desk.gd" id="2_sbb4t"]
 [ext_resource type="PackedScene" uid="uid://cnvcbdwsftrn" path="res://dialogue/dialogue_manager.tscn" id="4_sbb4t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufxmt"]
+size = Vector2(32.9319, 23.9755)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbb4t"]
+size = Vector2(36, 24)
 
 [node name="desk" type="TextureRect"]
 anchors_preset = 15
@@ -28,19 +34,36 @@ texture_disabled = ExtResource("2_7lduy")
 texture_focused = ExtResource("2_7lduy")
 
 [node name="dialogue_manager" parent="." instance=ExtResource("4_sbb4t")]
+visible = false
 
-[node name="evidence" type="TextureButton" parent="."]
+[node name="evidence_rect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 288.0
 offset_top = 769.0
 offset_right = 321.0
 offset_bottom = 793.0
 scale = Vector2(7.25741, 7.25741)
-texture_normal = ExtResource("2_7lduy")
-texture_pressed = ExtResource("2_7lduy")
-texture_hover = ExtResource("2_7lduy")
-texture_disabled = ExtResource("2_7lduy")
-texture_focused = ExtResource("2_7lduy")
+texture = ExtResource("2_7lduy")
+
+[node name="evidence" type="Area2D" parent="evidence_rect"]
+
+[node name="evidence_shape" type="CollisionShape2D" parent="evidence_rect/evidence"]
+position = Vector2(16.4659, 11.9878)
+shape = SubResource("RectangleShape2D_ufxmt")
+
+[node name="usb_port" type="Area2D" parent="."]
+position = Vector2(1782, 780)
+
+[node name="usb" type="CollisionShape2D" parent="usb_port"]
+position = Vector2(18, 12)
+shape = SubResource("RectangleShape2D_sbb4t")
+
+[node name="usb_rect" type="TextureRect" parent="usb_port"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_7lduy")
 
 [connection signal="pressed" from="pc_btn" to="." method="_on_pc_btn_pressed"]
-[connection signal="pressed" from="evidence" to="." method="_on_evidence_pressed"]
+[connection signal="input_event" from="evidence_rect/evidence" to="." method="_on_evidence_input_event"]
+[connection signal="input_event" from="usb_port" to="." method="_on_usb_port_input_event"]

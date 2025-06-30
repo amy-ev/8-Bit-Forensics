@@ -7,3 +7,8 @@ func _ready() -> void:
 	
 func _on_back_pressed() -> void:
 	queue_free()
+
+
+func _on_collect_pressed() -> void:
+	$evidence.queue_free()
+	Global.evidence_collected.emit()

@@ -42,4 +42,13 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "back"
 
+[node name="collect" type="Button" parent="."]
+layout_mode = 0
+offset_left = 844.0
+offset_top = 689.0
+offset_right = 1086.0
+offset_bottom = 720.0
+text = "remove from evidence bag etc"
+
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="collect" to="." method="_on_collect_pressed"]
