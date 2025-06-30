@@ -29,4 +29,18 @@ texture_focused = ExtResource("2_7lduy")
 
 [node name="dialogue_manager" parent="." instance=ExtResource("4_sbb4t")]
 
+[node name="evidence" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 769.0
+offset_right = 321.0
+offset_bottom = 793.0
+scale = Vector2(7.25741, 7.25741)
+texture_normal = ExtResource("2_7lduy")
+texture_pressed = ExtResource("2_7lduy")
+texture_hover = ExtResource("2_7lduy")
+texture_disabled = ExtResource("2_7lduy")
+texture_focused = ExtResource("2_7lduy")
+
 [connection signal="pressed" from="pc_btn" to="." method="_on_pc_btn_pressed"]
+[connection signal="pressed" from="evidence" to="." method="_on_evidence_pressed"]
