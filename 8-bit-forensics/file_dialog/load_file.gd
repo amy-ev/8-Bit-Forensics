@@ -5,13 +5,13 @@ class_name LoadFile
 @onready var files = preload("res://file_dialog/file.tscn")
 @onready var saved_dialog_scene = preload("res://file_dialog/save_file.tscn")
 
-@export var file_icon: ImageTexture
+@export var file_icon: CompressedTexture2D
 @export var selected_file: String
 
 var client:Node
 var current_rect: ColorRect
 
-var file: File
+var file: MyFile
 
 func _ready() -> void:
 	add_files(file_count("res://jpg_folder/"))
@@ -27,37 +27,37 @@ func _ready() -> void:
 	# ---------------------------
 	
 func _on_load_button_pressed() -> void:
+
 	var client = client_scene.instantiate()
 	add_child(client)
 	await client.tree_exited
-	print("client gone")
+
 	var json_dict = open_json("res://python_files/metadata.json")
 	var metadata_text = get_parent().get_node("window/metadata")
-	print(json_dict)
+	
+	metadata_text.clear()
+	
 	var file_idx = selected_file.replacen("photo", "")
 	file_idx = file_idx.replacen(".jpg", "")
 	print("selected file: %s" %selected_file)
 	#print("file idx: %s" %file_idx)
-	if json_dict.has("file_%s" %file_idx):
-		#print(json_dict["file_%s" %file_idx])
-		for key in json_dict["file_%s" % file_idx]:
-			
-			#key
-			#print(key)
-			#value
-			#print(json_dict["file_%s" % file_idx][key])
-			metadata_text.add_text(key)
-			metadata_text.add_text(" : ")
-			metadata_text.add_text(json_dict["file_%s" % file_idx][key])
-			metadata_text.newline()
-			
-			#$metadata.add_text(key)
-			#$metadata.add_text(" : ")
-			#$metadata.add_text(json_dict["file_%s" % file_idx][key])
-			#$metadata.newline()
+	if typeof(json_dict) == TYPE_DICTIONARY:
+		if json_dict.has("file_%s" %file_idx):
+
+			for key in json_dict["file_%s" % file_idx]:
+				
+				#key
+				#print(key)
+				#value
+				#print(json_dict["file_%s" % file_idx][key])
+				metadata_text.add_text(key)
+				metadata_text.add_text(" : ")
+				metadata_text.add_text(json_dict["file_%s" % file_idx][key])
+				metadata_text.newline()
+		else:
+			pass
 	else:
-		pass
-	
+		print("Type: ", type_string(typeof(json_dict)))
 	queue_free()
 	
 	
@@ -69,7 +69,8 @@ func add_files(file_no:int):
 		# named file to force automatic naming system = file1, file2 etc
 		file.name = "file"
 		file._file_name = file.name
-		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://assets/file_dialog/icon-x3.png"))
+		file_icon = load("res://assets/file_dialog/icon-x3.png")
+		#file_icon = ImageTexture.create_from_image(Image.load_from_file("res://assets/file_dialog/icon-x3.png"))
 		#file_icon = ImageTexture.create_from_image(Image.load_from_file("res://jpg_folder/photo"+str(i)+".jpg"))
 		file._file_icon = file_icon
 		
@@ -108,7 +109,7 @@ func _on_exit_pressed() -> void:
 	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
 	queue_free()
 
-func _on_file_selected(selected_node:File, real_file:String):
+func _on_file_selected(selected_node:MyFile, real_file:String):
 	# obtain the colour rect node of the selected file emitted
 	var selected_rect = selected_node.get_node("selected")
 	# if current_rect is not null and current_rect is not from the file just emitted
@@ -122,8 +123,24 @@ func _on_file_selected(selected_node:File, real_file:String):
 	
 func open_json(file_path):
 	if FileAccess.file_exists(file_path):
+
 		var dialogue = FileAccess.open(file_path, FileAccess.READ)
-		var json_dict = JSON.parse_string(dialogue.get_as_text())
-		dialogue.close()
-		return json_dict
-		#return JSON.parse_string(dialogue.get_as_text())
+		
+		if FileAccess.get_open_error() != OK:
+			print("could not open file: ", dialogue.get_open_error())
+	
+		var json = JSON.new()
+		var error = json.parse(dialogue.get_as_text())
+		if error == OK:
+			var json_dict = json.data
+			
+			dialogue.close()
+			return json_dict
+		else:
+			print("error code:" , error)
+			dialogue.close()
+		#var json = json.parse(dialogue.get_as_text(), true)
+		#var json_dict = json.get_parsed_text()
+
+		#print(json_dict)
+		#return json_dict

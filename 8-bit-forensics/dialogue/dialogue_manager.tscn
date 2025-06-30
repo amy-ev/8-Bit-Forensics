@@ -1,36 +1,78 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnvcbdwsftrn"]
+[gd_scene load_steps=3 format=3 uid="uid://cnvcbdwsftrn"]
 
 [ext_resource type="Script" uid="uid://c7l366dugnxrd" path="res://dialogue/dialogue_manager.gd" id="1_k6lpl"]
+[ext_resource type="Texture2D" uid="uid://thdq4em1ej5r" path="res://assets/npc-x3.png" id="2_3umdh"]
 
 [node name="dialogue_manager" type="CanvasLayer"]
 script = ExtResource("1_k6lpl")
 
-[node name="Control" type="Control" parent="."]
+[node name="control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="container" type="VBoxContainer" parent="Control"]
-layout_mode = 0
-offset_right = 191.0
-offset_bottom = 93.0
+[node name="npc" type="TextureRect" parent="control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3umdh")
 
-[node name="day_title" type="Label" parent="Control/container"]
+[node name="dialogue_box" type="ColorRect" parent="control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="container" type="VBoxContainer" parent="control/dialogue_box"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_right = -12.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="day_title" type="Label" parent="control/dialogue_box/container"]
 layout_mode = 2
 text = "day x"
 
-[node name="text" type="Label" parent="Control/container"]
+[node name="text" type="Label" parent="control/dialogue_box/container"]
 layout_mode = 2
-text = "the dialogue"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "the dialogue
+"
 
-[node name="next" type="Button" parent="Control/container"]
-layout_mode = 2
-text = "next"
+[node name="btn_container" type="HBoxContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
 
-[node name="prev" type="Button" parent="Control/container"]
+[node name="prev" type="Button" parent="btn_container"]
 layout_mode = 2
 text = "prev"
 
-[connection signal="pressed" from="Control/container/next" to="." method="_on_next_pressed"]
-[connection signal="pressed" from="Control/container/prev" to="." method="_on_prev_pressed"]
+[node name="next" type="Button" parent="btn_container"]
+layout_mode = 2
+text = "next"
+
+[connection signal="pressed" from="btn_container/prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="btn_container/next" to="." method="_on_next_pressed"]

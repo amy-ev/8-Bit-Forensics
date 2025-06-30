@@ -1,8 +1,8 @@
 extends Control
-class_name File
+class_name MyFile
 
 @export var _file_name: String 
-@export var _file_icon: ImageTexture
+@export var _file_icon: CompressedTexture2D
 
 @export var _selected_file: String
 

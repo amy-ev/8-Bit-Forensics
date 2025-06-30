@@ -14,6 +14,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_2ftpu")
+_file_name = null
+_selected_file = null
 
 [node name="selected" type="ColorRect" parent="."]
 visible = false
