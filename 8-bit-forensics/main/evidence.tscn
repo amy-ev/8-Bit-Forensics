@@ -9,12 +9,11 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2p5he"]
 shader = ExtResource("3_raojj")
 shader_parameter/fov = 90.0
-shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
-shader_parameter/rect_size = Vector2(120, 144)
+shader_parameter/y_rot = 0.0
+shader_parameter/inset = -1.0
 shader_parameter/front = ExtResource("4_2p5he")
 shader_parameter/back = ExtResource("4_eut4c")
-shader_parameter/inset = 0.0
 
 [node name="desk" type="TextureRect"]
 anchors_preset = 15
@@ -42,12 +41,11 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -30.0
 offset_top = -36.0
-offset_right = 30.0
-offset_bottom = 36.0
+offset_right = 90.0
+offset_bottom = 108.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_2p5he")
-stretch_mode = 2
 
 [node name="collect" type="Button" parent="."]
 layout_mode = 0
@@ -78,4 +76,6 @@ text = "and some more information text maybe about the collection process"
 autowrap_mode = 2
 
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="gui_input" from="evidence" to="." method="_on_evidence_gui_input"]
+[connection signal="mouse_exited" from="evidence" to="." method="_on_evidence_mouse_exited"]
 [connection signal="pressed" from="collect" to="." method="_on_collect_pressed"]
