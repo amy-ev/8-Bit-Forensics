@@ -2,8 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://bbvf5xv1k2qwi" path="res://assets/level_select/closed-x3.png" id="1_mouqb"]
 [ext_resource type="Script" uid="uid://6cfgq337t3aw" path="res://level_select/closed_folder.gd" id="2_62c0k"]
-[ext_resource type="Shape2D" uid="uid://wdg1kgebjxxf" path="res://level_select/tab1.tres" id="3_4mb7p"]
-[ext_resource type="Shape2D" uid="uid://blt30x81fdn5b" path="res://level_select/open_tab_right.tres" id="4_at8f8"]
+[ext_resource type="Shape2D" uid="uid://by5duysfph354" path="res://level_select/tab.tres" id="3_4mb7p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mb7p"]
+size = Vector2(24, 102)
 
 [node name="closed_folder" type="TextureRect"]
 anchors_preset = 15
@@ -17,19 +19,19 @@ script = ExtResource("2_62c0k")
 [node name="tabs" type="Area2D" parent="."]
 
 [node name="tab1" type="CollisionShape2D" parent="tabs"]
-position = Vector2(1200, 126)
+position = Vector2(1218, 174)
 shape = ExtResource("3_4mb7p")
 
 [node name="tab2" type="CollisionShape2D" parent="tabs"]
-position = Vector2(1200, 222)
+position = Vector2(1218, 270)
 shape = ExtResource("3_4mb7p")
 
 [node name="tab3" type="CollisionShape2D" parent="tabs"]
-position = Vector2(1200, 318)
+position = Vector2(1218, 366)
 shape = ExtResource("3_4mb7p")
 
 [node name="tab4" type="CollisionShape2D" parent="tabs"]
-position = Vector2(1200, 414)
-shape = ExtResource("4_at8f8")
+position = Vector2(1218, 465)
+shape = SubResource("RectangleShape2D_4mb7p")
 
 [connection signal="input_event" from="tabs" to="." method="_on_tabs_input_event"]

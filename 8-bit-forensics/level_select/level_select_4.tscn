@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2bfv5m5qudc7"]
+[gd_scene load_steps=8 format=3 uid="uid://d2bfv5m5qudc7"]
 
 [ext_resource type="Texture2D" uid="uid://du07jgkuynooi" path="res://assets/level_select/open-x3.png" id="1_nff8j"]
 [ext_resource type="Script" uid="uid://bjaghc73epk6k" path="res://level_select/open_folder_template.gd" id="2_p3ot5"]
 [ext_resource type="Texture2D" uid="uid://dhpy0p3lyay4o" path="res://assets/level_select/tabs-4-x3.png" id="3_mn6ym"]
-[ext_resource type="Shape2D" uid="uid://dot66mm4b2kdn" path="res://level_select/tabs_left.tres" id="4_31gbh"]
-[ext_resource type="Shape2D" uid="uid://bv81k8swh6fmb" path="res://level_select/open_tab_left.tres" id="5_5tgre"]
-[ext_resource type="Shape2D" uid="uid://blt30x81fdn5b" path="res://level_select/open_tab_right.tres" id="6_go44k"]
+[ext_resource type="Shape2D" uid="uid://44un3tl8v86i" path="res://level_select/closed_tab.tres" id="4_g6ke1"]
+[ext_resource type="Shape2D" uid="uid://c4vl3w531sv72" path="res://level_select/open_tab.tres" id="5_nff8j"]
 [ext_resource type="Texture2D" uid="uid://dbaq50qbxhonf" path="res://assets/level_select/inside-left-x3.png" id="7_s6uyr"]
 [ext_resource type="Texture2D" uid="uid://wbk4vf40q0cp" path="res://assets/level_select/inside-right-x3.png" id="8_edlsa"]
 
@@ -18,7 +17,7 @@ grow_vertical = 2
 texture = ExtResource("1_nff8j")
 script = ExtResource("2_p3ot5")
 
-[node name="tabs_rect" type="TextureRect" parent="."]
+[node name="tab_rect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,20 +29,20 @@ texture = ExtResource("3_mn6ym")
 [node name="tabs" type="Area2D" parent="."]
 
 [node name="tab1" type="CollisionShape2D" parent="tabs"]
-position = Vector2(264, 132)
-shape = ExtResource("4_31gbh")
+position = Vector2(276, 174)
+shape = ExtResource("4_g6ke1")
 
 [node name="tab2" type="CollisionShape2D" parent="tabs"]
-position = Vector2(264, 228)
-shape = ExtResource("4_31gbh")
+position = Vector2(276, 270)
+shape = ExtResource("4_g6ke1")
 
 [node name="tab3" type="CollisionShape2D" parent="tabs"]
-position = Vector2(264, 324)
-shape = ExtResource("5_5tgre")
+position = Vector2(279, 369)
+shape = ExtResource("5_nff8j")
 
 [node name="tab4" type="CollisionShape2D" parent="tabs"]
-position = Vector2(1488, 414)
-shape = ExtResource("6_go44k")
+position = Vector2(1503, 465)
+shape = ExtResource("5_nff8j")
 
 [node name="left_content" type="TextureRect" parent="."]
 layout_mode = 1

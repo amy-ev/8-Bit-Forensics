@@ -8,6 +8,8 @@ extends Node
 @export var answers = ["a","b","a","c"]
 @export var quiz_dict = {"Day_1":["a","b","c"]}
 
+@export var fullscreen:bool 
+
 signal selected(selected_node:MyFile, real_file:String)
 
 signal note_selected(note_topic:String)
@@ -17,3 +19,5 @@ signal level_unlocked(day:String)
 signal evidence_collected()
 
 signal answer(day:String, answer:int)
+
+signal child_joined()
