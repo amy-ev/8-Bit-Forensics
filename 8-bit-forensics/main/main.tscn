@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgb0pdtwfdhbk"]
+
+[ext_resource type="Script" uid="uid://dytw15f30gpfo" path="res://main/main.gd" id="1_53q0u"]
+[ext_resource type="PackedScene" uid="uid://o33pyrovolve" path="res://level_select/desk.tscn" id="2_pjrb6"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_53q0u")
+
+[node name="desk" parent="." instance=ExtResource("2_pjrb6")]
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
