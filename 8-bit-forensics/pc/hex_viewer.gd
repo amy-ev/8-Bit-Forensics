@@ -4,7 +4,7 @@ extends Control
 
 @export var search_open:bool = false
 @export var select_open:bool = false
-@export var hex_data:Array = []
+@export var hex_data:PackedStringArray
 
 @onready var search_window = preload("res://pc/search.tscn")
 @onready var select_window = preload("res://pc/select.tscn")
@@ -14,7 +14,7 @@ const VIS_ROWS:int = 22
 const PAGE_ROWS:int = 53
 
 var TOTAL_ROWS:int
-var hex_table:Array = []
+var hex_table:Array
 
 var output = []
 
@@ -31,18 +31,24 @@ func open_file(file_path):
 		var file = FileAccess.open(file_path, FileAccess.READ)
 		var hex_file = file.get_buffer(file.get_length())
 		var arr_str = hex_file.hex_encode()
-		for x in range(0, arr_str.length(),2):
-			hex_data.append(arr_str.substr(x,2))
-			
-		for y in range(0,hex_data.size(),16):
-			hex_table.append(hex_data.slice(y,y+16))
+		
+		var num_bytes = arr_str.length() / 2
+		hex_data.resize(num_bytes)
+		
+		for x in range(num_bytes):
+			hex_data[x] = arr_str.substr(x * 2, 2)
+		
+		hex_table.clear()
+		
+		for y in range(0,num_bytes,16):
+			hex_table.append(PackedStringArray(hex_data.slice(y,y+16)))
 	else:
 		print("failed to open file")
 		return
 		
 	hex_label.set_threaded(true)
 	
-	TOTAL_ROWS = hex_table.size()/PAGE_ROWS
+	TOTAL_ROWS = ceili(hex_table.size()/PAGE_ROWS)
 	hex_label.custom_minimum_size.x = 465
 	hex_label.custom_minimum_size.y = 498
 	show_page(0)
@@ -53,14 +59,14 @@ func show_page(p:int):
 	var end = min(start + PAGE_ROWS, hex_table.size())
 	
 	for i in range(start, end):
-		var row = hex_table[i]
+		var row:= PackedStringArray(hex_table[i])
 		
-		for j in range(row.size()):
+		for j in (row.size()):
 			hex_label.add_text(str(row[j]))
 			
 			if j < row.size() - 1:
 				hex_label.add_text(" ")
-
+				
 		hex_label.newline()
 		
 # opening other windows
