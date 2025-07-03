@@ -8,7 +8,7 @@ var tween_y:Tween
 func _ready() -> void:
 	# "res://assets/evidence/evidence_"+str(day)+".tscn"
 	$evidence.material.set_shader_parameter("front", load("res://assets/evidence/SD-x3.png")) 
-
+	$evidence.material.set_shader_parameter("back", load("res://assets/evidence/SD-BACK-x3.png")) 
 func _on_back_pressed() -> void:
 	queue_free()
 
