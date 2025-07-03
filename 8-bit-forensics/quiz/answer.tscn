@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ba4obead5wqk6"]
+
+[node name="answer" type="HFlowContainer"]
+custom_minimum_size = Vector2(0, 20)
+offset_right = 100.0
+offset_bottom = 24.0
+
+[node name="checkbox" type="CheckBox" parent="."]
+layout_mode = 2
+
+[node name="answer_text" type="Label" parent="."]
+layout_mode = 2
+text = "answer 1"
