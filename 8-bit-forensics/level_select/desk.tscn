@@ -25,7 +25,6 @@ texture = ExtResource("1_xbiif")
 script = ExtResource("2_vnxcf")
 
 [node name="closed_folder" parent="." instance=ExtResource("3_q1qqx")]
-layout_mode = 1
 
 [node name="back_btn" type="Button" parent="."]
 z_index = 6

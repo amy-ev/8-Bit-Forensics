@@ -1,11 +1,11 @@
-extends TextureRect
+extends Sprite2D
 
 func _on_tabs_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouse && event.is_pressed():
 
-		$Sprite2D/AnimationPlayer.play("open_1")
+		$AnimationPlayer.play("open_"+str(shape_idx +1))
 		
-		await $Sprite2D/AnimationPlayer.animation_finished
+		await $AnimationPlayer.animation_finished
 		
 		queue_free()
 		get_parent().add_child(load("res://level_select/level_select_"+ str(shape_idx +1) + ".tscn").instantiate())

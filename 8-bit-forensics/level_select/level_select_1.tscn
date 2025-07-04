@@ -1,220 +1,106 @@
-[gd_scene load_steps=18 format=3 uid="uid://bb2q2os4gnskm"]
+[gd_scene load_steps=10 format=3 uid="uid://bb2q2os4gnskm"]
 
-[ext_resource type="Texture2D" uid="uid://du07jgkuynooi" path="res://assets/level_select/open-x3.png" id="1_pyf31"]
+[ext_resource type="Texture2D" uid="uid://2wyer1trrenh" path="res://assets/book-test-big-x3.png" id="1_l3xca"]
 [ext_resource type="Script" uid="uid://bjaghc73epk6k" path="res://level_select/open_folder_template.gd" id="2_c0r2y"]
-[ext_resource type="Texture2D" uid="uid://c54bqhcpkhvgk" path="res://assets/level_select/tabs-1-x3.png" id="2_pyf31"]
 [ext_resource type="Texture2D" uid="uid://dbaq50qbxhonf" path="res://assets/level_select/inside-left-x3.png" id="3_un5lr"]
 [ext_resource type="Texture2D" uid="uid://wbk4vf40q0cp" path="res://assets/level_select/inside-right-x3.png" id="4_l3xca"]
 [ext_resource type="Shape2D" uid="uid://c4vl3w531sv72" path="res://level_select/open_tab.tres" id="4_pbkm0"]
 [ext_resource type="Shape2D" uid="uid://44un3tl8v86i" path="res://level_select/closed_tab.tres" id="5_8gg1b"]
-[ext_resource type="Texture2D" uid="uid://v002oygfq8lk" path="res://assets/Book-test-x3.png" id="8_pbkm0"]
 
-[sub_resource type="Animation" id="Animation_at8f8"]
-resource_name = "open_1"
-length = 0.5
+[sub_resource type="Animation" id="Animation_pbkm0"]
+resource_name = "open_2"
+length = 0.8
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 4, 5]
+"values": [7, 9, 10, 11, 12, 13, 14, 15]
 }
 
-[sub_resource type="Animation" id="Animation_8bqwb"]
+[sub_resource type="Animation" id="Animation_8gg1b"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [5]
+"values": [7]
 }
 
-[sub_resource type="Animation" id="Animation_m71nh"]
-resource_name = "open_2"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [5, 6, 7, 8, 9, 10, 11, 12]
-}
-
-[sub_resource type="Animation" id="Animation_jdtxx"]
-resource_name = "open_3"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [12, 13, 14, 15, 16, 17, 18, 12]
-}
-
-[sub_resource type="Animation" id="Animation_b1wji"]
-resource_name = "open_4"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [12, 13, 14, 15, 16, 17, 18, 12]
-}
-
-[sub_resource type="Animation" id="Animation_qjpxo"]
-resource_name = "open_1_backwards"
-length = 0.8
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [12, 11, 10, 9, 8, 7, 6, 5]
-}
-
-[sub_resource type="Animation" id="Animation_gvw7g"]
-resource_name = "open_2_backwards"
-length = 0.8
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [12, 18, 17, 16, 15, 14, 13, 12]
-}
-
-[sub_resource type="Animation" id="Animation_grqjh"]
-resource_name = "open_3_backwards"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [12, 18, 17, 16, 15, 14, 13, 12]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjpxo"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qbvn0"]
 _data = {
-&"RESET": SubResource("Animation_8bqwb"),
-&"open_1": SubResource("Animation_at8f8"),
-&"open_1_backwards": SubResource("Animation_qjpxo"),
-&"open_2": SubResource("Animation_m71nh"),
-&"open_2_backwards": SubResource("Animation_gvw7g"),
-&"open_3": SubResource("Animation_jdtxx"),
-&"open_3_backwards": SubResource("Animation_grqjh"),
-&"open_4": SubResource("Animation_b1wji")
+&"RESET": SubResource("Animation_8gg1b"),
+&"open_2": SubResource("Animation_pbkm0")
 }
 
-[node name="level_select_1" type="TextureRect"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_pyf31")
+[node name="level_select_1" type="Sprite2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_l3xca")
+centered = false
+hframes = 8
+vframes = 2
+frame = 7
 script = ExtResource("2_c0r2y")
-
-[node name="tabs_rect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_pyf31")
 
 [node name="tabs" type="Area2D" parent="."]
 
 [node name="tab1" type="CollisionShape2D" parent="tabs"]
-position = Vector2(1503, 177)
+position = Vector2(694.5, 87)
 shape = ExtResource("4_pbkm0")
 
 [node name="tab2" type="CollisionShape2D" parent="tabs"]
-position = Vector2(1506, 276)
+position = Vector2(696, 135)
 shape = ExtResource("5_8gg1b")
 
 [node name="tab3" type="CollisionShape2D" parent="tabs"]
-position = Vector2(1506, 372)
+position = Vector2(696, 183)
 shape = ExtResource("5_8gg1b")
 
 [node name="tab4" type="CollisionShape2D" parent="tabs"]
-position = Vector2(1506, 468)
+position = Vector2(696, 234)
 shape = ExtResource("5_8gg1b")
 
 [node name="left_content" type="TextureRect" parent="."]
-layout_mode = 1
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = 8.5
+offset_right = -56.0
+offset_bottom = 8.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_un5lr")
 
 [node name="right_content" type="TextureRect" parent="."]
-layout_mode = 1
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -3.5
+offset_right = -55.0
+offset_bottom = -3.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_l3xca")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(488, 57)
-texture = ExtResource("8_pbkm0")
-hframes = 8
-vframes = 3
-frame = 5
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
-root_node = NodePath("../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_qjpxo")
+&"": SubResource("AnimationLibrary_qbvn0")
 }
 
 [connection signal="input_event" from="tabs" to="." method="_on_tabs_input_event"]
