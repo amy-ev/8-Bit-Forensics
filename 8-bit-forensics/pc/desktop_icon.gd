@@ -1,4 +1,4 @@
-extends MyFile
+extends File
 
 
 @onready var _file_dialog = preload("res://file_dialog/load_file.tscn")

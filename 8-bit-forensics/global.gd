@@ -10,7 +10,7 @@ extends Node
 
 @export var fullscreen:bool 
 
-signal selected(selected_node:MyFile, real_file:String)
+signal selected(selected_node:File, real_file:String)
 
 signal note_selected(note_topic:String)
 

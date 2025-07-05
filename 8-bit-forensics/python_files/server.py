@@ -70,7 +70,7 @@ def _ready():
         with open(file_path,"rb") as ib:
             bytedata = ib.read()
         ib.close()
-        client_socket.send(bytedata)
+
 
         # --- write metadata to json file ---
         
@@ -92,6 +92,8 @@ def _ready():
         with open("index.txt","w") as i:
             i.write(str(file_no))
         i.close()
+        
+        client_socket.send(bytedata)
 
 
 if __name__ == "__main__":

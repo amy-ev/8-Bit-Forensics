@@ -1,8 +1,8 @@
 extends Control
-class_name MyFile
+class_name File
 
 @export var _file_name: String 
-@export var _file_icon: CompressedTexture2D
+@export var _file_icon: ImageTexture
 
 @export var _selected_file: String
 
@@ -22,5 +22,5 @@ func _process(delta: float) -> void:
 func _on_select_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.is_pressed():
 		_selected_file = _file_icon.get_meta("file_name")
-		
+
 		Global.selected.emit(get_parent().get_node(str(self.name)), _selected_file)
