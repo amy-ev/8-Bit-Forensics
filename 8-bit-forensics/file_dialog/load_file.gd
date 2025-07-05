@@ -27,15 +27,14 @@ func _ready() -> void:
 	# ---------------------------
 	
 func _on_load_button_pressed() -> void:
-
+	
+	var metadata_text = get_parent().get_node("window/metadata")
+	metadata_text.clear()
+	
 	var client = client_scene.instantiate()
 	add_child(client)
 	await client.tree_exited
 
-	
-	var metadata_text = get_parent().get_node("window/metadata")
-	#metadata_text.clear()
-	
 	var json_dict = open_json("res://python_files/metadata.json")
 	
 	var file_idx = selected_file.replacen("photo", "")
@@ -46,11 +45,6 @@ func _on_load_button_pressed() -> void:
 		if json_dict.has("file_%s" %file_idx):
 
 			for key in json_dict["file_%s" % file_idx]:
-				
-				#key
-				#print(key)
-				#value
-				#print(json_dict["file_%s" % file_idx][key])
 				metadata_text.add_text(key)
 				metadata_text.add_text(" : ")
 				metadata_text.add_text(json_dict["file_%s" % file_idx][key])
