@@ -35,13 +35,23 @@ func open_img(img_path):
 		
 func send_data(msg_bytes):
 	print(msg_bytes.size())
+	
+	# take the filename and extract only the index
+	var file_idx = get_parent().selected_file.replacen("photo", "")
+	file_idx = file_idx.replacen(".jpg", "")
+	
+	var idx_buffer = StreamPeerBuffer.new()
+	idx_buffer.big_endian = true
+	idx_buffer.put_u32(int(file_idx))
+	var idx_msg = idx_buffer.data_array
 
 	var data_buffer = StreamPeerBuffer.new()
 	data_buffer.big_endian = true
 	data_buffer.put_u32(msg_bytes.size()) # 32-bit unsigned = 4 bytes
-	
 	var msg_len = data_buffer.data_array
-	client.put_data(msg_len) # send the size of the packet a 4 bytes
+
+	client.put_data(idx_msg) # send the files index as 4 bytes
+	client.put_data(msg_len) # send the size of the packet as 4 bytes
 	client.put_data(msg_bytes) # send the packet
 
 func recv_data():

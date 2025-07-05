@@ -12,9 +12,9 @@ def _ready():
     port = 8000
 
     file_name = ""
-    with open("index.txt","r") as i:
-        file_no = int(i.read())
-    i.close()
+    # with open("index.txt","r") as i:
+    #     file_no = int(i.read())
+    # i.close()
     
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((host, port))
@@ -28,7 +28,12 @@ def _ready():
         print(f"connected to: {client_address}")
 
         # --- receive data ---
+        file_no = struct.unpack("!I",client_socket.recv(4))[0]
+        print("file idx: ", file_no)
+
         msg_len = struct.unpack("!I", client_socket.recv(4))[0]
+        print("msg_len: ", msg_len)
+
         data = bytearray()
 
         while len(data) < msg_len:
@@ -88,11 +93,11 @@ def _ready():
         j.close()
 
         # keep track of file number                
-        file_no = file_no + 1
-        with open("index.txt","w") as i:
-            i.write(str(file_no))
-        i.close()
-        
+        # file_no = file_no + 1
+        # with open("index.txt","w") as i:
+        #     i.write(str(file_no))
+        # i.close()
+
         client_socket.send(bytedata)
 
 

@@ -29,6 +29,8 @@ texture = ExtResource("1_srayv")
 
 [node name="DesktopIcon" parent="pc_screen" instance=ExtResource("3_lrtf5")]
 layout_mode = 1
+_file_name = ""
+_selected_file = ""
 
 [node name="debug" type="Button" parent="pc_screen"]
 layout_mode = 1
