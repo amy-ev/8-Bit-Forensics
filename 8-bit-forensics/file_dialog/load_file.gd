@@ -28,13 +28,20 @@ func _ready() -> void:
 	
 func _on_load_button_pressed() -> void:
 	
-	var metadata_text = get_parent().get_node("metadata")
-	metadata_text.clear()
+	var metadata_key = get_parent().get_node("scroll/data_container/key")
+	var metadata_value = get_parent().get_node("scroll/data_container/value")
+	var metadata_thumbnail = get_parent().get_node("thumbnail")
+	
+	metadata_key.clear()
+	metadata_value.clear()
 	
 	var client = client_scene.instantiate()
 	add_child(client)
 	await client.tree_exited
 	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
+	
+	metadata_thumbnail.texture = load("res://jpg_folder/"+selected_file)
+	metadata_thumbnail.size = Vector2(111,90)
 	
 	var json_dict = open_json("res://python_files/metadata.json")
 	
@@ -46,14 +53,16 @@ func _on_load_button_pressed() -> void:
 		if json_dict.has("file_%s" %file_idx):
 
 			for key in json_dict["file_%s" % file_idx]:
-				metadata_text.add_text(key)
-				metadata_text.add_text(" : ")
-				metadata_text.add_text(json_dict["file_%s" % file_idx][key])
-				metadata_text.newline()
+				metadata_key.add_text(key)
+				#metadata_text.add_text(" : ")
+				metadata_value.add_text(json_dict["file_%s" % file_idx][key])
+				metadata_key.newline()
+				metadata_value.newline()
 		else:
 			pass
 	else:
 		print("Type: ", type_string(typeof(json_dict)))
+	
 	queue_free()
 	
 	
