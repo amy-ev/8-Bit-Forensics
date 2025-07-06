@@ -11,17 +11,15 @@ size = Vector2(32.9319, 23.9755)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbb4t"]
 size = Vector2(36, 24)
 
-[node name="desk" type="TextureRect"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_yrctc")
+[node name="desk" type="Node2D"]
 script = ExtResource("2_sbb4t")
 
+[node name="office_desk" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_yrctc")
+
 [node name="pc_btn" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 1470.0
 offset_top = 702.0
 offset_right = 1503.0
@@ -33,10 +31,7 @@ texture_hover = ExtResource("2_7lduy")
 texture_disabled = ExtResource("2_7lduy")
 texture_focused = ExtResource("2_7lduy")
 
-[node name="dialogue_manager" parent="." instance=ExtResource("4_sbb4t")]
-
 [node name="evidence_rect" type="TextureRect" parent="."]
-layout_mode = 0
 offset_left = 288.0
 offset_top = 769.0
 offset_right = 321.0
@@ -62,6 +57,8 @@ visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_7lduy")
+
+[node name="dialogue_manager" parent="." instance=ExtResource("4_sbb4t")]
 
 [connection signal="pressed" from="pc_btn" to="." method="_on_pc_btn_pressed"]
 [connection signal="input_event" from="evidence_rect/evidence" to="." method="_on_evidence_input_event"]

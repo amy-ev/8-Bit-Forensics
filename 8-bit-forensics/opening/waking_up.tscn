@@ -183,22 +183,12 @@ _data = {
 &"wake_up": SubResource("Animation_s8635")
 }
 
-[node name="opening" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="opening" type="Node2D"]
 script = ExtResource("1_dw5rp")
 
 [node name="room" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
 color = Color(0.843791, 0.540942, 0.703187, 1)
 
 [node name="change_scene" type="Button" parent="room"]
@@ -218,12 +208,8 @@ text = "go to work
 "
 
 [node name="ceiling" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="wake_up_btn" type="Button" parent="ceiling"]
 layout_mode = 1
@@ -243,32 +229,19 @@ turn off alarm button"
 
 [node name="fade" type="ColorRect" parent="."]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
 [node name="top_lid" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -1080.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1920.0
+offset_bottom = 556.516
 color = Color(0, 0, 0, 1)
 
 [node name="bottom_lid" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 1080.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_top = 736.67
+offset_right = 1920.0
+offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
 [node name="animation" type="AnimationPlayer" parent="."]

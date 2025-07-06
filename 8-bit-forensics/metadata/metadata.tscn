@@ -1,21 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://d31sl6bl6j3b3"]
 
-[ext_resource type="Script" uid="uid://ov3ncvye16od" path="res://metadata/metadata.gd" id="1_2ct7u"]
+[ext_resource type="Script" uid="uid://b4546ogyrqq64" path="res://metadata/metadata.gd" id="1_2ct7u"]
 [ext_resource type="Texture2D" uid="uid://c8iudgnvx58hr" path="res://assets/file_dialog/window-x3.png" id="1_u0ec0"]
 [ext_resource type="Texture2D" uid="uid://b5g6jpl6wfj3l" path="res://assets/file_dialog/confirm-button-x3.png" id="3_vpbfe"]
 
-[node name="metadata" type="CanvasLayer"]
-script = ExtResource("1_2ct7u")
-
-[node name="window" type="NinePatchRect" parent="."]
+[node name="metadata_window" type="NinePatchRect"]
 offset_right = 371.0
 offset_bottom = 303.0
 texture = ExtResource("1_u0ec0")
 patch_margin_left = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
+script = ExtResource("1_2ct7u")
 
-[node name="metadata" type="RichTextLabel" parent="window"]
+[node name="metadata" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +23,7 @@ grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 
 [node name="select" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 420.0
 offset_right = 453.0
 offset_bottom = 15.0

@@ -41,22 +41,12 @@ _data = {
 &"moving": SubResource("Animation_5p3h7")
 }
 
-[node name="train" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="train" type="Node2D"]
 script = ExtResource("1_5ycvx")
 
 [node name="train_background" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
 scale = Vector2(2, 1)
 texture = ExtResource("2_e54oy")
 
@@ -67,12 +57,8 @@ libraries = {
 autoplay = "moving"
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("3_5p3h7")
 
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]

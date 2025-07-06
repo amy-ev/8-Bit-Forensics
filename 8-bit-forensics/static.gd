@@ -13,7 +13,7 @@ static func window_mode()-> float:
 		scaler = float(2.0/3.0)
 	return scaler
 
-static func fullscreen_input(event: InputEvent) -> float:
+static func fullscreen_input(_event: InputEvent) -> float:
 	var scaler:float
 	if !fullscreen:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

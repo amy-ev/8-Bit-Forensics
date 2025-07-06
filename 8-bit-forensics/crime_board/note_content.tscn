@@ -1,37 +1,42 @@
 [gd_scene load_steps=3 format=3 uid="uid://bicxast7ydwqw"]
 
-[ext_resource type="Texture2D" uid="uid://2e4o5cr1pfdh" path="res://assets/level_select/note-content-x3.png" id="1_qrhwp"]
+[ext_resource type="Texture2D" uid="uid://2e4o5cr1pfdh" path="res://assets/crime_board/note-content-x3.png" id="2_66fos"]
 [ext_resource type="Script" uid="uid://d0ufdxlxgv1i" path="res://crime_board/note_content.gd" id="2_84eci"]
 
-[node name="note_background" type="NinePatchRect"]
+[node name="note" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2_84eci")
+
+[node name="note_background" type="NinePatchRect" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -307.5
-offset_top = -303.0
-offset_right = 307.5
-offset_bottom = 303.0
+offset_left = 653.0
+offset_top = 237.0
+offset_right = 1268.0
+offset_bottom = 843.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_qrhwp")
-region_rect = Rect2(3, 3, 273, 402)
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-script = ExtResource("2_84eci")
+texture = ExtResource("2_66fos")
+region_rect = Rect2(0, 0, 279, 408)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
-[node name="note_content" type="RichTextLabel" parent="."]
+[node name="note_content" type="RichTextLabel" parent="note_background"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 18.0
-offset_right = -3.0
-offset_bottom = -3.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -45,7 +50,6 @@ drag_and_drop_selection_enabled = false
 [node name="area" type="Area2D" parent="."]
 
 [node name="area_shape" type="CollisionPolygon2D" parent="area"]
-position = Vector2(-652.5, -237)
 polygon = PackedVector2Array(653, 237, 1268, 237, 1268, 843, 653, 843, 653, 237, 0, 0, 0, 1080, 1920, 1080, 1920, 0, 0, 0)
 
 [connection signal="input_event" from="area" to="." method="_on_area_input_event"]

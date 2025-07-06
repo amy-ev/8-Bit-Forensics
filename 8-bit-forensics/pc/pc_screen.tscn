@@ -5,32 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://xyusutygugir" path="res://pc/desktop_icon.tscn" id="3_lrtf5"]
 [ext_resource type="PackedScene" uid="uid://dmyybf4yay1vy" path="res://pc/evidence_file.tscn" id="4_nklpn"]
 
-[node name="pc" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
+[node name="pc" type="Node2D"]
 script = ExtResource("2_n1q0v")
 
 [node name="pc_screen" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 texture = ExtResource("1_srayv")
-
-[node name="DesktopIcon" parent="pc_screen" instance=ExtResource("3_lrtf5")]
-layout_mode = 1
-_file_name = ""
-_selected_file = ""
 
 [node name="debug" type="Button" parent="pc_screen"]
 layout_mode = 1
@@ -47,14 +31,18 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "end day"
 
-[node name="CanvasLayer" parent="." instance=ExtResource("4_nklpn")]
+[node name="DesktopIcon" parent="." instance=ExtResource("3_lrtf5")]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 50.0
+offset_bottom = 50.0
 
-[node name="Control" parent="CanvasLayer" index="0"]
-offset_left = 831.0
-offset_top = 698.0
-offset_right = 871.0
-offset_bottom = 738.0
+[node name="evidence_file" parent="." instance=ExtResource("4_nklpn")]
+offset_left = 800.0
+offset_top = 800.0
+offset_right = 800.0
+offset_bottom = 800.0
 
 [connection signal="pressed" from="pc_screen/debug" to="." method="_on_debug_pressed"]
 
-[editable path="CanvasLayer"]
+[editable path="evidence_file"]

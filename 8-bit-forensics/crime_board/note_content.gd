@@ -1,18 +1,5 @@
-extends NinePatchRect
+extends Control
 
-@export var scaled_by: Vector2
-
-func _ready() -> void:
-	update_size()
-	
-func _notification(what: int) -> void:
-	if what == 1012:
-		update_size()
-
-func update_size():
-	var original_size = size
-	scaled_by = (Vector2(original_size.x -1, original_size.x -1)/Vector2(size.x-1,size.x-1))
-	size = size / scaled_by
 
 func _on_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.is_pressed():

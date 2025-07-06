@@ -56,5 +56,5 @@ func add_files(file_no:int):
 		$file_dialog/window/file_container.size.y = $file_dialog/window.size.y - (5 * Global.magnification)
 		$file_dialog/window/file_container.position.x = (3 * Global.magnification)
 		$file_dialog/window/file_container.position.y = (2 * Global.magnification)
-		$file_dialog/window/file_container.add_theme_constant_override("h_separation", file.get_node("select/select_shape").shape.size.x)
+		$file_dialog/window/file_container.add_theme_constant_override("h_separation", file.get_node("select/select_shape").shape.size.x + 6)
 		$file_dialog/window/file_container.add_theme_constant_override("v_separation", (file.get_node("select/select_shape").shape.size.y)+(file.get_node("file_name").size.y))

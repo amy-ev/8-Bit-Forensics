@@ -28,13 +28,14 @@ func _ready() -> void:
 	
 func _on_load_button_pressed() -> void:
 	
-	var metadata_text = get_parent().get_node("window/metadata")
+	var metadata_text = get_parent().get_node("metadata")
 	metadata_text.clear()
 	
 	var client = client_scene.instantiate()
 	add_child(client)
 	await client.tree_exited
-
+	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
+	
 	var json_dict = open_json("res://python_files/metadata.json")
 	
 	var file_idx = selected_file.replacen("photo", "")
@@ -77,7 +78,7 @@ func add_files(file_no:int):
 		$file_dialog/window/file_container.size.y = $file_dialog/window.size.y - (5 * Global.magnification)
 		$file_dialog/window/file_container.position.x = (3 * Global.magnification)
 		$file_dialog/window/file_container.position.y = (2 * Global.magnification)
-		$file_dialog/window/file_container.add_theme_constant_override("h_separation", file.get_node("select/select_shape").shape.size.x)
+		$file_dialog/window/file_container.add_theme_constant_override("h_separation", file.get_node("select/select_shape").shape.size.x + 6)
 		$file_dialog/window/file_container.add_theme_constant_override("v_separation", (file.get_node("select/select_shape").shape.size.y)+(file.get_node("file_name").size.y))
 	
 

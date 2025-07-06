@@ -50,18 +50,16 @@ size = Vector2(198, 246)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06hg8"]
 size = Vector2(192, 258)
 
-[node name="board" type="TextureRect"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_iff0x")
+[node name="board" type="Node2D"]
 script = ExtResource("1_k2i71")
+
+[node name="crime_board" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_iff0x")
 
 [node name="note1" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
-layout_mode = 1
 texture = ExtResource("4_xd1ls")
 
 [node name="area_shape" parent="note1/area" index="0"]
@@ -70,7 +68,6 @@ shape = SubResource("RectangleShape2D_xd1ls")
 
 [node name="note2" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
-layout_mode = 1
 texture = ExtResource("5_boyje")
 
 [node name="area_shape" parent="note2/area" index="0"]
@@ -85,7 +82,6 @@ texture = ExtResource("7_n1grn")
 
 [node name="note3" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
-layout_mode = 1
 texture = ExtResource("8_b6qcv")
 
 [node name="area_shape" parent="note3/area" index="0"]
@@ -100,7 +96,6 @@ texture = ExtResource("10_06hg8")
 
 [node name="note4" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
-layout_mode = 1
 texture = ExtResource("11_dbmes")
 
 [node name="area_shape" parent="note4/area" index="0"]
@@ -115,7 +110,6 @@ texture = ExtResource("13_rm8ev")
 
 [node name="note5" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
-layout_mode = 1
 texture = ExtResource("14_5c4nk")
 
 [node name="area_shape" parent="note5/area" index="0"]
@@ -130,7 +124,6 @@ texture = ExtResource("16_i5a6v")
 
 [node name="note6" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
-layout_mode = 1
 texture = ExtResource("17_fk5vu")
 
 [node name="area_shape" parent="note6/area" index="0"]
@@ -145,7 +138,6 @@ texture = ExtResource("19_6w4yj")
 
 [node name="note7" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
-layout_mode = 1
 texture = ExtResource("20_lci88")
 
 [node name="area_shape" parent="note7/area" index="0"]
@@ -160,7 +152,6 @@ texture = ExtResource("22_e72sc")
 
 [node name="note8" parent="." instance=ExtResource("2_tnfbr")]
 visible = false
-layout_mode = 1
 texture = ExtResource("23_hu1fj")
 
 [node name="area_shape" parent="note8/area" index="0"]
@@ -174,22 +165,20 @@ texture = ExtResource("24_h6bm4")
 texture = ExtResource("25_i1yb3")
 
 [node name="unlock_debug" type="Button" parent="."]
-layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -174.0
-offset_top = -113.0
-offset_right = -82.0
-offset_bottom = -82.0
+offset_left = 1828.0
+offset_top = 1049.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "unlock day"
 
 [node name="back_btn" type="Button" parent="."]
-layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "back"

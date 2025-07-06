@@ -1,10 +1,14 @@
-extends CanvasLayer
+extends Node2D
 
 var correct_answer = Global.answers[Global.unlocked]
 
 func _ready() -> void:
 	Global.connect("answer", _on_answer_selected)
+	scale = scale * Utility.window_mode()
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.is_action_pressed("fullscreen"):
+		scale = scale * Utility.fullscreen_input(event)
 
 func _on_a_pressed() -> void:
 	Global.answer.emit("Day_"+ str(Global.unlocked +1), 0)
