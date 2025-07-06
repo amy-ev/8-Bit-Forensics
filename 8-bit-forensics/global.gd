@@ -1,5 +1,6 @@
 extends Node
 
+
 @export var magnification: int = 3
 @export var levels: Dictionary = {0:"note1",1:"note2",2:"note3",3:"note4",4:"note5",5:"note6",6:"note7",7:"note8"}
 @export var days: Array = []
@@ -7,8 +8,6 @@ extends Node
 
 @export var answers = ["a","b","a","c"]
 @export var quiz_dict = {"Day_1":["a","b","c"]}
-
-@export var fullscreen:bool 
 
 signal selected(selected_node:File, real_file:String)
 
