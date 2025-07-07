@@ -1,9 +1,10 @@
 extends NinePatchRect
 
 @onready var _file_metadata = preload("res://file_dialog/load_file.tscn")
-var keys_and_values = []
+var keys_and_values: Array
 
-var current_rect: ColorRect
+var current_select: Array
+var current_rows: Array
 @export var current_image: String
 
 func _ready() -> void:
@@ -40,11 +41,25 @@ func _process(delta: float) -> void:
 func _on_label_selected(selected:Node):
 	var selected_rect = selected.get_node("selected")
 	
-	# if current_rect is not null and current_rect is not from the label just emitted
-	if current_rect and current_rect != selected_rect:
-		current_rect.visible = false
-	selected_rect.visible = true
-	current_rect = selected_rect
+	for rect in current_select:
+		if rect != selected_rect:
+			rect.visible = false
+	if selected_rect not in current_select:
+		current_select.append(selected_rect)
+		current_rows.append(selected.text)
+	if current_select.size() > 2:
+		for rect in current_select:
+			rect.visible = false
+		current_select.clear()
+		current_rows.clear()
+		
+	for rect in current_select:
+		rect.visible = true
+	# if current_select is not null and current_select is not from the label just emitted
+	#if current_select and current_select != selected_rect:
+		#current_select.visible = false
+	#selected_rect.visible = true
+	#current_select = selected_rect
 	
 	var json_dict = open_json("res://python_files/metadata.json")
 	if typeof(json_dict) == TYPE_DICTIONARY:
@@ -69,3 +84,22 @@ func open_json(file_path):
 		else:
 			print("error code:" , error)
 			metadata.close()
+
+func _on_flag_pressed() -> void:
+	# create a whole dictionary with each metadata key represented
+	var matches = {"DateTimeOriginal":["DateTimeDigitized","GPSTimeStamp","GPSDateStamp"]}
+	var found = 0
+	for i in current_rows.size():
+		var row = current_rows[i]
+		if matches.has(row):
+			found +=1
+		else:
+			for key in matches.keys():
+				if row in matches[key]:
+					found += 1
+					break
+		if found == 2:
+			print("correlate")
+			# continue to check the values of the 2 selected rows
+			
+			# continue with logic for individual rows selected with discrepancies

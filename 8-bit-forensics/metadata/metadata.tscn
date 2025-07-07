@@ -151,7 +151,13 @@ layout_mode = 2
 mouse_default_cursor_shape = 10
 script = ExtResource("9_f4pdf")
 
+[node name="flag" type="Button" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "!"
+
 [connection signal="gui_input" from="metadata_window/backgrounds/resize" to="metadata_window/backgrounds/resize" method="_on_gui_input"]
 [connection signal="pressed" from="metadata_window/select" to="metadata_window" method="_on_select_pressed"]
 [connection signal="pressed" from="metadata_window/exit" to="metadata_window" method="_on_exit_pressed"]
 [connection signal="gui_input" from="resize" to="resize" method="_on_gui_input"]
+[connection signal="pressed" from="flag" to="metadata_window" method="_on_flag_pressed"]
