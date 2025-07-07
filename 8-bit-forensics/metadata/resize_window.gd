@@ -19,5 +19,5 @@ func _on_gui_input(event: InputEvent) -> void:
 		var delta = event.position.x - start_pos.x
 		var new_width = start_width + delta
 
-		panel.custom_minimum_size.x = max(444, new_width)
+		panel.custom_minimum_size.x = max(444, new_width - size.x)
 		

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3e5723vb1frs"]
+
+[ext_resource type="Script" uid="uid://btq7yy63dr15t" path="res://metadata/metadata_label.gd" id="1_c8y01"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsd8n"]
+size = Vector2(100, 40)
+
+[node name="metadata_label" type="Label"]
+custom_minimum_size = Vector2(117, 40)
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_c8y01")
+
+[node name="selected" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 1, 1, 0.376471)
+
+[node name="select" type="Area2D" parent="."]
+
+[node name="select_shape" type="CollisionShape2D" parent="select"]
+position = Vector2(50, 20)
+shape = SubResource("RectangleShape2D_wsd8n")
+
+[connection signal="input_event" from="select" to="." method="_on_select_input_event"]

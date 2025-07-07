@@ -1,14 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://d31sl6bl6j3b3"]
+[gd_scene load_steps=13 format=3 uid="uid://d31sl6bl6j3b3"]
 
 [ext_resource type="Script" uid="uid://b4546ogyrqq64" path="res://metadata/metadata.gd" id="1_2ct7u"]
-[ext_resource type="Texture2D" uid="uid://bi7csyqnsth5n" path="res://assets/metadata/metadata-window-x3.png" id="1_vpbfe"]
-[ext_resource type="Texture2D" uid="uid://cmw14d407sjnv" path="res://assets/metadata/itemname-x3.png" id="3_d1c4e"]
+[ext_resource type="Texture2D" uid="uid://c0ys5eawrgcpg" path="res://assets/metadata/window-x3.png" id="1_ehxks"]
 [ext_resource type="Texture2D" uid="uid://dnbt2p1ftilr6" path="res://assets/metadata/open-x3.png" id="3_daqaj"]
+[ext_resource type="Texture2D" uid="uid://djeg3e37t6h3o" path="res://assets/metadata/itemname-column-x3.png" id="3_paekb"]
 [ext_resource type="Texture2D" uid="uid://c4xgw307hdccl" path="res://assets/metadata/exit-x3.png" id="4_7dblc"]
 [ext_resource type="Script" uid="uid://blmrub28dh8vl" path="res://metadata/resize.gd" id="4_f4pdf"]
-[ext_resource type="Texture2D" uid="uid://sugn3vojx660" path="res://assets/metadata/information-x3.png" id="4_ksy73"]
 [ext_resource type="Texture2D" uid="uid://c4yiawhjwwb6" path="res://assets/metadata/thumbnail-x3.png" id="5_daqaj"]
+[ext_resource type="Texture2D" uid="uid://cq7ji5tyggy8t" path="res://assets/metadata/information-column-x3.png" id="6_kkei2"]
+[ext_resource type="Texture2D" uid="uid://fvgp7ee05wy6" path="res://assets/metadata/itemname-title-x3.png" id="6_paekb"]
+[ext_resource type="Texture2D" uid="uid://c7pefdq5116cw" path="res://assets/metadata/information-title-x3.png" id="7_kkei2"]
 [ext_resource type="Script" uid="uid://brfkcjsti85v" path="res://metadata/resize_window.gd" id="9_f4pdf"]
+[ext_resource type="Texture2D" uid="uid://eq5a4yqotmj8" path="res://assets/metadata/thumbnail-column-x3.png" id="9_hpvqb"]
 
 [node name="metadata_container" type="HBoxContainer"]
 offset_right = 40.0
@@ -18,7 +21,7 @@ theme_override_constants/separation = -3
 [node name="metadata_window" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(444, 333)
 layout_mode = 2
-texture = ExtResource("1_vpbfe")
+texture = ExtResource("1_ehxks")
 region_rect = Rect2(0, 0, 444, 333)
 patch_margin_left = 3
 patch_margin_top = 3
@@ -33,32 +36,56 @@ offset_left = 132.0
 offset_top = 39.0
 offset_right = 444.0
 offset_bottom = 333.0
+mouse_filter = 2
 theme_override_constants/separation = -3
 
 [node name="key_background" type="NinePatchRect" parent="metadata_window/backgrounds"]
 custom_minimum_size = Vector2(123, 294)
 layout_mode = 2
-texture = ExtResource("3_d1c4e")
+texture = ExtResource("3_paekb")
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
+
+[node name="itemname" type="TextureRect" parent="metadata_window/backgrounds/key_background"]
+clip_contents = true
+custom_minimum_size = Vector2(117, 18)
+layout_mode = 1
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 120.0
+offset_bottom = 21.0
+texture = ExtResource("6_paekb")
+stretch_mode = 2
 
 [node name="resize" type="Control" parent="metadata_window/backgrounds"]
 custom_minimum_size = Vector2(3, 0)
 layout_mode = 2
-mouse_default_cursor_shape = 2
+mouse_default_cursor_shape = 10
 script = ExtResource("4_f4pdf")
 
 [node name="value_background" type="NinePatchRect" parent="metadata_window/backgrounds"]
+clip_contents = true
 custom_minimum_size = Vector2(192, 294)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("4_ksy73")
+texture = ExtResource("6_kkei2")
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
+
+[node name="information" type="TextureRect" parent="metadata_window/backgrounds/value_background"]
+clip_contents = true
+custom_minimum_size = Vector2(147, 18)
+layout_mode = 1
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 150.0
+offset_bottom = 21.0
+texture = ExtResource("7_kkei2")
+stretch_mode = 2
 
 [node name="scroll" type="ScrollContainer" parent="metadata_window"]
 custom_minimum_size = Vector2(306, 267)
@@ -67,28 +94,14 @@ offset_left = 135.0
 offset_top = 63.0
 offset_right = 441.0
 offset_bottom = 330.0
-mouse_filter = 2
 horizontal_scroll_mode = 0
 
-[node name="data_container" type="HBoxContainer" parent="metadata_window/scroll"]
+[node name="data_container" type="VBoxContainer" parent="metadata_window/scroll"]
 clip_contents = true
+custom_minimum_size = Vector2(298, 267)
 layout_mode = 2
-size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_constants/separation = 3
-
-[node name="key" type="RichTextLabel" parent="metadata_window/scroll/data_container"]
-custom_minimum_size = Vector2(117, 267)
-layout_mode = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-fit_content = true
-scroll_active = false
-
-[node name="value" type="RichTextLabel" parent="metadata_window/scroll/data_container"]
-custom_minimum_size = Vector2(186, 267)
-layout_mode = 2
-fit_content = true
-scroll_active = false
 
 [node name="select" type="TextureButton" parent="metadata_window"]
 layout_mode = 1
@@ -115,18 +128,27 @@ texture_hover = ExtResource("4_7dblc")
 texture_disabled = ExtResource("4_7dblc")
 texture_focused = ExtResource("4_7dblc")
 
-[node name="thumbnail" type="TextureRect" parent="metadata_window"]
+[node name="thumbnail_column" type="TextureRect" parent="metadata_window"]
+custom_minimum_size = Vector2(135, 294)
+layout_mode = 1
+offset_top = 39.0
+offset_right = 135.0
+offset_bottom = 333.0
+texture = ExtResource("9_hpvqb")
+
+[node name="thumbnail" type="TextureRect" parent="metadata_window/thumbnail_column"]
 layout_mode = 0
 offset_left = 12.0
-offset_top = 72.0
+offset_top = 33.0
 offset_right = 123.0
-offset_bottom = 153.0
+offset_bottom = 114.0
 texture = ExtResource("5_daqaj")
 expand_mode = 1
 
 [node name="resize" type="Control" parent="."]
 custom_minimum_size = Vector2(3, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 10
 script = ExtResource("9_f4pdf")
 
 [connection signal="gui_input" from="metadata_window/backgrounds/resize" to="metadata_window/backgrounds/resize" method="_on_gui_input"]

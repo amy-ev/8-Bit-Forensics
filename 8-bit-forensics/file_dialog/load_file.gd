@@ -4,6 +4,7 @@ class_name LoadFile
 @onready var client_scene = preload("res://file_dialog/client.tscn")
 @onready var files = preload("res://file_dialog/file.tscn")
 #@onready var saved_dialog_scene = preload("res://file_dialog/save_file.tscn")
+@onready var metadata_labels = preload("res://metadata/metadata_label.tscn")
 
 @export var file_icon: ImageTexture
 @export var selected_file: String
@@ -28,12 +29,12 @@ func _ready() -> void:
 	
 func _on_load_button_pressed() -> void:
 	
-	var metadata_key = get_parent().get_node("scroll/data_container/key")
-	var metadata_value = get_parent().get_node("scroll/data_container/value")
-	var metadata_thumbnail = get_parent().get_node("thumbnail")
-	
-	metadata_key.clear()
-	metadata_value.clear()
+	#var metadata_keys = get_parent().get_node("scroll/data_container/keys")
+	#var metadata_values = get_parent().get_node("scroll/data_container/values")
+	var metadata_thumbnail = get_parent().get_node("thumbnail_column/thumbnail")
+	var metadata_column = get_parent().get_node("scroll/data_container")
+	#metadata_key.clear()
+	#metadata_value.clear()
 	
 	var client = client_scene.instantiate()
 	add_child(client)
@@ -53,11 +54,33 @@ func _on_load_button_pressed() -> void:
 		if json_dict.has("file_%s" %file_idx):
 
 			for key in json_dict["file_%s" % file_idx]:
-				metadata_key.add_text(key)
+				var key_and_value = HBoxContainer.new()
+				key_and_value.custom_minimum_size = Vector2(298.0,40.0)
+				key_and_value.add_theme_constant_override("separation", 0)
+				
+				#key_and_value.size_flags_horizontal = Control.SIZE_FILL
+				metadata_column.add_child(key_and_value)
+				
+				var key_label = metadata_labels.instantiate()
+				key_label.text = key
+				key_label.set_autowrap_mode(TextServer.AUTOWRAP_WORD_SMART)
+				key_label.custom_minimum_size = Vector2(117.0, 40.0)
+				key_label.get_node("select/select_shape").shape.size.x = 298.0
+				key_and_value.add_child(key_label)
+				#metadata_key.add_text(key)
 				#metadata_text.add_text(" : ")
-				metadata_value.add_text(json_dict["file_%s" % file_idx][key])
-				metadata_key.newline()
-				metadata_value.newline()
+				#metadata_value.add_text(json_dict["file_%s" % file_idx][key])
+				var value_label = metadata_labels.instantiate()
+				value_label.text = json_dict["file_%s" % file_idx][key]
+				value_label.set_autowrap_mode(TextServer.AUTOWRAP_WORD_SMART)
+				value_label.custom_minimum_size = Vector2(186.0, 40.0)
+				value_label.get_node("selected").queue_free()
+				value_label.get_node("select").queue_free()
+				key_and_value.add_child(value_label)
+				
+				
+				#metadata_key.newline()
+				#metadata_value.newline()
 		else:
 			pass
 	else:

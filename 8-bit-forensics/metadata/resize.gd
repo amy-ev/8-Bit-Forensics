@@ -7,7 +7,6 @@ var start_width:int
 @onready var key_panel = $"../key_background"
 @onready var value_panel = $"../value_background"
 
-
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:

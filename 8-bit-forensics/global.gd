@@ -20,3 +20,5 @@ signal evidence_collected()
 signal answer(day:String, answer:int)
 
 signal child_joined()
+
+signal metadata_selected(selected:Node)
