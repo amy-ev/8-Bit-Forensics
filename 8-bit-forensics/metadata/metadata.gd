@@ -1,26 +1,25 @@
 extends NinePatchRect
 
-@onready var _file_dialogue = preload("res://file_dialog/load_file.tscn")
+@onready var _file_metadata = preload("res://file_dialog/load_file.tscn")
 var keys_and_values = []
 
 var current_rect: ColorRect
+@export var current_image: String
 
 func _ready() -> void:
 	Global.connect("metadata_selected", _on_label_selected)
 func _on_select_pressed() -> void:
-	var file_dialogue = _file_dialogue.instantiate()
-	add_child(file_dialogue)
-
-	await file_dialogue.tree_exited
+	var file_metadata = _file_metadata.instantiate()
+	add_child(file_metadata)
+	
+	await file_metadata.tree_exited
+	
 	for hbox in $scroll/data_container.get_children():
 		keys_and_values.append(hbox)
-	print("its gone")
 	
 func _on_exit_pressed() -> void:
 	queue_free()
 	
-
-
 func _process(delta: float) -> void:
 	if $backgrounds.minimum_size_changed:
 		$backgrounds.custom_minimum_size.x = $"../metadata_window".custom_minimum_size.x - 135
@@ -37,17 +36,36 @@ func _process(delta: float) -> void:
 				keys_and_values[hbox].get_child(0).get_node("selected").custom_minimum_size.x = ($backgrounds/key_background.custom_minimum_size.x + $backgrounds/value_background.custom_minimum_size.x)
 				keys_and_values[hbox].get_child(0).get_node("select/select_shape").shape.size.x = ($backgrounds/key_background.custom_minimum_size.x + $backgrounds/value_background.custom_minimum_size.x)
 				keys_and_values[hbox].get_child(1).custom_minimum_size.x = $backgrounds/value_background.custom_minimum_size.x - 3
-			#keys_and_values[hbox].custom_minimum_size.x = $scroll/data_container.custom_minimum_size.x
 
-	#$scroll/data_container/keys.custom_minimum_size.x = $backgrounds/key_background.custom_minimum_size.x
-	#$scroll/data_container/values.custom_minimum_size.x = $backgrounds/value_background.custom_minimum_size.x
 func _on_label_selected(selected:Node):
 	var selected_rect = selected.get_node("selected")
 	
 	# if current_rect is not null and current_rect is not from the label just emitted
 	if current_rect and current_rect != selected_rect:
 		current_rect.visible = false
-
 	selected_rect.visible = true
 	current_rect = selected_rect
-	print(selected.text)
+	
+	var json_dict = open_json("res://python_files/metadata.json")
+	if typeof(json_dict) == TYPE_DICTIONARY:
+		if json_dict.has("file_%s" %current_image):
+			print(json_dict["file_" + current_image][selected.text])
+
+func open_json(file_path):
+	if FileAccess.file_exists(file_path):
+
+		var metadata = FileAccess.open(file_path, FileAccess.READ)
+		
+		if FileAccess.get_open_error() != OK:
+			print("could not open file: ", metadata.get_open_error())
+	
+		var json = JSON.new()
+		var error = json.parse(metadata.get_as_text())
+		if error == OK:
+			var json_dict = json.data
+			
+			metadata.close()
+			return json_dict
+		else:
+			print("error code:" , error)
+			metadata.close()

@@ -8,6 +8,7 @@ class_name LoadFile
 
 @export var file_icon: ImageTexture
 @export var selected_file: String
+@export var file_idx:String
 
 var client:Node
 var current_rect: ColorRect
@@ -29,13 +30,9 @@ func _ready() -> void:
 	
 func _on_load_button_pressed() -> void:
 	
-	#var metadata_keys = get_parent().get_node("scroll/data_container/keys")
-	#var metadata_values = get_parent().get_node("scroll/data_container/values")
 	var metadata_thumbnail = get_parent().get_node("thumbnail_column/thumbnail")
 	var metadata_column = get_parent().get_node("scroll/data_container")
-	#metadata_key.clear()
-	#metadata_value.clear()
-	
+
 	var client = client_scene.instantiate()
 	add_child(client)
 	await client.tree_exited
@@ -52,13 +49,11 @@ func _on_load_button_pressed() -> void:
 	#print("file idx: %s" %file_idx)
 	if typeof(json_dict) == TYPE_DICTIONARY:
 		if json_dict.has("file_%s" %file_idx):
-
 			for key in json_dict["file_%s" % file_idx]:
+				
 				var key_and_value = HBoxContainer.new()
 				key_and_value.custom_minimum_size = Vector2(298.0,40.0)
 				key_and_value.add_theme_constant_override("separation", 0)
-				
-				#key_and_value.size_flags_horizontal = Control.SIZE_FILL
 				metadata_column.add_child(key_and_value)
 				
 				var key_label = metadata_labels.instantiate()
@@ -67,9 +62,7 @@ func _on_load_button_pressed() -> void:
 				key_label.custom_minimum_size = Vector2(117.0, 40.0)
 				key_label.get_node("select/select_shape").shape.size.x = 298.0
 				key_and_value.add_child(key_label)
-				#metadata_key.add_text(key)
-				#metadata_text.add_text(" : ")
-				#metadata_value.add_text(json_dict["file_%s" % file_idx][key])
+
 				var value_label = metadata_labels.instantiate()
 				value_label.text = json_dict["file_%s" % file_idx][key]
 				value_label.set_autowrap_mode(TextServer.AUTOWRAP_WORD_SMART)
@@ -77,10 +70,7 @@ func _on_load_button_pressed() -> void:
 				value_label.get_node("selected").queue_free()
 				value_label.get_node("select").queue_free()
 				key_and_value.add_child(value_label)
-				
-				
-				#metadata_key.newline()
-				#metadata_value.newline()
+
 		else:
 			pass
 	else:
@@ -148,28 +138,28 @@ func _on_file_selected(selected_node:File, real_file:String):
 	current_rect = selected_rect
 	
 	selected_file = real_file
+	
 	print("selected_node: %s, real_file: %s, selected_file: %s "%[selected_node, real_file, selected_file])
+	
+	file_idx = selected_file.replacen("photo", "")
+	file_idx = file_idx.replacen(".jpg", "")
+	get_parent().current_image = file_idx
 	
 func open_json(file_path):
 	if FileAccess.file_exists(file_path):
 
-		var dialogue = FileAccess.open(file_path, FileAccess.READ)
+		var metadata = FileAccess.open(file_path, FileAccess.READ)
 		
 		if FileAccess.get_open_error() != OK:
-			print("could not open file: ", dialogue.get_open_error())
+			print("could not open file: ", metadata.get_open_error())
 	
 		var json = JSON.new()
-		var error = json.parse(dialogue.get_as_text())
+		var error = json.parse(metadata.get_as_text())
 		if error == OK:
 			var json_dict = json.data
 			
-			dialogue.close()
+			metadata.close()
 			return json_dict
 		else:
 			print("error code:" , error)
-			dialogue.close()
-		#var json = json.parse(dialogue.get_as_text(), true)
-		#var json_dict = json.get_parsed_text()
-
-		#print(json_dict)
-		#return json_dict
+			metadata.close()

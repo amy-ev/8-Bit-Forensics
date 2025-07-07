@@ -36,9 +36,7 @@ func open_img(img_path):
 func send_data(msg_bytes):
 	print(msg_bytes.size())
 	
-	# take the filename and extract only the index
-	var file_idx = get_parent().selected_file.replacen("photo", "")
-	file_idx = file_idx.replacen(".jpg", "")
+	var file_idx = get_parent().file_idx
 	
 	var idx_buffer = StreamPeerBuffer.new()
 	idx_buffer.big_endian = true
