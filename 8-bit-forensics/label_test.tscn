@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv3cmxuj7j8if"]
+
+[ext_resource type="PackedScene" uid="uid://c3e5723vb1frs" path="res://metadata/metadata_label.tscn" id="1_7cguv"]
+[ext_resource type="Script" uid="uid://x52ic410q8wf" path="res://label_test.gd" id="1_xijqe"]
+
+[node name="label_test" type="Node2D"]
+script = ExtResource("1_xijqe")
+
+[node name="metadata_label" parent="." instance=ExtResource("1_7cguv")]
+text = "start"
+
+[node name="metadata_label2" parent="." instance=ExtResource("1_7cguv")]
+offset_top = 50.0
+offset_right = 117.0
+offset_bottom = 73.0
+text = "end"
