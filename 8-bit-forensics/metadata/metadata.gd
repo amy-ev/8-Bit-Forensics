@@ -100,16 +100,26 @@ func _on_flag_pressed() -> void:
 	 				"GPSLongitudeRef":"GPSLongitude",
 					"GPSLatitudeRef":"GPSLatitude",
 					 "GPSLongitude":"GPSLatitude"}
-
-	for i in current_rows.size():
-		var row = current_rows[i]
-		for j in current_rows.size():
-			var row_check = current_rows[j]
-			
-			if matches.has(row):
-				var item = matches[row]
-				if typeof(item) == TYPE_STRING && item == row_check || typeof(item) == TYPE_ARRAY && item.has(row_check):
-					print("correlate")
+					
+	var interesting = ["ImageDescription","Copyright","Artist"]
+	
+	if current_rows.size() == 2:
+		for i in current_rows.size():
+			var row = current_rows[i]
+			for j in current_rows.size():
+				var row_check = current_rows[j]
+				
+				if matches.has(row):
+					var item = matches[row]
+					if typeof(item) == TYPE_STRING && item == row_check || typeof(item) == TYPE_ARRAY && item.has(row_check):
+						print("correlate")
+						break
+	else:
+		if current_rows.size() == 0:
+			return
+		else:
+			for i in interesting.size():
+				if current_rows[0] == interesting[i]:
+					print("interesting")
 					break
-			# continue to check the values of the 2 selected rows
-			# continue with logic for individual rows selected with discrepancies
+			# continue to check the values
