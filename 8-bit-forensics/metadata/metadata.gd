@@ -60,7 +60,8 @@ func _on_label_selected(selected:Node):
 		#current_select.visible = false
 	#selected_rect.visible = true
 	#current_select = selected_rect
-	
+
+#	TODO: MOVE TO ON FLAG PRESSED
 	var json_dict = open_json("res://python_files/metadata.json")
 	if typeof(json_dict) == TYPE_DICTIONARY:
 		if json_dict.has("file_%s" %current_image):
@@ -87,19 +88,28 @@ func open_json(file_path):
 
 func _on_flag_pressed() -> void:
 	# create a whole dictionary with each metadata key represented
-	var matches = {"DateTimeOriginal":["DateTimeDigitized","GPSTimeStamp","GPSDateStamp"]}
-	var found = 0
+	#TODO: implement the thumbnail image as a clickable item to compare metadata to visual
+	var matches = {"DateTime":["DateTimeOriginal","DateTimeDigitized","GPSTimeStamp","GPSDateStamp"],
+					"DateTimeOriginal":["DateTimeDigitized","GPSTimeStamp","GPSDateStamp"],
+					"DateTimeDigitized":["GPSTimeStamp","GPSDateStamp"],
+					"GPSTimeStamp":["GPSDateStamp"],
+	 				"Make":["Model","Software","LensMake","LensModel"],
+					"Model":["Software","LensMake","LensModel"],
+					"Software":["LensMake","LensModel"],
+					"LensMake":["LensModel"],
+	 				"GPSLongitudeRef":"GPSLongitude",
+					"GPSLatitudeRef":"GPSLatitude",
+					 "GPSLongitude":"GPSLatitude"}
+
 	for i in current_rows.size():
 		var row = current_rows[i]
-		if matches.has(row):
-			found +=1
-		else:
-			for key in matches.keys():
-				if row in matches[key]:
-					found += 1
-					break
-		if found == 2:
-			print("correlate")
-			# continue to check the values of the 2 selected rows
+		for j in current_rows.size():
+			var row_check = current_rows[j]
 			
+			if matches.has(row):
+				var item = matches[row]
+				if typeof(item) == TYPE_STRING && item == row_check || typeof(item) == TYPE_ARRAY && item.has(row_check):
+					print("correlate")
+					break
+			# continue to check the values of the 2 selected rows
 			# continue with logic for individual rows selected with discrepancies
