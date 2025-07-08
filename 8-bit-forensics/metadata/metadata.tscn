@@ -16,7 +16,7 @@
 [node name="metadata_container" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/separation = -3
+theme_override_constants/separation = 0
 
 [node name="metadata_window" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(444, 333)

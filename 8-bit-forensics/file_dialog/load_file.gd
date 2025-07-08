@@ -42,31 +42,38 @@ func _on_load_button_pressed() -> void:
 	metadata_thumbnail.size = Vector2(111,90)
 	
 	var json_dict = open_json("res://python_files/metadata.json")
-	
+	print(selected_file)
 	var file_idx = selected_file.replacen("photo", "")
 	file_idx = file_idx.replacen(".jpg", "")
 	print("selected file: %s" %selected_file)
 	#print("file idx: %s" %file_idx)
+	
+
+		
 	if typeof(json_dict) == TYPE_DICTIONARY:
 		if json_dict.has("file_%s" %file_idx):
+			if metadata_column.get_child_count() > 0:
+				for child in metadata_column.get_children():
+					metadata_column.remove_child(child)
 			for key in json_dict["file_%s" % file_idx]:
 				
 				var key_and_value = HBoxContainer.new()
-				key_and_value.custom_minimum_size = Vector2(298.0,40.0)
+				key_and_value.custom_minimum_size = Vector2(298.0,20.0)
 				key_and_value.add_theme_constant_override("separation", 0)
+				key_and_value.clip_contents = true
 				metadata_column.add_child(key_and_value)
 				
 				var key_label = metadata_labels.instantiate()
 				key_label.text = key
-				key_label.set_autowrap_mode(TextServer.AUTOWRAP_WORD_SMART)
-				key_label.custom_minimum_size = Vector2(117.0, 40.0)
+				#key_label.set_autowrap_mode(TextServer.AUTOWRAP_WORD_SMART)
+				key_label.custom_minimum_size = Vector2(117.0, 20.0)
 				key_label.get_node("select/select_shape").shape.size.x = 298.0
 				key_and_value.add_child(key_label)
 
 				var value_label = metadata_labels.instantiate()
 				value_label.text = json_dict["file_%s" % file_idx][key]
-				value_label.set_autowrap_mode(TextServer.AUTOWRAP_WORD_SMART)
-				value_label.custom_minimum_size = Vector2(186.0, 40.0)
+				#value_label.set_autowrap_mode(TextServer.AUTOWRAP_WORD_SMART)
+				value_label.custom_minimum_size = Vector2(186.0, 20.0)
 				value_label.get_node("selected").queue_free()
 				value_label.get_node("select").queue_free()
 				key_and_value.add_child(value_label)

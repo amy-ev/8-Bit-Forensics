@@ -3,9 +3,10 @@ import struct
 import os
 import json
 from PIL import Image
-from PIL.ExifTags import TAGS, GPSTAGS, IFD
+from PIL import ExifTags
 
 exif_dict = {}
+gps_dict = {}
 def _ready():
 
     host = '127.0.0.1'
@@ -53,21 +54,24 @@ def _ready():
 
       # --- send response ---
         img = Image.open(file_path)
-        img_exif = img.getexif()
+        img_exif = img._getexif()
 
-        for ifd_id in IFD:
-            try:
-                ifd = img_exif.get_ifd(ifd_id)
-                if ifd_id == IFD.GPSInfo:
-                    resolve = GPSTAGS
+        try:
+            for k, v in img_exif.items():
+                metadata = ExifTags.TAGS.get(k,k)
+                if metadata == "GPSInfo":
+                    for t in v:
+                        metadata = ExifTags.GPSTAGS.get(t,t)
+                        gps_dict[str(metadata)] = str(v[t])
+                        # exif_dict[str(metadata)] = str(v[t])
                 else:
-                    resolve = TAGS
-                for k, v in ifd.items():
-                    tag = resolve.get(k,k)
-                    # print(tag + " : " + str(v))
-                    exif_dict[str(tag)] = str(v)
-            except KeyError:
-                pass
+                    exif_dict[str(metadata)] = str(v)
+        except KeyError:
+            pass
+
+
+        for k,v in gps_dict.items():
+            exif_dict[k] = v
 
         img.close()
 
