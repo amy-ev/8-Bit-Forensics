@@ -139,57 +139,59 @@ func compare_keys():
 	correlates = false
 	matches = false
 	
+	#TODO: maybe move this out of the function
 	var compare_dict = {"DateTime":["DateTimeOriginal","DateTimeDigitized","GPSTimeStamp","GPSDateStamp"],
-					"DateTimeOriginal":["DateTimeDigitized","GPSTimeStamp","GPSDateStamp"],
-					"DateTimeDigitized":["GPSTimeStamp","GPSDateStamp"],
-					"GPSTimeStamp":["GPSDateStamp"],
+					"DateTimeOriginal":["DateTime","DateTimeDigitized","GPSTimeStamp","GPSDateStamp"],
+					"DateTimeDigitized":["DateTime","DateTimeOriginal","GPSTimeStamp","GPSDateStamp"],
+					"GPSTimeStamp":["DateTime","DateTimeOriginal","DateTimeDigitized","GPSDateStamp"],
 	 				"Make":["Model","Software","LensMake","LensModel"],
-					"Model":["Software","LensMake","LensModel"],
-					"Software":["LensMake","LensModel"],
-					"LensMake":["LensModel"],
+					"Model":["Make","Software","LensMake","LensModel"],
+					"Software":["Make","Model","LensMake","LensModel"],
+					"LensMake":["Make","Model","Software","LensModel"],
+					"LensModel":["Make","Model","Software","LensMake"],
 	 				"GPSLongitudeRef":"GPSLongitude",
 					"GPSLatitudeRef":"GPSLatitude",
-					"GPSLongitude":"GPSLatitude"}
+					"GPSLongitude":["GPSLatitude","GPSLongitudeRef"],
+					"GPSLatitude":["GPSLongitude","GPSLatitudeRef"]}
 					
 	var interesting = ["ImageDescription","Copyright","Artist"]
 	
 	if current_rows.size() == 2:
-		for i in current_rows.size():
-			var row = current_rows[i]
-			for j in current_rows.size():
-				var row_check = current_rows[j]
+		var first_key = current_rows[0]
+		var second_key = current_rows[1]
+
+		if compare_dict.has(first_key):
+			var key_values = compare_dict[first_key]
+			
+			if typeof(key_values) == TYPE_ARRAY && key_values.has(second_key):
+				correlates = true
 				
-				if compare_dict.has(row):
-					var item = compare_dict[row]
-					if typeof(item) == TYPE_STRING && item == row_check || typeof(item) == TYPE_ARRAY && item.has(row_check):
-						print("correlate")
-						correlates = true
-
-						var value_dict = []
-						var json_dict = open_json("res://python_files/metadata.json")
-						if typeof(json_dict) == TYPE_DICTIONARY:
-							if json_dict.has("file_%s" %current_image):
-								for node in current_select:
-									value_dict.append(json_dict["file_" + current_image][node.get_parent().text])
-									
-								compare_values(value_dict[0],value_dict[1])
-						#TODO: NEW ANIMATION CALLED CORRELATES ETC 
-						$AnimationPlayer.play("draw_line")
-					else:
-						$AnimationPlayer.play("no_correlation")
-				else:
-					$AnimationPlayer.play("no_correlation")
-
-	else:
-		if current_rows.size() == 0:
-			return
+				var value_dict = []
+				var json_dict = open_json("res://python_files/metadata.json")
+				
+				if typeof(json_dict) == TYPE_DICTIONARY:
+					if json_dict.has("file_%s" %current_image):
+						for node in current_select:
+							value_dict.append(json_dict["file_" + current_image][node.get_parent().text])
+						
+						compare_values(value_dict[0],value_dict[1])
+						
+				#TODO: NEW ANIMATION CALLED CORRELATES ETC 
+				$AnimationPlayer.play("draw_line")
+			else:
+				$AnimationPlayer.play("no_correlation")
 		else:
-			for i in interesting.size():
-				if current_rows[0] == interesting[i]:
-					print("interesting")
-					break
-					
-
+			$AnimationPlayer.play("no_correlation")
+			
+	#TODO: either move this to function above or add a ! button to click instead - to act as the second item
+	#else:
+		#if current_rows.size() == 0:
+			#return
+		#else:
+			#for i in interesting.size():
+				#if current_rows[0] == interesting[i]:
+					#print("interesting")
+					#break
 
 func compare_values(a,b):
 	if current_rows[0].contains("DateTime"):
