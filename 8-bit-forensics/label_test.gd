@@ -28,7 +28,7 @@ func _on_label_selected(selected:Node):
 	var selected_rect = selected.get_node("selected")
 	coords1 =[]
 	coords2 =[]
-	progress = 0
+	progress = 0.0
 	total_length = 0
 	segment_lengths = []
 	total_length2 = 0
@@ -58,6 +58,8 @@ func _on_label_selected(selected:Node):
 		coords2.append(Vector2(pos_to[1]))
 		coords2.append(Vector2(pos_to[1]))
 		coords2.append(pos_middle)
+		coords2.append(pos_middle)
+		coords2.append(Vector2(pos_middle[0] + 100, pos_middle[1]))
 		
 		for i in range(coords1.size() -1):
 			var length = coords1[i].distance_to(coords1[i+1])
@@ -72,15 +74,16 @@ func _on_label_selected(selected:Node):
 		draw_allowed = true
 		$AnimationPlayer.play("draw_line")
 
+	else:
+		draw_allowed = false
+		queue_redraw()
+
 	
 func _draw() -> void:
-	var sliced1 =[]
-	var sliced2 = []
-	if draw_allowed:
 
+	if draw_allowed:
 		var accum = 0.0
 		var current_length = progress * total_length
-		
 		for i in range(coords1.size()-1):
 			var p1 = coords1[i]
 			var p2 = coords1[i+1]
@@ -96,9 +99,9 @@ func _draw() -> void:
 				break
 			accum += seg_len
 			
+			
 		var accum2 = 0.0
 		var current_length2 = progress * total_length2
-		
 		for i in range(coords2.size()-1):
 			var p1 = coords2[i]
 			var p2 = coords2[i+1]
@@ -113,7 +116,6 @@ func _draw() -> void:
 			else:
 				break
 			accum2 += seg_len
-		
 		#for i in range(0, coords1.size(),2):
 			#if i + 1 < coords1.size():
 				#sliced1.append(coords1.slice(i,i+2))

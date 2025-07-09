@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d31sl6bl6j3b3"]
+[gd_scene load_steps=16 format=3 uid="uid://d31sl6bl6j3b3"]
 
 [ext_resource type="Script" uid="uid://b4546ogyrqq64" path="res://metadata/metadata.gd" id="1_2ct7u"]
 [ext_resource type="Texture2D" uid="uid://c0ys5eawrgcpg" path="res://assets/metadata/window-x3.png" id="1_ehxks"]
@@ -12,6 +12,93 @@
 [ext_resource type="Texture2D" uid="uid://c7pefdq5116cw" path="res://assets/metadata/information-title-x3.png" id="7_kkei2"]
 [ext_resource type="Script" uid="uid://brfkcjsti85v" path="res://metadata/resize_window.gd" id="9_f4pdf"]
 [ext_resource type="Texture2D" uid="uid://eq5a4yqotmj8" path="res://assets/metadata/thumbnail-column-x3.png" id="9_hpvqb"]
+
+[sub_resource type="Animation" id="Animation_u6jsu"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_xijqe"]
+resource_name = "draw_line"
+step = 0.05
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"_update_progress"
+}, {
+"args": [0.05],
+"method": &"_update_progress"
+}, {
+"args": [0.1],
+"method": &"_update_progress"
+}, {
+"args": [0.15],
+"method": &"_update_progress"
+}, {
+"args": [0.2],
+"method": &"_update_progress"
+}, {
+"args": [0.25],
+"method": &"_update_progress"
+}, {
+"args": [0.3],
+"method": &"_update_progress"
+}, {
+"args": [0.35],
+"method": &"_update_progress"
+}, {
+"args": [0.4],
+"method": &"_update_progress"
+}, {
+"args": [0.45],
+"method": &"_update_progress"
+}, {
+"args": [0.5],
+"method": &"_update_progress"
+}, {
+"args": [0.55],
+"method": &"_update_progress"
+}, {
+"args": [0.6],
+"method": &"_update_progress"
+}, {
+"args": [0.65],
+"method": &"_update_progress"
+}, {
+"args": [0.7],
+"method": &"_update_progress"
+}, {
+"args": [0.75],
+"method": &"_update_progress"
+}, {
+"args": [0.8],
+"method": &"_update_progress"
+}, {
+"args": [0.85],
+"method": &"_update_progress"
+}, {
+"args": [0.9],
+"method": &"_update_progress"
+}, {
+"args": [0.95],
+"method": &"_update_progress"
+}, {
+"args": [1.0],
+"method": &"_update_progress"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u6jsu"]
+_data = {
+&"RESET": SubResource("Animation_u6jsu"),
+&"draw_line": SubResource("Animation_xijqe")
+}
 
 [node name="metadata_container" type="HBoxContainer"]
 offset_right = 40.0
@@ -95,6 +182,7 @@ offset_top = 63.0
 offset_right = 441.0
 offset_bottom = 330.0
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 
 [node name="data_container" type="VBoxContainer" parent="metadata_window/scroll"]
 clip_contents = true
@@ -144,6 +232,11 @@ offset_right = 123.0
 offset_bottom = 114.0
 texture = ExtResource("5_daqaj")
 expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="metadata_window"]
+libraries = {
+&"": SubResource("AnimationLibrary_u6jsu")
+}
 
 [node name="resize" type="Control" parent="."]
 custom_minimum_size = Vector2(3, 0)

@@ -3,8 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://c3e5723vb1frs" path="res://metadata/metadata_label.tscn" id="1_7cguv"]
 [ext_resource type="Script" uid="uid://x52ic410q8wf" path="res://label_test.gd" id="1_xijqe"]
 
+[sub_resource type="Animation" id="Animation_u6jsu"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_xijqe"]
 resource_name = "draw_line"
+step = 0.05
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -12,46 +16,73 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [0.0],
+"method": &"_update_progress"
+}, {
+"args": [0.05],
 "method": &"_update_progress"
 }, {
 "args": [0.1],
 "method": &"_update_progress"
 }, {
+"args": [0.15],
+"method": &"_update_progress"
+}, {
 "args": [0.2],
+"method": &"_update_progress"
+}, {
+"args": [0.25],
 "method": &"_update_progress"
 }, {
 "args": [0.3],
 "method": &"_update_progress"
 }, {
+"args": [0.35],
+"method": &"_update_progress"
+}, {
 "args": [0.4],
+"method": &"_update_progress"
+}, {
+"args": [0.45],
 "method": &"_update_progress"
 }, {
 "args": [0.5],
 "method": &"_update_progress"
 }, {
+"args": [0.55],
+"method": &"_update_progress"
+}, {
 "args": [0.6],
+"method": &"_update_progress"
+}, {
+"args": [0.65],
 "method": &"_update_progress"
 }, {
 "args": [0.7],
 "method": &"_update_progress"
 }, {
+"args": [0.75],
+"method": &"_update_progress"
+}, {
 "args": [0.8],
 "method": &"_update_progress"
 }, {
+"args": [0.85],
+"method": &"_update_progress"
+}, {
 "args": [0.9],
+"method": &"_update_progress"
+}, {
+"args": [0.95],
 "method": &"_update_progress"
 }, {
 "args": [1.0],
 "method": &"_update_progress"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_u6jsu"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u6jsu"]
 _data = {
