@@ -7,9 +7,10 @@ var keys_and_values: Array
 var current_select: Array
 var current_rows: Array
 
-
+var notif_icon_size = Vector2(27,27)
 var draw_allowed: bool = false
 var correlates: bool = false
+var matches:bool = false
 
 var pos_middle: Vector2
 var pos_from: Array
@@ -94,8 +95,8 @@ func _on_label_selected(selected:Node):
 		coords1.append(Vector2(pos_to[0]))
 		coords1.append(pos_middle)
 		#   --
-		coords1.append(pos_middle)
-		coords1.append(Vector2(pos_middle[0] + 100, pos_middle[1]))
+		#coords1.append(pos_middle)
+		#coords1.append(Vector2(pos_middle[0] + 100, pos_middle[1]))
 		
 		# --
 		coords2.append(Vector2(pos_from[1]))
@@ -104,8 +105,8 @@ func _on_label_selected(selected:Node):
 		coords2.append(Vector2(pos_to[1]))
 		coords2.append(pos_middle)
 		#   --
-		coords2.append(pos_middle)
-		coords2.append(Vector2(pos_middle[0] + 100, pos_middle[1]))
+		#coords2.append(pos_middle)
+		#coords2.append(Vector2(pos_middle[0] + 100, pos_middle[1]))
 		
 		for i in range(coords1.size() -1):
 			var length = coords1[i].distance_to(coords1[i+1])
@@ -119,7 +120,6 @@ func _on_label_selected(selected:Node):
 
 		draw_allowed = true
 		compare_keys()
-		#$AnimationPlayer.play("draw_line")
 
 	if current_select.size() > 2:
 		for rect in current_select:
@@ -137,8 +137,9 @@ func compare_keys():
 	# create a whole dictionary with each metadata key represented
 	#TODO: implement the thumbnail image as a clickable item to compare metadata to visual
 	correlates = false
+	matches = false
 	
-	var matches = {"DateTime":["DateTimeOriginal","DateTimeDigitized","GPSTimeStamp","GPSDateStamp"],
+	var compare_dict = {"DateTime":["DateTimeOriginal","DateTimeDigitized","GPSTimeStamp","GPSDateStamp"],
 					"DateTimeOriginal":["DateTimeDigitized","GPSTimeStamp","GPSDateStamp"],
 					"DateTimeDigitized":["GPSTimeStamp","GPSDateStamp"],
 					"GPSTimeStamp":["GPSDateStamp"],
@@ -148,7 +149,7 @@ func compare_keys():
 					"LensMake":["LensModel"],
 	 				"GPSLongitudeRef":"GPSLongitude",
 					"GPSLatitudeRef":"GPSLatitude",
-					 "GPSLongitude":"GPSLatitude"}
+					"GPSLongitude":"GPSLatitude"}
 					
 	var interesting = ["ImageDescription","Copyright","Artist"]
 	
@@ -158,16 +159,27 @@ func compare_keys():
 			for j in current_rows.size():
 				var row_check = current_rows[j]
 				
-				if matches.has(row):
-					var item = matches[row]
+				if compare_dict.has(row):
+					var item = compare_dict[row]
 					if typeof(item) == TYPE_STRING && item == row_check || typeof(item) == TYPE_ARRAY && item.has(row_check):
 						print("correlate")
 						correlates = true
+
+						var value_dict = []
+						var json_dict = open_json("res://python_files/metadata.json")
+						if typeof(json_dict) == TYPE_DICTIONARY:
+							if json_dict.has("file_%s" %current_image):
+								for node in current_select:
+									value_dict.append(json_dict["file_" + current_image][node.get_parent().text])
+									
+								compare_values(value_dict[0],value_dict[1])
 						#TODO: NEW ANIMATION CALLED CORRELATES ETC 
 						$AnimationPlayer.play("draw_line")
+					else:
+						$AnimationPlayer.play("no_correlation")
 				else:
-					correlates = false
 					$AnimationPlayer.play("no_correlation")
+
 	else:
 		if current_rows.size() == 0:
 			return
@@ -177,12 +189,16 @@ func compare_keys():
 					print("interesting")
 					break
 					
-	var json_dict = open_json("res://python_files/metadata.json")
-	if typeof(json_dict) == TYPE_DICTIONARY:
-		if json_dict.has("file_%s" %current_image):
-			for i in current_select:
-				print(json_dict["file_" + current_image][i.get_parent().text])
-				
+
+
+func compare_values(a,b):
+	if current_rows[0].contains("DateTime"):
+		print("DATE TIME")
+		if a.contains(b) || b.contains(a):
+			matches = true
+		
+	print(a,"vs",b)
+	
 func open_json(file_path):
 	if FileAccess.file_exists(file_path):
 
@@ -239,11 +255,16 @@ func _draw() -> void:
 			accum2 += seg_len
 			
 	if correlates:
-		#TODO RECT SHOWN CHANGES DEPENDING ON WHICH BOOL IS TRUE
-		var temp_rect = load("res://assets/metadata/exit-x3.png")
+		#TODO RECT SHOWN CHANGES DEPENDING ON WHICH BOOL IS TRUE OR STRING
+		var img = Image.load_from_file("res://assets/metadata/exit-x3.png")
+		# for a transparent background - add image to tree as a sprite 2d - .texture
+		var temp_rect = ImageTexture.create_from_image(img)
 		if progress == 1.0:
-			draw_texture(temp_rect,coords1[-1] - (temp_rect.get_size()/2))
-	
+			if matches:
+				draw_string(ThemeDB.fallback_font,Vector2(coords1[-1][0] + 20,coords1[-1][1] +5),"it matches!!")
+			else:
+				draw_string(ThemeDB.fallback_font,Vector2(coords1[-1][0] + 20,coords1[-1][1] +5),"correlates")
+		
 func _update_progress(value:float):
 	progress = value
 	queue_redraw()
