@@ -9,9 +9,11 @@ var current_rows: Array
 
 
 var draw_allowed: bool = false
-var pos_middle
-var pos_from = []
-var pos_to = []
+var correlates: bool = false
+
+var pos_middle: Vector2
+var pos_from: Array
+var pos_to: Array
 var coords1: PackedVector2Array
 var coords2: PackedVector2Array
 
@@ -57,6 +59,7 @@ func _process(delta: float) -> void:
 
 func _on_label_selected(selected:Node):
 	var selected_rect = selected.get_node("selected")
+	correlates = false
 	
 	clear_values()
 	
@@ -115,7 +118,8 @@ func _on_label_selected(selected:Node):
 			total_length2 += length
 
 		draw_allowed = true
-		$AnimationPlayer.play("draw_line")
+		compare_keys()
+		#$AnimationPlayer.play("draw_line")
 
 	if current_select.size() > 2:
 		for rect in current_select:
@@ -128,29 +132,12 @@ func _on_label_selected(selected:Node):
 		
 	for rect in current_select:
 		rect.visible = true
-
-func open_json(file_path):
-	if FileAccess.file_exists(file_path):
-
-		var metadata = FileAccess.open(file_path, FileAccess.READ)
 		
-		if FileAccess.get_open_error() != OK:
-			print("could not open file: ", metadata.get_open_error())
-	
-		var json = JSON.new()
-		var error = json.parse(metadata.get_as_text())
-		if error == OK:
-			var json_dict = json.data
-			
-			metadata.close()
-			return json_dict
-		else:
-			print("error code:" , error)
-			metadata.close()
-
-func _on_flag_pressed() -> void:
+func compare_keys():
 	# create a whole dictionary with each metadata key represented
 	#TODO: implement the thumbnail image as a clickable item to compare metadata to visual
+	correlates = false
+	
 	var matches = {"DateTime":["DateTimeOriginal","DateTimeDigitized","GPSTimeStamp","GPSDateStamp"],
 					"DateTimeOriginal":["DateTimeDigitized","GPSTimeStamp","GPSDateStamp"],
 					"DateTimeDigitized":["GPSTimeStamp","GPSDateStamp"],
@@ -175,7 +162,12 @@ func _on_flag_pressed() -> void:
 					var item = matches[row]
 					if typeof(item) == TYPE_STRING && item == row_check || typeof(item) == TYPE_ARRAY && item.has(row_check):
 						print("correlate")
-						
+						correlates = true
+						#TODO: NEW ANIMATION CALLED CORRELATES ETC 
+						$AnimationPlayer.play("draw_line")
+				else:
+					correlates = false
+					$AnimationPlayer.play("no_correlation")
 	else:
 		if current_rows.size() == 0:
 			return
@@ -190,9 +182,27 @@ func _on_flag_pressed() -> void:
 		if json_dict.has("file_%s" %current_image):
 			for i in current_select:
 				print(json_dict["file_" + current_image][i.get_parent().text])
+				
+func open_json(file_path):
+	if FileAccess.file_exists(file_path):
+
+		var metadata = FileAccess.open(file_path, FileAccess.READ)
+		
+		if FileAccess.get_open_error() != OK:
+			print("could not open file: ", metadata.get_open_error())
+	
+		var json = JSON.new()
+		var error = json.parse(metadata.get_as_text())
+		if error == OK:
+			var json_dict = json.data
+			
+			metadata.close()
+			return json_dict
+		else:
+			print("error code:" , error)
+			metadata.close()
 
 func _draw() -> void:
-
 	if draw_allowed:
 		var accum = 0.0
 		var current_length = progress * total_length
@@ -227,7 +237,12 @@ func _draw() -> void:
 			else:
 				break
 			accum2 += seg_len
-	
+			
+	if correlates:
+		#TODO RECT SHOWN CHANGES DEPENDING ON WHICH BOOL IS TRUE
+		var temp_rect = load("res://assets/metadata/exit-x3.png")
+		if progress == 1.0:
+			draw_texture(temp_rect,coords1[-1] - (temp_rect.get_size()/2))
 	
 func _update_progress(value:float):
 	progress = value
@@ -243,4 +258,4 @@ func clear_values():
 	progress = 0.0
 	total_length = 0.0
 	total_length2 = 0.0
-	pos_middle = 0.0
+	pos_middle = Vector2()
