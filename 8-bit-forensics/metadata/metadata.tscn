@@ -417,6 +417,7 @@ text = "Thumbnail"
 
 [node name="selected" type="Panel" parent="metadata_window/thumbnail_column/thumbnail"]
 visible = false
+layout_mode = 0
 offset_left = -3.0
 offset_top = -3.0
 offset_right = 114.0

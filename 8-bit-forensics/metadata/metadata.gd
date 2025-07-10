@@ -1,6 +1,8 @@
 extends NinePatchRect
 
 @onready var _file_metadata = preload("res://file_dialog/load_file.tscn")
+@onready var _comment = preload("res://pc/comment.tscn")
+
 @export var current_image: String
 
 var keys_and_values: Array
@@ -62,6 +64,8 @@ func _process(delta: float) -> void:
 				keys_and_values[hbox].get_child(1).custom_minimum_size.x = $backgrounds/value_background.custom_minimum_size.x - 3
 
 func _on_label_selected(selected:Node):
+	if self.has_node("comment"):
+		self.get_node("comment").queue_free()
 	correlates = false
 	
 	clear_values()
@@ -80,19 +84,25 @@ func _on_label_selected(selected:Node):
 		var from_pos
 		var to_pos
 		for label in current_select:
+			#print(label.get_node("selected").global_position)
+			#print(label.get_node("selected").size.x)
 			# to prevent the lines from being off the screen
-			if label.global_position.y <= 30: 
+			if label.global_position.x <= 20:
+				pos_from.append(label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x + 318,label.get_node("selected").size.y/2))
+				pos_to.append((label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x+ 318 ,label.get_node("selected").size.y/2)) + Vector2(30,0))
+				
+			elif label.global_position.y <= 30: 
 				pos_from.append(Vector2(label.get_node("selected").global_position.x, 30) + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2))
-				pos_to.append((Vector2(label.get_node("selected").global_position.x, 30) + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2)) + Vector2(80,0))
+				pos_to.append((Vector2(label.get_node("selected").global_position.x, 30) + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2)) + Vector2(30,0))
 			elif label.global_position.y >= 300:
 				pos_from.append(Vector2(label.get_node("selected").global_position.x, 300+label.get_node("selected").size.y) + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2))
-				pos_to.append((Vector2(label.get_node("selected").global_position.x, 300+label.get_node("selected").size.y) + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2)) + Vector2(80,0))
+				pos_to.append((Vector2(label.get_node("selected").global_position.x, 300+label.get_node("selected").size.y) + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2)) + Vector2(30,0))
 			else:
 				pos_from.append(label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2))
-				pos_to.append((label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2)) + Vector2(80,0))
+				pos_to.append((label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2)) + Vector2(30,0))
 				
 		pos_middle = Vector2(pos_to[0][0],(pos_to[0][1] + pos_to[1][1]) / 2)
-		
+
 		# --
 		coords1.append(Vector2(pos_from[0]))
 		coords1.append(Vector2(pos_to[0]))
@@ -143,11 +153,11 @@ func compare_keys():
 	matches = false
 	
 	#TODO: maybe move this out of the function
-	var compare_dict = {"DateTime":["DateTimeOriginal","DateTimeDigitized","GPSTimeStamp","GPSDateStamp"],
-					"DateTimeOriginal":["DateTime","DateTimeDigitized","GPSTimeStamp","GPSDateStamp"],
-					"DateTimeDigitized":["DateTime","DateTimeOriginal","GPSTimeStamp","GPSDateStamp"],
-					"GPSTimeStamp":["DateTime","DateTimeOriginal","DateTimeDigitized","GPSDateStamp"],
-					"GPSDateStamp":["DateTime","DateTimeOriginal","DateTimeDigitized","GPSTimeStamp"],
+	var compare_dict = {"DateTime":["DateTimeOriginal","DateTimeDigitized","GPSTimeStamp","GPSDateStamp","Thumbnail"],
+					"DateTimeOriginal":["DateTime","DateTimeDigitized","GPSTimeStamp","GPSDateStamp","Thumbnail"],
+					"DateTimeDigitized":["DateTime","DateTimeOriginal","GPSTimeStamp","GPSDateStamp","Thumbnail"],
+					"GPSTimeStamp":["DateTime","DateTimeOriginal","DateTimeDigitized","GPSDateStamp","Thumbnail"],
+					"GPSDateStamp":["DateTime","DateTimeOriginal","DateTimeDigitized","GPSTimeStamp","Thumbnail"],
 	 				"Make":["Model","Software","LensMake","LensModel"],
 					"Model":["Make","Software","LensMake","LensModel"],
 					"Software":["Make","Model","LensMake","LensModel"],
@@ -177,7 +187,6 @@ func compare_keys():
 				if typeof(json_dict) == TYPE_DICTIONARY:
 					if json_dict.has("file_%s" %current_image):
 						for node in current_select.size():
-							print("loop")
 							if current_select[node].get_class() == "Label":
 								value_dict.append(json_dict["file_" + current_image][current_select[node].text])
 							else:
@@ -261,8 +270,8 @@ func compare_values(a,b):
 		if current_rows[0].contains("Longitude") && current_rows[1].contains("Latitude") || current_rows[0].contains("Latitude") && current_rows[1].contains("Longitude"):
 			match_msg = "long vs lat"
 	
-	print(current_rows[0]," vs ", current_rows[1])
-	print(a," vs ",b)
+	#print(current_rows[0]," vs ", current_rows[1])
+	#print(a," vs ",b)
 	
 func open_json(file_path):
 	if FileAccess.file_exists(file_path):
@@ -341,7 +350,12 @@ func _draw() -> void:
 		var temp_rect = ImageTexture.create_from_image(img)
 		if progress == 1.0:
 			#if matches:
-			draw_string(ThemeDB.fallback_font,Vector2(coords1[-1][0] + 20,coords1[-1][1] +5),match_msg)
+			var comment = _comment.instantiate()
+			add_child(comment)
+			comment.text = match_msg
+			comment.position = Vector2(coords1[-1][0] + 20,coords1[-1][1]- comment.size.y /2)
+			#draw_string(ThemeDB.fallback_font,Vector2(coords1[-1][0] + 20,coords1[-1][1] +5),match_msg)
+			
 				#draw_string(ThemeDB.fallback_font,Vector2(coords1[-1][0] + 20,coords1[-1][1] +5),"something doesnt match")
 		
 func _update_progress(value:float):
