@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d31sl6bl6j3b3"]
+[gd_scene load_steps=19 format=3 uid="uid://d31sl6bl6j3b3"]
 
 [ext_resource type="Script" uid="uid://b4546ogyrqq64" path="res://metadata/metadata.gd" id="1_2ct7u"]
 [ext_resource type="Texture2D" uid="uid://c0ys5eawrgcpg" path="res://assets/metadata/window-x3.png" id="1_ehxks"]
@@ -12,6 +12,21 @@
 [ext_resource type="Texture2D" uid="uid://c7pefdq5116cw" path="res://assets/metadata/information-title-x3.png" id="7_kkei2"]
 [ext_resource type="Script" uid="uid://brfkcjsti85v" path="res://metadata/resize_window.gd" id="9_f4pdf"]
 [ext_resource type="Texture2D" uid="uid://eq5a4yqotmj8" path="res://assets/metadata/thumbnail-column-x3.png" id="9_hpvqb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paekb"]
+size = Vector2(111, 81)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_paekb"]
+bg_color = Color(0.20871, 0.20871, 0.20871, 0.0784314)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 4
+expand_margin_bottom = 6.0
+shadow_color = Color(0, 0, 0, 0.027451)
+anti_aliasing = false
 
 [sub_resource type="Animation" id="Animation_u6jsu"]
 length = 0.001
@@ -386,6 +401,29 @@ offset_bottom = 114.0
 texture = ExtResource("5_daqaj")
 expand_mode = 1
 
+[node name="thumbnail_area" type="Area2D" parent="metadata_window/thumbnail_column/thumbnail"]
+
+[node name="thumbnail_shape" type="CollisionShape2D" parent="metadata_window/thumbnail_column/thumbnail/thumbnail_area"]
+position = Vector2(55, 40)
+shape = SubResource("RectangleShape2D_paekb")
+disabled = true
+
+[node name="label" type="Label" parent="metadata_window/thumbnail_column/thumbnail"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Thumbnail"
+
+[node name="selected" type="Panel" parent="metadata_window/thumbnail_column/thumbnail"]
+visible = false
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 114.0
+offset_bottom = 87.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_paekb")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="metadata_window"]
 libraries = {
 &"": SubResource("AnimationLibrary_u6jsu")
@@ -400,4 +438,5 @@ script = ExtResource("9_f4pdf")
 [connection signal="gui_input" from="metadata_window/backgrounds/resize" to="metadata_window/backgrounds/resize" method="_on_gui_input"]
 [connection signal="pressed" from="metadata_window/select" to="metadata_window" method="_on_select_pressed"]
 [connection signal="pressed" from="metadata_window/exit" to="metadata_window" method="_on_exit_pressed"]
+[connection signal="input_event" from="metadata_window/thumbnail_column/thumbnail/thumbnail_area" to="metadata_window" method="_on_thumbnail_area_input_event"]
 [connection signal="gui_input" from="resize" to="resize" method="_on_gui_input"]

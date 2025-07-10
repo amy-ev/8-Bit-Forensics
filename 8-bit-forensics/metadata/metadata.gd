@@ -38,6 +38,8 @@ func _on_select_pressed() -> void:
 	
 	for hbox in $scroll/data_container.get_children():
 		keys_and_values.append(hbox)
+		
+	$thumbnail_column/thumbnail/thumbnail_area/thumbnail_shape.disabled = false
 	
 func _on_exit_pressed() -> void:
 	queue_free()
@@ -60,32 +62,34 @@ func _process(delta: float) -> void:
 				keys_and_values[hbox].get_child(1).custom_minimum_size.x = $backgrounds/value_background.custom_minimum_size.x - 3
 
 func _on_label_selected(selected:Node):
-	var selected_rect = selected.get_node("selected")
 	correlates = false
 	
 	clear_values()
 	
 	for rect in current_select:
-		if rect != selected_rect:
-			rect.visible = false
-	if selected_rect not in current_select:
-		current_select.append(selected_rect)
-		current_rows.append(selected.text)
+		if rect != selected:
+			rect.get_node("selected").visible = false
+	if selected not in current_select:
+		current_select.append(selected)
+		if selected.get_class() == "Label":
+			current_rows.append(selected.text)
+		else:
+			current_rows.append(selected.get_node("label").text)
 		
 	if current_select.size() == 2:
 		var from_pos
 		var to_pos
 		for label in current_select:
 			# to prevent the lines from being off the screen
-			if label.get_parent().global_position.y <= 30: 
-				pos_from.append(Vector2(label.global_position.x, 30) + Vector2(label.size.x,label.size.y/2))
-				pos_to.append((Vector2(label.global_position.x, 30) + Vector2(label.size.x,label.size.y/2)) + Vector2(80,0))
-			elif label.get_parent().global_position.y >= 300:
-				pos_from.append(Vector2(label.global_position.x, 300+label.size.y) + Vector2(label.size.x,label.size.y/2))
-				pos_to.append((Vector2(label.global_position.x, 300+label.size.y) + Vector2(label.size.x,label.size.y/2)) + Vector2(80,0))
+			if label.global_position.y <= 30: 
+				pos_from.append(Vector2(label.get_node("selected").global_position.x, 30) + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2))
+				pos_to.append((Vector2(label.get_node("selected").global_position.x, 30) + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2)) + Vector2(80,0))
+			elif label.global_position.y >= 300:
+				pos_from.append(Vector2(label.get_node("selected").global_position.x, 300+label.get_node("selected").size.y) + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2))
+				pos_to.append((Vector2(label.get_node("selected").global_position.x, 300+label.get_node("selected").size.y) + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2)) + Vector2(80,0))
 			else:
-				pos_from.append(label.global_position + Vector2(label.size.x,label.size.y/2))
-				pos_to.append((label.global_position + Vector2(label.size.x,label.size.y/2)) + Vector2(80,0))
+				pos_from.append(label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2))
+				pos_to.append((label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2)) + Vector2(80,0))
 				
 		pos_middle = Vector2(pos_to[0][0],(pos_to[0][1] + pos_to[1][1]) / 2)
 		
@@ -124,7 +128,7 @@ func _on_label_selected(selected:Node):
 
 	if current_select.size() > 2:
 		for rect in current_select:
-			rect.visible = false
+			rect.get_node("selected").visible = false
 		current_select.clear()
 		current_rows.clear()
 		
@@ -132,11 +136,9 @@ func _on_label_selected(selected:Node):
 		queue_redraw()
 		
 	for rect in current_select:
-		rect.visible = true
+		rect.get_node("selected").visible = true
 		
 func compare_keys():
-	# create a whole dictionary with each metadata key represented
-	#TODO: implement the thumbnail image as a clickable item to compare metadata to visual
 	correlates = false
 	matches = false
 	
@@ -151,11 +153,12 @@ func compare_keys():
 					"Software":["Make","Model","LensMake","LensModel"],
 					"LensMake":["Make","Model","Software","LensModel"],
 					"LensModel":["Make","Model","Software","LensMake"],
-	 				"GPSLongitudeRef":"GPSLongitude",
-					"GPSLatitudeRef":"GPSLatitude",
+	 				"GPSLongitudeRef":["GPSLongitude"],
+					"GPSLatitudeRef":["GPSLatitude"],
 					"GPSLongitude":["GPSLatitude","GPSLongitudeRef"],
-					"GPSLatitude":["GPSLongitude","GPSLatitudeRef"]}
-					
+					"GPSLatitude":["GPSLongitude","GPSLatitudeRef"],
+					"Thumbnail":["DateTime","DateTimeOriginal","DateTimeDigitized","GPSTimeStamp","GPSDateStamp"]}
+	
 	var interesting = ["ImageDescription","Copyright","Artist"]
 	
 	if current_rows.size() == 2:
@@ -173,8 +176,14 @@ func compare_keys():
 				
 				if typeof(json_dict) == TYPE_DICTIONARY:
 					if json_dict.has("file_%s" %current_image):
-						for node in current_select:
-							value_dict.append(json_dict["file_" + current_image][node.get_parent().text])
+						for node in current_select.size():
+							print("loop")
+							if current_select[node].get_class() == "Label":
+								value_dict.append(json_dict["file_" + current_image][current_select[node].text])
+							else:
+								#TODO: maybe change this to get a value from another json file eg photo2 = sunny
+								value_dict.append(current_select[node].get_node("label").text)
+								#value_dict["Thumbnail"] = node.get_node("label").text
 						
 						compare_values(value_dict[0],value_dict[1])
 						
@@ -205,16 +214,52 @@ func compare_values(a,b):
 			a = format_gpstime(a)
 		elif current_rows[1].contains("GPSTime"):
 			b = format_gpstime(b)
-	
+			
 		if a.contains(b) || b.contains(a):
 			matches = true
 			match_msg = "these dates/times match!"
 		else:
 			matches = false
 			match_msg = "somethings not quite right with these"
-	else:
-		#TODO: add to this for the other types of metadata
-		match_msg = "correlates"
+			
+		#TODO: 
+		if current_rows[0].contains("Thumbnail") || current_rows[1].contains("Thumbnail"):
+			match_msg = "needs to be worked on"
+			
+		if current_rows[0].contains("GPSTime") && current_rows[1].contains("GPSDate") || current_rows[1].contains("GPSTime") && current_rows[0].contains("GPSDate"):
+			match_msg = a + " " + b
+
+	elif current_rows[0].contains("Make") || current_rows[1].contains("Make") || current_rows[0].contains("Model") || current_rows[1].contains("Model"):
+		print("make and model")
+		
+		if current_rows[0].contains("Make") && current_rows[1].contains("Model"):
+			if a.contains("Apple") && b.contains("iP"):
+					match_msg = "makes sense"
+					
+		elif current_rows[1].contains("Make") && current_rows[0].contains("Model"):
+			if b.contains("Apple") && a.contains("iP"):
+					match_msg = "makes sense"
+		
+		elif  current_rows[0].contains("Make") && current_rows[1].contains("Make"):
+			if a.contains(b) || b.contains(a):
+				matches = true
+				match_msg = "the makes match"
+				
+		elif  current_rows[0].contains("Model") && current_rows[1].contains("Model"):
+			if a.contains(b) || b.contains(a):
+				matches = true
+				match_msg = "the models match"
+		else:
+			match_msg = "correlates"
+
+	elif current_rows[0].contains("GPS") || current_rows[1].contains("GPS"): #will be true either way - only gps matches with gps
+		if current_rows[0].contains("Ref"):
+			match_msg = a + " " + b
+		elif current_rows[1].contains("Ref"):
+			match_msg = b + " " + a
+		
+		if current_rows[0].contains("Longitude") && current_rows[1].contains("Latitude") || current_rows[0].contains("Latitude") && current_rows[1].contains("Longitude"):
+			match_msg = "long vs lat"
 	
 	print(current_rows[0]," vs ", current_rows[1])
 	print(a," vs ",b)
@@ -246,7 +291,10 @@ func format_gpstime(v:String)-> String:
 	for result in regex.search_all(v):
 		v = v.replacen(result.get_string(),"")
 	var v_dict = v.split(",",false)
-	v_dict[2] = str(ceil(float(v_dict[2])))
+	for i in v_dict.size():
+		v_dict[i] = str(ceili(float(v_dict[i])))
+		while int(v_dict[i]) >= 100:
+			v_dict[i] = str(int(v_dict[i]) / 10)
 	v = ":".join(v_dict)
 	return v
 	
@@ -311,3 +359,8 @@ func clear_values():
 	total_length = 0.0
 	total_length2 = 0.0
 	pos_middle = Vector2()
+
+
+func _on_thumbnail_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton && event.is_pressed():
+		Global.metadata_selected.emit($thumbnail_column/thumbnail)
