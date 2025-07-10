@@ -197,21 +197,24 @@ func compare_keys():
 					
 #only called on keys that correlate
 func compare_values(a,b):
-	#TODO: add to this for the other types of metadata
-	if current_rows[0].contains("DateTime") || current_rows[1].contains("DateTime"):
+
+	if current_rows[0].contains("DateTime") || current_rows[1].contains("DateTime") || current_rows[0].contains("GPSTime") || current_rows[1].contains("GPSTime"):
 		print("date and time")
 		
-	if current_rows[0].contains("GPSTime") || current_rows[1].contains("GPSTime"):
 		if current_rows[0].contains("GPSTime"):
 			a = format_gpstime(a)
-		else:
+		elif current_rows[1].contains("GPSTime"):
 			b = format_gpstime(b)
-	if a.contains(b) || b.contains(a):
-		matches = true
-		match_msg = "these dates/times match!"
+	
+		if a.contains(b) || b.contains(a):
+			matches = true
+			match_msg = "these dates/times match!"
+		else:
+			matches = false
+			match_msg = "somethings not quite right with these"
 	else:
-		matches = false
-		match_msg = "somethings not quite right with these"
+		#TODO: add to this for the other types of metadata
+		match_msg = "correlates"
 	
 	print(current_rows[0]," vs ", current_rows[1])
 	print(a," vs ",b)
