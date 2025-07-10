@@ -11,6 +11,7 @@ var notif_icon_size = Vector2(27,27)
 var draw_allowed: bool = false
 var correlates: bool = false
 var matches:bool = false
+var match_msg:String
 
 var pos_middle: Vector2
 var pos_from: Array
@@ -144,6 +145,7 @@ func compare_keys():
 					"DateTimeOriginal":["DateTime","DateTimeDigitized","GPSTimeStamp","GPSDateStamp"],
 					"DateTimeDigitized":["DateTime","DateTimeOriginal","GPSTimeStamp","GPSDateStamp"],
 					"GPSTimeStamp":["DateTime","DateTimeOriginal","DateTimeDigitized","GPSDateStamp"],
+					"GPSDateStamp":["DateTime","DateTimeOriginal","DateTimeDigitized","GPSTimeStamp"],
 	 				"Make":["Model","Software","LensMake","LensModel"],
 					"Model":["Make","Software","LensMake","LensModel"],
 					"Software":["Make","Model","LensMake","LensModel"],
@@ -192,14 +194,27 @@ func compare_keys():
 				#if current_rows[0] == interesting[i]:
 					#print("interesting")
 					#break
-
+					
+#only called on keys that correlate
 func compare_values(a,b):
-	if current_rows[0].contains("DateTime"):
-		print("DATE TIME")
-		if a.contains(b) || b.contains(a):
-			matches = true
+	#TODO: add to this for the other types of metadata
+	if current_rows[0].contains("DateTime") || current_rows[1].contains("DateTime"):
+		print("date and time")
 		
-	print(a,"vs",b)
+	if current_rows[0].contains("GPSTime") || current_rows[1].contains("GPSTime"):
+		if current_rows[0].contains("GPSTime"):
+			a = format_gpstime(a)
+		else:
+			b = format_gpstime(b)
+	if a.contains(b) || b.contains(a):
+		matches = true
+		match_msg = "these dates/times match!"
+	else:
+		matches = false
+		match_msg = "somethings not quite right with these"
+	
+	print(current_rows[0]," vs ", current_rows[1])
+	print(a," vs ",b)
 	
 func open_json(file_path):
 	if FileAccess.file_exists(file_path):
@@ -219,7 +234,19 @@ func open_json(file_path):
 		else:
 			print("error code:" , error)
 			metadata.close()
-
+			
+# convert time to match the layout of the other date/times
+func format_gpstime(v:String)-> String:
+	var regex = RegEx.new()
+	regex.compile("[\\(\\)\\s]")
+	
+	for result in regex.search_all(v):
+		v = v.replacen(result.get_string(),"")
+	var v_dict = v.split(",",false)
+	v_dict[2] = str(ceil(float(v_dict[2])))
+	v = ":".join(v_dict)
+	return v
+	
 func _draw() -> void:
 	if draw_allowed:
 		var accum = 0.0
@@ -262,10 +289,9 @@ func _draw() -> void:
 		# for a transparent background - add image to tree as a sprite 2d - .texture
 		var temp_rect = ImageTexture.create_from_image(img)
 		if progress == 1.0:
-			if matches:
-				draw_string(ThemeDB.fallback_font,Vector2(coords1[-1][0] + 20,coords1[-1][1] +5),"it matches!!")
-			else:
-				draw_string(ThemeDB.fallback_font,Vector2(coords1[-1][0] + 20,coords1[-1][1] +5),"correlates")
+			#if matches:
+			draw_string(ThemeDB.fallback_font,Vector2(coords1[-1][0] + 20,coords1[-1][1] +5),match_msg)
+				#draw_string(ThemeDB.fallback_font,Vector2(coords1[-1][0] + 20,coords1[-1][1] +5),"something doesnt match")
 		
 func _update_progress(value:float):
 	progress = value
