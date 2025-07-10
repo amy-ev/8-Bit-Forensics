@@ -9,10 +9,8 @@ var keys_and_values: Array
 var current_select: Array
 var current_rows: Array
 
-var notif_icon_size = Vector2(27,27)
 var draw_allowed: bool = false
 var correlates: bool = false
-var matches:bool = false
 var match_msg:String
 
 var pos_middle: Vector2
@@ -66,7 +64,6 @@ func _process(delta: float) -> void:
 func _on_label_selected(selected:Node):
 	if self.has_node("comment"):
 		self.get_node("comment").queue_free()
-	correlates = false
 	
 	clear_values()
 	
@@ -81,11 +78,7 @@ func _on_label_selected(selected:Node):
 			current_rows.append(selected.get_node("label").text)
 		
 	if current_select.size() == 2:
-		var from_pos
-		var to_pos
 		for label in current_select:
-			#print(label.get_node("selected").global_position)
-			#print(label.get_node("selected").size.x)
 			# to prevent the lines from being off the screen
 			if label.global_position.x <= 20:
 				pos_from.append(label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x + 318,label.get_node("selected").size.y/2))
@@ -109,7 +102,7 @@ func _on_label_selected(selected:Node):
 		#  |
 		coords1.append(Vector2(pos_to[0]))
 		coords1.append(pos_middle)
-		#   --
+		# --
 		#coords1.append(pos_middle)
 		#coords1.append(Vector2(pos_middle[0] + 100, pos_middle[1]))
 		
@@ -149,9 +142,7 @@ func _on_label_selected(selected:Node):
 		rect.get_node("selected").visible = true
 		
 func compare_keys():
-	correlates = false
-	matches = false
-	
+
 	#TODO: maybe move this out of the function
 	var compare_dict = {"DateTime":["DateTimeOriginal","DateTimeDigitized","GPSTimeStamp","GPSDateStamp","Thumbnail"],
 					"DateTimeOriginal":["DateTime","DateTimeDigitized","GPSTimeStamp","GPSDateStamp","Thumbnail"],
@@ -168,9 +159,7 @@ func compare_keys():
 					"GPSLongitude":["GPSLatitude","GPSLongitudeRef"],
 					"GPSLatitude":["GPSLongitude","GPSLatitudeRef"],
 					"Thumbnail":["DateTime","DateTimeOriginal","DateTimeDigitized","GPSTimeStamp","GPSDateStamp"]}
-	
-	var interesting = ["ImageDescription","Copyright","Artist"]
-	
+
 	if current_rows.size() == 2:
 		var first_key = current_rows[0]
 		var second_key = current_rows[1]
@@ -192,7 +181,6 @@ func compare_keys():
 							else:
 								#TODO: maybe change this to get a value from another json file eg photo2 = sunny
 								value_dict.append(current_select[node].get_node("label").text)
-								#value_dict["Thumbnail"] = node.get_node("label").text
 						
 						compare_values(value_dict[0],value_dict[1])
 						
@@ -203,17 +191,6 @@ func compare_keys():
 		else:
 			$AnimationPlayer.play("no_correlation")
 			
-	#TODO: either move this to function above or add a ! button to click instead - to act as the second item
-	#else:
-		#if current_rows.size() == 0:
-			#return
-		#else:
-			#for i in interesting.size():
-				#if current_rows[0] == interesting[i]:
-					#print("interesting")
-					#break
-					
-#only called on keys that correlate
 func compare_values(a,b):
 
 	if current_rows[0].contains("DateTime") || current_rows[1].contains("DateTime") || current_rows[0].contains("GPSTime") || current_rows[1].contains("GPSTime"):
@@ -225,10 +202,8 @@ func compare_values(a,b):
 			b = format_gpstime(b)
 			
 		if a.contains(b) || b.contains(a):
-			matches = true
 			match_msg = "these dates/times match!"
 		else:
-			matches = false
 			match_msg = "somethings not quite right with these"
 			
 		#TODO: 
@@ -251,12 +226,10 @@ func compare_values(a,b):
 		
 		elif  current_rows[0].contains("Make") && current_rows[1].contains("Make"):
 			if a.contains(b) || b.contains(a):
-				matches = true
 				match_msg = "the makes match"
 				
 		elif  current_rows[0].contains("Model") && current_rows[1].contains("Model"):
 			if a.contains(b) || b.contains(a):
-				matches = true
 				match_msg = "the models match"
 		else:
 			match_msg = "correlates"
@@ -269,9 +242,6 @@ func compare_values(a,b):
 		
 		if current_rows[0].contains("Longitude") && current_rows[1].contains("Latitude") || current_rows[0].contains("Latitude") && current_rows[1].contains("Longitude"):
 			match_msg = "long vs lat"
-	
-	#print(current_rows[0]," vs ", current_rows[1])
-	#print(a," vs ",b)
 	
 func open_json(file_path):
 	if FileAccess.file_exists(file_path):
@@ -344,19 +314,11 @@ func _draw() -> void:
 			accum2 += seg_len
 			
 	if correlates:
-		#TODO RECT SHOWN CHANGES DEPENDING ON WHICH BOOL IS TRUE OR STRING
-		var img = Image.load_from_file("res://assets/metadata/exit-x3.png")
-		# for a transparent background - add image to tree as a sprite 2d - .texture
-		var temp_rect = ImageTexture.create_from_image(img)
 		if progress == 1.0:
-			#if matches:
 			var comment = _comment.instantiate()
 			add_child(comment)
 			comment.text = match_msg
 			comment.position = Vector2(coords1[-1][0] + 20,coords1[-1][1]- comment.size.y /2)
-			#draw_string(ThemeDB.fallback_font,Vector2(coords1[-1][0] + 20,coords1[-1][1] +5),match_msg)
-			
-				#draw_string(ThemeDB.fallback_font,Vector2(coords1[-1][0] + 20,coords1[-1][1] +5),"something doesnt match")
 		
 func _update_progress(value:float):
 	progress = value
@@ -373,7 +335,7 @@ func clear_values():
 	total_length = 0.0
 	total_length2 = 0.0
 	pos_middle = Vector2()
-
+	correlates = false
 
 func _on_thumbnail_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.is_pressed():
