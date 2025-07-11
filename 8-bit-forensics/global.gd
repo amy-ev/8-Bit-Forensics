@@ -6,6 +6,8 @@ extends Node
 @export var days: Array = []
 @export var unlocked: int
 
+@export var is_collected:bool
+
 @export var answers = ["a","b","a","c"]
 @export var quiz_dict = {"Day_1":["a","b","c"]}
 

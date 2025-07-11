@@ -7,32 +7,750 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_1gyes")
 
-[node name="form" type="HFlowContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="form" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 329.0
+offset_bottom = 501.0
 
-[node name="name" type="LineEdit" parent="form"]
+[node name="columns" type="HBoxContainer" parent="form"]
 layout_mode = 2
-placeholder_text = "name"
+
+[node name="col_1" type="VBoxContainer" parent="form/columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="authority" type="LineEdit" parent="form/columns/col_1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "authority"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="ref_no" type="LineEdit" parent="form/columns/col_1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "ref_no"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="description" type="LineEdit" parent="form/columns/col_1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "description"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="time_date" type="LineEdit" parent="form/columns/col_1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "time/date seized/produced"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="where" type="LineEdit" parent="form/columns/col_1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "where seized/produced"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="by" type="LineEdit" parent="form/columns/col_1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "seized/produced by"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="signed" type="LineEdit" parent="form/columns/col_1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signed"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="crime_no" type="LineEdit" parent="form/columns/col_1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "incident/crime no"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="continuity" type="VBoxContainer" parent="form/columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="name" type="LineEdit" parent="form/columns/continuity"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "name/rank/no"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="signed" type="LineEdit" parent="form/columns/continuity"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signed"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date" type="LineEdit" parent="form/columns/continuity"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "date"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="name2" type="LineEdit" parent="form/columns/continuity"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "name/rank/no"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="signed2" type="LineEdit" parent="form/columns/continuity"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signed"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date2" type="LineEdit" parent="form/columns/continuity"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "date"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="name3" type="LineEdit" parent="form/columns/continuity"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "name/rank/no"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="signed3" type="LineEdit" parent="form/columns/continuity"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signed"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date3" type="LineEdit" parent="form/columns/continuity"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "date"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="name4" type="LineEdit" parent="form/columns/continuity"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "name/rank/no"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="signed4" type="LineEdit" parent="form/columns/continuity"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signed"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date4" type="LineEdit" parent="form/columns/continuity"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "date"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="continuity2" type="VBoxContainer" parent="form/columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="name" type="LineEdit" parent="form/columns/continuity2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "name/rank/no"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="signed" type="LineEdit" parent="form/columns/continuity2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signed"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date" type="LineEdit" parent="form/columns/continuity2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "date"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="name2" type="LineEdit" parent="form/columns/continuity2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "name/rank/no"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="signed2" type="LineEdit" parent="form/columns/continuity2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signed"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date2" type="LineEdit" parent="form/columns/continuity2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "date"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="name3" type="LineEdit" parent="form/columns/continuity2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "name/rank/no"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="signed3" type="LineEdit" parent="form/columns/continuity2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signed"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date3" type="LineEdit" parent="form/columns/continuity2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "date"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="name4" type="LineEdit" parent="form/columns/continuity2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "name/rank/no"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="signed4" type="LineEdit" parent="form/columns/continuity2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signed"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date4" type="LineEdit" parent="form/columns/continuity2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "date"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="row" type="HFlowContainer" parent="form"]
+layout_mode = 2
+
+[node name="opened_by" type="VBoxContainer" parent="form/row"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="by" type="LineEdit" parent="form/row/opened_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "bag opened by"
 context_menu_enabled = false
 emoji_menu_enabled = false
 shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
 selecting_enabled = false
+deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="date" type="LineEdit" parent="form"]
+[node name="sig" type="LineEdit" parent="form/row/opened_by"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signature"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="time" type="LineEdit" parent="form/row/opened_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "time"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date" type="LineEdit" parent="form/row/opened_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
 placeholder_text = "date"
 context_menu_enabled = false
 emoji_menu_enabled = false
 shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
 selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="reason" type="LineEdit" parent="form/row/opened_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "reason"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="witnessed_by" type="VBoxContainer" parent="form/row"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="by" type="LineEdit" parent="form/row/witnessed_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "bag opened by"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="sig" type="LineEdit" parent="form/row/witnessed_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signature"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="time" type="LineEdit" parent="form/row/witnessed_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "time"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date" type="LineEdit" parent="form/row/witnessed_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "date"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="reason" type="LineEdit" parent="form/row/witnessed_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "reason"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="opened_by2" type="VBoxContainer" parent="form/row"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="by" type="LineEdit" parent="form/row/opened_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "bag opened by"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="sig" type="LineEdit" parent="form/row/opened_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signature"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="time" type="LineEdit" parent="form/row/opened_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "time"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date" type="LineEdit" parent="form/row/opened_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "date"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="reason" type="LineEdit" parent="form/row/opened_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "reason"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="witnessed_by2" type="VBoxContainer" parent="form/row"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="by" type="LineEdit" parent="form/row/witnessed_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "bag opened by"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="sig" type="LineEdit" parent="form/row/witnessed_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signature"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="time" type="LineEdit" parent="form/row/witnessed_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "time"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date" type="LineEdit" parent="form/row/witnessed_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "date"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="reason" type="LineEdit" parent="form/row/witnessed_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "reason"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
 [node name="confirm" type="Button" parent="form"]
