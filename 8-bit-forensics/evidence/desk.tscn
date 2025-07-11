@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3218f32yb8dd"]
+[gd_scene load_steps=5 format=3 uid="uid://b3218f32yb8dd"]
 
 [ext_resource type="Texture2D" uid="uid://b5rgy1naj2b01" path="res://assets/level_select/desk-background-x3.png" id="1_krbm1"]
 [ext_resource type="Script" uid="uid://qdwm57in2ghk" path="res://evidence/desk.gd" id="2_h8nwr"]
 [ext_resource type="PackedScene" uid="uid://dullwxtc5crys" path="res://evidence/evidence.tscn" id="3_h8nwr"]
+[ext_resource type="PackedScene" uid="uid://cwyc4moqylni6" path="res://evidence/bag.tscn" id="4_vu08t"]
 
 [node name="desk" type="TextureRect"]
 offset_right = 1920.0
@@ -42,5 +43,8 @@ offset_left = 835.0
 offset_top = 439.0
 offset_right = 895.0
 offset_bottom = 511.0
+
+[node name="evidence_bag" parent="." instance=ExtResource("4_vu08t")]
+position = Vector2(657, 191)
 
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
