@@ -20,9 +20,8 @@ func _on_pc_btn_pressed() -> void:
 
 func _on_evidence_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.is_double_click():
-		var evidence_item = load("res://main/evidence.tscn")
+		var evidence_item = load("res://evidence/desk.tscn")
 		add_child(evidence_item.instantiate())
-
 
 func _on_usb_port_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.is_pressed():

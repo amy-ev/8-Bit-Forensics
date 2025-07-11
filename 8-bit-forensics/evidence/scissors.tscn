@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://babhg4xa6vxgo"]
+
+[ext_resource type="Script" uid="uid://bkx1461i23ail" path="res://evidence/scissors.gd" id="1_38a2e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38a2e"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgi0h"]
+size = Vector2(42, 13)
+
+[node name="scissors" type="Sprite2D"]
+script = ExtResource("1_38a2e")
+
+[node name="grab" type="Area2D" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="grab"]
+position = Vector2(62, 20)
+shape = SubResource("RectangleShape2D_38a2e")
+
+[node name="blades" type="Area2D" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="blades"]
+position = Vector2(21, 20)
+shape = SubResource("RectangleShape2D_wgi0h")
+debug_color = Color(0.837514, 0.376922, 0.227913, 0.42)
+
+[connection signal="input_event" from="grab" to="." method="_on_grab_input_event"]

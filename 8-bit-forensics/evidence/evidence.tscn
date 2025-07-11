@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dullwxtc5crys"]
+
+[ext_resource type="Shader" uid="uid://pc721t3sj7xe" path="res://evidence/evidence.gdshader" id="1_p1iy4"]
+[ext_resource type="Script" uid="uid://bfm133ayipfp4" path="res://evidence/evidence.gd" id="2_7ku14"]
+[ext_resource type="Texture2D" uid="uid://bfal0kpbbetiw" path="res://assets/evidence/SD-BACK-x3.png" id="2_vf127"]
+[ext_resource type="Texture2D" uid="uid://ce4676uwmhhqm" path="res://assets/evidence/SD-x3.png" id="3_gahyk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vf127"]
+shader = ExtResource("1_p1iy4")
+shader_parameter/fov = 90.0
+shader_parameter/x_rot = 0.0
+shader_parameter/y_rot = 0.0
+shader_parameter/inset = -0.5
+shader_parameter/front = ExtResource("3_gahyk")
+shader_parameter/back = ExtResource("2_vf127")
+
+[node name="evidence" type="TextureRect"]
+material = SubResource("ShaderMaterial_vf127")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_gahyk")
+script = ExtResource("2_7ku14")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

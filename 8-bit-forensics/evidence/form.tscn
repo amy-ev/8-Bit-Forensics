@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://be441q1omxkco"]
+
+[ext_resource type="Script" uid="uid://d4asu5n8d2si" path="res://evidence/form.gd" id="1_1gyes"]
+
+[node name="evidence_form" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1gyes")
+
+[node name="form" type="HFlowContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="LineEdit" parent="form"]
+layout_mode = 2
+placeholder_text = "name"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date" type="LineEdit" parent="form"]
+layout_mode = 2
+placeholder_text = "date"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="confirm" type="Button" parent="form"]
+layout_mode = 2
+
+[connection signal="pressed" from="form/confirm" to="." method="_on_confirm_pressed"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwyc4moqylni6"]
+
+[ext_resource type="Script" uid="uid://c3887oc0rnhse" path="res://evidence/bag.gd" id="1_siw8v"]
+[ext_resource type="PackedScene" uid="uid://babhg4xa6vxgo" path="res://evidence/scissors.tscn" id="2_vydlv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hu3u5"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_siw8v"]
+size = Vector2(100, 20)
+
+[node name="evidence_bag" type="Sprite2D"]
+script = ExtResource("1_siw8v")
+
+[node name="bag" type="Area2D" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="bag"]
+position = Vector2(50, 50)
+shape = SubResource("RectangleShape2D_hu3u5")
+
+[node name="scissors" parent="." instance=ExtResource("2_vydlv")]
+position = Vector2(187, 32)
+
+[node name="cut_section" type="Area2D" parent="."]
+
+[node name="drop_point" type="CollisionShape2D" parent="cut_section"]
+position = Vector2(50, 115)
+shape = SubResource("RectangleShape2D_siw8v")
+debug_color = Color(0.883061, 0.123634, 0.756632, 0.42)
+
+[connection signal="input_event" from="bag" to="." method="_on_bag_input_event"]
+[connection signal="area_entered" from="cut_section" to="." method="_on_cut_section_area_entered"]
