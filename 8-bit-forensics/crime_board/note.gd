@@ -2,7 +2,6 @@ extends TextureRect
 
 @export var note_topic:String
 
-
 func _ready() -> void:
 	note_topic = get_node(".").name
 	

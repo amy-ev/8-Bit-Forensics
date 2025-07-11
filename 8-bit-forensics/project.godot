@@ -12,7 +12,7 @@ config_version=5
 
 config/name="8-Bit-Forensics"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://eprimdtbchtl"
 
 [autoload]
 

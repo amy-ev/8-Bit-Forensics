@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node2D
 
 var dialogue_file = "res://dialogue/dialogue.json"
 var dialogue_data = {}
@@ -9,8 +9,8 @@ signal end_dialogue
 func _ready() -> void:
 	dialogue_data = load_dialogue(dialogue_file)
 	print(dialogue_data)
-	$control/dialogue_box/container/day_title.text = "Day %s" %(Global.unlocked+1)
-	dialogue_text($control/dialogue_box/container/text, "Day %s.0" %(Global.unlocked+1))
+	$dialogue_box/container/day_title.text = "Day %s" %(Global.unlocked+1)
+	dialogue_text($dialogue_box/container/text, "Day %s.0" %(Global.unlocked+1))
 	
 	self.connect("end_dialogue", _end_dialogue)
 	
@@ -21,13 +21,13 @@ func dialogue_text(node,option):
 	
 func _on_next_pressed() -> void:
 	if dialogue_data[current_dialogue].has("go to") && dialogue_data[current_dialogue]["go to"].size() > 1:
-		dialogue_text($control/dialogue_box/container/text, dialogue_data[current_dialogue]["go to"][1])
+		dialogue_text($dialogue_box/container/text, dialogue_data[current_dialogue]["go to"][1])
 	else:
 		emit_signal(dialogue_data[current_dialogue]["function"])
 
 func _on_prev_pressed() -> void:
 	if dialogue_data[current_dialogue].has("go to"):
-		dialogue_text($control/dialogue_box/container/text, dialogue_data[current_dialogue]["go to"][0])
+		dialogue_text($dialogue_box/container/text, dialogue_data[current_dialogue]["go to"][0])
 	else:
 		emit_signal(dialogue_data[current_dialogue]["function"])
 		

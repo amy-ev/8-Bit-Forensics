@@ -1,4 +1,4 @@
-extends TextureRect
+extends Node2D
 
 @onready var note = preload("res://crime_board/note_content.tscn")
 
@@ -7,15 +7,19 @@ extends TextureRect
 var days_unlocked = 0
 
 func _ready() -> void:
-	update_size()
+	scale = scale * Utility.window_mode()
 	Global.connect("note_selected", _open_note)
 	Global.connect("level_unlocked", _show_note)
 	
 	_check_unlocked()
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.is_action_pressed("fullscreen"):
+		scale = scale * Utility.fullscreen_input(event)
+
 func _open_note(note_topic:String):
 	var note_content = note.instantiate()
-	note_content.get_child(0).text = note_topic
+	note_content.get_child(0).get_child(0).text = note_topic
 	#TODO: connect a json file with the corresponding educational notes
 	add_child(note_content)
 
@@ -26,23 +30,6 @@ func _show_note(day:String):
 	get_node(day).visible = true
 	#print(Global.days)
 	
-func _notification(what: int) -> void:
-	if what == 1012:
-		update_size()
-
-func update_size():
-	var original_size = size
-
-	size = DisplayServer.window_get_size()
-	
-	# keeping it scaled to the x axis - prevents distortion of the images
-	scaled_by = (Vector2(original_size.x -1, original_size.x -1)/Vector2(size.x-1,size.x-1))
-	
-	for note_rect in range(get_children().size()-1):
-		if get_child(note_rect).name.contains("note"):
-			get_child(note_rect).get_node("area/area_shape").shape.size = get_child(note_rect).get_node("area/area_shape").shape.size / scaled_by
-			get_child(note_rect).get_node("area/area_shape").position = get_child(note_rect).get_node("area/area_shape").position / scaled_by
-
 func _on_unlock_debug_pressed() -> void:
 	#move to the end of the day button + appending day to Global array
 	Global.unlocked += 1

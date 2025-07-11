@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdo1hbivbrq8h" path="res://end_quiz.gd" id="1_amf4w"]
 
-[node name="CanvasGroup" type="CanvasLayer"]
+[node name="CanvasGroup" type="Node2D"]
 script = ExtResource("1_amf4w")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
