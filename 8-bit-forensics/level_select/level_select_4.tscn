@@ -1,166 +1,98 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2bfv5m5qudc7"]
+[gd_scene load_steps=13 format=3 uid="uid://d2bfv5m5qudc7"]
 
-[ext_resource type="Texture2D" uid="uid://du07jgkuynooi" path="res://assets/level_select/open-x3.png" id="1_nff8j"]
+[ext_resource type="Texture2D" uid="uid://2wyer1trrenh" path="res://assets/book-test-big-x3.png" id="1_g6ke1"]
 [ext_resource type="Script" uid="uid://bjaghc73epk6k" path="res://level_select/open_folder_template.gd" id="2_p3ot5"]
 [ext_resource type="Texture2D" uid="uid://dhpy0p3lyay4o" path="res://assets/level_select/tabs-4-x3.png" id="3_mn6ym"]
 [ext_resource type="Shape2D" uid="uid://44un3tl8v86i" path="res://level_select/closed_tab.tres" id="4_g6ke1"]
 [ext_resource type="Shape2D" uid="uid://c4vl3w531sv72" path="res://level_select/open_tab.tres" id="5_nff8j"]
 [ext_resource type="Texture2D" uid="uid://dbaq50qbxhonf" path="res://assets/level_select/inside-left-x3.png" id="7_s6uyr"]
 [ext_resource type="Texture2D" uid="uid://wbk4vf40q0cp" path="res://assets/level_select/inside-right-x3.png" id="8_edlsa"]
-[ext_resource type="Texture2D" uid="uid://v002oygfq8lk" path="res://assets/Book-test-x3.png" id="8_nff8j"]
 
-[sub_resource type="Animation" id="Animation_at8f8"]
-resource_name = "open_1"
-length = 0.5
+[sub_resource type="Animation" id="Animation_nff8j"]
+resource_name = "open_3_backwards"
+length = 0.8
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 4, 5]
+"values": [15, 14, 13, 12, 11, 10, 9, 8]
 }
 
-[sub_resource type="Animation" id="Animation_8bqwb"]
+[sub_resource type="Animation" id="Animation_p3ot5"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [5]
+"values": [15]
 }
 
-[sub_resource type="Animation" id="Animation_m71nh"]
-resource_name = "open_2"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [5, 6, 7, 8, 9, 10, 11, 12]
-}
-
-[sub_resource type="Animation" id="Animation_jdtxx"]
-resource_name = "open_3"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [12, 13, 14, 15, 16, 17, 18, 12]
-}
-
-[sub_resource type="Animation" id="Animation_b1wji"]
-resource_name = "open_4"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [12, 13, 14, 15, 16, 17, 18, 12]
-}
-
-[sub_resource type="Animation" id="Animation_qjpxo"]
-resource_name = "open_1_backwards"
-length = 0.8
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [12, 11, 10, 9, 8, 7, 6, 5]
-}
-
-[sub_resource type="Animation" id="Animation_gvw7g"]
+[sub_resource type="Animation" id="Animation_mn6ym"]
 resource_name = "open_2_backwards"
 length = 0.8
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [12, 18, 17, 16, 15, 14, 13, 12]
+"values": [15, 14, 13, 12, 11, 10, 9, 8]
 }
 
-[sub_resource type="Animation" id="Animation_grqjh"]
-resource_name = "open_3_backwards"
+[sub_resource type="Animation" id="Animation_31gbh"]
+resource_name = "open_1_backwards"
+length = 0.8
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [12, 18, 17, 16, 15, 14, 13, 12]
+"values": [15, 14, 13, 12, 11, 10, 9, 8]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjpxo"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5tgre"]
 _data = {
-&"RESET": SubResource("Animation_8bqwb"),
-&"open_1": SubResource("Animation_at8f8"),
-&"open_1_backwards": SubResource("Animation_qjpxo"),
-&"open_2": SubResource("Animation_m71nh"),
-&"open_2_backwards": SubResource("Animation_gvw7g"),
-&"open_3": SubResource("Animation_jdtxx"),
-&"open_3_backwards": SubResource("Animation_grqjh"),
-&"open_4": SubResource("Animation_b1wji")
+&"RESET": SubResource("Animation_p3ot5"),
+&"open_1_backwards": SubResource("Animation_31gbh"),
+&"open_2_backwards": SubResource("Animation_mn6ym"),
+&"open_3_backwards": SubResource("Animation_nff8j")
 }
 
-[node name="level_select_4" type="TextureRect"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_nff8j")
+[node name="level_select_4" type="Sprite2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_g6ke1")
+centered = false
+hframes = 8
+vframes = 2
+frame = 15
 script = ExtResource("2_p3ot5")
 
 [node name="tab_rect" type="TextureRect" parent="."]
-layout_mode = 1
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -171,23 +103,23 @@ texture = ExtResource("3_mn6ym")
 [node name="tabs" type="Area2D" parent="."]
 
 [node name="tab1" type="CollisionShape2D" parent="tabs"]
-position = Vector2(276, 174)
+position = Vector2(81, 87)
 shape = ExtResource("4_g6ke1")
 
 [node name="tab2" type="CollisionShape2D" parent="tabs"]
-position = Vector2(276, 270)
+position = Vector2(696, 135)
 shape = ExtResource("4_g6ke1")
 
 [node name="tab3" type="CollisionShape2D" parent="tabs"]
-position = Vector2(279, 369)
+position = Vector2(695, 186)
 shape = ExtResource("5_nff8j")
 
 [node name="tab4" type="CollisionShape2D" parent="tabs"]
-position = Vector2(1503, 465)
+position = Vector2(695, 234)
 shape = ExtResource("5_nff8j")
 
 [node name="left_content" type="TextureRect" parent="."]
-layout_mode = 1
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -196,7 +128,7 @@ grow_vertical = 2
 texture = ExtResource("7_s6uyr")
 
 [node name="right_content" type="TextureRect" parent="."]
-layout_mode = 1
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -204,17 +136,18 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_edlsa")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(488, 57)
-texture = ExtResource("8_nff8j")
-hframes = 8
-vframes = 3
-frame = 5
+[node name="play" type="Button" parent="."]
+offset_left = 514.5
+offset_top = 447.0
+offset_right = 555.5
+offset_bottom = 478.0
+text = "play
+"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
-root_node = NodePath("../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_qjpxo")
+&"": SubResource("AnimationLibrary_5tgre")
 }
 
 [connection signal="input_event" from="tabs" to="." method="_on_tabs_input_event"]
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]

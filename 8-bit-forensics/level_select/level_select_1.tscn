@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bb2q2os4gnskm"]
+[gd_scene load_steps=12 format=3 uid="uid://bb2q2os4gnskm"]
 
 [ext_resource type="Texture2D" uid="uid://2wyer1trrenh" path="res://assets/book-test-big-x3.png" id="1_l3xca"]
 [ext_resource type="Script" uid="uid://bjaghc73epk6k" path="res://level_select/open_folder_template.gd" id="2_c0r2y"]
@@ -30,7 +30,41 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_un5lr"]
+resource_name = "open_3"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_l3xca"]
+resource_name = "open_4"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
@@ -42,7 +76,9 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qbvn0"]
 _data = {
 &"RESET": SubResource("Animation_8gg1b"),
-&"open_2": SubResource("Animation_pbkm0")
+&"open_2": SubResource("Animation_pbkm0"),
+&"open_3": SubResource("Animation_un5lr"),
+&"open_4": SubResource("Animation_l3xca")
 }
 
 [node name="level_select_1" type="Sprite2D"]
@@ -103,4 +139,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_qbvn0")
 }
 
+[node name="play" type="Button" parent="."]
+offset_left = 514.5
+offset_top = 447.0
+offset_right = 555.5
+offset_bottom = 478.0
+text = "play
+"
+
 [connection signal="input_event" from="tabs" to="." method="_on_tabs_input_event"]
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]

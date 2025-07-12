@@ -17,3 +17,6 @@ func _on_tabs_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 		get_parent().move_child(get_node("../level_select_"+ str(shape_idx +1)),1)
 		
 		#Global.emit_signal("child_joined")
+
+func _on_play_pressed() -> void:
+	print("uhoh")
