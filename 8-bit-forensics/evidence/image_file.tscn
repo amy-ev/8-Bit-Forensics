@@ -15,3 +15,16 @@ text = "file"
 item_count = 1
 popup/item_0/text = "create disk image"
 popup/item_0/id = 0
+
+[node name="evidence_tree" type="Tree" parent="."]
+layout_mode = 0
+offset_top = 63.0
+offset_right = 122.0
+offset_bottom = 129.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 118.0
+offset_bottom = 63.0
+text = "evidence tree"
