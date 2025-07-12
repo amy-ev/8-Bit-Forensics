@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqwedwedwn32"]
+
+[ext_resource type="Script" uid="uid://qayymwuuheyr" path="res://evidence/item_information.gd" id="1_g7w0n"]
+
+[node name="item_information" type="VBoxContainer"]
+offset_right = 153.0
+offset_bottom = 206.0
+script = ExtResource("1_g7w0n")
+
+[node name="case_no" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "case_no"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="evidence_no" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "evidence_no"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="unique_desc" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "unique_desc"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="examiner" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "examiner"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="notes" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "notes"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="navigation" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="back" type="Button" parent="navigation"]
+layout_mode = 2
+text = "back"
+
+[node name="finish" type="Button" parent="navigation"]
+layout_mode = 2
+text = "finish"
+
+[node name="cancel" type="Button" parent="navigation"]
+layout_mode = 2
+text = "cancel"
+
+[connection signal="pressed" from="navigation/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="navigation/finish" to="." method="_on_finish_pressed"]
+[connection signal="pressed" from="navigation/cancel" to="." method="_on_cancel_pressed"]

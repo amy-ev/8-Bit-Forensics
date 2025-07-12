@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7tqkpc2d8rx0"]
+
+[ext_resource type="Script" uid="uid://b1t3bsllgqr14" path="res://evidence/image_file.gd" id="1_84i5g"]
+
+[node name="evidence_file" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_84i5g")
+
+[node name="MenuButton" type="MenuButton" parent="."]
+layout_mode = 2
+offset_right = 40.0
+offset_bottom = 31.0
+text = "file"
+item_count = 1
+popup/item_0/text = "create disk image"
+popup/item_0/id = 0

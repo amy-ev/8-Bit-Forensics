@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://crdfjn6wfu3wg"]
+
+[ext_resource type="Script" uid="uid://dv43dnpa1ty" path="res://evidence/select_drive.gd" id="1_hbarf"]
+
+[node name="select_drive" type="VBoxContainer"]
+offset_right = 189.0
+offset_bottom = 66.0
+script = ExtResource("1_hbarf")
+
+[node name="options" type="OptionButton" parent="."]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "\\\\. \\PHYSICALDRIVE0"
+popup/item_0/id = 0
+popup/item_1/text = "\\\\. \\PHYSICALDRIVE1"
+popup/item_1/id = 1
+popup/item_2/text = "SD CARD ID"
+popup/item_2/id = 2
+
+[node name="navigation" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="back" type="Button" parent="navigation"]
+layout_mode = 2
+text = "back"
+
+[node name="next" type="Button" parent="navigation"]
+layout_mode = 2
+text = "finish"
+
+[node name="cancel" type="Button" parent="navigation"]
+layout_mode = 2
+text = "cancel"
+
+[connection signal="item_selected" from="options" to="." method="_on_options_item_selected"]
+[connection signal="pressed" from="navigation/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="navigation/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="navigation/cancel" to="." method="_on_cancel_pressed"]

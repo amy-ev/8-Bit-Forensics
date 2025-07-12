@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg3q04jgv405y"]
+
+[ext_resource type="Script" uid="uid://bt5osmtx6wqd2" path="res://evidence/create_file.gd" id="1_c120u"]
+
+[sub_resource type="Animation" id="Animation_f5i1j"]
+resource_name = "create"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("progress:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.903549),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+
+[sub_resource type="Animation" id="Animation_c120u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("progress:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ytjs6"]
+_data = {
+&"RESET": SubResource("Animation_c120u"),
+&"create": SubResource("Animation_f5i1j")
+}
+
+[node name="create_file" type="Panel"]
+offset_right = 159.0
+offset_bottom = 56.0
+script = ExtResource("1_c120u")
+
+[node name="progress" type="ProgressBar" parent="."]
+layout_mode = 1
+offset_right = 158.0
+offset_bottom = 19.0
+show_percentage = false
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ytjs6")
+}
+autoplay = "create"
+
+[node name="finished" type="Button" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 22.0
+offset_right = 55.0
+offset_bottom = 53.0
+text = "finish"
+
+[connection signal="pressed" from="finished" to="." method="_on_finished_pressed"]

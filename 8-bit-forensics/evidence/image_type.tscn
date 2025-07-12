@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://bph5pfba6c4su"]
+
+[ext_resource type="Script" uid="uid://cnj60wxb6kysx" path="res://evidence/image_type.gd" id="1_3ur1a"]
+[ext_resource type="ButtonGroup" uid="uid://ugpr4nutnptu" path="res://evidence/image_type.tres" id="2_3ur1a"]
+
+[node name="image_type" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_3ur1a")
+
+[node name="dd" type="CheckBox" parent="."]
+layout_mode = 2
+button_group = ExtResource("2_3ur1a")
+text = "dd"
+
+[node name="e01" type="CheckBox" parent="."]
+layout_mode = 2
+button_group = ExtResource("2_3ur1a")
+text = "e01"
+
+[node name="navigation" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="back" type="Button" parent="navigation"]
+layout_mode = 2
+text = "back"
+
+[node name="next" type="Button" parent="navigation"]
+layout_mode = 2
+text = "next"
+
+[node name="cancel" type="Button" parent="navigation"]
+layout_mode = 2
+text = "cancel"
+
+[connection signal="pressed" from="navigation/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="navigation/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="navigation/cancel" to="." method="_on_cancel_pressed"]
