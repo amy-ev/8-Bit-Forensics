@@ -9,7 +9,7 @@ extends Node
 @export var is_collected:bool
 
 @export var answers = ["a","b","a","c"]
-@export var quiz_dict = {"Day_1":["a","b","c"]}
+@export var quiz_dict = {"Day_1":["a","b","c"], "Day_2":["a","b","c"], "Day_3":["a","b","c"]}
 
 signal selected(selected_node:File, real_file:String)
 

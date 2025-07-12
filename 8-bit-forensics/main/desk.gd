@@ -5,6 +5,8 @@ var day = Global.unlocked + 1
 var evidence_collected = false
 
 func _ready() -> void:
+	if day != 1:
+		$evidence_rect.visible = false
 	scale = scale * Utility.window_mode()
 	# change evidence item to match the texture of evidence_1, evidence_2 etc
 	$evidence_rect.texture = load("res://assets/office/btn-x3.png")

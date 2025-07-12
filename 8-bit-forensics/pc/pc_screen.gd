@@ -1,6 +1,13 @@
 extends Node2D
 
 func _ready() -> void:
+	var day = Global.unlocked + 1
+	match day:
+		1:
+			add_child(load("res://evidence/image_file.tscn").instantiate())
+		2:
+			add_child(load("res://evidence/image_file.tscn").instantiate())
+			add_child(load("res://pc/desktop_icon.tscn").instantiate())
 	scale = scale * Utility.window_mode()
 
 func _input(event: InputEvent) -> void:
