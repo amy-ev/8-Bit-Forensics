@@ -1,15 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3218f32yb8dd"]
 
-[ext_resource type="Texture2D" uid="uid://b5rgy1naj2b01" path="res://assets/level_select/desk-background-x3.png" id="1_krbm1"]
+[ext_resource type="Texture2D" uid="uid://cab8rnhxre8ra" path="res://assets/evidence/desk-background.png" id="1_uh1up"]
 [ext_resource type="Script" uid="uid://qdwm57in2ghk" path="res://evidence/desk.gd" id="2_h8nwr"]
 [ext_resource type="PackedScene" uid="uid://dullwxtc5crys" path="res://evidence/evidence.tscn" id="3_h8nwr"]
 [ext_resource type="PackedScene" uid="uid://cwyc4moqylni6" path="res://evidence/bag.tscn" id="4_vu08t"]
 [ext_resource type="PackedScene" uid="uid://babhg4xa6vxgo" path="res://evidence/scissors.tscn" id="5_uh1up"]
 
 [node name="desk" type="TextureRect"]
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("1_krbm1")
+clip_contents = true
+offset_top = 208.0
+offset_right = 256.0
+offset_bottom = 400.0
+texture = ExtResource("1_uh1up")
 script = ExtResource("2_h8nwr")
 
 [node name="back" type="Button" parent="."]
@@ -20,35 +22,38 @@ text = "back"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1316.0
-offset_top = 849.0
-offset_right = 1653.0
-offset_bottom = 872.0
-rotation = 0.390609
+offset_left = 186.0
+offset_top = 84.0
+offset_right = 246.0
+offset_bottom = 117.0
+rotation = -0.101351
+theme_override_font_sizes/font_size = 7
 text = "informational text about  the evidence item"
+autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 188.0
-offset_top = 252.0
-offset_right = 599.0
-offset_bottom = 301.0
+offset_left = 25.0
+offset_top = 108.0
+offset_right = 102.0
+offset_bottom = 157.0
 rotation = 0.0559535
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
 text = "and some more information text maybe about the collection process"
 autowrap_mode = 2
 
 [node name="evidence" parent="." instance=ExtResource("3_h8nwr")]
 layout_mode = 0
-offset_left = 835.0
-offset_top = 439.0
-offset_right = 895.0
-offset_bottom = 511.0
+offset_left = 132.0
+offset_top = 94.0
+offset_right = 172.0
+offset_bottom = 134.0
 
 [node name="evidence_bag" parent="." instance=ExtResource("4_vu08t")]
-position = Vector2(758, 301)
+position = Vector2(75, 22)
 
 [node name="scissors" parent="." instance=ExtResource("5_uh1up")]
-position = Vector2(1137, 404)
+position = Vector2(209, 151)
 
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

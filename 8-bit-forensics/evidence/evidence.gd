@@ -6,9 +6,10 @@ var tween_x:Tween
 var tween_y:Tween
 
 func _ready() -> void:
+	pass
 	# "res://assets/evidence/evidence_"+str(day)+".tscn"
-	material.set_shader_parameter("front", load("res://assets/evidence/SD-x3.png")) 
-	material.set_shader_parameter("back", load("res://assets/evidence/SD-BACK-x3.png")) 
+	#material.set_shader_parameter("front", load("res://assets/evidence/evidence")) 
+	#material.set_shader_parameter("back", load("res://assets/evidence/SD-BACK-x3.png")) 
 	
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

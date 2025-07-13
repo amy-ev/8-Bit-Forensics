@@ -187,8 +187,8 @@ _data = {
 script = ExtResource("1_dw5rp")
 
 [node name="room" type="ColorRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_right = 256.0
+offset_bottom = 400.0
 color = Color(0.843791, 0.540942, 0.703187, 1)
 
 [node name="change_scene" type="Button" parent="room"]
@@ -208,8 +208,9 @@ text = "go to work
 "
 
 [node name="ceiling" type="ColorRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
+visible = false
+offset_right = 256.0
+offset_bottom = 400.0
 
 [node name="wake_up_btn" type="Button" parent="ceiling"]
 layout_mode = 1
@@ -229,17 +230,16 @@ turn off alarm button"
 
 [node name="fade" type="ColorRect" parent="."]
 visible = false
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_right = 256.0
+offset_bottom = 400.0
 color = Color(0, 0, 0, 1)
 
 [node name="top_lid" type="ColorRect" parent="."]
 offset_right = 1920.0
-offset_bottom = 556.516
 color = Color(0, 0, 0, 1)
 
 [node name="bottom_lid" type="ColorRect" parent="."]
-offset_top = 736.67
+offset_top = 1080.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)

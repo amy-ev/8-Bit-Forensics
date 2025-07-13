@@ -1,13 +1,28 @@
 [gd_scene load_steps=8 format=3 uid="uid://babhg4xa6vxgo"]
 
 [ext_resource type="Script" uid="uid://bkx1461i23ail" path="res://evidence/scissors.gd" id="1_38a2e"]
-[ext_resource type="Texture2D" uid="uid://lvsan5wlgg4t" path="res://assets/evidence/scissors-x3.png" id="1_jciqn"]
+[ext_resource type="Texture2D" uid="uid://bkmu6wjmg8lo0" path="res://assets/evidence/scissors.png" id="1_jciqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38a2e"]
-size = Vector2(24, 36)
+size = Vector2(16, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgi0h"]
-size = Vector2(33, 19.5)
+size = Vector2(20, 12)
+
+[sub_resource type="Animation" id="Animation_s3m2y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
 
 [sub_resource type="Animation" id="Animation_7foyk"]
 resource_name = "cut"
@@ -26,21 +41,6 @@ tracks/0/keys = {
 "values": [1, 0]
 }
 
-[sub_resource type="Animation" id="Animation_s3m2y"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u08s0"]
 _data = {
 &"RESET": SubResource("Animation_s3m2y"),
@@ -50,14 +50,14 @@ _data = {
 [node name="scissors" type="Sprite2D"]
 texture = ExtResource("1_jciqn")
 centered = false
-hframes = 8
+hframes = 2
 frame = 1
 script = ExtResource("1_38a2e")
 
 [node name="grab" type="Area2D" parent="."]
 
 [node name="collision" type="CollisionShape2D" parent="grab"]
-position = Vector2(42, 24)
+position = Vector2(28, 16)
 shape = SubResource("RectangleShape2D_38a2e")
 
 [node name="blades" type="Area2D" parent="."]
@@ -65,7 +65,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="collision" type="CollisionShape2D" parent="blades"]
-position = Vector2(16.5, 23.25)
+position = Vector2(10, 16)
 shape = SubResource("RectangleShape2D_wgi0h")
 debug_color = Color(0.837514, 0.376922, 0.227913, 0.42)
 
