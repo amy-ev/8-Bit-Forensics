@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnoav72hte2jx"]
+[gd_scene load_steps=9 format=3 uid="uid://cnoav72hte2jx"]
 
-[ext_resource type="Texture2D" uid="uid://2wyer1trrenh" path="res://assets/book-test-big-x3.png" id="1_at8f8"]
+[ext_resource type="Texture2D" uid="uid://bfvlhbb3p2u8t" path="res://assets/level_select/level-select-sprite.png" id="1_4mb7p"]
 [ext_resource type="Script" uid="uid://6cfgq337t3aw" path="res://level_select/closed_folder.gd" id="2_62c0k"]
 [ext_resource type="Shape2D" uid="uid://by5duysfph354" path="res://level_select/tab.tres" id="3_4mb7p"]
+[ext_resource type="Texture2D" uid="uid://daoijgqnsxmm6" path="res://assets/evidence/sd-card.png" id="4_at8f8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4mb7p"]
 size = Vector2(12, 51)
@@ -46,11 +47,11 @@ _data = {
 }
 
 [node name="closed_folder" type="Sprite2D"]
-scale = Vector2(2, 2)
-texture = ExtResource("1_at8f8")
+position = Vector2(37, 211)
+texture = ExtResource("1_4mb7p")
 centered = false
 hframes = 8
-vframes = 2
+vframes = 4
 script = ExtResource("2_62c0k")
 
 [node name="tabs" type="Area2D" parent="."]
@@ -76,4 +77,20 @@ libraries = {
 &"": SubResource("AnimationLibrary_rk4m8")
 }
 
+[node name="next" type="TextureButton" parent="."]
+offset_left = 184.0
+offset_top = 94.0
+offset_right = 224.0
+offset_bottom = 134.0
+texture_normal = ExtResource("4_at8f8")
+
+[node name="back" type="TextureButton" parent="."]
+offset_left = -31.0
+offset_top = 92.0
+offset_right = 9.0
+offset_bottom = 132.0
+disabled = true
+texture_normal = ExtResource("4_at8f8")
+
 [connection signal="input_event" from="tabs" to="." method="_on_tabs_input_event"]
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]

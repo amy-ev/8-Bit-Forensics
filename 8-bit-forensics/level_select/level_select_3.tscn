@@ -1,29 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://628p8y7vfrn5"]
 
-[ext_resource type="Texture2D" uid="uid://2wyer1trrenh" path="res://assets/book-test-big-x3.png" id="1_3tojh"]
+[ext_resource type="Texture2D" uid="uid://bfvlhbb3p2u8t" path="res://assets/level_select/level-select-sprite.png" id="1_3tojh"]
 [ext_resource type="Script" uid="uid://bjaghc73epk6k" path="res://level_select/open_folder_template.gd" id="2_occy2"]
 [ext_resource type="Texture2D" uid="uid://cqrw2nex77bnr" path="res://assets/level_select/tabs-3-x3.png" id="3_f8ky6"]
 [ext_resource type="Shape2D" uid="uid://44un3tl8v86i" path="res://level_select/closed_tab.tres" id="4_myktu"]
 [ext_resource type="Shape2D" uid="uid://c4vl3w531sv72" path="res://level_select/open_tab.tres" id="5_myktu"]
+[ext_resource type="Texture2D" uid="uid://daoijgqnsxmm6" path="res://assets/evidence/sd-card.png" id="8_7iosq"]
 [ext_resource type="Texture2D" uid="uid://dbaq50qbxhonf" path="res://assets/level_select/inside-left-x3.png" id="8_kv6kq"]
 [ext_resource type="Texture2D" uid="uid://wbk4vf40q0cp" path="res://assets/level_select/inside-right-x3.png" id="9_hxorn"]
-
-[sub_resource type="Animation" id="Animation_7iosq"]
-resource_name = "open_4"
-length = 0.8
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [8, 9, 10, 11, 12, 13, 14, 15]
-}
 
 [sub_resource type="Animation" id="Animation_myktu"]
 length = 0.001
@@ -37,7 +21,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [15]
+"values": [21]
 }
 
 [sub_resource type="Animation" id="Animation_occy2"]
@@ -54,11 +38,11 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [15, 14, 13, 12, 11, 10, 9, 8]
+"values": [21, 20, 19, 18, 17, 16, 15, 14]
 }
 
-[sub_resource type="Animation" id="Animation_f8ky6"]
-resource_name = "open_1_backwards"
+[sub_resource type="Animation" id="Animation_7iosq"]
+resource_name = "open_4"
 length = 0.8
 step = 0.1
 tracks/0/type = "value"
@@ -71,24 +55,23 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [15, 14, 13, 12, 11, 10, 9, 8]
+"values": [21, 22, 23, 24, 25, 26, 27, 28]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rr4v2"]
 _data = {
 &"RESET": SubResource("Animation_myktu"),
-&"open_1_backwards": SubResource("Animation_f8ky6"),
 &"open_2_backwards": SubResource("Animation_occy2"),
 &"open_4": SubResource("Animation_7iosq")
 }
 
 [node name="level_select_3" type="Sprite2D"]
-scale = Vector2(2, 2)
+position = Vector2(37, 211)
 texture = ExtResource("1_3tojh")
 centered = false
 hframes = 8
-vframes = 2
-frame = 15
+vframes = 4
+frame = 21
 script = ExtResource("2_occy2")
 
 [node name="tabs_rect" type="TextureRect" parent="."]
@@ -149,5 +132,21 @@ libraries = {
 &"": SubResource("AnimationLibrary_rr4v2")
 }
 
+[node name="next" type="TextureButton" parent="."]
+offset_left = 184.0
+offset_top = 94.0
+offset_right = 224.0
+offset_bottom = 134.0
+texture_normal = ExtResource("8_7iosq")
+
+[node name="back" type="TextureButton" parent="."]
+offset_left = -31.0
+offset_top = 92.0
+offset_right = 9.0
+offset_bottom = 132.0
+texture_normal = ExtResource("8_7iosq")
+
 [connection signal="input_event" from="tabs" to="." method="_on_tabs_input_event"]
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

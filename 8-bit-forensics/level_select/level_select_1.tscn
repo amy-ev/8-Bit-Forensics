@@ -1,11 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://bb2q2os4gnskm"]
 
-[ext_resource type="Texture2D" uid="uid://2wyer1trrenh" path="res://assets/book-test-big-x3.png" id="1_l3xca"]
+[ext_resource type="Texture2D" uid="uid://bfvlhbb3p2u8t" path="res://assets/level_select/level-select-sprite.png" id="1_un5lr"]
 [ext_resource type="Script" uid="uid://bjaghc73epk6k" path="res://level_select/open_folder_template.gd" id="2_c0r2y"]
 [ext_resource type="Texture2D" uid="uid://dbaq50qbxhonf" path="res://assets/level_select/inside-left-x3.png" id="3_un5lr"]
 [ext_resource type="Texture2D" uid="uid://wbk4vf40q0cp" path="res://assets/level_select/inside-right-x3.png" id="4_l3xca"]
 [ext_resource type="Shape2D" uid="uid://c4vl3w531sv72" path="res://level_select/open_tab.tres" id="4_pbkm0"]
 [ext_resource type="Shape2D" uid="uid://44un3tl8v86i" path="res://level_select/closed_tab.tres" id="5_8gg1b"]
+[ext_resource type="Texture2D" uid="uid://daoijgqnsxmm6" path="res://assets/evidence/sd-card.png" id="7_l3xca"]
 
 [sub_resource type="Animation" id="Animation_8gg1b"]
 length = 0.001
@@ -36,57 +37,39 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [7, 9, 10, 11, 12, 13, 14, 15]
-}
-
-[sub_resource type="Animation" id="Animation_un5lr"]
-resource_name = "open_3"
-length = 0.8
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [7, 9, 10, 11, 12, 13, 14, 15]
+"values": [7, 8, 9, 10, 11, 12, 13, 14]
 }
 
 [sub_resource type="Animation" id="Animation_l3xca"]
-resource_name = "open_4"
+resource_name = "open_0_backwards"
 length = 0.8
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 0
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [7, 9, 10, 11, 12, 13, 14, 15]
+"values": [7, 6, 5, 4, 3, 2, 1, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qbvn0"]
 _data = {
 &"RESET": SubResource("Animation_8gg1b"),
-&"open_2": SubResource("Animation_pbkm0"),
-&"open_3": SubResource("Animation_un5lr"),
-&"open_4": SubResource("Animation_l3xca")
+&"open_0_backwards": SubResource("Animation_l3xca"),
+&"open_2": SubResource("Animation_pbkm0")
 }
 
 [node name="level_select_1" type="Sprite2D"]
-scale = Vector2(2, 2)
-texture = ExtResource("1_l3xca")
+position = Vector2(37, 211)
+texture = ExtResource("1_un5lr")
 centered = false
 hframes = 8
-vframes = 2
+vframes = 4
 frame = 7
 script = ExtResource("2_c0r2y")
 
@@ -147,5 +130,21 @@ offset_bottom = 478.0
 text = "play
 "
 
+[node name="next" type="TextureButton" parent="."]
+offset_left = 184.0
+offset_top = 94.0
+offset_right = 224.0
+offset_bottom = 134.0
+texture_normal = ExtResource("7_l3xca")
+
+[node name="back" type="TextureButton" parent="."]
+offset_left = -31.0
+offset_top = 92.0
+offset_right = 9.0
+offset_bottom = 132.0
+texture_normal = ExtResource("7_l3xca")
+
 [connection signal="input_event" from="tabs" to="." method="_on_tabs_input_event"]
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
