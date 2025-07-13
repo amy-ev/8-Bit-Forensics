@@ -1,11 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bb2q2os4gnskm"]
+[gd_scene load_steps=8 format=3 uid="uid://bb2q2os4gnskm"]
 
 [ext_resource type="Texture2D" uid="uid://bfvlhbb3p2u8t" path="res://assets/level_select/level-select-sprite.png" id="1_un5lr"]
 [ext_resource type="Script" uid="uid://bjaghc73epk6k" path="res://level_select/open_folder_template.gd" id="2_c0r2y"]
-[ext_resource type="Texture2D" uid="uid://dbaq50qbxhonf" path="res://assets/level_select/inside-left-x3.png" id="3_un5lr"]
-[ext_resource type="Texture2D" uid="uid://wbk4vf40q0cp" path="res://assets/level_select/inside-right-x3.png" id="4_l3xca"]
-[ext_resource type="Shape2D" uid="uid://c4vl3w531sv72" path="res://level_select/open_tab.tres" id="4_pbkm0"]
-[ext_resource type="Shape2D" uid="uid://44un3tl8v86i" path="res://level_select/closed_tab.tres" id="5_8gg1b"]
 [ext_resource type="Texture2D" uid="uid://daoijgqnsxmm6" path="res://assets/evidence/sd-card.png" id="7_l3xca"]
 
 [sub_resource type="Animation" id="Animation_8gg1b"]
@@ -21,23 +17,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [7]
-}
-
-[sub_resource type="Animation" id="Animation_pbkm0"]
-resource_name = "open_2"
-length = 0.8
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [7, 8, 9, 10, 11, 12, 13, 14]
 }
 
 [sub_resource type="Animation" id="Animation_l3xca"]
@@ -57,6 +36,23 @@ tracks/0/keys = {
 "values": [7, 6, 5, 4, 3, 2, 1, 0]
 }
 
+[sub_resource type="Animation" id="Animation_pbkm0"]
+resource_name = "open_2"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 12, 13, 14]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qbvn0"]
 _data = {
 &"RESET": SubResource("Animation_8gg1b"),
@@ -73,62 +69,10 @@ vframes = 4
 frame = 7
 script = ExtResource("2_c0r2y")
 
-[node name="tabs" type="Area2D" parent="."]
-
-[node name="tab1" type="CollisionShape2D" parent="tabs"]
-position = Vector2(694.5, 87)
-shape = ExtResource("4_pbkm0")
-
-[node name="tab2" type="CollisionShape2D" parent="tabs"]
-position = Vector2(696, 135)
-shape = ExtResource("5_8gg1b")
-
-[node name="tab3" type="CollisionShape2D" parent="tabs"]
-position = Vector2(696, 183)
-shape = ExtResource("5_8gg1b")
-
-[node name="tab4" type="CollisionShape2D" parent="tabs"]
-position = Vector2(696, 234)
-shape = ExtResource("5_8gg1b")
-
-[node name="left_content" type="TextureRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -56.0
-offset_top = 8.5
-offset_right = -56.0
-offset_bottom = 8.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_un5lr")
-
-[node name="right_content" type="TextureRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -55.0
-offset_top = -3.5
-offset_right = -55.0
-offset_bottom = -3.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_l3xca")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_qbvn0")
 }
-
-[node name="play" type="Button" parent="."]
-offset_left = 514.5
-offset_top = 447.0
-offset_right = 555.5
-offset_bottom = 478.0
-text = "play
-"
 
 [node name="next" type="TextureButton" parent="."]
 offset_left = 184.0
@@ -144,7 +88,5 @@ offset_right = 9.0
 offset_bottom = 132.0
 texture_normal = ExtResource("7_l3xca")
 
-[connection signal="input_event" from="tabs" to="." method="_on_tabs_input_event"]
-[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

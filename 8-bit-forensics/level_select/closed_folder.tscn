@@ -1,12 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnoav72hte2jx"]
+[gd_scene load_steps=7 format=3 uid="uid://cnoav72hte2jx"]
 
 [ext_resource type="Texture2D" uid="uid://bfvlhbb3p2u8t" path="res://assets/level_select/level-select-sprite.png" id="1_4mb7p"]
 [ext_resource type="Script" uid="uid://6cfgq337t3aw" path="res://level_select/closed_folder.gd" id="2_62c0k"]
-[ext_resource type="Shape2D" uid="uid://by5duysfph354" path="res://level_select/tab.tres" id="3_4mb7p"]
 [ext_resource type="Texture2D" uid="uid://daoijgqnsxmm6" path="res://assets/evidence/sd-card.png" id="4_at8f8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mb7p"]
-size = Vector2(12, 51)
 
 [sub_resource type="Animation" id="Animation_fhlee"]
 length = 0.001
@@ -54,24 +50,6 @@ hframes = 8
 vframes = 4
 script = ExtResource("2_62c0k")
 
-[node name="tabs" type="Area2D" parent="."]
-
-[node name="tab1" type="CollisionShape2D" parent="tabs"]
-position = Vector2(696, 87)
-shape = ExtResource("3_4mb7p")
-
-[node name="tab2" type="CollisionShape2D" parent="tabs"]
-position = Vector2(696, 135)
-shape = ExtResource("3_4mb7p")
-
-[node name="tab3" type="CollisionShape2D" parent="tabs"]
-position = Vector2(696, 183)
-shape = ExtResource("3_4mb7p")
-
-[node name="tab4" type="CollisionShape2D" parent="tabs"]
-position = Vector2(696, 232.5)
-shape = SubResource("RectangleShape2D_4mb7p")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_rk4m8")
@@ -92,5 +70,4 @@ offset_bottom = 132.0
 disabled = true
 texture_normal = ExtResource("4_at8f8")
 
-[connection signal="input_event" from="tabs" to="." method="_on_tabs_input_event"]
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]
