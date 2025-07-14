@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://drlfreuf2u18g"]
+[gd_scene load_steps=3 format=3 uid="uid://drlfreuf2u18g"]
 
 [ext_resource type="Script" uid="uid://c8pi0l45cfeqv" path="res://start_menu/menu.gd" id="1_woprb"]
+[ext_resource type="FontFile" uid="uid://dpmag3ha6yto5" path="res://MinecraftRegular-Bmg3.otf" id="2_aq2mp"]
 
 [node name="background" type="TextureRect"]
 offset_right = 256.0
@@ -23,14 +24,20 @@ grow_vertical = 2
 
 [node name="start" type="Button" parent="menu"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_aq2mp")
+theme_override_font_sizes/font_size = 10
 text = "start"
 
 [node name="information" type="Button" parent="menu"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_aq2mp")
+theme_override_font_sizes/font_size = 10
 text = "crime board"
 
 [node name="level_select" type="Button" parent="menu"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_aq2mp")
+theme_override_font_sizes/font_size = 10
 text = "select level"
 
 [connection signal="pressed" from="menu/start" to="." method="_on_start_pressed"]

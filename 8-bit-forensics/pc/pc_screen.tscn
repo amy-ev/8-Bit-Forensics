@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4qcqdfv02pnd"]
+[gd_scene load_steps=7 format=3 uid="uid://b4qcqdfv02pnd"]
 
 [ext_resource type="Texture2D" uid="uid://ddw5ij5en8asc" path="res://assets/pc/pc-on.png" id="2_lrtf5"]
 [ext_resource type="Script" uid="uid://bdgjl5jim21kt" path="res://pc/pc_screen.gd" id="2_n1q0v"]
+[ext_resource type="PackedScene" uid="uid://krnwjg3pmi37" path="res://pc/keyboard.tscn" id="3_lrtf5"]
 
 [sub_resource type="Animation" id="Animation_6p3y6"]
 length = 0.001
@@ -78,6 +79,9 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "end day"
+
+[node name="keyboard-background" parent="bottom_screen" instance=ExtResource("3_lrtf5")]
+layout_mode = 0
 
 [node name="screen_animation" type="AnimationPlayer" parent="."]
 libraries = {
