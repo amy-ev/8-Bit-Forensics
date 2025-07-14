@@ -61,11 +61,11 @@ _data = {
 }
 
 [node name="level_select_1" type="Sprite2D"]
-position = Vector2(37, 211)
+position = Vector2(39, 0)
 texture = ExtResource("1_un5lr")
 centered = false
 hframes = 8
-vframes = 4
+vframes = 5
 frame = 7
 script = ExtResource("2_c0r2y")
 
@@ -83,9 +83,9 @@ texture_normal = ExtResource("7_l3xca")
 
 [node name="back" type="TextureButton" parent="."]
 offset_left = -31.0
-offset_top = 92.0
+offset_top = 94.0
 offset_right = 9.0
-offset_bottom = 132.0
+offset_bottom = 134.0
 texture_normal = ExtResource("7_l3xca")
 
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]

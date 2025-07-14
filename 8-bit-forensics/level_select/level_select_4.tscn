@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2bfv5m5qudc7"]
+[gd_scene load_steps=8 format=3 uid="uid://d2bfv5m5qudc7"]
 
 [ext_resource type="Texture2D" uid="uid://bfvlhbb3p2u8t" path="res://assets/level_select/level-select-sprite.png" id="1_g6ke1"]
 [ext_resource type="Script" uid="uid://bjaghc73epk6k" path="res://level_select/open_folder_template.gd" id="2_p3ot5"]
@@ -36,18 +36,36 @@ tracks/0/keys = {
 "values": [28, 27, 26, 25, 24, 23, 22, 21]
 }
 
+[sub_resource type="Animation" id="Animation_twx2e"]
+resource_name = "open_5"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32, 33, 34, 35]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5tgre"]
 _data = {
 &"RESET": SubResource("Animation_p3ot5"),
-&"open_3_backwards": SubResource("Animation_nff8j")
+&"open_3_backwards": SubResource("Animation_nff8j"),
+&"open_5": SubResource("Animation_twx2e")
 }
 
 [node name="level_select_4" type="Sprite2D"]
-position = Vector2(37, 211)
+position = Vector2(39, 0)
 texture = ExtResource("1_g6ke1")
 centered = false
 hframes = 8
-vframes = 4
+vframes = 5
 frame = 28
 script = ExtResource("2_p3ot5")
 
@@ -63,13 +81,15 @@ offset_right = 224.0
 offset_bottom = 134.0
 disabled = true
 texture_normal = ExtResource("8_nff8j")
+metadata/_edit_use_anchors_ = true
 
 [node name="back" type="TextureButton" parent="."]
 offset_left = -31.0
-offset_top = 92.0
+offset_top = 94.0
 offset_right = 9.0
-offset_bottom = 132.0
+offset_bottom = 134.0
 texture_normal = ExtResource("8_nff8j")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

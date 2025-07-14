@@ -7,18 +7,32 @@
 [node name="base_level_select" type="Node2D"]
 script = ExtResource("2_vnxcf")
 
-[node name="desk" type="TextureRect" parent="."]
+[node name="top_screen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 192.0
+
+[node name="bottom_screen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 offset_top = 208.0
 offset_right = 256.0
 offset_bottom = 400.0
+
+[node name="desk" type="TextureRect" parent="bottom_screen"]
+layout_mode = 1
+offset_right = 256.0
+offset_bottom = 192.0
 texture = ExtResource("2_q1qqx")
 
-[node name="closed_folder" parent="." instance=ExtResource("3_q1qqx")]
+[node name="closed_folder" parent="bottom_screen" instance=ExtResource("3_q1qqx")]
 
-[node name="back_btn" type="Button" parent="."]
+[node name="back_btn" type="Button" parent="bottom_screen"]
 z_index = 6
+layout_mode = 1
 offset_right = 45.0
 offset_bottom = 31.0
 text = "back"
 
-[connection signal="pressed" from="back_btn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="bottom_screen/back_btn" to="." method="_on_back_btn_pressed"]
