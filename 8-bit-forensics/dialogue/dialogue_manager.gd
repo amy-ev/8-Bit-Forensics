@@ -1,14 +1,15 @@
 extends Node2D
 
 var dialogue_file = "res://dialogue/dialogue.json"
-var dialogue_data = {}
-var current_dialogue = ""
+@export var dialogue_data = {}
+@export var current_dialogue = ""
 
 signal end_dialogue
 
 func _ready() -> void:
 	dialogue_data = load_dialogue(dialogue_file)
-	print(dialogue_data)
+	get_parent().get_parent().get_node("bottom_screen/evidence_bag/evidence/evidence_shape").disabled = true
+	get_parent().get_parent().get_node("bottom_screen/pc/pc_area/pc_shape").disabled = true
 	$dialogue_box/container/day_title.text = "Day %s" %(Global.unlocked+1)
 	dialogue_text($dialogue_box/container/text, "Day %s.0" %(Global.unlocked+1))
 	
@@ -32,6 +33,9 @@ func _on_prev_pressed() -> void:
 		emit_signal(dialogue_data[current_dialogue]["function"])
 		
 func _end_dialogue():
+	get_parent().get_parent().get_node("bottom_screen/evidence_bag/evidence/evidence_shape").disabled = false
+	get_parent().get_parent().get_node("bottom_screen/pc/pc_area/pc_shape").disabled = false
+	get_parent().get_parent().get_node("bottom_screen/next").queue_free()
 	queue_free()
 	
 func load_dialogue(file_path):

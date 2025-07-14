@@ -12,6 +12,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0
 offset_bottom = 192.0
+mouse_filter = 2
 
 [node name="bottom_screen" type="Control" parent="."]
 layout_mode = 3
@@ -19,6 +20,7 @@ anchors_preset = 0
 offset_top = 208.0
 offset_right = 256.0
 offset_bottom = 400.0
+mouse_filter = 1
 
 [node name="desk" type="TextureRect" parent="bottom_screen"]
 layout_mode = 1

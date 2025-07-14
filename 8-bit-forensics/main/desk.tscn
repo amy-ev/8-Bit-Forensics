@@ -1,65 +1,130 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3s0jetqw0jpm"]
+[gd_scene load_steps=12 format=3 uid="uid://d3s0jetqw0jpm"]
 
-[ext_resource type="Texture2D" uid="uid://uc7qtxuxfjwk" path="res://assets/office/desk-x3.png" id="1_yrctc"]
-[ext_resource type="Texture2D" uid="uid://dyjpj1hiob0ag" path="res://assets/office/btn-x3.png" id="2_7lduy"]
 [ext_resource type="Script" uid="uid://b7v2yjfpel1ti" path="res://main/desk.gd" id="2_sbb4t"]
 [ext_resource type="PackedScene" uid="uid://cnvcbdwsftrn" path="res://dialogue/dialogue_manager.tscn" id="4_sbb4t"]
+[ext_resource type="Texture2D" uid="uid://c1mmy3f1cm41j" path="res://assets/office/desk.png" id="4_ufxmt"]
+[ext_resource type="Texture2D" uid="uid://d2plwtcosssr1" path="res://assets/office/evidence-bag.png" id="5_6g8cm"]
+[ext_resource type="Texture2D" uid="uid://urp13roreq5a" path="res://assets/office/coffee-sprite.png" id="6_1x7m8"]
+[ext_resource type="Texture2D" uid="uid://cs0st1nq6ol6q" path="res://assets/pc/pc.png" id="6_6g8cm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufxmt"]
-size = Vector2(32.9319, 23.9755)
+size = Vector2(46, 66)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbb4t"]
-size = Vector2(36, 24)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1x7m8"]
+size = Vector2(112, 70)
+
+[sub_resource type="Animation" id="Animation_1x7m8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6g8cm"]
+resource_name = "steam"
+length = 2.2
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j4gt6"]
+_data = {
+&"RESET": SubResource("Animation_1x7m8"),
+&"steam": SubResource("Animation_6g8cm")
+}
 
 [node name="desk" type="Node2D"]
 script = ExtResource("2_sbb4t")
 
-[node name="office_desk" type="TextureRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("1_yrctc")
+[node name="top_screen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 192.0
 
-[node name="pc_btn" type="TextureButton" parent="."]
-offset_left = 1470.0
-offset_top = 702.0
-offset_right = 1503.0
-offset_bottom = 726.0
-scale = Vector2(2.01, 2)
-texture_normal = ExtResource("2_7lduy")
-texture_pressed = ExtResource("2_7lduy")
-texture_hover = ExtResource("2_7lduy")
-texture_disabled = ExtResource("2_7lduy")
-texture_focused = ExtResource("2_7lduy")
+[node name="dialogue_manager" parent="top_screen" instance=ExtResource("4_sbb4t")]
 
-[node name="evidence_rect" type="TextureRect" parent="."]
-offset_left = 288.0
-offset_top = 769.0
-offset_right = 321.0
-offset_bottom = 793.0
-scale = Vector2(7.25741, 7.25741)
-texture = ExtResource("2_7lduy")
+[node name="bottom_screen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 208.0
+offset_right = 256.0
+offset_bottom = 400.0
+mouse_filter = 1
 
-[node name="evidence" type="Area2D" parent="evidence_rect"]
+[node name="office_desk" type="TextureRect" parent="bottom_screen"]
+layout_mode = 1
+offset_right = 256.0
+offset_bottom = 192.0
+texture = ExtResource("4_ufxmt")
 
-[node name="evidence_shape" type="CollisionShape2D" parent="evidence_rect/evidence"]
-position = Vector2(16.4659, 11.9878)
+[node name="evidence_bag" type="TextureRect" parent="bottom_screen"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 48.0
+offset_right = 65.0
+offset_bottom = 114.0
+texture = ExtResource("5_6g8cm")
+
+[node name="evidence" type="Area2D" parent="bottom_screen/evidence_bag"]
+
+[node name="evidence_shape" type="CollisionShape2D" parent="bottom_screen/evidence_bag/evidence"]
+position = Vector2(23, 33)
 shape = SubResource("RectangleShape2D_ufxmt")
 
-[node name="usb_port" type="Area2D" parent="."]
-position = Vector2(1782, 780)
+[node name="pc" type="TextureRect" parent="bottom_screen"]
+layout_mode = 1
+offset_left = 114.0
+offset_right = 256.0
+offset_bottom = 126.0
+texture = ExtResource("6_6g8cm")
 
-[node name="usb" type="CollisionShape2D" parent="usb_port"]
-position = Vector2(18, 12)
-shape = SubResource("RectangleShape2D_sbb4t")
+[node name="pc_area" type="Area2D" parent="bottom_screen/pc"]
 
-[node name="usb_rect" type="TextureRect" parent="usb_port"]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_7lduy")
+[node name="pc_shape" type="CollisionShape2D" parent="bottom_screen/pc/pc_area"]
+position = Vector2(58, 35)
+shape = SubResource("RectangleShape2D_1x7m8")
 
-[node name="dialogue_manager" parent="." instance=ExtResource("4_sbb4t")]
+[node name="next" type="Button" parent="bottom_screen"]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 161.0
+offset_right = 192.0
+offset_bottom = 192.0
+text = "next"
 
-[connection signal="pressed" from="pc_btn" to="." method="_on_pc_btn_pressed"]
-[connection signal="input_event" from="evidence_rect/evidence" to="." method="_on_evidence_input_event"]
-[connection signal="input_event" from="usb_port" to="." method="_on_usb_port_input_event"]
+[node name="coffee_cup" type="Sprite2D" parent="bottom_screen"]
+position = Vector2(82, 24)
+texture = ExtResource("6_1x7m8")
+centered = false
+hframes = 8
+vframes = 2
+
+[node name="coffee_animation" type="AnimationPlayer" parent="bottom_screen/coffee_cup"]
+libraries = {
+&"": SubResource("AnimationLibrary_j4gt6")
+}
+autoplay = "steam"
+
+[connection signal="input_event" from="bottom_screen/evidence_bag/evidence" to="." method="_on_evidence_input_event"]
+[connection signal="input_event" from="bottom_screen/pc/pc_area" to="." method="_on_pc_area_input_event"]
+[connection signal="pressed" from="bottom_screen/next" to="." method="_on_next_pressed"]

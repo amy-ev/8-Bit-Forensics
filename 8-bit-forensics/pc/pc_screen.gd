@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready() -> void:
 	var day = Global.unlocked + 1
+	await $screen_animation.animation_finished
 	match day:
 		1:
 			add_child(load("res://evidence/image_file.tscn").instantiate())

@@ -7,40 +7,34 @@
 script = ExtResource("1_k6lpl")
 
 [node name="npc" type="TextureRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_right = 256.0
+offset_bottom = 192.0
 texture = ExtResource("2_3umdh")
+expand_mode = 1
 
 [node name="dialogue_box" type="ColorRect" parent="."]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 880.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_top = 142.0
+offset_right = 256.0
+offset_bottom = 192.0
 color = Color(0, 0, 0, 1)
 
 [node name="container" type="VBoxContainer" parent="dialogue_box"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 12.0
-offset_right = -256.0
-offset_bottom = -50.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 49.0
+offset_bottom = 44.0
 
 [node name="day_title" type="Label" parent="dialogue_box/container"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 9
 text = "day x"
 
 [node name="text" type="Label" parent="dialogue_box/container"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
 text = "the dialogue
 "
 
@@ -49,16 +43,18 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -90.0
+offset_left = -60.0
 offset_bottom = 31.0
 grow_horizontal = 0
 
 [node name="prev" type="Button" parent="dialogue_box/btn_container"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 9
 text = "prev"
 
 [node name="next" type="Button" parent="dialogue_box/btn_container"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 9
 text = "next"
 
 [connection signal="pressed" from="dialogue_box/btn_container/prev" to="." method="_on_prev_pressed"]

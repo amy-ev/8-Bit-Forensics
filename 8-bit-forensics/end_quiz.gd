@@ -22,13 +22,15 @@ func _on_c_pressed() -> void:
 
 func _on_answer_selected(day:String, answer:int):
 	var given_answer = Global.quiz_dict[day][answer]
+	$bottom_screen/answers/exit.visible = true
+	$bottom_screen/answers/exit.disabled = true
 	if correct_answer == given_answer:
-		$VBoxContainer/answers/result.text = "woo correct"
-		$VBoxContainer/answers/exit.visible = true
+		$bottom_screen/answers/result.text = "woo correct"
+		$bottom_screen/answers/exit.disabled = false
 	else:
-		$VBoxContainer/answers/result.text = "try again"
-
+		$bottom_screen/answers/result.text = "try again"
+		$bottom_screen/answers/exit.disabled = true
 
 func _on_exit_pressed() -> void:
 	Global.unlocked += 1
-	get_tree().change_scene_to_file("res://start_menu/menu.tscn")
+	get_tree().change_scene_to_file("res://main/main.tscn")
