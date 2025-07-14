@@ -11,7 +11,6 @@ static func window_mode()-> float:
 	elif DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
 		fullscreen = false
 		scaler = 1.0
-	print(scaler)
 	return scaler
 
 static func fullscreen_input(_event: InputEvent) -> float:
@@ -24,6 +23,5 @@ static func fullscreen_input(_event: InputEvent) -> float:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		fullscreen = false
 		scaler = 1.0
-	print(scaler)
 	return scaler
 	

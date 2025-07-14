@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bercwrx5afsux"
-path="res://.godot/imported/bag-flat-large-x3.png-b228d700d43e5d04bec38395b6562340.ctex"
+uid="uid://ba3epb7kav6hq"
+path="res://.godot/imported/back-button.png-8bacbc236b0807cf95cec5fe6037afff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/evidence/bag-flat-large-x3.png"
-dest_files=["res://.godot/imported/bag-flat-large-x3.png-b228d700d43e5d04bec38395b6562340.ctex"]
+source_file="res://assets/level_select/back-button.png"
+dest_files=["res://.godot/imported/back-button.png-8bacbc236b0807cf95cec5fe6037afff.ctex"]
 
 [params]
 

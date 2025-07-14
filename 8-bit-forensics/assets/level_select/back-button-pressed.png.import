@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c54bqhcpkhvgk"
-path="res://.godot/imported/tabs-1-x3.png-ce60f09705f5251d9fdb14a853849749.ctex"
+uid="uid://crp1jrxoeu0bn"
+path="res://.godot/imported/back-button-pressed.png-f27da257a0798b404dd6b26941c2a217.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/level_select/tabs-1-x3.png"
-dest_files=["res://.godot/imported/tabs-1-x3.png-ce60f09705f5251d9fdb14a853849749.ctex"]
+source_file="res://assets/level_select/back-button-pressed.png"
+dest_files=["res://.godot/imported/back-button-pressed.png-f27da257a0798b404dd6b26941c2a217.ctex"]
 
 [params]
 

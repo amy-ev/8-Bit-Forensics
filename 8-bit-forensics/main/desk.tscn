@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3s0jetqw0jpm"]
+[gd_scene load_steps=13 format=3 uid="uid://d3s0jetqw0jpm"]
 
 [ext_resource type="Script" uid="uid://b7v2yjfpel1ti" path="res://main/desk.gd" id="2_sbb4t"]
+[ext_resource type="Texture2D" uid="uid://dkpjyfr2lnxq8" path="res://assets/office/desk-with-plants.png" id="3_6g8cm"]
 [ext_resource type="PackedScene" uid="uid://cnvcbdwsftrn" path="res://dialogue/dialogue_manager.tscn" id="4_sbb4t"]
-[ext_resource type="Texture2D" uid="uid://c1mmy3f1cm41j" path="res://assets/office/desk.png" id="4_ufxmt"]
 [ext_resource type="Texture2D" uid="uid://d2plwtcosssr1" path="res://assets/office/evidence-bag.png" id="5_6g8cm"]
 [ext_resource type="Texture2D" uid="uid://urp13roreq5a" path="res://assets/office/coffee-sprite.png" id="6_1x7m8"]
 [ext_resource type="Texture2D" uid="uid://cs0st1nq6ol6q" path="res://assets/pc/pc.png" id="6_6g8cm"]
@@ -52,6 +52,9 @@ _data = {
 &"steam": SubResource("Animation_6g8cm")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g8cm"]
+size = Vector2(26, 32)
+
 [node name="desk" type="Node2D"]
 script = ExtResource("2_sbb4t")
 
@@ -60,22 +63,23 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0
 offset_bottom = 192.0
+mouse_filter = 2
 
 [node name="dialogue_manager" parent="top_screen" instance=ExtResource("4_sbb4t")]
 
 [node name="bottom_screen" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 208.0
+offset_top = 192.0
 offset_right = 256.0
-offset_bottom = 400.0
+offset_bottom = 384.0
 mouse_filter = 1
 
 [node name="office_desk" type="TextureRect" parent="bottom_screen"]
 layout_mode = 1
 offset_right = 256.0
 offset_bottom = 192.0
-texture = ExtResource("4_ufxmt")
+texture = ExtResource("3_6g8cm")
 
 [node name="evidence_bag" type="TextureRect" parent="bottom_screen"]
 layout_mode = 0
@@ -125,6 +129,22 @@ libraries = {
 }
 autoplay = "steam"
 
+[node name="coffee" type="Area2D" parent="bottom_screen/coffee_cup"]
+
+[node name="coffee_shape" type="CollisionShape2D" parent="bottom_screen/coffee_cup/coffee"]
+position = Vector2(15, 32)
+shape = SubResource("RectangleShape2D_6g8cm")
+
+[node name="prev" type="Button" parent="bottom_screen"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 161.0
+offset_right = 129.0
+offset_bottom = 192.0
+text = "prev"
+
 [connection signal="input_event" from="bottom_screen/evidence_bag/evidence" to="." method="_on_evidence_input_event"]
 [connection signal="input_event" from="bottom_screen/pc/pc_area" to="." method="_on_pc_area_input_event"]
 [connection signal="pressed" from="bottom_screen/next" to="." method="_on_next_pressed"]
+[connection signal="input_event" from="bottom_screen/coffee_cup/coffee" to="." method="_on_coffee_input_event"]
+[connection signal="pressed" from="bottom_screen/prev" to="." method="_on_prev_pressed"]

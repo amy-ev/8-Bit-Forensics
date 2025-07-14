@@ -8,9 +8,8 @@
 
 [node name="desk" type="TextureRect"]
 clip_contents = true
-offset_top = 208.0
 offset_right = 256.0
-offset_bottom = 400.0
+offset_bottom = 192.0
 texture = ExtResource("1_uh1up")
 script = ExtResource("2_h8nwr")
 

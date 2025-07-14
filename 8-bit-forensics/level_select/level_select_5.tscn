@@ -1,8 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://ef1xg2d1ed8s"]
+[gd_scene load_steps=10 format=3 uid="uid://ef1xg2d1ed8s"]
 
 [ext_resource type="Texture2D" uid="uid://bfvlhbb3p2u8t" path="res://assets/level_select/level-select-sprite.png" id="1_r4rgc"]
 [ext_resource type="Script" uid="uid://bjaghc73epk6k" path="res://level_select/open_folder_template.gd" id="2_keav4"]
-[ext_resource type="Texture2D" uid="uid://daoijgqnsxmm6" path="res://assets/evidence/sd-card.png" id="3_f1pno"]
+[ext_resource type="Texture2D" uid="uid://cegx07yypcgx4" path="res://assets/level_select/forward-button.png" id="3_l5wml"]
+[ext_resource type="Texture2D" uid="uid://degu4rdt3kdc3" path="res://assets/level_select/forward-button-pressed.png" id="4_8bkdd"]
+[ext_resource type="Texture2D" uid="uid://ba3epb7kav6hq" path="res://assets/level_select/back-button.png" id="4_f1pno"]
+[ext_resource type="Texture2D" uid="uid://crp1jrxoeu0bn" path="res://assets/level_select/back-button-pressed.png" id="5_l5wml"]
+
+[sub_resource type="Animation" id="Animation_7i7hd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [35]
+}
 
 [sub_resource type="Animation" id="Animation_mf8v1"]
 resource_name = "open_4_backwards"
@@ -19,21 +37,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [35, 34, 33, 32, 31, 30, 29, 28]
-}
-
-[sub_resource type="Animation" id="Animation_7i7hd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [35]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7i7hd"]
@@ -57,19 +60,22 @@ libraries = {
 }
 
 [node name="next" type="TextureButton" parent="."]
-offset_left = 184.0
+visible = false
+offset_left = 187.0
 offset_top = 94.0
-offset_right = 224.0
-offset_bottom = 134.0
+offset_right = 207.0
+offset_bottom = 114.0
 disabled = true
-texture_normal = ExtResource("3_f1pno")
+texture_normal = ExtResource("3_l5wml")
+texture_pressed = ExtResource("4_8bkdd")
 
 [node name="back" type="TextureButton" parent="."]
-offset_left = -31.0
+offset_left = -29.0
 offset_top = 94.0
-offset_right = 9.0
-offset_bottom = 134.0
-texture_normal = ExtResource("3_f1pno")
+offset_right = -9.0
+offset_bottom = 114.0
+texture_normal = ExtResource("4_f1pno")
+texture_pressed = ExtResource("5_l5wml")
 
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

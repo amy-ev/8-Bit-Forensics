@@ -58,6 +58,7 @@ offset_right = 256.0
 offset_bottom = 192.0
 
 [node name="train_background" type="TextureRect" parent="top_screen"]
+layout_mode = 0
 offset_right = 512.0
 offset_bottom = 192.0
 scale = Vector2(2, 1)
@@ -65,6 +66,7 @@ texture = ExtResource("2_e54oy")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="top_screen"]
+layout_mode = 0
 offset_right = 256.0
 offset_bottom = 192.0
 texture = ExtResource("3_5p3h7")
@@ -73,9 +75,9 @@ expand_mode = 1
 [node name="bottom_screen" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 208.0
+offset_top = 192.0
 offset_right = 256.0
-offset_bottom = 400.0
+offset_bottom = 384.0
 mouse_filter = 1
 
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]

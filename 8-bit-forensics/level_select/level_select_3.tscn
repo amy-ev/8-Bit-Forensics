@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://628p8y7vfrn5"]
+[gd_scene load_steps=11 format=3 uid="uid://628p8y7vfrn5"]
 
 [ext_resource type="Texture2D" uid="uid://bfvlhbb3p2u8t" path="res://assets/level_select/level-select-sprite.png" id="1_3tojh"]
 [ext_resource type="Script" uid="uid://bjaghc73epk6k" path="res://level_select/open_folder_template.gd" id="2_occy2"]
-[ext_resource type="Texture2D" uid="uid://daoijgqnsxmm6" path="res://assets/evidence/sd-card.png" id="8_7iosq"]
+[ext_resource type="Texture2D" uid="uid://cegx07yypcgx4" path="res://assets/level_select/forward-button.png" id="3_doqyo"]
+[ext_resource type="Texture2D" uid="uid://degu4rdt3kdc3" path="res://assets/level_select/forward-button-pressed.png" id="4_ibff5"]
+[ext_resource type="Texture2D" uid="uid://ba3epb7kav6hq" path="res://assets/level_select/back-button.png" id="5_ibff5"]
+[ext_resource type="Texture2D" uid="uid://crp1jrxoeu0bn" path="res://assets/level_select/back-button-pressed.png" id="6_3tojh"]
 
 [sub_resource type="Animation" id="Animation_myktu"]
 length = 0.001
@@ -75,18 +78,20 @@ libraries = {
 }
 
 [node name="next" type="TextureButton" parent="."]
-offset_left = 184.0
+offset_left = 187.0
 offset_top = 94.0
-offset_right = 224.0
-offset_bottom = 134.0
-texture_normal = ExtResource("8_7iosq")
+offset_right = 207.0
+offset_bottom = 114.0
+texture_normal = ExtResource("3_doqyo")
+texture_pressed = ExtResource("4_ibff5")
 
 [node name="back" type="TextureButton" parent="."]
-offset_left = -31.0
+offset_left = -29.0
 offset_top = 94.0
-offset_right = 9.0
-offset_bottom = 134.0
-texture_normal = ExtResource("8_7iosq")
+offset_right = -9.0
+offset_bottom = 114.0
+texture_normal = ExtResource("5_ibff5")
+texture_pressed = ExtResource("6_3tojh")
 
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

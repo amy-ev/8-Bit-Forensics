@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="8-Bit-Forensics"
+run/main_scene="uid://dgb0pdtwfdhbk"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="uid://eprimdtbchtl"
 
@@ -21,9 +22,9 @@ Global="*res://global.gd"
 [display]
 
 window/size/viewport_width=256
-window/size/viewport_height=400
+window/size/viewport_height=384
 window/size/window_width_override=256
-window/size/window_height_override=400
+window/size/window_height_override=384
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
