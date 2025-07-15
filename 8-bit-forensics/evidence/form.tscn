@@ -31,19 +31,15 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 script = ExtResource("1_1gyes")
 
-[node name="form" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 252.0
-offset_bottom = 301.0
-theme_override_constants/separation = 0
-
-[node name="columns" type="HBoxContainer" parent="form"]
+[node name="columns" type="HBoxContainer" parent="."]
 layout_mode = 2
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 252.0
+offset_bottom = 147.0
 theme_override_constants/separation = 0
 
-[node name="column1" type="NinePatchRect" parent="form/columns"]
+[node name="column1" type="NinePatchRect" parent="columns"]
 custom_minimum_size = Vector2(96, 148)
 layout_mode = 2
 texture = ExtResource("3_2kplo")
@@ -52,14 +48,14 @@ region_rect = Rect2(0, 0, 22, 30)
 patch_margin_right = 4
 axis_stretch_vertical = 1
 
-[node name="col_1" type="VBoxContainer" parent="form/columns/column1"]
+[node name="col_1" type="VBoxContainer" parent="columns/column1"]
 layout_mode = 2
 offset_right = 94.0
 offset_bottom = 144.0
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="authority-label" type="RichTextLabel" parent="form/columns/column1/col_1"]
+[node name="authority-label" type="RichTextLabel" parent="columns/column1/col_1"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.161743, 0.141391, 0.106753, 1)
@@ -72,7 +68,7 @@ scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
 
-[node name="underline" type="Line2D" parent="form/columns/column1/col_1/authority-label"]
+[node name="underline" type="Line2D" parent="columns/column1/col_1/authority-label"]
 position = Vector2(35, 8)
 points = PackedVector2Array(2, 0, 55, 0)
 width = 1.0
@@ -81,7 +77,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="ref_no-label" type="RichTextLabel" parent="form/columns/column1/col_1"]
+[node name="ref_no-label" type="RichTextLabel" parent="columns/column1/col_1"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -92,7 +88,7 @@ scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
 
-[node name="underline" type="Line2D" parent="form/columns/column1/col_1/ref_no-label"]
+[node name="underline" type="Line2D" parent="columns/column1/col_1/ref_no-label"]
 position = Vector2(-1, 16)
 points = PackedVector2Array(2, 0, 91, 0)
 width = 1.0
@@ -101,7 +97,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline" type="Line2D" parent="form/columns/column1/col_1"]
+[node name="underline" type="Line2D" parent="columns/column1/col_1"]
 position = Vector2(-1, 29)
 points = PackedVector2Array(1, 0, 91, 0)
 width = 1.0
@@ -109,7 +105,7 @@ texture = ExtResource("5_xafih")
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="description-label" type="RichTextLabel" parent="form/columns/column1/col_1"]
+[node name="description-label" type="RichTextLabel" parent="columns/column1/col_1"]
 custom_minimum_size = Vector2(41, 28)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -119,7 +115,7 @@ scroll_active = false
 autowrap_mode = 1
 shortcut_keys_enabled = false
 
-[node name="underline" type="Line2D" parent="form/columns/column1/col_1/description-label"]
+[node name="underline" type="Line2D" parent="columns/column1/col_1/description-label"]
 position = Vector2(-1, 8)
 points = PackedVector2Array(44, 0, 91, 0)
 width = 1.0
@@ -128,7 +124,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline2" type="Line2D" parent="form/columns/column1/col_1/description-label"]
+[node name="underline2" type="Line2D" parent="columns/column1/col_1/description-label"]
 position = Vector2(-1, 16)
 points = PackedVector2Array(2, 0, 90, 0)
 width = 1.0
@@ -137,7 +133,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline3" type="Line2D" parent="form/columns/column1/col_1/description-label"]
+[node name="underline3" type="Line2D" parent="columns/column1/col_1/description-label"]
 position = Vector2(-1, 24)
 points = PackedVector2Array(2, 0, 91, 0)
 width = 1.0
@@ -146,7 +142,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline2" type="Line2D" parent="form/columns/column1/col_1"]
+[node name="underline2" type="Line2D" parent="columns/column1/col_1"]
 position = Vector2(-1, 57)
 points = PackedVector2Array(1, 0, 91, 0)
 width = 1.0
@@ -154,7 +150,7 @@ texture = ExtResource("5_xafih")
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="time_date-label" type="RichTextLabel" parent="form/columns/column1/col_1"]
+[node name="time_date-label" type="RichTextLabel" parent="columns/column1/col_1"]
 custom_minimum_size = Vector2(80, 20)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -164,7 +160,7 @@ scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
 
-[node name="underline2" type="Line2D" parent="form/columns/column1/col_1/time_date-label"]
+[node name="underline2" type="Line2D" parent="columns/column1/col_1/time_date-label"]
 position = Vector2(-1, 16)
 points = PackedVector2Array(2, 0, 91, 0)
 width = 1.0
@@ -173,7 +169,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline3" type="Line2D" parent="form/columns/column1/col_1"]
+[node name="underline3" type="Line2D" parent="columns/column1/col_1"]
 position = Vector2(-1, 77)
 points = PackedVector2Array(1, 0, 91, 0)
 width = 1.0
@@ -181,7 +177,7 @@ texture = ExtResource("5_xafih")
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="where-label" type="RichTextLabel" parent="form/columns/column1/col_1"]
+[node name="where-label" type="RichTextLabel" parent="columns/column1/col_1"]
 custom_minimum_size = Vector2(80, 18)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -191,7 +187,7 @@ scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
 
-[node name="underline" type="Line2D" parent="form/columns/column1/col_1/where-label"]
+[node name="underline" type="Line2D" parent="columns/column1/col_1/where-label"]
 position = Vector2(-1, 8)
 points = PackedVector2Array(52, 0, 91, 0)
 width = 1.0
@@ -200,7 +196,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline2" type="Line2D" parent="form/columns/column1/col_1/where-label"]
+[node name="underline2" type="Line2D" parent="columns/column1/col_1/where-label"]
 position = Vector2(-1, 17)
 points = PackedVector2Array(2, 0, 91, 0)
 width = 1.0
@@ -209,7 +205,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="by-label" type="RichTextLabel" parent="form/columns/column1/col_1"]
+[node name="by-label" type="RichTextLabel" parent="columns/column1/col_1"]
 custom_minimum_size = Vector2(80, 18)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -219,7 +215,7 @@ scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
 
-[node name="underline" type="Line2D" parent="form/columns/column1/col_1/by-label"]
+[node name="underline" type="Line2D" parent="columns/column1/col_1/by-label"]
 position = Vector2(-1, 8)
 points = PackedVector2Array(38, 0, 91, 0)
 width = 1.0
@@ -228,7 +224,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline2" type="Line2D" parent="form/columns/column1/col_1/by-label"]
+[node name="underline2" type="Line2D" parent="columns/column1/col_1/by-label"]
 position = Vector2(-1, 17)
 points = PackedVector2Array(2, 0, 91, 0)
 width = 1.0
@@ -237,7 +233,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="signed-label" type="RichTextLabel" parent="form/columns/column1/col_1"]
+[node name="signed-label" type="RichTextLabel" parent="columns/column1/col_1"]
 custom_minimum_size = Vector2(23, 12)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -247,7 +243,7 @@ scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
 
-[node name="underline" type="Line2D" parent="form/columns/column1/col_1/signed-label"]
+[node name="underline" type="Line2D" parent="columns/column1/col_1/signed-label"]
 position = Vector2(-1, 8)
 points = PackedVector2Array(26, 0, 91, 0)
 width = 1.0
@@ -256,7 +252,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline4" type="Line2D" parent="form/columns/column1/col_1"]
+[node name="underline4" type="Line2D" parent="columns/column1/col_1"]
 position = Vector2(-1, 125)
 points = PackedVector2Array(1, 0, 91, 0)
 width = 1.0
@@ -264,7 +260,7 @@ texture = ExtResource("5_xafih")
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="crime_no-label" type="RichTextLabel" parent="form/columns/column1/col_1"]
+[node name="crime_no-label" type="RichTextLabel" parent="columns/column1/col_1"]
 custom_minimum_size = Vector2(80, 18)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -275,7 +271,7 @@ scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
 
-[node name="underline" type="Line2D" parent="form/columns/column1/col_1/crime_no-label"]
+[node name="underline" type="Line2D" parent="columns/column1/col_1/crime_no-label"]
 position = Vector2(-70, 16)
 points = PackedVector2Array(70, 0, 159, 0)
 width = 1.0
@@ -284,7 +280,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="column2" type="NinePatchRect" parent="form/columns"]
+[node name="column2" type="NinePatchRect" parent="columns"]
 custom_minimum_size = Vector2(76, 144)
 layout_mode = 2
 texture = ExtResource("3_2kplo")
@@ -292,14 +288,14 @@ region_rect = Rect2(0, 0, 20, 30)
 patch_margin_right = 2
 axis_stretch_vertical = 1
 
-[node name="continuity" type="VBoxContainer" parent="form/columns/column2"]
+[node name="continuity" type="VBoxContainer" parent="columns/column2"]
 layout_mode = 2
 offset_right = 74.0
 offset_bottom = 151.0
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="underline" type="Line2D" parent="form/columns/column2/continuity"]
+[node name="underline" type="Line2D" parent="columns/column2/continuity"]
 position = Vector2(-1, 18)
 points = PackedVector2Array(2, 0, 72, 0)
 width = 1.0
@@ -308,7 +304,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline10" type="Line2D" parent="form/columns/column2/continuity"]
+[node name="underline10" type="Line2D" parent="columns/column2/continuity"]
 position = Vector2(-1, 28)
 points = PackedVector2Array(2, 0, 72, 0)
 width = 1.0
@@ -317,7 +313,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="name" type="RichTextLabel" parent="form/columns/column2/continuity"]
+[node name="name" type="RichTextLabel" parent="columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -331,7 +327,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="underline2" type="Line2D" parent="form/columns/column2/continuity"]
+[node name="underline2" type="Line2D" parent="columns/column2/continuity"]
 position = Vector2(-1, 38)
 points = PackedVector2Array(26, 0, 72, 0)
 width = 1.0
@@ -340,7 +336,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="signed" type="RichTextLabel" parent="form/columns/column2/continuity"]
+[node name="signed" type="RichTextLabel" parent="columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -351,7 +347,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="underline3" type="Line2D" parent="form/columns/column2/continuity"]
+[node name="underline3" type="Line2D" parent="columns/column2/continuity"]
 position = Vector2(-1, 47)
 points = PackedVector2Array(20, 0, 72, 0)
 width = 1.0
@@ -360,7 +356,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline5" type="Line2D" parent="form/columns/column2/continuity"]
+[node name="underline5" type="Line2D" parent="columns/column2/continuity"]
 position = Vector2(-2, 50)
 points = PackedVector2Array(2, 0, 74, 0)
 width = 1.0
@@ -368,7 +364,7 @@ texture = ExtResource("5_xafih")
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="date" type="RichTextLabel" parent="form/columns/column2/continuity"]
+[node name="date" type="RichTextLabel" parent="columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -379,7 +375,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="underline4" type="Line2D" parent="form/columns/column2/continuity"]
+[node name="underline4" type="Line2D" parent="columns/column2/continuity"]
 z_index = 1
 position = Vector2(-1, 67)
 points = PackedVector2Array(2, 0, 72, 0)
@@ -389,7 +385,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline6" type="Line2D" parent="form/columns/column2/continuity"]
+[node name="underline6" type="Line2D" parent="columns/column2/continuity"]
 z_index = 1
 position = Vector2(-1, 77)
 points = PackedVector2Array(2, 0, 72, 0)
@@ -399,7 +395,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="name5" type="RichTextLabel" parent="form/columns/column2/continuity"]
+[node name="name5" type="RichTextLabel" parent="columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 29)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -410,7 +406,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit" type="TextEdit" parent="form/columns/column2/continuity/name5"]
+[node name="TextEdit" type="TextEdit" parent="columns/column2/continuity/name5"]
 custom_minimum_size = Vector2(72, 8)
 layout_mode = 2
 offset_top = 6.0
@@ -434,7 +430,7 @@ autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="underline7" type="Line2D" parent="form/columns/column2/continuity"]
+[node name="underline7" type="Line2D" parent="columns/column2/continuity"]
 z_index = 1
 position = Vector2(3, 88)
 points = PackedVector2Array(20, 0, 69, 0)
@@ -444,7 +440,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="signed5" type="RichTextLabel" parent="form/columns/column2/continuity"]
+[node name="signed5" type="RichTextLabel" parent="columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -454,7 +450,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="form/columns/column2/continuity/signed5"]
+[node name="TextEdit2" type="TextEdit" parent="columns/column2/continuity/signed5"]
 custom_minimum_size = Vector2(30, 8)
 layout_mode = 2
 offset_left = 25.0
@@ -478,7 +474,7 @@ autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="underline9" type="Line2D" parent="form/columns/column2/continuity"]
+[node name="underline9" type="Line2D" parent="columns/column2/continuity"]
 z_index = 1
 position = Vector2(3, 97)
 points = PackedVector2Array(16, 0, 69, 0)
@@ -488,7 +484,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline8" type="Line2D" parent="form/columns/column2/continuity"]
+[node name="underline8" type="Line2D" parent="columns/column2/continuity"]
 z_index = 1
 position = Vector2(-2, 100)
 points = PackedVector2Array(2, 0, 74, 0)
@@ -497,7 +493,7 @@ texture = ExtResource("5_xafih")
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="date5" type="RichTextLabel" parent="form/columns/column2/continuity"]
+[node name="date5" type="RichTextLabel" parent="columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -507,7 +503,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="form/columns/column2/continuity/date5"]
+[node name="TextEdit2" type="TextEdit" parent="columns/column2/continuity/date5"]
 offset_left = 19.0
 offset_top = -2.0
 offset_right = 73.0
@@ -529,7 +525,7 @@ autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="underline11" type="Line2D" parent="form/columns/column2/continuity"]
+[node name="underline11" type="Line2D" parent="columns/column2/continuity"]
 z_index = 1
 position = Vector2(-1, 117)
 points = PackedVector2Array(2, 0, 72, 0)
@@ -539,7 +535,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline12" type="Line2D" parent="form/columns/column2/continuity"]
+[node name="underline12" type="Line2D" parent="columns/column2/continuity"]
 z_index = 1
 position = Vector2(-1, 127)
 points = PackedVector2Array(2, 0, 72, 0)
@@ -549,7 +545,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="name6" type="RichTextLabel" parent="form/columns/column2/continuity"]
+[node name="name6" type="RichTextLabel" parent="columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 29)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -560,7 +556,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit" type="TextEdit" parent="form/columns/column2/continuity/name6"]
+[node name="TextEdit" type="TextEdit" parent="columns/column2/continuity/name6"]
 custom_minimum_size = Vector2(72, 8)
 layout_mode = 2
 offset_top = 6.0
@@ -584,7 +580,7 @@ autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="underline13" type="Line2D" parent="form/columns/column2/continuity"]
+[node name="underline13" type="Line2D" parent="columns/column2/continuity"]
 z_index = 1
 position = Vector2(3, 138)
 points = PackedVector2Array(20, 0, 69, 0)
@@ -594,7 +590,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="signed6" type="RichTextLabel" parent="form/columns/column2/continuity"]
+[node name="signed6" type="RichTextLabel" parent="columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -604,7 +600,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="form/columns/column2/continuity/signed6"]
+[node name="TextEdit2" type="TextEdit" parent="columns/column2/continuity/signed6"]
 custom_minimum_size = Vector2(30, 8)
 layout_mode = 2
 offset_left = 25.0
@@ -628,7 +624,7 @@ autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="underline14" type="Line2D" parent="form/columns/column2/continuity"]
+[node name="underline14" type="Line2D" parent="columns/column2/continuity"]
 z_index = 1
 position = Vector2(3, 147)
 points = PackedVector2Array(16, 0, 69, 0)
@@ -638,7 +634,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="date6" type="RichTextLabel" parent="form/columns/column2/continuity"]
+[node name="date6" type="RichTextLabel" parent="columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -648,7 +644,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="form/columns/column2/continuity/date6"]
+[node name="TextEdit2" type="TextEdit" parent="columns/column2/continuity/date6"]
 offset_left = 19.0
 offset_top = -2.0
 offset_right = 73.0
@@ -670,7 +666,7 @@ autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="column3" type="NinePatchRect" parent="form/columns"]
+[node name="column3" type="NinePatchRect" parent="columns"]
 custom_minimum_size = Vector2(76, 144)
 layout_mode = 2
 texture = ExtResource("3_2kplo")
@@ -678,7 +674,7 @@ region_rect = Rect2(0, 0, 18, 30)
 patch_margin_right = 2
 axis_stretch_vertical = 1
 
-[node name="continuity" type="VBoxContainer" parent="form/columns/column3"]
+[node name="continuity" type="VBoxContainer" parent="columns/column3"]
 layout_mode = 2
 offset_left = 2.0
 offset_right = 76.0
@@ -686,7 +682,7 @@ offset_bottom = 101.0
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="underline" type="Line2D" parent="form/columns/column3/continuity"]
+[node name="underline" type="Line2D" parent="columns/column3/continuity"]
 position = Vector2(-1, 18)
 points = PackedVector2Array(2, 0, 72, 0)
 width = 1.0
@@ -695,7 +691,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline10" type="Line2D" parent="form/columns/column3/continuity"]
+[node name="underline10" type="Line2D" parent="columns/column3/continuity"]
 position = Vector2(-1, 28)
 points = PackedVector2Array(2, 0, 72, 0)
 width = 1.0
@@ -704,7 +700,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="name" type="RichTextLabel" parent="form/columns/column3/continuity"]
+[node name="name" type="RichTextLabel" parent="columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -718,7 +714,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="underline2" type="Line2D" parent="form/columns/column3/continuity"]
+[node name="underline2" type="Line2D" parent="columns/column3/continuity"]
 position = Vector2(-1, 38)
 points = PackedVector2Array(26, 0, 72, 0)
 width = 1.0
@@ -727,7 +723,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="signed" type="RichTextLabel" parent="form/columns/column3/continuity"]
+[node name="signed" type="RichTextLabel" parent="columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -738,7 +734,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="underline3" type="Line2D" parent="form/columns/column3/continuity"]
+[node name="underline3" type="Line2D" parent="columns/column3/continuity"]
 position = Vector2(-1, 47)
 points = PackedVector2Array(20, 0, 72, 0)
 width = 1.0
@@ -747,7 +743,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline5" type="Line2D" parent="form/columns/column3/continuity"]
+[node name="underline5" type="Line2D" parent="columns/column3/continuity"]
 position = Vector2(-2, 50)
 points = PackedVector2Array(2, 0, 74, 0)
 width = 1.0
@@ -755,7 +751,7 @@ texture = ExtResource("5_xafih")
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="date" type="RichTextLabel" parent="form/columns/column3/continuity"]
+[node name="date" type="RichTextLabel" parent="columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -766,7 +762,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="underline4" type="Line2D" parent="form/columns/column3/continuity"]
+[node name="underline4" type="Line2D" parent="columns/column3/continuity"]
 z_index = 1
 position = Vector2(-1, 67)
 points = PackedVector2Array(2, 0, 72, 0)
@@ -776,7 +772,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline6" type="Line2D" parent="form/columns/column3/continuity"]
+[node name="underline6" type="Line2D" parent="columns/column3/continuity"]
 z_index = 1
 position = Vector2(-1, 77)
 points = PackedVector2Array(2, 0, 72, 0)
@@ -786,7 +782,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="name5" type="RichTextLabel" parent="form/columns/column3/continuity"]
+[node name="name5" type="RichTextLabel" parent="columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 29)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -797,7 +793,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit" type="TextEdit" parent="form/columns/column3/continuity/name5"]
+[node name="TextEdit" type="TextEdit" parent="columns/column3/continuity/name5"]
 custom_minimum_size = Vector2(72, 8)
 layout_mode = 2
 offset_top = 6.0
@@ -821,7 +817,7 @@ autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="underline7" type="Line2D" parent="form/columns/column3/continuity"]
+[node name="underline7" type="Line2D" parent="columns/column3/continuity"]
 position = Vector2(3, 88)
 points = PackedVector2Array(20, 0, 69, 0)
 width = 1.0
@@ -830,7 +826,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="signed5" type="RichTextLabel" parent="form/columns/column3/continuity"]
+[node name="signed5" type="RichTextLabel" parent="columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -840,7 +836,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="form/columns/column3/continuity/signed5"]
+[node name="TextEdit2" type="TextEdit" parent="columns/column3/continuity/signed5"]
 custom_minimum_size = Vector2(30, 8)
 layout_mode = 2
 offset_left = 25.0
@@ -864,7 +860,7 @@ autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="underline9" type="Line2D" parent="form/columns/column3/continuity"]
+[node name="underline9" type="Line2D" parent="columns/column3/continuity"]
 z_index = 1
 position = Vector2(3, 97)
 points = PackedVector2Array(16, 0, 69, 0)
@@ -874,7 +870,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline8" type="Line2D" parent="form/columns/column3/continuity"]
+[node name="underline8" type="Line2D" parent="columns/column3/continuity"]
 z_index = 1
 position = Vector2(-2, 100)
 points = PackedVector2Array(2, 0, 74, 0)
@@ -883,7 +879,7 @@ texture = ExtResource("5_xafih")
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="date5" type="RichTextLabel" parent="form/columns/column3/continuity"]
+[node name="date5" type="RichTextLabel" parent="columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -893,7 +889,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="form/columns/column3/continuity/date5"]
+[node name="TextEdit2" type="TextEdit" parent="columns/column3/continuity/date5"]
 offset_left = 19.0
 offset_top = -2.0
 offset_right = 73.0
@@ -915,7 +911,7 @@ autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="underline11" type="Line2D" parent="form/columns/column3/continuity"]
+[node name="underline11" type="Line2D" parent="columns/column3/continuity"]
 z_index = 1
 position = Vector2(-1, 117)
 points = PackedVector2Array(2, 0, 72, 0)
@@ -925,7 +921,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline12" type="Line2D" parent="form/columns/column3/continuity"]
+[node name="underline12" type="Line2D" parent="columns/column3/continuity"]
 z_index = 1
 position = Vector2(-1, 127)
 points = PackedVector2Array(2, 0, 72, 0)
@@ -935,7 +931,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="name6" type="RichTextLabel" parent="form/columns/column3/continuity"]
+[node name="name6" type="RichTextLabel" parent="columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 29)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -946,7 +942,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit" type="TextEdit" parent="form/columns/column3/continuity/name6"]
+[node name="TextEdit" type="TextEdit" parent="columns/column3/continuity/name6"]
 custom_minimum_size = Vector2(72, 8)
 layout_mode = 2
 offset_top = 6.0
@@ -970,7 +966,7 @@ autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="underline13" type="Line2D" parent="form/columns/column3/continuity"]
+[node name="underline13" type="Line2D" parent="columns/column3/continuity"]
 z_index = 1
 position = Vector2(3, 138)
 points = PackedVector2Array(20, 0, 69, 0)
@@ -980,7 +976,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="signed6" type="RichTextLabel" parent="form/columns/column3/continuity"]
+[node name="signed6" type="RichTextLabel" parent="columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -990,7 +986,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="form/columns/column3/continuity/signed6"]
+[node name="TextEdit2" type="TextEdit" parent="columns/column3/continuity/signed6"]
 custom_minimum_size = Vector2(30, 8)
 layout_mode = 2
 offset_left = 25.0
@@ -1014,7 +1010,7 @@ autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="underline14" type="Line2D" parent="form/columns/column3/continuity"]
+[node name="underline14" type="Line2D" parent="columns/column3/continuity"]
 z_index = 1
 position = Vector2(3, 147)
 points = PackedVector2Array(16, 0, 69, 0)
@@ -1024,7 +1020,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="date6" type="RichTextLabel" parent="form/columns/column3/continuity"]
+[node name="date6" type="RichTextLabel" parent="columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -1034,7 +1030,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="form/columns/column3/continuity/date6"]
+[node name="TextEdit2" type="TextEdit" parent="columns/column3/continuity/date6"]
 offset_left = 19.0
 offset_top = -2.0
 offset_right = 73.0
@@ -1055,6 +1051,13 @@ wrap_mode = 1
 autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
+
+[node name="form" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_right = 252.0
+offset_bottom = 297.0
 
 [node name="row" type="HFlowContainer" parent="form"]
 layout_mode = 2
