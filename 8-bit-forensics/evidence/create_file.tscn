@@ -67,7 +67,7 @@ libraries = {
 }
 autoplay = "create"
 
-[node name="finished" type="Button" parent="."]
+[node name="next" type="Button" parent="."]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 22.0
@@ -76,4 +76,4 @@ offset_bottom = 37.0
 theme = ExtResource("2_ytjs6")
 text = "finish"
 
-[connection signal="pressed" from="finished" to="." method="_on_finished_pressed"]
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]

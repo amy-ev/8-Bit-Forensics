@@ -82,7 +82,7 @@ layout_mode = 2
 theme = ExtResource("2_metvm")
 text = "back"
 
-[node name="finish" type="Button" parent="navigation"]
+[node name="next" type="Button" parent="navigation"]
 layout_mode = 2
 theme = ExtResource("2_metvm")
 text = "finish"
@@ -93,5 +93,5 @@ theme = ExtResource("2_metvm")
 text = "cancel"
 
 [connection signal="pressed" from="navigation/back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="navigation/finish" to="." method="_on_finish_pressed"]
+[connection signal="pressed" from="navigation/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="navigation/cancel" to="." method="_on_cancel_pressed"]

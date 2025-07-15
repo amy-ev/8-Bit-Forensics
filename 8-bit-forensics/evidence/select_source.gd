@@ -4,6 +4,7 @@ extends VBoxContainer
 var is_correct:bool
 
 func _ready() -> void:
+	$options/physical.grab_focus()
 	for btn in btn_group.get_buttons():
 		btn.pressed.connect(func():
 			var msg = ""

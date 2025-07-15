@@ -5,6 +5,7 @@ var msg = "file1"
 @export var file_created:bool
 
 func _ready() -> void:
+	$MenuButton.grab_focus()
 	popup.id_pressed.connect(func(id: int):
 		menu_popup(id))
 

@@ -4,6 +4,7 @@ var is_correct:bool
 @onready var btn_group = $dd.get_button_group()
 
 func _ready() -> void:
+	$dd.grab_focus()
 	# have information comparing dd and e01
 	for btn in btn_group.get_buttons():
 		btn.pressed.connect(func():
