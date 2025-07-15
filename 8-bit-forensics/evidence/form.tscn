@@ -395,7 +395,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="name5" type="RichTextLabel" parent="columns/column2/continuity"]
+[node name="name_label" type="RichTextLabel" parent="columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 29)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -406,7 +406,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit" type="TextEdit" parent="columns/column2/continuity/name5"]
+[node name="name" type="TextEdit" parent="columns/column2/continuity/name_label"]
 custom_minimum_size = Vector2(72, 8)
 layout_mode = 2
 offset_top = 6.0
@@ -440,7 +440,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="signed5" type="RichTextLabel" parent="columns/column2/continuity"]
+[node name="signed_label" type="RichTextLabel" parent="columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -450,7 +450,7 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="columns/column2/continuity/signed5"]
+[node name="signed" type="TextEdit" parent="columns/column2/continuity/signed_label"]
 custom_minimum_size = Vector2(30, 8)
 layout_mode = 2
 offset_left = 25.0
@@ -493,7 +493,7 @@ texture = ExtResource("5_xafih")
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="date5" type="RichTextLabel" parent="columns/column2/continuity"]
+[node name="date_label" type="RichTextLabel" parent="columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 theme = ExtResource("6_xafih")
@@ -503,7 +503,8 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="columns/column2/continuity/date5"]
+[node name="date" type="TextEdit" parent="columns/column2/continuity/date_label"]
+layout_mode = 0
 offset_left = 19.0
 offset_top = -2.0
 offset_right = 73.0
@@ -645,6 +646,7 @@ deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
 [node name="TextEdit2" type="TextEdit" parent="columns/column2/continuity/date6"]
+layout_mode = 0
 offset_left = 19.0
 offset_top = -2.0
 offset_right = 73.0
@@ -890,6 +892,7 @@ deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
 [node name="TextEdit2" type="TextEdit" parent="columns/column3/continuity/date5"]
+layout_mode = 0
 offset_left = 19.0
 offset_top = -2.0
 offset_right = 73.0
@@ -1031,6 +1034,7 @@ deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
 [node name="TextEdit2" type="TextEdit" parent="columns/column3/continuity/date6"]
+layout_mode = 0
 offset_left = 19.0
 offset_top = -2.0
 offset_right = 73.0
@@ -1340,7 +1344,12 @@ selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="confirm" type="Button" parent="form"]
+[node name="confirm" type="Button" parent="."]
 layout_mode = 2
+offset_left = 26.0
+offset_top = 122.0
+offset_right = 95.0
+offset_bottom = 153.0
+text = "confirm"
 
-[connection signal="pressed" from="form/confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="confirm" to="." method="_on_confirm_pressed"]

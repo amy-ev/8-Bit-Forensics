@@ -8,6 +8,10 @@ extends Node
 
 @export var is_collected:bool
 
+@export var form_name:String
+@export var form_signed:String
+@export var form_date:String
+
 @export var answers = ["a","b","a","c"]
 @export var quiz_dict = {"Day_1":["a","b","c"], "Day_2":["a","b","c"], "Day_3":["a","b","c"]}
 

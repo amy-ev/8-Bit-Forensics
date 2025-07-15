@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://4miedm4mv6bd"]
+[gd_scene load_steps=5 format=3 uid="uid://4miedm4mv6bd"]
 
 [ext_resource type="ButtonGroup" uid="uid://ctj1fd00rkhrr" path="res://evidence/evidence_type.tres" id="1_qbvjl"]
 [ext_resource type="Script" uid="uid://b55rjs7odphuh" path="res://evidence/select_source.gd" id="1_qw0i8"]
+[ext_resource type="Theme" uid="uid://3waq02fw4vm6" path="res://evidence/radio_checkbox.tres" id="2_cu5l6"]
+[ext_resource type="Theme" uid="uid://do4qpyvmb5o1f" path="res://evidence/buttons.tres" id="4_6dj5e"]
 
 [node name="select_source" type="VBoxContainer"]
-offset_right = 180.0
-offset_bottom = 206.0
+offset_right = 106.0
+offset_bottom = 155.0
 script = ExtResource("1_qw0i8")
 
 [node name="options" type="VBoxContainer" parent="."]
@@ -13,26 +15,31 @@ layout_mode = 2
 
 [node name="physical" type="CheckBox" parent="options"]
 layout_mode = 2
+theme = ExtResource("2_cu5l6")
 button_group = ExtResource("1_qbvjl")
 text = "physical drive"
 
 [node name="logical" type="CheckBox" parent="options"]
 layout_mode = 2
+theme = ExtResource("2_cu5l6")
 button_group = ExtResource("1_qbvjl")
 text = "logical drive"
 
 [node name="image" type="CheckBox" parent="options"]
 layout_mode = 2
+theme = ExtResource("2_cu5l6")
 button_group = ExtResource("1_qbvjl")
 text = "image file"
 
 [node name="contents" type="CheckBox" parent="options"]
 layout_mode = 2
+theme = ExtResource("2_cu5l6")
 button_group = ExtResource("1_qbvjl")
 text = "contents of a folder"
 
 [node name="fernico" type="CheckBox" parent="options"]
 layout_mode = 2
+theme = ExtResource("2_cu5l6")
 button_group = ExtResource("1_qbvjl")
 text = "fernico device"
 
@@ -41,15 +48,18 @@ layout_mode = 2
 
 [node name="back" type="Button" parent="navigation"]
 layout_mode = 2
+theme = ExtResource("4_6dj5e")
 disabled = true
 text = "back"
 
 [node name="next" type="Button" parent="navigation"]
 layout_mode = 2
+theme = ExtResource("4_6dj5e")
 text = "next"
 
 [node name="cancel" type="Button" parent="navigation"]
 layout_mode = 2
+theme = ExtResource("4_6dj5e")
 text = "cancel"
 
 [connection signal="pressed" from="navigation/next" to="." method="_on_next_pressed"]

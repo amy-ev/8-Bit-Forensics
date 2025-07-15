@@ -3,13 +3,13 @@ extends Node2D
 func _ready() -> void:
 	scale = scale * Utility.window_mode()
 	var day = Global.unlocked + 1
+	$top_screen/pc_screen.reparent($bottom_screen,false)
 	await $screen_animation.animation_finished
-	#match day:
-		#1:
-			#add_child(load("res://evidence/image_file.tscn").instantiate())
-		#2:
-			#add_child(load("res://evidence/image_file.tscn").instantiate())
-			#add_child(load("res://pc/desktop_icon.tscn").instantiate())
+	match day:
+		1:
+			$bottom_screen/pc_screen.add_child(load("res://evidence/image_file.tscn").instantiate())
+		2:
+			add_child(load("res://pc/desktop_icon.tscn").instantiate())
 
 
 func _input(event: InputEvent) -> void:

@@ -45,6 +45,7 @@ _data = {
 script = ExtResource("2_n1q0v")
 
 [node name="top_screen" type="Control" parent="."]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0
@@ -58,6 +59,7 @@ hframes = 8
 vframes = 2
 
 [node name="bottom_screen" type="Control" parent="."]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 0
 offset_top = 192.0

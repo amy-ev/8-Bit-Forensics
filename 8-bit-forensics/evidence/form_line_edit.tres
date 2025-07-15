@@ -3,14 +3,14 @@
 [ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="1_fbbbn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fbbbn"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+content_margin_left = 2.0
 draw_center = false
-anti_aliasing = false
 
 [resource]
 default_font = ExtResource("1_fbbbn")
-default_font_size = 2
+default_font_size = 8
 LineEdit/colors/font_color = Color(0.223529, 0.2, 0.156863, 1)
+LineEdit/colors/font_placeholder_color = Color(0.545098, 0.490196, 0.384314, 1)
 LineEdit/styles/normal = SubResource("StyleBoxFlat_fbbbn")
 TextEdit/colors/background_color = Color(0.788235, 0.713726, 0.603922, 1)
 TextEdit/colors/font_color = Color(0.160784, 0.141176, 0.105882, 1)

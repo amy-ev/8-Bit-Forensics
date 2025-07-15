@@ -29,6 +29,7 @@ func _on_back_pressed() -> void:
 
 func _on_next_pressed() -> void:
 	if is_correct:
+		get_parent().get_parent().reparent(get_parent().get_parent().get_parent().get_parent().get_node("top_screen"),false)
 		get_parent().add_child(load("res://evidence/item_information.tscn").instantiate())
 		queue_free()
 	else:
