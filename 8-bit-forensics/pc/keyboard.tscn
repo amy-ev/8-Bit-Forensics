@@ -2153,9 +2153,9 @@ script = ExtResource("2_0xups")
 [node name="keyboard" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 6.0
-offset_top = 36.0
+offset_top = 48.0
 offset_right = 256.0
-offset_bottom = 166.0
+offset_bottom = 178.0
 texture = ExtResource("2_64g64")
 
 [node name="keys" type="Container" parent="keyboard"]
