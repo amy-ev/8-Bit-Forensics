@@ -7,7 +7,8 @@ func _on_bag_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> v
 		if event.is_pressed():
 			is_picked_up = true
 			if event.double_click:
-				get_parent().add_child(load("res://evidence/form.tscn").instantiate())
+				print(get_parent())
+				get_parent().get_parent().get_parent().get_node("top_screen").add_child(load("res://evidence/form.tscn").instantiate())
 		if event.is_released():
 			is_picked_up = false
 

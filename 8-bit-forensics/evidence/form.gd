@@ -1,4 +1,4 @@
-extends TextureRect
+extends NinePatchRect
 
 
 func _on_confirm_pressed() -> void:
