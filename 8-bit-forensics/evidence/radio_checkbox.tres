@@ -1,6 +1,15 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://3waq02fw4vm6"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://3waq02fw4vm6"]
 
 [ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="1_cps1o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cps1o"]
+bg_color = Color(0.901961, 0.807843, 0.67451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.643137, 0.552941, 0.415686, 1)
+anti_aliasing = false
 
 [resource]
 default_font = ExtResource("1_cps1o")
@@ -11,3 +20,4 @@ CheckBox/colors/font_hover_color = Color(0.741176, 0.647059, 0.513726, 1)
 CheckBox/colors/font_hover_pressed_color = Color(0.901961, 0.807843, 0.67451, 1)
 CheckBox/colors/font_pressed_color = Color(0.901961, 0.807843, 0.67451, 1)
 CheckBox/fonts/font = ExtResource("1_cps1o")
+CheckBox/styles/normal = SubResource("StyleBoxFlat_cps1o")

@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqwedwedwn32"]
+[gd_scene load_steps=5 format=3 uid="uid://dqwedwedwn32"]
 
 [ext_resource type="Script" uid="uid://qayymwuuheyr" path="res://evidence/item_information.gd" id="1_g7w0n"]
 [ext_resource type="Theme" uid="uid://dkk7o1al130ot" path="res://evidence/form_line_edit.tres" id="2_kxa1e"]
 [ext_resource type="Theme" uid="uid://do4qpyvmb5o1f" path="res://evidence/buttons.tres" id="2_metvm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxa1e"]
+content_margin_left = 2.0
+bg_color = Color(0.901961, 0.807843, 0.67451, 1)
 
 [node name="item_information" type="VBoxContainer"]
 offset_right = 153.0
@@ -12,6 +16,7 @@ script = ExtResource("1_g7w0n")
 [node name="case_no" type="LineEdit" parent="."]
 layout_mode = 2
 theme = ExtResource("2_kxa1e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kxa1e")
 placeholder_text = "case_no"
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -25,6 +30,7 @@ drag_and_drop_selection_enabled = false
 [node name="evidence_no" type="LineEdit" parent="."]
 layout_mode = 2
 theme = ExtResource("2_kxa1e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kxa1e")
 placeholder_text = "evidence_no"
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -38,6 +44,7 @@ drag_and_drop_selection_enabled = false
 [node name="unique_desc" type="LineEdit" parent="."]
 layout_mode = 2
 theme = ExtResource("2_kxa1e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kxa1e")
 placeholder_text = "unique_desc"
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -51,6 +58,7 @@ drag_and_drop_selection_enabled = false
 [node name="examiner" type="LineEdit" parent="."]
 layout_mode = 2
 theme = ExtResource("2_kxa1e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kxa1e")
 placeholder_text = "examiner"
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -64,6 +72,7 @@ drag_and_drop_selection_enabled = false
 [node name="notes" type="LineEdit" parent="."]
 layout_mode = 2
 theme = ExtResource("2_kxa1e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kxa1e")
 placeholder_text = "notes"
 context_menu_enabled = false
 emoji_menu_enabled = false

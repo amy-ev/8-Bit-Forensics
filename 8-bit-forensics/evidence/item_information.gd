@@ -1,6 +1,7 @@
 extends VBoxContainer
 
-
+func _ready() -> void:
+	$case_no.grab_focus()
 func _on_back_pressed() -> void:
 	get_parent().add_child(load("res://evidence/image_type.tscn").instantiate())
 	queue_free()

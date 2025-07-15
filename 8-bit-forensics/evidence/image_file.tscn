@@ -5,8 +5,10 @@
 [ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="2_pgnvy"]
 
 [node name="evidence_file" type="Panel"]
-offset_right = 19.0
-offset_bottom = 15.0
+offset_left = 8.0
+offset_top = 12.0
+offset_right = 27.0
+offset_bottom = 27.0
 script = ExtResource("1_84i5g")
 
 [node name="MenuButton" type="MenuButton" parent="."]
@@ -21,17 +23,17 @@ popup/item_0/id = 0
 
 [node name="evidence_tree" type="Tree" parent="."]
 layout_mode = 0
-offset_top = 63.0
-offset_right = 122.0
-offset_bottom = 129.0
+offset_top = 26.0
+offset_right = 59.0
+offset_bottom = 92.0
 theme_override_fonts/font = ExtResource("2_pgnvy")
 theme_override_font_sizes/font_size = 8
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_top = 40.0
+offset_top = 18.0
 offset_right = 50.0
-offset_bottom = 48.0
+offset_bottom = 26.0
 theme_override_fonts/font = ExtResource("2_pgnvy")
 theme_override_font_sizes/font_size = 8
 text = "evidence tree"
