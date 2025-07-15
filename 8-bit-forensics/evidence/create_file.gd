@@ -1,5 +1,6 @@
 extends Panel
 @export var files = []
+
 func _ready() -> void:
 	$finished.disabled = true
 	await $animation.animation_finished

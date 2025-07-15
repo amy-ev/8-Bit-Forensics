@@ -7,6 +7,7 @@
 [node name="select_drive" type="VBoxContainer"]
 offset_right = 189.0
 offset_bottom = 66.0
+theme_override_constants/separation = 70
 script = ExtResource("1_hbarf")
 
 [node name="options" type="OptionButton" parent="."]

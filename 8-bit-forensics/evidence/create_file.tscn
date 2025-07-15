@@ -1,7 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg3q04jgv405y"]
+[gd_scene load_steps=9 format=3 uid="uid://bg3q04jgv405y"]
 
 [ext_resource type="Script" uid="uid://bt5osmtx6wqd2" path="res://evidence/create_file.gd" id="1_c120u"]
 [ext_resource type="Theme" uid="uid://do4qpyvmb5o1f" path="res://evidence/buttons.tres" id="2_ytjs6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ytjs6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a5nj3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fy171"]
+bg_color = Color(0.901961, 0.807843, 0.67451, 1)
 
 [sub_resource type="Animation" id="Animation_c120u"]
 length = 0.001
@@ -43,12 +50,15 @@ _data = {
 [node name="create_file" type="Panel"]
 offset_right = 159.0
 offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ytjs6")
 script = ExtResource("1_c120u")
 
 [node name="progress" type="ProgressBar" parent="."]
 layout_mode = 1
 offset_right = 158.0
 offset_bottom = 19.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_a5nj3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fy171")
 show_percentage = false
 
 [node name="animation" type="AnimationPlayer" parent="."]
