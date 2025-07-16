@@ -7,6 +7,7 @@ func _ready() -> void:
 	await $screen_animation.animation_finished
 	match day:
 		1:
+			add_child(load("res://dialogue/dialogue_manager.tscn").instantiate())
 			$bottom_screen/pc_screen.add_child(load("res://evidence/image_file.tscn").instantiate())
 		2:
 			add_child(load("res://pc/desktop_icon.tscn").instantiate())

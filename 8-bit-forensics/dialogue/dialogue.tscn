@@ -6,7 +6,7 @@
 [node name="dialogue_label" type="RichTextLabel"]
 offset_right = 256.0
 offset_bottom = 192.0
-theme_override_colors/default_color = Color(0.321569, 0.282353, 0.223529, 1)
+theme_override_colors/default_color = Color(0.901961, 0.807843, 0.67451, 1)
 theme_override_fonts/normal_font = ExtResource("1_vigd0")
 theme_override_font_sizes/normal_font_size = 8
 fit_content = true

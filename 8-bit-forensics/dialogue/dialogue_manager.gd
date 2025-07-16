@@ -4,14 +4,15 @@ var dialogue_file = "res://dialogue/dialogue.json"
 @export var dialogue_data = {}
 @export var current_dialogue = ""
 
-@onready var dialogue_label = $dialogue_box/container/dialogue_label
+@onready var dialogue_label = $normal/side_dialogue/container/dialogue_label
 
 signal end_dialogue
 
 func _ready() -> void:
 	dialogue_data = load_dialogue(dialogue_file)
-	$dialogue_box/container/day_title.text = "Day %s" %(Global.unlocked+1)
+	$normal/side_dialogue/container/day_title.text = "Day %s" %(Global.unlocked+1)
 	dialogue_text("Day %s.0" %(Global.unlocked+1))
+	$bad/bottom_dialogue/dialogue_label.start("wrong")
 	
 	self.connect("end_dialogue", _end_dialogue)
 	
