@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnvcbdwsftrn"]
+[gd_scene load_steps=5 format=3 uid="uid://cnvcbdwsftrn"]
 
 [ext_resource type="Script" uid="uid://c7l366dugnxrd" path="res://dialogue/dialogue_manager.gd" id="1_k6lpl"]
 [ext_resource type="Texture2D" uid="uid://thdq4em1ej5r" path="res://assets/npc-x3.png" id="2_3umdh"]
+[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_8ai7j"]
+[ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="3_q36jk"]
 
 [node name="dialogue_manager" type="CanvasLayer"]
 layer = 2
@@ -30,20 +32,17 @@ layout_mode = 1
 anchors_preset = -1
 offset_left = 2.0
 offset_top = 2.0
-offset_right = 49.0
+offset_right = 254.0
 offset_bottom = 44.0
 
 [node name="day_title" type="Label" parent="dialogue_box/container"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 9
+theme_override_fonts/font = ExtResource("3_8ai7j")
+theme_override_font_sizes/font_size = 8
 text = "day x"
 
-[node name="text" type="Label" parent="dialogue_box/container"]
+[node name="dialogue_label" parent="dialogue_box/container" instance=ExtResource("3_q36jk")]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 8
-text = "the dialogue
-"
 
 [node name="next" type="Button" parent="."]
 offset_left = 238.0

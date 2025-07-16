@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://8byhhn3l3wo0"]
+
+[ext_resource type="Script" uid="uid://kqa3n6id1v0n" path="res://dialogue/dialogue.gd" id="1_k0ki1"]
+[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="1_vigd0"]
+
+[node name="dialogue_label" type="RichTextLabel"]
+offset_right = 256.0
+offset_bottom = 192.0
+theme_override_colors/default_color = Color(0.321569, 0.282353, 0.223529, 1)
+theme_override_fonts/normal_font = ExtResource("1_vigd0")
+theme_override_font_sizes/normal_font_size = 8
+fit_content = true
+script = ExtResource("1_k0ki1")
+
+[node name="text_timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="timeout" from="text_timer" to="." method="_on_text_timer_timeout"]
