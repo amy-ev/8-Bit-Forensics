@@ -28,3 +28,7 @@ signal answer(day:String, answer:int)
 signal child_joined()
 
 signal metadata_selected(selected:Node)
+
+signal next_step(stage:Node)
+
+signal answer_response(is_correct:bool)

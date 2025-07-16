@@ -2,6 +2,7 @@ extends Panel
 @export var files = []
 
 func _ready() -> void:
+	Global.emit_signal("next_step",self)
 	$next.disabled = true
 	await $animation.animation_finished
 	$next.disabled = false

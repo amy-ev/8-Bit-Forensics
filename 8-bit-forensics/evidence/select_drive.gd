@@ -1,10 +1,14 @@
 extends VBoxContainer
 
 var is_correct:bool
+
 func _ready() -> void:
+	Global.emit_signal("next_step",self)
+	
 	$options.grab_focus()
+	
 func _on_back_pressed() -> void:
-	get_parent().add_child(load("res://evidence/select_source.tscn").instantiate())
+	add_child(load("res://evidence/select_source.tscn").instantiate())
 	queue_free()
 
 func _on_next_pressed() -> void:

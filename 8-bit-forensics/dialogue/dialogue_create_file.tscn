@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://7dbr280v5upc"]
+
+[ext_resource type="Texture2D" uid="uid://biaof747rawt8" path="res://assets/dialogue/normal-dialogue.png" id="1_1eqhb"]
+[ext_resource type="Texture2D" uid="uid://7v0m7u1b85fx" path="res://assets/dialogue/dialogue-panel-side.png" id="2_8vbbb"]
+[ext_resource type="Script" uid="uid://emj8808cww3n" path="res://dialogue/dialogue_create_file.gd" id="2_jna6a"]
+[ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="3_jna6a"]
+[ext_resource type="Texture2D" uid="uid://cwgspl3xvym75" path="res://assets/dialogue/bad-dialogue.png" id="5_gohrn"]
+[ext_resource type="Texture2D" uid="uid://cl2wtx56ra8xm" path="res://assets/dialogue/dialogue-panel-bottom.png" id="6_yvl17"]
+
+[node name="dialogue_create_file" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_1eqhb")
+script = ExtResource("2_jna6a")
+
+[node name="panel" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 12.0
+offset_right = 244.0
+offset_bottom = 180.0
+texture = ExtResource("2_8vbbb")
+
+[node name="dialogue_label" parent="panel" instance=ExtResource("3_jna6a")]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 134.0
+offset_bottom = 162.0
+
+[node name="bad" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_gohrn")
+
+[node name="answer_panel" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 112.0
+offset_right = 252.0
+offset_bottom = 184.0
+texture = ExtResource("6_yvl17")
+
+[node name="dialogue_label" parent="answer_panel" instance=ExtResource("3_jna6a")]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 242.0
+offset_bottom = 66.0
