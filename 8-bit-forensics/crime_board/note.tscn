@@ -1,29 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://d35pcq2imx8ab"]
+[gd_scene load_steps=3 format=3 uid="uid://d35pcq2imx8ab"]
 
 [ext_resource type="Script" uid="uid://bqw7w5d1hsku0" path="res://crime_board/note.gd" id="1_0jyh1"]
-[ext_resource type="Texture2D" uid="uid://dbkn526fnacvl" path="res://assets/crime_board/pushpins/1-pin-x3.png" id="3_sy2nb"]
-[ext_resource type="Texture2D" uid="uid://kax8sonibsht" path="res://assets/crime_board/strings/1-string-x3.png" id="4_p1ux6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0o6ia"]
 
 [node name="note" type="TextureRect"]
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_right = 256.0
+offset_bottom = 192.0
 script = ExtResource("1_0jyh1")
 
 [node name="area" type="Area2D" parent="."]
 
 [node name="area_shape" type="CollisionShape2D" parent="area"]
 shape = SubResource("RectangleShape2D_0o6ia")
-
-[node name="pin" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_sy2nb")
 
 [node name="string" type="TextureRect" parent="."]
 layout_mode = 1
@@ -32,6 +21,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_p1ux6")
 
 [connection signal="input_event" from="area" to="." method="_on_area_input_event"]

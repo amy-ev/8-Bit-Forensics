@@ -5,6 +5,7 @@ extends Node2D
 @onready var note_rects = []
 @export var scaled_by: Vector2
 var days_unlocked = 0
+var note_open:bool
 
 func _ready() -> void:
 	scale = scale * Utility.window_mode()
@@ -19,15 +20,24 @@ func _input(event: InputEvent) -> void:
 
 func _open_note(note_topic:String):
 	var note_content = note.instantiate()
-	note_content.get_child(0).get_child(0).text = note_topic
+	if !note_open:
+		note_content.get_child(0).get_child(0).text = note_topic
 	#TODO: connect a json file with the corresponding educational notes
-	add_child(note_content)
-
+		$top_screen.add_child(note_content)
+		note_open = true
+	else:
+		$top_screen/note.queue_free()
+		await get_tree().process_frame
+		note_open = false
+		note_content.get_child(0).get_child(0).text = note_topic
+		$top_screen.add_child(note_content)
+		note_open = true
+		
 func _show_note(day:String):
 	Global.days.append(day)
 	# change to loop through array of days and show all unlocked 
 	#print(day)
-	get_node(day).visible = true
+	get_node("bottom_screen/"+day).visible = true
 	#print(Global.days)
 	
 func _on_unlock_debug_pressed() -> void:
@@ -42,4 +52,11 @@ func _check_unlocked():
 			Global.level_unlocked.emit(value)
 			
 func _on_back_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://start_menu/menu.tscn")
+	get_tree().change_scene_to_file("res://main/main.tscn")
+
+
+func _on_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton && event.is_pressed():
+		if note_open:
+			$top_screen/note.queue_free()
+			note_open = false
