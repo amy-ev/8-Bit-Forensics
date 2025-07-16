@@ -44,20 +44,6 @@ _data = {
 [node name="pc" type="Node2D"]
 script = ExtResource("2_n1q0v")
 
-[node name="top_screen" type="Control" parent="."]
-clip_contents = true
-layout_mode = 3
-anchors_preset = 0
-offset_right = 256.0
-offset_bottom = 192.0
-mouse_filter = 2
-
-[node name="pc_screen" type="Sprite2D" parent="top_screen"]
-texture = ExtResource("2_lrtf5")
-centered = false
-hframes = 8
-vframes = 2
-
 [node name="bottom_screen" type="Control" parent="."]
 clip_contents = true
 layout_mode = 3
@@ -84,6 +70,19 @@ text = "end day"
 
 [node name="keyboard-background" parent="bottom_screen" instance=ExtResource("3_lrtf5")]
 layout_mode = 0
+
+[node name="top_screen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 192.0
+mouse_filter = 2
+
+[node name="pc_screen" type="Sprite2D" parent="top_screen"]
+texture = ExtResource("2_lrtf5")
+centered = false
+hframes = 8
+vframes = 2
 
 [node name="screen_animation" type="AnimationPlayer" parent="."]
 libraries = {

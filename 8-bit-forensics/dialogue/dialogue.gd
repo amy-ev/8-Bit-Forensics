@@ -21,6 +21,13 @@ func _on_text_timer_timeout() -> void:
 	#add a typing sound
 	char_pos += 1
 	text = full_text.substr(0,char_pos)
-	if char_pos == full_text.length():
+	if is_playing and char_pos == full_text.length():
 		timer.stop()
 		is_playing = false
+		
+func skip():
+
+	char_pos = full_text.length()
+	text = full_text.substr(0,char_pos)
+	timer.stop()
+	is_playing = false

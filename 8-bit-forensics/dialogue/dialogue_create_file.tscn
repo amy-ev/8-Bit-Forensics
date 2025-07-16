@@ -7,14 +7,20 @@
 [ext_resource type="Texture2D" uid="uid://cwgspl3xvym75" path="res://assets/dialogue/bad-dialogue.png" id="5_gohrn"]
 [ext_resource type="Texture2D" uid="uid://cl2wtx56ra8xm" path="res://assets/dialogue/dialogue-panel-bottom.png" id="6_yvl17"]
 
-[node name="dialogue_create_file" type="TextureRect"]
+[node name="dialogue_create_file" type="CanvasLayer"]
+script = ExtResource("2_jna6a")
+
+[node name="blocker" type="ColorRect" parent="."]
+offset_right = 256.0
+offset_bottom = 384.0
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_1eqhb")
-script = ExtResource("2_jna6a")
 
 [node name="panel" type="TextureRect" parent="."]
-layout_mode = 0
 offset_left = 104.0
 offset_top = 12.0
 offset_right = 244.0
@@ -30,14 +36,12 @@ offset_bottom = 162.0
 
 [node name="bad" type="TextureRect" parent="."]
 visible = false
-layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_gohrn")
 
 [node name="answer_panel" type="TextureRect" parent="."]
 visible = false
-layout_mode = 0
 offset_left = 4.0
 offset_top = 112.0
 offset_right = 252.0
@@ -50,3 +54,12 @@ offset_left = 6.0
 offset_top = 6.0
 offset_right = 242.0
 offset_bottom = 66.0
+
+[node name="ok" type="Button" parent="."]
+offset_left = 229.0
+offset_top = 193.0
+offset_right = 256.0
+offset_bottom = 224.0
+text = "ok"
+
+[connection signal="pressed" from="ok" to="." method="_on_ok_pressed"]
