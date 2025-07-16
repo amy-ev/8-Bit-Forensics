@@ -3,12 +3,19 @@
 [ext_resource type="Script" uid="uid://c7l366dugnxrd" path="res://dialogue/dialogue_manager.gd" id="1_k6lpl"]
 [ext_resource type="Texture2D" uid="uid://thdq4em1ej5r" path="res://assets/npc-x3.png" id="2_3umdh"]
 
-[node name="dialogue_manager" type="Node2D"]
+[node name="dialogue_manager" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_k6lpl")
+
+[node name="blocker" type="ColorRect" parent="."]
+offset_right = 256.0
+offset_bottom = 384.0
+color = Color(1, 1, 1, 0)
 
 [node name="npc" type="TextureRect" parent="."]
 offset_right = 256.0
 offset_bottom = 192.0
+mouse_filter = 0
 texture = ExtResource("2_3umdh")
 expand_mode = 1
 
@@ -37,3 +44,19 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 8
 text = "the dialogue
 "
+
+[node name="next" type="Button" parent="."]
+offset_left = 238.0
+offset_top = 192.0
+offset_right = 256.0
+offset_bottom = 223.0
+text = ">"
+
+[node name="prev" type="Button" parent="."]
+offset_top = 192.0
+offset_right = 18.0
+offset_bottom = 223.0
+text = "<"
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="prev" to="." method="_on_prev_pressed"]

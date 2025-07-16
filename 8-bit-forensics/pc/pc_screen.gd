@@ -15,6 +15,8 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_action_pressed("fullscreen"):
 		scale = scale * Utility.fullscreen_input(event)
+	if event is InputEventKey and event.is_action_pressed("escape"):
+		get_tree().change_scene_to_file("res://main/desk.tscn")
 
 func _on_debug_pressed() -> void:
 	get_tree().change_scene_to_file("res://end_quiz.tscn")

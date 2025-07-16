@@ -29,23 +29,7 @@ func _on_pc_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		if event.is_double_click():
 			get_tree().change_scene_to_file("res://pc/pc_screen.tscn")
 
-
-func _on_next_pressed() -> void:
-	if $top_screen/dialogue_manager.dialogue_data[$top_screen/dialogue_manager.current_dialogue].has("go to") && $top_screen/dialogue_manager.dialogue_data[$top_screen/dialogue_manager.current_dialogue]["go to"].size() > 1:
-		$top_screen/dialogue_manager.dialogue_text($top_screen/dialogue_manager/dialogue_box/container/text, $top_screen/dialogue_manager.dialogue_data[$top_screen/dialogue_manager.current_dialogue]["go to"][1])
-	else:
-		$top_screen/dialogue_manager.emit_signal($top_screen/dialogue_manager.dialogue_data[$top_screen/dialogue_manager.current_dialogue]["function"])
-
-
 func _on_coffee_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
 			print("ouch!")
-
-
-func _on_prev_pressed() -> void:
-	if $top_screen/dialogue_manager.dialogue_data[$top_screen/dialogue_manager.current_dialogue].has("go to"):
-		$top_screen/dialogue_manager.dialogue_text($top_screen/dialogue_manager/dialogue_box/container/text, $top_screen/dialogue_manager.dialogue_data[$top_screen/dialogue_manager.current_dialogue]["go to"][0])
-	else:
-		emit_signal($top_screen/dialogue_manager.dialogue_data[$top_screen/dialogue_manager.current_dialogue]["function"])
-		
