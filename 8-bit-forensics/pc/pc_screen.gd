@@ -19,7 +19,24 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_action_pressed("fullscreen"):
 		scale = scale * Utility.fullscreen_input(event)
+		
 	if event is InputEventKey and event.is_action_pressed("escape"):
+		if has_node("bottom_screen/dialogue_create_file"):
+			get_node("bottom_screen/dialogue_create_file").queue_free()
+			
+		elif has_node("top_screen/dialogue_create_file"):
+			get_node("top_screen/dialogue_create_file").queue_free()
+			
+		if has_node("bottom_screen/pc_screen"):
+			get_node("bottom_screen/pc_screen").get_child(0).queue_free()
+			get_node("bottom_screen/pc_screen").reparent($top_screen, false)
+			
+		elif has_node("top_screen/pc_screen"):
+			get_node("top_screen/pc_screen").get_child(0).queue_free()
+			
+		$screen_animation.play("off")
+		await $screen_animation.animation_finished
+		
 		get_tree().change_scene_to_file("res://main/desk.tscn")
 
 func _on_debug_pressed() -> void:

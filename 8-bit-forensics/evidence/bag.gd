@@ -40,3 +40,5 @@ func _physics_process(delta: float) -> void:
 func _on_form_section_area_entered(area: Area2D) -> void:
 	if area.get_parent().name == "pen":
 		get_parent().add_child(form.instantiate())
+		form_filled = true
+		area.get_parent().queue_free()

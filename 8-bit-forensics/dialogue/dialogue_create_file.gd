@@ -40,6 +40,7 @@ func _on_new_child(stage:Node):
 				"e01":
 					$panel/dialogue_label.start("e01")
 		"item_information":
+			set_visible(false)
 			stage.get_parent().get_parent().reparent(get_parent(),false)
 		"create_file":
 			set_visible(false)
