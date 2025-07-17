@@ -22,7 +22,6 @@ popup/item_0/text = "create disk image"
 popup/item_0/id = 0
 
 [node name="evidence_tree" type="Tree" parent="."]
-visible = false
 layout_mode = 0
 offset_top = 26.0
 offset_right = 59.0
@@ -31,7 +30,6 @@ theme_override_fonts/font = ExtResource("2_pgnvy")
 theme_override_font_sizes/font_size = 8
 
 [node name="Label" type="Label" parent="."]
-visible = false
 layout_mode = 0
 offset_top = 18.0
 offset_right = 50.0
@@ -39,3 +37,16 @@ offset_bottom = 26.0
 theme_override_fonts/font = ExtResource("2_pgnvy")
 theme_override_font_sizes/font_size = 8
 text = "evidence tree"
+
+[node name="end" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 125.0
+offset_top = 36.0
+offset_right = 161.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("2_pgnvy")
+theme_override_font_sizes/font_size = 8
+text = "end day"
+
+[connection signal="pressed" from="end" to="." method="_on_end_pressed"]

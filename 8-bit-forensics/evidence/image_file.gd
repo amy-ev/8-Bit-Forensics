@@ -16,7 +16,12 @@ func menu_popup(id):
 
 func _draw() -> void:
 	if file_created:
+		$end.set_visible(true)
 		print("created")
 		#change to match the file contents of the sd card
 		var file_1 = $evidence_tree.create_item()
 		file_1.set_text(0,msg)
+
+
+func _on_end_pressed() -> void:
+	get_tree().change_scene_to_file("res://end_quiz.tscn")

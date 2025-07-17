@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6sldv7wkulby"]
+[gd_scene load_steps=4 format=3 uid="uid://b6sldv7wkulby"]
 
 [ext_resource type="Script" uid="uid://bdo1hbivbrq8h" path="res://end_quiz.gd" id="1_amf4w"]
+[ext_resource type="PackedScene" uid="uid://7dbr280v5upc" path="res://dialogue/dialogue_create_file.tscn" id="2_hxbvm"]
+[ext_resource type="ButtonGroup" uid="uid://bf68wi2sk2md" path="res://quiz_answers.tres" id="2_k7uhh"]
 
 [node name="quiz" type="Node2D"]
 script = ExtResource("1_amf4w")
@@ -19,6 +21,8 @@ offset_bottom = 23.0
 text = "this is a question on the tool used etc"
 autowrap_mode = 2
 
+[node name="dialogue_create_file" parent="top_screen" instance=ExtResource("2_hxbvm")]
+
 [node name="bottom_screen" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -36,26 +40,23 @@ offset_top = -192.0
 offset_right = 256.0
 grow_vertical = 0
 
-[node name="a" type="Button" parent="bottom_screen/answers"]
+[node name="a" type="CheckBox" parent="bottom_screen/answers"]
 layout_mode = 2
+button_group = ExtResource("2_k7uhh")
 text = "a) yes"
 flat = true
-alignment = 0
 
-[node name="b" type="Button" parent="bottom_screen/answers"]
+[node name="b" type="CheckBox" parent="bottom_screen/answers"]
 layout_mode = 2
+button_group = ExtResource("2_k7uhh")
 text = "b) no"
 flat = true
-alignment = 0
 
-[node name="c" type="Button" parent="bottom_screen/answers"]
+[node name="c" type="CheckBox" parent="bottom_screen/answers"]
 layout_mode = 2
+button_group = ExtResource("2_k7uhh")
 text = "c) maybe"
 flat = true
-alignment = 0
-
-[node name="result" type="Label" parent="bottom_screen/answers"]
-layout_mode = 2
 
 [node name="exit" type="Button" parent="bottom_screen/answers"]
 visible = false

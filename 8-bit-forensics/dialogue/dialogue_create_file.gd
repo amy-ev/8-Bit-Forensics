@@ -45,6 +45,21 @@ func _on_new_child(stage:Node):
 		"create_file":
 			set_visible(false)
 			stage.get_parent().get_parent().reparent(get_parent().get_parent().get_node("bottom_screen"),false)
+			
+		"quiz":
+			match stage.answer_selected:
+				"a":
+					$panel/dialogue_label.start(stage.question)
+					$panel/dialogue_label.skip()
+				"b":
+					$panel/dialogue_label.start(stage.question)
+					$panel/dialogue_label.skip()
+				"c":
+					$panel/dialogue_label.start(stage.question)
+					$panel/dialogue_label.skip()
+
+			$blocker.set_visible(false)
+			$ok.set_visible(false)
 		_:
 			pass
 
