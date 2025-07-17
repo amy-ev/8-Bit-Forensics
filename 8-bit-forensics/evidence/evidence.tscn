@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://dullwxtc5crys"]
+
+[ext_resource type="Shader" uid="uid://pc721t3sj7xe" path="res://evidence/evidence.gdshader" id="1_p1iy4"]
+[ext_resource type="Texture2D" uid="uid://daoijgqnsxmm6" path="res://assets/evidence/sd-card.png" id="2_4df6o"]
+[ext_resource type="Script" uid="uid://bfm133ayipfp4" path="res://evidence/evidence.gd" id="2_7ku14"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vf127"]
+shader = ExtResource("1_p1iy4")
+shader_parameter/fov = 90.0
+shader_parameter/x_rot = 0.0
+shader_parameter/y_rot = 0.0
+shader_parameter/inset = 0.0
+shader_parameter/front = ExtResource("2_4df6o")
+shader_parameter/back = ExtResource("2_4df6o")
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_rjhj2"]
+points = PackedVector2Array(-4, -14, 6, -14, 14, -5, 14, 1, 2, 14, -4, 14, -14, 3, -14, -3)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4df6o"]
+points = PackedVector2Array(-4, -14, 6, -14, 14, -5, 14, 1, 2, 14, -4, 14, -14, 3, -14, -3)
+
+[node name="evidence" type="TextureRect"]
+material = SubResource("ShaderMaterial_vf127")
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("2_4df6o")
+script = ExtResource("2_7ku14")
+
+[node name="body" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="collision" type="CollisionShape2D" parent="body"]
+position = Vector2(20, 20)
+shape = SubResource("ConvexPolygonShape2D_rjhj2")
+
+[node name="evidence_boundary" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="collision" type="CollisionShape2D" parent="evidence_boundary"]
+position = Vector2(20, 20)
+shape = SubResource("ConvexPolygonShape2D_4df6o")
+debug_color = Color(0.80898, 0.353014, 0.562324, 0.42)
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="area_entered" from="evidence_boundary" to="." method="_on_evidence_boundary_area_entered"]
+[connection signal="area_exited" from="evidence_boundary" to="." method="_on_evidence_boundary_area_exited"]

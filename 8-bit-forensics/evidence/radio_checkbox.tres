@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://3waq02fw4vm6"]
+
+[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="1_cps1o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cps1o"]
+content_margin_left = 2.0
+
+[resource]
+default_font = ExtResource("1_cps1o")
+default_font_size = 8
+CheckBox/colors/font_color = Color(0.901961, 0.807843, 0.67451, 1)
+CheckBox/colors/font_focus_color = Color(0.932108, 0.863368, 0.766723, 1)
+CheckBox/colors/font_hover_color = Color(0.741176, 0.647059, 0.513726, 1)
+CheckBox/colors/font_hover_pressed_color = Color(0.901961, 0.807843, 0.67451, 1)
+CheckBox/colors/font_pressed_color = Color(0.901961, 0.807843, 0.67451, 1)
+CheckBox/fonts/font = ExtResource("1_cps1o")
+CheckBox/styles/normal = SubResource("StyleBoxEmpty_cps1o")

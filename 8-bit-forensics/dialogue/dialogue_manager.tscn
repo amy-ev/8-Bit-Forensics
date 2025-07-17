@@ -1,65 +1,86 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnvcbdwsftrn"]
+[gd_scene load_steps=8 format=3 uid="uid://cnvcbdwsftrn"]
 
 [ext_resource type="Script" uid="uid://c7l366dugnxrd" path="res://dialogue/dialogue_manager.gd" id="1_k6lpl"]
-[ext_resource type="Texture2D" uid="uid://thdq4em1ej5r" path="res://assets/npc-x3.png" id="2_3umdh"]
+[ext_resource type="Texture2D" uid="uid://biaof747rawt8" path="res://assets/dialogue/normal-dialogue.png" id="2_lodg1"]
+[ext_resource type="Texture2D" uid="uid://7v0m7u1b85fx" path="res://assets/dialogue/dialogue-panel-side.png" id="3_7jarm"]
+[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_8ai7j"]
+[ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="3_q36jk"]
+[ext_resource type="Texture2D" uid="uid://cwgspl3xvym75" path="res://assets/dialogue/bad-dialogue.png" id="6_3itix"]
+[ext_resource type="Texture2D" uid="uid://cl2wtx56ra8xm" path="res://assets/dialogue/dialogue-panel-bottom.png" id="7_uhccw"]
 
-[node name="dialogue_manager" type="Node2D"]
+[node name="dialogue_manager" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_k6lpl")
 
-[node name="npc" type="TextureRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("2_3umdh")
+[node name="blocker" type="ColorRect" parent="."]
+offset_right = 256.0
+offset_bottom = 384.0
+color = Color(1, 1, 1, 0)
 
-[node name="dialogue_box" type="ColorRect" parent="."]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 880.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0, 0, 0, 1)
+[node name="normal" type="TextureRect" parent="."]
+offset_right = 256.0
+offset_bottom = 192.0
+mouse_filter = 0
+texture = ExtResource("2_lodg1")
 
-[node name="container" type="VBoxContainer" parent="dialogue_box"]
+[node name="side_dialogue" type="TextureRect" parent="normal"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 12.0
+offset_right = 247.0
+offset_bottom = 180.0
+texture = ExtResource("3_7jarm")
+
+[node name="container" type="VBoxContainer" parent="normal/side_dialogue"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 12.0
-offset_right = -256.0
-offset_bottom = -50.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 133.0
+offset_bottom = 162.0
 
-[node name="day_title" type="Label" parent="dialogue_box/container"]
+[node name="day_title" type="Label" parent="normal/side_dialogue/container"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8ai7j")
+theme_override_font_sizes/font_size = 8
 text = "day x"
 
-[node name="text" type="Label" parent="dialogue_box/container"]
+[node name="dialogue_label" parent="normal/side_dialogue/container" instance=ExtResource("3_q36jk")]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "the dialogue
-"
 
-[node name="btn_container" type="HBoxContainer" parent="dialogue_box"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -90.0
-offset_bottom = 31.0
-grow_horizontal = 0
+[node name="bad" type="TextureRect" parent="."]
+visible = false
+offset_right = 256.0
+offset_bottom = 192.0
+texture = ExtResource("6_3itix")
 
-[node name="prev" type="Button" parent="dialogue_box/btn_container"]
-layout_mode = 2
-text = "prev"
+[node name="bottom_dialogue" type="TextureRect" parent="bad"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 114.0
+offset_right = 252.0
+offset_bottom = 186.0
+texture = ExtResource("7_uhccw")
 
-[node name="next" type="Button" parent="dialogue_box/btn_container"]
-layout_mode = 2
-text = "next"
+[node name="dialogue_label" parent="bad/bottom_dialogue" instance=ExtResource("3_q36jk")]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 242.0
+offset_bottom = 66.0
 
-[connection signal="pressed" from="dialogue_box/btn_container/prev" to="." method="_on_prev_pressed"]
-[connection signal="pressed" from="dialogue_box/btn_container/next" to="." method="_on_next_pressed"]
+[node name="next" type="Button" parent="."]
+offset_left = 238.0
+offset_top = 192.0
+offset_right = 256.0
+offset_bottom = 223.0
+text = ">"
+
+[node name="prev" type="Button" parent="."]
+offset_top = 192.0
+offset_right = 18.0
+offset_bottom = 223.0
+text = "<"
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="prev" to="." method="_on_prev_pressed"]

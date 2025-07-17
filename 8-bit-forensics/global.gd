@@ -6,8 +6,14 @@ extends Node
 @export var days: Array = []
 @export var unlocked: int
 
+@export var is_collected:bool
+
+@export var form_name:String
+@export var form_signed:String
+@export var form_date:String
+
 @export var answers = ["a","b","a","c"]
-@export var quiz_dict = {"Day_1":["a","b","c"]}
+@export var quiz_dict = {"Day_1":["a","b","c"], "Day_2":["a","b","c"], "Day_3":["a","b","c"]}
 
 signal selected(selected_node:File, real_file:String)
 
@@ -22,3 +28,7 @@ signal answer(day:String, answer:int)
 signal child_joined()
 
 signal metadata_selected(selected:Node)
+
+signal next_step(stage:Node)
+
+signal answer_response(is_correct:bool)

@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bmpgrmqys4l5p"]
+
+[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="1_o42ro"]
+
+[resource]
+default_font = ExtResource("1_o42ro")
+default_font_size = 8
+RichTextLabel/colors/default_color = Color(0.160784, 0.141176, 0.105882, 1)

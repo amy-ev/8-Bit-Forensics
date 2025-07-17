@@ -1,32 +1,24 @@
 [gd_scene load_steps=3 format=3 uid="uid://bicxast7ydwqw"]
 
-[ext_resource type="Texture2D" uid="uid://2e4o5cr1pfdh" path="res://assets/crime_board/note-content-x3.png" id="2_66fos"]
-[ext_resource type="Script" uid="uid://d0ufdxlxgv1i" path="res://crime_board/note_content.gd" id="2_84eci"]
+[ext_resource type="Texture2D" uid="uid://qfj12538ywv7" path="res://assets/crime_board/notes/1-note.png" id="2_66fos"]
+[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_7dcxh"]
 
 [node name="note" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("2_84eci")
 
 [node name="note_background" type="NinePatchRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 653.0
-offset_top = 237.0
-offset_right = 1268.0
-offset_bottom = 843.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 200.0
+offset_bottom = 176.0
 texture = ExtResource("2_66fos")
-region_rect = Rect2(0, 0, 279, 408)
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
+region_rect = Rect2(28, 28, 46, 64)
+patch_margin_left = 16
+patch_margin_top = 30
+patch_margin_right = 12
+patch_margin_bottom = 24
 
 [node name="note_content" type="RichTextLabel" parent="note_background"]
 layout_mode = 1
@@ -39,17 +31,12 @@ offset_right = -12.0
 offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(0.321569, 0.282353, 0.223529, 1)
+theme_override_fonts/normal_font = ExtResource("3_7dcxh")
+theme_override_font_sizes/normal_font_size = 8
 text = "this is the content of the note placed on the crime board"
 fit_content = true
 autowrap_mode = 2
 shortcut_keys_enabled = false
 horizontal_alignment = 1
 drag_and_drop_selection_enabled = false
-
-[node name="area" type="Area2D" parent="."]
-
-[node name="area_shape" type="CollisionPolygon2D" parent="area"]
-polygon = PackedVector2Array(653, 237, 1268, 237, 1268, 843, 653, 843, 653, 237, 0, 0, 0, 1080, 1920, 1080, 1920, 0, 0, 0)
-
-[connection signal="input_event" from="area" to="." method="_on_area_input_event"]
