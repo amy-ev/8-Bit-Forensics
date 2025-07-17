@@ -269,8 +269,8 @@ _data = {
 }
 
 [node name="metadata_container" type="HBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 447.0
+offset_bottom = 333.0
 theme_override_constants/separation = 0
 
 [node name="metadata_window" type="NinePatchRect" parent="."]
