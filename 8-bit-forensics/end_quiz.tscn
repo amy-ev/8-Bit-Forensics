@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdo1hbivbrq8h" path="res://end_quiz.gd" id="1_amf4w"]
 [ext_resource type="PackedScene" uid="uid://7dbr280v5upc" path="res://dialogue/dialogue_create_file.tscn" id="2_hxbvm"]
-[ext_resource type="ButtonGroup" uid="uid://bf68wi2sk2md" path="res://quiz_answers.tres" id="2_k7uhh"]
+[ext_resource type="ButtonGroup" uid="uid://ugpr4nutnptu" path="res://evidence/image_type.tres" id="3_hxbvm"]
 
 [node name="quiz" type="Node2D"]
 script = ExtResource("1_amf4w")
@@ -42,19 +42,19 @@ grow_vertical = 0
 
 [node name="a" type="CheckBox" parent="bottom_screen/answers"]
 layout_mode = 2
-button_group = ExtResource("2_k7uhh")
+button_group = ExtResource("3_hxbvm")
 text = "a) yes"
 flat = true
 
 [node name="b" type="CheckBox" parent="bottom_screen/answers"]
 layout_mode = 2
-button_group = ExtResource("2_k7uhh")
+button_group = ExtResource("3_hxbvm")
 text = "b) no"
 flat = true
 
 [node name="c" type="CheckBox" parent="bottom_screen/answers"]
 layout_mode = 2
-button_group = ExtResource("2_k7uhh")
+button_group = ExtResource("3_hxbvm")
 text = "c) maybe"
 flat = true
 

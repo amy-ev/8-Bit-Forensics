@@ -32,3 +32,5 @@ signal metadata_selected(selected:Node)
 signal next_step(stage:Node)
 
 signal answer_response(is_correct:bool)
+
+signal item_pressed(selected:Node)

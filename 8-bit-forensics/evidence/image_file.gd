@@ -1,13 +1,14 @@
 extends Panel
 
-@onready var popup = $MenuButton.get_popup()
+@onready var popup = $file_menu.get_popup()
 var msg = "file1"
 @export var file_created:bool
 
 func _ready() -> void:
 	Global.emit_signal("next_step",self)
-	$MenuButton.grab_focus()
+	$file_menu.grab_focus()
 	popup.id_pressed.connect(func(id: int):
+
 		menu_popup(id))
 
 func menu_popup(id):

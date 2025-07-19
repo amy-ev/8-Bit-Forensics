@@ -15,7 +15,7 @@ offset_right = 256.0
 offset_bottom = 384.0
 color = Color(1, 1, 1, 0)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="normal" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_1eqhb")

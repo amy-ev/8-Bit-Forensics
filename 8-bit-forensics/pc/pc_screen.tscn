@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4qcqdfv02pnd"]
+[gd_scene load_steps=9 format=3 uid="uid://b4qcqdfv02pnd"]
 
 [ext_resource type="Texture2D" uid="uid://ddw5ij5en8asc" path="res://assets/pc/pc-on.png" id="2_lrtf5"]
 [ext_resource type="Script" uid="uid://bdgjl5jim21kt" path="res://pc/pc_screen.gd" id="2_n1q0v"]
 [ext_resource type="PackedScene" uid="uid://krnwjg3pmi37" path="res://pc/keyboard.tscn" id="3_lrtf5"]
+[ext_resource type="PackedScene" uid="uid://c0wglcbgod0a4" path="res://dialogue/helper.tscn" id="4_nklpn"]
 
 [sub_resource type="Animation" id="Animation_6p3y6"]
 length = 0.001
@@ -107,5 +108,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_76l2r")
 }
 autoplay = "on"
+
+[node name="helper" parent="." instance=ExtResource("4_nklpn")]
 
 [connection signal="pressed" from="bottom_screen/debug" to="." method="_on_debug_pressed"]
