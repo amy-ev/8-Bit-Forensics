@@ -19,9 +19,8 @@ anti_aliasing = false
 size = Vector2(100, 20)
 
 [node name="metadata_label" type="Label"]
-custom_minimum_size = Vector2(117, 10)
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 100.0
+offset_bottom = 20.0
 theme_override_fonts/font = ExtResource("1_8cpkj")
 theme_override_font_sizes/font_size = 8
 text_overrun_behavior = 1

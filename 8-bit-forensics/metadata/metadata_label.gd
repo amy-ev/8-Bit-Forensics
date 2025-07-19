@@ -9,6 +9,7 @@ func _ready() -> void:
 	#$selected.size.x = custom_minimum_size.x
 
 func _process(delta: float) -> void:
+	pass
 	if minimum_size_changed:
 		#$select/select_shape.shape.size.x = custom_minimum_size.x
 		if self.has_node("select"):

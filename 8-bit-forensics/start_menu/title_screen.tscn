@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://lquowqgm6tlw"]
-
-[ext_resource type="Texture2D" uid="uid://cab8rnhxre8ra" path="res://assets/evidence/desk-background.png" id="1_ik42k"]
-
-[node name="title_screen" type="TextureRect"]
-offset_right = 256.0
-offset_bottom = 192.0
-texture = ExtResource("1_ik42k")

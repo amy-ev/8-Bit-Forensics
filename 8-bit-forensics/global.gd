@@ -1,7 +1,7 @@
 extends Node
 
 
-@export var magnification: int = 3
+@export var magnification: int = 2
 @export var levels: Dictionary = {0:"note1",1:"note2",2:"note3",3:"note4",4:"note5",5:"note6",6:"note7",7:"note8"}
 @export var days: Array = []
 @export var unlocked: int
@@ -11,6 +11,8 @@ extends Node
 @export var form_name:String
 @export var form_signed:String
 @export var form_date:String
+
+@export var debrief_given:bool
 
 @export var answers = ["a","b","a","c"]
 @export var quiz_dict = {"Day_1":["a","b","c"], "Day_2":["a","b","c"], "Day_3":["a","b","c"]}

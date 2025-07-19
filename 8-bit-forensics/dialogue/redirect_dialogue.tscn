@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctckls4vjpg1v"]
+
+[ext_resource type="Script" uid="uid://da3se8ro68jb7" path="res://dialogue/redirect_dialogue.gd" id="1_h7y27"]
+[ext_resource type="Texture2D" uid="uid://c3yl6q4k07f8q" path="res://assets/dialogue/dialogue-panel-bottom-wide.png" id="1_u4g46"]
+[ext_resource type="Texture2D" uid="uid://bketsdv7bdnil" path="res://assets/dialogue/normal-dialogue-wide.png" id="2_bc6dp"]
+[ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="2_h7y27"]
+[ext_resource type="Texture2D" uid="uid://cegx07yypcgx4" path="res://assets/level_select/forward-button.png" id="3_bc6dp"]
+[ext_resource type="Texture2D" uid="uid://degu4rdt3kdc3" path="res://assets/level_select/forward-button-pressed.png" id="4_38di5"]
+
+[node name="redirect_dialogue" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_h7y27")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("2_bc6dp")
+
+[node name="blocker" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="panel" type="TextureRect" parent="."]
+offset_left = 4.0
+offset_top = 102.0
+offset_right = 316.0
+offset_bottom = 174.0
+texture = ExtResource("1_u4g46")
+
+[node name="dialogue_label" parent="panel" instance=ExtResource("2_h7y27")]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 306.0
+offset_bottom = 48.0
+
+[node name="ok" type="TextureButton" parent="panel"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 48.0
+offset_right = 308.0
+offset_bottom = 68.0
+texture_normal = ExtResource("3_bc6dp")
+texture_pressed = ExtResource("4_38di5")
+
+[connection signal="pressed" from="panel/ok" to="." method="_on_ok_pressed"]

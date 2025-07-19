@@ -12,7 +12,6 @@ func _ready() -> void:
 	dialogue_data = load_dialogue(dialogue_file)
 	$normal/side_dialogue/container/day_title.text = "Day %s" %(Global.unlocked+1)
 	dialogue_text("Day %s.0" %(Global.unlocked+1))
-	$bad/bottom_dialogue/dialogue_label.start("wrong")
 	
 	self.connect("end_dialogue", _end_dialogue)
 	
@@ -22,6 +21,7 @@ func dialogue_text(option):
 	current_dialogue = option
 
 func _end_dialogue():
+	Global.debrief_given = true
 	queue_free()
 	
 func load_dialogue(file_path):

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://o33pyrovolve"]
 
-[ext_resource type="Texture2D" uid="uid://cab8rnhxre8ra" path="res://assets/evidence/desk-background.png" id="2_q1qqx"]
+[ext_resource type="Texture2D" uid="uid://b5tlifnionn35" path="res://assets/evidence/desk-background-wide.png" id="2_q1qqx"]
 [ext_resource type="Script" uid="uid://b7fuy1r5iu0v7" path="res://level_select/desk.gd" id="2_vnxcf"]
 [ext_resource type="PackedScene" uid="uid://cnoav72hte2jx" path="res://level_select/closed_folder.tscn" id="3_q1qqx"]
 
@@ -17,15 +17,14 @@ mouse_filter = 2
 [node name="bottom_screen" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 192.0
 offset_right = 256.0
-offset_bottom = 384.0
+offset_bottom = 192.0
 mouse_filter = 1
 
 [node name="desk" type="TextureRect" parent="bottom_screen"]
 layout_mode = 1
-offset_right = 256.0
-offset_bottom = 192.0
+offset_right = 320.0
+offset_bottom = 180.0
 texture = ExtResource("2_q1qqx")
 
 [node name="closed_folder" parent="bottom_screen" instance=ExtResource("3_q1qqx")]

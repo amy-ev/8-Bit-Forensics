@@ -39,7 +39,7 @@ func _on_load_button_pressed() -> void:
 	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
 	
 	metadata_thumbnail.texture = load("res://jpg_folder/"+selected_file)
-	metadata_thumbnail.size = Vector2(111,90)
+	metadata_thumbnail.size = Vector2(44,32)
 	
 	var json_dict = open_json("res://python_files/metadata.json")
 	print(selected_file)
@@ -58,7 +58,7 @@ func _on_load_button_pressed() -> void:
 			for key in json_dict["file_%s" % file_idx]:
 				
 				var key_and_value = HBoxContainer.new()
-				key_and_value.custom_minimum_size = Vector2(298.0,10.0)
+				key_and_value.custom_minimum_size = Vector2(162.0,10.0)
 				key_and_value.add_theme_constant_override("separation", 0)
 				key_and_value.clip_contents = true
 				metadata_column.add_child(key_and_value)
@@ -66,14 +66,14 @@ func _on_load_button_pressed() -> void:
 				var key_label = metadata_labels.instantiate()
 				key_label.text = key
 				#key_label.set_autowrap_mode(TextServer.AUTOWRAP_WORD_SMART)
-				key_label.custom_minimum_size = Vector2(117.0, 10.0)
-				key_label.get_node("select/select_shape").shape.size.x = 298.0
+				key_label.custom_minimum_size = Vector2(70.0, 10.0)
+				key_label.get_node("select/select_shape").shape.size.x = 165.0
 				key_and_value.add_child(key_label)
 
 				var value_label = metadata_labels.instantiate()
 				value_label.text = json_dict["file_%s" % file_idx][key]
-				#value_label.set_autowrap_mode(TextServer.AUTOWRAP_WORD_SMART)
-				value_label.custom_minimum_size = Vector2(186.0, 10.0)
+				value_label.set_autowrap_mode(TextServer.AUTOWRAP_WORD_SMART)
+				value_label.custom_minimum_size = Vector2(100.0, 10.0)
 				value_label.get_node("selected").queue_free()
 				value_label.get_node("select").queue_free()
 				key_and_value.add_child(value_label)
@@ -95,7 +95,7 @@ func add_files(file_no:int):
 		file.name = "file"
 		file._file_name = file.name
 		#file_icon = load("res://assets/file_dialog/icon-x3.png")
-		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://assets/file_dialog/icon-x3.png"))
+		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://assets/file_dialog/icon.png"))
 		#file_icon = ImageTexture.create_from_image(Image.load_from_file("res://jpg_folder/photo"+str(i)+".jpg"))
 		file._file_icon = file_icon
 		
@@ -103,11 +103,11 @@ func add_files(file_no:int):
 		file._file_icon.set_meta("file_name","photo"+str(i)+".jpg")
 	
 		# dynamically size the file_container grid seperations 
-		$file_dialog/window/file_container.size.x = $file_dialog/window.size.x - (6 * Global.magnification) - 1
-		$file_dialog/window/file_container.size.y = $file_dialog/window.size.y - (5 * Global.magnification)
-		$file_dialog/window/file_container.position.x = (3 * Global.magnification)
-		$file_dialog/window/file_container.position.y = (2 * Global.magnification)
-		$file_dialog/window/file_container.add_theme_constant_override("h_separation", file.get_node("select/select_shape").shape.size.x + 6)
+		$file_dialog/window/file_container.size.x = $file_dialog/window.size.x - 10
+		$file_dialog/window/file_container.size.y = $file_dialog/window.size.y
+		$file_dialog/window/file_container.position.x = 5
+		$file_dialog/window/file_container.position.y = 4
+		$file_dialog/window/file_container.add_theme_constant_override("h_separation", file.get_node("select/select_shape").shape.size.x + 8)
 		$file_dialog/window/file_container.add_theme_constant_override("v_separation", (file.get_node("select/select_shape").shape.size.y)+(file.get_node("file_name").size.y))
 	
 

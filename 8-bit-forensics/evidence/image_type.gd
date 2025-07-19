@@ -30,6 +30,7 @@ func _on_back_pressed() -> void:
 	queue_free()
 
 func _on_next_pressed() -> void:
+	Global.emit_signal("answer_response",is_correct)
 	if is_correct:
 		get_parent().add_child(load("res://evidence/item_information.tscn").instantiate())
 		queue_free()

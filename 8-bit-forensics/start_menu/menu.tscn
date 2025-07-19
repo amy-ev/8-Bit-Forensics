@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://drlfreuf2u18g"]
+[gd_scene load_steps=4 format=3 uid="uid://drlfreuf2u18g"]
 
+[ext_resource type="Texture2D" uid="uid://b5tlifnionn35" path="res://assets/evidence/desk-background-wide.png" id="1_aq2mp"]
 [ext_resource type="Script" uid="uid://c8pi0l45cfeqv" path="res://start_menu/menu.gd" id="1_woprb"]
+[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_erm32"]
 
 [node name="background" type="TextureRect"]
-offset_right = 256.0
-offset_bottom = 192.0
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("1_aq2mp")
 script = ExtResource("1_woprb")
 
 [node name="menu" type="VBoxContainer" parent="."]
@@ -14,23 +17,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -51.0
-offset_top = -50.5
-offset_right = 51.0
-offset_bottom = 50.5
+offset_left = -48.0
+offset_top = -40.0
+offset_right = 48.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="start" type="Button" parent="menu"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.932108, 0.863368, 0.766723, 1)
+theme_override_fonts/font = ExtResource("3_erm32")
 text = "start"
 
 [node name="information" type="Button" parent="menu"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.932108, 0.863368, 0.766723, 1)
+theme_override_fonts/font = ExtResource("3_erm32")
 text = "crime board"
 
 [node name="level_select" type="Button" parent="menu"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.932108, 0.863368, 0.766723, 1)
+theme_override_fonts/font = ExtResource("3_erm32")
 text = "select level"
 
 [connection signal="pressed" from="menu/start" to="." method="_on_start_pressed"]

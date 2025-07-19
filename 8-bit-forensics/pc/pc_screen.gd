@@ -38,6 +38,3 @@ func _input(event: InputEvent) -> void:
 		await $screen_animation.animation_finished
 		
 		get_tree().change_scene_to_file("res://main/desk.tscn")
-
-func _on_debug_pressed() -> void:
-	get_tree().change_scene_to_file("res://end_quiz.tscn")

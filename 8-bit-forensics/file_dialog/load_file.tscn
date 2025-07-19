@@ -1,17 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdewl63aqvs7b"]
+[gd_scene load_steps=5 format=3 uid="uid://cdewl63aqvs7b"]
 
 [ext_resource type="Script" uid="uid://475xqrfyyjia" path="res://file_dialog/load_file.gd" id="1_gmshg"]
-[ext_resource type="Texture2D" uid="uid://b6mv23cq8bncx" path="res://assets/file_dialog/title-bar-x3.png" id="2_obumy"]
-[ext_resource type="Texture2D" uid="uid://8si5r6fxbidm" path="res://assets/file_dialog/exit-button-x3.png" id="3_8l0wo"]
-[ext_resource type="Texture2D" uid="uid://c8iudgnvx58hr" path="res://assets/file_dialog/window-x3.png" id="4_5t006"]
-[ext_resource type="Texture2D" uid="uid://djdji6exs5hlj" path="res://assets/file_dialog/window-bar-x3.png" id="5_mo0iw"]
-[ext_resource type="Texture2D" uid="uid://b5g6jpl6wfj3l" path="res://assets/file_dialog/confirm-button-x3.png" id="6_6i6ar"]
+[ext_resource type="Texture2D" uid="uid://b3124jc6q247v" path="res://assets/file_dialog/window.png" id="2_obumy"]
+[ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/file_dialog/exit-button.png" id="3_obumy"]
+[ext_resource type="Texture2D" uid="uid://rvwan2liylh3" path="res://assets/file_dialog/confirm-button.png" id="4_wwmjk"]
 
 [node name="load_file" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 162.0
-offset_bottom = 189.0
+offset_left = 50.0
+offset_top = 52.0
+offset_right = 50.0
+offset_bottom = 52.0
 mouse_filter = 2
 script = ExtResource("1_gmshg")
 
@@ -20,63 +20,75 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -52.0
+offset_right = 58.0
+offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="title_bar" type="TextureRect" parent="file_dialog"]
+[node name="title_bar" type="NinePatchRect" parent="file_dialog"]
+custom_minimum_size = Vector2(108, 14)
 layout_mode = 2
 texture = ExtResource("2_obumy")
+region_rect = Rect2(0, 0, 108, 14)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 14
+patch_margin_bottom = 2
 
 [node name="exit" type="TextureButton" parent="file_dialog/title_bar"]
 layout_mode = 0
-offset_left = 141.0
-offset_right = 162.0
-offset_bottom = 21.0
-texture_normal = ExtResource("3_8l0wo")
-texture_pressed = ExtResource("3_8l0wo")
-texture_hover = ExtResource("3_8l0wo")
-texture_disabled = ExtResource("3_8l0wo")
-texture_focused = ExtResource("3_8l0wo")
+offset_left = 94.0
+offset_right = 108.0
+offset_bottom = 14.0
+texture_normal = ExtResource("3_obumy")
+texture_pressed = ExtResource("3_obumy")
+texture_hover = ExtResource("3_obumy")
+texture_disabled = ExtResource("3_obumy")
+texture_focused = ExtResource("3_obumy")
 
-[node name="window" type="TextureRect" parent="file_dialog"]
+[node name="window" type="NinePatchRect" parent="file_dialog"]
+custom_minimum_size = Vector2(108, 72)
 layout_mode = 2
-texture = ExtResource("4_5t006")
+texture = ExtResource("2_obumy")
+region_rect = Rect2(0, 14, 108, 72)
 
 [node name="file_container" type="HFlowContainer" parent="file_dialog/window"]
+custom_minimum_size = Vector2(88, 62)
 layout_mode = 2
-offset_left = 9.0
-offset_top = 6.0
-offset_right = 153.0
-offset_bottom = 135.0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 102.0
+offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 last_wrap_alignment = 1
 
-[node name="bar" type="TextureRect" parent="file_dialog"]
+[node name="bar" type="NinePatchRect" parent="file_dialog"]
+custom_minimum_size = Vector2(108, 18)
 layout_mode = 2
-texture = ExtResource("5_mo0iw")
+texture = ExtResource("2_obumy")
+region_rect = Rect2(0, 86, 108, 18)
 
-[node name="button_border" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 121.0
-offset_top = 168.0
-offset_right = 154.0
-offset_bottom = 183.0
-texture = ExtResource("6_6i6ar")
-
-[node name="load_button" type="Button" parent="button_border"]
+[node name="load_button" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 36.0
+offset_right = 50.0
+offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 4
-text = "confirm"
-flat = true
+texture_normal = ExtResource("4_wwmjk")
+texture_pressed = ExtResource("4_wwmjk")
+texture_hover = ExtResource("4_wwmjk")
+texture_disabled = ExtResource("4_wwmjk")
+texture_focused = ExtResource("4_wwmjk")
 
 [node name="metadata" type="RichTextLabel" parent="."]
 layout_mode = 0
@@ -86,4 +98,4 @@ offset_bottom = 40.0
 fit_content = true
 
 [connection signal="pressed" from="file_dialog/title_bar/exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="button_border/load_button" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="load_button" to="." method="_on_load_button_pressed"]

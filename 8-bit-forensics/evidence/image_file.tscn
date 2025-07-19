@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://326qgm6qmdub" path="res://main/select.tscn" id="4_gk13f"]
 
 [node name="evidence_file" type="Panel"]
-offset_left = 8.0
+offset_left = 72.0
 offset_top = 12.0
-offset_right = 163.0
+offset_right = 227.0
 offset_bottom = 102.0
 mouse_filter = 1
 script = ExtResource("1_84i5g")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3218f32yb8dd"]
 
-[ext_resource type="Texture2D" uid="uid://cab8rnhxre8ra" path="res://assets/evidence/desk-background.png" id="1_uh1up"]
+[ext_resource type="Texture2D" uid="uid://b5tlifnionn35" path="res://assets/evidence/desk-background-wide.png" id="1_u6vuv"]
 [ext_resource type="Script" uid="uid://qdwm57in2ghk" path="res://evidence/desk.gd" id="2_h8nwr"]
 [ext_resource type="PackedScene" uid="uid://dullwxtc5crys" path="res://evidence/evidence.tscn" id="3_h8nwr"]
 [ext_resource type="PackedScene" uid="uid://cwyc4moqylni6" path="res://evidence/bag.tscn" id="4_vu08t"]
@@ -9,9 +9,9 @@
 
 [node name="desk" type="TextureRect"]
 clip_contents = true
-offset_right = 256.0
-offset_bottom = 192.0
-texture = ExtResource("1_uh1up")
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("1_u6vuv")
 script = ExtResource("2_h8nwr")
 
 [node name="back" type="Button" parent="."]
@@ -22,18 +22,18 @@ text = "back"
 
 [node name="evidence" parent="." instance=ExtResource("3_h8nwr")]
 layout_mode = 0
-offset_left = 132.0
-offset_top = 94.0
-offset_right = 172.0
-offset_bottom = 134.0
+offset_left = 166.0
+offset_top = 82.0
+offset_right = 206.0
+offset_bottom = 122.0
 
 [node name="evidence_bag" parent="." instance=ExtResource("4_vu08t")]
-position = Vector2(75, 22)
+position = Vector2(128, 23)
 
 [node name="scissors" parent="." instance=ExtResource("5_uh1up")]
-position = Vector2(209, 151)
+position = Vector2(270, 123)
 
 [node name="pen" parent="." instance=ExtResource("6_u6vuv")]
-position = Vector2(205, 85)
+position = Vector2(289, 49)
 
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
