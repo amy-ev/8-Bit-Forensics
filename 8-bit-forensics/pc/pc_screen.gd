@@ -5,13 +5,13 @@ func _ready() -> void:
 	var day = Global.unlocked + 1
 	
 	await $screen_animation.animation_finished
-	$top_screen/pc_screen.reparent($bottom_screen,false)
+	#$top_screen/pc_screen.reparent($bottom_screen,false)
 	match day:
 		1:
-			$top_screen.add_child(load("res://dialogue/dialogue_create_file.tscn").instantiate())
+			#$top_screen.add_child(load("res://dialogue/dialogue_create_file.tscn").instantiate())
 
 			var image_file = load("res://evidence/image_file.tscn").instantiate()
-			$bottom_screen/pc_screen.add_child(image_file)
+			$top_screen/pc_screen.add_child(image_file)
 		2:
 			add_child(load("res://pc/desktop_icon.tscn").instantiate())
 
