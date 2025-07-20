@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://d31sl6bl6j3b3"]
+[gd_scene load_steps=11 format=3 uid="uid://d31sl6bl6j3b3"]
 
 [ext_resource type="Script" uid="uid://b4546ogyrqq64" path="res://metadata/metadata.gd" id="1_2ct7u"]
 [ext_resource type="Texture2D" uid="uid://ck13skggxkb21" path="res://assets/metadata/metadata-window.png" id="1_hpvqb"]
 [ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_7dblc"]
-[ext_resource type="Texture2D" uid="uid://dnbt2p1ftilr6" path="res://assets/metadata/open-x3.png" id="3_daqaj"]
-[ext_resource type="Texture2D" uid="uid://c4yiawhjwwb6" path="res://assets/metadata/thumbnail-x3.png" id="5_daqaj"]
+[ext_resource type="Texture2D" uid="uid://dbqt4m1v71plc" path="res://assets/metadata/open.png" id="4_vpbfe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_paekb"]
 size = Vector2(44.5, 32.5)
@@ -319,6 +318,7 @@ patch_margin_bottom = 2
 
 [node name="itemname" type="Label" parent="backgrounds/value_background"]
 clip_contents = true
+layout_mode = 0
 offset_left = 30.0
 offset_top = 2.0
 offset_right = 72.0
@@ -361,7 +361,7 @@ offset_left = 8.0
 offset_top = 34.0
 offset_right = 52.0
 offset_bottom = 66.0
-texture = ExtResource("5_daqaj")
+texture = ExtResource("1_hpvqb")
 expand_mode = 1
 
 [node name="thumbnail_area" type="Area2D" parent="thumbnail_column/thumbnail"]
@@ -402,11 +402,7 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 28.0
 offset_bottom = 14.0
-texture_normal = ExtResource("3_daqaj")
-texture_pressed = ExtResource("3_daqaj")
-texture_hover = ExtResource("3_daqaj")
-texture_disabled = ExtResource("3_daqaj")
-texture_focused = ExtResource("3_daqaj")
+texture_normal = ExtResource("4_vpbfe")
 ignore_texture_size = true
 stretch_mode = 0
 

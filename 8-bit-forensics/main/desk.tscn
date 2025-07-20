@@ -10,7 +10,7 @@
 size = Vector2(46, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1x7m8"]
-size = Vector2(112, 70)
+size = Vector2(112, 74)
 
 [sub_resource type="Animation" id="Animation_1x7m8"]
 length = 0.001
@@ -87,14 +87,14 @@ shape = SubResource("RectangleShape2D_ufxmt")
 [node name="pc" type="TextureRect" parent="bottom_screen"]
 layout_mode = 1
 offset_left = 148.0
-offset_right = 290.0
+offset_right = 264.0
 offset_bottom = 126.0
 texture = ExtResource("6_6g8cm")
 
 [node name="pc_area" type="Area2D" parent="bottom_screen/pc"]
 
 [node name="pc_shape" type="CollisionShape2D" parent="bottom_screen/pc/pc_area"]
-position = Vector2(58, 35)
+position = Vector2(58, 37)
 shape = SubResource("RectangleShape2D_1x7m8")
 
 [node name="coffee_cup" type="Sprite2D" parent="bottom_screen"]
