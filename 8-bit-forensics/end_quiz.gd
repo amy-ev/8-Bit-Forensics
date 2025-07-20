@@ -7,7 +7,6 @@ var question:String = "this is the question"
 var answer_selected
 
 func _ready() -> void:
-	$top_screen/dialogue_create_file/panel/dialogue_label.start(question)
 	Global.emit_signal("next_step",self)
 	Global.connect("answer", _on_answer_selected)
 	scale = scale * Utility.window_mode()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6sldv7wkulby"]
+[gd_scene load_steps=5 format=3 uid="uid://b6sldv7wkulby"]
 
 [ext_resource type="Script" uid="uid://bdo1hbivbrq8h" path="res://end_quiz.gd" id="1_amf4w"]
-[ext_resource type="PackedScene" uid="uid://7dbr280v5upc" path="res://dialogue/dialogue_create_file.tscn" id="2_hxbvm"]
+[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="2_x16n5"]
 [ext_resource type="ButtonGroup" uid="uid://ugpr4nutnptu" path="res://evidence/image_type.tres" id="3_hxbvm"]
+[ext_resource type="PackedScene" uid="uid://c0wglcbgod0a4" path="res://dialogue/helper.tscn" id="3_x16n5"]
 
 [node name="quiz" type="Node2D"]
 script = ExtResource("1_amf4w")
@@ -11,49 +12,54 @@ script = ExtResource("1_amf4w")
 layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0
-offset_bottom = 192.0
+offset_bottom = 70.0
 mouse_filter = 2
 
 [node name="question" type="Label" parent="top_screen"]
 layout_mode = 1
 offset_right = 256.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_x16n5")
+theme_override_font_sizes/font_size = 8
 text = "this is a question on the tool used etc"
 autowrap_mode = 2
 
-[node name="dialogue_create_file" parent="top_screen" instance=ExtResource("2_hxbvm")]
+[node name="helper" parent="top_screen" instance=ExtResource("3_x16n5")]
+visible = false
 
 [node name="bottom_screen" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 192.0
+offset_top = 32.0
 offset_right = 256.0
-offset_bottom = 384.0
+offset_bottom = 113.0
 mouse_filter = 1
 
 [node name="answers" type="VBoxContainer" parent="bottom_screen"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -192.0
-offset_right = 256.0
-grow_vertical = 0
+offset_right = 61.0
+offset_bottom = 80.0
 
 [node name="a" type="CheckBox" parent="bottom_screen/answers"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x16n5")
+theme_override_font_sizes/font_size = 8
 button_group = ExtResource("3_hxbvm")
 text = "a) yes"
 flat = true
 
 [node name="b" type="CheckBox" parent="bottom_screen/answers"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x16n5")
+theme_override_font_sizes/font_size = 8
 button_group = ExtResource("3_hxbvm")
 text = "b) no"
 flat = true
 
 [node name="c" type="CheckBox" parent="bottom_screen/answers"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x16n5")
+theme_override_font_sizes/font_size = 8
 button_group = ExtResource("3_hxbvm")
 text = "c) maybe"
 flat = true
