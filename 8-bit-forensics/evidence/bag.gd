@@ -3,15 +3,12 @@ extends RigidBody2D
 var is_picked_up = false
 var form_filled = false
 
-var form = preload("res://evidence/form.tscn")
+var _form = preload("res://evidence/form.tscn")
 
 func _on_bag_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == 1:
 		if event.is_pressed():
 			is_picked_up = true
-			if event.double_click:
-				print(get_parent())
-				get_parent().get_parent().get_parent().get_node("top_screen").add_child(load("res://evidence/form.tscn").instantiate())
 		if event.is_released():
 			is_picked_up = false
 
@@ -36,9 +33,8 @@ func _physics_process(delta: float) -> void:
 		var target = get_global_mouse_position() - ($bag/collision.shape.size / 2)
 		move_and_collide(target - global_position)
 
-
 func _on_form_section_area_entered(area: Area2D) -> void:
 	if area.get_parent().name == "pen":
-		get_parent().add_child(form.instantiate())
-		form_filled = true
+		var form = _form.instantiate()
+		add_child(form)
 		area.get_parent().queue_free()

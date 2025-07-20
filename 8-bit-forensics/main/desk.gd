@@ -26,7 +26,7 @@ func _on_evidence_input_event(viewport: Node, event: InputEvent, shape_idx: int)
 
 func _on_evidence_collect():
 	#TODO: have a second instance of the evidence bag on the desk to put the item in a new bag
-	$bottom_screen/evidence_bag.queue_free()
+	#$bottom_screen/evidence_bag.queue_free()
 	evidence_collected = true
 
 

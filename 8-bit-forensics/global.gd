@@ -11,6 +11,7 @@ extends Node
 @export var form_name:String
 @export var form_signed:String
 @export var form_date:String
+var is_first_bag:bool = true
 
 @export var debrief_given:bool
 
