@@ -9,6 +9,7 @@ func _ready() -> void:
 		$evidence_form/columns/column2/continuity/name_label/name.text = Global.form_name
 		$evidence_form/columns/column2/continuity/signed_label/signed.text = Global.form_signed
 		$evidence_form/columns/column2/continuity/date_label/date.text = Global.form_date
+		
 		$evidence_form/columns/column2/continuity/name_label/name.editable = false
 		$evidence_form/columns/column2/continuity/signed_label/signed.editable = false
 		$evidence_form/columns/column2/continuity/date_label/date.editable = false
@@ -16,6 +17,7 @@ func _ready() -> void:
 		$evidence_form/columns/column2/continuity/name_label/name.text = ""
 		$evidence_form/columns/column2/continuity/signed_label/signed.text = ""
 		$evidence_form/columns/column2/continuity/date_label/date.text = ""
+		
 		$evidence_form/columns/column2/continuity/name_label/name.editable = true
 		$evidence_form/columns/column2/continuity/signed_label/signed.editable = true
 		$evidence_form/columns/column2/continuity/date_label/date.editable = true
@@ -39,25 +41,22 @@ func _on_confirm_pressed() -> void:
 			queue_free()
 			Global.is_first_bag = false
 		else:
-			print("hello")
 			var dialogue = _dialogue.instantiate()
 			add_child(dialogue)
 			dialogue.start("fill all")
+			
 	elif get_parent().name == "new_bag":
-		if form_name != Global.form_name:
-			print("does not match")
+		if form_name != Global.form_name || form_signed != Global.form_signed || form_date != Global.form_date:
+			var dialogue = _dialogue.instantiate()
+			add_child(dialogue)
+			dialogue.start("does not match")
 		else:
-			print("matches original")
 			queue_free()
+			var dialogue = load("res://dialogue/dialogue_display.tscn").instantiate()
+			dialogue.get_node("npc_normal").set_visible(false)
+			dialogue.get_node("npc_good").set_visible(true)
+			get_parent().add_child(dialogue)
+			dialogue.start("crime ! time to end day")
+			#trigger dialogue to end day
 	elif get_parent().name == "opened_bag":
-		#$evidence_form/columns/column2/continuity/name_label/name.text = Global.form_name
 		queue_free()
-
-	#Global.form_signed = form_signed
-	#Global.form_date = form_date
-	
-	#stop the player if they havent filled out the form
-	#queue_free()
-	#zoom out animation and then queue_free()
-	#emit signal to confirm form has been filled
-	

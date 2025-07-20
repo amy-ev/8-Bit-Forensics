@@ -4,31 +4,31 @@
 [ext_resource type="Script" uid="uid://brswighheltra" path="res://evidence/opened_bag.gd" id="1_uy4ss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uy4ss"]
-size = Vector2(100, 144)
+size = Vector2(81, 97)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjjpq"]
 size = Vector2(76, 66)
 
 [node name="opened_bag" type="RigidBody2D"]
 position = Vector2(21, 20)
-collision_layer = 2
+collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource("1_uy4ss")
 
 [node name="bag_sprite" type="Sprite2D" parent="."]
+position = Vector2(-21, -20)
 texture = ExtResource("1_jfgb4")
 centered = false
-hframes = 8
-vframes = 2
-frame = 8
+region_enabled = true
+region_rect = Rect2(9, 193, 81, 97)
 
 [node name="bag" type="Area2D" parent="."]
-collision_layer = 5
-collision_mask = 2
-monitoring = false
+position = Vector2(-21, -20)
+collision_layer = 2
+collision_mask = 5
 
 [node name="collision" type="CollisionShape2D" parent="bag"]
-position = Vector2(50, 72)
+position = Vector2(40.5, 48.5)
 shape = SubResource("RectangleShape2D_uy4ss")
 debug_color = Color(0.357208, 0.489978, 0.793048, 0.42)
 
@@ -37,8 +37,11 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="interact" type="CollisionShape2D" parent="form_section"]
-position = Vector2(50, 103)
+position = Vector2(20, 42)
 shape = SubResource("RectangleShape2D_gjjpq")
 debug_color = Color(0.883061, 0.123634, 0.756632, 0.42)
 
+[connection signal="area_entered" from="bag" to="." method="_on_bag_area_entered"]
+[connection signal="area_exited" from="bag" to="." method="_on_bag_area_exited"]
+[connection signal="input_event" from="bag" to="." method="_on_bag_input_event"]
 [connection signal="input_event" from="form_section" to="." method="_on_form_section_input_event"]
