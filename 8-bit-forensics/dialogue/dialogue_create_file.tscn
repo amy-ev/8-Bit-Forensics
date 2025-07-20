@@ -1,14 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://7dbr280v5upc"]
+[gd_scene load_steps=6 format=3 uid="uid://7dbr280v5upc"]
 
 [ext_resource type="Texture2D" uid="uid://dgo8feyw0ddox" path="res://assets/dialogue/dialogue-panel-slim.png" id="2_gohrn"]
 [ext_resource type="Script" uid="uid://emj8808cww3n" path="res://dialogue/dialogue_create_file.gd" id="2_jna6a"]
 [ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="3_jna6a"]
 [ext_resource type="Texture2D" uid="uid://cwgspl3xvym75" path="res://assets/dialogue/bad-dialogue.png" id="5_gohrn"]
-[ext_resource type="Texture2D" uid="uid://cegx07yypcgx4" path="res://assets/level_select/forward-button.png" id="5_yvl17"]
-[ext_resource type="Texture2D" uid="uid://degu4rdt3kdc3" path="res://assets/level_select/forward-button-pressed.png" id="6_reqjc"]
+[ext_resource type="Texture2D" uid="uid://dmsht0365lf24" path="res://assets/dialogue/next-button.png" id="5_jna6a"]
 
 [node name="dialogue_create_file" type="CanvasLayer"]
-visible = false
 script = ExtResource("2_jna6a")
 
 [node name="panel" type="TextureRect" parent="."]
@@ -32,11 +30,10 @@ offset_bottom = 40.0
 texture = ExtResource("5_gohrn")
 
 [node name="ok" type="TextureButton" parent="."]
-offset_left = 23.0
-offset_top = 151.0
-offset_right = 43.0
-offset_bottom = 171.0
-texture_normal = ExtResource("5_yvl17")
-texture_pressed = ExtResource("6_reqjc")
+offset_left = 25.0
+offset_top = 156.0
+offset_right = 39.0
+offset_bottom = 170.0
+texture_normal = ExtResource("5_jna6a")
 
 [connection signal="pressed" from="ok" to="." method="_on_ok_pressed"]

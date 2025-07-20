@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bm2p2n6vqfkku" path="res://dialogue/dialogue_display.gd" id="1_hcfp6"]
 [ext_resource type="Texture2D" uid="uid://c3yl6q4k07f8q" path="res://assets/dialogue/dialogue-panel-bottom-wide.png" id="2_hcfp6"]
-[ext_resource type="Texture2D" uid="uid://c1e43hp3nwgkt" path="res://assets/dialogue/bad-dialogue-wide.png" id="2_ms2fa"]
+[ext_resource type="Texture2D" uid="uid://brhrvqxv8fdnd" path="res://assets/dialogue/bad-dialogue-wide-v2.png" id="2_v4iod"]
 [ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="2_ycikt"]
-[ext_resource type="Texture2D" uid="uid://cegx07yypcgx4" path="res://assets/level_select/forward-button.png" id="3_jitix"]
 [ext_resource type="Texture2D" uid="uid://bketsdv7bdnil" path="res://assets/dialogue/normal-dialogue-wide.png" id="3_mptr3"]
-[ext_resource type="Texture2D" uid="uid://degu4rdt3kdc3" path="res://assets/level_select/forward-button-pressed.png" id="4_hcfp6"]
+[ext_resource type="Texture2D" uid="uid://c0cm4d7ts0ns0" path="res://assets/dialogue/normal-dialogue-wide-v2.png" id="3_ms2fa"]
+[ext_resource type="Texture2D" uid="uid://dmsht0365lf24" path="res://assets/dialogue/next-button.png" id="6_v4iod"]
 
 [node name="dialogue_display" type="CanvasLayer"]
 layer = 2
@@ -24,7 +24,13 @@ color = Color(1, 1, 1, 0)
 visible = false
 offset_right = 320.0
 offset_bottom = 180.0
-texture = ExtResource("2_ms2fa")
+texture = ExtResource("2_v4iod")
+
+[node name="npc_good" type="TextureRect" parent="."]
+visible = false
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("3_ms2fa")
 
 [node name="npc_normal" type="TextureRect" parent="."]
 offset_right = 320.0
@@ -47,11 +53,10 @@ offset_bottom = 66.0
 
 [node name="button" type="TextureButton" parent="panel"]
 layout_mode = 0
-offset_left = 288.0
-offset_top = 48.0
-offset_right = 308.0
-offset_bottom = 68.0
-texture_normal = ExtResource("3_jitix")
-texture_pressed = ExtResource("4_hcfp6")
+offset_left = 292.0
+offset_top = 52.0
+offset_right = 306.0
+offset_bottom = 66.0
+texture_normal = ExtResource("6_v4iod")
 
 [connection signal="pressed" from="panel/button" to="." method="_on_button_pressed"]
