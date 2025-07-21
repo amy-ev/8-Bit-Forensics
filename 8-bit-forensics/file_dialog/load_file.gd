@@ -4,6 +4,7 @@ class_name LoadFile
 @onready var client_scene = preload("res://file_dialog/client.tscn")
 @onready var files = preload("res://file_dialog/file.tscn")
 @onready var saved_dialog_scene = preload("res://file_dialog/save_file.tscn")
+@onready var hex_scene = preload("res://pc/hex_viewer.tscn")
 
 @export var file_icon: ImageTexture
 @export var selected_file: String
@@ -20,15 +21,18 @@ func _ready() -> void:
 	Global.connect("selected",_on_file_selected)
 	
 	# TODO: REMOVE FROM HERE AND ADD BOTH LOAD_FILE AND SAVE_FILE TO A DIALOG WINDOW SCENE
-	var saved_dialog = saved_dialog_scene.instantiate()
-	add_child(saved_dialog)
-	var dialog_node = saved_dialog.get_node(".")
-	dialog_node.position.x = get_node(".").position.x + (get_node(".").size.x * 2)
+	#var saved_dialog = saved_dialog_scene.instantiate()
+	#add_child(saved_dialog)
+	#var dialog_node = saved_dialog.get_node(".")
+	#dialog_node.position.x = get_node(".").position.x + (get_node(".").size.x * 2)
 	# ---------------------------
 	
 func _on_load_button_pressed() -> void:
-	var client = client_scene.instantiate()
-	add_child(client)
+	var hex_viewer = hex_scene.instantiate()
+	add_child(hex_viewer)
+	
+	#var client = client_scene.instantiate()
+	#add_child(client)
 	
 func add_files(file_no:int):
 

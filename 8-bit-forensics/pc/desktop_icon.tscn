@@ -17,6 +17,7 @@ script = ExtResource("1_2ftpu")
 
 [node name="selected" type="ColorRect" parent="."]
 visible = false
+layout_mode = 0
 mouse_filter = 2
 color = Color(1, 1, 1, 0.682353)
 
