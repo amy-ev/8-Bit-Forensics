@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqwedwedwn32"]
+[gd_scene load_steps=3 format=3 uid="uid://dqwedwedwn32"]
 
 [ext_resource type="Script" uid="uid://qayymwuuheyr" path="res://evidence/item_information.gd" id="1_g7w0n"]
-[ext_resource type="Theme" uid="uid://dkk7o1al130ot" path="res://evidence/form_line_edit.tres" id="2_kxa1e"]
-[ext_resource type="Theme" uid="uid://do4qpyvmb5o1f" path="res://evidence/buttons.tres" id="2_metvm"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="3_kxa1e"]
 
 [node name="item_information" type="VBoxContainer"]
 offset_right = 153.0
@@ -11,7 +10,7 @@ script = ExtResource("1_g7w0n")
 
 [node name="case_no" type="LineEdit" parent="."]
 layout_mode = 2
-theme = ExtResource("2_kxa1e")
+theme = ExtResource("3_kxa1e")
 placeholder_text = "case_no"
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -24,7 +23,7 @@ drag_and_drop_selection_enabled = false
 
 [node name="evidence_no" type="LineEdit" parent="."]
 layout_mode = 2
-theme = ExtResource("2_kxa1e")
+theme = ExtResource("3_kxa1e")
 placeholder_text = "evidence_no"
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -37,7 +36,7 @@ drag_and_drop_selection_enabled = false
 
 [node name="unique_desc" type="LineEdit" parent="."]
 layout_mode = 2
-theme = ExtResource("2_kxa1e")
+theme = ExtResource("3_kxa1e")
 placeholder_text = "unique_desc"
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -50,7 +49,7 @@ drag_and_drop_selection_enabled = false
 
 [node name="examiner" type="LineEdit" parent="."]
 layout_mode = 2
-theme = ExtResource("2_kxa1e")
+theme = ExtResource("3_kxa1e")
 placeholder_text = "examiner"
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -63,7 +62,7 @@ drag_and_drop_selection_enabled = false
 
 [node name="notes" type="LineEdit" parent="."]
 layout_mode = 2
-theme = ExtResource("2_kxa1e")
+theme = ExtResource("3_kxa1e")
 placeholder_text = "notes"
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -79,17 +78,17 @@ layout_mode = 2
 
 [node name="back" type="Button" parent="navigation"]
 layout_mode = 2
-theme = ExtResource("2_metvm")
+theme = ExtResource("3_kxa1e")
 text = "back"
 
 [node name="next" type="Button" parent="navigation"]
 layout_mode = 2
-theme = ExtResource("2_metvm")
+theme = ExtResource("3_kxa1e")
 text = "finish"
 
 [node name="cancel" type="Button" parent="navigation"]
 layout_mode = 2
-theme = ExtResource("2_metvm")
+theme = ExtResource("3_kxa1e")
 text = "cancel"
 
 [connection signal="pressed" from="navigation/back" to="." method="_on_back_pressed"]

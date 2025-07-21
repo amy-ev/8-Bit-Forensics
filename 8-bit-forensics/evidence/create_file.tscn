@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bg3q04jgv405y"]
 
 [ext_resource type="Script" uid="uid://bt5osmtx6wqd2" path="res://evidence/create_file.gd" id="1_c120u"]
-[ext_resource type="Theme" uid="uid://do4qpyvmb5o1f" path="res://evidence/buttons.tres" id="2_ytjs6"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="2_ytjs6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ytjs6"]
 

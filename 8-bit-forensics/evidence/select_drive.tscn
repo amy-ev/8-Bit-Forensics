@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://crdfjn6wfu3wg"]
+[gd_scene load_steps=3 format=3 uid="uid://crdfjn6wfu3wg"]
 
 [ext_resource type="Script" uid="uid://dv43dnpa1ty" path="res://evidence/select_drive.gd" id="1_hbarf"]
-[ext_resource type="Theme" uid="uid://bbwoe2hkv3c8w" path="res://evidence/evidence_file_menu.tres" id="2_fuy1h"]
-[ext_resource type="Theme" uid="uid://do4qpyvmb5o1f" path="res://evidence/buttons.tres" id="2_u3ogu"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="2_fuy1h"]
 
 [node name="select_drive" type="VBoxContainer"]
 offset_right = 189.0
@@ -26,17 +25,17 @@ layout_mode = 2
 
 [node name="back" type="Button" parent="navigation"]
 layout_mode = 2
-theme = ExtResource("2_u3ogu")
+theme = ExtResource("2_fuy1h")
 text = "back"
 
 [node name="next" type="Button" parent="navigation"]
 layout_mode = 2
-theme = ExtResource("2_u3ogu")
+theme = ExtResource("2_fuy1h")
 text = "finish"
 
 [node name="cancel" type="Button" parent="navigation"]
 layout_mode = 2
-theme = ExtResource("2_u3ogu")
+theme = ExtResource("2_fuy1h")
 text = "cancel"
 
 [connection signal="item_selected" from="options" to="." method="_on_options_item_selected"]
