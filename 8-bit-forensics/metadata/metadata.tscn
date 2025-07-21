@@ -1,20 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://d31sl6bl6j3b3"]
+[gd_scene load_steps=11 format=3 uid="uid://d31sl6bl6j3b3"]
 
 [ext_resource type="Script" uid="uid://b4546ogyrqq64" path="res://metadata/metadata.gd" id="1_2ct7u"]
-[ext_resource type="Texture2D" uid="uid://c0ys5eawrgcpg" path="res://assets/metadata/window-x3.png" id="1_ehxks"]
-[ext_resource type="Texture2D" uid="uid://dnbt2p1ftilr6" path="res://assets/metadata/open-x3.png" id="3_daqaj"]
-[ext_resource type="Texture2D" uid="uid://djeg3e37t6h3o" path="res://assets/metadata/itemname-column-x3.png" id="3_paekb"]
-[ext_resource type="Texture2D" uid="uid://c4xgw307hdccl" path="res://assets/metadata/exit-x3.png" id="4_7dblc"]
-[ext_resource type="Script" uid="uid://blmrub28dh8vl" path="res://metadata/resize.gd" id="4_f4pdf"]
-[ext_resource type="Texture2D" uid="uid://c4yiawhjwwb6" path="res://assets/metadata/thumbnail-x3.png" id="5_daqaj"]
-[ext_resource type="Texture2D" uid="uid://cq7ji5tyggy8t" path="res://assets/metadata/information-column-x3.png" id="6_kkei2"]
-[ext_resource type="Texture2D" uid="uid://fvgp7ee05wy6" path="res://assets/metadata/itemname-title-x3.png" id="6_paekb"]
-[ext_resource type="Texture2D" uid="uid://c7pefdq5116cw" path="res://assets/metadata/information-title-x3.png" id="7_kkei2"]
-[ext_resource type="Script" uid="uid://brfkcjsti85v" path="res://metadata/resize_window.gd" id="9_f4pdf"]
-[ext_resource type="Texture2D" uid="uid://eq5a4yqotmj8" path="res://assets/metadata/thumbnail-column-x3.png" id="9_hpvqb"]
+[ext_resource type="Texture2D" uid="uid://ck13skggxkb21" path="res://assets/metadata/metadata-window.png" id="1_hpvqb"]
+[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_7dblc"]
+[ext_resource type="Texture2D" uid="uid://dbqt4m1v71plc" path="res://assets/metadata/open.png" id="4_vpbfe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_paekb"]
-size = Vector2(111, 81)
+size = Vector2(44.5, 32.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_paekb"]
 bg_color = Color(0.20871, 0.20871, 0.20871, 0.0784314)
@@ -268,176 +260,151 @@ _data = {
 &"no_correlation": SubResource("Animation_paekb")
 }
 
-[node name="metadata_container" type="HBoxContainer"]
-offset_right = 447.0
-offset_bottom = 333.0
-theme_override_constants/separation = 0
-
-[node name="metadata_window" type="NinePatchRect" parent="."]
-custom_minimum_size = Vector2(444, 333)
-layout_mode = 2
-texture = ExtResource("1_ehxks")
-region_rect = Rect2(0, 0, 444, 333)
+[node name="metadata_window" type="NinePatchRect"]
+offset_left = 76.0
+offset_top = 16.0
+offset_right = 308.0
+offset_bottom = 164.0
+texture = ExtResource("1_hpvqb")
+region_rect = Rect2(0, 0, 232, 148)
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 script = ExtResource("1_2ct7u")
 
-[node name="backgrounds" type="HBoxContainer" parent="metadata_window"]
-custom_minimum_size = Vector2(312, 294)
+[node name="backgrounds" type="HBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 132.0
-offset_top = 39.0
-offset_right = 444.0
-offset_bottom = 333.0
+offset_left = 60.0
+offset_top = 16.0
+offset_right = 226.0
+offset_bottom = 138.0
 mouse_filter = 2
 theme_override_constants/separation = -3
 
-[node name="key_background" type="NinePatchRect" parent="metadata_window/backgrounds"]
-custom_minimum_size = Vector2(123, 294)
+[node name="key_background" type="NinePatchRect" parent="backgrounds"]
+custom_minimum_size = Vector2(70, 122)
 layout_mode = 2
-texture = ExtResource("3_paekb")
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
+texture = ExtResource("1_hpvqb")
+region_rect = Rect2(60, 16, 166, 122)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
-[node name="itemname" type="TextureRect" parent="metadata_window/backgrounds/key_background"]
+[node name="itemname" type="Label" parent="backgrounds/key_background"]
 clip_contents = true
-custom_minimum_size = Vector2(117, 18)
 layout_mode = 1
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 120.0
-offset_bottom = 21.0
-texture = ExtResource("6_paekb")
-stretch_mode = 2
+offset_left = 16.0
+offset_top = 2.0
+offset_right = 50.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
+theme_override_fonts/font = ExtResource("3_7dblc")
+theme_override_font_sizes/font_size = 8
+text = "itemname"
 
-[node name="resize" type="Control" parent="metadata_window/backgrounds"]
-custom_minimum_size = Vector2(3, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 10
-script = ExtResource("4_f4pdf")
-
-[node name="value_background" type="NinePatchRect" parent="metadata_window/backgrounds"]
+[node name="value_background" type="NinePatchRect" parent="backgrounds"]
 clip_contents = true
-custom_minimum_size = Vector2(192, 294)
+custom_minimum_size = Vector2(102, 122)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("6_kkei2")
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
+texture = ExtResource("1_hpvqb")
+region_rect = Rect2(60, 16, 166, 122)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
-[node name="information" type="TextureRect" parent="metadata_window/backgrounds/value_background"]
+[node name="itemname" type="Label" parent="backgrounds/value_background"]
 clip_contents = true
-custom_minimum_size = Vector2(147, 18)
-layout_mode = 1
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 150.0
-offset_bottom = 21.0
-texture = ExtResource("7_kkei2")
-stretch_mode = 2
+layout_mode = 0
+offset_left = 30.0
+offset_top = 2.0
+offset_right = 72.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
+theme_override_fonts/font = ExtResource("3_7dblc")
+theme_override_font_sizes/font_size = 8
+text = "information"
 
-[node name="scroll" type="ScrollContainer" parent="metadata_window"]
-custom_minimum_size = Vector2(306, 267)
+[node name="scroll" type="ScrollContainer" parent="."]
 layout_mode = 1
-offset_left = 135.0
-offset_top = 63.0
-offset_right = 441.0
-offset_bottom = 330.0
+offset_left = 62.0
+offset_top = 28.0
+offset_right = 227.0
+offset_bottom = 136.0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="data_container" type="VBoxContainer" parent="metadata_window/scroll"]
+[node name="data_container" type="VBoxContainer" parent="scroll"]
 clip_contents = true
-custom_minimum_size = Vector2(298, 267)
+custom_minimum_size = Vector2(165, 108)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 3
 
-[node name="select" type="TextureButton" parent="metadata_window"]
+[node name="thumbnail_column" type="NinePatchRect" parent="."]
 layout_mode = 1
-offset_top = 18.0
-offset_right = 63.0
-offset_bottom = 42.0
-texture_normal = ExtResource("3_daqaj")
-texture_pressed = ExtResource("3_daqaj")
-texture_hover = ExtResource("3_daqaj")
-texture_disabled = ExtResource("3_daqaj")
-texture_focused = ExtResource("3_daqaj")
+offset_right = 60.0
+offset_bottom = 148.0
+texture = ExtResource("1_hpvqb")
+region_rect = Rect2(0, 0, 60, 148)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
-[node name="exit" type="TextureButton" parent="metadata_window"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -21.0
-offset_bottom = 21.0
-grow_horizontal = 0
-texture_normal = ExtResource("4_7dblc")
-texture_pressed = ExtResource("4_7dblc")
-texture_hover = ExtResource("4_7dblc")
-texture_disabled = ExtResource("4_7dblc")
-texture_focused = ExtResource("4_7dblc")
-
-[node name="thumbnail_column" type="TextureRect" parent="metadata_window"]
-custom_minimum_size = Vector2(135, 294)
-layout_mode = 1
-offset_top = 39.0
-offset_right = 135.0
-offset_bottom = 333.0
-texture = ExtResource("9_hpvqb")
-
-[node name="thumbnail" type="TextureRect" parent="metadata_window/thumbnail_column"]
+[node name="thumbnail" type="TextureRect" parent="thumbnail_column"]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 33.0
-offset_right = 123.0
-offset_bottom = 114.0
-texture = ExtResource("5_daqaj")
+offset_left = 8.0
+offset_top = 34.0
+offset_right = 52.0
+offset_bottom = 66.0
+texture = ExtResource("1_hpvqb")
 expand_mode = 1
 
-[node name="thumbnail_area" type="Area2D" parent="metadata_window/thumbnail_column/thumbnail"]
+[node name="thumbnail_area" type="Area2D" parent="thumbnail_column/thumbnail"]
 
-[node name="thumbnail_shape" type="CollisionShape2D" parent="metadata_window/thumbnail_column/thumbnail/thumbnail_area"]
-position = Vector2(55, 40)
+[node name="thumbnail_shape" type="CollisionShape2D" parent="thumbnail_column/thumbnail/thumbnail_area"]
+position = Vector2(21.75, 15.75)
 shape = SubResource("RectangleShape2D_paekb")
 disabled = true
 
-[node name="label" type="Label" parent="metadata_window/thumbnail_column/thumbnail"]
-visible = false
+[node name="label" type="Label" parent="thumbnail_column/thumbnail"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 4.0
+offset_top = -14.0
+offset_right = 38.0
+offset_bottom = -6.0
+theme_override_colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
+theme_override_fonts/font = ExtResource("3_7dblc")
+theme_override_font_sizes/font_size = 8
 text = "Thumbnail"
 
-[node name="selected" type="Panel" parent="metadata_window/thumbnail_column/thumbnail"]
-visible = false
+[node name="selected" type="Panel" parent="thumbnail_column/thumbnail"]
 layout_mode = 0
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 114.0
-offset_bottom = 87.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 46.0
+offset_bottom = 28.0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_paekb")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="metadata_window"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_u6jsu")
 }
 
-[node name="resize" type="Control" parent="."]
-custom_minimum_size = Vector2(3, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 10
-script = ExtResource("9_f4pdf")
+[node name="select" type="TextureButton" parent="."]
+layout_mode = 1
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 28.0
+offset_bottom = 14.0
+texture_normal = ExtResource("4_vpbfe")
+ignore_texture_size = true
+stretch_mode = 0
 
-[connection signal="gui_input" from="metadata_window/backgrounds/resize" to="metadata_window/backgrounds/resize" method="_on_gui_input"]
-[connection signal="pressed" from="metadata_window/select" to="metadata_window" method="_on_select_pressed"]
-[connection signal="pressed" from="metadata_window/exit" to="metadata_window" method="_on_exit_pressed"]
-[connection signal="input_event" from="metadata_window/thumbnail_column/thumbnail/thumbnail_area" to="metadata_window" method="_on_thumbnail_area_input_event"]
-[connection signal="gui_input" from="resize" to="resize" method="_on_gui_input"]
+[connection signal="input_event" from="thumbnail_column/thumbnail/thumbnail_area" to="." method="_on_thumbnail_area_input_event"]
+[connection signal="pressed" from="select" to="." method="_on_select_pressed"]

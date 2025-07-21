@@ -8,5 +8,5 @@ func _ready() -> void:
 	$next.disabled = false
 	
 func _on_next_pressed() -> void:
-	get_parent().file_created = true
+	Global.emit_signal("create_image_file")
 	queue_free()

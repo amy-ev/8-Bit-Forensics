@@ -1,7 +1,7 @@
 extends Node
 
 
-@export var magnification: int = 3
+@export var magnification: int = 2
 @export var levels: Dictionary = {0:"note1",1:"note2",2:"note3",3:"note4",4:"note5",5:"note6",6:"note7",7:"note8"}
 @export var days: Array = []
 @export var unlocked: int
@@ -11,6 +11,10 @@ extends Node
 @export var form_name:String
 @export var form_signed:String
 @export var form_date:String
+
+var is_first_bag:bool = true
+var file_created:bool = false
+var debrief_given:bool
 
 @export var answers = ["a","b","a","c"]
 @export var quiz_dict = {"Day_1":["a","b","c"], "Day_2":["a","b","c"], "Day_3":["a","b","c"]}
@@ -22,6 +26,7 @@ signal note_selected(note_topic:String)
 signal level_unlocked(day:String)
 
 signal evidence_collected()
+signal create_image_file()
 
 signal answer(day:String, answer:int)
 
@@ -32,3 +37,5 @@ signal metadata_selected(selected:Node)
 signal next_step(stage:Node)
 
 signal answer_response(is_correct:bool)
+
+signal item_pressed(selected:Node)

@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://sn8d4o6fhtgr"]
+[gd_scene load_steps=6 format=3 uid="uid://sn8d4o6fhtgr"]
 
 [ext_resource type="Script" uid="uid://bma4ijfyyc2of" path="res://file_dialog/file.gd" id="1_lhbmk"]
-[ext_resource type="Texture2D" uid="uid://cr06p18ka6mfp" path="res://assets/file_dialog/icon-x3.png" id="2_68pwj"]
+[ext_resource type="Texture2D" uid="uid://cq8g1a3xywsfu" path="res://assets/file_dialog/icon.png" id="2_68pwj"]
+[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_qgrpm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lhbmk"]
-font_size = 10
+font = ExtResource("3_qgrpm")
+font_size = 8
+font_color = Color(0.321569, 0.282353, 0.223529, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mel56"]
-size = Vector2(30, 36)
+size = Vector2(12, 14)
 
 [node name="File" type="Control"]
 layout_mode = 3
@@ -19,28 +22,29 @@ script = ExtResource("1_lhbmk")
 visible = false
 layout_mode = 0
 offset_left = 3.0
-offset_top = 3.0
-offset_right = 33.0
-offset_bottom = 39.0
+offset_right = 15.0
+offset_bottom = 14.0
 color = Color(1, 1, 1, 0.682353)
 
 [node name="icon" type="TextureRect" parent="."]
 clip_contents = true
 layout_mode = 0
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 30.0
-offset_bottom = 36.0
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 13.0
+offset_bottom = 12.0
 mouse_filter = 2
 texture = ExtResource("2_68pwj")
-expand_mode = 1
 
 [node name="file_name" type="Label" parent="."]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 33.0
-offset_right = 30.0
-offset_bottom = 47.0
+offset_top = 14.0
+offset_right = 21.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
+theme_override_fonts/font = ExtResource("3_qgrpm")
+theme_override_font_sizes/font_size = 9
+text = "file12"
 label_settings = SubResource("LabelSettings_lhbmk")
 horizontal_alignment = 1
 justification_flags = 3
@@ -51,7 +55,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="select_shape" type="CollisionShape2D" parent="select"]
-position = Vector2(18, 21)
+position = Vector2(9, 7)
 shape = SubResource("RectangleShape2D_mel56")
 debug_color = Color(0, 0.6, 0.701961, 0.215686)
 

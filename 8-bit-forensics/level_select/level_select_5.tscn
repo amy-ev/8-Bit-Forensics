@@ -46,7 +46,7 @@ _data = {
 }
 
 [node name="level_select_5" type="Sprite2D"]
-position = Vector2(39, 0)
+position = Vector2(71, 0)
 texture = ExtResource("1_r4rgc")
 centered = false
 hframes = 8

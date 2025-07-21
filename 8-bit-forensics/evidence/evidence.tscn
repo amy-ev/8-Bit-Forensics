@@ -23,7 +23,6 @@ points = PackedVector2Array(-4, -14, 6, -14, 14, -5, 14, 1, 2, 14, -4, 14, -14, 
 material = SubResource("ShaderMaterial_vf127")
 offset_right = 40.0
 offset_bottom = 40.0
-mouse_filter = 2
 texture = ExtResource("2_4df6o")
 script = ExtResource("2_7ku14")
 

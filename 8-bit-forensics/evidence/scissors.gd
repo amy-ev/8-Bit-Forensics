@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@export var is_picked_up:bool = false
+var is_picked_up:bool = false
 
 func _on_grab_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == 1:

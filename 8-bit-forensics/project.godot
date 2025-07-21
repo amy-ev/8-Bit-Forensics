@@ -21,10 +21,10 @@ Global="*res://global.gd"
 
 [display]
 
-window/size/viewport_width=256
-window/size/viewport_height=384
-window/size/window_width_override=256
-window/size/window_height_override=384
+window/size/viewport_width=320
+window/size/viewport_height=180
+window/size/window_width_override=320
+window/size/window_height_override=180
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 

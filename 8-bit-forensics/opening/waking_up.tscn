@@ -136,9 +136,8 @@ autoplay = "wake_up"
 [node name="bottom_screen" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 192.0
 offset_right = 256.0
-offset_bottom = 384.0
+offset_bottom = 192.0
 mouse_filter = 1
 
 [node name="room" type="ColorRect" parent="bottom_screen"]

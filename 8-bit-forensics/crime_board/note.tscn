@@ -13,6 +13,7 @@ script = ExtResource("1_0jyh1")
 
 [node name="area_shape" type="CollisionShape2D" parent="area"]
 shape = SubResource("RectangleShape2D_0o6ia")
+debug_color = Color(1, 1, 1, 0.792157)
 
 [node name="string" type="TextureRect" parent="."]
 layout_mode = 1

@@ -45,21 +45,22 @@ func _on_exit_pressed() -> void:
 	queue_free()
 	
 func _process(delta: float) -> void:
-	if $backgrounds.minimum_size_changed:
-		$backgrounds.custom_minimum_size.x = $"../metadata_window".custom_minimum_size.x - 135
-	if $backgrounds/value_background.minimum_size_changed:
-		$backgrounds/value_background.custom_minimum_size.x = $"../metadata_window".custom_minimum_size.x - (135 + $"backgrounds/key_background".custom_minimum_size.x)
-	if $scroll.minimum_size_changed:
-		$scroll.custom_minimum_size.x = $backgrounds.custom_minimum_size.x - 6
-		$scroll/data_container.custom_minimum_size.x = $scroll.custom_minimum_size.x - 8
+	pass
+	#if $backgrounds.minimum_size_changed:
+		#$backgrounds.custom_minimum_size.x = $"../metadata_window".custom_minimum_size.x -60
+	#if $backgrounds/value_background.minimum_size_changed:
+		#$backgrounds/value_background.custom_minimum_size.x = $"../metadata_window".custom_minimum_size.x - (70 + $"backgrounds/key_background".custom_minimum_size.x)
+	#if $scroll.minimum_size_changed:
+		#$scroll.custom_minimum_size.x = $backgrounds.custom_minimum_size.x - 6
+		#$scroll/data_container.custom_minimum_size.x = $scroll.custom_minimum_size.x - 8
 	if !keys_and_values.is_empty():
 		
 		for hbox in keys_and_values.size():
 			if keys_and_values[hbox].minimum_size_changed:
-				keys_and_values[hbox].get_child(0).custom_minimum_size.x = $backgrounds/key_background.custom_minimum_size.x - 3
-				keys_and_values[hbox].get_child(0).get_node("selected").custom_minimum_size.x = ($backgrounds/key_background.custom_minimum_size.x + $backgrounds/value_background.custom_minimum_size.x)
-				keys_and_values[hbox].get_child(0).get_node("select/select_shape").shape.size.x = ($backgrounds/key_background.custom_minimum_size.x + $backgrounds/value_background.custom_minimum_size.x)
-				keys_and_values[hbox].get_child(1).custom_minimum_size.x = $backgrounds/value_background.custom_minimum_size.x - 3
+				keys_and_values[hbox].get_child(0).custom_minimum_size.x = $backgrounds/key_background.custom_minimum_size.x 
+				keys_and_values[hbox].get_child(0).get_node("selected").custom_minimum_size.x = 165
+				keys_and_values[hbox].get_child(0).get_node("select/select_shape").shape.size.x = 165
+				keys_and_values[hbox].get_child(1).custom_minimum_size.x = $backgrounds/value_background.custom_minimum_size.x 
 
 func _on_label_selected(selected:Node):
 	if self.has_node("comment"):

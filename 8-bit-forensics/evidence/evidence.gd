@@ -57,6 +57,7 @@ func _on_gui_input(event: InputEvent) -> void:
 				
 				tween_x.tween_property(material,"shader_parameter/x_rot",-20.0, 0.2)
 				tween_y.tween_property(material,"shader_parameter/y_rot", 20.0, 0.2)
+				
 	if event is InputEventMouseButton and event.button_index == 1:
 		if event.is_pressed():
 			Global.emit_signal("evidence_collected")

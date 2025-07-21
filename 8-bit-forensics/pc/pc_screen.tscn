@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4qcqdfv02pnd"]
+[gd_scene load_steps=11 format=3 uid="uid://b4qcqdfv02pnd"]
 
-[ext_resource type="Texture2D" uid="uid://ddw5ij5en8asc" path="res://assets/pc/pc-on.png" id="2_lrtf5"]
-[ext_resource type="Script" uid="uid://bdgjl5jim21kt" path="res://pc/pc_screen.gd" id="2_n1q0v"]
-[ext_resource type="PackedScene" uid="uid://krnwjg3pmi37" path="res://pc/keyboard.tscn" id="3_lrtf5"]
+[ext_resource type="Script" uid="uid://bdgjl5jim21kt" path="res://pc/pc_screen.gd" id="1_76l2r"]
+[ext_resource type="PackedScene" uid="uid://krnwjg3pmi37" path="res://pc/keyboard.tscn" id="2_ngtsc"]
+[ext_resource type="Texture2D" uid="uid://catu7syl5tfw5" path="res://assets/pc/pc-on-wide.png" id="3_nld71"]
+[ext_resource type="PackedScene" uid="uid://d31sl6bl6j3b3" path="res://metadata/metadata.tscn" id="4_76l2r"]
+[ext_resource type="PackedScene" uid="uid://c0wglcbgod0a4" path="res://dialogue/helper.tscn" id="4_ma4wb"]
+[ext_resource type="PackedScene" uid="uid://7dbr280v5upc" path="res://dialogue/dialogue_create_file.tscn" id="5_lv8oy"]
 
 [sub_resource type="Animation" id="Animation_6p3y6"]
 length = 0.001
@@ -60,33 +63,18 @@ _data = {
 }
 
 [node name="pc" type="Node2D"]
-script = ExtResource("2_n1q0v")
+script = ExtResource("1_76l2r")
 
 [node name="bottom_screen" type="Control" parent="."]
 clip_contents = true
 layout_mode = 3
 anchors_preset = 0
-offset_top = 192.0
-offset_right = 256.0
-offset_bottom = 384.0
+offset_top = 180.0
+offset_right = 320.0
+offset_bottom = 372.0
 mouse_filter = 1
 
-[node name="debug" type="Button" parent="bottom_screen"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -15.5
-offset_right = 35.0
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "end day"
-
-[node name="keyboard-background" parent="bottom_screen" instance=ExtResource("3_lrtf5")]
+[node name="keyboard-background" parent="bottom_screen" instance=ExtResource("2_ngtsc")]
 layout_mode = 0
 
 [node name="top_screen" type="Control" parent="."]
@@ -97,10 +85,12 @@ offset_bottom = 192.0
 mouse_filter = 2
 
 [node name="pc_screen" type="Sprite2D" parent="top_screen"]
-texture = ExtResource("2_lrtf5")
+texture = ExtResource("3_nld71")
 centered = false
 hframes = 8
 vframes = 2
+
+[node name="metadata_window" parent="top_screen/pc_screen" instance=ExtResource("4_76l2r")]
 
 [node name="screen_animation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -108,4 +98,6 @@ libraries = {
 }
 autoplay = "on"
 
-[connection signal="pressed" from="bottom_screen/debug" to="." method="_on_debug_pressed"]
+[node name="helper" parent="." instance=ExtResource("4_ma4wb")]
+
+[node name="dialogue_create_file" parent="." instance=ExtResource("5_lv8oy")]
