@@ -1,23 +1,33 @@
 extends CanvasLayer
 
-var dialogue_file = "res://dialogue/dialogue.json"
-@export var dialogue_data = {}
+var desk_dialogue = "res://dialogue/desk_dialogue.json"
+var pc_dialogue = "res://dialogue/pc_dialogue.json"
+
+@export var desk_debrief = {}
+var pc_debrief = {}
 @export var current_dialogue = ""
 
-@onready var dialogue_label = $normal/side_dialogue/container/dialogue_label
+@onready var dialogue_label = $panel/container/dialogue_label
 
 signal end_dialogue
 
 func _ready() -> void:
-	dialogue_data = load_dialogue(dialogue_file)
-	$normal/side_dialogue/container/day_title.text = "Day %s" %(Global.unlocked+1)
-	dialogue_text("Day %s.0" %(Global.unlocked+1))
+	desk_debrief = load_dialogue(desk_dialogue)
+	pc_debrief = load_dialogue(pc_dialogue)
+
+	$panel/container/name.text = "Quacky McQuackFace"
+
+	match get_parent().name:
+		"desk":
+			dialogue_text(desk_debrief,"Day %s.0" %(Global.unlocked+1))
+		"pc":
+			dialogue_text(pc_debrief,"Day %s.0"%(Global.unlocked+1))
 	
 	self.connect("end_dialogue", _end_dialogue)
 	
 # insert json text to the dialogue box
-func dialogue_text(option):
-	dialogue_label.start(dialogue_data[option]["text"])
+func dialogue_text(dict,option):
+	dialogue_label.start(dict[option]["text"])
 	current_dialogue = option
 
 func _end_dialogue():
@@ -31,14 +41,27 @@ func load_dialogue(file_path):
 
 
 func _on_next_pressed() -> void:
-	if dialogue_data[current_dialogue].has("go to") && dialogue_data[current_dialogue]["go to"].size() > 1:
-		dialogue_text(dialogue_data[current_dialogue]["go to"][1])
-	else:
-		emit_signal(dialogue_data[current_dialogue]["function"])
-
-
+	match get_parent().name:
+		"desk":
+			next_dialogue(desk_debrief)
+		"pc":
+			next_dialogue(pc_debrief)
+		
 func _on_prev_pressed() -> void:
-	if dialogue_data[current_dialogue].has("go to"):
-		dialogue_text(dialogue_data[current_dialogue]["go to"][0])
+	match get_parent().name:
+		"desk":
+			prev_dialogue(desk_debrief)
+		"pc":
+			prev_dialogue(pc_debrief)
+
+func next_dialogue(dict):
+	if dict[current_dialogue].has("go to") && dict[current_dialogue]["go to"].size() > 1:
+		dialogue_text(dict, dict[current_dialogue]["go to"][1])
 	else:
-		emit_signal(dialogue_data[current_dialogue]["function"])
+		emit_signal(dict[current_dialogue]["function"])
+
+func prev_dialogue(dict):
+	if dict[current_dialogue].has("go to"):
+		dialogue_text(dict, dict[current_dialogue]["go to"][0])
+	else:
+		emit_signal(dict[current_dialogue]["function"])

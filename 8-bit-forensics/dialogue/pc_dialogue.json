@@ -1,0 +1,44 @@
+{
+  "Day 1.0": {
+    "text": "the first thing said in pc",
+    "go to": [
+      "Day 1.0",
+      "Day 1.1"
+    ]
+  },
+  "Day 1.1": {
+    "text": "the next said in pc",
+    "go to": [
+      "Day 1.0",
+      "Day 1.2"
+    ]
+  },
+  "Day 1.2": {
+    "text": "and the last",
+    "go to": [
+      "Day 1.1"
+    ],
+    "function": "end_dialogue"
+  },
+  "Day 2.0": {
+    "text": "second day first thing said",
+    "go to": [
+      "Day 2.0",
+      "Day 2.1"
+    ]
+  },
+  "Day 2.1": {
+    "text": "still the second day",
+    "go to": [
+      "Day 2.0",
+      "Day 2.2"
+    ]
+  },
+  "Day 2.2": {
+    "text": "the last thing said",
+    "go to": [
+      "Day 2.1"
+    ],
+    "function": "end_dialogue"
+  }
+}
