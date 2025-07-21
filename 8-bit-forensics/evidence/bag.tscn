@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=3 uid="uid://cwyc4moqylni6"]
+
+[ext_resource type="Script" uid="uid://c3887oc0rnhse" path="res://evidence/bag.gd" id="1_siw8v"]
+[ext_resource type="Texture2D" uid="uid://b4yenwsww6w8g" path="res://assets/evidence/bag-sprite.png" id="2_siw8v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hu3u5"]
+size = Vector2(100, 144)
+
+[sub_resource type="Animation" id="Animation_l7c1l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bag_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vydlv"]
+resource_name = "open"
+length = 0.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bag_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_37jsk"]
+_data = {
+&"RESET": SubResource("Animation_l7c1l"),
+&"open": SubResource("Animation_vydlv")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vydlv"]
+size = Vector2(6, 138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7c1l"]
+size = Vector2(100, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37jsk"]
+size = Vector2(6, 138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_siw8v"]
+size = Vector2(100, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hktvk"]
+size = Vector2(76, 66)
+
+[node name="evidence_bag" type="RigidBody2D"]
+collision_layer = 2
+gravity_scale = 0.0
+script = ExtResource("1_siw8v")
+
+[node name="bag_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_siw8v")
+centered = false
+hframes = 8
+vframes = 2
+
+[node name="bag" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 2
+monitoring = false
+
+[node name="collision" type="CollisionShape2D" parent="bag"]
+position = Vector2(50, 72)
+shape = SubResource("RectangleShape2D_hu3u5")
+disabled = true
+debug_color = Color(0.850663, 0.155306, 0.5867, 0.42)
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_37jsk")
+}
+
+[node name="boundary_left" type="CollisionShape2D" parent="."]
+position = Vector2(3, 69)
+shape = SubResource("RectangleShape2D_vydlv")
+debug_color = Color(0.962492, 0.195201, 9.62615e-07, 0.42)
+
+[node name="boundary_top" type="CollisionShape2D" parent="."]
+position = Vector2(50, 3)
+shape = SubResource("RectangleShape2D_l7c1l")
+debug_color = Color(0.960784, 0.196078, 0, 0.419608)
+
+[node name="boundary_right" type="CollisionShape2D" parent="."]
+position = Vector2(97, 69)
+shape = SubResource("RectangleShape2D_37jsk")
+debug_color = Color(0.960784, 0.196078, 0, 0.419608)
+
+[node name="cut_section" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="drop_point" type="CollisionShape2D" parent="cut_section"]
+position = Vector2(50, 141)
+shape = SubResource("RectangleShape2D_siw8v")
+debug_color = Color(0.883061, 0.123634, 0.756632, 0.42)
+
+[node name="form_section" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="drop_point" type="CollisionShape2D" parent="form_section"]
+position = Vector2(50, 103)
+shape = SubResource("RectangleShape2D_hktvk")
+debug_color = Color(0.883061, 0.123634, 0.756632, 0.42)
+
+[connection signal="input_event" from="bag" to="." method="_on_bag_input_event"]
+[connection signal="area_entered" from="cut_section" to="." method="_on_cut_section_area_entered"]
+[connection signal="area_entered" from="form_section" to="." method="_on_form_section_area_entered"]

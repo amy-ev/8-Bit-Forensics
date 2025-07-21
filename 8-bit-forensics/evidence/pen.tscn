@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtyhuonm4qcao"]
+
+[ext_resource type="Texture2D" uid="uid://v44jl77drqee" path="res://assets/evidence/pen.png" id="1_0p8nv"]
+[ext_resource type="Script" uid="uid://cii2cxx1xryyq" path="res://evidence/pen.gd" id="2_smrlt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smrlt"]
+size = Vector2(22, 58)
+
+[sub_resource type="Animation" id="Animation_2x743"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("grab/collision:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_smrlt"]
+resource_name = "picked_up"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("grab/collision:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.279253]
+}
+
+[sub_resource type="Animation" id="Animation_02qsb"]
+resource_name = "put_down"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("grab/collision:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.279253, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_02qsb"]
+_data = {
+&"RESET": SubResource("Animation_2x743"),
+&"picked_up": SubResource("Animation_smrlt"),
+&"put_down": SubResource("Animation_02qsb")
+}
+
+[node name="pen" type="Sprite2D"]
+texture = ExtResource("1_0p8nv")
+centered = false
+hframes = 2
+script = ExtResource("2_smrlt")
+
+[node name="grab" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="collision" type="CollisionShape2D" parent="grab"]
+position = Vector2(11, 29)
+shape = SubResource("RectangleShape2D_smrlt")
+
+[node name="grab_animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_02qsb")
+}
+
+[connection signal="input_event" from="grab" to="." method="_on_grab_input_event"]

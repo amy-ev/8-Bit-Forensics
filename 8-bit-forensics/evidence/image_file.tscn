@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7tqkpc2d8rx0"]
+
+[ext_resource type="Script" uid="uid://b1t3bsllgqr14" path="res://evidence/image_file.gd" id="1_84i5g"]
+[ext_resource type="Theme" uid="uid://bbwoe2hkv3c8w" path="res://evidence/evidence_file_menu.tres" id="2_gk13f"]
+[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="2_pgnvy"]
+[ext_resource type="PackedScene" uid="uid://326qgm6qmdub" path="res://main/select.tscn" id="4_gk13f"]
+
+[node name="evidence_file" type="Panel"]
+offset_left = 72.0
+offset_top = 12.0
+offset_right = 227.0
+offset_bottom = 102.0
+mouse_filter = 1
+script = ExtResource("1_84i5g")
+
+[node name="file_menu" type="MenuButton" parent="."]
+layout_mode = 2
+offset_right = 20.0
+offset_bottom = 16.0
+mouse_filter = 1
+theme = ExtResource("2_gk13f")
+text = "file"
+item_count = 1
+popup/item_0/text = "create disk image"
+popup/item_0/id = 0
+
+[node name="evidence_tree" type="Tree" parent="."]
+layout_mode = 0
+offset_top = 26.0
+offset_right = 59.0
+offset_bottom = 92.0
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_pgnvy")
+theme_override_font_sizes/font_size = 8
+
+[node name="evidence_tree_label" type="Label" parent="."]
+layout_mode = 1
+offset_top = 18.0
+offset_right = 50.0
+offset_bottom = 26.0
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_pgnvy")
+theme_override_font_sizes/font_size = 8
+text = "evidence tree"
+
+[node name="select" parent="evidence_tree_label" instance=ExtResource("4_gk13f")]
+
+[node name="end" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 125.0
+offset_top = 36.0
+offset_right = 161.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("2_pgnvy")
+theme_override_font_sizes/font_size = 8
+text = "end day"
+
+[connection signal="pressed" from="end" to="." method="_on_end_pressed"]

@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnvcbdwsftrn"]
+
+[ext_resource type="Script" uid="uid://c7l366dugnxrd" path="res://dialogue/dialogue_manager.gd" id="1_k6lpl"]
+[ext_resource type="Texture2D" uid="uid://c0cm4d7ts0ns0" path="res://assets/dialogue/normal-dialogue-wide-v2.png" id="2_3itix"]
+[ext_resource type="Texture2D" uid="uid://bketsdv7bdnil" path="res://assets/dialogue/normal-dialogue-wide.png" id="2_uhccw"]
+[ext_resource type="Texture2D" uid="uid://c3yl6q4k07f8q" path="res://assets/dialogue/dialogue-panel-bottom-wide.png" id="3_7jarm"]
+[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_8ai7j"]
+[ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="3_q36jk"]
+[ext_resource type="Texture2D" uid="uid://dmsht0365lf24" path="res://assets/dialogue/next-button.png" id="6_uhccw"]
+[ext_resource type="Texture2D" uid="uid://ckisdtwlitwjn" path="res://assets/dialogue/back-button.png" id="7_3itix"]
+
+[node name="dialogue_manager" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_k6lpl")
+
+[node name="blocker" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="normal_clear" type="TextureRect" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("2_uhccw")
+
+[node name="normal" type="TextureRect" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+mouse_filter = 0
+texture = ExtResource("2_3itix")
+
+[node name="panel" type="TextureRect" parent="."]
+offset_left = 3.0
+offset_top = 104.0
+offset_right = 315.0
+offset_bottom = 176.0
+texture = ExtResource("3_7jarm")
+
+[node name="container" type="VBoxContainer" parent="panel"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 306.0
+offset_bottom = 66.0
+
+[node name="name" type="Label" parent="panel/container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8ai7j")
+theme_override_font_sizes/font_size = 8
+text = "day x"
+
+[node name="dialogue_label" parent="panel/container" instance=ExtResource("3_q36jk")]
+layout_mode = 2
+
+[node name="next" type="TextureButton" parent="."]
+offset_left = 295.0
+offset_top = 156.0
+offset_right = 309.0
+offset_bottom = 170.0
+texture_normal = ExtResource("6_uhccw")
+
+[node name="prev" type="TextureButton" parent="."]
+offset_left = 9.0
+offset_top = 156.0
+offset_right = 23.0
+offset_bottom = 170.0
+texture_normal = ExtResource("7_3itix")
+
+[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="prev" to="." method="_on_prev_pressed"]

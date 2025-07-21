@@ -1,0 +1,1336 @@
+[gd_scene load_steps=8 format=3 uid="uid://be441q1omxkco"]
+
+[ext_resource type="Texture2D" uid="uid://b813dsxowvv5r" path="res://assets/evidence/form-border.png" id="1_1b8hc"]
+[ext_resource type="Script" uid="uid://d4asu5n8d2si" path="res://evidence/form.gd" id="1_1gyes"]
+[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="2_l3vyk"]
+[ext_resource type="Texture2D" uid="uid://d1iokpmlhoe4p" path="res://assets/evidence/separation.png" id="3_2kplo"]
+[ext_resource type="Texture2D" uid="uid://dyb33se5e51wg" path="res://assets/evidence/dash.png" id="5_xafih"]
+[ext_resource type="Theme" uid="uid://bmpgrmqys4l5p" path="res://evidence/form_text.tres" id="6_xafih"]
+[ext_resource type="Theme" uid="uid://k10lem01p4hj" path="res://evidence/form_theme.tres" id="7_jg7tw"]
+
+[node name="form_canvas" type="CanvasLayer"]
+script = ExtResource("1_1gyes")
+
+[node name="evidence_form" type="NinePatchRect" parent="."]
+clip_contents = true
+offset_right = 256.0
+offset_bottom = 154.0
+texture = ExtResource("1_1b8hc")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="columns" type="HBoxContainer" parent="evidence_form"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 252.0
+offset_bottom = 147.0
+theme_override_constants/separation = 0
+
+[node name="column1" type="NinePatchRect" parent="evidence_form/columns"]
+custom_minimum_size = Vector2(96, 148)
+layout_mode = 2
+texture = ExtResource("3_2kplo")
+draw_center = false
+region_rect = Rect2(0, 0, 22, 30)
+patch_margin_right = 4
+axis_stretch_vertical = 1
+
+[node name="col_1" type="VBoxContainer" parent="evidence_form/columns/column1"]
+layout_mode = 2
+offset_right = 94.0
+offset_bottom = 144.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="authority-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.161743, 0.141391, 0.106753, 1)
+theme_override_fonts/normal_font = ExtResource("2_l3vyk")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "authority: [color=29241be5]authority"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+shortcut_keys_enabled = false
+
+[node name="underline" type="Line2D" parent="evidence_form/columns/column1/col_1/authority-label"]
+position = Vector2(35, 8)
+points = PackedVector2Array(2, 0, 55, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="ref_no-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+bbcode_enabled = true
+text = "identification ref. no.: [color=29241be5]and this is the line
+"
+scroll_active = false
+autowrap_mode = 2
+shortcut_keys_enabled = false
+
+[node name="underline" type="Line2D" parent="evidence_form/columns/column1/col_1/ref_no-label"]
+position = Vector2(-1, 16)
+points = PackedVector2Array(2, 0, 91, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline" type="Line2D" parent="evidence_form/columns/column1/col_1"]
+position = Vector2(-1, 29)
+points = PackedVector2Array(1, 0, 91, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="description-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
+custom_minimum_size = Vector2(41, 28)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+bbcode_enabled = true
+text = "description: [color=29241be5]the descrip-tion of the evidence     item"
+scroll_active = false
+autowrap_mode = 1
+shortcut_keys_enabled = false
+
+[node name="underline" type="Line2D" parent="evidence_form/columns/column1/col_1/description-label"]
+position = Vector2(-1, 8)
+points = PackedVector2Array(44, 0, 91, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline2" type="Line2D" parent="evidence_form/columns/column1/col_1/description-label"]
+position = Vector2(-1, 16)
+points = PackedVector2Array(2, 0, 90, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline3" type="Line2D" parent="evidence_form/columns/column1/col_1/description-label"]
+position = Vector2(-1, 24)
+points = PackedVector2Array(2, 0, 91, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline2" type="Line2D" parent="evidence_form/columns/column1/col_1"]
+position = Vector2(-1, 57)
+points = PackedVector2Array(1, 0, 91, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="time_date-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
+custom_minimum_size = Vector2(80, 20)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+bbcode_enabled = true
+text = "time/date seized: [color=29241be5]15/07/2025 12:17"
+scroll_active = false
+autowrap_mode = 2
+shortcut_keys_enabled = false
+
+[node name="underline2" type="Line2D" parent="evidence_form/columns/column1/col_1/time_date-label"]
+position = Vector2(-1, 16)
+points = PackedVector2Array(2, 0, 91, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline3" type="Line2D" parent="evidence_form/columns/column1/col_1"]
+position = Vector2(-1, 77)
+points = PackedVector2Array(1, 0, 91, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="where-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
+custom_minimum_size = Vector2(80, 18)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+bbcode_enabled = true
+text = "where seized: [color=29241be5] who knows"
+scroll_active = false
+autowrap_mode = 2
+shortcut_keys_enabled = false
+
+[node name="underline" type="Line2D" parent="evidence_form/columns/column1/col_1/where-label"]
+position = Vector2(-1, 8)
+points = PackedVector2Array(52, 0, 91, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline2" type="Line2D" parent="evidence_form/columns/column1/col_1/where-label"]
+position = Vector2(-1, 17)
+points = PackedVector2Array(2, 0, 91, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="by-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
+custom_minimum_size = Vector2(80, 18)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+bbcode_enabled = true
+text = "seized by:[color=29241be5] "
+scroll_active = false
+autowrap_mode = 2
+shortcut_keys_enabled = false
+
+[node name="underline" type="Line2D" parent="evidence_form/columns/column1/col_1/by-label"]
+position = Vector2(-1, 8)
+points = PackedVector2Array(38, 0, 91, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline2" type="Line2D" parent="evidence_form/columns/column1/col_1/by-label"]
+position = Vector2(-1, 17)
+points = PackedVector2Array(2, 0, 91, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="signed-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
+custom_minimum_size = Vector2(23, 12)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+bbcode_enabled = true
+text = "signed:[color=29241be5]"
+scroll_active = false
+autowrap_mode = 2
+shortcut_keys_enabled = false
+
+[node name="underline" type="Line2D" parent="evidence_form/columns/column1/col_1/signed-label"]
+position = Vector2(-1, 8)
+points = PackedVector2Array(26, 0, 91, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline4" type="Line2D" parent="evidence_form/columns/column1/col_1"]
+position = Vector2(-1, 125)
+points = PackedVector2Array(1, 0, 91, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="crime_no-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
+custom_minimum_size = Vector2(80, 18)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+bbcode_enabled = true
+text = "incident/crime no:[color=29241be5]
+fff"
+scroll_active = false
+autowrap_mode = 2
+shortcut_keys_enabled = false
+
+[node name="underline" type="Line2D" parent="evidence_form/columns/column1/col_1/crime_no-label"]
+position = Vector2(-70, 16)
+points = PackedVector2Array(70, 0, 159, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="column2" type="NinePatchRect" parent="evidence_form/columns"]
+custom_minimum_size = Vector2(76, 144)
+layout_mode = 2
+texture = ExtResource("3_2kplo")
+region_rect = Rect2(0, 0, 20, 30)
+patch_margin_right = 2
+axis_stretch_vertical = 1
+
+[node name="continuity" type="VBoxContainer" parent="evidence_form/columns/column2"]
+layout_mode = 2
+offset_right = 74.0
+offset_bottom = 151.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="underline" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+position = Vector2(-1, 18)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline10" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+position = Vector2(-1, 28)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="name" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+theme_override_constants/line_separation = 2
+bbcode_enabled = true
+text = "name/rank/no: [color=393328]
+ffgff
+ffgff"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="underline2" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+position = Vector2(-1, 38)
+points = PackedVector2Array(26, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="signed" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+bbcode_enabled = true
+text = "signed: [color=393328]name"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="underline3" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+position = Vector2(-1, 47)
+points = PackedVector2Array(20, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline5" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+position = Vector2(-2, 50)
+points = PackedVector2Array(2, 0, 74, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="date" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+bbcode_enabled = true
+text = "date: [color=393328]24/01/2026"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="underline4" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+z_index = 1
+position = Vector2(-1, 67)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline6" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+z_index = 1
+position = Vector2(-1, 77)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="name_label" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
+custom_minimum_size = Vector2(0, 29)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+text = "name/rank/no:
+"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="name" type="TextEdit" parent="evidence_form/columns/column2/continuity/name_label"]
+custom_minimum_size = Vector2(72, 8)
+layout_mode = 2
+offset_top = 6.0
+offset_right = 82.0
+offset_bottom = 27.0
+theme = ExtResource("7_jg7tw")
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[node name="underline7" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+z_index = 1
+position = Vector2(3, 88)
+points = PackedVector2Array(20, 0, 69, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="signed_label" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+text = "signed: name"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="signed" type="TextEdit" parent="evidence_form/columns/column2/continuity/signed_label"]
+custom_minimum_size = Vector2(30, 8)
+layout_mode = 2
+offset_left = 25.0
+offset_top = -2.0
+offset_right = 77.0
+offset_bottom = 19.0
+theme = ExtResource("7_jg7tw")
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[node name="underline9" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+z_index = 1
+position = Vector2(3, 97)
+points = PackedVector2Array(16, 0, 69, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline8" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+z_index = 1
+position = Vector2(-2, 100)
+points = PackedVector2Array(2, 0, 74, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="date_label" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+text = "date:"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date" type="TextEdit" parent="evidence_form/columns/column2/continuity/date_label"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = -2.0
+offset_right = 73.0
+offset_bottom = 19.0
+theme = ExtResource("7_jg7tw")
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[node name="underline11" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+z_index = 1
+position = Vector2(-1, 117)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline12" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+z_index = 1
+position = Vector2(-1, 127)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="name6" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
+custom_minimum_size = Vector2(0, 29)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+text = "name/rank/no:
+"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="TextEdit" type="TextEdit" parent="evidence_form/columns/column2/continuity/name6"]
+custom_minimum_size = Vector2(72, 8)
+layout_mode = 2
+offset_top = 6.0
+offset_right = 82.0
+offset_bottom = 27.0
+theme = ExtResource("7_jg7tw")
+theme_override_font_sizes/font_size = 8
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[node name="underline13" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+z_index = 1
+position = Vector2(3, 138)
+points = PackedVector2Array(20, 0, 69, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="signed6" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+text = "signed: name"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="TextEdit2" type="TextEdit" parent="evidence_form/columns/column2/continuity/signed6"]
+custom_minimum_size = Vector2(30, 8)
+layout_mode = 2
+offset_left = 25.0
+offset_top = -2.0
+offset_right = 77.0
+offset_bottom = 19.0
+theme = ExtResource("7_jg7tw")
+theme_override_font_sizes/font_size = 8
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[node name="underline14" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+z_index = 1
+position = Vector2(3, 147)
+points = PackedVector2Array(16, 0, 69, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="date6" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+text = "date:"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="TextEdit2" type="TextEdit" parent="evidence_form/columns/column2/continuity/date6"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = -2.0
+offset_right = 73.0
+offset_bottom = 8.0
+theme = ExtResource("7_jg7tw")
+theme_override_font_sizes/font_size = 8
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[node name="column3" type="NinePatchRect" parent="evidence_form/columns"]
+custom_minimum_size = Vector2(76, 144)
+layout_mode = 2
+texture = ExtResource("3_2kplo")
+region_rect = Rect2(0, 0, 18, 30)
+patch_margin_right = 2
+axis_stretch_vertical = 1
+
+[node name="continuity" type="VBoxContainer" parent="evidence_form/columns/column3"]
+layout_mode = 2
+offset_left = 2.0
+offset_right = 76.0
+offset_bottom = 101.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="underline" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+position = Vector2(-1, 18)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline10" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+position = Vector2(-1, 28)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="name" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+theme_override_constants/line_separation = 2
+bbcode_enabled = true
+text = "name/rank/no: [color=393328]
+"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="underline2" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+position = Vector2(-1, 38)
+points = PackedVector2Array(26, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="signed" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+bbcode_enabled = true
+text = "signed: [color=393328"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="underline3" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+position = Vector2(-1, 47)
+points = PackedVector2Array(20, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline5" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+position = Vector2(-2, 50)
+points = PackedVector2Array(2, 0, 74, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="date" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+bbcode_enabled = true
+text = "date: [color=393328]"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="underline4" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+z_index = 1
+position = Vector2(-1, 67)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline6" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+z_index = 1
+position = Vector2(-1, 77)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="name5" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
+custom_minimum_size = Vector2(0, 29)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+text = "name/rank/no:
+"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="TextEdit" type="TextEdit" parent="evidence_form/columns/column3/continuity/name5"]
+custom_minimum_size = Vector2(72, 8)
+layout_mode = 2
+offset_top = 6.0
+offset_right = 82.0
+offset_bottom = 27.0
+theme = ExtResource("7_jg7tw")
+theme_override_font_sizes/font_size = 8
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[node name="underline7" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+position = Vector2(3, 88)
+points = PackedVector2Array(20, 0, 69, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="signed5" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+text = "signed: name"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="TextEdit2" type="TextEdit" parent="evidence_form/columns/column3/continuity/signed5"]
+custom_minimum_size = Vector2(30, 8)
+layout_mode = 2
+offset_left = 25.0
+offset_top = -2.0
+offset_right = 77.0
+offset_bottom = 19.0
+theme = ExtResource("7_jg7tw")
+theme_override_font_sizes/font_size = 8
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[node name="underline9" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+z_index = 1
+position = Vector2(3, 97)
+points = PackedVector2Array(16, 0, 69, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline8" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+z_index = 1
+position = Vector2(-2, 100)
+points = PackedVector2Array(2, 0, 74, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="date5" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+text = "date:"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="TextEdit2" type="TextEdit" parent="evidence_form/columns/column3/continuity/date5"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = -2.0
+offset_right = 73.0
+offset_bottom = 19.0
+theme = ExtResource("7_jg7tw")
+theme_override_font_sizes/font_size = 8
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[node name="underline11" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+z_index = 1
+position = Vector2(-1, 117)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline12" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+z_index = 1
+position = Vector2(-1, 127)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="name6" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
+custom_minimum_size = Vector2(0, 29)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+text = "name/rank/no:
+"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="TextEdit" type="TextEdit" parent="evidence_form/columns/column3/continuity/name6"]
+custom_minimum_size = Vector2(72, 8)
+layout_mode = 2
+offset_top = 6.0
+offset_right = 82.0
+offset_bottom = 27.0
+theme = ExtResource("7_jg7tw")
+theme_override_font_sizes/font_size = 8
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[node name="underline13" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+z_index = 1
+position = Vector2(3, 138)
+points = PackedVector2Array(20, 0, 69, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="signed6" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+text = "signed: name"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="TextEdit2" type="TextEdit" parent="evidence_form/columns/column3/continuity/signed6"]
+custom_minimum_size = Vector2(30, 8)
+layout_mode = 2
+offset_left = 25.0
+offset_top = -2.0
+offset_right = 77.0
+offset_bottom = 19.0
+theme = ExtResource("7_jg7tw")
+theme_override_font_sizes/font_size = 8
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[node name="underline14" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+z_index = 1
+position = Vector2(3, 147)
+points = PackedVector2Array(16, 0, 69, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="date6" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+theme = ExtResource("6_xafih")
+text = "date:"
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="TextEdit2" type="TextEdit" parent="evidence_form/columns/column3/continuity/date6"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = -2.0
+offset_right = 73.0
+offset_bottom = 8.0
+theme = ExtResource("7_jg7tw")
+theme_override_font_sizes/font_size = 8
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[node name="form" type="VBoxContainer" parent="evidence_form"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_right = 252.0
+offset_bottom = 297.0
+
+[node name="row" type="HFlowContainer" parent="evidence_form/form"]
+layout_mode = 2
+
+[node name="opened_by" type="VBoxContainer" parent="evidence_form/form/row"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="by" type="LineEdit" parent="evidence_form/form/row/opened_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "bag opened by"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="sig" type="LineEdit" parent="evidence_form/form/row/opened_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signature"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="time" type="LineEdit" parent="evidence_form/form/row/opened_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "time"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date" type="LineEdit" parent="evidence_form/form/row/opened_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "date"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="reason" type="LineEdit" parent="evidence_form/form/row/opened_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "reason"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="witnessed_by" type="VBoxContainer" parent="evidence_form/form/row"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="by" type="LineEdit" parent="evidence_form/form/row/witnessed_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "bag opened by"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="sig" type="LineEdit" parent="evidence_form/form/row/witnessed_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signature"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="time" type="LineEdit" parent="evidence_form/form/row/witnessed_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "time"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date" type="LineEdit" parent="evidence_form/form/row/witnessed_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "date"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="reason" type="LineEdit" parent="evidence_form/form/row/witnessed_by"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "reason"
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="opened_by2" type="VBoxContainer" parent="evidence_form/form/row"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="by" type="LineEdit" parent="evidence_form/form/row/opened_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "bag opened by"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="sig" type="LineEdit" parent="evidence_form/form/row/opened_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signature"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="time" type="LineEdit" parent="evidence_form/form/row/opened_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "time"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date" type="LineEdit" parent="evidence_form/form/row/opened_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "date"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="reason" type="LineEdit" parent="evidence_form/form/row/opened_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "reason"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="witnessed_by2" type="VBoxContainer" parent="evidence_form/form/row"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="by" type="LineEdit" parent="evidence_form/form/row/witnessed_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "bag opened by"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="sig" type="LineEdit" parent="evidence_form/form/row/witnessed_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "signature"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="time" type="LineEdit" parent="evidence_form/form/row/witnessed_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "time"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="date" type="LineEdit" parent="evidence_form/form/row/witnessed_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "date"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="reason" type="LineEdit" parent="evidence_form/form/row/witnessed_by2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+placeholder_text = "reason"
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="confirm" type="Button" parent="evidence_form"]
+layout_mode = 2
+offset_left = 26.0
+offset_top = 122.0
+offset_right = 95.0
+offset_bottom = 153.0
+text = "confirm"
+
+[connection signal="pressed" from="evidence_form/confirm" to="." method="_on_confirm_pressed"]

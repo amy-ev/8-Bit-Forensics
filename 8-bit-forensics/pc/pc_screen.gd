@@ -1,44 +1,35 @@
-extends Control
-
-@onready var text_rect = $pc_screen
-@onready var icon = $DesktopIcon
-@onready var icon2 = $DesktopIcon2
-@export var scaled_by: Vector2
-
-@onready var image_file = preload("res://image_file.tscn")
-@onready var _end_day = preload("res://end_day.tscn")
+extends Node2D
 
 func _ready() -> void:
-	icon.set_position(Vector2(15,15))
-	icon2.set_position(Vector2(15,85))
-
-	update_size()
-	var img_f = image_file.instantiate()
-	add_child(img_f)
+	scale = scale * Utility.window_mode()
+	var day = Global.unlocked + 1
 	
-func _notification(what: int) -> void:
-	if what == 1012:
-		update_size()
+	await $screen_animation.animation_finished
 
-func update_size():
-	var original_size = size
-
-	size = DisplayServer.window_get_size()
-	text_rect.size = size
+	var dialogue = load("res://dialogue/dialogue_manager.tscn").instantiate()
+	add_child(dialogue)
+	dialogue.get_node("normal").set_visible(false)
 	
-	# keeping it scaled to the x axis - prevents distortion of the icon image
-	scaled_by = (Vector2(original_size.x -1, original_size.x -1)/Vector2(size.x-1,size.x-1))
-	
-	icon.get_node("icon").size = icon.get_node("icon").size / scaled_by
-	icon.get_node("select/select_shape").shape.size = icon.get_node("icon").size
-	icon.get_node("select").position = icon.get_node("select/select_shape").shape.size / 2
-	
-	icon2.get_node("icon").size = icon2.get_node("icon").size / scaled_by
-	icon2.get_node("select/select_shape").shape.size = icon2.get_node("icon").size
-	icon2.get_node("select").position = icon2.get_node("select/select_shape").shape.size / 2
+	match day:
+		1:
+			var image_file = load("res://evidence/image_file.tscn").instantiate()
+			$top_screen/pc_screen.add_child(image_file)
+		2:
+			add_child(load("res://metadata/metadata.tscn").instantiate())
 
-
-func _on_end_pressed() -> void:
-	var end_day = _end_day.instantiate()
-	add_child(end_day)
-	#queue_free()
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.is_action_pressed("fullscreen"):
+		scale = scale * Utility.fullscreen_input(event)
+		
+	if event is InputEventKey and event.is_action_pressed("escape"):
+		if has_node("dialogue_create_file"):
+			get_node("dialogue_create_file").queue_free()
+			
+		if has_node("pc_screen"):
+			for i in get_node("pc_screen").get_child_count():
+				get_node("pc_screen").get_child(i).queue_free()
+		
+		$screen_animation.play("off")
+		await $screen_animation.animation_finished
+		
+		get_tree().change_scene_to_file("res://main/desk.tscn")

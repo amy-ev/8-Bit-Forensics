@@ -1,0 +1,184 @@
+[gd_scene load_steps=25 format=3 uid="uid://3we6fkgy57f7"]
+
+[ext_resource type="Script" uid="uid://bqj7niuugeaqh" path="res://crime_board/board.gd" id="1_k2i71"]
+[ext_resource type="Texture2D" uid="uid://b40bctf5em701" path="res://assets/crime_board/crime-board-v2.png" id="2_730js"]
+[ext_resource type="PackedScene" uid="uid://d35pcq2imx8ab" path="res://crime_board/note.tscn" id="2_tnfbr"]
+[ext_resource type="Texture2D" uid="uid://qfj12538ywv7" path="res://assets/crime_board/notes/1-note.png" id="4_vn7me"]
+[ext_resource type="Texture2D" uid="uid://cobqwdlt072j4" path="res://assets/crime_board/strings/1-string.png" id="5_dcwip"]
+[ext_resource type="Texture2D" uid="uid://dw3706yffrh63" path="res://assets/crime_board/notes/2-note.png" id="6_r5v2a"]
+[ext_resource type="Texture2D" uid="uid://2dcboro8hrbe" path="res://assets/crime_board/strings/2-string.png" id="7_sv8fe"]
+[ext_resource type="Texture2D" uid="uid://dwjpvoeobtwp" path="res://assets/crime_board/notes/3-note.png" id="8_vajgk"]
+[ext_resource type="Texture2D" uid="uid://bbopfyhahewqg" path="res://assets/crime_board/strings/3-string.png" id="9_03ih0"]
+[ext_resource type="Texture2D" uid="uid://bs6tul4gsppov" path="res://assets/crime_board/notes/4-note.png" id="10_yvjqu"]
+[ext_resource type="Texture2D" uid="uid://ctre1436pmwrc" path="res://assets/crime_board/strings/4-string.png" id="11_fxn8l"]
+[ext_resource type="Texture2D" uid="uid://bbkiwdej2hg5w" path="res://assets/crime_board/notes/5-note.png" id="12_n1grn"]
+[ext_resource type="Texture2D" uid="uid://b0167bbgkd51w" path="res://assets/crime_board/strings/5-string.png" id="13_b6qcv"]
+[ext_resource type="Texture2D" uid="uid://cpwjqhl7dtmfo" path="res://assets/crime_board/notes/6-note.png" id="14_u1wkm"]
+[ext_resource type="Texture2D" uid="uid://coxe61xprc5p0" path="res://assets/crime_board/strings/6-string.png" id="15_06hg8"]
+[ext_resource type="Texture2D" uid="uid://c1shho4dea7ix" path="res://assets/crime_board/notes/7-note.png" id="16_dbmes"]
+[ext_resource type="Texture2D" uid="uid://dtcr1ti431xbc" path="res://assets/crime_board/strings/7-string.png" id="17_2uoej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xd1ls"]
+size = Vector2(46, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0asa8"]
+size = Vector2(44, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxn8l"]
+size = Vector2(38, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boyje"]
+size = Vector2(44, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1grn"]
+size = Vector2(46.875, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6qcv"]
+size = Vector2(32, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1wkm"]
+size = Vector2(36, 51)
+
+[node name="board" type="Node2D"]
+script = ExtResource("1_k2i71")
+
+[node name="top_screen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="bottom_screen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 192.0
+mouse_filter = 1
+
+[node name="crime_board" type="TextureRect" parent="bottom_screen"]
+layout_mode = 1
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("2_730js")
+
+[node name="note1" parent="bottom_screen" instance=ExtResource("2_tnfbr")]
+visible = false
+layout_mode = 1
+texture = ExtResource("4_vn7me")
+
+[node name="area_shape" parent="bottom_screen/note1/area" index="0"]
+position = Vector2(51, 50)
+shape = SubResource("RectangleShape2D_xd1ls")
+
+[node name="string" parent="bottom_screen/note1" index="1"]
+texture = ExtResource("5_dcwip")
+
+[node name="note2" parent="bottom_screen" instance=ExtResource("2_tnfbr")]
+visible = false
+layout_mode = 1
+texture = ExtResource("6_r5v2a")
+
+[node name="area_shape" parent="bottom_screen/note2/area" index="0"]
+position = Vector2(44, 134)
+shape = SubResource("RectangleShape2D_0asa8")
+
+[node name="string" parent="bottom_screen/note2" index="1"]
+texture = ExtResource("7_sv8fe")
+
+[node name="note3" parent="bottom_screen" instance=ExtResource("2_tnfbr")]
+visible = false
+layout_mode = 1
+texture = ExtResource("8_vajgk")
+
+[node name="area_shape" parent="bottom_screen/note3/area" index="0"]
+position = Vector2(161, 65)
+shape = SubResource("RectangleShape2D_fxn8l")
+
+[node name="string" parent="bottom_screen/note3" index="1"]
+texture = ExtResource("9_03ih0")
+
+[node name="note4" parent="bottom_screen" instance=ExtResource("2_tnfbr")]
+visible = false
+layout_mode = 1
+texture = ExtResource("10_yvjqu")
+
+[node name="area_shape" parent="bottom_screen/note4/area" index="0"]
+position = Vector2(108, 120.5)
+shape = SubResource("RectangleShape2D_boyje")
+
+[node name="string" parent="bottom_screen/note4" index="1"]
+texture = ExtResource("11_fxn8l")
+
+[node name="note5" parent="bottom_screen" instance=ExtResource("2_tnfbr")]
+visible = false
+layout_mode = 1
+texture = ExtResource("12_n1grn")
+
+[node name="area_shape" parent="bottom_screen/note5/area" index="0"]
+position = Vector2(236.563, 48)
+shape = SubResource("RectangleShape2D_n1grn")
+
+[node name="string" parent="bottom_screen/note5" index="1"]
+texture = ExtResource("13_b6qcv")
+
+[node name="note6" parent="bottom_screen" instance=ExtResource("2_tnfbr")]
+visible = false
+layout_mode = 1
+texture = ExtResource("14_u1wkm")
+
+[node name="area_shape" parent="bottom_screen/note6/area" index="0"]
+position = Vector2(210, 142.5)
+shape = SubResource("RectangleShape2D_b6qcv")
+
+[node name="string" parent="bottom_screen/note6" index="1"]
+texture = ExtResource("15_06hg8")
+
+[node name="note7" parent="bottom_screen" instance=ExtResource("2_tnfbr")]
+visible = false
+layout_mode = 1
+texture = ExtResource("16_dbmes")
+
+[node name="area_shape" parent="bottom_screen/note7/area" index="0"]
+position = Vector2(264, 119.5)
+shape = SubResource("RectangleShape2D_u1wkm")
+
+[node name="string" parent="bottom_screen/note7" index="1"]
+texture = ExtResource("17_2uoej")
+
+[node name="area" type="Area2D" parent="bottom_screen"]
+position = Vector2(0, -192)
+
+[node name="area_shape" type="CollisionPolygon2D" parent="bottom_screen/area"]
+position = Vector2(3, 193)
+polygon = PackedVector2Array(-3, -1, 25, 16, 25, 82, 71, 82, 71, 16, 25, 16, -3, -1, 139, -1, 139, 39, 139, 89, 127, 89, 127, 86, 83, 86, 83, 153, 127, 153, 127, 89, 177, 89, 177, 39, 139, 39, 139, -1, 210, -1, 210, 18, 210, 76, 257, 76, 257, 18, 210, 18, 210, -1, 317, -1, 317, 93, 279, 93, 243, 93, 243, 120, 243, 144, 279, 144, 279, 93, 317, 93, 317, 179, 223, 179, 223, 163, 223, 120, 191, 120, 191, 163, 223, 163, 223, 179, -3, 179, 19, 161, 63, 161, 63, 105, 19, 105, 19, 161, -3, 179)
+
+[node name="unlock_debug" type="Button" parent="bottom_screen"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "unlock day"
+
+[node name="back_btn" type="Button" parent="bottom_screen"]
+layout_mode = 1
+offset_right = 45.0
+offset_bottom = 31.0
+text = "back"
+
+[connection signal="input_event" from="bottom_screen/area" to="." method="_on_area_input_event"]
+[connection signal="pressed" from="bottom_screen/unlock_debug" to="." method="_on_unlock_debug_pressed"]
+[connection signal="pressed" from="bottom_screen/back_btn" to="." method="_on_back_btn_pressed"]
+
+[editable path="bottom_screen/note1"]
+[editable path="bottom_screen/note2"]
+[editable path="bottom_screen/note3"]
+[editable path="bottom_screen/note4"]
+[editable path="bottom_screen/note5"]
+[editable path="bottom_screen/note6"]
+[editable path="bottom_screen/note7"]

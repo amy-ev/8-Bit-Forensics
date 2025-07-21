@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx21j7ecbpxjn"]
+
+[ext_resource type="Texture2D" uid="uid://c1hbjdhc1ct4t" path="res://assets/pc/bubble-v2-x3.png" id="1_epuh4"]
+
+[node name="comment" type="Label"]
+z_index = 1
+z_as_relative = false
+offset_right = 140.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "example text in the speech bubble that I have managed to make fit by some sort of miracle"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -3
+theme_override_constants/margin_top = -3
+theme_override_constants/margin_right = -12
+theme_override_constants/margin_bottom = -3
+
+[node name="speech_bubble" type="NinePatchRect" parent="MarginContainer"]
+z_as_relative = false
+clip_contents = true
+layout_mode = 2
+texture = ExtResource("1_epuh4")
+region_rect = Rect2(0, 0, 78, 66)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 18
+patch_margin_bottom = 6

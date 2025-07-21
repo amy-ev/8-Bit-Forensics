@@ -1,0 +1,55 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://do4qpyvmb5o1f"]
+
+[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="1_abp34"]
+[ext_resource type="Texture2D" uid="uid://dqlmysnd80so4" path="res://assets/evidence/button.png" id="2_e4kh1"]
+[ext_resource type="Texture2D" uid="uid://wdcwbtfbqxkp" path="res://assets/evidence/button-disabled-2.png" id="2_sn0cf"]
+[ext_resource type="Texture2D" uid="uid://0s5m2tk4m2rr" path="res://assets/evidence/button-pressed.png" id="3_sn0cf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vxis4"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 3.0
+content_margin_bottom = 5.0
+texture = ExtResource("2_sn0cf")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_np8o4"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 3.0
+content_margin_bottom = 5.0
+texture = ExtResource("2_e4kh1")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kfjki"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 3.0
+content_margin_bottom = 5.0
+texture = ExtResource("3_sn0cf")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 28, 12)
+
+[resource]
+default_font = ExtResource("1_abp34")
+default_font_size = 8
+Button/colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
+Button/colors/font_disabled_color = Color(0.45098, 0.396078, 0.290196, 1)
+Button/colors/font_focus_color = Color(0.321569, 0.282353, 0.223529, 1)
+Button/colors/font_hover_color = Color(0.901961, 0.807843, 0.67451, 1)
+Button/colors/font_hover_pressed_color = Color(0.932108, 0.863368, 0.766723, 1)
+Button/colors/font_pressed_color = Color(0.901961, 0.807843, 0.67451, 1)
+Button/fonts/font = ExtResource("1_abp34")
+Button/styles/disabled = SubResource("StyleBoxTexture_vxis4")
+Button/styles/hover = SubResource("StyleBoxTexture_np8o4")
+Button/styles/normal = SubResource("StyleBoxTexture_np8o4")
+Button/styles/pressed = SubResource("StyleBoxTexture_kfjki")

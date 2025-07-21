@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=3 uid="uid://d3s0jetqw0jpm"]
+
+[ext_resource type="Script" uid="uid://b7v2yjfpel1ti" path="res://main/desk.gd" id="2_sbb4t"]
+[ext_resource type="Texture2D" uid="uid://cnfu6j2bkv8cy" path="res://assets/office/desk-wide.png" id="2_ufxmt"]
+[ext_resource type="Texture2D" uid="uid://d2plwtcosssr1" path="res://assets/office/evidence-bag.png" id="5_6g8cm"]
+[ext_resource type="Texture2D" uid="uid://urp13roreq5a" path="res://assets/office/coffee-sprite.png" id="6_1x7m8"]
+[ext_resource type="Texture2D" uid="uid://cs0st1nq6ol6q" path="res://assets/pc/pc.png" id="6_6g8cm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufxmt"]
+size = Vector2(46, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1x7m8"]
+size = Vector2(112, 74)
+
+[sub_resource type="Animation" id="Animation_1x7m8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6g8cm"]
+resource_name = "steam"
+length = 2.2
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j4gt6"]
+_data = {
+&"RESET": SubResource("Animation_1x7m8"),
+&"steam": SubResource("Animation_6g8cm")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g8cm"]
+size = Vector2(26, 32)
+
+[node name="desk" type="Node2D"]
+script = ExtResource("2_sbb4t")
+
+[node name="bottom_screen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 180.0
+mouse_filter = 1
+
+[node name="office_desk" type="TextureRect" parent="bottom_screen"]
+layout_mode = 1
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("2_ufxmt")
+
+[node name="evidence_bag" type="TextureRect" parent="bottom_screen"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 48.0
+offset_right = 92.0
+offset_bottom = 114.0
+texture = ExtResource("5_6g8cm")
+
+[node name="evidence" type="Area2D" parent="bottom_screen/evidence_bag"]
+
+[node name="evidence_shape" type="CollisionShape2D" parent="bottom_screen/evidence_bag/evidence"]
+position = Vector2(23, 33)
+shape = SubResource("RectangleShape2D_ufxmt")
+
+[node name="pc" type="TextureRect" parent="bottom_screen"]
+layout_mode = 1
+offset_left = 148.0
+offset_right = 264.0
+offset_bottom = 126.0
+texture = ExtResource("6_6g8cm")
+
+[node name="pc_area" type="Area2D" parent="bottom_screen/pc"]
+
+[node name="pc_shape" type="CollisionShape2D" parent="bottom_screen/pc/pc_area"]
+position = Vector2(58, 37)
+shape = SubResource("RectangleShape2D_1x7m8")
+
+[node name="coffee_cup" type="Sprite2D" parent="bottom_screen"]
+position = Vector2(109, 24)
+texture = ExtResource("6_1x7m8")
+centered = false
+hframes = 8
+vframes = 2
+
+[node name="coffee_animation" type="AnimationPlayer" parent="bottom_screen/coffee_cup"]
+libraries = {
+&"": SubResource("AnimationLibrary_j4gt6")
+}
+autoplay = "steam"
+
+[node name="coffee" type="Area2D" parent="bottom_screen/coffee_cup"]
+
+[node name="coffee_shape" type="CollisionShape2D" parent="bottom_screen/coffee_cup/coffee"]
+position = Vector2(15, 32)
+shape = SubResource("RectangleShape2D_6g8cm")
+
+[connection signal="input_event" from="bottom_screen/evidence_bag/evidence" to="." method="_on_evidence_input_event"]
+[connection signal="input_event" from="bottom_screen/pc/pc_area" to="." method="_on_pc_area_input_event"]
+[connection signal="input_event" from="bottom_screen/coffee_cup/coffee" to="." method="_on_coffee_input_event"]

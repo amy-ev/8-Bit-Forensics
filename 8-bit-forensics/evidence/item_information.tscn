@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqwedwedwn32"]
+
+[ext_resource type="Script" uid="uid://qayymwuuheyr" path="res://evidence/item_information.gd" id="1_g7w0n"]
+[ext_resource type="Theme" uid="uid://dkk7o1al130ot" path="res://evidence/form_line_edit.tres" id="2_kxa1e"]
+[ext_resource type="Theme" uid="uid://do4qpyvmb5o1f" path="res://evidence/buttons.tres" id="2_metvm"]
+
+[node name="item_information" type="VBoxContainer"]
+offset_right = 153.0
+offset_bottom = 206.0
+script = ExtResource("1_g7w0n")
+
+[node name="case_no" type="LineEdit" parent="."]
+layout_mode = 2
+theme = ExtResource("2_kxa1e")
+placeholder_text = "case_no"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="evidence_no" type="LineEdit" parent="."]
+layout_mode = 2
+theme = ExtResource("2_kxa1e")
+placeholder_text = "evidence_no"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="unique_desc" type="LineEdit" parent="."]
+layout_mode = 2
+theme = ExtResource("2_kxa1e")
+placeholder_text = "unique_desc"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="examiner" type="LineEdit" parent="."]
+layout_mode = 2
+theme = ExtResource("2_kxa1e")
+placeholder_text = "examiner"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="notes" type="LineEdit" parent="."]
+layout_mode = 2
+theme = ExtResource("2_kxa1e")
+placeholder_text = "notes"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="navigation" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="back" type="Button" parent="navigation"]
+layout_mode = 2
+theme = ExtResource("2_metvm")
+text = "back"
+
+[node name="next" type="Button" parent="navigation"]
+layout_mode = 2
+theme = ExtResource("2_metvm")
+text = "finish"
+
+[node name="cancel" type="Button" parent="navigation"]
+layout_mode = 2
+theme = ExtResource("2_metvm")
+text = "cancel"
+
+[connection signal="pressed" from="navigation/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="navigation/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="navigation/cancel" to="." method="_on_cancel_pressed"]

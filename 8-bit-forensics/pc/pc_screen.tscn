@@ -1,56 +1,101 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4qcqdfv02pnd"]
+[gd_scene load_steps=10 format=3 uid="uid://b4qcqdfv02pnd"]
 
-[ext_resource type="Texture2D" uid="uid://dqapx11lcd8qk" path="res://assets/pc/wallpaper-x3.png" id="1_srayv"]
-[ext_resource type="Script" uid="uid://bdgjl5jim21kt" path="res://pc/pc_screen.gd" id="2_n1q0v"]
-[ext_resource type="PackedScene" uid="uid://xyusutygugir" path="res://pc/desktop_icon.tscn" id="3_lrtf5"]
-[ext_resource type="Script" uid="uid://ckwiv4h6olls5" path="res://pc/image_viewer.gd" id="4_nklpn"]
+[ext_resource type="Script" uid="uid://bdgjl5jim21kt" path="res://pc/pc_screen.gd" id="1_76l2r"]
+[ext_resource type="PackedScene" uid="uid://krnwjg3pmi37" path="res://pc/keyboard.tscn" id="2_ngtsc"]
+[ext_resource type="Texture2D" uid="uid://catu7syl5tfw5" path="res://assets/pc/pc-on-wide.png" id="3_nld71"]
+[ext_resource type="PackedScene" uid="uid://c0wglcbgod0a4" path="res://dialogue/helper.tscn" id="4_ma4wb"]
+[ext_resource type="PackedScene" uid="uid://7dbr280v5upc" path="res://dialogue/dialogue_create_file.tscn" id="5_lv8oy"]
 
-[node name="pc" type="Control"]
+[sub_resource type="Animation" id="Animation_6p3y6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("top_screen/pc_screen:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_lrtf5"]
+resource_name = "off"
+length = 1.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("top_screen/pc_screen:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_nklpn"]
+resource_name = "on"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("top_screen/pc_screen:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_76l2r"]
+_data = {
+&"RESET": SubResource("Animation_6p3y6"),
+&"off": SubResource("Animation_lrtf5"),
+&"on": SubResource("Animation_nklpn")
+}
+
+[node name="pc" type="Node2D"]
+script = ExtResource("1_76l2r")
+
+[node name="top_screen" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("2_n1q0v")
-
-[node name="pc_screen" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 192.0
 mouse_filter = 2
-texture = ExtResource("1_srayv")
 
-[node name="DesktopIcon" parent="." instance=ExtResource("3_lrtf5")]
-layout_mode = 1
+[node name="pc_screen" type="Sprite2D" parent="top_screen"]
+texture = ExtResource("3_nld71")
+centered = false
+hframes = 8
+vframes = 2
 
-[node name="DesktopIcon2" parent="." instance=ExtResource("3_lrtf5")]
-layout_mode = 1
-offset_top = 50.0
-offset_bottom = 50.0
-script = ExtResource("4_nklpn")
+[node name="bottom_screen" type="Control" parent="."]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_top = 180.0
+offset_right = 320.0
+offset_bottom = 372.0
+mouse_filter = 1
 
-[node name="end" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -70.0
-offset_top = -31.0
-offset_right = -50.0
-offset_bottom = -50.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "end day"
+[node name="keyboard-background" parent="bottom_screen" instance=ExtResource("2_ngtsc")]
+layout_mode = 0
 
-[connection signal="pressed" from="end" to="." method="_on_end_pressed"]
+[node name="screen_animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_76l2r")
+}
+autoplay = "on"
 
-[editable path="DesktopIcon2"]
+[node name="helper" parent="." instance=ExtResource("4_ma4wb")]
+
+[node name="dialogue_create_file" parent="." instance=ExtResource("5_lv8oy")]
+visible = false
