@@ -5,7 +5,7 @@ class_name LoadFile
 @onready var files = preload("res://file_dialog/file.tscn")
 #@onready var saved_dialog_scene = preload("res://file_dialog/save_file.tscn")
 @onready var metadata_labels = preload("res://metadata/metadata_label.tscn")
-@onready var hex_scene = preload("res://pc/hex_viewer.tscn")
+@onready var hex_scene = preload("res://hex_viewer/hex_viewer.tscn")
 
 @export var file_icon: ImageTexture
 @export var selected_file: String
@@ -49,8 +49,6 @@ func _on_load_button_pressed() -> void:
 	print("selected file: %s" %selected_file)
 	#print("file idx: %s" %file_idx)
 	
-
-		
 	if typeof(json_dict) == TYPE_DICTIONARY:
 		if json_dict.has("file_%s" %file_idx):
 			if metadata_column.get_child_count() > 0:
@@ -86,11 +84,13 @@ func _on_load_button_pressed() -> void:
 	
 	queue_free()
 	
+	#TODO: CHANGE THIS TO ONLY HAPPEN ON DAY 2, AND METADATA ONLY ON DAY 3
+	Global.selected_file = selected_file
 	var hex_viewer = hex_scene.instantiate()
-	add_child(hex_viewer)
+	#CURRENTLY PARENT == METADATA 
+	#CREATE A HEX_VIEWER WINDOW THEN CAN JUST ADD TO THAT NODE
+	get_parent().get_parent().add_child(hex_viewer)
 	
-	#var client = client_scene.instantiate()
-	#add_child(client)
 	
 func add_files(file_no:int):
 

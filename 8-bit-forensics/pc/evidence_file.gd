@@ -1,5 +1,7 @@
 extends Control
 
+#TODO: NOT IN USE? 
+
 @export var md5_hash: String
 var day = Global.unlocked + 1
 

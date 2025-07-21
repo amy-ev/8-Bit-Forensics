@@ -1,6 +1,8 @@
 extends Panel
 @export var files = []
 
+#TODO: PRODUCE A MD5 HASH
+
 func _ready() -> void:
 	Global.emit_signal("next_step",self)
 	$next.disabled = true

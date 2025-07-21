@@ -6,8 +6,8 @@ extends Control
 @export var select_open:bool = false
 @export var hex_data:PackedStringArray
 
-@onready var search_window = preload("res://pc/search.tscn")
-@onready var select_window = preload("res://pc/select.tscn")
+@onready var search_window = preload("res://hex_viewer/search.tscn")
+@onready var select_window = preload("res://hex_viewer/select.tscn")
 @onready var hex_label = $tab/window/label
 
 const VIS_ROWS:int = 22
@@ -19,7 +19,7 @@ var hex_table:Array
 var output = []
 
 func _ready():
-	open_file("res://jpg_folder/"+get_parent().selected_file)
+	open_file("res://jpg_folder/"+Global.selected_file)
 
 func _process(delta: float) -> void:
 	while page != TOTAL_ROWS:
