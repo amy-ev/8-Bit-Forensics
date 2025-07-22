@@ -15,7 +15,7 @@ func signature_search(signature:String):
 	# formatting string 
 	signature = signature.replace(" ", "")
 	signature = signature.strip_escapes()
-	signature = signature.to_lower()
+	signature = signature.to_upper()
 
 	if signature == null or signature == "":
 		return
@@ -55,11 +55,12 @@ func signature_search(signature:String):
 				row +=1
 			var column = hex_data_index
 			results.append([row,column])
-		
-	print(results)
-	hex_viewer.get_node("sort/tab/label").scroll_to_line(results[0][0])
+
+	if results.size() > 0:
+		hex_viewer.get_node("sort/tab/label").scroll_to_line(results[0][0])
+		#hex_viewer.get_node("tab/scroll/label").scroll_to_line(results[results.size()-1][0])
 	return results
-	#hex_viewer.get_node("tab/scroll/label").scroll_to_line(results[results.size()-1][0])
+
 	
 	
 func _dec_to_hex(x:int, y:int)-> String:
@@ -121,6 +122,8 @@ func _on_ok_pressed() -> void:
 			label.text = _dec_to_hex(hex_arr[i][0], hex_arr[i][1])
 			label.theme = load("res://pc_components.tres")
 			hex_viewer.get_node("sort/results/offset").add_child(label)
+			#prevent it seeming like a crash has occured when searching common hex
+			await get_tree().process_frame
 			
 			print(_dec_to_hex(hex_arr[i][0], hex_arr[i][1]))
 	hex_viewer.search_open = false

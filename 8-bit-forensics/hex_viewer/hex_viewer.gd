@@ -21,7 +21,7 @@ var mutex:Mutex
 
 func _ready() -> void:
 	hex_label.bbcode_enabled = false
-	hex_label.custom_minimum_size.x = 196
+	hex_label.custom_minimum_size.x = 192
 	hex_label.custom_minimum_size.y = 96
 	Global.connect("hex_selected", _on_hex_select)
 	#allow the text to be added by another thread to allow player to still interact
@@ -57,7 +57,7 @@ func open_file(file_path):
 		#hex_label.set_visible(false)
 		var file = FileAccess.open(file_path, FileAccess.READ)
 		var hex_file = file.get_buffer(file.get_length())
-		var arr_str = hex_file.hex_encode()
+		var arr_str = hex_file.hex_encode().to_upper()
 		
 		var num_bytes = arr_str.length() / 2
 		#faster than appending
