@@ -74,5 +74,16 @@ offset_bottom = 18.0
 theme = ExtResource("3_cke5y")
 text = "open"
 
+[node name="save" type="Button" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 3.0
+offset_right = 54.0
+offset_bottom = 18.0
+theme = ExtResource("3_cke5y")
+disabled = true
+text = "save"
+
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="open" to="." method="_on_open_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]

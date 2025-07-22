@@ -10,14 +10,14 @@ func _ready() -> void:
 func _on_ok_pressed() -> void:
 	hex_viewer.select_open = false
 
-	var hex_section = _select($start.text,$end.text)
+	var hex_section:PackedStringArray = _select($start.text,$end.text)
 	
 	var output_label = RichTextLabel.new()
 	output_label.name = "new file"
-	get_parent().get_node("sort/tab").add_child(output_label, true)
+	hex_viewer.get_node("sort/tab").add_child(output_label, true)
 	
-	var output = get_parent().get_node("sort/tab/"+ output_label.name)
-	get_parent().get_node("sort/tab").set_current_tab(get_parent().get_node("sort/tab").get_child_count() -1)
+	var output = hex_viewer.get_node("sort/tab/"+ output_label.name)
+	hex_viewer.get_node("sort/tab").set_current_tab(hex_viewer.get_node("sort/tab").get_child_count() -1)
 	
 	output.custom_minimum_size.x = 192
 	output.custom_minimum_size.y = 84
@@ -33,6 +33,7 @@ func _on_ok_pressed() -> void:
 				output.add_text(" ")
 		output.newline()
 	hex_viewer.output = result
+	hex_viewer.get_node("save").disabled = false
 	queue_free()
 
 func _select(start_offset, end_offset):

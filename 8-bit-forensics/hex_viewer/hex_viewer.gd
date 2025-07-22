@@ -127,13 +127,33 @@ func _on_exit_pressed() -> void:
 	queue_free()
 
 func _on_save_pressed() -> void:
-	var file = FileAccess.open("res://jpg_folder/tester.txt", FileAccess.WRITE)
-	for i in range(output.size()):
-		var line = output[i]
-		for j in range(line.size()):
-			file.store_string(line[j])
-			
-	
+	if output[0].size() >= 4:
+		# due to chance of the last row size being only 1
+		var a_end = output[output.size()-2]
+		var b_end = output[output.size()-1]
+		
+		var output_end = a_end + b_end
+		var ending = "".join(output_end.slice(output_end.size()-2,output_end.size()))
+		
+		var beginning = "".join( output[0])
+		if beginning.begins_with("FFD8FFE1") && ending == "FFD9":
+			print("VALID")
+			#TODO: GET BYTES FROM HEX
+			#var file = FileAccess.open("res://jpg_folder/tester.txt", FileAccess.WRITE)
+			#var result=[]
+			#var packed:PackedByteArray
+#
+			#for i in output.size():
+				#for j in output[i].size():
+					#result.append(output[i][j])
+			#packed.resize(result.size())
+			#for i in result.size():
+				#packed[i] = result[i].to_utf32_buffer()
+			#print(packed)
+		else:
+			print("NOT VALID")
+
+				
 func _on_open_pressed() -> void:
 	if !search_open && !select_open:
 		add_child(load("res://file_dialog/load_file.tscn").instantiate())
