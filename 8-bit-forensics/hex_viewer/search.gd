@@ -57,7 +57,7 @@ func signature_search(signature:String):
 			results.append([row,column])
 
 	if results.size() > 0:
-		hex_viewer.get_node("sort/tab/label").scroll_to_line(results[0][0])
+		hex_viewer.get_node("sort/tab/new file").scroll_to_line(results[0][0])
 		#hex_viewer.get_node("tab/scroll/label").scroll_to_line(results[results.size()-1][0])
 	return results
 

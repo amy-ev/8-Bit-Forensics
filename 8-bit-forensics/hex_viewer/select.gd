@@ -6,10 +6,14 @@ extends NinePatchRect
 
 func _on_ok_pressed() -> void:
 	hex_viewer.select_open = false
-	_hex_to_dec($start.text)
+
 	var hex_section = _select($start.text,$end.text)
 	
-	var output = get_parent().get_node("tab/output_window/output")
+	var output_label = RichTextLabel.new()
+	output_label.name = "new file"
+	get_parent().get_node("sort/tab").add_child(output_label, true)
+
+	var output = get_parent().get_node("sort/tab/"+ output_label.name)
 
 	output.clear()
 
@@ -17,6 +21,7 @@ func _on_ok_pressed() -> void:
 		result.append(hex_section.slice(i, i + 16))
 	for i in range(result.size()):
 		var row = result[i]
+		print(row)
 		for j in range(row.size()):
 			output.add_text(str(row[j]))
 			
@@ -24,9 +29,6 @@ func _on_ok_pressed() -> void:
 				output.add_text(" ")
 		output.newline()
 	hex_viewer.output = result
-	print(result)
-	get_parent().get_node("tab/output_window").visible = true
-	get_parent().get_node("tab").set_tabs_visible(true)
 	queue_free()
 	
 func _on_cancel_pressed() -> void:
@@ -46,20 +48,18 @@ func _ready() -> void:
 	$start.grab_focus()
 
 func _select(start_offset, end_offset):
-	
 	if (start_offset == null or start_offset == "") or (end_offset == null or end_offset == ""):
 		return
 		
-	var x1 = int(start_offset.substr(0,2))
-	var y1 = int(start_offset.substr(2,-1))
-	
-	var x2 = int(end_offset.substr(0,2))
-	var y2 = int(end_offset.substr(2,-1))
+	var x1 = _hex_to_dec(start_offset)[0]
+	var y1 = _hex_to_dec(start_offset)[1]
+	var x2 = _hex_to_dec(end_offset)[0]
+	var y2 = _hex_to_dec(end_offset)[1]
 	
 	var start = (x1 * 16) + y1
 	var end = (x2 * 16) + y2
 	
-	var hex_text = hex_viewer.get_node("tab/window/label")
+	var hex_text = hex_viewer.get_node("sort/tab/new file")
 	print(x1," ", y1, " ", x2, " ", y2)
 	print(start, " ", end)
 	return hex_viewer.hex_data.slice(start,end+1)

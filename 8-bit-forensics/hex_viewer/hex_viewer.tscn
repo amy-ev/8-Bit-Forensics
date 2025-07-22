@@ -21,8 +21,8 @@ script = ExtResource("1_auk66")
 layout_mode = 0
 offset_left = 5.0
 offset_top = 20.0
-offset_right = 197.0
-offset_bottom = 140.0
+offset_right = 200.0
+offset_bottom = 142.0
 theme_override_constants/separation = 0
 
 [node name="tab" type="TabContainer" parent="sort"]
@@ -32,7 +32,7 @@ theme = ExtResource("3_cke5y")
 current_tab = 0
 tabs_visible = false
 
-[node name="label" type="RichTextLabel" parent="sort/tab"]
+[node name="new file" type="RichTextLabel" parent="sort/tab"]
 layout_mode = 2
 theme = ExtResource("3_cke5y")
 autowrap_mode = 0
