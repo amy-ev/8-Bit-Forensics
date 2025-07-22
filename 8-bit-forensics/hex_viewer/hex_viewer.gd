@@ -2,6 +2,7 @@ extends NinePatchRect
 
 @export var page:int
 
+var load_file_open:bool = false
 @export var search_open:bool = false
 @export var select_open:bool = false
 @export var hex_data:PackedStringArray
@@ -98,13 +99,13 @@ func show_page(p:int):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("find"):
 		print(search_open)
-		if search_open == false && select_open == false:
+		if !search_open && !select_open && !load_file_open:
 			search_open = true
 			add_child(search_window.instantiate())
 			
 	if event.is_action_pressed("select_block"):
 		print(select_open)
-		if select_open == false && search_open == false:
+		if !select_open && !search_open && !load_file_open:
 			select_open = true
 			add_child(select_window.instantiate())
 
@@ -121,4 +122,6 @@ func _on_save_pressed() -> void:
 			
 	
 func _on_open_pressed() -> void:
-	add_child(load("res://file_dialog/load_file.tscn").instantiate())
+	if !search_open && !select_open:
+		add_child(load("res://file_dialog/load_file.tscn").instantiate())
+		load_file_open = true

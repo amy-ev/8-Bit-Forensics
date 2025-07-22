@@ -1,95 +1,77 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5u2gfwqyuonu"]
+[gd_scene load_steps=5 format=3 uid="uid://c5u2gfwqyuonu"]
 
 [ext_resource type="Script" uid="uid://p3eircxo7i4w" path="res://hex_viewer/search.gd" id="1_b4i7w"]
-[ext_resource type="Texture2D" uid="uid://bg0rs50hx3xwa" path="res://assets/pc/search-window-x3.png" id="2_bqyip"]
-[ext_resource type="Texture2D" uid="uid://wvftwo4ht26u" path="res://assets/pc/exit-button-x3.png" id="3_af60o"]
-[ext_resource type="Texture2D" uid="uid://doslssqfj7kv2" path="res://assets/pc/ok-button-x3.png" id="4_50pnd"]
-[ext_resource type="Texture2D" uid="uid://bkgef2i32vguq" path="res://assets/pc/cancel-button-x3.png" id="5_1qnbx"]
-[ext_resource type="Texture2D" uid="uid://d2iik8lx0g5fb" path="res://assets/pc/select-user-input-x3.png" id="6_7jses"]
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="1_fq6k7"]
+[ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/file_dialog/exit-button.png" id="3_q10fg"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="4_eg8hc"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sumix"]
-texture = ExtResource("6_7jses")
-
-[node name="search" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="search" type="NinePatchRect"]
+offset_left = 78.0
+offset_top = 43.0
+offset_right = 155.0
+offset_bottom = 105.0
+texture = ExtResource("1_fq6k7")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 script = ExtResource("1_b4i7w")
 
-[node name="window" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-texture = ExtResource("2_bqyip")
-
-[node name="exit" type="TextureButton" parent="window"]
+[node name="exit" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -21.0
-offset_bottom = 21.0
+offset_left = -14.0
+offset_bottom = 14.0
 grow_horizontal = 0
-texture_normal = ExtResource("3_af60o")
-texture_pressed = ExtResource("3_af60o")
-texture_hover = ExtResource("3_af60o")
-texture_disabled = ExtResource("3_af60o")
-texture_focused = ExtResource("3_af60o")
+texture_normal = ExtResource("3_q10fg")
 
-[node name="ok" type="TextureButton" parent="window"]
+[node name="ok" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = 41.0
+offset_right = 72.0
+offset_bottom = 56.0
+theme = ExtResource("4_eg8hc")
+text = "ok"
+
+[node name="cancel" type="Button" parent="."]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 41.0
+offset_right = 54.0
+offset_bottom = 56.0
+theme = ExtResource("4_eg8hc")
+text = "cancel"
+
+[node name="user_input" type="LineEdit" parent="."]
+layout_mode = 1
 offset_left = 6.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = -6.0
-grow_vertical = 0
-texture_normal = ExtResource("4_50pnd")
-texture_pressed = ExtResource("4_50pnd")
-texture_hover = ExtResource("4_50pnd")
-texture_disabled = ExtResource("4_50pnd")
-texture_focused = ExtResource("4_50pnd")
+offset_top = 24.0
+offset_right = 71.0
+offset_bottom = 36.0
+theme = ExtResource("4_eg8hc")
+placeholder_text = "hex"
+alignment = 2
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
-[node name="cancel" type="TextureButton" parent="window"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -30.0
-offset_right = -6.0
-offset_bottom = -6.0
-grow_horizontal = 0
-grow_vertical = 0
-texture_normal = ExtResource("5_1qnbx")
-texture_pressed = ExtResource("5_1qnbx")
-texture_hover = ExtResource("5_1qnbx")
-texture_disabled = ExtResource("5_1qnbx")
-texture_focused = ExtResource("5_1qnbx")
-
-[node name="user_input" type="LineEdit" parent="window"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
+[node name="search_label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 6.0
-offset_top = -66.5
-offset_right = -6.0
-offset_bottom = -42.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/focus = SubResource("StyleBoxTexture_sumix")
-theme_override_styles/read_only = SubResource("StyleBoxTexture_sumix")
-theme_override_styles/normal = SubResource("StyleBoxTexture_sumix")
+offset_top = 16.0
+offset_right = 32.0
+offset_bottom = 24.0
+theme = ExtResource("4_eg8hc")
+text = "search:"
 
-[connection signal="pressed" from="window/exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="window/ok" to="." method="_on_ok_pressed"]
-[connection signal="pressed" from="window/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ok" to="." method="_on_ok_pressed"]
+[connection signal="pressed" from="cancel" to="." method="_on_cancel_pressed"]

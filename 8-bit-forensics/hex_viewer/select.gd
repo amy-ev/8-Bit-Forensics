@@ -1,4 +1,4 @@
-extends Control
+extends NinePatchRect
 
 @onready var hex_viewer = get_parent()
 
@@ -6,8 +6,8 @@ extends Control
 
 func _on_ok_pressed() -> void:
 	hex_viewer.select_open = false
-	_hex_to_dec($window/start.text)
-	var hex_section = _select($window/start.text,$window/end.text)
+	_hex_to_dec($start.text)
+	var hex_section = _select($start.text,$end.text)
 	
 	var output = get_parent().get_node("tab/output_window/output")
 
@@ -43,7 +43,7 @@ func _input(event: InputEvent) -> void:
 		queue_free()
 
 func _ready() -> void:
-	$window/start.grab_focus()
+	$start.grab_focus()
 
 func _select(start_offset, end_offset):
 	

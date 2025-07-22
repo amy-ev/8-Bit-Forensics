@@ -18,12 +18,13 @@ var file: File
 
 func _ready() -> void:
 	add_files(file_count("res://jpg_folder/"))
-
+	Global.connect("selected",_on_file_selected)
+	
 	if get_parent().name == "metadata_window":
 		#start server python script
 		#TODO: CHANGE TO FALSE
 		OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/start.bat",[],true) # true = terminal popup (for debugging)
-	Global.connect("selected",_on_file_selected)
+
 	
 	# TODO: REMOVE FROM HERE AND ADD BOTH LOAD_FILE AND SAVE_FILE TO A DIALOG WINDOW SCENE
 	#var saved_dialog = saved_dialog_scene.instantiate()
@@ -86,6 +87,7 @@ func _on_load_button_pressed() -> void:
 
 	elif get_parent().name == "hex_viewer":
 		get_parent().open_file("res://jpg_folder/"+selected_file)
+		get_parent().load_file_open = false
 		
 	queue_free()
 	
@@ -134,7 +136,11 @@ func file_count(file_path:String) -> int:
 	return files_no
 	
 func _on_exit_pressed() -> void:
-	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
+	if get_parent().name == "metadata_window":
+		OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
+	elif get_parent().name == "hex_viewer":
+		get_parent().load_file_open = false
+		
 	queue_free()
 
 func _on_file_selected(selected_node:File, real_file:String):
