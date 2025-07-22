@@ -8,9 +8,10 @@ extends Node
 
 @export var is_collected:bool
 
-var form_name:String
-var form_signed:String
-var form_date:String
+@export_group("Form Properties")
+@export var form_name:String
+@export var form_signed:String
+@export var form_date:String
 
 var is_first_bag:bool = true
 var file_created:bool = false

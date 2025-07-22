@@ -2,7 +2,10 @@ extends NinePatchRect
 
 @onready var hex_viewer = get_parent()
 
-@export var result = []
+var result = []
+
+func _ready() -> void:
+	$start.grab_focus()
 
 func _on_ok_pressed() -> void:
 	hex_viewer.select_open = false
@@ -12,40 +15,25 @@ func _on_ok_pressed() -> void:
 	var output_label = RichTextLabel.new()
 	output_label.name = "new file"
 	get_parent().get_node("sort/tab").add_child(output_label, true)
-
+	
 	var output = get_parent().get_node("sort/tab/"+ output_label.name)
-
+	get_parent().get_node("sort/tab").set_current_tab(get_parent().get_node("sort/tab").get_child_count() -1)
+	
+	output.custom_minimum_size.x = 192
+	output.custom_minimum_size.y = 84
 	output.clear()
-
+	
 	for i in range(0,hex_section.size(),16):
 		result.append(hex_section.slice(i, i + 16))
 	for i in range(result.size()):
 		var row = result[i]
-		print(row)
 		for j in range(row.size()):
 			output.add_text(str(row[j]))
-			
 			if j < row.size() - 1:
 				output.add_text(" ")
 		output.newline()
 	hex_viewer.output = result
 	queue_free()
-	
-func _on_cancel_pressed() -> void:
-	hex_viewer.select_open = false
-	queue_free()
-
-func _on_exit_pressed() -> void:
-	hex_viewer.select_open = false
-	queue_free()
-	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("close") and hex_viewer.select_open:
-		hex_viewer.select_open = false
-		queue_free()
-
-func _ready() -> void:
-	$start.grab_focus()
 
 func _select(start_offset, end_offset):
 	if (start_offset == null or start_offset == "") or (end_offset == null or end_offset == ""):
@@ -63,7 +51,6 @@ func _select(start_offset, end_offset):
 	print(x1," ", y1, " ", x2, " ", y2)
 	print(start, " ", end)
 	return hex_viewer.hex_data.slice(start,end+1)
-	
 	
 func _hex_to_dec(input:String):
 	var x = []
@@ -94,17 +81,31 @@ func _hex_to_dec(input:String):
 
 func convert_hex(i:String):
 	i = i.to_upper()
-	if i == "A":
-		return "10"
-	if i == "B":
-		return "11"
-	if i == "C":
-		return "12"
-	if i == "D":
-		return "13"
-	if i == "E":
-		return "14"
-	if i == "F":
-		return "15"
-	else:
-		return i
+	match i:
+		"A":
+			return "10"
+		"B":
+			return "11"	
+		"C":
+			return "12"
+		"D":
+			return "13"
+		"E":
+			return "14"
+		"F":
+			return "15"
+		_:
+			return i
+
+func _on_cancel_pressed() -> void:
+	hex_viewer.select_open = false
+	queue_free()
+
+func _on_exit_pressed() -> void:
+	hex_viewer.select_open = false
+	queue_free()
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("close") and hex_viewer.select_open:
+		hex_viewer.select_open = false
+		queue_free()

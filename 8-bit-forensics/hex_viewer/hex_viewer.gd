@@ -1,11 +1,11 @@
 extends NinePatchRect
 
-@export var page:int
+var page:int
 
 var load_file_open:bool = false
-@export var search_open:bool = false
-@export var select_open:bool = false
-@export var hex_data:PackedStringArray
+var search_open:bool = false
+var select_open:bool = false
+var hex_data:PackedStringArray
 
 @onready var search_window = preload("res://hex_viewer/search.tscn")
 @onready var select_window = preload("res://hex_viewer/select.tscn")
