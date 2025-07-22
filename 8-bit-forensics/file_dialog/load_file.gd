@@ -18,8 +18,11 @@ var file: File
 
 func _ready() -> void:
 	add_files(file_count("res://jpg_folder/"))
-	# true = terminal popup (for debugging)
-	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/start.bat",[],true) 
+
+	if get_parent().name == "metadata_window":
+		#start server python script
+		#TODO: CHANGE TO FALSE
+		OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/start.bat",[],true) # true = terminal popup (for debugging)
 	Global.connect("selected",_on_file_selected)
 	
 	# TODO: REMOVE FROM HERE AND ADD BOTH LOAD_FILE AND SAVE_FILE TO A DIALOG WINDOW SCENE
@@ -30,67 +33,61 @@ func _ready() -> void:
 	# ---------------------------
 	
 func _on_load_button_pressed() -> void:
-	
-	var metadata_thumbnail = get_parent().get_node("thumbnail_column/thumbnail")
-	var metadata_column = get_parent().get_node("scroll/data_container")
-
-	var client = client_scene.instantiate()
-	add_child(client)
-	await client.tree_exited
-	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
-	
-	metadata_thumbnail.texture = load("res://jpg_folder/"+selected_file)
-	metadata_thumbnail.size = Vector2(44,32)
-	
-	var json_dict = open_json("res://python_files/metadata.json")
-	print(selected_file)
-	var file_idx = selected_file.replacen("photo", "")
-	file_idx = file_idx.replacen(".jpg", "")
-	print("selected file: %s" %selected_file)
-	#print("file idx: %s" %file_idx)
-	
-	if typeof(json_dict) == TYPE_DICTIONARY:
-		if json_dict.has("file_%s" %file_idx):
-			if metadata_column.get_child_count() > 0:
-				for child in metadata_column.get_children():
-					metadata_column.remove_child(child)
-			for key in json_dict["file_%s" % file_idx]:
-				
-				var key_and_value = HBoxContainer.new()
-				key_and_value.custom_minimum_size = Vector2(162.0,10.0)
-				key_and_value.add_theme_constant_override("separation", 0)
-				key_and_value.clip_contents = true
-				metadata_column.add_child(key_and_value)
-				
-				var key_label = metadata_labels.instantiate()
-				key_label.text = key
-				#key_label.set_autowrap_mode(TextServer.AUTOWRAP_WORD_SMART)
-				key_label.custom_minimum_size = Vector2(70.0, 10.0)
-				key_label.get_node("select/select_shape").shape.size.x = 165.0
-				key_and_value.add_child(key_label)
-
-				var value_label = metadata_labels.instantiate()
-				value_label.text = json_dict["file_%s" % file_idx][key]
-				value_label.set_autowrap_mode(TextServer.AUTOWRAP_WORD_SMART)
-				value_label.custom_minimum_size = Vector2(100.0, 10.0)
-				value_label.get_node("selected").queue_free()
-				value_label.get_node("select").queue_free()
-				key_and_value.add_child(value_label)
-
-		else:
-			pass
-	else:
-		print("Type: ", type_string(typeof(json_dict)))
-	
-	queue_free()
-	
-	#TODO: CHANGE THIS TO ONLY HAPPEN ON DAY 2, AND METADATA ONLY ON DAY 3
+	print(get_parent().name)
 	Global.selected_file = selected_file
-	var hex_viewer = hex_scene.instantiate()
-	#CURRENTLY PARENT == METADATA 
-	#CREATE A HEX_VIEWER WINDOW THEN CAN JUST ADD TO THAT NODE
-	get_parent().get_parent().add_child(hex_viewer)
 	
+	if get_parent().name == "metadata_window":
+		var metadata_thumbnail = get_parent().get_node("thumbnail_column/thumbnail")
+		var metadata_column = get_parent().get_node("scroll/data_container")
+		
+		#start client godot script
+		var client = client_scene.instantiate()
+		add_child(client)
+		await client.tree_exited
+		#kill server python script
+		OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
+		
+		metadata_thumbnail.texture = load("res://jpg_folder/"+selected_file)
+		metadata_thumbnail.size = Vector2(44,32)
+		
+		var json_dict = open_json("res://python_files/metadata.json")
+		var file_idx = selected_file.replacen("photo", "")
+		file_idx = file_idx.replacen(".jpg", "")
+
+		if typeof(json_dict) == TYPE_DICTIONARY:
+			if json_dict.has("file_%s" %file_idx):
+				if metadata_column.get_child_count() > 0:
+					for child in metadata_column.get_children():
+						metadata_column.remove_child(child)
+				for key in json_dict["file_%s" % file_idx]:
+					
+					var key_and_value = HBoxContainer.new()
+					key_and_value.custom_minimum_size = Vector2(162.0,10.0)
+					key_and_value.add_theme_constant_override("separation", 0)
+					key_and_value.clip_contents = true
+					metadata_column.add_child(key_and_value)
+					
+					var key_label = metadata_labels.instantiate()
+					key_label.text = key
+					#key_label.set_autowrap_mode(TextServer.AUTOWRAP_WORD_SMART)
+					key_label.custom_minimum_size = Vector2(70.0, 10.0)
+					key_label.get_node("select/select_shape").shape.size.x = 165.0
+					key_and_value.add_child(key_label)
+
+					var value_label = metadata_labels.instantiate()
+					value_label.text = json_dict["file_%s" % file_idx][key]
+					value_label.set_autowrap_mode(TextServer.AUTOWRAP_WORD_SMART)
+					value_label.custom_minimum_size = Vector2(100.0, 10.0)
+					value_label.get_node("selected").queue_free()
+					value_label.get_node("select").queue_free()
+					key_and_value.add_child(value_label)
+		else:
+			print("Type: ", type_string(typeof(json_dict)))
+
+	elif get_parent().name == "hex_viewer":
+		get_parent().open_file("res://jpg_folder/"+selected_file)
+		
+	queue_free()
 	
 func add_files(file_no:int):
 
@@ -154,9 +151,10 @@ func _on_file_selected(selected_node:File, real_file:String):
 	
 	print("selected_node: %s, real_file: %s, selected_file: %s "%[selected_node, real_file, selected_file])
 	
-	file_idx = selected_file.replacen("photo", "")
-	file_idx = file_idx.replacen(".jpg", "")
-	get_parent().current_image = file_idx
+	if get_parent().name == "metadata_window":
+		file_idx = selected_file.replacen("photo", "")
+		file_idx = file_idx.replacen(".jpg", "")
+		get_parent().current_image = file_idx
 	
 func open_json(file_path):
 	if FileAccess.file_exists(file_path):

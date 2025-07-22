@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://d31sl6bl6j3b3"]
+[gd_scene load_steps=12 format=3 uid="uid://d31sl6bl6j3b3"]
 
 [ext_resource type="Script" uid="uid://b4546ogyrqq64" path="res://metadata/metadata.gd" id="1_2ct7u"]
 [ext_resource type="Texture2D" uid="uid://ck13skggxkb21" path="res://assets/metadata/metadata-window.png" id="1_hpvqb"]
 [ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_7dblc"]
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="4_daqaj"]
 [ext_resource type="Texture2D" uid="uid://dbqt4m1v71plc" path="res://assets/metadata/open.png" id="4_vpbfe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_paekb"]
@@ -361,7 +362,7 @@ offset_left = 8.0
 offset_top = 34.0
 offset_right = 52.0
 offset_bottom = 66.0
-texture = ExtResource("1_hpvqb")
+texture = ExtResource("4_daqaj")
 expand_mode = 1
 
 [node name="thumbnail_area" type="Area2D" parent="thumbnail_column/thumbnail"]

@@ -1,4 +1,4 @@
-extends Control
+extends NinePatchRect
 
 @export var page:int
 
@@ -8,31 +8,48 @@ extends Control
 
 @onready var search_window = preload("res://hex_viewer/search.tscn")
 @onready var select_window = preload("res://hex_viewer/select.tscn")
-@onready var hex_label = $tab/window/label
+@onready var hex_label = $tab/scroll/label
 
-const VIS_ROWS:int = 22
-const PAGE_ROWS:int = 53
-
+const PAGE_ROWS:int = 2000
 var TOTAL_ROWS:int
 var hex_table:Array
 
 var output = []
+var thread:Thread
+var mutex:Mutex
 
-func _ready():
-	open_file("res://jpg_folder/"+Global.selected_file)
-
-func _process(delta: float) -> void:
+func _ready() -> void:
+	hex_label.bbcode_enabled = false
+	hex_label.custom_minimum_size.x = 196
+	hex_label.custom_minimum_size.y = 118
+	
+	#allow the text to be added by another thread to allow player to still interact
+	thread = Thread.new()
+	mutex = Mutex.new()
+	
+func _thread_function():
 	while page != TOTAL_ROWS:
+		mutex.lock()
 		page += 1
+		mutex.unlock()
+		
 		show_page(page)
+		#slightly increases process time
+		#but ensures lines are placed in the right order
+		#add that the file dialogue window closes
+		await get_tree().process_frame
+	print("thread finished")
 	
 func open_file(file_path):
+
 	if FileAccess.file_exists(file_path):
+		#hex_label.set_visible(false)
 		var file = FileAccess.open(file_path, FileAccess.READ)
 		var hex_file = file.get_buffer(file.get_length())
 		var arr_str = hex_file.hex_encode()
 		
 		var num_bytes = arr_str.length() / 2
+		#faster than appending
 		hex_data.resize(num_bytes)
 		
 		for x in range(num_bytes):
@@ -45,30 +62,38 @@ func open_file(file_path):
 	else:
 		print("failed to open file")
 		return
-		
-	hex_label.set_threaded(true)
 	
 	TOTAL_ROWS = ceili(hex_table.size()/PAGE_ROWS)
-	hex_label.custom_minimum_size.x = 465
-	hex_label.custom_minimum_size.y = 498
+	
 	show_page(0)
-
+	#to allow for another file to be opened after
+	if !thread.is_alive():
+		if thread.is_started():
+			thread.wait_to_finish()
+		thread.start(_thread_function)
+	
+func _exit_tree() -> void:
+	thread.wait_to_finish()
+	
 func show_page(p:int):
 	page = p
 	var start = page * PAGE_ROWS
 	var end = min(start + PAGE_ROWS, hex_table.size())
-	
+
 	for i in range(start, end):
 		var row:= PackedStringArray(hex_table[i])
 		
 		for j in (row.size()):
-			hex_label.add_text(str(row[j]))
+			#hex_label.add_text(str(row[j]))
+			hex_label.call_deferred("add_text",str(row[j]))
 			
 			if j < row.size() - 1:
-				hex_label.add_text(" ")
+				#hex_label.add_text(" ")
+				hex_label.call_deferred("add_text"," ")
 				
-		hex_label.newline()
-		
+		#hex_label.newline()
+		hex_label.call_deferred("newline",)
+
 # opening other windows
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("find"):
@@ -87,7 +112,6 @@ func _input(event: InputEvent) -> void:
 func _on_exit_pressed() -> void:
 	queue_free()
 
-
 func _on_save_pressed() -> void:
 	var file = FileAccess.open("res://jpg_folder/tester.txt", FileAccess.WRITE)
 	for i in range(output.size()):
@@ -96,3 +120,5 @@ func _on_save_pressed() -> void:
 			file.store_string(line[j])
 			
 	
+func _on_open_pressed() -> void:
+	add_child(load("res://file_dialog/load_file.tscn").instantiate())

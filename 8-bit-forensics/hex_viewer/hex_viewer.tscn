@@ -1,81 +1,63 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqai7e5o8pqlh"]
 
 [ext_resource type="Script" uid="uid://c4m27nwwq4imj" path="res://hex_viewer/hex_viewer.gd" id="1_auk66"]
-[ext_resource type="Texture2D" uid="uid://dkoqtfb5meyq6" path="res://assets/pc/hex-viewer-window-x3.png" id="2_rut17"]
-[ext_resource type="FontFile" uid="uid://gmq5worg46de" path="res://RobotoMono-Regular.ttf" id="2_ysfa7"]
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="1_m7h7m"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="3_cke5y"]
 [ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/file_dialog/exit-button.png" id="3_rut17"]
 
-[node name="hex_viewer" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 465.0
-offset_bottom = 553.0
+[node name="hex_viewer" type="NinePatchRect"]
+offset_right = 232.0
+offset_bottom = 148.0
+texture = ExtResource("1_m7h7m")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 script = ExtResource("1_auk66")
 
 [node name="tab" type="TabContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 5.0
+offset_top = 20.0
+offset_right = 201.0
+offset_bottom = 142.0
+theme = ExtResource("3_cke5y")
 current_tab = 0
 tabs_visible = false
 
-[node name="window" type="TextureRect" parent="tab"]
+[node name="scroll" type="ScrollContainer" parent="tab"]
 layout_mode = 2
-texture = ExtResource("2_rut17")
+horizontal_scroll_mode = 0
 metadata/_tab_index = 0
 
-[node name="exit" type="TextureButton" parent="tab/window"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+[node name="label" type="RichTextLabel" parent="tab/scroll"]
+layout_mode = 2
+theme = ExtResource("3_cke5y")
+autowrap_mode = 0
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="exit" type="TextureButton" parent="."]
+visible = false
+layout_mode = 2
 anchor_right = 1.0
-offset_left = -21.0
-offset_right = -7.0
-offset_bottom = 14.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 13.0
+offset_right = 13.0
+offset_bottom = 9.0
 grow_horizontal = 0
 texture_normal = ExtResource("3_rut17")
 
-[node name="label" type="RichTextLabel" parent="tab/window"]
-layout_mode = 2
-offset_top = 21.0
-offset_right = 465.0
-offset_bottom = 519.0
-focus_mode = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("2_ysfa7")
-autowrap_mode = 0
-shortcut_keys_enabled = false
-selection_enabled = true
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="output_window" type="TextureRect" parent="tab"]
-visible = false
-layout_mode = 2
-texture = ExtResource("2_rut17")
-metadata/_tab_index = 1
-
-[node name="output" type="RichTextLabel" parent="tab/output_window"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 21.0
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("2_ysfa7")
-selection_enabled = true
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="save" type="Button" parent="tab/output_window"]
+[node name="open" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "save"
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 25.0
+offset_bottom = 17.0
+theme = ExtResource("3_cke5y")
+text = "open"
 
-[connection signal="pressed" from="tab/window/exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="tab/output_window/save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="open" to="." method="_on_open_pressed"]
