@@ -1,6 +1,8 @@
 extends NinePatchRect
 
 @onready var hex_viewer = get_parent()
+@onready var hex_labels = preload("res://hex_viewer/hex_label.tscn")
+
 var results = []
 
 func _ready() -> void:
@@ -55,7 +57,7 @@ func signature_search(signature:String):
 			results.append([row,column])
 		
 	print(results)
-	hex_viewer.get_node("tab/scroll/label").scroll_to_line(results[0][0])
+	hex_viewer.get_node("sort/tab/label").scroll_to_line(results[0][0])
 	return results
 	#hex_viewer.get_node("tab/scroll/label").scroll_to_line(results[results.size()-1][0])
 	
@@ -104,9 +106,22 @@ func _on_cancel_pressed() -> void:
 	queue_free()
 	
 func _on_ok_pressed() -> void:
+	var children = []
+	
+	for i in hex_viewer.get_node("sort/results/offset").get_child_count():
+		children.append(hex_viewer.get_node("sort/results/offset").get_child(i))
+		
+	for child in children:
+		child.queue_free()
+		
 	var hex_arr = signature_search($user_input.text)
 	if hex_arr != null:
 		for i in hex_arr.size():
+			var label = hex_labels.instantiate()
+			label.text = _dec_to_hex(hex_arr[i][0], hex_arr[i][1])
+			label.theme = load("res://pc_components.tres")
+			hex_viewer.get_node("sort/results/offset").add_child(label)
+			
 			print(_dec_to_hex(hex_arr[i][0], hex_arr[i][1]))
 	hex_viewer.search_open = false
 	queue_free()

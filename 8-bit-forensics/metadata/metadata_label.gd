@@ -3,7 +3,6 @@ extends Label
 var draw_allowed:bool = false
 
 func _ready() -> void:
-	
 	#$select/select_shape.shape.size.x = custom_minimum_size.x
 	$select/select_shape.position.x = $select/select_shape.shape.size.x / 2
 	#$selected.size.x = custom_minimum_size.x

@@ -35,6 +35,7 @@ signal answer(day:String, answer:int)
 signal child_joined()
 
 signal metadata_selected(selected:Node)
+signal hex_selected(row:int)
 
 signal next_step(stage:Node)
 

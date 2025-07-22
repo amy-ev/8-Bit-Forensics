@@ -9,7 +9,7 @@ var load_file_open:bool = false
 
 @onready var search_window = preload("res://hex_viewer/search.tscn")
 @onready var select_window = preload("res://hex_viewer/select.tscn")
-@onready var hex_label = $tab/scroll/label
+@onready var hex_label = $sort/tab/label
 
 const PAGE_ROWS:int = 2000
 var TOTAL_ROWS:int
@@ -22,8 +22,8 @@ var mutex:Mutex
 func _ready() -> void:
 	hex_label.bbcode_enabled = false
 	hex_label.custom_minimum_size.x = 196
-	hex_label.custom_minimum_size.y = 118
-	
+	hex_label.custom_minimum_size.y = 96
+	Global.connect("hex_selected", _on_hex_select)
 	#allow the text to be added by another thread to allow player to still interact
 	thread = Thread.new()
 	mutex = Mutex.new()
@@ -42,7 +42,17 @@ func _thread_function():
 	print("thread finished")
 	
 func open_file(file_path):
-
+	var children = []
+	
+	for i in $sort/results/offset.get_child_count():
+		children.append($sort/results/offset.get_child(i))
+		
+	for child in children:
+		child.queue_free()
+		
+	$sort/tab/label.scroll_to_line(0)
+	$sort/tab/label.clear()
+	
 	if FileAccess.file_exists(file_path):
 		#hex_label.set_visible(false)
 		var file = FileAccess.open(file_path, FileAccess.READ)
@@ -109,7 +119,9 @@ func _input(event: InputEvent) -> void:
 			select_open = true
 			add_child(select_window.instantiate())
 
-
+func _on_hex_select(row:int):
+	$sort/tab/label.scroll_to_line(row)
+	
 func _on_exit_pressed() -> void:
 	queue_free()
 
