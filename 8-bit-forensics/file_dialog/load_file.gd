@@ -85,9 +85,9 @@ func _on_load_button_pressed() -> void:
 		else:
 			print("Type: ", type_string(typeof(json_dict)))
 
-	elif get_parent().name == "hex_viewer":
+	elif get_parent().name == "hex_viewer"|| get_parent().name == "main":
 		get_parent().open_file("res://jpg_folder/"+selected_file)
-		get_parent().load_file_open = false
+		#get_parent().load_file_open = false
 		
 	queue_free()
 	
@@ -138,7 +138,7 @@ func file_count(file_path:String) -> int:
 func _on_exit_pressed() -> void:
 	if get_parent().name == "metadata_window":
 		OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
-	elif get_parent().name == "hex_viewer":
+	elif get_parent().name == "hex_viewer" || get_parent().name == "main":
 		get_parent().load_file_open = false
 		
 	queue_free()
