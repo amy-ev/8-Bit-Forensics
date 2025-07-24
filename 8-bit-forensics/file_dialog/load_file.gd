@@ -87,13 +87,13 @@ func _on_load_button_pressed() -> void:
 	elif get_parent().name == "hex_viewer":
 		get_parent().open_file("res://jpg_folder/"+selected_file)
 		get_parent().load_file_open = false
-		if get_parent().get_node("scroll_manager/window").get_child_count() > 1:
+		if get_parent().get_node("v_sort/scroll_manager/sort/window").get_child_count() > 1:
 			var children = []
-			for i in get_parent().get_node("scroll_manager/window").get_children():
+			for i in get_parent().get_node("v_sort/scroll_manager/sort/window").get_children():
 				if i.name != "original_file":
 					children.append(i)
 			for child in children:
-				get_parent().get_node("scroll_manager/window").remove_child(child)
+				get_parent().get_node("v_sort/scroll_manager/sort/window").remove_child(child)
 	queue_free()
 	
 func add_files(file_no:int):

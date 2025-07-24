@@ -4,9 +4,9 @@ var load_file_open:bool = false
 var search_open:bool = false
 var select_open:bool = false
 
-@onready var hex_text = $scroll_manager/window/original_file/hex_text
-@onready var scroll_bar = $scroll_manager/scroll_bar
-@onready var tabs = $scroll_manager/window
+@onready var hex_text = $v_sort/scroll_manager/sort/window/original_file/hex_text
+@onready var scroll_bar = $v_sort/scroll_manager/scroll_bar
+@onready var tabs = $v_sort/scroll_manager/sort/window
 
 @onready var search_window = preload("res://hex_viewer/search_new.tscn")
 @onready var select_window = preload("res://hex_viewer/select.tscn")
@@ -59,10 +59,10 @@ func _on_load_pressed() -> void:
 func _on_window_tab_changed(tab: int) -> void:
 	var buffer
 	if tab != 0:
-		hex_text = get_node("scroll_manager/window/new_file"+str(tab)+"/hex_text")
+		hex_text = get_node("v_sort/scroll_manager/sort/window/new_file"+str(tab)+"/hex_text")
 		buffer = hex_text._wrapped_buffer
 	else:
-		hex_text = $scroll_manager/window/original_file/hex_text
+		hex_text = $v_sort/scroll_manager/sort/window/original_file/hex_text
 		buffer = _wrapped_buffer.buffer
 
 	hex_text.update_scroll(buffer)

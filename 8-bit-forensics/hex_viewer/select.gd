@@ -82,14 +82,14 @@ func _on_ok_pressed() -> void:
 		block_carved = true
 		var new_file = _new_file.instantiate()
 		new_file.name = "new_file1"
-		hex_viewer.get_node("scroll_manager/window").add_child(new_file, true)
+		hex_viewer.get_node("v_sort/scroll_manager/sort/window").add_child(new_file, true)
 		
 		new_file.get_node("hex_text").set_wrapped_buffer(carved_buffer)
-		hex_viewer.get_node("scroll_manager").scroll_bar.update_scroll(carved_buffer)
+		hex_viewer.get_node("v_sort/scroll_manager").scroll_bar.update_scroll(carved_buffer)
 		new_file.get_node("hex_text").update_scroll(carved_buffer)
 		
 		new_file.get_node("hex_text").carved_block = carved_buffer
-		hex_viewer.get_node("scroll_manager/window").set_current_tab(hex_viewer.get_node("scroll_manager/window").get_child_count() -1)
+		hex_viewer.get_node("v_sort/scroll_manager/sort/window").set_current_tab(hex_viewer.get_node("v_sort/scroll_manager/sort/window").get_child_count() -1)
 	queue_free()
 
 func _on_cancel_pressed() -> void:

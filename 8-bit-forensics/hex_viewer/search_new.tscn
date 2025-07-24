@@ -16,6 +16,7 @@ patch_margin_bottom = 2
 script = ExtResource("2_j0j03")
 
 [node name="user_input" type="LineEdit" parent="."]
+layout_mode = 0
 offset_left = 6.0
 offset_top = 24.0
 offset_right = 71.0
@@ -33,6 +34,7 @@ deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
 [node name="search_label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 6.0
 offset_top = 16.0
 offset_right = 32.0
