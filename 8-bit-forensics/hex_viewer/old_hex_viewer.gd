@@ -8,7 +8,7 @@ var select_open:bool = false
 var hex_data:PackedStringArray
 
 @onready var search_window = preload("res://hex_viewer/search.tscn")
-@onready var select_window = preload("res://hex_viewer/select.tscn")
+@onready var select_window = preload("res://hex_viewer/old_select.tscn")
 @onready var hex_label = $"sort/tab/new file"
 
 const PAGE_ROWS:int = 2000

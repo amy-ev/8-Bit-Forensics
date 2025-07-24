@@ -8,7 +8,7 @@ var select_open:bool = false
 @onready var scroll_bar = $scroll_manager/scroll_bar
 @onready var tabs = $scroll_manager/window
 
-@onready var search_window = preload("res://hex_viewer/search.tscn")
+@onready var search_window = preload("res://hex_viewer/search_new.tscn")
 @onready var select_window = preload("res://hex_viewer/select.tscn")
 
 
