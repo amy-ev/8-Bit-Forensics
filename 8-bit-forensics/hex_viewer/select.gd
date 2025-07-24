@@ -1,58 +1,28 @@
 extends NinePatchRect
 
 @onready var hex_viewer = get_parent()
+@onready var _new_file = preload("res://hex_viewer/new_file.tscn")
 
-var result = []
+var block_carved:bool
+var carved_buffer:=PackedByteArray()
 
 func _ready() -> void:
+
+
+	block_carved = false
 	$start.grab_focus()
+	
+func _select(start,end):
+	var buffer = hex_viewer._wrapped_buffer.buffer
+	
+	start = _hex_to_dec(start)
+	end = _hex_to_dec(end)
+	
+	var carved_block:=PackedByteArray()
+	for i in range(start,end+1):
+		carved_block.append(buffer[i])
+	return carved_block
 
-func _on_ok_pressed() -> void:
-	hex_viewer.select_open = false
-
-	var hex_section:PackedStringArray = _select($start.text,$end.text)
-	
-	var output_label = RichTextLabel.new()
-	output_label.name = "new file"
-	hex_viewer.get_node("sort/tab").add_child(output_label, true)
-	
-	var output = hex_viewer.get_node("sort/tab/"+ output_label.name)
-	hex_viewer.get_node("sort/tab").set_current_tab(hex_viewer.get_node("sort/tab").get_child_count() -1)
-	
-	output.custom_minimum_size.x = 192
-	output.custom_minimum_size.y = 84
-	output.clear()
-	
-	for i in range(0,hex_section.size(),16):
-		result.append(hex_section.slice(i, i + 16))
-	for i in range(result.size()):
-		var row = result[i]
-		for j in range(row.size()):
-			output.add_text(str(row[j]))
-			if j < row.size() - 1:
-				output.add_text(" ")
-		output.newline()
-	hex_viewer.output = result
-	hex_viewer.get_node("save").disabled = false
-	queue_free()
-
-func _select(start_offset, end_offset):
-	if (start_offset == null or start_offset == "") or (end_offset == null or end_offset == ""):
-		return
-		
-	var x1 = _hex_to_dec(start_offset)[0]
-	var y1 = _hex_to_dec(start_offset)[1]
-	var x2 = _hex_to_dec(end_offset)[0]
-	var y2 = _hex_to_dec(end_offset)[1]
-	
-	var start = (x1 * 16) + y1
-	var end = (x2 * 16) + y2
-	
-	var hex_text = hex_viewer.get_node("sort/tab/new file")
-	print(x1," ", y1, " ", x2, " ", y2)
-	print(start, " ", end)
-	return hex_viewer.hex_data.slice(start,end+1)
-	
 func _hex_to_dec(input:String):
 	var x = []
 	var y = []
@@ -77,9 +47,16 @@ func _hex_to_dec(input:String):
 	for i in range(y.size()):
 		y[i] = convert_hex(y[i])
 		y_result += int(y[i]) * (16 ** i)
-		
-	return [x_result, y_result]
-
+	
+	var hex_index:int
+	
+	if x_result == 0:
+		hex_index = x_result + y_result
+	else:
+		hex_index = (x_result) * 16
+		hex_index += y_result
+	return hex_index
+	
 func convert_hex(i:String):
 	i = i.to_upper()
 	match i:
@@ -97,6 +74,23 @@ func convert_hex(i:String):
 			return "15"
 		_:
 			return i
+			
+func _on_ok_pressed() -> void:
+	hex_viewer.select_open = false
+	carved_buffer = _select($start.text, $end.text)
+	if carved_buffer != null:
+		block_carved = true
+		var new_file = _new_file.instantiate()
+		new_file.name = "new_file1"
+		hex_viewer.get_node("scroll_manager/window").add_child(new_file, true)
+		
+		new_file.get_node("hex_text").set_wrapped_buffer(carved_buffer)
+		hex_viewer.get_node("scroll_manager").scroll_bar.update_scroll(carved_buffer)
+		new_file.get_node("hex_text").update_scroll(carved_buffer)
+		
+		new_file.get_node("hex_text").carved_block = carved_buffer
+		hex_viewer.get_node("scroll_manager/window").set_current_tab(hex_viewer.get_node("scroll_manager/window").get_child_count() -1)
+	queue_free()
 
 func _on_cancel_pressed() -> void:
 	hex_viewer.select_open = false

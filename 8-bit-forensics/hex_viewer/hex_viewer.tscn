@@ -1,89 +1,58 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqai7e5o8pqlh"]
+[gd_scene load_steps=8 format=3 uid="uid://bvawuopyd7eqq"]
 
-[ext_resource type="Script" uid="uid://c4m27nwwq4imj" path="res://hex_viewer/hex_viewer.gd" id="1_auk66"]
 [ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="1_m7h7m"]
+[ext_resource type="Script" uid="uid://b5k5r2302vhyn" path="res://hex_viewer/hex_viewer.gd" id="2_cke5y"]
+[ext_resource type="Script" uid="uid://dijp07ip3yh7s" path="res://hex_viewer/scroll_manager.gd" id="3_5olva"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="3_cke5y"]
-[ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/file_dialog/exit-button.png" id="3_rut17"]
+[ext_resource type="PackedScene" uid="uid://db4sjj6kgif47" path="res://hex_viewer/new_file.tscn" id="5_woy5n"]
+[ext_resource type="Script" uid="uid://ck2m7tv0m2jxu" path="res://hex_viewer/scroll_bar.gd" id="6_2nup8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cm2t2"]
 
 [node name="hex_viewer" type="NinePatchRect"]
-offset_left = 76.0
-offset_top = 16.0
-offset_right = 282.0
-offset_bottom = 164.0
+offset_right = 300.0
+offset_bottom = 148.0
+mouse_filter = 1
 texture = ExtResource("1_m7h7m")
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
-script = ExtResource("1_auk66")
+script = ExtResource("2_cke5y")
 
-[node name="sort" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 20.0
-offset_right = 200.0
-offset_bottom = 142.0
-theme_override_constants/separation = 0
+[node name="scroll_manager" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 300.0
+offset_bottom = 150.0
+theme_override_constants/separation = -4
+script = ExtResource("3_5olva")
 
-[node name="tab" type="TabContainer" parent="sort"]
-custom_minimum_size = Vector2(0, 100)
+[node name="window" type="TabContainer" parent="scroll_manager"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("3_cke5y")
 current_tab = 0
-tabs_visible = false
 
-[node name="new file" type="RichTextLabel" parent="sort/tab"]
+[node name="original_file" parent="scroll_manager/window" instance=ExtResource("5_woy5n")]
 layout_mode = 2
-theme = ExtResource("3_cke5y")
-autowrap_mode = 0
-shortcut_keys_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-metadata/_tab_index = 0
 
-[node name="results" type="ScrollContainer" parent="sort"]
-custom_minimum_size = Vector2(0, 22)
+[node name="scroll_bar" type="ColorRect" parent="scroll_manager"]
+material = SubResource("ShaderMaterial_cm2t2")
+custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
-theme = ExtResource("3_cke5y")
-horizontal_scroll_mode = 0
+color = Color(0.45098, 0.396078, 0.290196, 1)
+script = ExtResource("6_2nup8")
 
-[node name="offset" type="VBoxContainer" parent="sort/results"]
-clip_contents = true
-custom_minimum_size = Vector2(178, 16)
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="exit" type="TextureButton" parent="."]
-visible = false
-layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = 13.0
-offset_right = 13.0
-offset_bottom = 9.0
-grow_horizontal = 0
-texture_normal = ExtResource("3_rut17")
-
-[node name="open" type="Button" parent="."]
+[node name="load" type="Button" parent="."]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 3.0
-offset_right = 29.0
-offset_bottom = 18.0
+offset_left = 277.0
+offset_right = 300.0
+offset_bottom = 15.0
 theme = ExtResource("3_cke5y")
 text = "open"
 
-[node name="save" type="Button" parent="."]
-layout_mode = 0
-offset_left = 31.0
-offset_top = 3.0
-offset_right = 54.0
-offset_bottom = 18.0
-theme = ExtResource("3_cke5y")
-disabled = true
-text = "save"
-
-[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="open" to="." method="_on_open_pressed"]
-[connection signal="pressed" from="save" to="." method="_on_save_pressed"]
+[connection signal="gui_input" from="scroll_manager" to="scroll_manager" method="_on_gui_input"]
+[connection signal="tab_changed" from="scroll_manager/window" to="." method="_on_window_tab_changed"]
+[connection signal="ask_scroll" from="scroll_manager/scroll_bar" to="scroll_manager" method="_on_scroll_bar_ask_scroll"]
+[connection signal="gui_input" from="scroll_manager/scroll_bar" to="scroll_manager/scroll_bar" method="_on_gui_input"]
+[connection signal="pressed" from="load" to="." method="_on_load_pressed"]

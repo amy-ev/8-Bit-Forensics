@@ -1,12 +1,17 @@
 extends HBoxContainer
 
-@onready var hex_text = $window/new_file/hex_text
+@onready var hex_text = $window/original_file/hex_text
 @onready var scroll_bar = $scroll_bar
 
 var _last_scroll_time = 0
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton && event.is_pressed():
+		if get_node("window").current_tab != 0:
+			hex_text = get_node("window/new_file"+str(get_node("window").current_tab)+"/hex_text")
+		else:
+			hex_text = $window/original_file/hex_text
+		
 		match event.button_index:
 			MOUSE_BUTTON_WHEEL_DOWN:
 				_scroll(int(event.factor))
@@ -35,5 +40,5 @@ func _scroll_to(i):
 	hex_text.set_row_index(i)
 	scroll_bar.set_row_index(i)
 	
-func _on_minimap_ask_scroll(row_index):
+func _on_scroll_bar_ask_scroll(row_index):
 	_scroll_to(row_index)

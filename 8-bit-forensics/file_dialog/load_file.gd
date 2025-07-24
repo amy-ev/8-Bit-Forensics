@@ -5,7 +5,6 @@ class_name LoadFile
 @onready var files = preload("res://file_dialog/file.tscn")
 #@onready var saved_dialog_scene = preload("res://file_dialog/save_file.tscn")
 @onready var metadata_labels = preload("res://metadata/metadata_label.tscn")
-@onready var hex_scene = preload("res://hex_viewer/hex_viewer.tscn")
 
 @export var file_icon: ImageTexture
 @export var selected_file: String
@@ -85,10 +84,16 @@ func _on_load_button_pressed() -> void:
 		else:
 			print("Type: ", type_string(typeof(json_dict)))
 
-	elif get_parent().name == "hex_viewer"|| get_parent().name == "main":
+	elif get_parent().name == "hex_viewer":
 		get_parent().open_file("res://jpg_folder/"+selected_file)
-		#get_parent().load_file_open = false
-		
+		get_parent().load_file_open = false
+		if get_parent().get_node("scroll_manager/window").get_child_count() > 1:
+			var children = []
+			for i in get_parent().get_node("scroll_manager/window").get_children():
+				if i.name != "original_file":
+					children.append(i)
+			for child in children:
+				get_parent().get_node("scroll_manager/window").remove_child(child)
 	queue_free()
 	
 func add_files(file_no:int):
@@ -138,7 +143,7 @@ func file_count(file_path:String) -> int:
 func _on_exit_pressed() -> void:
 	if get_parent().name == "metadata_window":
 		OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
-	elif get_parent().name == "hex_viewer" || get_parent().name == "main":
+	elif get_parent().name == "hex_viewer":
 		get_parent().load_file_open = false
 		
 	queue_free()
