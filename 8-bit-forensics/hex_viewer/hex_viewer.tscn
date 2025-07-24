@@ -79,9 +79,18 @@ offset_bottom = 15.0
 theme = ExtResource("3_cke5y")
 text = "open"
 
+[node name="save" type="Button" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_right = 279.0
+offset_bottom = 15.0
+theme = ExtResource("3_cke5y")
+text = "save"
+
 [connection signal="gui_input" from="v_sort/scroll_manager" to="v_sort/scroll_manager" method="_on_gui_input"]
 [connection signal="tab_changed" from="v_sort/scroll_manager/sort/window" to="." method="_on_window_tab_changed"]
 [connection signal="ask_scroll" from="v_sort/scroll_manager/scroll_bar" to="v_sort/scroll_manager" method="_on_scroll_bar_ask_scroll"]
 [connection signal="gui_input" from="v_sort/scroll_manager/scroll_bar" to="v_sort/scroll_manager/scroll_bar" method="_on_gui_input"]
 [connection signal="ask_scroll" from="v_sort/results_scroll_manager/results_scroll_bar" to="v_sort/results_scroll_manager" method="_on_results_scroll_bar_ask_scroll"]
 [connection signal="pressed" from="load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]

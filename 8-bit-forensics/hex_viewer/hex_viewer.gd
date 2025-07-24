@@ -38,7 +38,7 @@ func open_file(file_path:String):
 	else:
 		print("failed to open file")
 		return
-	
+		
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("find"):
 		if !search_open && !select_open && !load_file_open:
@@ -67,3 +67,22 @@ func _on_window_tab_changed(tab: int) -> void:
 
 	hex_text.update_scroll(buffer)
 	scroll_bar.update_scroll(buffer)
+
+
+func _on_save_pressed() -> void:
+	var buffer = tabs.get_child(tabs.current_tab).get_node("hex_text")._wrapped_buffer
+	
+	var start_str = ""
+	var end_str = ""
+	
+	for i in range(4):
+		start_str += str(hex_text._hex_to_string[buffer[i]]+ "") 
+
+	for i in range(len(buffer)-2, len(buffer)):
+		end_str += str(hex_text._hex_to_string[buffer[i]]+ "")
+		
+	if (start_str == "ffd8ffe1" || start_str == "ffd8ffe0") && end_str == "ffd9":
+		#TODO: change file name
+		var file = FileAccess.open("res://jpg_folder/tester.jpg", FileAccess.WRITE)
+		file.store_buffer(tabs.get_child(tabs.current_tab).get_node("hex_text")._wrapped_buffer)
+		file.close()
