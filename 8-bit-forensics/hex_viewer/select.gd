@@ -90,6 +90,7 @@ func _on_ok_pressed() -> void:
 		
 		new_file.get_node("hex_text").carved_block = carved_buffer
 		hex_viewer.get_node("v_sort/scroll_manager/sort/window").set_current_tab(hex_viewer.get_node("v_sort/scroll_manager/sort/window").get_child_count() -1)
+		hex_viewer.get_node("save").disabled = false
 	queue_free()
 
 func _on_cancel_pressed() -> void:

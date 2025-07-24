@@ -85,6 +85,7 @@ offset_left = 256.0
 offset_right = 279.0
 offset_bottom = 15.0
 theme = ExtResource("3_cke5y")
+disabled = true
 text = "save"
 
 [connection signal="gui_input" from="v_sort/scroll_manager" to="v_sort/scroll_manager" method="_on_gui_input"]
