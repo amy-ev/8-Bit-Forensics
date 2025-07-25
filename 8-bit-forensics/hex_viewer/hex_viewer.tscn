@@ -61,7 +61,6 @@ theme_override_constants/separation = -4
 script = ExtResource("7_2nup8")
 
 [node name="results" type="Control" parent="v_sort/results_scroll_manager"]
-visible = false
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 script = ExtResource("8_ywfrl")
@@ -69,6 +68,7 @@ script = ExtResource("8_ywfrl")
 [node name="results_scroll_bar" type="ColorRect" parent="v_sort/results_scroll_manager"]
 custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
+color = Color(0.321569, 0.282353, 0.223529, 1)
 script = ExtResource("9_f13me")
 
 [node name="load" type="Button" parent="."]
@@ -92,6 +92,8 @@ text = "save"
 [connection signal="tab_changed" from="v_sort/scroll_manager/sort/window" to="." method="_on_window_tab_changed"]
 [connection signal="ask_scroll" from="v_sort/scroll_manager/scroll_bar" to="v_sort/scroll_manager" method="_on_scroll_bar_ask_scroll"]
 [connection signal="gui_input" from="v_sort/scroll_manager/scroll_bar" to="v_sort/scroll_manager/scroll_bar" method="_on_gui_input"]
+[connection signal="gui_input" from="v_sort/results_scroll_manager" to="v_sort/results_scroll_manager" method="_on_gui_input"]
 [connection signal="ask_scroll" from="v_sort/results_scroll_manager/results_scroll_bar" to="v_sort/results_scroll_manager" method="_on_results_scroll_bar_ask_scroll"]
+[connection signal="gui_input" from="v_sort/results_scroll_manager/results_scroll_bar" to="v_sort/results_scroll_manager/results_scroll_bar" method="_on_gui_input"]
 [connection signal="pressed" from="load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="save" to="." method="_on_save_pressed"]

@@ -4,7 +4,6 @@ signal ask_scroll(_row_index)
 
 var _row_index = 0
 var row_width = 16
-#var page_height = 20
 var total_rows = 0
 
 #no. of rows on screen - 1 

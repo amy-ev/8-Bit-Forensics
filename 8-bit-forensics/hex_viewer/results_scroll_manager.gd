@@ -35,6 +35,5 @@ func _scroll_to(i):
 	results_text.set_row_index(i)
 	scroll_bar.set_row_index(i)
 
-
 func _on_results_scroll_bar_ask_scroll(row_index):
 	_scroll_to(row_index)

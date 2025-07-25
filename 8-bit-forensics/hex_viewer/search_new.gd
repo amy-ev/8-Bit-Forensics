@@ -1,13 +1,23 @@
 extends NinePatchRect
 
 @onready var hex_viewer = get_parent()
+@onready var results_viewer = get_parent().get_node("v_sort/results_scroll_manager")
 var results = []
 
 func _ready() -> void:
 	$user_input.grab_focus()
-	
+	results_viewer.results_text.results_recieved = false
+	results_viewer.results_text.queue_redraw()
 	
 func _search(signature:String):
+	
+	signature = signature.replace(" ", "")
+	signature = signature.strip_escapes()
+	signature = signature.to_lower()
+
+	if signature == null or signature == "":
+		return
+		
 	var buffer:= PackedByteArray()
 	
 	if hex_viewer.tabs.current_tab != 0:
@@ -31,9 +41,8 @@ func _search(signature:String):
 			var hex_index = i
 			var row = hex_index / 16
 			var column = hex_index % 16
-			results.append(_dec_to_hex(row,column))
-		
-	
+			results.append([_dec_to_hex(row,column), hex_index])
+	return results
 	
 func _dec_to_hex(x:int, y:int)-> String:
 	var result = []
@@ -78,8 +87,12 @@ func _on_exit_pressed() -> void:
 	queue_free()
 
 func _on_ok_pressed() -> void:
-	_search($user_input.text)
-	Global.emit_signal("signature_found", results)
+	if $user_input.text != "":
+		var results_buffer = _search($user_input.text)
+		if results_buffer != null:
+			Global.emit_signal("signature_found", results)
+			results_viewer.results_text.update_scroll(results_buffer)
+			results_viewer.scroll_bar.update_scroll(results_buffer)
 	
 	hex_viewer.search_open = false
 	queue_free()

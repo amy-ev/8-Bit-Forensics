@@ -28,6 +28,7 @@ signal note_selected(note_topic:String)
 
 signal level_unlocked(day:String)
 
+signal signature_found(locations:Array)
 signal evidence_collected()
 signal create_image_file()
 

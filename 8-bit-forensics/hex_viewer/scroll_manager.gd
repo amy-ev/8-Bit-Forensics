@@ -7,11 +7,6 @@ var _last_scroll_time = 0
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton && event.is_pressed():
-		if get_node("sort/window").current_tab != 0:
-			hex_text = get_node("sort/window/new_file"+str(get_node("sort/window").current_tab)+"/hex_text")
-		else:
-			hex_text = $sort/window/original_file/hex_text
-		
 		match event.button_index:
 			MOUSE_BUTTON_WHEEL_DOWN:
 				_scroll(int(event.factor))
@@ -19,7 +14,12 @@ func _on_gui_input(event: InputEvent) -> void:
 				_scroll(-int(event.factor))
 				
 func _scroll(delta):
+	if get_node("sort/window").current_tab != 0:
+		hex_text = get_node("sort/window/new_file"+str(get_node("sort/window").current_tab)+"/hex_text")
+	else:
+		hex_text = $sort/window/original_file/hex_text
 	var now = Time.get_ticks_msec()
+	
 	if Input.is_key_pressed(KEY_CTRL):
 		var row_count = hex_text.get_visible_row_count()
 		if delta <0:

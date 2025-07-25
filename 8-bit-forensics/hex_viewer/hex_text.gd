@@ -18,6 +18,7 @@ var separation := 0
 var _hex_to_string := []
 
 @onready var carved_block:=PackedByteArray()
+
 var OFFSET:int
 var FONT_SIZE:= 8
 var FONT_COLOUR:= Color(0.322, 0.282, 0.224)
@@ -98,7 +99,8 @@ func _draw() -> void:
 			#left side offset labels
 			draw_string(font, pos, _offset_to_string(row_begin_offset), 0, -1,FONT_SIZE, FONT_COLOUR)
 			pos.x += offset_gap + separation
-			
+			#print(row_begin_offset, " ", row_end_offset)
+			#print(get_row_index())
 			#hex text viewer
 			var hex_string = ""
 			for i in range(row_begin_offset, row_end_offset):

@@ -15,11 +15,15 @@ var current_rect: ColorRect
 
 var file: File
 
+var parent:Node
+
 func _ready() -> void:
 	add_files(file_count("res://jpg_folder/"))
 	Global.connect("selected",_on_file_selected)
 	
-	if get_parent().name == "metadata_window":
+	parent = get_parent()
+	
+	if parent.name == "metadata_window":
 		#start server python script
 		#TODO: CHANGE TO FALSE
 		OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/start.bat",[],true) # true = terminal popup (for debugging)
@@ -33,12 +37,12 @@ func _ready() -> void:
 	# ---------------------------
 	
 func _on_load_button_pressed() -> void:
-	print(get_parent().name)
+	print(parent.name)
 	Global.selected_file = selected_file
 	
-	if get_parent().name == "metadata_window":
-		var metadata_thumbnail = get_parent().get_node("thumbnail_column/thumbnail")
-		var metadata_column = get_parent().get_node("scroll/data_container")
+	if parent.name == "metadata_window":
+		var metadata_thumbnail = parent.get_node("thumbnail_column/thumbnail")
+		var metadata_column = parent.get_node("scroll/data_container")
 		
 		#start client godot script
 		var client = client_scene.instantiate()
@@ -84,16 +88,24 @@ func _on_load_button_pressed() -> void:
 		else:
 			print("Type: ", type_string(typeof(json_dict)))
 
-	elif get_parent().name == "hex_viewer":
-		get_parent().open_file("res://jpg_folder/"+selected_file)
-		get_parent().load_file_open = false
-		if get_parent().get_node("v_sort/scroll_manager/sort/window").get_child_count() > 1:
+	elif parent.name == "hex_viewer":
+		parent.open_file("res://jpg_folder/"+selected_file)
+		parent.load_file_open = false
+		
+		var tabs = parent.get_node("v_sort/scroll_manager/sort/window")
+		
+		if tabs.get_child_count() > 1:
 			var children = []
-			for i in get_parent().get_node("v_sort/scroll_manager/sort/window").get_children():
+			for i in tabs.get_children():
 				if i.name != "original_file":
 					children.append(i)
 			for child in children:
-				get_parent().get_node("v_sort/scroll_manager/sort/window").remove_child(child)
+				tabs.remove_child(child)
+				
+				
+		var search_results = parent.get_node("v_sort/results_scroll_manager/results")
+		search_results.results_recieved = false
+		search_results.queue_redraw()
 	queue_free()
 	
 func add_files(file_no:int):
@@ -141,10 +153,10 @@ func file_count(file_path:String) -> int:
 	return files_no
 	
 func _on_exit_pressed() -> void:
-	if get_parent().name == "metadata_window":
+	if parent.name == "metadata_window":
 		OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
-	elif get_parent().name == "hex_viewer":
-		get_parent().load_file_open = false
+	elif parent.name == "hex_viewer":
+		parent.load_file_open = false
 		
 	queue_free()
 
@@ -162,10 +174,10 @@ func _on_file_selected(selected_node:File, real_file:String):
 	
 	print("selected_node: %s, real_file: %s, selected_file: %s "%[selected_node, real_file, selected_file])
 	
-	if get_parent().name == "metadata_window":
+	if parent.name == "metadata_window":
 		file_idx = selected_file.replacen("photo", "")
 		file_idx = file_idx.replacen(".jpg", "")
-		get_parent().current_image = file_idx
+		parent.current_image = file_idx
 	
 func open_json(file_path):
 	if FileAccess.file_exists(file_path):

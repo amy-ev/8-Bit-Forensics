@@ -7,7 +7,7 @@ var row_width = 16
 var total_rows = 0
 
 #no. of rows on screen - 1 
-var OFFSET:= 20
+var OFFSET:= 2
 
 func update_scroll(buffer):
 	total_rows = len(buffer) / row_width

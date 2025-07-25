@@ -7,6 +7,7 @@ var select_open:bool = false
 @onready var hex_text = $v_sort/scroll_manager/sort/window/original_file/hex_text
 @onready var scroll_bar = $v_sort/scroll_manager/scroll_bar
 @onready var tabs = $v_sort/scroll_manager/sort/window
+@onready var results_text = $v_sort/results_scroll_manager/results
 
 @onready var search_window = preload("res://hex_viewer/search_new.tscn")
 @onready var select_window = preload("res://hex_viewer/select.tscn")
@@ -21,6 +22,7 @@ var _file_path:= ""
 
 func _ready() -> void:
 	hex_text.set_wrapped_buffer(_wrapped_buffer)
+	results_text.set_wrapped_buffer(_wrapped_buffer)
 
 func open_file(file_path:String):
 	if FileAccess.file_exists(file_path):
@@ -64,7 +66,9 @@ func _on_window_tab_changed(tab: int) -> void:
 	else:
 		hex_text = $v_sort/scroll_manager/sort/window/original_file/hex_text
 		buffer = _wrapped_buffer.buffer
-
+	results_text.results_recieved = false
+	results_text.queue_redraw()
+	
 	hex_text.update_scroll(buffer)
 	scroll_bar.update_scroll(buffer)
 
