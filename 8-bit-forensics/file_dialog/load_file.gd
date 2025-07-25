@@ -154,6 +154,7 @@ func file_count(file_path:String) -> int:
 	
 func _on_exit_pressed() -> void:
 	if parent.name == "metadata_window":
+		#TODO: REMEMBER TO CHANGE THIS BEFORE EXPORT
 		OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
 	elif parent.name == "hex_viewer":
 		parent.load_file_open = false
