@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6sldv7wkulby"]
 
-[ext_resource type="Script" uid="uid://bdo1hbivbrq8h" path="res://end_quiz.gd" id="1_amf4w"]
+[ext_resource type="Script" uid="uid://bdo1hbivbrq8h" path="res://quiz/end_quiz.gd" id="1_amf4w"]
 [ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="2_x16n5"]
 [ext_resource type="ButtonGroup" uid="uid://ugpr4nutnptu" path="res://evidence/image_type.tres" id="3_hxbvm"]
 [ext_resource type="PackedScene" uid="uid://c0wglcbgod0a4" path="res://dialogue/helper.tscn" id="3_x16n5"]

@@ -6,7 +6,7 @@ func _on_button_pressed() -> void:
 		get_parent().get_node("button").set_pressed(false)
 		queue_free()
 	if get_parent().name == "new_bag":
-		get_tree().change_scene_to_file("res://end_quiz.tscn")
+		get_tree().change_scene_to_file("res://quiz/end_quiz.tscn")
 
 func start(dialogue:String):
 	$panel/dialogue_label.start(dialogue)

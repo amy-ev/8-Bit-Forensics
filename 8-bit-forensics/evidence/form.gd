@@ -51,12 +51,14 @@ func _on_confirm_pressed() -> void:
 			add_child(dialogue)
 			dialogue.start("does not match")
 		else:
-			queue_free()
 			var dialogue = load("res://dialogue/dialogue_display.tscn").instantiate()
 			dialogue.get_node("npc_normal").set_visible(false)
 			dialogue.get_node("npc_good").set_visible(true)
+			#TODO: reseal animation
+
 			get_parent().add_child(dialogue)
 			dialogue.start("crime ! time to end day")
+			queue_free()
 			#trigger dialogue to end day
 	elif get_parent().name == "opened_bag":
 		queue_free()

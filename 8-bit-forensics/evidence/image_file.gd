@@ -17,7 +17,7 @@ func menu_popup(id):
 		
 func _on_file_created():
 	Global.file_created = true
-	$end.set_visible(true)
+	$end.set_visible(false)
 	print("created")
 		#change to match the file contents of the sd card
 	var file_1 = $evidence_tree.create_item()

@@ -13,6 +13,7 @@ func _ready() -> void:
 		add_child(debrief)
 	if day != 1:
 		$bottom_screen/evidence_bag.visible = false
+		evidence_collected = true
 	scale = scale * Utility.window_mode()
 	Global.connect("evidence_collected", _on_evidence_collect)
 
@@ -39,7 +40,7 @@ func _on_pc_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 				if evidence_collected:
 						get_tree().change_scene_to_file("res://pc/pc_screen.tscn")
 					
-				else:					
+				else:
 					if !Global.is_first_bag && Global.file_created:
 						var dialogue = _dialogue.instantiate()
 						add_child(dialogue)
