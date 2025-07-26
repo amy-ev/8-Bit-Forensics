@@ -1,10 +1,10 @@
-extends VBoxContainer
+extends NinePatchRect
 
 @onready var pc = get_parent()
 
 func _ready() -> void:
 	Global.emit_signal("next_step",self)
-	$case_no.grab_focus()
+	$sort/case_no.grab_focus()
 	
 func _on_back_pressed() -> void:
 	pc.add_child(load("res://evidence/image_type.tscn").instantiate())
@@ -15,7 +15,7 @@ func _on_cancel_pressed() -> void:
 
 func _on_next_pressed() -> void:
 
-	if $examiner.text == Global.form_name:
+	if $sort/examiner.text == Global.form_name:
 		pc.add_child(load("res://evidence/create_file.tscn").instantiate())
 		queue_free()
 	else:

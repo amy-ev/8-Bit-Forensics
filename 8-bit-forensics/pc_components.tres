@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=50 format=3 uid="uid://b518a15p4qy0m"]
+[gd_resource type="Theme" load_steps=51 format=3 uid="uid://b518a15p4qy0m"]
 
 [ext_resource type="Texture2D" uid="uid://b5racejdl5xkx" path="res://assets/UI/checkbox-full.png" id="1_4qoqg"]
 [ext_resource type="Texture2D" uid="uid://wdcwbtfbqxkp" path="res://assets/evidence/button-disabled-2.png" id="1_fmhw4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://0s5m2tk4m2rr" path="res://assets/evidence/button-pressed.png" id="2_g44vn"]
 [ext_resource type="Texture2D" uid="uid://dqlmysnd80so4" path="res://assets/evidence/button.png" id="3_aktum"]
 [ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_aywan"]
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="7_g44vn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dm8my"]
 content_margin_left = 4.0
@@ -196,37 +197,29 @@ texture_margin_top = 2.0
 texture_margin_right = 2.0
 texture_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bryjo"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_exqvc"]
 content_margin_left = 6.0
-bg_color = Color(0.901961, 0.807843, 0.67451, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
+texture = ExtResource("7_g44vn")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jix2t"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w2lbf"]
 content_margin_left = 6.0
-bg_color = Color(0.847059, 0.752941, 0.615686, 1)
-border_color = Color(0.741176, 0.647059, 0.513726, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
+texture = ExtResource("7_g44vn")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exqvc"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0q4by"]
 content_margin_left = 6.0
-bg_color = Color(0.847059, 0.752941, 0.615686, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_color = Color(0.643137, 0.552941, 0.415686, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
+texture = ExtResource("7_g44vn")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2lbf"]
 bg_color = Color(0.901961, 0.807843, 0.67451, 1)
@@ -486,9 +479,9 @@ MenuButton/styles/normal = SubResource("StyleBoxTexture_ga6xp")
 MenuButton/styles/pressed = SubResource("StyleBoxTexture_jix2t")
 OptionButton/colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
 OptionButton/colors/font_pressed_color = Color(0.932108, 0.863368, 0.766723, 1)
-OptionButton/styles/hover = SubResource("StyleBoxFlat_bryjo")
-OptionButton/styles/normal = SubResource("StyleBoxFlat_jix2t")
-OptionButton/styles/pressed = SubResource("StyleBoxFlat_exqvc")
+OptionButton/styles/hover = SubResource("StyleBoxTexture_exqvc")
+OptionButton/styles/normal = SubResource("StyleBoxTexture_w2lbf")
+OptionButton/styles/pressed = SubResource("StyleBoxTexture_0q4by")
 PopupMenu/colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
 PopupMenu/colors/font_hover_color = Color(0.741176, 0.647059, 0.513726, 1)
 PopupMenu/colors/font_separator_color = Color(0.321569, 0.282353, 0.223529, 1)

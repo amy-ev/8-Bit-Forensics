@@ -1,4 +1,4 @@
-extends Panel
+extends NinePatchRect
 @export var files = []
 
 #TODO: PRODUCE A MD5 HASH

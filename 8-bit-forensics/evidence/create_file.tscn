@@ -1,9 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bg3q04jgv405y"]
 
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="1_a5nj3"]
 [ext_resource type="Script" uid="uid://bt5osmtx6wqd2" path="res://evidence/create_file.gd" id="1_c120u"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="2_ytjs6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ytjs6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a5nj3"]
 
@@ -47,18 +46,24 @@ _data = {
 &"create": SubResource("Animation_f5i1j")
 }
 
-[node name="create_file" type="Panel"]
-offset_left = 76.0
-offset_top = 16.0
-offset_right = 235.0
-offset_bottom = 72.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ytjs6")
+[node name="create_file" type="NinePatchRect"]
+offset_left = 112.0
+offset_top = 69.0
+offset_right = 271.0
+offset_bottom = 110.0
+texture = ExtResource("1_a5nj3")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 script = ExtResource("1_c120u")
 
 [node name="progress" type="ProgressBar" parent="."]
 layout_mode = 1
-offset_right = 158.0
-offset_bottom = 19.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 155.0
+offset_bottom = 20.0
 theme_override_styles/background = SubResource("StyleBoxEmpty_a5nj3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fy171")
 show_percentage = false

@@ -1,6 +1,6 @@
-extends VBoxContainer
+extends NinePatchRect
 
-@onready var btn_group = $options/physical.get_button_group()
+@onready var btn_group = $sort/options/physical.get_button_group()
 @onready var pc = get_parent()
 
 var button_pressed:String
@@ -9,7 +9,7 @@ var is_correct:bool
 func _ready() -> void:
 	
 	Global.emit_signal("next_step",self)
-	$options/physical.grab_focus()
+	$sort/options/physical.grab_focus()
 	
 	for btn in btn_group.get_buttons():
 		btn.pressed.connect(func():

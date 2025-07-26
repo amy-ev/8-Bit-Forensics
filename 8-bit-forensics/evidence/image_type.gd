@@ -1,13 +1,13 @@
-extends VBoxContainer
+extends NinePatchRect
 
-@onready var btn_group = $dd.get_button_group()
+@onready var btn_group = $sort/dd.get_button_group()
 @onready var pc = get_parent()
 
 var button_pressed:String
 var is_correct:bool
 
 func _ready() -> void:
-	$dd.grab_focus()
+	$sort/dd.grab_focus()
 	Global.emit_signal("next_step",self)
 	# have information comparing dd and e01
 	for btn in btn_group.get_buttons():

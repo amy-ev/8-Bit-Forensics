@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends NinePatchRect
 
 var is_correct:bool
 @onready var pc = get_parent()
@@ -7,7 +7,7 @@ var is_correct:bool
 func _ready() -> void:
 	Global.emit_signal("next_step",self)
 	
-	$options.grab_focus()
+	$sort/options.grab_focus()
 	
 func _on_back_pressed() -> void:
 	add_child(load("res://evidence/select_source.tscn").instantiate())
