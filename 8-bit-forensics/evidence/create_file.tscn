@@ -48,8 +48,10 @@ _data = {
 }
 
 [node name="create_file" type="Panel"]
-offset_right = 159.0
-offset_bottom = 56.0
+offset_left = 76.0
+offset_top = 16.0
+offset_right = 235.0
+offset_bottom = 72.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ytjs6")
 script = ExtResource("1_c120u")
 

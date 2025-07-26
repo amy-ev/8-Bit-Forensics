@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkoqtfb5meyq6"
-path="res://.godot/imported/hex-viewer-window-x3.png-caa95542a7a1c5ea93ad983f7d20208c.ctex"
+uid="uid://cgydxswieic3s"
+path="res://.godot/imported/button-flat-pressed-v2.png-0bcd3c87538d3a513adc037a11dd6674.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pc/hex-viewer-window-x3.png"
-dest_files=["res://.godot/imported/hex-viewer-window-x3.png-caa95542a7a1c5ea93ad983f7d20208c.ctex"]
+source_file="res://assets/UI/button-flat-pressed-v2.png"
+dest_files=["res://.godot/imported/button-flat-pressed-v2.png-0bcd3c87538d3a513adc037a11dd6674.ctex"]
 
 [params]
 

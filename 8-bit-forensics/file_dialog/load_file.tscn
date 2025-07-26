@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://475xqrfyyjia" path="res://file_dialog/load_file.gd" id="1_gmshg"]
 [ext_resource type="Texture2D" uid="uid://b3124jc6q247v" path="res://assets/file_dialog/window.png" id="2_obumy"]
 [ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/file_dialog/exit-button.png" id="3_obumy"]
-[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="4_wwmjk"]
+[ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="4_wwmjk"]
 
 [node name="load_file" type="Control"]
 layout_mode = 3
@@ -80,8 +80,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 18.0
 offset_top = 32.0
-offset_right = 54.0
-offset_bottom = 47.0
+offset_right = 53.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_wwmjk")

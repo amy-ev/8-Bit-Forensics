@@ -1,0 +1,48 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://i5c4gfr702a5"]
+
+[ext_resource type="Texture2D" uid="uid://cgydxswieic3s" path="res://assets/UI/button-flat-pressed-v2.png" id="1_hvoi5"]
+[ext_resource type="Texture2D" uid="uid://bdfrq571c1g80" path="res://assets/UI/button-flat-v2.png" id="2_nj6m1"]
+[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_7o3lp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rr8gl"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 3.0
+content_margin_bottom = 4.0
+texture = ExtResource("1_hvoi5")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ousx5"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 3.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4vd0g"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 3.0
+content_margin_bottom = 4.0
+texture = ExtResource("2_nj6m1")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+
+[resource]
+default_font = ExtResource("3_7o3lp")
+default_font_size = 8
+Button/colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
+Button/colors/font_disabled_color = Color(0.45098, 0.396078, 0.290196, 1)
+Button/colors/font_focus_color = Color(0.643137, 0.552941, 0.415686, 1)
+Button/colors/font_hover_color = Color(0.741176, 0.647059, 0.513726, 1)
+Button/colors/font_hover_pressed_color = Color(0.933333, 0.862745, 0.768627, 1)
+Button/colors/font_pressed_color = Color(0.932108, 0.863368, 0.766723, 1)
+Button/styles/disabled = SubResource("StyleBoxTexture_rr8gl")
+Button/styles/focus = SubResource("StyleBoxEmpty_ousx5")
+Button/styles/hover = SubResource("StyleBoxTexture_4vd0g")
+Button/styles/normal = SubResource("StyleBoxTexture_4vd0g")
+Button/styles/pressed = SubResource("StyleBoxTexture_rr8gl")

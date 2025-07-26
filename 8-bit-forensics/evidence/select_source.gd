@@ -1,12 +1,13 @@
 extends VBoxContainer
 
 @onready var btn_group = $options/physical.get_button_group()
+@onready var pc = get_parent()
 
-@export var button_pressed:String
-
+var button_pressed:String
 var is_correct:bool
 
 func _ready() -> void:
+	
 	Global.emit_signal("next_step",self)
 	$options/physical.grab_focus()
 	
@@ -25,7 +26,7 @@ func _ready() -> void:
 func _on_next_pressed() -> void:
 	Global.emit_signal("answer_response",is_correct)
 	if is_correct:
-		get_parent().add_child( load("res://evidence/select_drive.tscn").instantiate())
+		pc.add_child( load("res://evidence/select_drive.tscn").instantiate())
 		queue_free()
 	else:
 		print("nope try again")
@@ -33,3 +34,4 @@ func _on_next_pressed() -> void:
 
 func _on_cancel_pressed() -> void:
 	queue_free()
+	

@@ -25,7 +25,7 @@ func _ready() -> void:
 	
 	if parent.name == "metadata_window":
 		#start server python script
-		OS.create_process("cmd.exe", ["/C", "cd %cd%/python_files && start.bat"])
+		OS.execute("cmd.exe", ["/C", "cd %cd%/python_files && start.bat"])
 
 	
 	# TODO: REMOVE FROM HERE AND ADD BOTH LOAD_FILE AND SAVE_FILE TO A DIALOG WINDOW SCENE
@@ -48,7 +48,7 @@ func _on_load_button_pressed() -> void:
 		add_child(client)
 		await client.tree_exited
 		#kill server python script
-		OS.create_process("cmd.exe", ["/C", "cd %cd%/python_files && kill.bat"])
+		OS.execute("cmd.exe", ["/C", "cd %cd%/python_files && kill.bat"])
 
 		metadata_thumbnail.texture = load("res://jpg_folder/"+selected_file)
 		metadata_thumbnail.size = Vector2(44,32)
@@ -153,7 +153,7 @@ func file_count(file_path:String) -> int:
 	
 func _on_exit_pressed() -> void:
 	if parent.name == "metadata_window":
-		OS.create_process("cmd.exe", ["/C", "cd %cd%/python_files && kill.bat"])
+		OS.execute("cmd.exe", ["/C", "cd %cd%/python_files && kill.bat"])
 		
 	elif parent.name == "hex_viewer":
 		parent.load_file_open = false

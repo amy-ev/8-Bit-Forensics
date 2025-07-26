@@ -4,8 +4,10 @@
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="3_kxa1e"]
 
 [node name="item_information" type="VBoxContainer"]
-offset_right = 153.0
-offset_bottom = 206.0
+offset_left = 76.0
+offset_top = 16.0
+offset_right = 229.0
+offset_bottom = 101.0
 script = ExtResource("1_g7w0n")
 
 [node name="case_no" type="LineEdit" parent="."]

@@ -1,6 +1,8 @@
 extends VBoxContainer
 
 var is_correct:bool
+@onready var pc = get_parent()
+
 
 func _ready() -> void:
 	Global.emit_signal("next_step",self)
@@ -14,7 +16,7 @@ func _on_back_pressed() -> void:
 func _on_next_pressed() -> void:
 	Global.emit_signal("answer_response",is_correct)
 	if is_correct:
-		get_parent().add_child(load("res://evidence/image_type.tscn").instantiate())
+		pc.add_child(load("res://evidence/image_type.tscn").instantiate())
 		queue_free()
 	else:
 		print("nope try again")

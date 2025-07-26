@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvawuopyd7eqq"]
+[gd_scene load_steps=12 format=3 uid="uid://bvawuopyd7eqq"]
 
 [ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="1_m7h7m"]
 [ext_resource type="Script" uid="uid://b5k5r2302vhyn" path="res://hex_viewer/hex_viewer.gd" id="2_cke5y"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c1shiqlpmarvn" path="res://hex_viewer/results_scroll_manager.gd" id="7_2nup8"]
 [ext_resource type="Script" uid="uid://bgai2mgpfsmqx" path="res://hex_viewer/results.gd" id="8_ywfrl"]
 [ext_resource type="Script" uid="uid://clg30sk7l1qme" path="res://hex_viewer/results_scroll_bar.gd" id="9_f13me"]
+[ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="10_ywfrl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cm2t2"]
 
@@ -75,16 +76,16 @@ script = ExtResource("9_f13me")
 layout_mode = 0
 offset_left = 277.0
 offset_right = 300.0
-offset_bottom = 15.0
-theme = ExtResource("3_cke5y")
+offset_bottom = 14.0
+theme = ExtResource("10_ywfrl")
 text = "open"
 
 [node name="save" type="Button" parent="."]
 layout_mode = 0
-offset_left = 256.0
-offset_right = 279.0
-offset_bottom = 15.0
-theme = ExtResource("3_cke5y")
+offset_left = 254.0
+offset_right = 277.0
+offset_bottom = 14.0
+theme = ExtResource("10_ywfrl")
 disabled = true
 text = "save"
 

@@ -1,9 +1,9 @@
 extends VBoxContainer
 
 @onready var btn_group = $dd.get_button_group()
+@onready var pc = get_parent()
 
-@export var button_pressed:String
-
+var button_pressed:String
 var is_correct:bool
 
 func _ready() -> void:
@@ -26,13 +26,13 @@ func _on_cancel_pressed() -> void:
 	queue_free()
 
 func _on_back_pressed() -> void:
-	get_parent().add_child(load("res://evidence/select_drive.tscn").instantiate())
+	pc.add_child(load("res://evidence/select_drive.tscn").instantiate())
 	queue_free()
 
 func _on_next_pressed() -> void:
 	Global.emit_signal("answer_response",is_correct)
 	if is_correct:
-		get_parent().add_child(load("res://evidence/item_information.tscn").instantiate())
+		pc.add_child(load("res://evidence/item_information.tscn").instantiate())
 		queue_free()
 	else:
 		print("nope try again")

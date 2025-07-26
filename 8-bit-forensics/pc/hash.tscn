@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bymujjs8bugxl"]
+[gd_scene load_steps=5 format=3 uid="uid://bymujjs8bugxl"]
 
 [ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="1_iu2nx"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="2_k7w4u"]
 [ext_resource type="Script" uid="uid://cwto8mfeu6gle" path="res://pc/hash.gd" id="2_olpnb"]
+[ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="4_olpnb"]
 
 [node name="hash" type="NinePatchRect"]
 offset_right = 196.0
@@ -44,10 +45,10 @@ text = "C:\\Users>"
 [node name="submit" type="Button" parent="."]
 layout_mode = 0
 offset_left = 161.0
-offset_top = 34.0
+offset_top = 35.0
 offset_right = 192.0
 offset_bottom = 49.0
-theme = ExtResource("2_k7w4u")
+theme = ExtResource("4_olpnb")
 text = "submit"
 
 [node name="output" type="NinePatchRect" parent="."]

@@ -5,6 +5,8 @@ var full_text:String
 var is_playing:bool
 var char_pos:int
 
+signal text_finished
+
 func _ready() -> void:
 	pass
 	#start("this is a test")
@@ -24,6 +26,7 @@ func _on_text_timer_timeout() -> void:
 	if is_playing and char_pos == full_text.length():
 		timer.stop()
 		is_playing = false
+		emit_signal("text_finished")
 		
 func skip():
 

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ck13skggxkb21" path="res://assets/metadata/metadata-window.png" id="1_hpvqb"]
 [ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_7dblc"]
 [ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="4_daqaj"]
-[ext_resource type="Texture2D" uid="uid://dbqt4m1v71plc" path="res://assets/metadata/open.png" id="4_vpbfe"]
+[ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="5_daqaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_paekb"]
 size = Vector2(44.5, 32.5)
@@ -397,15 +397,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_u6jsu")
 }
 
-[node name="select" type="TextureButton" parent="."]
+[node name="select" type="Button" parent="."]
 layout_mode = 1
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 28.0
-offset_bottom = 14.0
-texture_normal = ExtResource("4_vpbfe")
-ignore_texture_size = true
-stretch_mode = 0
+offset_bottom = 16.0
+theme = ExtResource("5_daqaj")
+text = "open"
 
 [connection signal="input_event" from="thumbnail_column/thumbnail/thumbnail_area" to="." method="_on_thumbnail_area_input_event"]
 [connection signal="pressed" from="select" to="." method="_on_select_pressed"]

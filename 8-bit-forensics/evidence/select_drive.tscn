@@ -4,8 +4,10 @@
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="2_fuy1h"]
 
 [node name="select_drive" type="VBoxContainer"]
-offset_right = 189.0
-offset_bottom = 66.0
+offset_left = 76.0
+offset_top = 16.0
+offset_right = 265.0
+offset_bottom = 120.0
 theme_override_constants/separation = 70
 script = ExtResource("1_hbarf")
 
