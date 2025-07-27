@@ -5,78 +5,93 @@
 [ext_resource type="Script" uid="uid://b55rjs7odphuh" path="res://evidence/select_source.gd" id="1_qw0i8"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="5_ymuii"]
 
-[node name="select_source" type="NinePatchRect"]
-offset_left = 140.0
-offset_top = 50.0
-offset_right = 243.0
-offset_bottom = 129.0
+[node name="select_source" type="ColorRect"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 235.0
+offset_bottom = 151.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("1_qw0i8")
+
+[node name="window" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -39.5
+offset_right = 51.5
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_6dj5e")
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
-script = ExtResource("1_qw0i8")
 
-[node name="sort" type="VBoxContainer" parent="."]
+[node name="sort" type="VBoxContainer" parent="window"]
 layout_mode = 2
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 98.0
 offset_bottom = 75.0
 
-[node name="options" type="VBoxContainer" parent="sort"]
+[node name="options" type="VBoxContainer" parent="window/sort"]
 layout_mode = 2
 theme_override_constants/separation = -1
 
-[node name="physical" type="CheckBox" parent="sort/options"]
+[node name="physical" type="CheckBox" parent="window/sort/options"]
 layout_mode = 2
 theme = ExtResource("5_ymuii")
 button_group = ExtResource("1_qbvjl")
 text = "physical drive"
 
-[node name="logical" type="CheckBox" parent="sort/options"]
+[node name="logical" type="CheckBox" parent="window/sort/options"]
 layout_mode = 2
 theme = ExtResource("5_ymuii")
 button_group = ExtResource("1_qbvjl")
 text = "logical drive"
 
-[node name="image" type="CheckBox" parent="sort/options"]
+[node name="image" type="CheckBox" parent="window/sort/options"]
 layout_mode = 2
 theme = ExtResource("5_ymuii")
 button_group = ExtResource("1_qbvjl")
 text = "image file"
 
-[node name="contents" type="CheckBox" parent="sort/options"]
+[node name="contents" type="CheckBox" parent="window/sort/options"]
 layout_mode = 2
 theme = ExtResource("5_ymuii")
 button_group = ExtResource("1_qbvjl")
 text = "contents of a folder"
 
-[node name="fernico" type="CheckBox" parent="sort/options"]
+[node name="fernico" type="CheckBox" parent="window/sort/options"]
 layout_mode = 2
 theme = ExtResource("5_ymuii")
 button_group = ExtResource("1_qbvjl")
 text = "fernico device"
 
-[node name="navigation" type="HBoxContainer" parent="sort"]
+[node name="navigation" type="HBoxContainer" parent="window/sort"]
 layout_mode = 2
 alignment = 2
 
-[node name="back" type="Button" parent="sort/navigation"]
+[node name="back" type="Button" parent="window/sort/navigation"]
 layout_mode = 2
 theme = ExtResource("5_ymuii")
 disabled = true
 text = "back"
 
-[node name="next" type="Button" parent="sort/navigation"]
+[node name="next" type="Button" parent="window/sort/navigation"]
 layout_mode = 2
 theme = ExtResource("5_ymuii")
 text = "next"
 
-[node name="cancel" type="Button" parent="sort/navigation"]
+[node name="cancel" type="Button" parent="window/sort/navigation"]
 layout_mode = 2
 theme = ExtResource("5_ymuii")
 text = "cancel"
 
-[connection signal="pressed" from="sort/navigation/next" to="." method="_on_next_pressed"]
-[connection signal="pressed" from="sort/navigation/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="window/sort/navigation/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="window/sort/navigation/cancel" to="." method="_on_cancel_pressed"]

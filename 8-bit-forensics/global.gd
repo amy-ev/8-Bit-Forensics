@@ -25,6 +25,8 @@ var selected_file:String
 @export var answers = ["a","b","a","c"]
 @export var quiz_dict = {"Day_1":["a","b","c"], "Day_2":["a","b","c"], "Day_3":["a","b","c"]}
 
+signal text_finished()
+
 signal selected(selected_node:File, real_file:String)
 
 signal note_selected(note_topic:String)

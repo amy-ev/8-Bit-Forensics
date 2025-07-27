@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var _debrief = preload("res://dialogue/dialogue_manager.tscn")
+@onready var screen = $screen
+@onready var dialogue = $mini_dialogue
 
 func _ready() -> void:
 	scale = scale * Utility.window_mode()
@@ -15,11 +17,11 @@ func _ready() -> void:
 	
 	match day:
 		1:
-			add_child(preload("res://evidence/image_file.tscn").instantiate())
+			screen.add_child(preload("res://evidence/image_file.tscn").instantiate())
 		2:
-			add_child(preload("res://hex_viewer/hex_viewer.tscn").instantiate())
+			screen.add_child(preload("res://hex_viewer/hex_viewer.tscn").instantiate())
 		3:
-			add_child(preload("res://metadata/metadata.tscn").instantiate())
+			screen.add_child(preload("res://metadata/metadata.tscn").instantiate())
 			
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_action_pressed("fullscreen"):
@@ -37,4 +39,6 @@ func _input(event: InputEvent) -> void:
 		await $screen_animation.animation_finished
 		
 		get_tree().change_scene_to_file("res://main/desk.tscn")
-		
+
+func _on_screen_child_entered_tree(node: Node) -> void:
+	dialogue.set_visible(false)

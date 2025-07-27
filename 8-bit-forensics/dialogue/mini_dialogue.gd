@@ -1,15 +1,15 @@
 extends CanvasLayer
 
-
 func _ready() -> void:
 	Global.connect("answer_response", _on_option_confirmed)
+	Global.connect("text_finished", _on_text_finished)
 	
 func start(dialogue:String):
 	set_visible(true)
 	$panel/dialogue_label.start(dialogue)
 	$animation.play("talk")
 	
-func _on_dialogue_label_text_finished() -> void:
+func _on_text_finished() -> void:
 	$animation.stop()
 
 func _on_option_confirmed(is_correct:bool):

@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://326qgm6qmdub" path="res://main/select.tscn" id="4_gk13f"]
 
 [node name="evidence_file" type="NinePatchRect"]
-offset_left = 76.0
-offset_top = 16.0
-offset_right = 307.0
-offset_bottom = 163.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 235.0
+offset_bottom = 151.0
 mouse_filter = 1
 texture = ExtResource("1_7bnno")
 patch_margin_left = 2
@@ -54,3 +54,13 @@ theme = ExtResource("2_gk13f")
 text = "evidence tree"
 
 [node name="select" parent="evidence_tree_label" instance=ExtResource("4_gk13f")]
+
+[node name="blocker" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)

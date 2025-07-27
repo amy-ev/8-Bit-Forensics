@@ -1,15 +1,17 @@
 extends CanvasLayer
 
+@onready var dialogue_label = $panel/dialogue_label
+
 func _ready() -> void:
 	set_visible(false)
 	Global.connect("next_step", _on_new_child)
 
 func start(dialogue:String):
-	$panel/dialogue_label.start(dialogue)
+	dialogue_label.start(dialogue)
 	
 func _on_new_child(stage:Node):
 	
-	$panel/dialogue_label.text = ""
+	dialogue_label.text = ""
 	set_visible(false)
 	
 	match stage.name:
@@ -32,7 +34,18 @@ func _on_new_child(stage:Node):
 					set_visible(true)
 					start("fernico")
 				_:
-					pass
+					set_visible(false)
+		"select_drive":
+			match stage.option_selected:
+				0:
+					set_visible(true)
+					start("index 0")
+				1:
+					set_visible(true)
+					start("index 1")
+				2:
+					set_visible(true)
+					start("index 2")
 		"image_type":
 			match stage.button_pressed:
 				"dd":
@@ -41,6 +54,7 @@ func _on_new_child(stage:Node):
 				"e01":
 					set_visible(true)
 					start("e01")
+	
 		"item_information":
 			set_visible(true)
 			start("fill in the item information")
@@ -52,19 +66,19 @@ func _on_new_child(stage:Node):
 			match stage.answer_selected:
 				"a":
 					start(stage.question)
-					$panel/dialogue_label.skip()
+					dialogue_label.skip()
 				"b":
 					start(stage.question)
-					$panel/dialogue_label.skip()
+					dialogue_label.skip()
 				"c":
 					start(stage.question)
-					$panel/dialogue_label.skip()
+					dialogue_label.skip()
 		_:
 			set_visible(false)
 			pass
 
 func _on_ok_pressed() -> void:
-	if $panel/dialogue_label.is_playing:
-		$panel/dialogue_label.skip()
+	if dialogue_label.is_playing:
+		dialogue_label.skip()
 	else:
 		set_visible(false)
