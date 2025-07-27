@@ -24,5 +24,10 @@ func _on_file_created():
 		#change to match the file contents of the sd card
 	var file_1 = $evidence_tree.create_item()
 	file_1.set_text(0,msg)
+<<<<<<< HEAD
 	#TODO: add dialogue
+=======
+	#TODO: 
+	#add dialogue
+>>>>>>> 15f0ed034cb141b6f902f5df90e17bbc2b5cf769
 	# add child of MD5 hash verification 
