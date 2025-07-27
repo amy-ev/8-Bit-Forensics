@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dqwedwedwn32"]
 
 [ext_resource type="Script" uid="uid://qayymwuuheyr" path="res://evidence/item_information.gd" id="1_g7w0n"]
-[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="1_kxa1e"]
-[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="3_kxa1e"]
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_kxa1e"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="3_kxa1e"]
 
 [node name="item_information" type="ColorRect"]
 offset_left = 4.0

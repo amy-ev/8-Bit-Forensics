@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://db4sjj6kgif47"]
 
-[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="1_dpwpy"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="1_dpwpy"]
 [ext_resource type="Script" uid="uid://c1jqhkjrc15gk" path="res://hex_viewer/hex_text.gd" id="2_f1ns8"]
 [ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_rp873"]
 

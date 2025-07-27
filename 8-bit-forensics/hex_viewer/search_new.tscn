@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckfibbeorlvmh"]
 
-[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="1_pyvme"]
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_pyvme"]
 [ext_resource type="Script" uid="uid://dikplj5dq4sa8" path="res://hex_viewer/search_new.gd" id="2_j0j03"]
-[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="2_mc3u8"]
-[ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/file_dialog/exit-button.png" id="3_j0j03"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="2_mc3u8"]
+[ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/UI/exit-button.png" id="3_j0j03"]
 
 [node name="search" type="NinePatchRect"]
 offset_right = 77.0

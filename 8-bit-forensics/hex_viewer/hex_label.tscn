@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://crfks7up58kva"]
 
-[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="1_oaxn4"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="1_oaxn4"]
 [ext_resource type="Script" uid="uid://ctdvhkayu3jw7" path="res://hex_viewer/hex_label.gd" id="2_ws4u1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws4u1"]

@@ -116,7 +116,7 @@ func add_files(file_no:int):
 		file.name = "file"
 		file._file_name = file.name
 		#file_icon = load("res://assets/file_dialog/icon-x3.png")
-		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://assets/file_dialog/icon.png"))
+		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://assets/UI/file-icon.png"))
 		#file_icon = ImageTexture.create_from_image(Image.load_from_file("res://jpg_folder/photo"+str(i)+".jpg"))
 		file._file_icon = file_icon
 		

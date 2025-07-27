@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqai7e5o8pqlh"]
 
-[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="1_vsgqs"]
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_vsgqs"]
 [ext_resource type="Script" uid="uid://c4m27nwwq4imj" path="res://hex_viewer/old_hex_viewer.gd" id="2_adliv"]
-[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="3_h6iex"]
-[ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/file_dialog/exit-button.png" id="4_2fc37"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="3_h6iex"]
+[ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/UI/exit-button.png" id="4_2fc37"]
 
 [node name="hex_viewer" type="NinePatchRect"]
 offset_left = 76.0

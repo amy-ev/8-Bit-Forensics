@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2urwpi4qyhut"]
 
-[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="1_7td0o"]
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_7td0o"]
 [ext_resource type="Script" uid="uid://ddutyd47vyikb" path="res://hex_viewer/old_select.gd" id="1_i2vaj"]
-[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="4_nf7w3"]
-[ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/file_dialog/exit-button.png" id="5_7td0o"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="4_nf7w3"]
+[ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/UI/exit-button.png" id="5_7td0o"]
 
 [node name="select" type="NinePatchRect"]
 offset_left = 78.0

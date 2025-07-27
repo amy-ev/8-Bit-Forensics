@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://d31sl6bl6j3b3"]
 
 [ext_resource type="Script" uid="uid://b4546ogyrqq64" path="res://metadata/metadata.gd" id="1_2ct7u"]
-[ext_resource type="Texture2D" uid="uid://ck13skggxkb21" path="res://assets/metadata/metadata-window.png" id="1_hpvqb"]
+[ext_resource type="Texture2D" uid="uid://ck13skggxkb21" path="res://assets/UI/metadata-window.png" id="1_hpvqb"]
 [ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_7dblc"]
-[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="4_daqaj"]
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="4_daqaj"]
 [ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="5_daqaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_paekb"]

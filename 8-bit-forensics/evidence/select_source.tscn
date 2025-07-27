@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://4miedm4mv6bd"]
 
-[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="1_6dj5e"]
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_6dj5e"]
 [ext_resource type="ButtonGroup" uid="uid://ctj1fd00rkhrr" path="res://evidence/evidence_type.tres" id="1_qbvjl"]
 [ext_resource type="Script" uid="uid://b55rjs7odphuh" path="res://evidence/select_source.gd" id="1_qw0i8"]
-[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="5_ymuii"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="5_ymuii"]
 
 [node name="select_source" type="ColorRect"]
 offset_left = 4.0
