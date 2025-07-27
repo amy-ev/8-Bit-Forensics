@@ -1,13 +1,12 @@
-extends NinePatchRect
+extends ColorRect
 
-@onready var btn_group = $sort/dd.get_button_group()
+@onready var btn_group = $window/sort/dd.get_button_group()
 @onready var pc = get_parent()
 
 var button_pressed:String
 var is_correct:bool
 
 func _ready() -> void:
-	$sort/dd.grab_focus()
 	Global.emit_signal("next_step",self)
 	# have information comparing dd and e01
 	for btn in btn_group.get_buttons():
@@ -19,7 +18,6 @@ func _ready() -> void:
 				is_correct = true
 			else:
 				is_correct = false
-			print(is_correct)
 	)
 
 func _on_cancel_pressed() -> void:
@@ -32,7 +30,5 @@ func _on_back_pressed() -> void:
 func _on_next_pressed() -> void:
 	Global.emit_signal("answer_response",is_correct)
 	if is_correct:
-		pc.add_child(load("res://evidence/item_information.tscn").instantiate())
+		pc.add_child(preload("res://evidence/item_information.tscn").instantiate())
 		queue_free()
-	else:
-		print("nope try again")
