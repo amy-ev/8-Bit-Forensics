@@ -19,12 +19,12 @@ func _search(signature:String):
 		return
 		
 	var buffer:= PackedByteArray()
-	
+
 	if hex_viewer.tabs.current_tab != 0:
 		buffer = hex_viewer.hex_text._wrapped_buffer
 	else:
 		buffer = hex_viewer.hex_text._wrapped_buffer.buffer
-	
+	#
 	var search_arr = []
 	
 	for i in range(0,signature.length(),2):
@@ -42,6 +42,7 @@ func _search(signature:String):
 			var row = hex_index / 16
 			var column = hex_index % 16
 			results.append([_dec_to_hex(row,column), hex_index])
+	print(results)
 	return results
 	
 func _dec_to_hex(x:int, y:int)-> String:

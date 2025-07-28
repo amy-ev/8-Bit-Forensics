@@ -121,8 +121,8 @@ func add_files(file_no:int):
 		file._file_icon = file_icon
 		
 		#TODO: change to match a variety of files
-		file._file_icon.set_meta("file_name","photo"+str(i)+".jpg")
-	
+		#file._file_icon.set_meta("file_name","photo"+str(i)+".jpg")
+		file._file_icon.set_meta("file_name","test-sd.001")
 		# dynamically size the file_container grid seperations 
 		$file_dialog/window/file_container.size.x = $file_dialog/window.size.x - 10
 		$file_dialog/window/file_container.size.y = $file_dialog/window.size.y

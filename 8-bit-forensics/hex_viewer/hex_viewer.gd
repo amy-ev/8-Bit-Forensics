@@ -27,7 +27,9 @@ func _ready() -> void:
 func open_file(file_path:String):
 	if FileAccess.file_exists(file_path):
 		var file = FileAccess.open(file_path, FileAccess.READ)
+
 		var buffer = file.get_buffer(file.get_length())
+		print(file.get_length())
 		file.close()
 		
 		_wrapped_buffer.buffer = buffer
@@ -85,11 +87,12 @@ func _on_save_pressed() -> void:
 
 		for i in range(len(buffer)-2, len(buffer)):
 			end_str += str(hex_text._hex_to_string[buffer[i]]+ "")
-			
+		print("attempting")
 		if (start_str == "ffd8ffe1" || start_str == "ffd8ffe0") && end_str == "ffd9":
-			#TODO: change file name
+			#TODO: change file name to be incremental 
 			var file = FileAccess.open("res://jpg_folder/tester.jpg", FileAccess.WRITE)
 			file.store_buffer(tabs.get_child(tabs.current_tab).get_node("hex_text")._wrapped_buffer)
+			print("saved")
 			file.close()
 		else:
 			$save.disabled = true
