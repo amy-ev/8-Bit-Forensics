@@ -89,6 +89,23 @@ theme = ExtResource("10_ywfrl")
 disabled = true
 text = "save"
 
+[node name="find" type="Button" parent="."]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 155.0
+offset_right = 293.0
+offset_bottom = 169.0
+theme = ExtResource("10_ywfrl")
+text = "scroll to"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 150.0
+offset_right = 230.0
+offset_bottom = 159.0
+color = Color(1, 1, 1, 0.333333)
+
 [connection signal="gui_input" from="v_sort/scroll_manager" to="v_sort/scroll_manager" method="_on_gui_input"]
 [connection signal="tab_changed" from="v_sort/scroll_manager/sort/window" to="." method="_on_window_tab_changed"]
 [connection signal="ask_scroll" from="v_sort/scroll_manager/scroll_bar" to="v_sort/scroll_manager" method="_on_scroll_bar_ask_scroll"]
@@ -98,3 +115,4 @@ text = "save"
 [connection signal="gui_input" from="v_sort/results_scroll_manager/results_scroll_bar" to="v_sort/results_scroll_manager/results_scroll_bar" method="_on_gui_input"]
 [connection signal="pressed" from="load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="find" to="." method="_on_find_pressed"]

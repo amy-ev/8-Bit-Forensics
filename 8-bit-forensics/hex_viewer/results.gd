@@ -134,7 +134,6 @@ func _draw() -> void:
 				
 			draw_string(font, pos, hex_string,0,-1,FONT_SIZE, FONT_COLOUR)
 
-
 			#reset for next
 			pos.x = 0
 			pos.y -= font.get_ascent(FONT_SIZE)
