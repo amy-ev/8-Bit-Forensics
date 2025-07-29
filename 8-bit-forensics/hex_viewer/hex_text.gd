@@ -10,10 +10,10 @@ var _row_width := 16
 var char_width := 0
 var _total_rows := 0
 
-var offset_gap := 0
-var hex_text_gap := 0
-var converted_text_gap := 0
-var separation := 0
+@export var offset_gap := 0
+@export var hex_text_gap := 0
+@export var converted_text_gap := 0
+@export var separation := 0
 
 var _hex_to_string := []
 
@@ -34,10 +34,11 @@ func _ready() -> void:
 		# i & 0xf get last 4 bits
 		_hex_to_string.append(str(hex[(i >> 4) & 0xf], hex[i & 0xf]))
 		
-	var char_size = font.get_string_size("A",0,-1,FONT_SIZE)
+	var char_size = font.get_string_size("a",0,-1,FONT_SIZE)
 	char_width = int(char_size.x)
+	print(char_width)
 	
-	offset_gap = char_width * 7
+	offset_gap = char_width * 8
 	hex_text_gap =  char_width * (3 * _row_width - 2)
 	converted_text_gap = char_width * _row_width
 	separation = char_width * 3
@@ -104,7 +105,9 @@ func _draw() -> void:
 			#hex text viewer
 			var hex_string = ""
 			for i in range(row_begin_offset, row_end_offset):
-				hex_string += str(_hex_to_string[buffer[i]], " ")
+				hex_string += str(_hex_to_string[buffer[i]], "  ")
+				
+			print(hex_string)
 			
 			draw_string(font, pos, hex_string,0,-1,FONT_SIZE,FONT_COLOUR)
 			pos.x += hex_text_gap + separation -1

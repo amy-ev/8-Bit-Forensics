@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cbrc4x3dvdynj"
-path="res://.godot/imported/Vaticanus-G3yVG.ttf-6dd446537f3ba24550ed1d2b99f0ce57.fontdata"
+uid="uid://ginkfwm14fgo"
+path="res://.godot/imported/8-bit-forensics.ttf-28d855a43e9f95d755b9495ce0c1a984.fontdata"
 
 [deps]
 
-source_file="res://Vaticanus-G3yVG.ttf"
-dest_files=["res://.godot/imported/Vaticanus-G3yVG.ttf-6dd446537f3ba24550ed1d2b99f0ce57.fontdata"]
+source_file="res://8-bit-forensics.ttf"
+dest_files=["res://.godot/imported/8-bit-forensics.ttf-28d855a43e9f95d755b9495ce0c1a984.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
@@ -22,14 +22,20 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
-subpixel_positioning=4
+subpixel_positioning=0
 keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[]
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0),
+&"variation_embolden": 0.0
+}]
 language_support={}
 script_support={}
 opentype_features={}

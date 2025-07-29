@@ -100,6 +100,7 @@ func _on_save_pressed() -> void:
 
 
 func _on_find_pressed() -> void:
-	var row = results_text.get_row_index()
-	var location = results_text.locations_buffer[results_text.get_row_index()]
-	$v_sort/scroll_manager._scroll_to(location/16)
+	if results_text.results_recieved:
+		var row = results_text.get_row_index()
+		var location = results_text.locations_buffer[results_text.get_row_index()]
+		$v_sort/scroll_manager._scroll_to(location/16)

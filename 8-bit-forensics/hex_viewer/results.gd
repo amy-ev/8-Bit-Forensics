@@ -28,7 +28,7 @@ var FONT_COLOUR:= Color(0.322, 0.282, 0.224)
 
 func _ready() -> void:
 
-	font = preload("res://Vaticanus-G3yVG.ttf")
+	font = preload("res://8-bit-forensics.ttf")
 	OFFSET = get_visible_row_count() - 1
 
 	Global.connect("signature_found", _on_results_found)

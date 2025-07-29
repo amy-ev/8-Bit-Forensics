@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://jx1ah0j0nx2n" path="res://assets/pc/keyboard-background.png" id="1_akbqf"]
 [ext_resource type="Script" uid="uid://dl0y4m6fa2yyl" path="res://pc/keyboard.gd" id="2_0xups"]
 [ext_resource type="Texture2D" uid="uid://b2t5api0vf3b8" path="res://assets/pc/keyboard.png" id="2_64g64"]
-[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_r40fc"]
 [ext_resource type="Texture2D" uid="uid://cd053lr1lwwvf" path="res://assets/pc/space-sprite.png" id="4_wmhgm"]
+[ext_resource type="FontFile" uid="uid://ginkfwm14fgo" path="res://8-bit-forensics.ttf" id="5_cxm6j"]
 [ext_resource type="Texture2D" uid="uid://cisrso1pg7k6p" path="res://assets/pc/shift-sprite.png" id="5_mgfn1"]
 [ext_resource type="Texture2D" uid="uid://cspn3ugbm1fxx" path="res://assets/pc/backspace-sprite.png" id="6_ouf3a"]
 [ext_resource type="Texture2D" uid="uid://d4nnje1y5fls0" path="res://assets/pc/key-sprite.png" id="7_0c1u1"]
@@ -419,6 +419,35 @@ tracks/1/keys = {
 "values": [Vector2(7, 2), Vector2(7, 4), Vector2(7, 2)]
 }
 
+[sub_resource type="Animation" id="Animation_3mp8h"]
+resource_name = "Backspace"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("keyboard/keys/Backspace:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("keyboard/keys/Backspace/Backspace:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(7, 2), Vector2(7, 4), Vector2(7, 2)]
+}
+
 [sub_resource type="Animation" id="Animation_uvy8l"]
 resource_name = "BracketLeft"
 length = 0.3
@@ -506,6 +535,34 @@ tracks/1/keys = {
 "values": [Vector2(9, 2), Vector2(9, 4), Vector2(9, 2)]
 }
 
+[sub_resource type="Animation" id="Animation_7nb21"]
+resource_name = "CapsLock"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("keyboard/keys/CapsLock:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("keyboard/keys/CapsLock/CapsLock:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(7, 1), Vector2(7, 3), Vector2(7, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_0v1cb"]
 resource_name = "Comma"
 length = 0.3
@@ -591,6 +648,23 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [Vector2(9, 2), Vector2(9, 4), Vector2(9, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_fe804"]
+resource_name = "Enter"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("keyboard/keys/Enter:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
 }
 
 [sub_resource type="Animation" id="Animation_r6mh1"]
@@ -1974,80 +2048,6 @@ tracks/1/keys = {
 "values": [Vector2(9, 2), Vector2(9, 4), Vector2(9, 2)]
 }
 
-[sub_resource type="Animation" id="Animation_fe804"]
-resource_name = "Enter"
-length = 0.3
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("keyboard/keys/Enter:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 0]
-}
-
-[sub_resource type="Animation" id="Animation_3mp8h"]
-resource_name = "Backspace"
-length = 0.3
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("keyboard/keys/Backspace:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("keyboard/keys/Backspace/Backspace:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Vector2(7, 2), Vector2(7, 4), Vector2(7, 2)]
-}
-
-[sub_resource type="Animation" id="Animation_7nb21"]
-resource_name = "CapsLock"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("keyboard/keys/CapsLock:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("keyboard/keys/CapsLock/CapsLock:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Vector2(7, 1), Vector2(7, 3), Vector2(7, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0c1u1"]
 _data = {
 &"0": SubResource("Animation_fpq81"),
@@ -2174,7 +2174,7 @@ offset_left = 4.0
 offset_right = 12.0
 offset_bottom = 12.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "`¬"
 
@@ -2190,7 +2190,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "1"
 
@@ -2206,7 +2206,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "2"
 
@@ -2222,7 +2222,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "3"
 
@@ -2238,7 +2238,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "4"
 
@@ -2254,7 +2254,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "5"
 
@@ -2270,7 +2270,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "6"
 
@@ -2286,7 +2286,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "7"
 
@@ -2302,7 +2302,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "8"
 
@@ -2318,7 +2318,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "9"
 
@@ -2334,7 +2334,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "0"
 
@@ -2350,7 +2350,7 @@ offset_top = 1.0
 offset_right = 13.0
 offset_bottom = 9.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "-_"
 
@@ -2366,7 +2366,7 @@ offset_top = 1.0
 offset_right = 13.0
 offset_bottom = 9.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "=+"
 
@@ -2382,7 +2382,7 @@ offset_top = 2.0
 offset_right = 19.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "<--"
 
@@ -2398,7 +2398,7 @@ offset_top = 2.0
 offset_right = 19.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "Tab"
 
@@ -2414,7 +2414,7 @@ offset_top = 2.0
 offset_right = 12.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "Q"
 
@@ -2430,7 +2430,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "W"
 
@@ -2446,7 +2446,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "E"
 
@@ -2462,7 +2462,7 @@ offset_top = 2.0
 offset_right = 15.0
 offset_bottom = 14.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "R"
 
@@ -2478,7 +2478,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "T"
 
@@ -2494,7 +2494,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "Y"
 
@@ -2510,7 +2510,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "U"
 
@@ -2526,7 +2526,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "I"
 
@@ -2542,7 +2542,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "O"
 
@@ -2558,7 +2558,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "P"
 
@@ -2574,7 +2574,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "[{"
 
@@ -2590,7 +2590,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "]}"
 
@@ -2606,7 +2606,7 @@ offset_top = 1.0
 offset_right = 23.0
 offset_bottom = 9.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "Caps"
 
@@ -2622,7 +2622,7 @@ offset_top = 2.0
 offset_right = 16.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "A"
 
@@ -2638,7 +2638,7 @@ offset_top = 2.0
 offset_right = 16.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "S"
 
@@ -2654,7 +2654,7 @@ offset_top = 2.0
 offset_right = 16.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "D"
 
@@ -2670,7 +2670,7 @@ offset_top = 2.0
 offset_right = 16.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "F"
 
@@ -2686,7 +2686,7 @@ offset_top = 2.0
 offset_right = 15.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "G"
 
@@ -2702,7 +2702,7 @@ offset_top = 2.0
 offset_right = 16.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "H"
 
@@ -2718,7 +2718,7 @@ offset_top = 2.0
 offset_right = 16.0
 offset_bottom = 21.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "J
 "
@@ -2735,7 +2735,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "K"
 
@@ -2751,7 +2751,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "L"
 
@@ -2767,7 +2767,7 @@ offset_top = 1.0
 offset_right = 13.0
 offset_bottom = 9.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "; :"
 
@@ -2783,7 +2783,7 @@ offset_top = 2.0
 offset_right = 17.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "'@"
 
@@ -2805,7 +2805,7 @@ offset_top = 2.0
 offset_right = 14.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "#~"
 
@@ -2827,7 +2827,7 @@ offset_top = 2.0
 offset_right = 15.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "\\"
 
@@ -2843,7 +2843,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "Z"
 
@@ -2859,7 +2859,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "X"
 
@@ -2875,7 +2875,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "C"
 
@@ -2891,7 +2891,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "V"
 
@@ -2907,7 +2907,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "B"
 
@@ -2923,7 +2923,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "N"
 
@@ -2939,7 +2939,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "M"
 
@@ -2955,7 +2955,7 @@ offset_top = 1.0
 offset_right = 13.0
 offset_bottom = 9.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = ",<"
 
@@ -2971,7 +2971,7 @@ offset_top = 1.0
 offset_right = 13.0
 offset_bottom = 9.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = ".>"
 
@@ -2987,7 +2987,7 @@ offset_top = 2.0
 offset_right = 13.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "/?"
 
@@ -3002,7 +3002,7 @@ offset_top = -6.0
 offset_right = 13.0
 offset_bottom = 2.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "Shift"
 
@@ -3060,7 +3060,7 @@ offset_top = 2.0
 offset_right = 51.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
-theme_override_fonts/font = ExtResource("3_r40fc")
+theme_override_fonts/font = ExtResource("5_cxm6j")
 theme_override_font_sizes/font_size = 8
 text = "-----"
 

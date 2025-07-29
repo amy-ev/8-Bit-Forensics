@@ -55,6 +55,7 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("1_c120u")
 
 [node name="window" type="NinePatchRect" parent="."]
+layout_mode = 0
 offset_right = 159.0
 offset_bottom = 41.0
 texture = ExtResource("1_a5nj3")

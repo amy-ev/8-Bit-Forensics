@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://k10lem01p4hj"]
 
-[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="1_tk7u6"]
+[ext_resource type="FontFile" uid="uid://ginkfwm14fgo" path="res://8-bit-forensics.ttf" id="1_tk7u6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fbbbn"]
 draw_center = false

@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://be441q1omxkco"]
+[gd_scene load_steps=6 format=3 uid="uid://be441q1omxkco"]
 
 [ext_resource type="Texture2D" uid="uid://b813dsxowvv5r" path="res://assets/evidence/form-border.png" id="1_1b8hc"]
 [ext_resource type="Script" uid="uid://d4asu5n8d2si" path="res://evidence/form.gd" id="1_1gyes"]
-[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="2_l3vyk"]
 [ext_resource type="Texture2D" uid="uid://d1iokpmlhoe4p" path="res://assets/evidence/separation.png" id="3_2kplo"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="4_2kplo"]
 [ext_resource type="Texture2D" uid="uid://dyb33se5e51wg" path="res://assets/evidence/dash.png" id="5_xafih"]
-[ext_resource type="Theme" uid="uid://bmpgrmqys4l5p" path="res://evidence/form_text.tres" id="6_xafih"]
-[ext_resource type="Theme" uid="uid://k10lem01p4hj" path="res://evidence/form_theme.tres" id="7_jg7tw"]
 
 [node name="form_canvas" type="CanvasLayer"]
 script = ExtResource("1_1gyes")
@@ -50,8 +48,7 @@ theme_override_constants/separation = 0
 [node name="authority-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-theme_override_colors/default_color = Color(0.161743, 0.141391, 0.106753, 1)
-theme_override_fonts/normal_font = ExtResource("2_l3vyk")
+theme = ExtResource("4_2kplo")
 theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
 text = "authority: [color=29241be5]authority"
@@ -72,7 +69,7 @@ end_cap_mode = 1
 [node name="ref_no-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 bbcode_enabled = true
 text = "identification ref. no.: [color=29241be5]and this is the line
 "
@@ -100,7 +97,7 @@ end_cap_mode = 1
 [node name="description-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
 custom_minimum_size = Vector2(41, 28)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 bbcode_enabled = true
 text = "description: [color=29241be5]the descrip-tion of the evidence     item"
 scroll_active = false
@@ -145,7 +142,7 @@ end_cap_mode = 1
 [node name="time_date-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
 custom_minimum_size = Vector2(80, 20)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 bbcode_enabled = true
 text = "time/date seized: [color=29241be5]15/07/2025 12:17"
 scroll_active = false
@@ -172,7 +169,7 @@ end_cap_mode = 1
 [node name="where-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
 custom_minimum_size = Vector2(80, 18)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 bbcode_enabled = true
 text = "where seized: [color=29241be5] who knows"
 scroll_active = false
@@ -200,7 +197,7 @@ end_cap_mode = 1
 [node name="by-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
 custom_minimum_size = Vector2(80, 18)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 bbcode_enabled = true
 text = "seized by:[color=29241be5] "
 scroll_active = false
@@ -228,7 +225,7 @@ end_cap_mode = 1
 [node name="signed-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
 custom_minimum_size = Vector2(23, 12)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 bbcode_enabled = true
 text = "signed:[color=29241be5]"
 scroll_active = false
@@ -255,7 +252,7 @@ end_cap_mode = 1
 [node name="crime_no-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
 custom_minimum_size = Vector2(80, 18)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 bbcode_enabled = true
 text = "incident/crime no:[color=29241be5]
 fff"
@@ -308,7 +305,7 @@ end_cap_mode = 1
 [node name="name" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 theme_override_constants/line_separation = 2
 bbcode_enabled = true
 text = "name/rank/no: [color=393328]
@@ -331,7 +328,7 @@ end_cap_mode = 1
 [node name="signed" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 bbcode_enabled = true
 text = "signed: [color=393328]name"
 scroll_active = false
@@ -359,7 +356,7 @@ end_cap_mode = 1
 [node name="date" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 bbcode_enabled = true
 text = "date: [color=393328]24/01/2026"
 scroll_active = false
@@ -390,7 +387,7 @@ end_cap_mode = 1
 [node name="name_label" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 29)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 text = "name/rank/no:
 "
 scroll_active = false
@@ -404,7 +401,7 @@ layout_mode = 2
 offset_top = 6.0
 offset_right = 82.0
 offset_bottom = 27.0
-theme = ExtResource("7_jg7tw")
+theme = ExtResource("4_2kplo")
 context_menu_enabled = false
 emoji_menu_enabled = false
 shortcut_keys_enabled = false
@@ -432,7 +429,7 @@ end_cap_mode = 1
 [node name="signed_label" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 text = "signed: name"
 scroll_active = false
 shortcut_keys_enabled = false
@@ -446,7 +443,7 @@ offset_left = 25.0
 offset_top = -2.0
 offset_right = 77.0
 offset_bottom = 19.0
-theme = ExtResource("7_jg7tw")
+theme = ExtResource("4_2kplo")
 context_menu_enabled = false
 emoji_menu_enabled = false
 shortcut_keys_enabled = false
@@ -483,7 +480,7 @@ end_cap_mode = 1
 [node name="date_label" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 text = "date:"
 scroll_active = false
 shortcut_keys_enabled = false
@@ -496,7 +493,7 @@ offset_left = 19.0
 offset_top = -2.0
 offset_right = 73.0
 offset_bottom = 19.0
-theme = ExtResource("7_jg7tw")
+theme = ExtResource("4_2kplo")
 context_menu_enabled = false
 emoji_menu_enabled = false
 shortcut_keys_enabled = false
@@ -534,7 +531,7 @@ end_cap_mode = 1
 [node name="name6" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 29)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 text = "name/rank/no:
 "
 scroll_active = false
@@ -548,8 +545,7 @@ layout_mode = 2
 offset_top = 6.0
 offset_right = 82.0
 offset_bottom = 27.0
-theme = ExtResource("7_jg7tw")
-theme_override_font_sizes/font_size = 8
+theme = ExtResource("4_2kplo")
 editable = false
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -578,7 +574,7 @@ end_cap_mode = 1
 [node name="signed6" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 text = "signed: name"
 scroll_active = false
 shortcut_keys_enabled = false
@@ -592,8 +588,7 @@ offset_left = 25.0
 offset_top = -2.0
 offset_right = 77.0
 offset_bottom = 19.0
-theme = ExtResource("7_jg7tw")
-theme_override_font_sizes/font_size = 8
+theme = ExtResource("4_2kplo")
 editable = false
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -622,7 +617,7 @@ end_cap_mode = 1
 [node name="date6" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 text = "date:"
 scroll_active = false
 shortcut_keys_enabled = false
@@ -635,8 +630,7 @@ offset_left = 19.0
 offset_top = -2.0
 offset_right = 73.0
 offset_bottom = 8.0
-theme = ExtResource("7_jg7tw")
-theme_override_font_sizes/font_size = 8
+theme = ExtResource("4_2kplo")
 editable = false
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -689,7 +683,7 @@ end_cap_mode = 1
 [node name="name" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 theme_override_constants/line_separation = 2
 bbcode_enabled = true
 text = "name/rank/no: [color=393328]
@@ -711,7 +705,7 @@ end_cap_mode = 1
 [node name="signed" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 bbcode_enabled = true
 text = "signed: [color=393328"
 scroll_active = false
@@ -739,7 +733,7 @@ end_cap_mode = 1
 [node name="date" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 bbcode_enabled = true
 text = "date: [color=393328]"
 scroll_active = false
@@ -770,7 +764,7 @@ end_cap_mode = 1
 [node name="name5" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 29)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 text = "name/rank/no:
 "
 scroll_active = false
@@ -784,7 +778,7 @@ layout_mode = 2
 offset_top = 6.0
 offset_right = 82.0
 offset_bottom = 27.0
-theme = ExtResource("7_jg7tw")
+theme = ExtResource("4_2kplo")
 theme_override_font_sizes/font_size = 8
 editable = false
 context_menu_enabled = false
@@ -813,7 +807,7 @@ end_cap_mode = 1
 [node name="signed5" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 text = "signed: name"
 scroll_active = false
 shortcut_keys_enabled = false
@@ -827,8 +821,7 @@ offset_left = 25.0
 offset_top = -2.0
 offset_right = 77.0
 offset_bottom = 19.0
-theme = ExtResource("7_jg7tw")
-theme_override_font_sizes/font_size = 8
+theme = ExtResource("4_2kplo")
 editable = false
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -866,7 +859,7 @@ end_cap_mode = 1
 [node name="date5" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 text = "date:"
 scroll_active = false
 shortcut_keys_enabled = false
@@ -879,8 +872,7 @@ offset_left = 19.0
 offset_top = -2.0
 offset_right = 73.0
 offset_bottom = 19.0
-theme = ExtResource("7_jg7tw")
-theme_override_font_sizes/font_size = 8
+theme = ExtResource("4_2kplo")
 editable = false
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -919,7 +911,7 @@ end_cap_mode = 1
 [node name="name6" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 29)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 text = "name/rank/no:
 "
 scroll_active = false
@@ -933,8 +925,7 @@ layout_mode = 2
 offset_top = 6.0
 offset_right = 82.0
 offset_bottom = 27.0
-theme = ExtResource("7_jg7tw")
-theme_override_font_sizes/font_size = 8
+theme = ExtResource("4_2kplo")
 editable = false
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -963,7 +954,7 @@ end_cap_mode = 1
 [node name="signed6" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 text = "signed: name"
 scroll_active = false
 shortcut_keys_enabled = false
@@ -977,8 +968,7 @@ offset_left = 25.0
 offset_top = -2.0
 offset_right = 77.0
 offset_bottom = 19.0
-theme = ExtResource("7_jg7tw")
-theme_override_font_sizes/font_size = 8
+theme = ExtResource("4_2kplo")
 editable = false
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -1007,7 +997,7 @@ end_cap_mode = 1
 [node name="date6" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
-theme = ExtResource("6_xafih")
+theme = ExtResource("4_2kplo")
 text = "date:"
 scroll_active = false
 shortcut_keys_enabled = false
@@ -1020,8 +1010,7 @@ offset_left = 19.0
 offset_top = -2.0
 offset_right = 73.0
 offset_bottom = 8.0
-theme = ExtResource("7_jg7tw")
-theme_override_font_sizes/font_size = 8
+theme = ExtResource("4_2kplo")
 editable = false
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -1036,294 +1025,6 @@ wrap_mode = 1
 autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
-
-[node name="form" type="VBoxContainer" parent="evidence_form"]
-visible = false
-layout_mode = 0
-offset_left = 4.0
-offset_right = 252.0
-offset_bottom = 297.0
-
-[node name="row" type="HFlowContainer" parent="evidence_form/form"]
-layout_mode = 2
-
-[node name="opened_by" type="VBoxContainer" parent="evidence_form/form/row"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="by" type="LineEdit" parent="evidence_form/form/row/opened_by"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "bag opened by"
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="sig" type="LineEdit" parent="evidence_form/form/row/opened_by"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "signature"
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="time" type="LineEdit" parent="evidence_form/form/row/opened_by"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "time"
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="date" type="LineEdit" parent="evidence_form/form/row/opened_by"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "date"
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="reason" type="LineEdit" parent="evidence_form/form/row/opened_by"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "reason"
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="witnessed_by" type="VBoxContainer" parent="evidence_form/form/row"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="by" type="LineEdit" parent="evidence_form/form/row/witnessed_by"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "bag opened by"
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="sig" type="LineEdit" parent="evidence_form/form/row/witnessed_by"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "signature"
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="time" type="LineEdit" parent="evidence_form/form/row/witnessed_by"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "time"
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="date" type="LineEdit" parent="evidence_form/form/row/witnessed_by"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "date"
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="reason" type="LineEdit" parent="evidence_form/form/row/witnessed_by"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "reason"
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="opened_by2" type="VBoxContainer" parent="evidence_form/form/row"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 0
-
-[node name="by" type="LineEdit" parent="evidence_form/form/row/opened_by2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "bag opened by"
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="sig" type="LineEdit" parent="evidence_form/form/row/opened_by2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "signature"
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="time" type="LineEdit" parent="evidence_form/form/row/opened_by2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "time"
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="date" type="LineEdit" parent="evidence_form/form/row/opened_by2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "date"
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="reason" type="LineEdit" parent="evidence_form/form/row/opened_by2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "reason"
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="witnessed_by2" type="VBoxContainer" parent="evidence_form/form/row"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 0
-
-[node name="by" type="LineEdit" parent="evidence_form/form/row/witnessed_by2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "bag opened by"
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="sig" type="LineEdit" parent="evidence_form/form/row/witnessed_by2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "signature"
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="time" type="LineEdit" parent="evidence_form/form/row/witnessed_by2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "time"
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="date" type="LineEdit" parent="evidence_form/form/row/witnessed_by2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "date"
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="reason" type="LineEdit" parent="evidence_form/form/row/witnessed_by2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-placeholder_text = "reason"
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
 
 [node name="confirm" type="Button" parent="evidence_form"]
 layout_mode = 2
