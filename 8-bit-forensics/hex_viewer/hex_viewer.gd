@@ -12,6 +12,7 @@ var select_open:bool = false
 @onready var search_window = preload("res://hex_viewer/search_new.tscn")
 @onready var select_window = preload("res://hex_viewer/select.tscn")
 
+var buffer_len:int
 
 class BufferWrapper:
 	var buffer = PackedByteArray()
@@ -29,7 +30,7 @@ func open_file(file_path:String):
 		var file = FileAccess.open(file_path, FileAccess.READ)
 
 		var buffer = file.get_buffer(file.get_length())
-		print(file.get_length())
+		buffer_len = file.get_length()
 		file.close()
 		
 		_wrapped_buffer.buffer = buffer

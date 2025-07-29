@@ -1,13 +1,11 @@
+# this has been translated to work within gdscript as they both exhibit the same limitations
+# searching through the entirety of a 1 gb file for a small signature takes too long
+
 from PIL import Image
 from binascii import hexlify
+import os
 
-
-#TODO: turn this into another server script 
-#   have the search function as a client script that sends the signature
-#   this responds with the offsets
-#   client handles the printing to screen
-
-def search_hex_pattern(filename, signature, chunk_size=4096):
+def _search(filename, signature, chunk_size=4096):
     signature_bytes = bytes.fromhex(signature)
     signature_len = len(signature_bytes)
 
@@ -15,14 +13,14 @@ def search_hex_pattern(filename, signature, chunk_size=4096):
     offset = 0
 
     with open(filename, 'rb') as f:
-        while True:
+        while offset < 1983936:
             chunk = f.read(chunk_size)
             if not chunk:
                 break
-
+            
             buffer += chunk
-
             search_pos = 0
+
             while search_pos <= len(buffer) - signature_len:
                 if buffer[search_pos : search_pos + signature_len] == signature_bytes:
 
@@ -36,5 +34,6 @@ def search_hex_pattern(filename, signature, chunk_size=4096):
             offset += len(chunk)
             #incase the signature is found between the cut off
             buffer = buffer[-(signature_len - 1):]
+    print("finished")
 
-search_hex_pattern('8-bit-forensics/python_files/test-sd.001', 'ffd9')
+_search('8-bit-forensics/python_files/test-sd.001', 'ffd9')

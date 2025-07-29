@@ -10,7 +10,7 @@ var total_rows = 0
 var OFFSET:= 2
 
 func update_scroll(buffer):
-	total_rows = len(buffer) / row_width
+	total_rows = len(buffer) - 2
 	_row_index = clamp(_row_index,0, max(total_rows - OFFSET,0))
 
 func set_row_index(i):

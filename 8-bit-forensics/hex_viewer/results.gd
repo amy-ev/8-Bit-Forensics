@@ -27,7 +27,10 @@ var FONT_SIZE:= 8
 var FONT_COLOUR:= Color(0.322, 0.282, 0.224)
 
 func _ready() -> void:
+
 	font = preload("res://Vaticanus-G3yVG.ttf")
+	OFFSET = get_visible_row_count() - 1
+
 	Global.connect("signature_found", _on_results_found)
 
 func _on_results_found(results:Array):
@@ -42,11 +45,11 @@ func _on_results_found(results:Array):
 		
 	for i in len(columns):
 		if locations_buffer[i]+columns[i] < len(buffer):
-			if columns[i] == 0:
-				for j in range(locations_buffer[i], locations_buffer[i]+16):
+			if locations_buffer[i] != 0:
+				for j in range(locations_buffer[i] - 8, locations_buffer[i] +8):
 					surrounding_hex.append(buffer[j])
 			else:
-				for j in range(locations_buffer[i]-columns[i], locations_buffer[i] + (16-columns[i])):
+				for j in range(locations_buffer[i],locations_buffer[i] + 16):
 					surrounding_hex.append(buffer[j])
 		else:
 			for j in range(locations_buffer[i]-columns[i],len(buffer)):
@@ -54,15 +57,19 @@ func _on_results_found(results:Array):
 
 	var num_results = len(results_buffer)
 	results_buffer.resize(num_results*16)
+	print("results found: ", num_results)
 	
+	
+	# to match the loop in draw
 	for i in range(num_results):
 		results_buffer[i*16] = results_buffer[i] 
 	results_recieved = true
 	queue_redraw()
 	
 func update_scroll(buffer):
-	_total_rows = len(buffer) / _row_width
+	_total_rows = len(buffer) - 2
 	row_index = clamp(row_index,0, max(_total_rows - OFFSET,0))
+	print("total rows: ", _total_rows)
 
 func set_row_index(i):
 	var visible_rows = int(size.y)
@@ -98,7 +105,6 @@ func _draw() -> void:
 		
 		if begin_offset > len(surrounding_hex):
 			return
-		
 		var line_height:= int(font.get_height(FONT_SIZE))
 		var displayed_row_count:int = get_visible_row_count()
 		
@@ -116,7 +122,7 @@ func _draw() -> void:
 				row_end_offset = len(surrounding_hex)
 				
 			pos += Vector2(3, font.get_ascent(FONT_SIZE))
-			
+			print("start ", row_begin_offset, " end ", row_end_offset)
 			#offset location
 			draw_string(font, pos, results_buffer[row_begin_offset],0,-1,FONT_SIZE,FONT_COLOUR)
 			pos.x += 40 +  separation -1
@@ -127,6 +133,7 @@ func _draw() -> void:
 				hex_string += str(hex_to_string[surrounding_hex[i]], " ")
 				
 			draw_string(font, pos, hex_string,0,-1,FONT_SIZE, FONT_COLOUR)
+
 
 			#reset for next
 			pos.x = 0
