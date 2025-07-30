@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://sn8d4o6fhtgr"]
 
 [ext_resource type="Script" uid="uid://bma4ijfyyc2of" path="res://file_dialog/file.gd" id="1_lhbmk"]
-[ext_resource type="Texture2D" uid="uid://cq8g1a3xywsfu" path="res://assets/file_dialog/icon.png" id="2_68pwj"]
-[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_qgrpm"]
+[ext_resource type="Texture2D" uid="uid://cq8g1a3xywsfu" path="res://assets/UI/file-icon.png" id="2_68pwj"]
+[ext_resource type="FontFile" uid="uid://ginkfwm14fgo" path="res://8-bit-forensics.ttf" id="4_fnkg0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lhbmk"]
-font = ExtResource("3_qgrpm")
+font = ExtResource("4_fnkg0")
 font_size = 8
 font_color = Color(0.321569, 0.282353, 0.223529, 1)
 
@@ -42,8 +42,6 @@ offset_top = 14.0
 offset_right = 21.0
 offset_bottom = 22.0
 theme_override_colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
-theme_override_fonts/font = ExtResource("3_qgrpm")
-theme_override_font_sizes/font_size = 9
 text = "file12"
 label_settings = SubResource("LabelSettings_lhbmk")
 horizontal_alignment = 1

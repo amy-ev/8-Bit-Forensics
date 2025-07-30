@@ -31,7 +31,11 @@ func dialogue_text(dict,option):
 	current_dialogue = option
 
 func _end_dialogue():
-	Global.debrief_given = true
+	match get_parent().name:
+		"desk":
+			Global.debrief_given = true
+		"pc":
+			Global.pc_debrief_given = true
 	queue_free()
 	
 func load_dialogue(file_path):

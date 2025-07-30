@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3e5723vb1frs"]
 
-[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="1_8cpkj"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="1_8cpkj"]
 [ext_resource type="Script" uid="uid://btq7yy63dr15t" path="res://metadata/metadata_label.gd" id="1_c8y01"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8y01"]
@@ -21,8 +21,7 @@ size = Vector2(100, 20)
 [node name="metadata_label" type="Label"]
 offset_right = 100.0
 offset_bottom = 20.0
-theme_override_fonts/font = ExtResource("1_8cpkj")
-theme_override_font_sizes/font_size = 8
+theme = ExtResource("1_8cpkj")
 text_overrun_behavior = 1
 script = ExtResource("1_c8y01")
 

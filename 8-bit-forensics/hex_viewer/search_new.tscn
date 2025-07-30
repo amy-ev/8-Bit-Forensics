@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckfibbeorlvmh"]
+
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_pyvme"]
+[ext_resource type="Script" uid="uid://dikplj5dq4sa8" path="res://hex_viewer/search_new.gd" id="2_j0j03"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="2_mc3u8"]
+[ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/UI/exit-button.png" id="3_j0j03"]
+
+[node name="search" type="NinePatchRect"]
+offset_right = 77.0
+offset_bottom = 62.0
+texture = ExtResource("1_pyvme")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+script = ExtResource("2_j0j03")
+
+[node name="user_input" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 71.0
+offset_bottom = 36.0
+theme = ExtResource("2_mc3u8")
+placeholder_text = "hex"
+alignment = 2
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="search_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 16.0
+offset_right = 32.0
+offset_bottom = 24.0
+theme = ExtResource("2_mc3u8")
+text = "search:"
+
+[node name="ok" type="Button" parent="."]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 42.0
+offset_right = 72.0
+offset_bottom = 57.0
+theme = ExtResource("2_mc3u8")
+text = "ok"
+
+[node name="cancel" type="Button" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 42.0
+offset_right = 54.0
+offset_bottom = 57.0
+theme = ExtResource("2_mc3u8")
+text = "cancel"
+
+[node name="exit" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 77.0
+offset_bottom = 14.0
+texture_normal = ExtResource("3_j0j03")
+
+[connection signal="pressed" from="ok" to="." method="_on_ok_pressed"]
+[connection signal="pressed" from="cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

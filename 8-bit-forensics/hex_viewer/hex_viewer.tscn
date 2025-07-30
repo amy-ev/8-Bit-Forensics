@@ -1,63 +1,118 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqai7e5o8pqlh"]
+[gd_scene load_steps=12 format=3 uid="uid://bvawuopyd7eqq"]
 
-[ext_resource type="Script" uid="uid://c4m27nwwq4imj" path="res://hex_viewer/hex_viewer.gd" id="1_auk66"]
-[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="1_m7h7m"]
-[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="3_cke5y"]
-[ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/file_dialog/exit-button.png" id="3_rut17"]
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_m7h7m"]
+[ext_resource type="Script" uid="uid://b5k5r2302vhyn" path="res://hex_viewer/hex_viewer.gd" id="2_cke5y"]
+[ext_resource type="Script" uid="uid://dijp07ip3yh7s" path="res://hex_viewer/scroll_manager.gd" id="3_5olva"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="3_cke5y"]
+[ext_resource type="PackedScene" uid="uid://db4sjj6kgif47" path="res://hex_viewer/new_file.tscn" id="5_woy5n"]
+[ext_resource type="Script" uid="uid://ck2m7tv0m2jxu" path="res://hex_viewer/scroll_bar.gd" id="6_2nup8"]
+[ext_resource type="Script" uid="uid://c1shiqlpmarvn" path="res://hex_viewer/results_scroll_manager.gd" id="7_2nup8"]
+[ext_resource type="Script" uid="uid://bgai2mgpfsmqx" path="res://hex_viewer/results.gd" id="8_ywfrl"]
+[ext_resource type="Script" uid="uid://clg30sk7l1qme" path="res://hex_viewer/results_scroll_bar.gd" id="9_f13me"]
+[ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="10_ywfrl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cm2t2"]
 
 [node name="hex_viewer" type="NinePatchRect"]
-offset_right = 232.0
-offset_bottom = 148.0
+offset_right = 300.0
+offset_bottom = 176.0
+mouse_filter = 1
 texture = ExtResource("1_m7h7m")
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
-script = ExtResource("1_auk66")
+script = ExtResource("2_cke5y")
 
-[node name="tab" type="TabContainer" parent="."]
+[node name="v_sort" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 20.0
-offset_right = 201.0
-offset_bottom = 142.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="scroll_manager" type="HBoxContainer" parent="v_sort"]
+layout_mode = 2
+theme_override_constants/separation = -4
+script = ExtResource("3_5olva")
+
+[node name="sort" type="VBoxContainer" parent="v_sort/scroll_manager"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="window" type="TabContainer" parent="v_sort/scroll_manager/sort"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
 theme = ExtResource("3_cke5y")
 current_tab = 0
-tabs_visible = false
 
-[node name="scroll" type="ScrollContainer" parent="tab"]
+[node name="original_file" parent="v_sort/scroll_manager/sort/window" instance=ExtResource("5_woy5n")]
 layout_mode = 2
-horizontal_scroll_mode = 0
-metadata/_tab_index = 0
 
-[node name="label" type="RichTextLabel" parent="tab/scroll"]
+[node name="scroll_bar" type="ColorRect" parent="v_sort/scroll_manager"]
+material = SubResource("ShaderMaterial_cm2t2")
+custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
-theme = ExtResource("3_cke5y")
-autowrap_mode = 0
-shortcut_keys_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
+color = Color(0.45098, 0.396078, 0.290196, 1)
+script = ExtResource("6_2nup8")
 
-[node name="exit" type="TextureButton" parent="."]
-visible = false
+[node name="results_scroll_manager" type="HBoxContainer" parent="v_sort"]
+custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = 13.0
-offset_right = 13.0
-offset_bottom = 9.0
-grow_horizontal = 0
-texture_normal = ExtResource("3_rut17")
+theme_override_constants/separation = -4
+script = ExtResource("7_2nup8")
 
-[node name="open" type="Button" parent="."]
+[node name="results" type="Control" parent="v_sort/results_scroll_manager"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+script = ExtResource("8_ywfrl")
+
+[node name="results_scroll_bar" type="ColorRect" parent="v_sort/results_scroll_manager"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+color = Color(0.321569, 0.282353, 0.223529, 1)
+script = ExtResource("9_f13me")
+
+[node name="load" type="Button" parent="."]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 25.0
-offset_bottom = 17.0
-theme = ExtResource("3_cke5y")
+offset_left = 277.0
+offset_right = 300.0
+offset_bottom = 14.0
+theme = ExtResource("10_ywfrl")
 text = "open"
 
-[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="open" to="." method="_on_open_pressed"]
+[node name="save" type="Button" parent="."]
+layout_mode = 0
+offset_left = 254.0
+offset_right = 277.0
+offset_bottom = 14.0
+theme = ExtResource("10_ywfrl")
+disabled = true
+text = "save"
+
+[node name="find" type="Button" parent="."]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 155.0
+offset_right = 293.0
+offset_bottom = 169.0
+theme = ExtResource("10_ywfrl")
+text = "scroll to"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 150.0
+offset_right = 230.0
+offset_bottom = 159.0
+color = Color(1, 1, 1, 0.333333)
+
+[connection signal="gui_input" from="v_sort/scroll_manager" to="v_sort/scroll_manager" method="_on_gui_input"]
+[connection signal="tab_changed" from="v_sort/scroll_manager/sort/window" to="." method="_on_window_tab_changed"]
+[connection signal="ask_scroll" from="v_sort/scroll_manager/scroll_bar" to="v_sort/scroll_manager" method="_on_scroll_bar_ask_scroll"]
+[connection signal="gui_input" from="v_sort/scroll_manager/scroll_bar" to="v_sort/scroll_manager/scroll_bar" method="_on_gui_input"]
+[connection signal="gui_input" from="v_sort/results_scroll_manager" to="v_sort/results_scroll_manager" method="_on_gui_input"]
+[connection signal="ask_scroll" from="v_sort/results_scroll_manager/results_scroll_bar" to="v_sort/results_scroll_manager" method="_on_results_scroll_bar_ask_scroll"]
+[connection signal="gui_input" from="v_sort/results_scroll_manager/results_scroll_bar" to="v_sort/results_scroll_manager/results_scroll_bar" method="_on_gui_input"]
+[connection signal="pressed" from="load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="find" to="." method="_on_find_pressed"]

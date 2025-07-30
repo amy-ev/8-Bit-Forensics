@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=14 format=3 uid="uid://bbwoe2hkv3c8w"]
 
-[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="1_yswtl"]
+[ext_resource type="FontFile" uid="uid://ginkfwm14fgo" path="res://8-bit-forensics.ttf" id="1_xkapx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yswtl"]
 
@@ -32,9 +32,9 @@ content_margin_left = 2.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wff2y"]
 
 [resource]
-default_font = ExtResource("1_yswtl")
+default_font = ExtResource("1_xkapx")
 default_font_size = 8
-MenuButton/fonts/font = ExtResource("1_yswtl")
+MenuButton/fonts/font = ExtResource("1_xkapx")
 MenuButton/styles/disabled = SubResource("StyleBoxEmpty_yswtl")
 MenuButton/styles/focus = SubResource("StyleBoxEmpty_xkapx")
 MenuButton/styles/hover = SubResource("StyleBoxEmpty_5jn8l")
@@ -53,6 +53,6 @@ OptionButton/styles/normal = SubResource("StyleBoxEmpty_1c0is")
 OptionButton/styles/pressed = SubResource("StyleBoxEmpty_qv2nw")
 PopupMenu/colors/font_color = Color(0.901961, 0.807843, 0.67451, 1)
 PopupMenu/colors/font_hover_color = Color(0.932108, 0.863368, 0.766723, 1)
-PopupMenu/fonts/font = ExtResource("1_yswtl")
+PopupMenu/fonts/font = ExtResource("1_xkapx")
 PopupMenu/styles/hover = SubResource("StyleBoxEmpty_8hksi")
 PopupMenu/styles/panel = SubResource("StyleBoxEmpty_wff2y")

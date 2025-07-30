@@ -1,7 +1,6 @@
 extends NinePatchRect
 
 @onready var _file_metadata = preload("res://file_dialog/load_file.tscn")
-@onready var _comment = preload("res://pc/comment.tscn")
 
 @export var current_image: String
 
@@ -316,7 +315,7 @@ func _draw() -> void:
 			
 	if correlates:
 		if progress == 1.0:
-			var comment = _comment.instantiate()
+			var comment = Label
 			add_child(comment)
 			comment.text = match_msg
 			comment.position = Vector2(coords1[-1][0] + 20,coords1[-1][1]- comment.size.y /2)

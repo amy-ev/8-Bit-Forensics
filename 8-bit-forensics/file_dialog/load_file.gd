@@ -5,7 +5,6 @@ class_name LoadFile
 @onready var files = preload("res://file_dialog/file.tscn")
 #@onready var saved_dialog_scene = preload("res://file_dialog/save_file.tscn")
 @onready var metadata_labels = preload("res://metadata/metadata_label.tscn")
-@onready var hex_scene = preload("res://hex_viewer/hex_viewer.tscn")
 
 @export var file_icon: ImageTexture
 @export var selected_file: String
@@ -16,14 +15,18 @@ var current_rect: ColorRect
 
 var file: File
 
+var parent:Node
+
 func _ready() -> void:
 	add_files(file_count("res://jpg_folder/"))
-
-	if get_parent().name == "metadata_window":
-		#start server python script
-		#TODO: CHANGE TO FALSE
-		OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/start.bat",[],true) # true = terminal popup (for debugging)
 	Global.connect("selected",_on_file_selected)
+	
+	parent = get_parent()
+	
+	if parent.name == "metadata_window":
+		#start server python script
+		OS.execute("cmd.exe", ["/C", "cd %cd%/python_files && start.bat"])
+
 	
 	# TODO: REMOVE FROM HERE AND ADD BOTH LOAD_FILE AND SAVE_FILE TO A DIALOG WINDOW SCENE
 	#var saved_dialog = saved_dialog_scene.instantiate()
@@ -33,20 +36,20 @@ func _ready() -> void:
 	# ---------------------------
 	
 func _on_load_button_pressed() -> void:
-	print(get_parent().name)
+	print(parent.name)
 	Global.selected_file = selected_file
 	
-	if get_parent().name == "metadata_window":
-		var metadata_thumbnail = get_parent().get_node("thumbnail_column/thumbnail")
-		var metadata_column = get_parent().get_node("scroll/data_container")
+	if parent.name == "metadata_window":
+		var metadata_thumbnail = parent.get_node("thumbnail_column/thumbnail")
+		var metadata_column = parent.get_node("scroll/data_container")
 		
 		#start client godot script
 		var client = client_scene.instantiate()
 		add_child(client)
 		await client.tree_exited
 		#kill server python script
-		OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
-		
+		OS.execute("cmd.exe", ["/C", "cd %cd%/python_files && kill.bat"])
+
 		metadata_thumbnail.texture = load("res://jpg_folder/"+selected_file)
 		metadata_thumbnail.size = Vector2(44,32)
 		
@@ -84,9 +87,24 @@ func _on_load_button_pressed() -> void:
 		else:
 			print("Type: ", type_string(typeof(json_dict)))
 
-	elif get_parent().name == "hex_viewer":
-		get_parent().open_file("res://jpg_folder/"+selected_file)
+	elif parent.name == "hex_viewer":
+		parent.open_file("res://jpg_folder/"+selected_file)
+		parent.load_file_open = false
 		
+		var tabs = parent.get_node("v_sort/scroll_manager/sort/window")
+		
+		if tabs.get_child_count() > 1:
+			var children = []
+			for i in tabs.get_children():
+				if i.name != "original_file":
+					children.append(i)
+			for child in children:
+				tabs.remove_child(child)
+				
+				
+		var search_results = parent.get_node("v_sort/results_scroll_manager/results")
+		search_results.results_recieved = false
+		search_results.queue_redraw()
 	queue_free()
 	
 func add_files(file_no:int):
@@ -98,13 +116,13 @@ func add_files(file_no:int):
 		file.name = "file"
 		file._file_name = file.name
 		#file_icon = load("res://assets/file_dialog/icon-x3.png")
-		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://assets/file_dialog/icon.png"))
+		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://assets/UI/file-icon.png"))
 		#file_icon = ImageTexture.create_from_image(Image.load_from_file("res://jpg_folder/photo"+str(i)+".jpg"))
 		file._file_icon = file_icon
 		
 		#TODO: change to match a variety of files
-		file._file_icon.set_meta("file_name","photo"+str(i)+".jpg")
-	
+		#file._file_icon.set_meta("file_name","photo"+str(i)+".jpg")
+		file._file_icon.set_meta("file_name","test-sd.001")
 		# dynamically size the file_container grid seperations 
 		$file_dialog/window/file_container.size.x = $file_dialog/window.size.x - 10
 		$file_dialog/window/file_container.size.y = $file_dialog/window.size.y
@@ -134,7 +152,12 @@ func file_count(file_path:String) -> int:
 	return files_no
 	
 func _on_exit_pressed() -> void:
-	OS.create_process("C:/Users/Amy/Desktop/8-Bit-Forensics/8-bit-forensics/python_files/kill.bat",[],true)
+	if parent.name == "metadata_window":
+		OS.execute("cmd.exe", ["/C", "cd %cd%/python_files && kill.bat"])
+		
+	elif parent.name == "hex_viewer":
+		parent.load_file_open = false
+		
 	queue_free()
 
 func _on_file_selected(selected_node:File, real_file:String):
@@ -151,10 +174,10 @@ func _on_file_selected(selected_node:File, real_file:String):
 	
 	print("selected_node: %s, real_file: %s, selected_file: %s "%[selected_node, real_file, selected_file])
 	
-	if get_parent().name == "metadata_window":
+	if parent.name == "metadata_window":
 		file_idx = selected_file.replacen("photo", "")
 		file_idx = file_idx.replacen(".jpg", "")
-		get_parent().current_image = file_idx
+		parent.current_image = file_idx
 	
 func open_json(file_path):
 	if FileAccess.file_exists(file_path):

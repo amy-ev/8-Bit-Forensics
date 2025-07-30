@@ -1,14 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqwedwedwn32"]
+[gd_scene load_steps=4 format=3 uid="uid://dqwedwedwn32"]
 
 [ext_resource type="Script" uid="uid://qayymwuuheyr" path="res://evidence/item_information.gd" id="1_g7w0n"]
-[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://pc_components.tres" id="3_kxa1e"]
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_kxa1e"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="3_kxa1e"]
 
-[node name="item_information" type="VBoxContainer"]
-offset_right = 153.0
-offset_bottom = 206.0
+[node name="item_information" type="ColorRect"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 235.0
+offset_bottom = 151.0
+color = Color(1, 1, 1, 0)
 script = ExtResource("1_g7w0n")
 
-[node name="case_no" type="LineEdit" parent="."]
+[node name="window" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.5
+offset_top = -46.5
+offset_right = 80.5
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kxa1e")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="sort" type="VBoxContainer" parent="window"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 157.0
+offset_bottom = 89.0
+
+[node name="case_no" type="LineEdit" parent="window/sort"]
 layout_mode = 2
 theme = ExtResource("3_kxa1e")
 placeholder_text = "case_no"
@@ -21,7 +51,7 @@ selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="evidence_no" type="LineEdit" parent="."]
+[node name="evidence_no" type="LineEdit" parent="window/sort"]
 layout_mode = 2
 theme = ExtResource("3_kxa1e")
 placeholder_text = "evidence_no"
@@ -34,7 +64,7 @@ selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="unique_desc" type="LineEdit" parent="."]
+[node name="unique_desc" type="LineEdit" parent="window/sort"]
 layout_mode = 2
 theme = ExtResource("3_kxa1e")
 placeholder_text = "unique_desc"
@@ -47,7 +77,7 @@ selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="examiner" type="LineEdit" parent="."]
+[node name="examiner" type="LineEdit" parent="window/sort"]
 layout_mode = 2
 theme = ExtResource("3_kxa1e")
 placeholder_text = "examiner"
@@ -60,7 +90,7 @@ selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="notes" type="LineEdit" parent="."]
+[node name="notes" type="LineEdit" parent="window/sort"]
 layout_mode = 2
 theme = ExtResource("3_kxa1e")
 placeholder_text = "notes"
@@ -73,24 +103,25 @@ selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="navigation" type="HBoxContainer" parent="."]
+[node name="navigation" type="HBoxContainer" parent="window/sort"]
 layout_mode = 2
+alignment = 2
 
-[node name="back" type="Button" parent="navigation"]
+[node name="back" type="Button" parent="window/sort/navigation"]
 layout_mode = 2
 theme = ExtResource("3_kxa1e")
 text = "back"
 
-[node name="next" type="Button" parent="navigation"]
+[node name="next" type="Button" parent="window/sort/navigation"]
 layout_mode = 2
 theme = ExtResource("3_kxa1e")
 text = "finish"
 
-[node name="cancel" type="Button" parent="navigation"]
+[node name="cancel" type="Button" parent="window/sort/navigation"]
 layout_mode = 2
 theme = ExtResource("3_kxa1e")
 text = "cancel"
 
-[connection signal="pressed" from="navigation/back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="navigation/next" to="." method="_on_next_pressed"]
-[connection signal="pressed" from="navigation/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="window/sort/navigation/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="window/sort/navigation/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="window/sort/navigation/cancel" to="." method="_on_cancel_pressed"]

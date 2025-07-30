@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://d31sl6bl6j3b3"]
 
 [ext_resource type="Script" uid="uid://b4546ogyrqq64" path="res://metadata/metadata.gd" id="1_2ct7u"]
-[ext_resource type="Texture2D" uid="uid://ck13skggxkb21" path="res://assets/metadata/metadata-window.png" id="1_hpvqb"]
-[ext_resource type="FontFile" uid="uid://cbrc4x3dvdynj" path="res://Vaticanus-G3yVG.ttf" id="3_7dblc"]
-[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/hex_viewer/window.png" id="4_daqaj"]
-[ext_resource type="Texture2D" uid="uid://dbqt4m1v71plc" path="res://assets/metadata/open.png" id="4_vpbfe"]
+[ext_resource type="Texture2D" uid="uid://ck13skggxkb21" path="res://assets/UI/metadata-window.png" id="1_hpvqb"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="3_d1c4e"]
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="4_daqaj"]
+[ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="5_daqaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_paekb"]
 size = Vector2(44.5, 32.5)
@@ -300,9 +300,7 @@ offset_left = 16.0
 offset_top = 2.0
 offset_right = 50.0
 offset_bottom = 10.0
-theme_override_colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
-theme_override_fonts/font = ExtResource("3_7dblc")
-theme_override_font_sizes/font_size = 8
+theme = ExtResource("3_d1c4e")
 text = "itemname"
 
 [node name="value_background" type="NinePatchRect" parent="backgrounds"]
@@ -324,9 +322,7 @@ offset_left = 30.0
 offset_top = 2.0
 offset_right = 72.0
 offset_bottom = 10.0
-theme_override_colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
-theme_override_fonts/font = ExtResource("3_7dblc")
-theme_override_font_sizes/font_size = 8
+theme = ExtResource("3_d1c4e")
 text = "information"
 
 [node name="scroll" type="ScrollContainer" parent="."]
@@ -378,9 +374,7 @@ offset_left = 4.0
 offset_top = -14.0
 offset_right = 38.0
 offset_bottom = -6.0
-theme_override_colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
-theme_override_fonts/font = ExtResource("3_7dblc")
-theme_override_font_sizes/font_size = 8
+theme = ExtResource("3_d1c4e")
 text = "Thumbnail"
 
 [node name="selected" type="Panel" parent="thumbnail_column/thumbnail"]
@@ -397,15 +391,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_u6jsu")
 }
 
-[node name="select" type="TextureButton" parent="."]
+[node name="select" type="Button" parent="."]
 layout_mode = 1
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 28.0
-offset_bottom = 14.0
-texture_normal = ExtResource("4_vpbfe")
-ignore_texture_size = true
-stretch_mode = 0
+offset_bottom = 16.0
+theme = ExtResource("5_daqaj")
+text = "open"
 
 [connection signal="input_event" from="thumbnail_column/thumbnail/thumbnail_area" to="." method="_on_thumbnail_area_input_event"]
 [connection signal="pressed" from="select" to="." method="_on_select_pressed"]
