@@ -1,17 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://eeb4hv1el1co"]
+[gd_scene load_steps=10 format=3 uid="uid://ggsc0k0u24bc"]
 
-[ext_resource type="Script" uid="uid://bm2p2n6vqfkku" path="res://dialogue/dialogue_display.gd" id="1_hcfp6"]
-[ext_resource type="Texture2D" uid="uid://djajlduca6jyi" path="res://assets/dialogue/mini-dialogue.png" id="2_v4iod"]
-[ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="2_ycikt"]
-[ext_resource type="Texture2D" uid="uid://ckpg8nph6p3do" path="res://assets/dialogue/mini-dialogue-panel.png" id="3_ms2fa"]
-[ext_resource type="PackedScene" uid="uid://c1f7ejp4myvjd" path="res://dialogue/dialogue_option.tscn" id="6_ms2fa"]
+[ext_resource type="Texture2D" uid="uid://bketsdv7bdnil" path="res://assets/dialogue/normal-dialogue-wide.png" id="1_4cpfg"]
+[ext_resource type="Script" uid="uid://bm2p2n6vqfkku" path="res://dialogue/dialogue_display.gd" id="1_rntwc"]
+[ext_resource type="Texture2D" uid="uid://c3yl6q4k07f8q" path="res://assets/dialogue/dialogue-panel-bottom-wide.png" id="2_rntwc"]
+[ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="3_i4pyp"]
+[ext_resource type="PackedScene" uid="uid://c1f7ejp4myvjd" path="res://dialogue/dialogue_option.tscn" id="4_gkdle"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mptr3"]
-texture = ExtResource("3_ms2fa")
-texture_margin_left = 12.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8tx70"]
+texture = ExtResource("2_rntwc")
+texture_margin_left = 6.0
 texture_margin_top = 6.0
 texture_margin_right = 6.0
-texture_margin_bottom = 12.0
+texture_margin_bottom = 6.0
 
 [sub_resource type="Animation" id="Animation_1e8ho"]
 length = 0.001
@@ -52,9 +52,8 @@ _data = {
 &"talk": SubResource("Animation_a13u3")
 }
 
-[node name="dialogue_display" type="CanvasLayer"]
-layer = 2
-script = ExtResource("1_hcfp6")
+[node name="full_dialogue_display" type="CanvasLayer"]
+script = ExtResource("1_rntwc")
 
 [node name="blocker" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -65,19 +64,17 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
 [node name="npc" type="Sprite2D" parent="."]
-position = Vector2(0, 86)
-texture = ExtResource("2_v4iod")
+texture = ExtResource("1_4cpfg")
 centered = false
-hframes = 4
 
 [node name="panel" type="PanelContainer" parent="."]
-offset_left = 53.0
-offset_top = 90.0
-offset_right = 249.0
-offset_bottom = 146.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_mptr3")
+offset_left = 10.0
+offset_top = 106.0
+offset_right = 310.0
+offset_bottom = 176.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8tx70")
 
-[node name="dialogue_label" parent="panel" instance=ExtResource("2_ycikt")]
+[node name="dialogue_label" parent="panel" instance=ExtResource("3_i4pyp")]
 layout_mode = 2
 
 [node name="animation" type="AnimationPlayer" parent="."]
@@ -85,11 +82,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_w78q7")
 }
 
-[node name="dialogue_option" parent="." instance=ExtResource("6_ms2fa")]
-offset_left = 154.0
-offset_top = 149.0
-offset_right = 249.0
-offset_bottom = 168.0
+[node name="dialogue_option" parent="." instance=ExtResource("4_gkdle")]
+offset_left = 215.0
+offset_top = 84.0
+offset_right = 310.0
+offset_bottom = 103.0
 
 [connection signal="option_selected" from="dialogue_option/select" to="." method="_on_select_option_selected"]
 

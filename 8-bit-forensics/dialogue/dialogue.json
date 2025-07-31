@@ -3,49 +3,155 @@
     "text": "Since we’re opening already collected evidence, you just need to fill out the continuity section. Penmanship counts, no duck scratches.",
     "go to": [
       "e1.1"
-    ]
+    ],
+    "option display": "Right"
   },
   "e1.1": {
     "text": "Oh, and for the description be specific, details matter. If you just write SD card our audit team will personally hunt you down. It’s not just bureaucracy it’s our legal shield.",
     "go to": [
       "e1.2"
-    ]
+    ],
+    "option display": "Sure"
   },
   "e1.2": {
     "text": "And make sure you sign it. That signature binds you to this item until you log it back in, no dropping it in your bag, no taking it home ‘just to check it real quick’. Chain of custody is your legal lifeline.",
-    "function": "end_dialogue"
+    "function": "end_dialogue",
+    "option display": "Of course"
   },
   "": {},
   "e2.0": {
     "text": "Wonderful. Now, glove up. Seriously, no greasy fingerprints on the evidence. We don’t need your DNA on a future Netflix documentary.",
     "go to": [
       "e2.1"
-    ]
+    ],
+    "option display": "Alright, they're on"
   },
   "e2.1": {
     "text": "And carefully cut open the bottom of the bag.",
-    "function": "end_dialogue"
+    "function": "end_dialogue",
+    "option display": "Okay"
   },
   "e3.0": {
     "text": "Smooth. Now remember, no direct access. We’ll create a bit-for-bit forensic image using a write blocker, verifying the hash integrity before and after, and then analyse.",
     "go to": [
       "e3.1"
-    ]
+    ],
+    "option display": "Okay"
   },
   "e3.1": {
     "text": "Oh, and pro tip? These little guys are easy to lose. So, document where it is where it’s going, and don’t put it anywhere you wouldn’t put a live grenade.",
     "go to": [
       "e3.2"
-    ]
+    ],
+    "option display": "Of course"
   },
   "e3.2": {
     "text": "Now let’s head back to the desk and see if this card contains a secret database…",
     "go to": [
       "e3.3"
-    ]
+    ],
+    "option display": "Alright"
   },
   "e3.3": {
     "text": "Or just 200 blurry selfies of the suspects dog.",
-    "function": "end_dialogue"
+    "function": "end_dialogue",
+    "option display": "Oh"
+  },
+  "e4.0": {
+    "text": "Now comes the fun part: Forensic imagining. This is where we create a bit-for-bit copy of the card, preserving every file, fragment, and every bad decision the suspect ever made on it",
+    "go to": [
+      "e4.1"
+    ],
+    "option display": "How?"
+  },
+  "e4.1": {
+    "text": "Firstly, by using a write blocker.",
+    "go to": [
+      "e4.2"
+    ],
+    "option display": "A write blocker?"
+  },
+  "e4.2": {
+    "text": "Write blockers are like a bouncer at the club. They let us read what’s inside. But don’t let anything, or anyone, write back. No modification, no accidental changes, no Windows deciding it needs to ‘fix’ the filesystem.",
+    "go to": [
+      "e4.3"
+    ],
+    "option display": "Oh okay"
+  },
+  "e4.3": {
+    "text": "First the SD card goes into the write blocker. The data is then fed to our imaging software.",
+    "go to": [
+      "e4.4"
+    ],
+    "option display": "Okay"
+  },
+  "e4.4": {
+    "text": "So lets start up the PC, we'll fire up FTK Imager and create a forensic image.",
+    "go to": [
+      "e4.5"
+    ],
+    "option display": "Sure"
+  },
+  "e4.5": {
+    "text": "And don't worry, I'll walk you through every step.",
+    "function": "end_dialogue",
+    "option display": "Thank you"
+  },
+  "e5.0": {
+    "text": "Click on file and select ‘Create Image’. Since we have the physical item, we will be selecting physical drive.",
+    "go to": [
+      "e5.1"
+    ],
+    "option display": "Okay"
+  },
+  "e5.1": {
+    "text": "Now let’s choose the correct target. If you image the wrong drive, say like your own workstation, I will laugh, but also cry.",
+    "go to": [
+      "e5.2"
+    ],
+    "option display": "Sure"
+  },
+  "e5.2": {
+    "text": "We’re going for ‘dd’, we want an exact bit-for-bit copy without the added fluff embedded.",
+    "go to": [
+      "e5.3"
+    ],
+    "option display": "Alright"
+  },
+  "e5.3": {
+    "text": "Now let's give it a case number, evidence number and description. Remember this should match anything that you wrote on the bag earlier.",
+    "go to": [
+      "e5.4"
+    ],
+    "option display": "Got it"
+  },
+  "e5.4": {
+    "text": "And now we wait.",
+    "go to": "e5.5",
+    "option display": "Ah"
+  },
+  "e5.5": {
+    "text": "And while we do that, lets talk hashes. Not the breakfast kind sadly. Cryptographic hashes.",
+    "go to": "e5.6",
+    "option display": "What about them?"
+  },
+  "e5.6": {
+    "text": "They’re like digital fingerprints. Before and after we image the card, we calculate a hash, typically MD5 and SHA1.",
+    "go to": "e5.7",
+    "option display": "Okay"
+  },
+  "e5.7": {
+    "text": "Now the software has already automatically generated them for us.",
+    "go to": "e5.8",
+    "option display": "Nice"
+  },
+  "e5.8": {
+    "text": "But its important to use another tool to double check. Don’t trust the software blindly.",
+    "go to": "e5.9",
+    "option display": "Oh okay"
+  },
+  "e5.9": {
+    "text": "Even digital tools can lie, especially on a Monday. So, lets run the command line tool.",
+    "option display": "Sure"
   }
 }

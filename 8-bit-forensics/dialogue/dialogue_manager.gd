@@ -8,7 +8,6 @@ var pc_debrief = {}
 var current_dialogue = ""
 
 var option:String
-var own_response:bool
 var display_options:= [0,0]
 @onready var dialogue_label = $panel/container/dialogue_label
 
@@ -59,33 +58,21 @@ func next_dialogue(dict):
 
 	if dict[current_dialogue].has("go to"):
 		var next = dict[current_dialogue]["go to"][0]
-		
-		if own_response:
-			$panel/container/name.text = "Rookie"
-			display_options = [0,0]
-			dialogue_text(dict, dict[current_dialogue]["go to"][0]) 
-			own_response = false
 			
 		if dict[current_dialogue].has("go to") && dict[current_dialogue]["go to"].size() > 1:
-		#if dict[next].has("go to") && dict[next]["go to"].size() > 1:
-			var option_a = dict[current_dialogue]["go to"][0]
-			var a_text = dict[option_a]["option display"]
-			
-			var option_b = dict[current_dialogue]["go to"][1]
-			var b_text = dict[option_b]["option display"]
+			var a_text = dict[current_dialogue]["option display"][0]
+			var b_text = dict[current_dialogue]["option display"][1]
 			
 			if a_text == b_text:
 				display_options = [1,0]
 			else:
 				display_options = [1,1]
-
+				
 			$option_a/label.text = a_text
 			$option_b/label.text = b_text
-			
 		else:
 			display_options = [1,0]
-			$option_a/label.text = "NEXT"
-
+			$option_a/label.text = dict[current_dialogue]["option display"][0]
 
 	else:
 		display_options = [1,0]
@@ -105,19 +92,13 @@ func show_options(_options_visible):
 func response_dialogue(dict):
 	if dict[current_dialogue].has("go to"):
 		if dict[current_dialogue]["go to"].size() > 1:
-			own_response = true
-			$panel/container/name.text = "Rookie"
 			if option.ends_with("a"):
 				dialogue_text(dict, dict[current_dialogue]["go to"][0]) 
 			elif option.ends_with("b"):
 				dialogue_text(dict, dict[current_dialogue]["go to"][1]) 
-			own_response = false
 		else:
-			own_response = false
-			$panel/container/name.text = "Chief Quacky McQuackFace"
 			dialogue_text(dict, dict[current_dialogue]["go to"][0]) 
 	else:
-		$panel/container/name.text = "Chief Quacky McQuackFace"
 		emit_signal(dict[current_dialogue]["function"])
 		
 

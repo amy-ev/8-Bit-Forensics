@@ -21,6 +21,7 @@ func _ready() -> void:
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		if get_parent().get_class() == "PanelContainer":
+			print("pressed")
 			emit_signal("option_selected",get_parent().name)
 		else:
 			Global.emit_signal("item_pressed",get_parent())

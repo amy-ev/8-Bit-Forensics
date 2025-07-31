@@ -49,7 +49,6 @@ func _on_pc_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 						var dialogue = _dialogue.instantiate()
 						add_child(dialogue)
 						dialogue.start("lets collect the item first")
-				
 
 func _on_coffee_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
