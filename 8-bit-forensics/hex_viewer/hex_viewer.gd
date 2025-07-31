@@ -3,6 +3,7 @@ extends NinePatchRect
 var load_file_open:bool = false
 var search_open:bool = false
 var select_open:bool = false
+var file_no:int
 
 @onready var hex_text = $v_sort/scroll_manager/sort/window/original_file/hex_text
 @onready var scroll_bar = $v_sort/scroll_manager/scroll_bar
@@ -91,7 +92,10 @@ func _on_save_pressed() -> void:
 		print("attempting")
 		if (start_str == "ffd8ffe1" || start_str == "ffd8ffe0") && end_str == "ffd9":
 			#TODO: change file name to be incremental 
-			var file = FileAccess.open("res://jpg_folder/tester.jpg", FileAccess.WRITE)
+			file_no +=1
+			var file = FileAccess.open("res://evidence_files/image"+ str(file_no)+ ".jpg", FileAccess.WRITE)
+
+
 			file.store_buffer(tabs.get_child(tabs.current_tab).get_node("hex_text")._wrapped_buffer)
 			print("saved")
 			file.close()

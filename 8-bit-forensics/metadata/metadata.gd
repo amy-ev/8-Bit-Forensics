@@ -1,6 +1,6 @@
 extends NinePatchRect
 
-@onready var _file_metadata = preload("res://file_dialog/load_file.tscn")
+@onready var _load_files = preload("res://file_dialog/load_file.tscn")
 
 @export var current_image: String
 
@@ -30,10 +30,10 @@ func _ready() -> void:
 	Global.connect("metadata_selected", _on_label_selected)
 
 func _on_select_pressed() -> void:
-	var file_metadata = _file_metadata.instantiate()
-	add_child(file_metadata)
+	var load_files = _load_files.instantiate()
+	add_child(load_files)
 	
-	await file_metadata.tree_exited
+	await load_files.tree_exited
 	
 	for hbox in $scroll/data_container.get_children():
 		keys_and_values.append(hbox)
@@ -63,8 +63,8 @@ func _process(delta: float) -> void:
 
 func _on_label_selected(selected:Node):
 	if self.has_node("comment"):
-		self.get_node("comment").queue_free()
-	
+		self.remove_child(self.get_node("comment"))
+
 	clear_values()
 	
 	for rect in current_select:
@@ -315,7 +315,7 @@ func _draw() -> void:
 			
 	if correlates:
 		if progress == 1.0:
-			var comment = Label
+			var comment = Label.new()
 			add_child(comment)
 			comment.text = match_msg
 			comment.position = Vector2(coords1[-1][0] + 20,coords1[-1][1]- comment.size.y /2)

@@ -18,16 +18,17 @@ var file: File
 var parent:Node
 
 func _ready() -> void:
-	add_files(file_count("res://jpg_folder/"))
-	Global.connect("selected",_on_file_selected)
-	
 	parent = get_parent()
-	
-	if parent.name == "metadata_window":
-		#start server python script
-		OS.execute("cmd.exe", ["/C", "cd %cd%/python_files && start.bat"])
+	Global.connect("selected",_on_file_selected)
+	add_files(file_count("res://evidence_files/"))
 
 	
+
+	if parent.name == "metadata_window":
+		#start server python script
+		OS.create_process("cmd.exe", ["/C", "cd %cd%/python_files && start.bat"])
+
+
 	# TODO: REMOVE FROM HERE AND ADD BOTH LOAD_FILE AND SAVE_FILE TO A DIALOG WINDOW SCENE
 	#var saved_dialog = saved_dialog_scene.instantiate()
 	#add_child(saved_dialog)
@@ -48,13 +49,13 @@ func _on_load_button_pressed() -> void:
 		add_child(client)
 		await client.tree_exited
 		#kill server python script
-		OS.execute("cmd.exe", ["/C", "cd %cd%/python_files && kill.bat"])
+		OS.create_process("cmd.exe", ["/C", "cd %cd%/python_files && kill.bat"])
 
-		metadata_thumbnail.texture = load("res://jpg_folder/"+selected_file)
+		metadata_thumbnail.texture = load("res://evidence_files/"+selected_file)
 		metadata_thumbnail.size = Vector2(44,32)
 		
 		var json_dict = open_json("res://python_files/metadata.json")
-		var file_idx = selected_file.replacen("photo", "")
+		var file_idx = selected_file.replacen("image", "")
 		file_idx = file_idx.replacen(".jpg", "")
 
 		if typeof(json_dict) == TYPE_DICTIONARY:
@@ -88,7 +89,7 @@ func _on_load_button_pressed() -> void:
 			print("Type: ", type_string(typeof(json_dict)))
 
 	elif parent.name == "hex_viewer":
-		parent.open_file("res://jpg_folder/"+selected_file)
+		parent.open_file("res://evidence_files/"+selected_file)
 		parent.load_file_open = false
 		
 		var tabs = parent.get_node("v_sort/scroll_manager/sort/window")
@@ -101,10 +102,10 @@ func _on_load_button_pressed() -> void:
 			for child in children:
 				tabs.remove_child(child)
 				
-				
 		var search_results = parent.get_node("v_sort/results_scroll_manager/results")
 		search_results.results_recieved = false
 		search_results.queue_redraw()
+		
 	queue_free()
 	
 func add_files(file_no:int):
@@ -121,8 +122,15 @@ func add_files(file_no:int):
 		file._file_icon = file_icon
 		
 		#TODO: change to match a variety of files
-		#file._file_icon.set_meta("file_name","photo"+str(i)+".jpg")
-		file._file_icon.set_meta("file_name","test-sd.001")
+
+		if parent.name == "metadata_window":
+			file._file_icon.set_meta("file_name","image"+str(i+1)+".jpg")
+			
+		elif parent.name == "hex_viewer":
+			if i == 0:
+				file._file_icon.set_meta("file_name","SD-image-file.001")
+			else:
+				file._file_icon.set_meta("file_name","image"+str(i)+".jpg")
 		# dynamically size the file_container grid seperations 
 		$file_dialog/window/file_container.size.x = $file_dialog/window.size.x - 10
 		$file_dialog/window/file_container.size.y = $file_dialog/window.size.y
@@ -145,15 +153,22 @@ func file_count(file_path:String) -> int:
 		# if there is no more files found
 		if f == "":
 			break
-		# if the file is not the godot import 
 		if not f.contains(".import"):
-			files_no += 1
+			if parent.name == "metadata_window":
+				if f.contains(".jpg"):
+					files_no += 1
+			elif parent.name == "hex_viewer":
+					files_no += 1
+		# if the file is not the godot import 
+		#if not f.contains(".import"):
+			#files_no += 1
+		
 	dir.list_dir_end()
 	return files_no
 	
 func _on_exit_pressed() -> void:
 	if parent.name == "metadata_window":
-		OS.execute("cmd.exe", ["/C", "cd %cd%/python_files && kill.bat"])
+		OS.create_process("cmd.exe", ["/C", "cd %cd%/python_files && kill.bat"])
 		
 	elif parent.name == "hex_viewer":
 		parent.load_file_open = false
@@ -175,7 +190,7 @@ func _on_file_selected(selected_node:File, real_file:String):
 	print("selected_node: %s, real_file: %s, selected_file: %s "%[selected_node, real_file, selected_file])
 	
 	if parent.name == "metadata_window":
-		file_idx = selected_file.replacen("photo", "")
+		file_idx = selected_file.replacen("image", "")
 		file_idx = file_idx.replacen(".jpg", "")
 		parent.current_image = file_idx
 	

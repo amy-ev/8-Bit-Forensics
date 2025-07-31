@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 	client.poll()
 	print("status: ", status)
 	# selected file = the file_name metadata dynamically created
-	var selected_img = open_img("res://jpg_folder/"+get_parent().selected_file)
+	var selected_img = open_img("res://evidence_files/"+get_parent().selected_file)
 	
 	send_data(selected_img)
 	recv_data()
@@ -34,8 +34,6 @@ func open_img(img_path):
 		return
 		
 func send_data(msg_bytes):
-	print(msg_bytes.size())
-	
 	var file_idx = get_parent().file_idx
 	
 	var idx_buffer = StreamPeerBuffer.new()
