@@ -27,3 +27,4 @@ func skip():
 	text = full_text.substr(0,char_pos)
 	timer.stop()
 	is_playing = false
+	Global.emit_signal("text_finished")

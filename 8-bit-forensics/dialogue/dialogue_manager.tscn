@@ -6,8 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://c3yl6q4k07f8q" path="res://assets/dialogue/dialogue-panel-bottom-wide.png" id="3_7jarm"]
 [ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="3_q36jk"]
 [ext_resource type="FontFile" uid="uid://ginkfwm14fgo" path="res://8-bit-forensics.ttf" id="5_uhccw"]
-[ext_resource type="Texture2D" uid="uid://dmsht0365lf24" path="res://assets/dialogue/next-button.png" id="6_uhccw"]
-[ext_resource type="Texture2D" uid="uid://ckisdtwlitwjn" path="res://assets/dialogue/back-button.png" id="7_3itix"]
+[ext_resource type="PackedScene" uid="uid://c1f7ejp4myvjd" path="res://dialogue/dialogue_option.tscn" id="9_nnuq7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0fmqw"]
+texture = ExtResource("3_7jarm")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
 
 [node name="dialogue_manager" type="CanvasLayer"]
 layer = 2
@@ -32,20 +38,15 @@ offset_bottom = 180.0
 mouse_filter = 0
 texture = ExtResource("2_3itix")
 
-[node name="panel" type="TextureRect" parent="."]
+[node name="panel" type="PanelContainer" parent="."]
 offset_left = 3.0
-offset_top = 104.0
+offset_top = 118.0
 offset_right = 315.0
 offset_bottom = 176.0
-texture = ExtResource("3_7jarm")
+theme_override_styles/panel = SubResource("StyleBoxTexture_0fmqw")
 
 [node name="container" type="VBoxContainer" parent="panel"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 306.0
-offset_bottom = 66.0
+layout_mode = 2
 
 [node name="name" type="Label" parent="panel/container"]
 layout_mode = 2
@@ -56,19 +57,20 @@ text = "day x"
 [node name="dialogue_label" parent="panel/container" instance=ExtResource("3_q36jk")]
 layout_mode = 2
 
-[node name="next" type="TextureButton" parent="."]
-offset_left = 295.0
-offset_top = 156.0
-offset_right = 309.0
-offset_bottom = 170.0
-texture_normal = ExtResource("6_uhccw")
+[node name="option_b" parent="." instance=ExtResource("9_nnuq7")]
+offset_left = 226.0
+offset_top = 76.0
+offset_right = 315.0
+offset_bottom = 95.0
 
-[node name="prev" type="TextureButton" parent="."]
-offset_left = 9.0
-offset_top = 156.0
-offset_right = 23.0
-offset_bottom = 170.0
-texture_normal = ExtResource("7_3itix")
+[node name="option_a" parent="." instance=ExtResource("9_nnuq7")]
+offset_left = 226.0
+offset_top = 97.0
+offset_right = 315.0
+offset_bottom = 116.0
 
-[connection signal="pressed" from="next" to="." method="_on_next_pressed"]
-[connection signal="pressed" from="prev" to="." method="_on_prev_pressed"]
+[connection signal="option_selected" from="option_b/select" to="." method="_on_select_option_selected"]
+[connection signal="option_selected" from="option_a/select" to="." method="_on_select_option_selected"]
+
+[editable path="option_b"]
+[editable path="option_a"]
