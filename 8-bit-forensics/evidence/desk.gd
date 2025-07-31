@@ -11,6 +11,8 @@ func _ready() -> void:
 	Global.connect("evidence_collected", _on_evidence_collected)
 	
 	if Global.is_first_bag:
+		if get_parent().has_node("dialogue_display"):
+			get_parent().remove_child(get_node("dialogue_display"))
 		var dialogue = preload("res://dialogue/dialogue_display.tscn").instantiate()
 		add_child(dialogue)
 		dialogue.load_dialogue("res://dialogue/dialogue.json", "e1.0")

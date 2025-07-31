@@ -7,7 +7,6 @@ var button_pressed:String
 var is_correct:bool
 
 func _ready() -> void:
-	
 	Global.emit_signal("next_step",self)
 	
 	for btn in btn_group.get_buttons():

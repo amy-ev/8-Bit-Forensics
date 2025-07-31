@@ -99,59 +99,62 @@
   },
   "e5.0": {
     "text": "Click on file and select ‘Create Image’. Since we have the physical item, we will be selecting physical drive.",
-    "go to": [
-      "e5.1"
-    ],
+    "function": "end_dialogue",
     "option display": "Okay"
   },
   "e5.1": {
     "text": "Now let’s choose the correct target. If you image the wrong drive, say like your own workstation, I will laugh, but also cry.",
-    "go to": [
-      "e5.2"
-    ],
+    "function": "end_dialogue",
     "option display": "Sure"
   },
   "e5.2": {
     "text": "We’re going for ‘dd’, we want an exact bit-for-bit copy without the added fluff embedded.",
-    "go to": [
-      "e5.3"
-    ],
+    "function": "end_dialogue",
     "option display": "Alright"
   },
   "e5.3": {
     "text": "Now let's give it a case number, evidence number and description. Remember this should match anything that you wrote on the bag earlier.",
-    "go to": [
-      "e5.4"
-    ],
+    "function": "end_dialogue",
     "option display": "Got it"
   },
   "e5.4": {
     "text": "And now we wait.",
-    "go to": "e5.5",
+    "go to": [
+      "e5.5"
+    ],
     "option display": "Ah"
   },
   "e5.5": {
     "text": "And while we do that, lets talk hashes. Not the breakfast kind sadly. Cryptographic hashes.",
-    "go to": "e5.6",
+    "go to": [
+      "e5.6"
+    ],
     "option display": "What about them?"
   },
   "e5.6": {
     "text": "They’re like digital fingerprints. Before and after we image the card, we calculate a hash, typically MD5 and SHA1.",
-    "go to": "e5.7",
+    "go to": [
+      "e5.7"
+    ],
     "option display": "Okay"
   },
   "e5.7": {
     "text": "Now the software has already automatically generated them for us.",
-    "go to": "e5.8",
+    "go to": [
+      "e5.8"
+    ],
     "option display": "Nice"
   },
   "e5.8": {
     "text": "But its important to use another tool to double check. Don’t trust the software blindly.",
-    "go to": "e5.9",
+    "go to": [
+      "e5.9"
+    ],
     "option display": "Oh okay"
   },
   "e5.9": {
     "text": "Even digital tools can lie, especially on a Monday. So, lets run the command line tool.",
+    "function": "end_dialogue",
     "option display": "Sure"
   }
 }

@@ -11,9 +11,12 @@ func _ready() -> void:
 	await $screen_animation.animation_finished
 	
 	if !Global.pc_debrief_given:
-		var debrief = _debrief.instantiate()
-		add_child(debrief)
-		debrief.get_node("normal").set_visible(false)
+		
+		if get_parent().has_node("dialogue_display"):
+			get_parent().remove_child(get_node("dialogue_display"))
+		var dialogue = preload("res://dialogue/dialogue_display.tscn").instantiate()
+		get_parent().add_child(dialogue)
+		dialogue.load_dialogue("res://dialogue/dialogue.json", "e5.0")
 	
 	match day:
 		1:

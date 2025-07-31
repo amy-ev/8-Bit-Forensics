@@ -15,7 +15,7 @@ func _ready() -> void:
 			$select_shape.shape.size.x = get_parent().size.x
 			$select_shape.position = $select_shape.shape.size/2
 		_:
-			$select_shape.shape.size = get_parent().size
+			$select_shape.shape.size = get_parent().size * 4
 			$select_shape.position = $select_shape.shape.size/2
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
