@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1f7ejp4myvjd"]
+
+[ext_resource type="Texture2D" uid="uid://c3yl6q4k07f8q" path="res://assets/dialogue/dialogue-panel-bottom-wide.png" id="1_f1140"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="2_81iiu"]
+[ext_resource type="PackedScene" uid="uid://326qgm6qmdub" path="res://main/select.tscn" id="3_11msp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sep14"]
+texture = ExtResource("1_f1140")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[node name="dialogue_option" type="PanelContainer"]
+offset_right = 95.0
+offset_bottom = 19.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_sep14")
+
+[node name="label" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("2_81iiu")
+theme_override_colors/font_color = Color(0.932108, 0.863368, 0.766723, 1)
+text = "this is a dialogue option"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="select" parent="." instance=ExtResource("3_11msp")]

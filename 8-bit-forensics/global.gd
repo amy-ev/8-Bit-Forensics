@@ -41,6 +41,8 @@ signal answer(day:String, answer:int)
 
 signal metadata_selected(selected:Node)
 
+signal option_selected(option:String)
+
 #old hex viewer 
 signal hex_selected(row:int)
 
