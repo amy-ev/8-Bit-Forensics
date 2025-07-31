@@ -38,6 +38,7 @@ func _on_confirm_pressed() -> void:
 			Global.form_signed = form_signed
 			Global.form_date = form_date
 			get_parent().form_filled = true
+			Global.emit_signal("form_filled")
 			queue_free()
 			Global.is_first_bag = false
 		else:

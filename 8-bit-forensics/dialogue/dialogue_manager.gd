@@ -6,7 +6,8 @@ var pc_dialogue = "res://dialogue/pc_dialogue.json"
 @export var desk_debrief = {}
 var pc_debrief = {}
 var current_dialogue = ""
-@export var option:String
+
+var option:String
 var own_response:bool
 var display_options:= [0,0]
 @onready var dialogue_label = $panel/container/dialogue_label
@@ -65,7 +66,6 @@ func next_dialogue(dict):
 			dialogue_text(dict, dict[current_dialogue]["go to"][0]) 
 			own_response = false
 			
-		print("current: ", current_dialogue, " next: ", next)
 		if dict[current_dialogue].has("go to") && dict[current_dialogue]["go to"].size() > 1:
 		#if dict[next].has("go to") && dict[next]["go to"].size() > 1:
 			var option_a = dict[current_dialogue]["go to"][0]
@@ -73,8 +73,6 @@ func next_dialogue(dict):
 			
 			var option_b = dict[current_dialogue]["go to"][1]
 			var b_text = dict[option_b]["option display"]
-			
-			print("option a: ", option_a, " option b: ", option_b)
 			
 			if a_text == b_text:
 				display_options = [1,0]

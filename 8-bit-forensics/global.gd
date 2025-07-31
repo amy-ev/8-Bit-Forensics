@@ -52,6 +52,8 @@ signal answer_response(is_correct:bool)
 
 signal item_pressed(selected:Node)
 
+signal form_filled()
+
 func day_start():
 	match unlocked:
 		0:

@@ -5,6 +5,14 @@ extends TextureRect
 @onready var _moveable_evidence = preload("res://evidence/moveable_evidence.tscn")
 
 func _ready() -> void:
+	Global.connect("form_filled", _on_form_filled)
+	Global.connect("evidence_collected", _on_evidence_collected)
+	
+	if Global.is_first_bag:
+		var dialogue = preload("res://dialogue/dialogue_display.tscn").instantiate()
+		add_child(dialogue)
+		dialogue.load_dialogue("res://dialogue/dialogue.json", "e1.0")
+		
 	if !Global.is_first_bag:
 		$evidence_bag.queue_free()
 		$evidence.queue_free()
@@ -18,3 +26,17 @@ func _on_back_pressed() -> void:
 	queue_free()
 	get_parent().get_node("pc/pc_area/pc_shape").disabled = false
 	get_parent().get_node("coffee_cup/coffee/coffee_shape").disabled = false
+
+func _on_form_filled():
+	if self.has_node("dialogue_display"):
+		remove_child(get_node("dialogue_display"))
+	var dialogue = preload("res://dialogue/dialogue_display.tscn").instantiate()
+	add_child(dialogue)
+	dialogue.load_dialogue("res://dialogue/dialogue.json", "e2.0")
+
+func _on_evidence_collected():
+	if self.has_node("dialogue_display"):
+		remove_child(get_node("dialogue_display"))
+	var dialogue = preload("res://dialogue/dialogue_display.tscn").instantiate()
+	add_child(dialogue)
+	dialogue.load_dialogue("res://dialogue/dialogue.json", "e3.0")

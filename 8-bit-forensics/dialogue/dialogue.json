@@ -1,0 +1,51 @@
+{
+  "e1.0": {
+    "text": "Since we’re opening already collected evidence, you just need to fill out the continuity section. Penmanship counts, no duck scratches.",
+    "go to": [
+      "e1.1"
+    ]
+  },
+  "e1.1": {
+    "text": "Oh, and for the description be specific, details matter. If you just write SD card our audit team will personally hunt you down. It’s not just bureaucracy it’s our legal shield.",
+    "go to": [
+      "e1.2"
+    ]
+  },
+  "e1.2": {
+    "text": "And make sure you sign it. That signature binds you to this item until you log it back in, no dropping it in your bag, no taking it home ‘just to check it real quick’. Chain of custody is your legal lifeline.",
+    "function": "end_dialogue"
+  },
+  "": {},
+  "e2.0": {
+    "text": "Wonderful. Now, glove up. Seriously, no greasy fingerprints on the evidence. We don’t need your DNA on a future Netflix documentary.",
+    "go to": [
+      "e2.1"
+    ]
+  },
+  "e2.1": {
+    "text": "And carefully cut open the bottom of the bag.",
+    "function": "end_dialogue"
+  },
+  "e3.0": {
+    "text": "Smooth. Now remember, no direct access. We’ll create a bit-for-bit forensic image using a write blocker, verifying the hash integrity before and after, and then analyse.",
+    "go to": [
+      "e3.1"
+    ]
+  },
+  "e3.1": {
+    "text": "Oh, and pro tip? These little guys are easy to lose. So, document where it is where it’s going, and don’t put it anywhere you wouldn’t put a live grenade.",
+    "go to": [
+      "e3.2"
+    ]
+  },
+  "e3.2": {
+    "text": "Now let’s head back to the desk and see if this card contains a secret database…",
+    "go to": [
+      "e3.3"
+    ]
+  },
+  "e3.3": {
+    "text": "Or just 200 blurry selfies of the suspects dog.",
+    "function": "end_dialogue"
+  }
+}
