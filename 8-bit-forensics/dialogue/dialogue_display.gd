@@ -26,12 +26,15 @@ func _on_text_finished():
 	$animation.stop()
 
 func _on_select_option_selected(_option: String) -> void:
+	$npc.set_visible(true)
 	if dialogue_label.is_playing:
 		dialogue_label.skip()
 	else:
 		if dialogue_dict[topic].has("go to"):
-			print(topic)
-			print(dialogue_dict[topic]["go to"])
+			if dialogue_dict[topic]["go to"].size() > 1:
+				if dialogue_dict[topic]["go to"][1] == "dispatch":
+					$npc.set_visible(false)
+					
 			dialogue_text(dialogue_dict,dialogue_dict[topic]["go to"][0])
 		else:
 			queue_free()

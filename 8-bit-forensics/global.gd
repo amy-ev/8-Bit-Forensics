@@ -37,6 +37,7 @@ signal signature_found(locations:Array)
 signal evidence_collected()
 signal create_image_file()
 signal hash_verified()
+signal evidence_finished()
 
 signal answer(day:String, answer:int)
 

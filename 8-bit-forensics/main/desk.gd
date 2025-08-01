@@ -16,6 +16,7 @@ func _ready() -> void:
 		evidence_collected = true
 	scale = scale * Utility.window_mode()
 	Global.connect("evidence_collected", _on_evidence_collect)
+	Global.connect("evidence_finished", _on_evidence_finished)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_action_pressed("fullscreen"):
@@ -33,7 +34,15 @@ func _on_evidence_input_event(viewport: Node, event: InputEvent, shape_idx: int)
 
 func _on_evidence_collect():
 	evidence_collected = true
-
+func _on_evidence_finished():
+	if has_node("full_dialogue_display"):
+		remove_child(get_node("full_dialogue_display"))
+	var dialogue = preload("res://dialogue/full_dialogue_display.tscn").instantiate()
+	add_child(dialogue)
+	dialogue.load_dialogue("res://dialogue/dialogue.json", "e9.0")
+	await dialogue.tree_exited
+	get_tree().change_scene_to_file("res://quiz/end_quiz.tscn")
+	
 func _on_pc_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():

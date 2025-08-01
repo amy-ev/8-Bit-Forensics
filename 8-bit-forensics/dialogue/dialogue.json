@@ -201,5 +201,58 @@
     "text": "So let’s put the SD card safely back into its evidence bag. Press 'ESC' to return to the desk.",
     "function": "end_dialogue",
     "option display": "Alright"
+  },
+  "e8.0": {
+    "text": "Now, bag that SD card back up, make sure both the old bad and evidence are inside of the new bag.",
+    "go to": [
+      "e8.1"
+    ],
+    "option display": "Okay"
+  },
+  "e8.1": {
+    "text": "Update the new bag to match the information on the old bag. Taking note on who bagged it, the date and time. Then seal it up",
+    "go to": [
+      "e8.2"
+    ],
+    "option display": "Sure"
+  },
+  "e8.2": {
+    "text": "Then its on to Phase 2: Analysis. And trust me, that’s where things get…strange.",
+    "function": "end_dialogue",
+    "option display": "Nice"
+  },
+  "e9.0": {
+    "text": "Now normally we’d fire up a hex viewer, look for anomalies, maybe peek inside the file system and ask, ‘what are you hiding, tiny storage rectangle?’ But-",
+    "go to": [
+      "e9.1",
+      "dispatch"
+    ],
+    "option display": "..."
+  },
+  "e9.1": {
+    "text": "##Crime scene needs immediate support, suspected network device at a break in. Bring acquisition gear.##",
+    "go to": [
+      "e9.2"
+    ],
+    "option display": "..."
+  },
+  "e9.2": {
+    "text": "And there it is, The Forensic Gods heard you were having a good day and said, ‘nope’.",
+    "go to": [
+      "e9.3"
+    ],
+    "option display": "Should I... go?"
+  },
+  "e9.3": {
+    "text": "Nah, rookie. You’re not cleared for field work-yet. But you are cleared to lock everything down and go home.",
+    "go to": [
+      "e9.4"
+    ],
+    "option display": "Alright"
+  },
+  "e9.4": {
+    "text": "We’ll pick this up tomorrow. Same dusty office. Less chaos, hopefully.",
+    "function": "end_dialogue",
+    "option display": "Good luck"
   }
 }

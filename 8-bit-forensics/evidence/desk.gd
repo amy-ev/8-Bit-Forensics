@@ -11,8 +11,8 @@ func _ready() -> void:
 	Global.connect("evidence_collected", _on_evidence_collected)
 	
 	if Global.is_first_bag:
-		if get_parent().has_node("dialogue_display"):
-			get_parent().remove_child(get_node("dialogue_display"))
+		if has_node("dialogue_display"):
+			remove_child(get_node("dialogue_display"))
 		var dialogue = preload("res://dialogue/dialogue_display.tscn").instantiate()
 		add_child(dialogue)
 		dialogue.load_dialogue("res://dialogue/dialogue.json", "e1.0")
@@ -23,6 +23,13 @@ func _ready() -> void:
 		add_child(_opened_bag.instantiate(),true)
 		add_child(_new_bag.instantiate(), true)
 		add_child(_moveable_evidence.instantiate(),true)
+		
+		if has_node("dialogue_display"):
+			remove_child(get_node("dialogue_display"))
+		var dialogue = preload("res://dialogue/dialogue_display.tscn").instantiate()
+		add_child(dialogue)
+		dialogue.load_dialogue("res://dialogue/dialogue.json", "e8.0")
+		
 	get_parent().get_node("pc/pc_area/pc_shape").disabled = true
 	get_parent().get_node("coffee_cup/coffee/coffee_shape").disabled = true
 	

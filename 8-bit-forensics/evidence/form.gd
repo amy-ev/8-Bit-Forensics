@@ -52,16 +52,13 @@ func _on_confirm_pressed() -> void:
 			add_child(dialogue)
 			dialogue.start("does not match")
 		else:
-			var dialogue = load("res://dialogue/dialogue_display.tscn").instantiate()
-			
+
 			var animation = get_parent().get_node("animation")
 			animation.play("seal")
 			set_visible(false)
 			await animation.animation_finished
-			
+			Global.emit_signal("evidence_finished")
 			queue_free()
-			get_parent().add_child(dialogue)
-			dialogue.start("crime ! time to end day")
 
 			#trigger dialogue to end day
 	elif get_parent().name == "opened_bag":
