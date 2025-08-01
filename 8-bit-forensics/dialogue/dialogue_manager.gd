@@ -35,6 +35,7 @@ func _input(event: InputEvent) -> void:
 		
 # insert json text to the dialogue box
 func dialogue_text(dict,_option):
+	$animation.play("talk")
 	display_options = [0,0]
 	show_options(display_options)
 	dialogue_label.start(dict[_option]["text"])
@@ -111,7 +112,7 @@ func _on_select_option_selected(_option: String) -> void:
 			pass
 
 func _on_text_finished():
-	
+	$animation.stop()
 	match get_parent().name:
 		"desk":
 			next_dialogue(desk_debrief)

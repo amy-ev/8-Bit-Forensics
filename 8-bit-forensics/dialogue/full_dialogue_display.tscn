@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ggsc0k0u24bc"]
 
-[ext_resource type="Texture2D" uid="uid://bketsdv7bdnil" path="res://assets/dialogue/normal-dialogue-wide.png" id="1_4cpfg"]
 [ext_resource type="Script" uid="uid://bm2p2n6vqfkku" path="res://dialogue/dialogue_display.gd" id="1_rntwc"]
+[ext_resource type="Texture2D" uid="uid://qju74ko4d4mc" path="res://assets/dialogue/dialogue.png" id="2_i4pyp"]
 [ext_resource type="Texture2D" uid="uid://c3yl6q4k07f8q" path="res://assets/dialogue/dialogue-panel-bottom-wide.png" id="2_rntwc"]
 [ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="3_i4pyp"]
 [ext_resource type="PackedScene" uid="uid://c1f7ejp4myvjd" path="res://dialogue/dialogue_option.tscn" id="4_gkdle"]
@@ -43,7 +43,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 3]
+"values": [0, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w78q7"]
@@ -64,8 +64,9 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
 [node name="npc" type="Sprite2D" parent="."]
-texture = ExtResource("1_4cpfg")
+texture = ExtResource("2_i4pyp")
 centered = false
+hframes = 2
 
 [node name="panel" type="PanelContainer" parent="."]
 offset_left = 10.0

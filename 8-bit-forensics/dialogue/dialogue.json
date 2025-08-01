@@ -156,5 +156,50 @@
     "text": "Even digital tools can lie, especially on a Monday. So, lets run the command line tool.",
     "function": "end_dialogue",
     "option display": "Sure"
+  },
+  "e6.0": {
+    "text": "Now there are many different hash algorithms such as SHA256 or SHA512, which are much more secure, but also far longer.",
+    "go to": [
+      "e6.1"
+    ],
+    "option display": "Interesting"
+  },
+  "e6.1": {
+    "text": "Since the toolkit gave us MD5 and SHA1 we will need to run the script for one of these, to verify it. But, feel free to try the others.",
+    "go to": [
+      "e6.2"
+    ],
+    "option display": "Okay"
+  },
+  "e6.2": {
+    "text": "The command is simple, just type 'certutil -hashfile' <the file> followed by the hash type. Such as MD5.",
+    "go to": [
+      "e6.3"
+    ],
+    "option display": "The file?"
+  },
+  "e6.3": {
+    "text": "Yeah, in this case its named 'SD-image-file.001'",
+    "function": "end_dialogue",
+    "option display": "Okay"
+  },
+  "e7.0": {
+    "text": "Congratulations! You’ve just successfully imaged your first piece of digital evidence.",
+    "go to": [
+      "e7.1"
+    ],
+    "option display": "Woo"
+  },
+  "e7.1": {
+    "text": "You’ll be working from the image going forward. That’s how we protect integrity and ensure reproducibility.",
+    "go to": [
+      "e7.2"
+    ],
+    "option display": "Nice"
+  },
+  "e7.2": {
+    "text": "So let’s put the SD card safely back into its evidence bag. Press 'ESC' to return to the desk.",
+    "function": "end_dialogue",
+    "option display": "Alright"
   }
 }

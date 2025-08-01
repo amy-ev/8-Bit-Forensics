@@ -18,7 +18,6 @@ func load_dialogue(file_path, _topic):
 		dialogue_text(dialogue_dict, _topic)
 
 func dialogue_text(dict,_option):
-
 	start(dict[_option]["text"])
 	$dialogue_option/label.text = dict[_option]["option display"]
 	topic = _option
