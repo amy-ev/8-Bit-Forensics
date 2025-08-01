@@ -10,20 +10,18 @@ size = Vector2(81, 97)
 size = Vector2(76, 66)
 
 [node name="opened_bag" type="RigidBody2D"]
-position = Vector2(21, 20)
+position = Vector2(19, 42)
 collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource("1_uy4ss")
 
 [node name="bag_sprite" type="Sprite2D" parent="."]
-position = Vector2(-21, -20)
 texture = ExtResource("1_jfgb4")
 centered = false
 region_enabled = true
 region_rect = Rect2(9, 193, 81, 97)
 
 [node name="bag" type="Area2D" parent="."]
-position = Vector2(-21, -20)
 collision_layer = 2
 collision_mask = 5
 
@@ -37,7 +35,7 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="interact" type="CollisionShape2D" parent="form_section"]
-position = Vector2(20, 42)
+position = Vector2(41, 62)
 shape = SubResource("RectangleShape2D_gjjpq")
 debug_color = Color(0.883061, 0.123634, 0.756632, 0.42)
 

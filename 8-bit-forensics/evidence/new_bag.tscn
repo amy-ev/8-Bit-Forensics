@@ -18,6 +18,21 @@ size = Vector2(6, 138)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cy330"]
 size = Vector2(76, 66)
 
+[sub_resource type="Animation" id="Animation_ae6xb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bag_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_bh4l2"]
 resource_name = "seal"
 step = 0.1
@@ -34,21 +49,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
-[sub_resource type="Animation" id="Animation_ae6xb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("bag_sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cy330"]
 _data = {
 &"RESET": SubResource("Animation_ae6xb"),
@@ -56,6 +56,7 @@ _data = {
 }
 
 [node name="new_bag" type="RigidBody2D"]
+position = Vector2(110, 10)
 collision_layer = 2
 gravity_scale = 0.0
 script = ExtResource("1_bh4l2")
