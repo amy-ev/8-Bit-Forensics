@@ -11,9 +11,6 @@ func _on_item_select(selected:Node):
 	if help_pressed:
 		var dialogue = _dialogue.instantiate()
 		add_child(dialogue)
-		dialogue.get_node("npc_normal").set_visible(true)
-		dialogue.get_node("npc_bad").set_visible(false)
-		dialogue.get_node("npc_good").set_visible(false)
 		dialogue.start(selected.name)
 		#TODO: match case for the selected items and what should be said
 		#match selected.name:
