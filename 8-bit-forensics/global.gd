@@ -36,6 +36,7 @@ signal level_unlocked(day:String)
 signal signature_found(locations:Array)
 signal evidence_collected()
 signal create_image_file()
+signal hash_verified()
 
 signal answer(day:String, answer:int)
 

@@ -82,4 +82,14 @@ theme = ExtResource("2_k7w4u")
 text = "output:"
 horizontal_alignment = 2
 
+[node name="done" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 173.0
+offset_right = 196.0
+offset_bottom = 14.0
+theme = ExtResource("4_olpnb")
+text = "done"
+
 [connection signal="pressed" from="submit" to="." method="_on_submit_pressed"]
+[connection signal="pressed" from="done" to="." method="_on_done_pressed"]
