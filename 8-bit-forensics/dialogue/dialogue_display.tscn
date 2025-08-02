@@ -73,7 +73,7 @@ hframes = 4
 [node name="panel" type="PanelContainer" parent="."]
 offset_left = 53.0
 offset_top = 90.0
-offset_right = 249.0
+offset_right = 265.0
 offset_bottom = 146.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_mptr3")
 
@@ -86,11 +86,21 @@ libraries = {
 }
 
 [node name="dialogue_option" parent="." instance=ExtResource("6_ms2fa")]
-offset_left = 154.0
+visible = false
+offset_left = 170.0
 offset_top = 149.0
-offset_right = 249.0
+offset_right = 265.0
+offset_bottom = 168.0
+
+[node name="dialogue_option2" parent="." instance=ExtResource("6_ms2fa")]
+visible = false
+offset_left = 65.0
+offset_top = 149.0
+offset_right = 160.0
 offset_bottom = 168.0
 
 [connection signal="option_selected" from="dialogue_option/select" to="." method="_on_select_option_selected"]
+[connection signal="option_selected" from="dialogue_option2/select" to="." method="_on_select_option_selected2"]
 
 [editable path="dialogue_option"]
+[editable path="dialogue_option2"]

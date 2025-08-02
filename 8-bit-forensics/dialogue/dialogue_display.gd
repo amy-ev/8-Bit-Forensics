@@ -9,6 +9,8 @@ func _ready() -> void:
 
 func start(dialogue:String):
 	dialogue_label.start(dialogue)
+	$dialogue_option.set_visible(false)
+	$dialogue_option2.set_visible(false)
 	$animation.play("talk")
 	
 func load_dialogue(file_path, _topic):
@@ -18,13 +20,25 @@ func load_dialogue(file_path, _topic):
 		dialogue_text(dialogue_dict, _topic)
 
 func dialogue_text(dict,_option):
+	
 	start(dict[_option]["text"])
-	$dialogue_option/label.text = dict[_option]["option display"]
+	if dict[_option]["option display"].size() > 1:
+		if dict[_option]["go to"][1] != "dispatch":
+			$dialogue_option2/label.text = dict[_option]["option display"][1]
+		$dialogue_option/label.text = dict[_option]["option display"][0]
+
+	else:
+		$dialogue_option/label.text = dict[_option]["option display"][0]
 	topic = _option
 
 func _on_text_finished():
 	$animation.stop()
-
+	if dialogue_dict[topic]["option display"].size() > 1:
+		$dialogue_option.set_visible(true)
+		$dialogue_option2.set_visible(true)
+	else:
+		$dialogue_option.set_visible(true)
+		
 func _on_select_option_selected(_option: String) -> void:
 	$npc.set_visible(true)
 	if dialogue_label.is_playing:
@@ -34,7 +48,7 @@ func _on_select_option_selected(_option: String) -> void:
 			if dialogue_dict[topic]["go to"].size() > 1:
 				if dialogue_dict[topic]["go to"][1] == "dispatch":
 					$npc.set_visible(false)
-					
+
 			dialogue_text(dialogue_dict,dialogue_dict[topic]["go to"][0])
 		else:
 			queue_free()
@@ -42,3 +56,18 @@ func _on_select_option_selected(_option: String) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_action_pressed("enter"):
 		dialogue_label.skip()
+
+
+func _on_select_option_selected2(_option: String) -> void:
+	$npc.set_visible(true)
+	if dialogue_label.is_playing:
+		dialogue_label.skip()
+	else:
+		if dialogue_dict[topic].has("go to"):
+			if dialogue_dict[topic]["go to"].size() > 1:
+				if dialogue_dict[topic]["go to"][1] == "dispatch":
+					$npc.set_visible(false)
+
+			dialogue_text(dialogue_dict,dialogue_dict[topic]["go to"][1])
+		else:
+			queue_free()

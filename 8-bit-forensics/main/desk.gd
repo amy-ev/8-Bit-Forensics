@@ -34,6 +34,7 @@ func _on_evidence_input_event(viewport: Node, event: InputEvent, shape_idx: int)
 
 func _on_evidence_collect():
 	evidence_collected = true
+	
 func _on_evidence_finished():
 	if has_node("full_dialogue_display"):
 		remove_child(get_node("full_dialogue_display"))

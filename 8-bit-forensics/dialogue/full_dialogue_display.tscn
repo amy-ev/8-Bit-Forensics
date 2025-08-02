@@ -84,11 +84,21 @@ libraries = {
 }
 
 [node name="dialogue_option" parent="." instance=ExtResource("4_gkdle")]
+visible = false
 offset_left = 215.0
 offset_top = 84.0
 offset_right = 310.0
 offset_bottom = 103.0
 
+[node name="dialogue_option2" parent="." instance=ExtResource("4_gkdle")]
+visible = false
+offset_left = 215.0
+offset_top = 61.0
+offset_right = 310.0
+offset_bottom = 80.0
+
 [connection signal="option_selected" from="dialogue_option/select" to="." method="_on_select_option_selected"]
+[connection signal="option_selected" from="dialogue_option2/select" to="." method="_on_select_option_selected2"]
 
 [editable path="dialogue_option"]
+[editable path="dialogue_option2"]

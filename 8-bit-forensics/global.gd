@@ -15,7 +15,7 @@ var days: Array = []
 var is_first_bag:bool
 var file_created:bool
 var is_collected:bool
-
+var first_file_open:bool
 var debrief_given:bool
 var pc_debrief_given:bool
 
@@ -38,7 +38,7 @@ signal evidence_collected()
 signal create_image_file()
 signal hash_verified()
 signal evidence_finished()
-
+signal opened_image_file()
 signal answer(day:String, answer:int)
 
 signal metadata_selected(selected:Node)
@@ -62,11 +62,20 @@ func day_start():
 			is_first_bag = true
 			file_created = false
 			is_collected = false
+			first_file_open = false
 			debrief_given = false
 			pc_debrief_given = false
-		_:
+		1:
 			is_first_bag = false
 			file_created = true
 			is_collected = true
+			first_file_open = true
+			debrief_given = false
+			pc_debrief_given = false
+		2:
+			is_first_bag = false
+			file_created = true
+			is_collected = true
+			first_file_open = false
 			debrief_given = false
 			pc_debrief_given = false

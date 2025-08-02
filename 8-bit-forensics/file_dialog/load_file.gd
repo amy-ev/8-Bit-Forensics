@@ -90,6 +90,10 @@ func _on_load_button_pressed() -> void:
 
 	elif parent.name == "hex_viewer":
 		parent.open_file("res://evidence_files/"+selected_file)
+		if Global.first_file_open && selected_file == "SD-image-file.001":
+			Global.emit_signal("opened_image_file")
+			Global.first_file_open = false
+
 		parent.load_file_open = false
 		
 		var tabs = parent.get_node("v_sort/scroll_manager/sort/window")

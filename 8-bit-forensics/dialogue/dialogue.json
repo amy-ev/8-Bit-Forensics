@@ -4,19 +4,25 @@
     "go to": [
       "e1.1"
     ],
-    "option display": "Right"
+    "option display": [
+      "Right"
+    ]
   },
   "e1.1": {
     "text": "Oh, and for the description be specific, details matter. If you just write SD card our audit team will personally hunt you down. It’s not just bureaucracy it’s our legal shield.",
     "go to": [
       "e1.2"
     ],
-    "option display": "Sure"
+    "option display": [
+      "Sure"
+    ]
   },
   "e1.2": {
     "text": "And make sure you sign it. That signature binds you to this item until you log it back in, no dropping it in your bag, no taking it home ‘just to check it real quick’. Chain of custody is your legal lifeline.",
     "function": "end_dialogue",
-    "option display": "Of course"
+    "option display": [
+      "Of course"
+    ]
   },
   "": {},
   "e2.0": {
@@ -24,202 +30,266 @@
     "go to": [
       "e2.1"
     ],
-    "option display": "Alright, they're on"
+    "option display": [
+      "Alright, they're on"
+    ]
   },
   "e2.1": {
     "text": "And carefully cut open the bottom of the bag.",
     "function": "end_dialogue",
-    "option display": "Okay"
+    "option display": [
+      "Okay"
+    ]
   },
   "e3.0": {
     "text": "Smooth. Now remember, no direct access. We’ll create a bit-for-bit forensic image using a write blocker, verifying the hash integrity before and after, and then analyse.",
     "go to": [
       "e3.1"
     ],
-    "option display": "Okay"
+    "option display": [
+      "Okay"
+    ]
   },
   "e3.1": {
     "text": "Oh, and pro tip? These little guys are easy to lose. So, document where it is where it’s going, and don’t put it anywhere you wouldn’t put a live grenade.",
     "go to": [
       "e3.2"
     ],
-    "option display": "Of course"
+    "option display": [
+      "Of course"
+    ]
   },
   "e3.2": {
     "text": "Now let’s head back to the desk and see if this card contains a secret database…",
     "go to": [
       "e3.3"
     ],
-    "option display": "Alright"
+    "option display": [
+      "Alright"
+    ]
   },
   "e3.3": {
-    "text": "Or just 200 blurry selfies of the suspects dog.",
+    "text": "Or just 200 blurry selfies of the suspect's dog.",
     "function": "end_dialogue",
-    "option display": "Oh"
+    "option display": [
+      "Oh"
+    ]
   },
   "e4.0": {
     "text": "Now comes the fun part: Forensic imagining. This is where we create a bit-for-bit copy of the card, preserving every file, fragment, and every bad decision the suspect ever made on it",
     "go to": [
       "e4.1"
     ],
-    "option display": "How?"
+    "option display": [
+      "How?"
+    ]
   },
   "e4.1": {
     "text": "Firstly, by using a write blocker.",
     "go to": [
       "e4.2"
     ],
-    "option display": "A write blocker?"
+    "option display": [
+      "A write blocker?"
+    ]
   },
   "e4.2": {
     "text": "Write blockers are like a bouncer at the club. They let us read what’s inside. But don’t let anything, or anyone, write back. No modification, no accidental changes, no Windows deciding it needs to ‘fix’ the filesystem.",
     "go to": [
       "e4.3"
     ],
-    "option display": "Oh okay"
+    "option display": [
+      "Oh okay"
+    ]
   },
   "e4.3": {
     "text": "First the SD card goes into the write blocker. The data is then fed to our imaging software.",
     "go to": [
       "e4.4"
     ],
-    "option display": "Okay"
+    "option display": [
+      "Okay"
+    ]
   },
   "e4.4": {
-    "text": "So lets start up the PC, we'll fire up FTK Imager and create a forensic image.",
+    "text": "So lets start up the PC, we'll fire up X and create a forensic image.",
     "go to": [
       "e4.5"
     ],
-    "option display": "Sure"
+    "option display": [
+      "Sure"
+    ]
   },
   "e4.5": {
     "text": "And don't worry, I'll walk you through every step.",
     "function": "end_dialogue",
-    "option display": "Thank you"
+    "option display": [
+      "Thank you"
+    ]
   },
   "e5.0": {
     "text": "Click on file and select ‘Create Image’. Since we have the physical item, we will be selecting physical drive.",
     "function": "end_dialogue",
-    "option display": "Okay"
+    "option display": [
+      "Okay"
+    ]
   },
   "e5.1": {
     "text": "Now let’s choose the correct target. If you image the wrong drive, say like your own workstation, I will laugh, but also cry.",
     "function": "end_dialogue",
-    "option display": "Sure"
+    "option display": [
+      "Sure"
+    ]
   },
   "e5.2": {
     "text": "We’re going for ‘dd’, we want an exact bit-for-bit copy without the added fluff embedded.",
     "function": "end_dialogue",
-    "option display": "Alright"
+    "option display": [
+      "Alright"
+    ]
   },
   "e5.3": {
     "text": "Now let's give it a case number, evidence number and description. Remember this should match anything that you wrote on the bag earlier.",
     "function": "end_dialogue",
-    "option display": "Got it"
+    "option display": [
+      "Got it"
+    ]
   },
   "e5.4": {
     "text": "And now we wait.",
     "go to": [
       "e5.5"
     ],
-    "option display": "Ah"
+    "option display": [
+      "Ah"
+    ]
   },
   "e5.5": {
     "text": "And while we do that, lets talk hashes. Not the breakfast kind sadly. Cryptographic hashes.",
     "go to": [
       "e5.6"
     ],
-    "option display": "What about them?"
+    "option display": [
+      "What about them?"
+    ]
   },
   "e5.6": {
     "text": "They’re like digital fingerprints. Before and after we image the card, we calculate a hash, typically MD5 and SHA1.",
     "go to": [
       "e5.7"
     ],
-    "option display": "Okay"
+    "option display": [
+      "Okay"
+    ]
   },
   "e5.7": {
     "text": "Now the software has already automatically generated them for us.",
     "go to": [
       "e5.8"
     ],
-    "option display": "Nice"
+    "option display": [
+      "Nice"
+    ]
   },
   "e5.8": {
-    "text": "But its important to use another tool to double check. Don’t trust the software blindly.",
+    "text": "But it's important to use another tool to double check. Don’t trust the software blindly.",
     "go to": [
       "e5.9"
     ],
-    "option display": "Oh okay"
+    "option display": [
+      "Oh okay"
+    ]
   },
   "e5.9": {
     "text": "Even digital tools can lie, especially on a Monday. So, lets run the command line tool.",
     "function": "end_dialogue",
-    "option display": "Sure"
+    "option display": [
+      "Sure"
+    ]
   },
   "e6.0": {
     "text": "Now there are many different hash algorithms such as SHA256 or SHA512, which are much more secure, but also far longer.",
     "go to": [
       "e6.1"
     ],
-    "option display": "Interesting"
+    "option display": [
+      "Interesting"
+    ]
   },
   "e6.1": {
-    "text": "Since the toolkit gave us MD5 and SHA1 we will need to run the script for one of these, to verify it. But, feel free to try the others.",
+    "text": "Since the toolkit gave us MD5 and SHA1 we will need to run the script for one of these, to verify it. But feel free to try the others.",
     "go to": [
       "e6.2"
     ],
-    "option display": "Okay"
+    "option display": [
+      "Okay"
+    ]
   },
   "e6.2": {
-    "text": "The command is simple, just type 'certutil -hashfile' <the file> followed by the hash type. Such as MD5.",
+    "text": "The command is simple, just type 'certutil -hashfile' <the file>' followed by the hash type. Such as MD5.",
     "go to": [
       "e6.3"
     ],
-    "option display": "The file?"
+    "option display": [
+      "The file?"
+    ]
   },
   "e6.3": {
     "text": "Yeah, in this case its named 'SD-image-file.001'",
     "function": "end_dialogue",
-    "option display": "Okay"
+    "option display": [
+      "Okay"
+    ]
   },
   "e7.0": {
     "text": "Congratulations! You’ve just successfully imaged your first piece of digital evidence.",
     "go to": [
       "e7.1"
     ],
-    "option display": "Woo"
+    "option display": [
+      "Woo"
+    ]
   },
   "e7.1": {
     "text": "You’ll be working from the image going forward. That’s how we protect integrity and ensure reproducibility.",
     "go to": [
       "e7.2"
     ],
-    "option display": "Nice"
+    "option display": [
+      "Nice"
+    ]
   },
   "e7.2": {
-    "text": "So let’s put the SD card safely back into its evidence bag. Press 'ESC' to return to the desk.",
+    "text": "Now let’s put the SD card safely back into its evidence bag. Press 'ESC' to return to the desk.",
     "function": "end_dialogue",
-    "option display": "Alright"
+    "option display": [
+      "Alright"
+    ]
   },
   "e8.0": {
     "text": "Now, bag that SD card back up, make sure both the old bad and evidence are inside of the new bag.",
     "go to": [
       "e8.1"
     ],
-    "option display": "Okay"
+    "option display": [
+      "Okay"
+    ]
   },
   "e8.1": {
     "text": "Update the new bag to match the information on the old bag. Taking note on who bagged it, the date and time. Then seal it up",
     "go to": [
       "e8.2"
     ],
-    "option display": "Sure"
+    "option display": [
+      "Sure"
+    ]
   },
   "e8.2": {
     "text": "Then its on to Phase 2: Analysis. And trust me, that’s where things get…strange.",
     "function": "end_dialogue",
-    "option display": "Nice"
+    "option display": [
+      "Nice"
+    ]
   },
   "e9.0": {
     "text": "Now normally we’d fire up a hex viewer, look for anomalies, maybe peek inside the file system and ask, ‘what are you hiding, tiny storage rectangle?’ But-",
@@ -227,32 +297,352 @@
       "e9.1",
       "dispatch"
     ],
-    "option display": "..."
+    "option display": [
+      "..."
+    ]
   },
   "e9.1": {
     "text": "##Crime scene needs immediate support, suspected network device at a break in. Bring acquisition gear.##",
     "go to": [
       "e9.2"
     ],
-    "option display": "..."
+    "option display": [
+      "..."
+    ]
   },
   "e9.2": {
     "text": "And there it is, The Forensic Gods heard you were having a good day and said, ‘nope’.",
     "go to": [
       "e9.3"
     ],
-    "option display": "Should I... go?"
+    "option display": [
+      "Should I... go?"
+    ]
   },
   "e9.3": {
-    "text": "Nah, rookie. You’re not cleared for field work-yet. But you are cleared to lock everything down and go home.",
+    "text": "Nah, rookie. You’re not cleared for field work ... yet. But you are cleared to lock everything down and go home.",
     "go to": [
       "e9.4"
     ],
-    "option display": "Alright"
+    "option display": [
+      "Alright"
+    ]
   },
   "e9.4": {
     "text": "We’ll pick this up tomorrow. Same dusty office. Less chaos, hopefully.",
     "function": "end_dialogue",
-    "option display": "Good luck"
+    "option display": [
+      "Good luck"
+    ]
+  },
+  "h1.0": {
+    "text": "Now open up the image file",
+    "function": "end_dialogue",
+    "option display": [
+      "Okay"
+    ]
+  },
+  "h2.0": {
+    "text": "Wow that's a lot of blank space. Scrolling would take forever... Let's search for some JPEG signatures.",
+    "go to": [
+      "h2.1"
+    ],
+    "option display": [
+      "JPEG signatures?"
+    ]
+  },
+  "h2.1": {
+    "text": "Pop quiz time, what's the magic number for a JPEG file?",
+    "go to": [
+      "h2.2",
+      "h2.3"
+    ],
+    "option display": [
+      "Uh... FF D8 FF E0?",
+      "Uh... 25 50 44 46?"
+    ]
+  },
+  "h2.2": {
+    "text": "Nice!",
+    "go to": [
+      "h2.4"
+    ],
+    "option display": [
+      "Thanks!"
+    ]
+  },
+  "h2.3": {
+    "text": "Not quiet, that's the signature for a PDF.",
+    "go to": [
+      "h2.4"
+    ],
+    "option display": [
+      "My bad"
+    ]
+  },
+  "h2.4": {
+    "text": "JPEGs will start with FF D8 and are usually followed with FF E0 or FF E1, depending on the metadata. And they end with?",
+    "go to": [
+      "h2.5",
+      "h2.6"
+    ],
+    "option display": [
+      "FF D4",
+      "FF D9"
+    ]
+  },
+  "h2.5": {
+    "text": "Afraid not... it's actually FF D9, but close!",
+    "go to": [
+      "h2.7"
+    ],
+    "option display": [
+      "Oh"
+    ]
+  },
+  "h2.6": {
+    "text": "Look at you! That's your JPEG sandwich, FF D8 to FF D9",
+    "go to": [
+      "h2.7"
+    ],
+    "option display": [
+      "Nice"
+    ]
+  },
+  "h2.7": {
+    "text": "Our mission is to find those hex ranges and carve them out manually. Because if the suspected deleted the files but didn't overwrite them, they'll still be hinding in unallocated space like scared ducks.",
+    "go to": [
+      "h2.8"
+    ],
+    "option display": [
+      "How do we find them."
+    ]
+  },
+  "h2.8": {
+    "text": "Press Ctrl+F and search for the header or footer ~ FF D8 FF or FF D9",
+    "function": "end_dialogue",
+    "option display": [
+      "Okay"
+    ]
+  },
+  "h3.0": {
+    "text": "Nice! Now let's search for the other end of the sandwich.",
+    "go to": [
+      "h3.1"
+    ],
+    "option display": [
+      "Okay!"
+    ]
+  },
+  "h3.1": {
+    "text": "But make sure you take note of the offset locations!",
+    "go to": [
+      "h3.2"
+    ],
+    "option display": [
+      "Will do"
+    ]
+  },
+  "h3.2": {
+    "text": "And pay special attention to the offset coordinates, the top bar will change the last character on the offset.",
+    "function": "end_dialogue",
+    "option display": [
+      "Interesting"
+    ]
+  },
+  "h4.0": {
+    "text": "Bingo, let's mark the byte offset at the start and end",
+    "go to": [
+      "h4.1"
+    ],
+    "option display": [
+      "How?"
+    ]
+  },
+  "h4.1": {
+    "text": "Press Ctrl+E and we'll select the block as a new file. Remember to include the full footer signature ~ FF D9 in your selection.",
+    "function": "end_dialogue",
+    "option display": [
+      "Okay"
+    ]
+  },
+  "h5.0": {
+    "text": "Now let's save it as a .jpg. If you've carved it correctly you'll be able to open it and view the image.",
+    "function": "end_dialogue",
+    "option display": [
+      "Cool"
+    ]
+  },
+  "h6.0": {
+    "text": "Huh... it just looks like some vacation photo.",
+    "go to": [
+      "h6.1"
+    ],
+    "option display": [
+      "Boring"
+    ]
+  },
+  "h6.1": {
+    "text": "Let's keep carving, see if there's anymore JPEG files to uncover.",
+    "go to": [
+      "h6.6",
+      "h6.2"
+    ],
+    "option display": [
+      "Okay",
+      "Why?"
+    ]
+  },
+  "h6.2": {
+    "text": "We'll they weren't visible through the file system. Probably deleted. Maybe even intentionally hidden.",
+    "go to": [
+      "h6.3"
+    ],
+    "option display": [
+      "Right"
+    ]
+  },
+  "h6.3": {
+    "text": "And now, its back from the digital graveyard, because you carved it out like a forensic necromancer.",
+    "go to": [
+      "h6.4"
+    ],
+    "option display": [
+      "Awesome"
+    ]
+  },
+  "h6.4": {
+    "text": "It is. Welcome to the part of digital forensics where persistence pays off. Most people give up after they don't see obvious files. We go further, byte by byte.",
+    "go to": [
+      "h6.5"
+    ],
+    "option display": [
+      "Alright"
+    ]
+  },
+  "h6.5": {
+    "text": "Now document everything. The image file it came from, the byte offsets, the file type signature, the software used, and the chain of custody log.",
+    "go to": [
+      "h6.6"
+    ],
+    "option display": [
+      "On it, should I keep searching?"
+    ]
+  },
+  "h6.6": {
+    "text": "Keep your eyes peeled for anything that screams, 'I shouldn't be here'. The digital underground is a stranger, messy place.",
+    "function": "end_dialogue",
+    "option display": [
+      "Sure thing"
+    ]
+  },
+  "h7.0": {
+    "text": "Hmm, that looks like all of them.",
+    "go to": [
+      "h7.1"
+    ],
+    "option display": [
+      "Yeah"
+    ]
+  },
+  "h7.1": {
+    "text": "Good work. You've gone from 'just imaged an SD card' to 'manually carving images out of raw hex' in under 48 hours.",
+    "go to": [
+      "h7.2"
+    ],
+    "option display": [
+      "Thanks"
+    ]
+  },
+  "h7.2": {
+    "text": "That's faster than some interns figure out how to open the evidence locker.",
+    "go to": [
+      "h7.3"
+    ],
+    "option display": [
+      "..."
+    ]
+  },
+  "h7.3": {
+    "text": "But it doesn't stop there. Just because the photos don't look incriminating, doesn't mean that's the case.",
+    "go to": [
+      "h7.4"
+    ],
+    "option display": [
+      "Right"
+    ]
+  },
+  "h7.4": {
+    "text": "Next up is metadata extraction.",
+    "go to": [
+      "h7.5"
+    ],
+    "option display": [
+      "Nice"
+    ]
+  },
+  "h7.5": {
+    "text": "Every image, especially from phones or digital cameras leaves behind EXIF data.",
+    "go to": [
+      "h7.6",
+      "h7.7"
+    ],
+    "option display": [
+      "Whats EXIF data?",
+      "Right"
+    ]
+  },
+  "h7.6": {
+    "text": "That's GPS, timestamps, device make and model, even exposure settings.",
+    "go to": [
+      "h7.7"
+    ],
+    "option display": [
+      "Oh"
+    ]
+  },
+  "h7.7": {
+    "text": "But first let's take five. You've earned it.",
+    "go to": [
+      "h7.8",
+      "dispatch"
+    ],
+    "option display": [
+      "Nice"
+    ]
+  },
+  "h7.8": {
+    "text": "#Digitial forensics, please respond. We've got a warehouse break-in, possible tampered security DVR. Imaging requested ASAP.#",
+    "go to": [
+      "h7.9"
+    ],
+    "option display": [
+      "..."
+    ]
+  },
+  "h7.9": {
+    "text": "You've got to be kidding me",
+    "go to": [
+      "h7.10"
+    ],
+    "option display": [
+      "Do I go with you this time?"
+    ]
+  },
+  "h7.10": {
+    "text": "Still no, Not until you're certified to touch anything more complex than a Raspberry Pi.",
+    "go to": [
+      "h7.11"
+    ],
+    "option display": [
+      "Alright..."
+    ]
+  },
+  "h7.11": {
+    "text": "But! Lock down your carved images, export the logs, and back up everything to the secure case directory. We'll dive into metadata tomorrow. Bright and early.",
+    "function": "end_dialogue",
+    "option display": [
+      "Copy that."
+    ]
   }
 }

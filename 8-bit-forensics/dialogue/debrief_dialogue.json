@@ -101,38 +101,77 @@
     "text": "Morning, rookie. Crime scene was a bust, just a cracked router and a guy who think 'VPN' means Very Personal Nap.",
     "go to": [
       "Day 2.1"
+    ],
+    "option display": [
+      "..."
     ]
   },
   "Day 2.1": {
     "text": "But enough about that. Lets get back to our SD card image.",
     "go to": [
       "Day 2.2"
+    ],
+    "option display": [
+      "Alright"
     ]
   },
   "Day 2.2": {
     "text": "Today's goal... File Carving. Specifically, we're going hex-deep and hunting for any hidden or corrupted files.",
-    "function": "end_dialogue"
+    "go to": [
+      "Day 2.3",
+      "Day 2.4"
+    ],
+    "option display": [
+      "From the SD card?",
+      "From the image?"
+    ]
+  },
+  "Day 2.3": {
+    "text": "Ha! I don't think so. Unless you want the entire case to fall apart. We'll be woking from the forensic image you created yesterday.",
+    "function": "end_dialogue",
+    "option display": [
+      "Ah"
+    ]
+  },
+  "Day 2.4": {
+    "text": "Nice! The image file is already mounted read-only, lets go on to the PC and launch your hex viewer, X, X, or your flavour of choice, and scroll through the raw data.",
+    "function": "end_dialogue",
+    "option display": [
+      "Okay"
+    ]
   },
   "Day 3.0": {
     "text": "Morning. Here--no one investigates metadata without caffeine.",
     "go to": [
       "Day 3.1"
+    ],
+    "option display": [
+      "Thanks, We do we start?"
     ]
   },
   "Day 3.1": {
-    "text": "Thanks, I've got the carved JPEGs up and ready, where do we start?",
+    "text": "With a little tool called X, nice and easy to view the key metadata without getting overwhelmed.",
     "go to": [
       "Day 3.2"
+    ],
+    "option display": [
+      "Nice"
     ]
   },
   "Day 3.2": {
-    "text": "With a little tool called ExifRead, nice and easy to view the key metadata without getting overwhelmed.",
+    "text": "Later, we'll use the command line based x, but that shows a lot and we don't want rookies running for the hills.",
     "go to": [
       "Day 3.3"
+    ],
+    "option display": [
+      "Alright"
     ]
   },
   "Day 3.3": {
-    "text": "Later, we'll use the command line based ExifTool, but that shows a lot and we don't want rookies running for the hills.",
-    "function": "end_dialogue"
+    "text": "Let's not waste time, launch up the PC.",
+    "function": "end_dialogue",
+    "option display": [
+      "On it."
+    ]
   }
 }
