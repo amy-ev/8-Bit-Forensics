@@ -16,6 +16,7 @@ var _total_rows := 0
 
 var offset_gap := 0
 var hex_text_gap := 0
+var converted_text_gap := 0
 var separation := 0
 
 @onready var carved_block:=PackedByteArray()
@@ -32,7 +33,15 @@ func _ready() -> void:
 	OFFSET = get_visible_row_count() - 1
 
 	Global.connect("signature_found", _on_results_found)
-
+	
+	var char_size = font.get_string_size("a",0,-1,FONT_SIZE)
+	char_width = int(char_size.x)
+	
+	offset_gap = char_width * 8
+	hex_text_gap =  char_width * (3 * _row_width - 2)
+	converted_text_gap = char_width * _row_width
+	separation = char_width * 3
+	
 func _on_results_found(results:Array):
 	for i in len(results):
 		results_buffer.append(results[i][0])
@@ -67,7 +76,7 @@ func _on_results_found(results:Array):
 	queue_redraw()
 	
 func update_scroll(buffer):
-	_total_rows = len(buffer) - 2
+	_total_rows = len(buffer) +1
 	row_index = clamp(row_index,0, max(_total_rows - OFFSET,0))
 	print("total rows: ", _total_rows)
 
@@ -121,19 +130,31 @@ func _draw() -> void:
 			if row_end_offset > len(surrounding_hex):
 				row_end_offset = len(surrounding_hex)
 				
-			pos += Vector2(3, font.get_ascent(FONT_SIZE))
-			print("start ", row_begin_offset, " end ", row_end_offset)
+			pos += Vector2(5, font.get_ascent(FONT_SIZE))
 			#offset location
 			draw_string(font, pos, results_buffer[row_begin_offset],0,-1,FONT_SIZE,FONT_COLOUR)
-			pos.x += 40 +  separation -1
+			pos.x += offset_gap + separation
+			#pos.x += 40 +  separation -1
 			
 			#the hex surrounding it
 			var hex_string = ""
 			for i in range(row_begin_offset,row_end_offset):
-				hex_string += str(hex_to_string[surrounding_hex[i]], " ")
+				hex_string += str(hex_to_string[surrounding_hex[i]], "  ")
 				
 			draw_string(font, pos, hex_string,0,-1,FONT_SIZE, FONT_COLOUR)
-
+			pos.x += hex_text_gap +  separation -1
+			#pos.x += (11*16) + separation -1
+			
+			var bytes_row: PackedByteArray = surrounding_hex.slice(row_begin_offset, row_end_offset - 1)
+			for i in len(bytes_row):
+				var x = bytes_row[i]
+				# if byte would be a space or del then change to a '.' 
+				if x < 32 or x >= 127:
+					bytes_row[i] = 46
+#
+			var decoded_string = bytes_row.get_string_from_ascii()
+			draw_string(font,pos,decoded_string,0,-1,FONT_SIZE,FONT_COLOUR)
+			
 			#reset for next
 			pos.x = 0
 			pos.y -= font.get_ascent(FONT_SIZE)

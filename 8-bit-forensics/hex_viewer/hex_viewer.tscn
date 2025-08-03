@@ -14,8 +14,10 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cm2t2"]
 
 [node name="hex_viewer" type="NinePatchRect"]
-offset_right = 300.0
-offset_bottom = 176.0
+offset_left = 24.0
+offset_top = 6.0
+offset_right = 336.0
+offset_bottom = 194.0
 mouse_filter = 1
 texture = ExtResource("1_m7h7m")
 patch_margin_left = 2
@@ -26,8 +28,8 @@ script = ExtResource("2_cke5y")
 
 [node name="v_sort" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 309.0
+offset_bottom = 188.0
 theme_override_constants/separation = 0
 
 [node name="scroll_manager" type="HBoxContainer" parent="v_sort"]
@@ -36,11 +38,17 @@ theme_override_constants/separation = -4
 script = ExtResource("3_5olva")
 
 [node name="sort" type="VBoxContainer" parent="v_sort/scroll_manager"]
+custom_minimum_size = Vector2(312, 150)
 layout_mode = 2
 theme_override_constants/separation = 0
 
+[node name="boundary" type="ColorRect" parent="v_sort/scroll_manager/sort"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
 [node name="window" type="TabContainer" parent="v_sort/scroll_manager/sort"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme = ExtResource("3_cke5y")
 current_tab = 0
@@ -56,13 +64,12 @@ color = Color(0.45098, 0.396078, 0.290196, 1)
 script = ExtResource("6_2nup8")
 
 [node name="results_scroll_manager" type="HBoxContainer" parent="v_sort"]
-custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
 theme_override_constants/separation = -4
 script = ExtResource("7_2nup8")
 
 [node name="results" type="Control" parent="v_sort/results_scroll_manager"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(312, 26)
 layout_mode = 2
 script = ExtResource("8_ywfrl")
 
@@ -74,37 +81,39 @@ script = ExtResource("9_f13me")
 
 [node name="load" type="Button" parent="."]
 layout_mode = 0
-offset_left = 58.0
-offset_right = 81.0
-offset_bottom = 14.0
+offset_left = 279.0
+offset_top = 5.0
+offset_right = 302.0
+offset_bottom = 19.0
 theme = ExtResource("10_ywfrl")
 text = "open"
 
 [node name="save" type="Button" parent="."]
 layout_mode = 0
 offset_left = 254.0
+offset_top = 5.0
 offset_right = 277.0
-offset_bottom = 14.0
+offset_bottom = 19.0
 theme = ExtResource("10_ywfrl")
 disabled = true
 text = "save"
 
-[node name="find" type="Button" parent="."]
-layout_mode = 0
-offset_left = 254.0
-offset_top = 155.0
-offset_right = 293.0
-offset_bottom = 169.0
-theme = ExtResource("10_ywfrl")
-text = "scroll to"
-
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 150.0
-offset_right = 230.0
-offset_bottom = 159.0
+offset_top = 162.0
+offset_right = 283.0
+offset_bottom = 169.0
 color = Color(1, 1, 1, 0.333333)
+
+[node name="find" type="Button" parent="."]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 167.0
+offset_right = 301.0
+offset_bottom = 180.0
+theme = ExtResource("10_ywfrl")
+text = "x"
 
 [connection signal="gui_input" from="v_sort/scroll_manager" to="v_sort/scroll_manager" method="_on_gui_input"]
 [connection signal="tab_changed" from="v_sort/scroll_manager/sort/window" to="." method="_on_window_tab_changed"]

@@ -100,15 +100,12 @@ func _draw() -> void:
 			#left side offset labels
 			draw_string(font, pos, _offset_to_string(row_begin_offset), 0, -1,FONT_SIZE, FONT_COLOUR)
 			pos.x += offset_gap + separation
-			#print(row_begin_offset, " ", row_end_offset)
-			#print(get_row_index())
+
 			#hex text viewer
 			var hex_string = ""
 			for i in range(row_begin_offset, row_end_offset):
 				hex_string += str(_hex_to_string[buffer[i]], "  ")
 				
-			print(hex_string)
-			
 			draw_string(font, pos, hex_string,0,-1,FONT_SIZE,FONT_COLOUR)
 			pos.x += hex_text_gap + separation -1
 			
