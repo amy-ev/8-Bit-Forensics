@@ -38,20 +38,11 @@ func _on_select_pressed() -> void:
 	for hbox in $scroll/data_container.get_children():
 		keys_and_values.append(hbox)
 		
-	$thumbnail_column/thumbnail/thumbnail_area/thumbnail_shape.disabled = false
 	
 func _on_exit_pressed() -> void:
 	queue_free()
 	
 func _process(delta: float) -> void:
-	pass
-	#if $backgrounds.minimum_size_changed:
-		#$backgrounds.custom_minimum_size.x = $"../metadata_window".custom_minimum_size.x -60
-	#if $backgrounds/value_background.minimum_size_changed:
-		#$backgrounds/value_background.custom_minimum_size.x = $"../metadata_window".custom_minimum_size.x - (70 + $"backgrounds/key_background".custom_minimum_size.x)
-	#if $scroll.minimum_size_changed:
-		#$scroll.custom_minimum_size.x = $backgrounds.custom_minimum_size.x - 6
-		#$scroll/data_container.custom_minimum_size.x = $scroll.custom_minimum_size.x - 8
 	if !keys_and_values.is_empty():
 		
 		for hbox in keys_and_values.size():
@@ -79,21 +70,18 @@ func _on_label_selected(selected:Node):
 		
 	if current_select.size() == 2:
 		for label in current_select:
-			# to prevent the lines from being off the screen
-			if label.global_position.x <= 20:
-				pos_from.append(label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x + 318,label.get_node("selected").size.y/2))
-				pos_to.append((label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x+ 318 ,label.get_node("selected").size.y/2)) + Vector2(30,0))
-				
-			elif label.global_position.y <= 30: 
-				pos_from.append(Vector2(label.get_node("selected").global_position.x, 30) + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2))
-				pos_to.append((Vector2(label.get_node("selected").global_position.x, 30) + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2)) + Vector2(30,0))
-			elif label.global_position.y >= 300:
-				pos_from.append(Vector2(label.get_node("selected").global_position.x, 300+label.get_node("selected").size.y) + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2))
-				pos_to.append((Vector2(label.get_node("selected").global_position.x, 300+label.get_node("selected").size.y) + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2)) + Vector2(30,0))
+			if label.global_position.y <= 45: 
+				pos_from.append(Vector2(label.get_node("selected").global_position.x, 20) + Vector2(label.get_node("selected").size.x/3,2))
+				pos_to.append((Vector2(label.get_node("selected").global_position.x, 20) + Vector2(label.get_node("selected").size.x/3,2)) + Vector2(30,0))
+			elif label.global_position.y >= 148:
+				pos_from.append(Vector2(label.get_node("selected").global_position.x, 142) + Vector2(label.get_node("selected").size.x/3,2))
+				pos_to.append((Vector2(label.get_node("selected").global_position.x, 142) + Vector2(label.get_node("selected").size.x/3,2)) + Vector2(30,0))
 			else:
-				pos_from.append(label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2))
-				pos_to.append((label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x,label.get_node("selected").size.y/2)) + Vector2(30,0))
-				
+				pos_from.append(label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x/3,2)- Vector2(0,label.get_node("selected").size.y*2))
+				pos_to.append((label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x/3,2)- Vector2(0,label.get_node("selected").size.y*2)) + Vector2(30,0))
+				print("global position: ", label.get_node("selected").global_position)
+				print("selected size: ", label.get_node("selected").size)
+				print("pos from: ", pos_from, " pos_to: ", pos_to )
 		pos_middle = Vector2(pos_to[0][0],(pos_to[0][1] + pos_to[1][1]) / 2)
 
 		# --
@@ -102,20 +90,14 @@ func _on_label_selected(selected:Node):
 		#  |
 		coords1.append(Vector2(pos_to[0]))
 		coords1.append(pos_middle)
-		# --
-		#coords1.append(pos_middle)
-		#coords1.append(Vector2(pos_middle[0] + 100, pos_middle[1]))
-		
+
 		# --
 		coords2.append(Vector2(pos_from[1]))
 		coords2.append(Vector2(pos_to[1]))
 		#  |
 		coords2.append(Vector2(pos_to[1]))
 		coords2.append(pos_middle)
-		#   --
-		#coords2.append(pos_middle)
-		#coords2.append(Vector2(pos_middle[0] + 100, pos_middle[1]))
-		
+
 		for i in range(coords1.size() -1):
 			var length = coords1[i].distance_to(coords1[i+1])
 			segment_lengths.append(length)
@@ -157,8 +139,7 @@ func compare_keys():
 	 				"GPSLongitudeRef":["GPSLongitude"],
 					"GPSLatitudeRef":["GPSLatitude"],
 					"GPSLongitude":["GPSLatitude","GPSLongitudeRef"],
-					"GPSLatitude":["GPSLongitude","GPSLatitudeRef"],
-					"Thumbnail":["DateTime","DateTimeOriginal","DateTimeDigitized","GPSTimeStamp","GPSDateStamp"]}
+					"GPSLatitude":["GPSLongitude","GPSLatitudeRef"]}
 
 	if current_rows.size() == 2:
 		var first_key = current_rows[0]
@@ -278,6 +259,7 @@ func format_gpstime(v:String)-> String:
 	return v
 	
 func _draw() -> void:
+	var LINE_COLOUR = Color(0.932, 0.863, 0.767)
 	if draw_allowed:
 		var accum = 0.0
 		var current_length = progress * total_length
@@ -286,11 +268,11 @@ func _draw() -> void:
 			var p2 = coords1[i+1]
 			var seg_len = segment_lengths[i]
 			if accum + seg_len <= current_length:
-				draw_dashed_line(p1,p2,Color.WHITE, 3.0)
+				draw_dashed_line(p1,p2,LINE_COLOUR, 3.0)
 			elif accum < current_length:
 				var t = (current_length - accum) / seg_len
 				var partial_point = p1.lerp(p2,t)
-				draw_dashed_line(p1,partial_point,Color.WHITE,3.0)
+				draw_dashed_line(p1,partial_point,LINE_COLOUR,3.0)
 				break
 			else:
 				break
@@ -303,11 +285,11 @@ func _draw() -> void:
 			var p2 = coords2[i+1]
 			var seg_len = segment_lengths2[i]
 			if accum2 + seg_len <= current_length:
-				draw_dashed_line(p1,p2,Color.WHITE, 3.0)
+				draw_dashed_line(p1,p2,LINE_COLOUR, 3.0)
 			elif accum2 < current_length2:
 				var t = (current_length2 - accum2) / seg_len
 				var partial_point = p1.lerp(p2,t)
-				draw_dashed_line(p1,partial_point,Color.WHITE,3.0)
+				draw_dashed_line(p1,partial_point,LINE_COLOUR,3.0)
 				break
 			else:
 				break
@@ -336,7 +318,3 @@ func clear_values():
 	total_length2 = 0.0
 	pos_middle = Vector2()
 	correlates = false
-
-func _on_thumbnail_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton && event.is_pressed():
-		Global.metadata_selected.emit($thumbnail_column/thumbnail)

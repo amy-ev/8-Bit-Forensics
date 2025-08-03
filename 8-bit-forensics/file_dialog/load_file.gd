@@ -3,7 +3,6 @@ class_name LoadFile
 
 @onready var client_scene = preload("res://file_dialog/client.tscn")
 @onready var files = preload("res://file_dialog/file.tscn")
-#@onready var saved_dialog_scene = preload("res://file_dialog/save_file.tscn")
 @onready var metadata_labels = preload("res://metadata/metadata_label.tscn")
 
 @export var file_icon: ImageTexture
@@ -22,20 +21,10 @@ func _ready() -> void:
 	Global.connect("selected",_on_file_selected)
 	add_files(file_count("res://evidence_files/"))
 
-	
-
 	if parent.name == "metadata_window":
 		#start server python script
 		OS.create_process("cmd.exe", ["/C", "cd %cd%/python_files && start.bat"])
 
-
-	# TODO: REMOVE FROM HERE AND ADD BOTH LOAD_FILE AND SAVE_FILE TO A DIALOG WINDOW SCENE
-	#var saved_dialog = saved_dialog_scene.instantiate()
-	#add_child(saved_dialog)
-	#var dialog_node = saved_dialog.get_node(".")
-	#dialog_node.position.x = get_node(".").position.x + (get_node(".").size.x * 2)
-	# ---------------------------
-	
 func _on_load_button_pressed() -> void:
 	print(parent.name)
 	Global.selected_file = selected_file
@@ -66,7 +55,7 @@ func _on_load_button_pressed() -> void:
 				for key in json_dict["file_%s" % file_idx]:
 					
 					var key_and_value = HBoxContainer.new()
-					key_and_value.custom_minimum_size = Vector2(162.0,10.0)
+					key_and_value.custom_minimum_size = Vector2(165.0,10.0)
 					key_and_value.add_theme_constant_override("separation", 0)
 					key_and_value.clip_contents = true
 					metadata_column.add_child(key_and_value)
@@ -116,7 +105,7 @@ func add_files(file_no:int):
 
 	for i in file_no:
 		file = files.instantiate()
-		$file_dialog/window/file_container.add_child(file)
+		$file_container.add_child(file)
 		# named file to force automatic naming system = file1, file2 etc
 		file.name = "file"
 		file._file_name = file.name
@@ -135,13 +124,10 @@ func add_files(file_no:int):
 				file._file_icon.set_meta("file_name","SD-image-file.001")
 			else:
 				file._file_icon.set_meta("file_name","image"+str(i)+".jpg")
+				
 		# dynamically size the file_container grid seperations 
-		$file_dialog/window/file_container.size.x = $file_dialog/window.size.x - 10
-		$file_dialog/window/file_container.size.y = $file_dialog/window.size.y
-		$file_dialog/window/file_container.position.x = 5
-		$file_dialog/window/file_container.position.y = 4
-		$file_dialog/window/file_container.add_theme_constant_override("h_separation", file.get_node("select/select_shape").shape.size.x + 8)
-		$file_dialog/window/file_container.add_theme_constant_override("v_separation", (file.get_node("select/select_shape").shape.size.y)+(file.get_node("file_name").size.y))
+		$file_container.add_theme_constant_override("h_separation", file.get_node("select/select_shape").shape.size.x + 2)
+		$file_container.add_theme_constant_override("v_separation", (file.get_node("select/select_shape").shape.size.y)+(file.get_node("file_name").size.y))
 	
 
 

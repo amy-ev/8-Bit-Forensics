@@ -1,25 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://d31sl6bl6j3b3"]
+[gd_scene load_steps=10 format=3 uid="uid://d31sl6bl6j3b3"]
 
 [ext_resource type="Script" uid="uid://b4546ogyrqq64" path="res://metadata/metadata.gd" id="1_2ct7u"]
 [ext_resource type="Texture2D" uid="uid://ck13skggxkb21" path="res://assets/UI/metadata-window.png" id="1_hpvqb"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="3_d1c4e"]
 [ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="4_daqaj"]
 [ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="5_daqaj"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_paekb"]
-size = Vector2(44.5, 32.5)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_paekb"]
-bg_color = Color(0.20871, 0.20871, 0.20871, 0.0784314)
-border_color = Color(0.8, 0.8, 0.8, 0)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-corner_detail = 4
-expand_margin_bottom = 6.0
-shadow_color = Color(0, 0, 0, 0.027451)
-anti_aliasing = false
 
 [sub_resource type="Animation" id="Animation_u6jsu"]
 length = 0.001
@@ -262,24 +247,24 @@ _data = {
 }
 
 [node name="metadata_window" type="NinePatchRect"]
-offset_left = 76.0
-offset_top = 16.0
-offset_right = 308.0
-offset_bottom = 164.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 242.0
+offset_bottom = 156.0
 texture = ExtResource("1_hpvqb")
-region_rect = Rect2(0, 0, 232, 148)
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
+region_rect = Rect2(0, 0, 236, 150)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 script = ExtResource("1_2ct7u")
 
 [node name="backgrounds" type="HBoxContainer" parent="."]
 layout_mode = 1
 offset_left = 60.0
-offset_top = 16.0
-offset_right = 226.0
-offset_bottom = 138.0
+offset_top = 18.0
+offset_right = 229.0
+offset_bottom = 140.0
 mouse_filter = 2
 theme_override_constants/separation = -3
 
@@ -287,7 +272,7 @@ theme_override_constants/separation = -3
 custom_minimum_size = Vector2(70, 122)
 layout_mode = 2
 texture = ExtResource("1_hpvqb")
-region_rect = Rect2(60, 16, 166, 122)
+region_rect = Rect2(62, 18, 166, 122)
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
@@ -309,7 +294,7 @@ custom_minimum_size = Vector2(102, 122)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("1_hpvqb")
-region_rect = Rect2(60, 16, 166, 122)
+region_rect = Rect2(62, 18, 166, 122)
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
@@ -328,9 +313,9 @@ text = "information"
 [node name="scroll" type="ScrollContainer" parent="."]
 layout_mode = 1
 offset_left = 62.0
-offset_top = 28.0
+offset_top = 30.0
 offset_right = 227.0
-offset_bottom = 136.0
+offset_bottom = 138.0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
@@ -344,9 +329,9 @@ theme_override_constants/separation = 3
 [node name="thumbnail_column" type="NinePatchRect" parent="."]
 layout_mode = 1
 offset_right = 60.0
-offset_bottom = 148.0
+offset_bottom = 150.0
 texture = ExtResource("1_hpvqb")
-region_rect = Rect2(0, 0, 60, 148)
+region_rect = Rect2(0, 0, 60, 150)
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
@@ -354,37 +339,21 @@ patch_margin_bottom = 2
 
 [node name="thumbnail" type="TextureRect" parent="thumbnail_column"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 34.0
-offset_right = 52.0
-offset_bottom = 66.0
+offset_left = 10.0
+offset_top = 36.0
+offset_right = 54.0
+offset_bottom = 68.0
 texture = ExtResource("4_daqaj")
 expand_mode = 1
 
-[node name="thumbnail_area" type="Area2D" parent="thumbnail_column/thumbnail"]
-
-[node name="thumbnail_shape" type="CollisionShape2D" parent="thumbnail_column/thumbnail/thumbnail_area"]
-position = Vector2(21.75, 15.75)
-shape = SubResource("RectangleShape2D_paekb")
-disabled = true
-
 [node name="label" type="Label" parent="thumbnail_column/thumbnail"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = -14.0
-offset_right = 38.0
-offset_bottom = -6.0
+offset_left = 3.0
+offset_top = -13.0
+offset_right = 39.0
+offset_bottom = -5.0
 theme = ExtResource("3_d1c4e")
 text = "Thumbnail"
-
-[node name="selected" type="Panel" parent="thumbnail_column/thumbnail"]
-layout_mode = 0
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 46.0
-offset_bottom = 28.0
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_paekb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -393,12 +362,11 @@ libraries = {
 
 [node name="select" type="Button" parent="."]
 layout_mode = 1
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 28.0
-offset_bottom = 16.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 34.0
+offset_bottom = 18.0
 theme = ExtResource("5_daqaj")
 text = "open"
 
-[connection signal="input_event" from="thumbnail_column/thumbnail/thumbnail_area" to="." method="_on_thumbnail_area_input_event"]
 [connection signal="pressed" from="select" to="." method="_on_select_pressed"]
