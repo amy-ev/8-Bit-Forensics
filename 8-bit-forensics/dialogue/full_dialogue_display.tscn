@@ -69,10 +69,10 @@ centered = false
 hframes = 2
 
 [node name="panel" type="PanelContainer" parent="."]
-offset_left = 10.0
-offset_top = 106.0
-offset_right = 310.0
-offset_bottom = 176.0
+offset_left = 9.0
+offset_top = 177.0
+offset_right = 471.0
+offset_bottom = 264.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8tx70")
 
 [node name="dialogue_label" parent="panel" instance=ExtResource("3_i4pyp")]
@@ -84,18 +84,16 @@ libraries = {
 }
 
 [node name="dialogue_option" parent="." instance=ExtResource("4_gkdle")]
-visible = false
-offset_left = 215.0
-offset_top = 84.0
-offset_right = 310.0
-offset_bottom = 103.0
+offset_left = 375.0
+offset_top = 155.0
+offset_right = 471.0
+offset_bottom = 174.0
 
 [node name="dialogue_option2" parent="." instance=ExtResource("4_gkdle")]
-visible = false
-offset_left = 215.0
-offset_top = 61.0
-offset_right = 310.0
-offset_bottom = 80.0
+offset_left = 375.0
+offset_top = 132.0
+offset_right = 471.0
+offset_bottom = 151.0
 
 [connection signal="option_selected" from="dialogue_option/select" to="." method="_on_select_option_selected"]
 [connection signal="option_selected" from="dialogue_option2/select" to="." method="_on_select_option_selected2"]

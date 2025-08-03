@@ -33,6 +33,8 @@ func _on_submit_pressed() -> void:
 		hash_output.text = hash
 
 		queue_redraw()
+	else:
+		Global.emit_signal("answer_response",false)
 
 func _draw() -> void:
 	$output.size = hash_output.size + Vector2(4,4)

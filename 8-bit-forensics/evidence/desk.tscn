@@ -24,18 +24,18 @@ text = "back"
 
 [node name="evidence" parent="." instance=ExtResource("3_h8nwr")]
 layout_mode = 0
-offset_left = 166.0
-offset_top = 82.0
-offset_right = 206.0
-offset_bottom = 122.0
+offset_left = 219.0
+offset_top = 92.0
+offset_right = 261.0
+offset_bottom = 132.0
 
 [node name="evidence_bag" parent="." instance=ExtResource("4_vu08t")]
-position = Vector2(128, 23)
+position = Vector2(183, 27)
 
 [node name="scissors" parent="." instance=ExtResource("5_uh1up")]
-position = Vector2(270, 123)
+position = Vector2(412, 210)
 
 [node name="pen" parent="." instance=ExtResource("6_u6vuv")]
-position = Vector2(289, 49)
+position = Vector2(421, 111)
 
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkpjyfr2lnxq8"
-path="res://.godot/imported/desk-with-plants.png-27066fa7696f4f433b7bf35bc3a57c7c.ctex"
+uid="uid://b0d0vergq6ih1"
+path="res://.godot/imported/mini-dialogue-panel-flipped.png-e7ec7cdeec6a80f33776494e3c6cc870.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/office/desk-with-plants.png"
-dest_files=["res://.godot/imported/desk-with-plants.png-27066fa7696f4f433b7bf35bc3a57c7c.ctex"]
+source_file="res://assets/dialogue/mini-dialogue-panel-flipped.png"
+dest_files=["res://.godot/imported/mini-dialogue-panel-flipped.png-e7ec7cdeec6a80f33776494e3c6cc870.ctex"]
 
 [params]
 

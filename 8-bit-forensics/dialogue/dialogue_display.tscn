@@ -3,15 +3,15 @@
 [ext_resource type="Script" uid="uid://bm2p2n6vqfkku" path="res://dialogue/dialogue_display.gd" id="1_hcfp6"]
 [ext_resource type="Texture2D" uid="uid://djajlduca6jyi" path="res://assets/dialogue/mini-dialogue.png" id="2_v4iod"]
 [ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="2_ycikt"]
-[ext_resource type="Texture2D" uid="uid://ckpg8nph6p3do" path="res://assets/dialogue/mini-dialogue-panel.png" id="3_ms2fa"]
+[ext_resource type="Texture2D" uid="uid://b0d0vergq6ih1" path="res://assets/dialogue/mini-dialogue-panel-flipped.png" id="3_hcfp6"]
 [ext_resource type="PackedScene" uid="uid://c1f7ejp4myvjd" path="res://dialogue/dialogue_option.tscn" id="6_ms2fa"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mptr3"]
-texture = ExtResource("3_ms2fa")
-texture_margin_left = 12.0
-texture_margin_top = 6.0
-texture_margin_right = 6.0
-texture_margin_bottom = 12.0
+texture = ExtResource("3_hcfp6")
+texture_margin_left = 18.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
 
 [sub_resource type="Animation" id="Animation_1e8ho"]
 length = 0.001
@@ -43,7 +43,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 3]
+"values": [0, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w78q7"]
@@ -65,16 +65,16 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
 [node name="npc" type="Sprite2D" parent="."]
-position = Vector2(0, 86)
+position = Vector2(12, 123)
 texture = ExtResource("2_v4iod")
 centered = false
-hframes = 4
+hframes = 2
 
 [node name="panel" type="PanelContainer" parent="."]
-offset_left = 53.0
-offset_top = 90.0
-offset_right = 265.0
-offset_bottom = 146.0
+offset_left = 81.0
+offset_top = 148.0
+offset_right = 373.0
+offset_bottom = 201.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_mptr3")
 
 [node name="dialogue_label" parent="panel" instance=ExtResource("2_ycikt")]
@@ -86,18 +86,16 @@ libraries = {
 }
 
 [node name="dialogue_option" parent="." instance=ExtResource("6_ms2fa")]
-visible = false
-offset_left = 170.0
-offset_top = 149.0
-offset_right = 265.0
-offset_bottom = 168.0
+offset_left = 278.0
+offset_top = 204.0
+offset_right = 373.0
+offset_bottom = 223.0
 
 [node name="dialogue_option2" parent="." instance=ExtResource("6_ms2fa")]
-visible = false
-offset_left = 65.0
-offset_top = 149.0
-offset_right = 160.0
-offset_bottom = 168.0
+offset_left = 180.0
+offset_top = 204.0
+offset_right = 275.0
+offset_bottom = 223.0
 
 [connection signal="option_selected" from="dialogue_option/select" to="." method="_on_select_option_selected"]
 [connection signal="option_selected" from="dialogue_option2/select" to="." method="_on_select_option_selected2"]

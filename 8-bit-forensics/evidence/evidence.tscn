@@ -14,10 +14,10 @@ shader_parameter/front = ExtResource("2_4df6o")
 shader_parameter/back = ExtResource("2_4df6o")
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_rjhj2"]
-points = PackedVector2Array(-4, -14, 6, -14, 14, -5, 14, 1, 2, 14, -4, 14, -14, 3, -14, -3)
+points = PackedVector2Array(-4, -15, 8, -15, 17, -6, 17, 1, 4, 15, -4, 15, -15, 4, -15, -4)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4df6o"]
-points = PackedVector2Array(-4, -14, 6, -14, 14, -5, 14, 1, 2, 14, -4, 14, -14, 3, -14, -3)
+points = PackedVector2Array(-4, -15, 8, -15, 17, -6, 17, 1, 4, 15, -4, 15, -15, 4, -15, -4)
 
 [node name="evidence" type="TextureRect"]
 material = SubResource("ShaderMaterial_vf127")

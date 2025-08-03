@@ -1,8 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bmpgrmqys4l5p"]
-
-[ext_resource type="FontFile" uid="uid://ginkfwm14fgo" path="res://8-bit-forensics.ttf" id="1_o42ro"]
-
-[resource]
-default_font = ExtResource("1_o42ro")
-default_font_size = 8
-RichTextLabel/colors/default_color = Color(0.160784, 0.141176, 0.105882, 1)

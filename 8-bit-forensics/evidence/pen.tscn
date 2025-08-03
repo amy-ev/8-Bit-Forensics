@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cii2cxx1xryyq" path="res://evidence/pen.gd" id="2_smrlt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smrlt"]
-size = Vector2(22, 58)
+size = Vector2(33, 87)
 
 [sub_resource type="Animation" id="Animation_2x743"]
 length = 0.001
@@ -109,7 +109,7 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="collision" type="CollisionShape2D" parent="grab"]
-position = Vector2(11, 29)
+position = Vector2(16.5, 43.5)
 shape = SubResource("RectangleShape2D_smrlt")
 
 [node name="grab_animation" type="AnimationPlayer" parent="."]

@@ -36,7 +36,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 3]
+"values": [0, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w78q7"]
@@ -49,34 +49,34 @@ _data = {
 script = ExtResource("1_a13u3")
 
 [node name="npc" type="Sprite2D" parent="."]
-position = Vector2(0, 86)
+position = Vector2(9, 126)
 texture = ExtResource("1_2jp6t")
 centered = false
-hframes = 4
+hframes = 2
 
 [node name="panel" type="NinePatchRect" parent="."]
-offset_left = 38.0
-offset_top = 74.0
-offset_right = 139.0
-offset_bottom = 114.0
+offset_left = 68.0
+offset_top = 130.0
+offset_right = 187.0
+offset_bottom = 174.0
 texture = ExtResource("2_a13u3")
-patch_margin_left = 12
-patch_margin_top = 4
-patch_margin_right = 6
-patch_margin_bottom = 4
+patch_margin_left = 18
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 18
 
 [node name="dialogue_label" parent="panel" instance=ExtResource("3_1e8ho")]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 7.0
-offset_right = 95.0
-offset_bottom = 33.0
+offset_left = 18.0
+offset_top = 9.0
+offset_right = 110.0
+offset_bottom = 35.0
 
 [node name="confirm" type="TextureButton" parent="panel"]
 layout_mode = 0
-offset_left = 82.0
+offset_left = 96.0
 offset_top = 21.0
-offset_right = 96.0
+offset_right = 110.0
 offset_bottom = 35.0
 texture_normal = ExtResource("5_1e8ho")
 

@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwyc4moqylni6"]
+[gd_scene load_steps=13 format=3 uid="uid://cwyc4moqylni6"]
 
 [ext_resource type="Script" uid="uid://c3887oc0rnhse" path="res://evidence/bag.gd" id="1_siw8v"]
 [ext_resource type="Texture2D" uid="uid://b4yenwsww6w8g" path="res://assets/evidence/bag-sprite.png" id="2_siw8v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hu3u5"]
-size = Vector2(100, 144)
+size = Vector2(150, 216)
 
 [sub_resource type="Animation" id="Animation_l7c1l"]
 length = 0.001
@@ -45,19 +45,22 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vydlv"]
-size = Vector2(6, 138)
+size = Vector2(9, 207)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7c1l"]
-size = Vector2(100, 6)
+size = Vector2(150, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_set1l"]
+size = Vector2(150, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37jsk"]
-size = Vector2(6, 138)
+size = Vector2(9, 207)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_siw8v"]
-size = Vector2(100, 6)
+size = Vector2(150, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hktvk"]
-size = Vector2(76, 66)
+size = Vector2(114, 99)
 
 [node name="evidence_bag" type="RigidBody2D"]
 collision_layer = 2
@@ -75,7 +78,7 @@ collision_layer = 5
 collision_mask = 2
 
 [node name="collision" type="CollisionShape2D" parent="bag"]
-position = Vector2(50, 72)
+position = Vector2(75, 108)
 shape = SubResource("RectangleShape2D_hu3u5")
 debug_color = Color(0.850663, 0.155306, 0.5867, 0.42)
 
@@ -85,22 +88,22 @@ libraries = {
 }
 
 [node name="boundary_left" type="CollisionShape2D" parent="."]
-position = Vector2(3, 69)
+position = Vector2(4.5, 103.5)
 shape = SubResource("RectangleShape2D_vydlv")
 debug_color = Color(0.962492, 0.195201, 9.62615e-07, 0.42)
 
 [node name="boundary_top" type="CollisionShape2D" parent="."]
-position = Vector2(50, 3)
+position = Vector2(75, 4.5)
 shape = SubResource("RectangleShape2D_l7c1l")
 debug_color = Color(0.960784, 0.196078, 0, 0.419608)
 
 [node name="boundary_bottom" type="CollisionShape2D" parent="."]
-position = Vector2(50, 141)
-shape = SubResource("RectangleShape2D_l7c1l")
-debug_color = Color(0.960784, 0.196078, 0, 0.419608)
+position = Vector2(75, 211.5)
+shape = SubResource("RectangleShape2D_set1l")
+debug_color = Color(0.945921, 0.198957, 0.318048, 0.42)
 
 [node name="boundary_right" type="CollisionShape2D" parent="."]
-position = Vector2(97, 69)
+position = Vector2(145.5, 103.5)
 shape = SubResource("RectangleShape2D_37jsk")
 debug_color = Color(0.960784, 0.196078, 0, 0.419608)
 
@@ -109,7 +112,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="drop_point" type="CollisionShape2D" parent="cut_section"]
-position = Vector2(50, 141)
+position = Vector2(75, 211.5)
 shape = SubResource("RectangleShape2D_siw8v")
 debug_color = Color(0.883061, 0.123634, 0.756632, 0.42)
 
@@ -118,7 +121,7 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="drop_point" type="CollisionShape2D" parent="form_section"]
-position = Vector2(50, 103)
+position = Vector2(75, 154.5)
 shape = SubResource("RectangleShape2D_hktvk")
 debug_color = Color(0.883061, 0.123634, 0.756632, 0.42)
 

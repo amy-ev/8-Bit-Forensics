@@ -46,7 +46,7 @@ _data = {
 }
 
 [node name="closed_folder" type="Sprite2D"]
-position = Vector2(71, 0)
+position = Vector2(107, 0)
 texture = ExtResource("1_4mb7p")
 centered = false
 hframes = 8
@@ -59,10 +59,10 @@ libraries = {
 }
 
 [node name="next" type="TextureButton" parent="."]
-offset_left = 187.0
-offset_top = 94.0
-offset_right = 207.0
-offset_bottom = 114.0
+offset_left = 280.0
+offset_top = 140.0
+offset_right = 300.0
+offset_bottom = 160.0
 texture_normal = ExtResource("3_8bqwb")
 texture_pressed = ExtResource("4_m71nh")
 

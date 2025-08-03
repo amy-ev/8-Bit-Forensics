@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnvcbdwsftrn"]
+[gd_scene load_steps=15 format=3 uid="uid://cnvcbdwsftrn"]
 
 [ext_resource type="Script" uid="uid://c7l366dugnxrd" path="res://dialogue/dialogue_manager.gd" id="1_k6lpl"]
-[ext_resource type="Texture2D" uid="uid://c0cm4d7ts0ns0" path="res://assets/dialogue/normal-dialogue-wide-v2.png" id="2_3itix"]
 [ext_resource type="Texture2D" uid="uid://b3p3wloo82rqg" path="res://assets/dialogue/dialogue-debrief.png" id="3_3itix"]
 [ext_resource type="Texture2D" uid="uid://c3yl6q4k07f8q" path="res://assets/dialogue/dialogue-panel-bottom-wide.png" id="3_7jarm"]
 [ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="3_q36jk"]
@@ -106,20 +105,13 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="normal" type="TextureRect" parent="."]
-visible = false
-offset_right = 320.0
-offset_bottom = 180.0
-mouse_filter = 0
-texture = ExtResource("2_3itix")
-
 [node name="npc" type="Sprite2D" parent="."]
 texture = ExtResource("3_3itix")
 centered = false
 hframes = 2
 
 [node name="coffee" type="Sprite2D" parent="."]
-position = Vector2(246, 64)
+position = Vector2(348, 108)
 texture = ExtResource("4_uhccw")
 centered = false
 hframes = 8
@@ -132,10 +124,10 @@ libraries = {
 autoplay = "coffee"
 
 [node name="panel" type="PanelContainer" parent="."]
-offset_left = 3.0
-offset_top = 118.0
-offset_right = 315.0
-offset_bottom = 176.0
+offset_left = 9.0
+offset_top = 177.0
+offset_right = 471.0
+offset_bottom = 264.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_0fmqw")
 
 [node name="container" type="VBoxContainer" parent="panel"]
@@ -151,16 +143,16 @@ text = "day x"
 layout_mode = 2
 
 [node name="option_b" parent="." instance=ExtResource("9_nnuq7")]
-offset_left = 226.0
-offset_top = 76.0
-offset_right = 315.0
-offset_bottom = 95.0
+offset_left = 375.0
+offset_top = 134.0
+offset_right = 471.0
+offset_bottom = 153.0
 
 [node name="option_a" parent="." instance=ExtResource("9_nnuq7")]
-offset_left = 226.0
-offset_top = 97.0
-offset_right = 315.0
-offset_bottom = 116.0
+offset_left = 375.0
+offset_top = 155.0
+offset_right = 471.0
+offset_bottom = 174.0
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {

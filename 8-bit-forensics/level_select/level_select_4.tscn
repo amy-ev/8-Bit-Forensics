@@ -64,7 +64,7 @@ _data = {
 }
 
 [node name="level_select_4" type="Sprite2D"]
-position = Vector2(71, 0)
+position = Vector2(107, 0)
 texture = ExtResource("1_g6ke1")
 centered = false
 hframes = 8
@@ -78,20 +78,20 @@ libraries = {
 }
 
 [node name="next" type="TextureButton" parent="."]
-offset_left = 187.0
-offset_top = 94.0
-offset_right = 207.0
-offset_bottom = 114.0
+offset_left = 280.0
+offset_top = 140.0
+offset_right = 300.0
+offset_bottom = 160.0
 disabled = true
 texture_normal = ExtResource("3_6p63i")
 texture_pressed = ExtResource("4_x0uqc")
 metadata/_edit_use_anchors_ = true
 
 [node name="back" type="TextureButton" parent="."]
-offset_left = -29.0
-offset_top = 94.0
-offset_right = -9.0
-offset_bottom = 114.0
+offset_left = -33.0
+offset_top = 140.0
+offset_right = -13.0
+offset_bottom = 160.0
 texture_normal = ExtResource("5_x0uqc")
 texture_pressed = ExtResource("6_g6ke1")
 metadata/_edit_use_anchors_ = true

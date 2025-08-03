@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bkmu6wjmg8lo0" path="res://assets/evidence/scissors.png" id="1_jciqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38a2e"]
-size = Vector2(16, 24)
+size = Vector2(27, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgi0h"]
-size = Vector2(20, 12)
+size = Vector2(27, 33)
 
 [sub_resource type="Animation" id="Animation_s3m2y"]
 length = 0.001
@@ -57,7 +57,7 @@ script = ExtResource("1_38a2e")
 [node name="grab" type="Area2D" parent="."]
 
 [node name="collision" type="CollisionShape2D" parent="grab"]
-position = Vector2(28, 16)
+position = Vector2(40.5, 24)
 shape = SubResource("RectangleShape2D_38a2e")
 
 [node name="blades" type="Area2D" parent="."]
@@ -65,7 +65,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="collision" type="CollisionShape2D" parent="blades"]
-position = Vector2(10, 16)
+position = Vector2(13.5, 22.5)
 shape = SubResource("RectangleShape2D_wgi0h")
 debug_color = Color(0.837514, 0.376922, 0.227913, 0.42)
 

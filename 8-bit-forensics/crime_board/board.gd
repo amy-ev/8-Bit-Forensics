@@ -23,21 +23,21 @@ func _open_note(note_topic:String):
 	if !note_open:
 		note_content.get_child(0).get_child(0).text = note_topic
 	#TODO: connect a json file with the corresponding educational notes
-		$bottom_screen.add_child(note_content)
+		add_child(note_content)
 		note_open = true
 	else:
-		$bottom_screen/note.queue_free()
+		$note.queue_free()
 		await get_tree().process_frame
 		note_open = false
 		note_content.get_child(0).get_child(0).text = note_topic
-		$bottom_screen.add_child(note_content)
+		add_child(note_content)
 		note_open = true
 		
 func _show_note(day:String):
 	Global.days.append(day)
 	# change to loop through array of days and show all unlocked 
 	#print(day)
-	get_node("bottom_screen/"+day).visible = true
+	get_node(day).visible = true
 	#print(Global.days)
 	
 func _on_unlock_debug_pressed() -> void:
@@ -58,5 +58,5 @@ func _on_back_btn_pressed() -> void:
 func _on_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.is_pressed():
 		if note_open:
-			$bottom_screen/note.queue_free()
+			$note.queue_free()
 			note_open = false

@@ -46,7 +46,7 @@ _data = {
 }
 
 [node name="level_select_5" type="Sprite2D"]
-position = Vector2(71, 0)
+position = Vector2(107, 0)
 texture = ExtResource("1_r4rgc")
 centered = false
 hframes = 8
@@ -70,10 +70,10 @@ texture_normal = ExtResource("3_l5wml")
 texture_pressed = ExtResource("4_8bkdd")
 
 [node name="back" type="TextureButton" parent="."]
-offset_left = -29.0
-offset_top = 94.0
-offset_right = -9.0
-offset_bottom = 114.0
+offset_left = -33.0
+offset_top = 140.0
+offset_right = -13.0
+offset_bottom = 160.0
 texture_normal = ExtResource("4_f1pno")
 texture_pressed = ExtResource("5_l5wml")
 
