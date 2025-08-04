@@ -57,65 +57,55 @@ size = Vector2(36, 42)
 [node name="desk" type="Node2D"]
 script = ExtResource("2_sbb4t")
 
-[node name="bottom_screen" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 320.0
-offset_bottom = 180.0
-mouse_filter = 1
-
-[node name="office_desk" type="TextureRect" parent="bottom_screen"]
-layout_mode = 1
-offset_right = 320.0
-offset_bottom = 180.0
+[node name="office_desk" type="TextureRect" parent="."]
+offset_right = 480.0
+offset_bottom = 270.0
 texture = ExtResource("2_ufxmt")
 
-[node name="evidence_bag" type="TextureRect" parent="bottom_screen"]
-layout_mode = 0
+[node name="evidence_bag" type="TextureRect" parent="."]
 offset_left = 54.0
 offset_top = 75.0
 offset_right = 123.0
 offset_bottom = 174.0
 texture = ExtResource("5_6g8cm")
 
-[node name="evidence" type="Area2D" parent="bottom_screen/evidence_bag"]
+[node name="evidence" type="Area2D" parent="evidence_bag"]
 
-[node name="evidence_shape" type="CollisionShape2D" parent="bottom_screen/evidence_bag/evidence"]
+[node name="evidence_shape" type="CollisionShape2D" parent="evidence_bag/evidence"]
 position = Vector2(34.5, 49.5)
 shape = SubResource("RectangleShape2D_ufxmt")
 
-[node name="pc" type="TextureRect" parent="bottom_screen"]
-layout_mode = 1
+[node name="pc" type="TextureRect" parent="."]
 offset_left = 222.0
 offset_right = 396.0
 offset_bottom = 189.0
 texture = ExtResource("6_6g8cm")
 
-[node name="pc_area" type="Area2D" parent="bottom_screen/pc"]
+[node name="pc_area" type="Area2D" parent="pc"]
 
-[node name="pc_shape" type="CollisionShape2D" parent="bottom_screen/pc/pc_area"]
+[node name="pc_shape" type="CollisionShape2D" parent="pc/pc_area"]
 position = Vector2(87, 55.5)
 shape = SubResource("RectangleShape2D_1x7m8")
 
-[node name="coffee_cup" type="Sprite2D" parent="bottom_screen"]
+[node name="coffee_cup" type="Sprite2D" parent="."]
 position = Vector2(165, 45)
 texture = ExtResource("6_1x7m8")
 centered = false
 hframes = 8
 vframes = 2
 
-[node name="coffee_animation" type="AnimationPlayer" parent="bottom_screen/coffee_cup"]
+[node name="coffee_animation" type="AnimationPlayer" parent="coffee_cup"]
 libraries = {
 &"": SubResource("AnimationLibrary_j4gt6")
 }
 autoplay = "steam"
 
-[node name="coffee" type="Area2D" parent="bottom_screen/coffee_cup"]
+[node name="coffee" type="Area2D" parent="coffee_cup"]
 
-[node name="coffee_shape" type="CollisionShape2D" parent="bottom_screen/coffee_cup/coffee"]
+[node name="coffee_shape" type="CollisionShape2D" parent="coffee_cup/coffee"]
 position = Vector2(24, 48)
 shape = SubResource("RectangleShape2D_6g8cm")
 
-[connection signal="input_event" from="bottom_screen/evidence_bag/evidence" to="." method="_on_evidence_input_event"]
-[connection signal="input_event" from="bottom_screen/pc/pc_area" to="." method="_on_pc_area_input_event"]
-[connection signal="input_event" from="bottom_screen/coffee_cup/coffee" to="." method="_on_coffee_input_event"]
+[connection signal="input_event" from="evidence_bag/evidence" to="." method="_on_evidence_input_event"]
+[connection signal="input_event" from="pc/pc_area" to="." method="_on_pc_area_input_event"]
+[connection signal="input_event" from="coffee_cup/coffee" to="." method="_on_coffee_input_event"]

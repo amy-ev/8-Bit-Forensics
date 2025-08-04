@@ -2,14 +2,13 @@ extends NinePatchRect
 
 @onready var cmd = $cmd
 @onready var hash_output = $output/text
+@onready var pc = get_parent().get_parent()
 
 
 func _ready() -> void:
-	if get_parent().has_node("dialogue_display"):
-		get_parent().remove_child(get_node("dialogue_display"))
-	var dialogue = preload("res://dialogue/dialogue_display.tscn").instantiate()
-	get_parent().add_child(dialogue)
-	dialogue.load_dialogue("res://dialogue/dialogue.json", "e6.0")
+	Global.emit_signal("dialogue_triggered","e6.0")
+	Global.emit_signal("next_step",self)
+
 
 func _on_submit_pressed() -> void:
 	var given_cmd = cmd.text
@@ -40,5 +39,6 @@ func _draw() -> void:
 	$output.size = hash_output.size + Vector2(4,4)
 
 func _on_done_pressed() -> void:
-	Global.emit_signal("hash_verified")
+	Global.hash_verified = true
+	Global.emit_signal("dialogue_triggered","e7.0")
 	queue_free()

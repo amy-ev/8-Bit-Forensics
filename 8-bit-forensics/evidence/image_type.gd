@@ -1,18 +1,14 @@
 extends ColorRect
 
 @onready var btn_group = $window/sort/dd.get_button_group()
-@onready var pc = get_parent()
+@onready var screen = get_parent()
 
 var button_pressed:String
 var is_correct:bool
 
 func _ready() -> void:
-	if get_parent().has_node("dialogue_display"):
-		get_parent().remove_child(get_node("dialogue_display"))
-	var dialogue = preload("res://dialogue/dialogue_display.tscn").instantiate()
-	get_parent().add_child(dialogue)
-	dialogue.load_dialogue("res://dialogue/dialogue.json", "e5.2")
-	
+	Global.emit_signal("dialogue_triggered","e5.2")
+
 	Global.emit_signal("next_step",self)
 	# have information comparing dd and e01
 	for btn in btn_group.get_buttons():
@@ -30,11 +26,11 @@ func _on_cancel_pressed() -> void:
 	queue_free()
 
 func _on_back_pressed() -> void:
-	pc.add_child(load("res://evidence/select_drive.tscn").instantiate())
+	screen.add_child(load("res://evidence/select_drive.tscn").instantiate())
 	queue_free()
 
 func _on_next_pressed() -> void:
 	Global.emit_signal("answer_response",is_correct)
 	if is_correct:
-		pc.add_child(preload("res://evidence/item_information.tscn").instantiate())
+		screen.add_child(preload("res://evidence/item_information.tscn").instantiate())
 		queue_free()

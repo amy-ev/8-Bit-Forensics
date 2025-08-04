@@ -5,12 +5,14 @@ var search_open:bool = false
 var select_open:bool = false
 var file_no:int
 
+var first_search:String
+
 @onready var hex_text = $v_sort/scroll_manager/sort/window/original_file/hex_text
 @onready var scroll_bar = $v_sort/scroll_manager/scroll_bar
 @onready var tabs = $v_sort/scroll_manager/sort/window
 @onready var results_text = $v_sort/results_scroll_manager/results
 
-@onready var search_window = preload("res://hex_viewer/search_new.tscn")
+@onready var search_window = preload("res://hex_viewer/search.tscn")
 @onready var select_window = preload("res://hex_viewer/select.tscn")
 
 var buffer_len:int
@@ -41,6 +43,8 @@ func open_file(file_path:String):
 		hex_text.update_scroll(buffer)
 		
 		hex_text.queue_redraw()
+		if Global.first_file_opened:
+			pass
 	else:
 		print("failed to open file")
 		return
@@ -89,16 +93,19 @@ func _on_save_pressed() -> void:
 
 		for i in range(len(buffer)-2, len(buffer)):
 			end_str += str(hex_text._hex_to_string[buffer[i]]+ "")
-		print("attempting")
+
 		if (start_str == "ffd8ffe1" || start_str == "ffd8ffe0") && end_str == "ffd9":
-			#TODO: change file name to be incremental 
+			
 			file_no +=1
 			var file = FileAccess.open("res://evidence_files/image"+ str(file_no)+ ".jpg", FileAccess.WRITE)
 
 
 			file.store_buffer(tabs.get_child(tabs.current_tab).get_node("hex_text")._wrapped_buffer)
-			print("saved")
 			file.close()
+			if !Global.first_image_carved:
+				Global.emit_signal("dialogue_triggered","h6.0")
+				Global.first_image_carved = true
+				$save.disabled = true
 		else:
 			$save.disabled = true
 

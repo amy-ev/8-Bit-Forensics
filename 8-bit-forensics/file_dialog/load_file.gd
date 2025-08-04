@@ -26,7 +26,7 @@ func _ready() -> void:
 		OS.create_process("cmd.exe", ["/C", "cd %cd%/python_files && start.bat"])
 
 func _on_load_button_pressed() -> void:
-	print(parent.name)
+
 	Global.selected_file = selected_file
 	
 	if parent.name == "metadata_window":
@@ -79,9 +79,9 @@ func _on_load_button_pressed() -> void:
 
 	elif parent.name == "hex_viewer":
 		parent.open_file("res://evidence_files/"+selected_file)
-		if Global.first_file_open && selected_file == "SD-image-file.001":
-			Global.emit_signal("opened_image_file")
-			Global.first_file_open = false
+		if !Global.first_file_opened && selected_file == "SD-image-file.001":
+			Global.emit_signal("dialogue_triggered","h2.0")
+			Global.first_file_opened = true
 
 		parent.load_file_open = false
 		
@@ -98,6 +98,7 @@ func _on_load_button_pressed() -> void:
 		var search_results = parent.get_node("v_sort/results_scroll_manager/results")
 		search_results.results_recieved = false
 		search_results.queue_redraw()
+		
 		
 	queue_free()
 	

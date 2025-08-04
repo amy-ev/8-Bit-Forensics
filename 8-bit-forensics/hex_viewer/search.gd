@@ -1,82 +1,88 @@
 extends NinePatchRect
 
 @onready var hex_viewer = get_parent()
-@onready var hex_labels = preload("res://hex_viewer/hex_label.tscn")
+@onready var results_viewer = get_parent().get_node("v_sort/results_scroll_manager")
 
 var results = []
 
 func _ready() -> void:
 	$user_input.grab_focus()
+	results_viewer.results_text.results_recieved = false
+	results_viewer.results_text.queue_redraw()
 
-func signature_search(signature:String):
-	var search_str:Array = []
-	var indicies:Array = []
-	
-	# formatting string 
+func _search(original_buffer, signature, chunk_size=4096):
 	signature = signature.replace(" ", "")
 	signature = signature.strip_escapes()
-	signature = signature.to_upper()
+	signature = signature.to_lower()
 
 	if signature == null or signature == "":
 		return
-		
+	
+	#not ideal but it takes too long to search through the entire 1gb file
+	# value comes from forensic imaging 
+	var unpartionted_space:= 1983936
+	
+	var signature_bytes = PackedByteArray()
+
 	for i in range(0,signature.length(),2):
-		search_str.append(signature.substr(i,2))
-	print(search_str)
-
-	var row_lengths:Array = [] 
-	var row_start_indicies:Array = []
-	var total:int = 0
-	
-	for r in hex_viewer.hex_table:
-		row_lengths.append(r.size())
+		signature_bytes.append(signature.substr(i,2).hex_to_int())
 		
-	#would all be 16 except for the last row
-	for l in row_lengths:
-		row_start_indicies.append(total)
-		total+= l
+	var signature_len = len(signature_bytes)
 	
-	print("hex_data size: %d, search_str size: %d" % [hex_viewer.hex_data.size(), search_str.size()+1])
-	var found_location=0
-	# checking up until where the full search_str can still be read
-	for i in range(hex_viewer.hex_data.size() - search_str.size() + 1):
-		found_location = i
-		var found = true
-		for j in range(search_str.size()):
-			if hex_viewer.hex_data[i+j] != search_str[j]:
-				found = false
-				break # otherwise the bool is still true and continues
+	var buffer:= PackedByteArray()
+	var offset:= 0
+	#to get the right offset
+	var overlap:= PackedByteArray()
+	
+	while offset < unpartionted_space:
+		var end = min(offset+chunk_size, unpartionted_space)
+		var chunk = original_buffer.slice(offset,end)
+		
+		if not chunk:
+			break
+			
+		buffer = overlap + chunk
+		
+		var search_pos = 0
+		while search_pos <= len(buffer) - signature_len:
+			if buffer.slice(search_pos, search_pos + signature_len) == signature_bytes:
+				var signature_location = offset - len(overlap) + search_pos
 				
-		if found:
-			var hex_data_index = i
-			var row:int = 0
-			while row < row_start_indicies.size()-1 and hex_data_index >= row_lengths[row]:
-				hex_data_index -= row_lengths[row]
-				row +=1
-			var column = hex_data_index
-			results.append([row,column])
+				results.append(["%08x"%signature_location, signature_location])
+			search_pos += 1
 
-	if results.size() > 0:
-		hex_viewer.get_node("sort/tab/new file").scroll_to_line(results[0][0])
-		#hex_viewer.get_node("tab/scroll/label").scroll_to_line(results[results.size()-1][0])
+		overlap = buffer.slice(max(len(buffer) - (signature_len - 1),0))
+
+		offset += len(chunk)
+	if signature == "ffd8ff" || signature == "ffd8ffe0" || signature == "ffd9":
+		if !Global.found_first_signature:
+			hex_viewer.first_search = signature
+			
+			Global.emit_signal("dialogue_triggered","h3.0")
+			Global.found_first_signature = true
+		else:
+			if !Global.found_signature_sandwich:
+				if signature != hex_viewer.first_search:
+					if hex_viewer.first_search.contains("ffd8ff") && signature.contains("ffd8ff"): 
+						pass
+					else:
+						Global.emit_signal("dialogue_triggered","h4.0")
+						Global.found_signature_sandwich = true
 	return results
-
-	
 	
 func _dec_to_hex(x:int, y:int)-> String:
 	var result = []
-	#row
+
 	while x != 0:
 		var r = x % 16
 		x = int(x / 16)
 		result.insert(0,str(r))
 		
-	#column
 	while y != 0:
 		var r = y % 16
 		y = int(y / 16)
 		result.append(str(r))
-		
+	
 	for i in range(result.size()):
 		if result[i] == "10":
 			result[i] = "A"
@@ -98,39 +104,22 @@ func _dec_to_hex(x:int, y:int)-> String:
 		return "0".repeat(left_padding) + hex
 	return hex
 	
-func _on_exit_pressed() -> void:
-	hex_viewer.search_open = false
-	queue_free()
-	
 func _on_cancel_pressed() -> void:
 	hex_viewer.search_open = false
 	queue_free()
 	
-func _on_ok_pressed() -> void:
-	var children = []
-	
-	for i in hex_viewer.get_node("sort/results/offset").get_child_count():
-		children.append(hex_viewer.get_node("sort/results/offset").get_child(i))
-		
-	for child in children:
-		child.queue_free()
-		
-	var hex_arr = signature_search($user_input.text)
-	if hex_arr != null:
-		for i in hex_arr.size():
-			var label = hex_labels.instantiate()
-			label.text = _dec_to_hex(hex_arr[i][0], hex_arr[i][1])
-			label.theme = load("res://pc_components.tres")
-			hex_viewer.get_node("sort/results/offset").add_child(label)
-			#prevent it seeming like a crash has occured when searching common hex
-			await get_tree().process_frame
-			
-			print(_dec_to_hex(hex_arr[i][0], hex_arr[i][1]))
+func _on_exit_pressed() -> void:
 	hex_viewer.search_open = false
 	queue_free()
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("close") and hex_viewer.search_open:
-		hex_viewer.search_open = false
-		queue_free()
-		
+func _on_ok_pressed() -> void:
+	if $user_input.text != "":
+		var results_buffer = _search(hex_viewer._wrapped_buffer.buffer,$user_input.text)
+		#var results_buffer = await _search($user_input.text)
+		if results_buffer != null:
+			Global.emit_signal("signature_found", results)
+			results_viewer.results_text.update_scroll(results_buffer)
+			results_viewer.scroll_bar.update_scroll(results_buffer)
+			
+	hex_viewer.search_open = false
+	queue_free()

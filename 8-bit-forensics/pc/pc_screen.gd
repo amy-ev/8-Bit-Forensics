@@ -5,9 +5,6 @@ extends Node2D
 
 @onready var _dialogue = preload("res://dialogue/dialogue_display.tscn")
 
-var hash_verified:bool
-var file_created:bool
-
 func _ready() -> void:
 
 	scale = scale * Utility.window_mode()
@@ -15,30 +12,17 @@ func _ready() -> void:
 	
 	await $screen_animation.animation_finished
 	
+	Global.connect("dialogue_triggered", _on_dialogue_triggered)
+
 	match day:
 		1:
-			Global.connect("create_image_file", _on_file_created)
-			Global.connect("hash_verified", _on_hash_verified)
-			
 			screen.add_child(preload("res://evidence/image_file.tscn").instantiate())
-			
 			if !Global.pc_debrief_given:
-				if has_node("dialogue_display"):
-					remove_child(get_node("dialogue_display"))
-				var dialogue = _dialogue.instantiate()
-				add_child(dialogue)
-				dialogue.load_dialogue("res://dialogue/dialogue.json", "e5.0")
+				_on_dialogue_triggered("e5.0")
 		2:
-			Global.connect("opened_image_file", _on_file_opened)
-			
 			screen.add_child(preload("res://hex_viewer/hex_viewer.tscn").instantiate())
-			
 			if !Global.pc_debrief_given:
-				if has_node("dialogue_display"):
-					remove_child(get_node("dialogue_display"))
-				var dialogue = _dialogue.instantiate()
-				add_child(dialogue)
-				dialogue.load_dialogue("res://dialogue/dialogue.json", "h1.0")
+				_on_dialogue_triggered("h1.0")
 		3:
 			screen.add_child(preload("res://metadata/metadata.tscn").instantiate())
 			
@@ -48,7 +32,7 @@ func _input(event: InputEvent) -> void:
 		
 	if event is InputEventKey and event.is_action_pressed("escape"):
 		
-		if hash_verified && file_created:
+		if Global.hash_verified && Global.file_created:
 			if has_node("dialogue_create_file"):
 				get_node("dialogue_create_file").queue_free()
 				
@@ -67,20 +51,9 @@ func _input(event: InputEvent) -> void:
 func _on_screen_child_entered_tree(node: Node) -> void:
 	mini_dialogue.set_visible(false)
 	
-func _on_hash_verified():
-	hash_verified = true
+func _on_dialogue_triggered(topic:String):
 	if has_node("dialogue_display"):
 		remove_child(get_node("dialogue_display"))
 	var dialogue = _dialogue.instantiate()
 	add_child(dialogue)
-	dialogue.load_dialogue("res://dialogue/dialogue.json", "e7.0")
-
-func _on_file_created():
-	file_created = true
-
-func _on_file_opened():
-	if has_node("dialogue_display"):
-		remove_child(get_node("dialogue_display"))
-	var dialogue = _dialogue.instantiate()
-	add_child(dialogue)
-	dialogue.load_dialogue("res://dialogue/dialogue.json", "h2.0")
+	dialogue.load_dialogue("res://dialogue/dialogue.json", topic)
