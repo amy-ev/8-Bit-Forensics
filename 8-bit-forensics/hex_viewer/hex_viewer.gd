@@ -4,6 +4,7 @@ var load_file_open:bool = false
 var search_open:bool = false
 var select_open:bool = false
 var already_carved:bool
+
 var file_no:int
 var file_icon: ImageTexture
 
@@ -103,7 +104,6 @@ func _on_save_pressed() -> void:
 				file_no +=1
 				var file = FileAccess.open("res://evidence_files/image"+ str(file_no)+ ".jpg", FileAccess.WRITE)
 
-
 				file.store_buffer(tabs.get_child(tabs.current_tab).get_node("hex_text")._wrapped_buffer)
 				file.close()
 				
@@ -116,15 +116,18 @@ func _on_save_pressed() -> void:
 				if !Global.first_image_carved:
 					icon.set_visible(true)
 					
-					#Global.emit_signal("dialogue_triggered","h6.0")
 					Global.first_image_carved = true
 					$save.disabled = true
+					$save.release_focus()
 			else:
 				file_no = file_no
-
+				
+				#prevent enter button used to skip dialogue from forcing repeated saves
+				$save.disabled = true
+				$save.release_focus()
 		else:
 			$save.disabled = true
-
+			$save.release_focus()
 
 func _on_find_pressed() -> void:
 	if results_text.results_recieved:

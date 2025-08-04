@@ -556,89 +556,87 @@
   },
   "h7.2": {
     "text": "That's faster than some interns figure out how to open the evidence locker.",
-    "go to": [
-      "h7.3"
-    ],
+    "function": "end_dialogue",
     "option display": [
       "..."
     ]
   },
-  "h7.3": {
+  "h8.0": {
     "text": "But it doesn't stop there. Just because the photos don't look incriminating, doesn't mean that's the case.",
     "go to": [
-      "h7.4"
+      "h8.1"
     ],
     "option display": [
       "Right"
     ]
   },
-  "h7.4": {
+  "h8.1": {
     "text": "Next up is metadata extraction.",
     "go to": [
-      "h7.5"
+      "h8.2"
     ],
     "option display": [
       "Nice"
     ]
   },
-  "h7.5": {
+  "h8.2": {
     "text": "Every image, especially from phones or digital cameras leaves behind EXIF data.",
     "go to": [
-      "h7.6",
-      "h7.7"
+      "h8.3",
+      "h8.4"
     ],
     "option display": [
       "Whats EXIF data?",
       "Right"
     ]
   },
-  "h7.6": {
+  "h8.3": {
     "text": "That's GPS, timestamps, device make and model, even exposure settings.",
     "go to": [
-      "h7.7"
+      "h8.4"
     ],
     "option display": [
       "Oh"
     ]
   },
-  "h7.7": {
+  "h8.4": {
     "text": "But first let's take five. You've earned it.",
     "go to": [
-      "h7.8",
+      "h8.5",
       "dispatch"
     ],
     "option display": [
       "Nice"
     ]
   },
-  "h7.8": {
+  "h8.5": {
     "text": "#Digitial forensics, please respond. We've got a warehouse break-in, possible tampered security DVR. Imaging requested ASAP.#",
     "go to": [
-      "h7.9"
+      "h8.6"
     ],
     "option display": [
       "..."
     ]
   },
-  "h7.9": {
+  "h8.6": {
     "text": "You've got to be kidding me",
     "go to": [
-      "h7.10"
+      "h8.7"
     ],
     "option display": [
       "Do I go with you this time?"
     ]
   },
-  "h7.10": {
+  "h8.7": {
     "text": "Still no, Not until you're certified to touch anything more complex than a Raspberry Pi.",
     "go to": [
-      "h7.11"
+      "h8.8"
     ],
     "option display": [
       "Alright..."
     ]
   },
-  "h7.11": {
+  "h8.8": {
     "text": "But! Lock down your carved images, export the logs, and back up everything to the secure case directory. We'll dive into metadata tomorrow. Bright and early.",
     "function": "end_dialogue",
     "option display": [

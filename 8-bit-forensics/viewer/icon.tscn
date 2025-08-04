@@ -28,3 +28,5 @@ offset_right = 17.0
 offset_bottom = 27.0
 theme = ExtResource("3_7pxwy")
 text = "file 1"
+
+[connection signal="input_event" from="area" to="." method="_on_area_input_event"]

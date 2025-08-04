@@ -7,7 +7,7 @@ var magnification: int = 2
 var levels: Dictionary = {0:"note1",1:"note2",2:"note3",3:"note4",4:"note5",5:"note6",6:"note7",7:"note8"}
 var days: Array = []
 
-@export var unlocked: int = 1
+@export var unlocked: int
 
 @export_category("Form Properties")
 @export var form_name:String
@@ -25,6 +25,7 @@ var first_file_opened:bool
 var first_image_carved:bool
 var found_first_signature:bool
 var found_signature_sandwich:bool
+var files_carved:bool
 
 #general
 var debrief_given:bool
@@ -75,6 +76,7 @@ func day_start():
 			first_image_carved = false
 			found_first_signature = false
 			found_signature_sandwich = false
+			files_carved = false
 		1:
 			is_first_bag = false
 			file_created = true
@@ -85,6 +87,7 @@ func day_start():
 			first_image_carved = false
 			found_first_signature = false
 			found_signature_sandwich = false
+			files_carved = false
 		2:
 			is_first_bag = false
 			file_created = true
@@ -95,3 +98,4 @@ func day_start():
 			first_image_carved = true
 			found_first_signature = true
 			found_signature_sandwich = true
+			files_carved = true

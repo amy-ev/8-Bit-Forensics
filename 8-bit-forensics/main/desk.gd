@@ -10,8 +10,20 @@ func _ready() -> void:
 	if !Global.debrief_given:
 		var debrief = _debrief.instantiate()
 		add_child(debrief)
+		
 	if day != 1:
 		$evidence_bag.visible = false
+		
+		if day == 2 && Global.files_carved:
+			if has_node("full_dialogue_display"):
+				remove_child(get_node("full_dialogue_display"))
+			var dialogue = preload("res://dialogue/full_dialogue_display.tscn").instantiate()
+			add_child(dialogue)
+			dialogue.load_dialogue("res://dialogue/dialogue.json", "h8.0")
+			
+			await get_node("full_dialogue_display").tree_exited
+			get_tree().change_scene_to_file("res://quiz/end_quiz.tscn")
+			
 	scale = scale * Utility.window_mode()
 
 	Global.connect("evidence_finished", _on_evidence_finished)
@@ -64,7 +76,6 @@ func _on_pc_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 							dialogue.start("lets collect the item first")
 				else:
 					get_tree().change_scene_to_file("res://pc/pc_screen.tscn")
-
 
 func _on_coffee_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:

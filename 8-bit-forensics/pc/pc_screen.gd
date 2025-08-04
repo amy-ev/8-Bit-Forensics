@@ -57,3 +57,7 @@ func _on_dialogue_triggered(topic:String):
 	var dialogue = _dialogue.instantiate()
 	add_child(dialogue)
 	dialogue.load_dialogue("res://dialogue/dialogue.json", topic)
+	
+	if topic == "h7.0":
+		await get_node("dialogue_display").tree_exited
+		get_tree().change_scene_to_file("res://main/desk.tscn")
