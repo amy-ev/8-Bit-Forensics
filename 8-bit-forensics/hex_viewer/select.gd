@@ -16,6 +16,12 @@ func _select(start,end):
 	start = _hex_to_dec(start)
 	end = _hex_to_dec(end)
 	
+	if hex_viewer.start_end.has([start,end]):
+		hex_viewer.already_carved = true
+	else:
+		hex_viewer.already_carved = false
+		hex_viewer.start_end.append([start,end])
+	
 	var carved_block:=PackedByteArray()
 	for i in range(start,end+1):
 		carved_block.append(buffer[i])
@@ -90,6 +96,7 @@ func _on_ok_pressed() -> void:
 			new_file.get_node("hex_text").carved_block = carved_buffer
 			hex_viewer.get_node("v_sort/scroll_manager/sort/window").set_current_tab(hex_viewer.get_node("v_sort/scroll_manager/sort/window").get_child_count() -1)
 			hex_viewer.get_node("save").disabled = false
+			
 	queue_free()
 
 func _on_cancel_pressed() -> void:

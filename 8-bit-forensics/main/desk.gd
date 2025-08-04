@@ -47,20 +47,23 @@ func _on_evidence_finished():
 func _on_pc_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
-				if Global.evidence_collected:
-					if Global.file_created && Global.hash_verified:
+				if day == 1:
+					if Global.evidence_collected:
+						if Global.file_created && Global.hash_verified:
+							var dialogue = _dialogue.instantiate()
+							add_child(dialogue)
+							
+							dialogue.start("let's put the evidence away")
+						else:
+							get_tree().change_scene_to_file("res://pc/pc_screen.tscn")
+					else:
 						var dialogue = _dialogue.instantiate()
 						add_child(dialogue)
 						
-						dialogue.start("let's put the evidence away")
-					else:
-						get_tree().change_scene_to_file("res://pc/pc_screen.tscn")
+						if Global.is_first_bag:
+							dialogue.start("lets collect the item first")
 				else:
-					var dialogue = _dialogue.instantiate()
-					add_child(dialogue)
-					
-					if Global.is_first_bag:
-						dialogue.start("lets collect the item first")
+					get_tree().change_scene_to_file("res://pc/pc_screen.tscn")
 
 
 func _on_coffee_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

@@ -3,7 +3,9 @@ extends NinePatchRect
 var load_file_open:bool = false
 var search_open:bool = false
 var select_open:bool = false
+var already_carved:bool
 var file_no:int
+var file_icon: ImageTexture
 
 var first_search:String
 
@@ -23,6 +25,8 @@ class BufferWrapper:
 var _wrapped_buffer:= BufferWrapper.new()
 var _open_dialogue = null
 var _file_path:= ""
+var start_end:= []
+
 
 func _ready() -> void:
 	hex_text.set_wrapped_buffer(_wrapped_buffer)
@@ -95,17 +99,29 @@ func _on_save_pressed() -> void:
 			end_str += str(hex_text._hex_to_string[buffer[i]]+ "")
 
 		if (start_str == "ffd8ffe1" || start_str == "ffd8ffe0") && end_str == "ffd9":
-			
-			file_no +=1
-			var file = FileAccess.open("res://evidence_files/image"+ str(file_no)+ ".jpg", FileAccess.WRITE)
+			if !already_carved:
+				file_no +=1
+				var file = FileAccess.open("res://evidence_files/image"+ str(file_no)+ ".jpg", FileAccess.WRITE)
 
 
-			file.store_buffer(tabs.get_child(tabs.current_tab).get_node("hex_text")._wrapped_buffer)
-			file.close()
-			if !Global.first_image_carved:
-				Global.emit_signal("dialogue_triggered","h6.0")
-				Global.first_image_carved = true
-				$save.disabled = true
+				file.store_buffer(tabs.get_child(tabs.current_tab).get_node("hex_text")._wrapped_buffer)
+				file.close()
+				
+				var icon = load("res://viewer/icon.tscn").instantiate()
+				get_parent().add_child(icon)
+
+				icon._file_icon.set_meta("file_name","image"+str(file_no)+".jpg")
+				icon._file_name = "file "+ str(file_no)
+				
+				if !Global.first_image_carved:
+					icon.set_visible(true)
+					
+					#Global.emit_signal("dialogue_triggered","h6.0")
+					Global.first_image_carved = true
+					$save.disabled = true
+			else:
+				file_no = file_no
+
 		else:
 			$save.disabled = true
 
