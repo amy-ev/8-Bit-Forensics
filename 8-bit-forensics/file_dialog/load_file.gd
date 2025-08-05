@@ -14,12 +14,24 @@ var current_rect: ColorRect
 
 var file: File
 
-var parent:Node
+@onready var parent = get_parent()
+var evidence_folder:String
 
 func _ready() -> void:
-	parent = get_parent()
+	# for level select 
+	if !Global.level_selected:
+		evidence_folder = "res://evidence_files/"
+	else:
+		if Global.unlocked == 1:
+			evidence_folder = "res://hex_viewer_image/"
+			
+		elif Global.unlocked == 2:
+			evidence_folder = "res://metadata_images/"
+			
+		
 	Global.connect("selected",_on_file_selected)
-	add_files(file_count("res://evidence_files/"))
+	
+	add_files(file_count(evidence_folder))
 
 	if parent.name == "metadata_window":
 		#start server python script
@@ -40,7 +52,7 @@ func _on_load_button_pressed() -> void:
 		#kill server python script
 		OS.create_process("cmd.exe", ["/C", "cd %cd%/python_files && kill.bat"])
 
-		metadata_thumbnail.texture = load("res://evidence_files/"+selected_file)
+		metadata_thumbnail.texture = load(evidence_folder + selected_file)
 		metadata_thumbnail.size = Vector2(44,32)
 		
 		var json_dict = open_json("res://python_files/metadata.json")
@@ -76,10 +88,14 @@ func _on_load_button_pressed() -> void:
 					key_and_value.add_child(value_label)
 		else:
 			print("Type: ", type_string(typeof(json_dict)))
-
+		if !Global.first_image_opened:
+			Global.emit_signal("dialogue_triggered", "m2.0")
+			Global.first_image_opened = true
+			
 	elif parent.name == "hex_viewer":
-		parent.open_file("res://evidence_files/"+selected_file)
+		parent.open_file(evidence_folder + selected_file)
 		if !Global.first_file_opened && selected_file == "SD-image-file.001":
+			
 			Global.emit_signal("dialogue_triggered","h2.0")
 			Global.first_file_opened = true
 
@@ -150,10 +166,7 @@ func file_count(file_path:String) -> int:
 					files_no += 1
 			elif parent.name == "hex_viewer":
 					files_no += 1
-		# if the file is not the godot import 
-		#if not f.contains(".import"):
-			#files_no += 1
-		
+					
 	dir.list_dir_end()
 	return files_no
 	

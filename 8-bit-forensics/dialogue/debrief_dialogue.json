@@ -35,7 +35,6 @@
       "What's the evidence?"
     ]
   },
-  "": {},
   "Day 1.4": {
     "text": "Good question.",
     "go to": [
@@ -97,6 +96,7 @@
       "Interesting"
     ]
   },
+  "": {},
   "Day 2.0": {
     "text": "Morning, rookie. Crime scene was a bust, just a cracked router and a guy who think 'VPN' means Very Personal Nap.",
     "go to": [
@@ -127,7 +127,7 @@
     ]
   },
   "Day 2.3": {
-    "text": "Ha! I don't think so. Unless you want the entire case to fall apart. We'll be woking from the forensic image you created yesterday.",
+    "text": "Ha! I don't think so. Unless you want the entire case to fall apart. We'll be woking from the forensic image you created yesterday. Let's launch up the pc and open your hex viewer of choice.",
     "function": "end_dialogue",
     "option display": [
       "Ah"
@@ -141,7 +141,7 @@
     ]
   },
   "Day 3.0": {
-    "text": "Morning. Here--no one investigates metadata without caffeine.",
+    "text": "Morning. Here-- No one investigates metadata without caffeine.",
     "go to": [
       "Day 3.1"
     ],

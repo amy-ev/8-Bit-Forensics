@@ -7,7 +7,7 @@ var magnification: int = 2
 var levels: Dictionary = {0:"note1",1:"note2",2:"note3",3:"note4",4:"note5",5:"note6",6:"note7",7:"note8"}
 var days: Array = []
 
-@export var unlocked: int
+@export var unlocked: int = 2
 
 @export_category("Form Properties")
 @export var form_name:String
@@ -27,9 +27,16 @@ var found_first_signature:bool
 var found_signature_sandwich:bool
 var files_carved:bool
 
+#day 3
+var first_image_opened:bool
+
 #general
 var debrief_given:bool
 var pc_debrief_given:bool
+
+#to be used when the level is selected via level select
+#use to determine the folder contents.
+var level_selected:bool
 
 @export_category("Quiz Properties")
 @export var answers = ["a","b","a","c"]
@@ -77,6 +84,8 @@ func day_start():
 			found_first_signature = false
 			found_signature_sandwich = false
 			files_carved = false
+			
+			first_image_opened = false
 		1:
 			is_first_bag = false
 			file_created = true
@@ -88,6 +97,8 @@ func day_start():
 			found_first_signature = false
 			found_signature_sandwich = false
 			files_carved = false
+			
+			first_image_opened = false
 		2:
 			is_first_bag = false
 			file_created = true
@@ -99,3 +110,5 @@ func day_start():
 			found_first_signature = true
 			found_signature_sandwich = true
 			files_carved = true
+			
+			first_image_opened = false

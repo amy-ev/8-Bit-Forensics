@@ -25,7 +25,9 @@ func _ready() -> void:
 				_on_dialogue_triggered("h1.0")
 		3:
 			screen.add_child(preload("res://metadata/metadata.tscn").instantiate())
-			
+			if !Global.pc_debrief_given:
+				_on_dialogue_triggered("m1.0")
+				
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_action_pressed("fullscreen"):
 		scale = scale * Utility.fullscreen_input(event)

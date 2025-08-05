@@ -336,7 +336,7 @@
     ]
   },
   "h1.0": {
-    "text": "Now open up the image file",
+    "text": "Now open up the image file.",
     "function": "end_dialogue",
     "option display": [
       "Okay"
@@ -410,7 +410,7 @@
     ]
   },
   "h2.7": {
-    "text": "Our mission is to find those hex ranges and carve them out manually. Because if the suspected deleted the files but didn't overwrite them, they'll still be hinding in unallocated space like scared ducks.",
+    "text": "Our mission is to find those hex ranges and carve them out manually. Because if the suspected deleted the files but didn't overwrite them, they'll still be hiding in unallocated space like scared ducks.",
     "go to": [
       "h2.8"
     ],
@@ -451,7 +451,7 @@
     ]
   },
   "h4.0": {
-    "text": "Bingo, let's mark the byte offset at the start and end",
+    "text": "Bingo, let's mark the byte offset at the start and end.",
     "go to": [
       "h4.1"
     ],
@@ -586,7 +586,7 @@
       "h8.4"
     ],
     "option display": [
-      "Whats EXIF data?",
+      "What's EXIF data?",
       "Right"
     ]
   },
@@ -641,6 +641,38 @@
     "function": "end_dialogue",
     "option display": [
       "Copy that."
+    ]
+  },
+  "m1.0": {
+    "text": "First open up one of the images we carved yesterday",
+    "function": "end_dialogue",
+    "option display": [
+      "Okay"
+    ]
+  },
+  "m2.0": {
+    "text": "Let's look at the key fields, such as when and where the photo was taken.",
+    "go to": [
+      "m2.1"
+    ],
+    "option display": [
+      "Alright"
+    ]
+  },
+  "m2.1": {
+    "text": "If you want more information on any of the fields just select the key and the question mark in the top right.",
+    "go to": [
+      "m2.2"
+    ],
+    "option display": [
+      "Nice"
+    ]
+  },
+  "m2.2": {
+    "text": "If there is any metadata that you think doesn't match just select both keys to compare them.",
+    "function": "end_dialogue",
+    "option display": [
+      "Will do"
     ]
   }
 }
