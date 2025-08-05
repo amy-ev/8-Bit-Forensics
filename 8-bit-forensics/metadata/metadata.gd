@@ -79,9 +79,9 @@ func _on_label_selected(selected:Node):
 			else:
 				pos_from.append(label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x/3,2)- Vector2(0,label.get_node("selected").size.y*2))
 				pos_to.append((label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x/3,2)- Vector2(0,label.get_node("selected").size.y*2)) + Vector2(30,0))
-				print("global position: ", label.get_node("selected").global_position)
-				print("selected size: ", label.get_node("selected").size)
-				print("pos from: ", pos_from, " pos_to: ", pos_to )
+				#print("global position: ", label.get_node("selected").global_position)
+				#print("selected size: ", label.get_node("selected").size)
+				#print("pos from: ", pos_from, " pos_to: ", pos_to )
 		pos_middle = Vector2(pos_to[0][0],(pos_to[0][1] + pos_to[1][1]) / 2)
 
 		# --

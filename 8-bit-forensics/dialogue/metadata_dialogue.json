@@ -1,0 +1,149 @@
+{
+  "ImageWidth": {
+    "text": "a"
+  },
+  "ImageLength": {
+    "text": "b"
+  },
+  "BitsPerSample": {
+    "text": "c"
+  },
+  "Compression": {
+    "text": "d"
+  },
+  "ResolutionUnit": {
+    "text": "e"
+  },
+  "ExifOffset": {
+    "text": "f"
+  },
+  "Make": {
+    "text": "g"
+  },
+  "Model": {
+    "text": "h"
+  },
+  "Software": {
+    "text": "i"
+  },
+  "Orientation": {
+    "text": "j"
+  },
+  "YCbCrSubSampling": {
+    "text": "k"
+  },
+  "YCbCrPositioning": {
+    "text": "l"
+  },
+  "DateTime": {
+    "text": "m"
+  },
+  "XResolution": {
+    "text": "n"
+  },
+  "YResolution": {
+    "text": "o"
+  },
+  "ExifVersion": {
+    "text": "p"
+  },
+  "ComponentsConfiguration": {
+    "text": "q"
+  },
+  "ShutterSpeedValue": {
+    "text": "r"
+  },
+  "DateTimeOriginal": {
+    "text": "s"
+  },
+  "DateTimeDigitized": {
+    "text": "t"
+  },
+  "ApertureValue": {
+    "text": "u"
+  },
+  "BrightnessValue": {
+    "text": "v"
+  },
+  "MeteringMode": {
+    "text": "w"
+  },
+  "FlashPixVersion": {
+    "text": "x"
+  },
+  "ColorSpace": {
+    "text": "y"
+  },
+  "FocalLength": {
+    "text": "z"
+  },
+  "ExifImageWidth": {
+    "text": "a"
+  },
+  "ExifImageHeight": {
+    "text": "b"
+  },
+  "FocalLengthIn35mmFilm": {
+    "text": "c"
+  },
+  "SceneCaptureType": {
+    "text": "d"
+  },
+  "Sharpness": {
+    "text": "e"
+  },
+  "SubjectLocation": {
+    "text": "f"
+  },
+  "SensingMethod": {
+    "text": "g"
+  },
+  "ExposureTime": {
+    "text": "h"
+  },
+  "FNumber": {
+    "text": "i"
+  },
+  "ExposureProgram": {
+    "text": "j"
+  },
+  "ISOSpeedRatings": {
+    "text": "k"
+  },
+  "ExposureMode": {
+    "text": "l"
+  },
+  "WhiteBalance": {
+    "text": "m"
+  },
+  "GPSVersionID": {
+    "text": "n"
+  },
+  "GPSLatitudeRef": {
+    "text": "o"
+  },
+  "GPSLatitude": {
+    "text": "p"
+  },
+  "GPSLongitudeRef": {
+    "text": "q"
+  },
+  "GPSLongitude": {
+    "text": "r"
+  },
+  "GPSAltitudeRef": {
+    "text": "s"
+  },
+  "GPSAltitude": {
+    "text": "t"
+  },
+  "GPSTimeStamp": {
+    "text": "u"
+  },
+  "GPSImgDirectionRef": {
+    "text": "v"
+  },
+  "GPSImgDirection": {
+    "text": "w"
+  }
+}

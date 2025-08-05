@@ -1,7 +1,7 @@
 extends ColorRect
 
 var is_correct:bool
-var option_selected:int
+var button_pressed:String =""
 
 @onready var screen = get_parent()
 @onready var pc = screen.get_parent()
@@ -25,7 +25,7 @@ func _on_cancel_pressed() -> void:
 	queue_free()
 
 func _on_options_item_selected(index: int) -> void:
-	option_selected = index
+	button_pressed = str(index)
 	Global.emit_signal("next_step",self)
 	
 	if index == 2:

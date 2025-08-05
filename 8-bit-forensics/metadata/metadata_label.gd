@@ -15,3 +15,4 @@ func _process(delta: float) -> void:
 func _on_select_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.is_pressed():
 		Global.emit_signal("metadata_selected",$".")
+		Global.emit_signal("metadata_help", get_parent())

@@ -3,7 +3,7 @@ extends ColorRect
 @onready var btn_group = $window/sort/options/physical.get_button_group()
 @onready var screen = get_parent()
 
-var button_pressed:String
+var button_pressed:String=""
 var is_correct:bool
 
 func _ready() -> void:
@@ -16,8 +16,10 @@ func _ready() -> void:
 			
 			if btn.name == "physical":
 				is_correct = true
+				button_pressed= ""
 			else:
 				is_correct = false
+				button_pressed = ""
 		)
 		
 func _on_next_pressed() -> void:

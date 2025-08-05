@@ -660,7 +660,7 @@
     ]
   },
   "m2.1": {
-    "text": "If you want more information on any of the fields just select the key and the question mark in the top right.",
+    "text": "If you want more information on any of the fields first select the question mark in the top right and then select a key.",
     "go to": [
       "m2.2"
     ],

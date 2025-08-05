@@ -18,8 +18,10 @@ func _ready() -> void:
 			
 			if btn.name == "dd":
 				is_correct = true
+				button_pressed = ""
 			else:
 				is_correct = false
+				button_pressed = ""
 	)
 
 func _on_cancel_pressed() -> void:

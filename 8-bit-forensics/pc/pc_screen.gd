@@ -25,6 +25,7 @@ func _ready() -> void:
 				_on_dialogue_triggered("h1.0")
 		3:
 			screen.add_child(preload("res://metadata/metadata.tscn").instantiate())
+			screen.add_child(preload("res://dialogue/helper.tscn").instantiate())
 			if !Global.pc_debrief_given:
 				_on_dialogue_triggered("m1.0")
 				

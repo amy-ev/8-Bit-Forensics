@@ -7,7 +7,7 @@ var magnification: int = 2
 var levels: Dictionary = {0:"note1",1:"note2",2:"note3",3:"note4",4:"note5",5:"note6",6:"note7",7:"note8"}
 var days: Array = []
 
-@export var unlocked: int = 2
+@export var unlocked: int 
 
 @export_category("Form Properties")
 @export var form_name:String
@@ -57,7 +57,7 @@ signal signature_found(locations:Array)
 
 #day 3
 signal metadata_selected(selected:Node)
-
+signal metadata_help(key:Node)
 #general
 signal level_unlocked(day:String)
 signal selected(selected_node:File, real_file:String)
