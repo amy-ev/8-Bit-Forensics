@@ -7,7 +7,7 @@ var magnification: int = 2
 var levels: Dictionary = {0:"note1",1:"note2",2:"note3",3:"note4",4:"note5",5:"note6",6:"note7",7:"note8"}
 var days: Array = []
 
-@export var unlocked: int 
+@export var unlocked: int = 2
 
 @export_category("Form Properties")
 @export var form_name:String

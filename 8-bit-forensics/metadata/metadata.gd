@@ -4,6 +4,11 @@ extends NinePatchRect
 
 @export var current_image: String
 
+var font: FontFile
+
+var FONT_SIZE:= 8
+var FONT_COLOUR:= Color(0.932, 0.863, 0.767)
+
 var keys_and_values: Array
 var current_select: Array
 var current_rows: Array
@@ -27,6 +32,7 @@ var segment_lengths2 = []
 var scroll_value
 
 func _ready() -> void:
+	font = preload("res://8-bit-forensics.ttf")
 	Global.connect("metadata_selected", _on_label_selected)
 
 func _on_select_pressed() -> void:
@@ -53,8 +59,8 @@ func _process(delta: float) -> void:
 				keys_and_values[hbox].get_child(1).custom_minimum_size.x = $backgrounds/value_background.custom_minimum_size.x 
 
 func _on_label_selected(selected:Node):
-	if self.has_node("comment"):
-		self.remove_child(self.get_node("comment"))
+	if has_node("comment"):
+		remove_child(get_node("comment"))
 
 	clear_values()
 	
@@ -72,16 +78,14 @@ func _on_label_selected(selected:Node):
 		for label in current_select:
 			if label.global_position.y <= 45: 
 				pos_from.append(Vector2(label.get_node("selected").global_position.x, 20) + Vector2(label.get_node("selected").size.x/3,2))
-				pos_to.append((Vector2(label.get_node("selected").global_position.x, 20) + Vector2(label.get_node("selected").size.x/3,2)) + Vector2(30,0))
+				pos_to.append((Vector2(label.get_node("selected").global_position.x, 20) + Vector2(label.get_node("selected").size.x/3,2)) + Vector2(16,0))
 			elif label.global_position.y >= 148:
 				pos_from.append(Vector2(label.get_node("selected").global_position.x, 142) + Vector2(label.get_node("selected").size.x/3,2))
-				pos_to.append((Vector2(label.get_node("selected").global_position.x, 142) + Vector2(label.get_node("selected").size.x/3,2)) + Vector2(30,0))
+				pos_to.append((Vector2(label.get_node("selected").global_position.x, 142) + Vector2(label.get_node("selected").size.x/3,2)) + Vector2(16,0))
 			else:
 				pos_from.append(label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x/3,2)- Vector2(0,label.get_node("selected").size.y*2))
-				pos_to.append((label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x/3,2)- Vector2(0,label.get_node("selected").size.y*2)) + Vector2(30,0))
-				#print("global position: ", label.get_node("selected").global_position)
-				#print("selected size: ", label.get_node("selected").size)
-				#print("pos from: ", pos_from, " pos_to: ", pos_to )
+				pos_to.append((label.get_node("selected").global_position + Vector2(label.get_node("selected").size.x/3,2)- Vector2(0,label.get_node("selected").size.y*2)) + Vector2(16,0))
+
 		pos_middle = Vector2(pos_to[0][0],(pos_to[0][1] + pos_to[1][1]) / 2)
 
 		# --
@@ -297,10 +301,11 @@ func _draw() -> void:
 			
 	if correlates:
 		if progress == 1.0:
-			var comment = Label.new()
+			#draw_string(font,Vector2(coords1[-1][0] + FONT_SIZE, coords1[-1][1] + FONT_SIZE/2),match_msg,0,-1,FONT_SIZE,FONT_COLOUR)
+			var comment = preload("res://metadata/comment.tscn").instantiate()
 			add_child(comment)
-			comment.text = match_msg
-			comment.position = Vector2(coords1[-1][0] + 20,coords1[-1][1]- comment.size.y /2)
+			comment.get_node("dialogue_label").start(match_msg)
+			comment.position = Vector2(coords1[-1][0] + FONT_SIZE, coords1[-1][1] - comment.size.y / 2)
 		
 func _update_progress(value:float):
 	progress = value
