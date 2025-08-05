@@ -7,7 +7,7 @@ var question:String = "this is the question"
 var answer_selected
 
 func _ready() -> void:
-	Global.emit_signal("next_step",self)
+
 	Global.connect("answer", _on_answer_selected)
 	scale = scale * Utility.window_mode()
 
@@ -30,14 +30,20 @@ func _on_c_pressed() -> void:
 
 func _on_answer_selected(day:String, answer:int):
 	given_answer = Global.quiz_dict[day][answer]
-	Global.emit_signal("next_step",self)
-	$bottom_screen/answers/exit.visible = true
-	$bottom_screen/answers/exit.disabled = false
+
+	$answers/exit.visible = true
+	$answers/exit.disabled = false
 
 func _on_exit_pressed() -> void:
 	if correct_answer == given_answer:
-		Global.emit_signal("answer_response",true)
+		Global.emit_signal("quiz_response",true)
 		Global.unlocked += 1
+		print(get_tree_string_pretty())
+		if has_node("dialogue_answer"):
+			var response_dialogue = $dialogue_answer
+			await response_dialogue.tree_exited
+		
+		#TODO: change to have multiple questions 
 		get_tree().change_scene_to_file("res://main/main.tscn")
 	else:
-		Global.emit_signal("answer_response",false)
+		Global.emit_signal("quiz_response",false)

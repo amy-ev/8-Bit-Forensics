@@ -17,33 +17,19 @@ func _on_new_child(stage:Node):
 
 	if stage.name == "select_source" || stage.name == "select_drive" ||stage.name == "image_type":
 		if stage.button_pressed == "":
-			print("NO")
+			pass
 		else:
 			set_visible(true)
 			var the_stage = information_dict[stage.name]
 			start(the_stage[stage.button_pressed])
+	elif stage.name == "item_information":
+		set_visible(true)
+		start("fill in info")
+		
+	elif stage.name =="create_file":
+		set_visible(true)
+		start("hash")
 
-		#"item_information":
-			#set_visible(true)
-			#start("fill in the item information")
-		#"create_file":
-			#set_visible(true)
-			#start("idk press finish")
-			#
-		#"quiz":
-			#match stage.answer_selected:
-				#"a":
-					#start(stage.question)
-					#dialogue_label.skip()
-				#"b":
-					#start(stage.question)
-					#dialogue_label.skip()
-				#"c":
-					#start(stage.question)
-					#dialogue_label.skip()
-		#_:
-			#set_visible(false)
-			#pass
 
 func _on_ok_pressed() -> void:
 	if dialogue_label.is_playing:

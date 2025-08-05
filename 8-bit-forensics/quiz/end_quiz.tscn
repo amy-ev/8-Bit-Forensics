@@ -8,15 +8,7 @@
 [node name="quiz" type="Node2D"]
 script = ExtResource("1_amf4w")
 
-[node name="top_screen" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 256.0
-offset_bottom = 70.0
-mouse_filter = 2
-
-[node name="question" type="Label" parent="top_screen"]
-layout_mode = 1
+[node name="question" type="Label" parent="."]
 offset_right = 256.0
 offset_bottom = 23.0
 theme = ExtResource("2_e32wp")
@@ -25,49 +17,41 @@ theme_override_font_sizes/font_size = 8
 text = "this is a question on the tool used etc"
 autowrap_mode = 2
 
-[node name="helper" parent="top_screen" instance=ExtResource("3_x16n5")]
+[node name="helper" parent="." instance=ExtResource("3_x16n5")]
 visible = false
 
-[node name="bottom_screen" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
+[node name="answers" type="VBoxContainer" parent="."]
 offset_top = 32.0
-offset_right = 256.0
-offset_bottom = 113.0
-mouse_filter = 1
-
-[node name="answers" type="VBoxContainer" parent="bottom_screen"]
-layout_mode = 1
 offset_right = 61.0
-offset_bottom = 80.0
+offset_bottom = 112.0
 
-[node name="a" type="CheckBox" parent="bottom_screen/answers"]
+[node name="a" type="CheckBox" parent="answers"]
 layout_mode = 2
 theme = ExtResource("2_e32wp")
 button_group = ExtResource("3_hxbvm")
 text = "a) yes"
 flat = true
 
-[node name="b" type="CheckBox" parent="bottom_screen/answers"]
+[node name="b" type="CheckBox" parent="answers"]
 layout_mode = 2
 theme = ExtResource("2_e32wp")
 button_group = ExtResource("3_hxbvm")
 text = "b) no"
 flat = true
 
-[node name="c" type="CheckBox" parent="bottom_screen/answers"]
+[node name="c" type="CheckBox" parent="answers"]
 layout_mode = 2
 theme = ExtResource("2_e32wp")
 button_group = ExtResource("3_hxbvm")
 text = "c) maybe"
 flat = true
 
-[node name="exit" type="Button" parent="bottom_screen/answers"]
+[node name="exit" type="Button" parent="answers"]
 visible = false
 layout_mode = 2
 text = "finish"
 
-[connection signal="pressed" from="bottom_screen/answers/a" to="." method="_on_a_pressed"]
-[connection signal="pressed" from="bottom_screen/answers/b" to="." method="_on_b_pressed"]
-[connection signal="pressed" from="bottom_screen/answers/c" to="." method="_on_c_pressed"]
-[connection signal="pressed" from="bottom_screen/answers/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="answers/a" to="." method="_on_a_pressed"]
+[connection signal="pressed" from="answers/b" to="." method="_on_b_pressed"]
+[connection signal="pressed" from="answers/c" to="." method="_on_c_pressed"]
+[connection signal="pressed" from="answers/exit" to="." method="_on_exit_pressed"]

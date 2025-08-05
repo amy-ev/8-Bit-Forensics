@@ -5,7 +5,7 @@ var helper_dict:={}
 @onready var _dialogue = preload("res://dialogue/dialogue_create_file.tscn")
 
 func _ready() -> void:
-
+	Global.connect("quiz_response", _on_quiz_answered)
 	#Global.connect("item_pressed", _on_item_select)
 	Global.connect("metadata_help", _on_key_selected)
 
@@ -34,3 +34,17 @@ func load_dialogue(file_path):
 	if FileAccess.file_exists(file_path):
 		var dialogue = FileAccess.open(file_path, FileAccess.READ)
 		helper_dict = JSON.parse_string(dialogue.get_as_text())
+
+func _on_quiz_answered(answer:bool):
+	if get_parent().has_node("dialogue_answer"):
+		get_parent().remove_child(get_parent().get_node("dialogue_answer"))
+	var dialogue = preload("res://dialogue/dialogue_answer.tscn").instantiate()
+	get_parent().add_child(dialogue)
+	if answer:
+		dialogue.get_node("wrong").set_visible(false)
+		dialogue.get_node("right").set_visible(true)
+		dialogue.start("correct !!!")
+	else:
+		dialogue.get_node("wrong").set_visible(true)
+		dialogue.get_node("right").set_visible(false)
+		dialogue.start("... incorrect")

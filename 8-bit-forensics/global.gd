@@ -67,6 +67,7 @@ signal note_selected(note_topic:String)
 
 #quiz 
 signal answer(day:String, answer:int)
+signal quiz_response()
 
 func day_start():
 	debrief_given = false
