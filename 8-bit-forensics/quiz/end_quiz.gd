@@ -31,10 +31,12 @@ func _on_c_pressed() -> void:
 func _on_answer_selected(day:String, answer:int):
 	given_answer = Global.quiz_dict[day][answer]
 
-	$answers/exit.visible = true
-	$answers/exit.disabled = false
+	$panel/sort/answers/exit.visible = true
+	$panel/sort/answers/exit.disabled = false
 
 func _on_exit_pressed() -> void:
+	$panel/sort/answers/exit.disabled = true
+	$panel/sort/answers/exit.release_focus()
 	if correct_answer == given_answer:
 		Global.emit_signal("quiz_response",true)
 		Global.unlocked += 1
