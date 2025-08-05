@@ -192,15 +192,16 @@ func compare_values(a,b):
 			match_msg = "somethings not quite right with these"
 			
 		#TODO: 
-		if current_rows[0].contains("Thumbnail") || current_rows[1].contains("Thumbnail"):
-			match_msg = "needs to be worked on"
+		#if current_rows[0].contains("Thumbnail") || current_rows[1].contains("Thumbnail"):
+			#match_msg = "needs to be worked on"
 			
 		if current_rows[0].contains("GPSTime") && current_rows[1].contains("GPSDate") || current_rows[1].contains("GPSTime") && current_rows[0].contains("GPSDate"):
 			match_msg = a + " " + b
 
 	elif current_rows[0].contains("Make") || current_rows[1].contains("Make") || current_rows[0].contains("Model") || current_rows[1].contains("Model"):
 		print("make and model")
-		
+
+			
 		if current_rows[0].contains("Make") && current_rows[1].contains("Model"):
 			if a.contains("Apple") && b.contains("iP"):
 					match_msg = "makes sense"
@@ -217,7 +218,13 @@ func compare_values(a,b):
 			if a.contains(b) || b.contains(a):
 				match_msg = "the models match"
 		else:
-			match_msg = "correlates"
+			if current_rows[0].contains("Software") || current_rows[1].contains("Software"):
+				if a.contains("Photoshop") || b.contains("Photoshop"):
+					match_msg = "Photoshop?"
+					Global.emit_signal("dialogue_triggered","m3.0")
+			else:
+				match_msg = "correlates"
+
 
 	elif current_rows[0].contains("GPS") || current_rows[1].contains("GPS"): #will be true either way - only gps matches with gps
 		if current_rows[0].contains("Ref"):

@@ -674,5 +674,152 @@
     "option display": [
       "Will do"
     ]
+  },
+  "m3.0": {
+    "text": "Ahuh. Photoshop. Possible tampering. Add it to the notes.",
+    "go to": [
+      "m3.1"
+    ],
+    "option display": [
+      "Okay"
+    ]
+  },
+  "m3.1": {
+    "text": "That alone won't convict anyone, but it tells us what direction to push during interrogation",
+    "function": "end_dialogue",
+    "option display": [
+      "Interesting"
+    ]
+  },
+  "m4.0": {
+    "text": "So, to review, you carved hidden files from raw hex, extracted it's metadata finding the timestamps and GPS data. AND you didn't overwrite, alter, or spill coffee on any evidence",
+    "go to": [
+      "m4.1"
+    ],
+    "option display": [
+      "I'm a pro right"
+    ]
+  },
+  "m4.1": {
+    "text": "You're either a natural... or I am finally getting better at training people. Either way, we're making progress",
+    "go to": [
+      "m4.2"
+    ],
+    "option display": [
+      "Nice"
+    ]
+  },
+  "m4.2": {
+    "text": "Now, go document everything. Then, we prep for full report drafting. The brass upstairs like their timelines clean, their evidence referenced and their conclusions airtight.",
+    "go to": [
+      "m4.3"
+    ],
+    "option display": [
+      "Sure thing"
+    ]
+  },
+  "m4.3": {
+    "text": "Excellent. Now we verify the hashes. Think of it as digital insurance. If those files ever end up in court the opposing sie will try to claim they were altered. We need proof they weren't",
+    "go to": [
+      "m4.4"
+    ],
+    "option display": [
+      "Of course"
+    ]
+  },
+  "m4.4": {
+    "text": "Run the hash on both the original forensic image an the carved JPEGs.",
+    "go to": [
+      "m4.5",
+      "m4.6"
+    ],
+    "option display": [
+      "Using SHA256?",
+      "Using MD5?"
+    ]
+  },
+  "m4.5": {
+    "text": "That's the standard these days. But MD5 and SHA1 is what we used previously, so let's stay consistent",
+    "go to": [
+      "m4",
+      7
+    ],
+    "option display": [
+      "Okay"
+    ]
+  },
+  "m4.6": {
+    "text": "MD5 is fast, but tends to be vulnerable to collisions. So typically more complex hash algorithms are used, but since MD5 and SHA1 is what we used previously we'll use it this time as well to stay consistent.",
+    "go to": "m4.7",
+    "option display": [
+      "Okay"
+    ]
+  },
+  "m4.7": {
+    "text": "Let's start with the forensic image file",
+    "function": "end_dialogue",
+    "option display": [
+      "Sure thing"
+    ]
+  },
+  "m5.0": {
+    "text": "Nice, it matches the hash from acquisition, meaning you haven't tampered with it.",
+    "go to": [
+      "m5.1"
+    ],
+    "option display": [
+      "Of course"
+    ]
+  },
+  "m5.1": {
+    "text": "Now, let's hash each of the carve images and record those too",
+    "function": "end_dialogue",
+    "option display": [
+      "Sure"
+    ]
+  },
+  "m6.0": {
+    "text": "Perfect. Those hashes will go into your final report. If anyone questions whether those files were modified after extraction, you can show that the hash is identical to the one you recorded right after carving.",
+    "go to": [
+      "m6.1"
+    ],
+    "option display": [
+      "Nice"
+    ]
+  },
+  "m6.1": {
+    "text": "And remember digital forensics isn't just about finding the evidence. It's about proving you didn't change the evidence while fining it.",
+    "go to": [
+      "m6.2",
+      "dispatch"
+    ],
+    "option display": [
+      "Right"
+    ]
+  },
+  "m6.2": {
+    "text": "##Digital Forensics, we've got a priortiy call, active scene. Suspected mobile device tampering. Location enroute.##",
+    "go to": [
+      "m6.3"
+    ],
+    "option display": [
+      "..."
+    ]
+  },
+  "m6.3": {
+    "text": "Do they wait until we've hit a rhythm?",
+    "go to": [
+      "m6.4"
+    ],
+    "option display": [
+      "Should I lock down?"
+    ]
+  },
+  "m6.4": {
+    "text": "You know the drill. Go home and we'll wrap this up in the morning with the final report.",
+    "function": "end_dialogue",
+    "option display": [
+      "You got it"
+    ]
   }
 }
