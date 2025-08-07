@@ -24,7 +24,7 @@ func _ready() -> void:
 		evidence_folder = "user://evidence_files/"
 	else:
 		if Global.unlocked == 1:
-			evidence_folder = "user://hex_viewer_image/"
+			evidence_folder = "user://evidence_files/"
 			
 		elif Global.unlocked == 2:
 			evidence_folder = "user://metadata_images/"
@@ -180,6 +180,7 @@ func file_count(file_path:String) -> int:
 				if f.contains(".jpg"):
 					files_no += 1
 			elif parent.name == "hex_viewer":
+				if !f.contains(".jpg"):
 					files_no += 1
 					
 	dir.list_dir_end()

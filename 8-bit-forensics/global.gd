@@ -91,6 +91,8 @@ func get_save(file_path):
 		else:
 			print("error code:" , error)
 			file.close()
+	else:
+		return "0"
 
 func set_save(file_path):
 	print(unlocked)

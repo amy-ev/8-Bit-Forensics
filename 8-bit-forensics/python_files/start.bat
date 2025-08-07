@@ -1,4 +1,3 @@
-@REM start /d "C:\Users\Amy\Desktop\8-Bit-Forensics\HxD.exe"
-cd C:\Users\Amy\Desktop\8-Bit-Forensics\8-bit-forensics\python_files
+cd %appdata%/Godot/app_userdata/8-Bit-Forensics/python_files
 python server.py
 exit
