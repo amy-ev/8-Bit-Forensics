@@ -24,10 +24,10 @@ text = "back"
 
 [node name="evidence" parent="." instance=ExtResource("3_h8nwr")]
 layout_mode = 0
-offset_left = 219.0
-offset_top = 92.0
-offset_right = 261.0
-offset_bottom = 132.0
+offset_left = 242.0
+offset_top = 143.0
+offset_right = 284.0
+offset_bottom = 183.0
 
 [node name="evidence_bag" parent="." instance=ExtResource("4_vu08t")]
 position = Vector2(183, 27)

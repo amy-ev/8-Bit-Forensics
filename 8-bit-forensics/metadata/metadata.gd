@@ -1,6 +1,7 @@
 extends NinePatchRect
 
 @onready var _load_files = preload("res://file_dialog/load_file.tscn")
+@onready var pc = get_parent().get_parent()
 
 @export var current_image: String
 
@@ -30,6 +31,11 @@ var segment_lengths = []
 var total_length2 = 0.0
 var segment_lengths2 = []
 var scroll_value
+
+var GPS_noticed:bool
+var time_noticed:bool
+var GPS_and_time_compared:bool
+var photoshop_noticed:bool
 
 func _ready() -> void:
 	font = preload("res://8-bit-forensics.ttf")
@@ -181,22 +187,44 @@ func compare_values(a,b):
 	if current_rows[0].contains("DateTime") || current_rows[1].contains("DateTime") || current_rows[0].contains("GPSTime") || current_rows[1].contains("GPSTime"):
 		print("date and time")
 		
+
+			
 		if current_rows[0].contains("GPSTime"):
 			a = format_gpstime(a)
+			
 		elif current_rows[1].contains("GPSTime"):
 			b = format_gpstime(b)
 			
+		if current_rows[0].contains("GPSTime") && current_rows[1].contains("GPSDate") || current_rows[1].contains("GPSTime") && current_rows[0].contains("GPSDate"):
+			match_msg = a + " " + b
+			
 		if a.contains(b) || b.contains(a):
 			match_msg = "these dates/times match!"
+			
 		else:
 			match_msg = "somethings not quite right with these"
+			if current_rows[0].contains("GPSTime") && current_rows[1].contains("DateTime") || current_rows[0].contains("DateTime") && current_rows[1].contains("GPSTime"):
+				_dialogue("m5.0")
+				time_noticed = true
 			
+				if GPS_noticed && time_noticed && !GPS_and_time_compared:
+					await pc.get_node("dialogue_display").tree_exited
+					_dialogue("m6.0")
+
+					GPS_and_time_compared = true
+					if GPS_noticed && time_noticed && GPS_and_time_compared && photoshop_noticed:
+						await pc.get_node("dialogue_display").tree_exited
+						_dialogue("m7.0")
+						await get_tree().process_frame
+						if pc.has_node("dialogue_display"):
+							await pc.get_node("dialogue_display").tree_exited
+						Global.emit_signal("all_metadata_found")
+		
 		#TODO: 
 		#if current_rows[0].contains("Thumbnail") || current_rows[1].contains("Thumbnail"):
 			#match_msg = "needs to be worked on"
 			
-		if current_rows[0].contains("GPSTime") && current_rows[1].contains("GPSDate") || current_rows[1].contains("GPSTime") && current_rows[0].contains("GPSDate"):
-			match_msg = a + " " + b
+
 
 	elif current_rows[0].contains("Make") || current_rows[1].contains("Make") || current_rows[0].contains("Model") || current_rows[1].contains("Model"):
 		print("make and model")
@@ -221,10 +249,19 @@ func compare_values(a,b):
 			if current_rows[0].contains("Software") || current_rows[1].contains("Software"):
 				if a.contains("Photoshop") || b.contains("Photoshop"):
 					match_msg = "Photoshop?"
-					Global.emit_signal("dialogue_triggered","m3.0")
+					_dialogue("m3.0")
+
+					photoshop_noticed = true
+					if GPS_noticed && time_noticed && GPS_and_time_compared && photoshop_noticed:
+						await pc.get_node("dialogue_display").tree_exited
+						_dialogue("m7.0")
+						await get_tree().process_frame
+						if pc.has_node("dialogue_display"):
+							await pc.get_node("dialogue_display").tree_exited
+						Global.emit_signal("all_metadata_found")
+		
 			else:
 				match_msg = "correlates"
-
 
 	elif current_rows[0].contains("GPS") || current_rows[1].contains("GPS"): #will be true either way - only gps matches with gps
 		if current_rows[0].contains("Ref"):
@@ -234,7 +271,22 @@ func compare_values(a,b):
 		
 		if current_rows[0].contains("Longitude") && current_rows[1].contains("Latitude") || current_rows[0].contains("Latitude") && current_rows[1].contains("Longitude"):
 			match_msg = "long vs lat"
-	
+			_dialogue("m4.0")
+
+			GPS_noticed = true
+			if GPS_noticed && time_noticed && !GPS_and_time_compared:
+				await pc.get_node("dialogue_display").tree_exited
+				_dialogue("m6.0")
+
+				GPS_and_time_compared = true
+				if GPS_noticed && time_noticed && GPS_and_time_compared && photoshop_noticed:
+					await pc.get_node("dialogue_display").tree_exited
+					_dialogue("m7.0")
+					await get_tree().process_frame
+					if pc.has_node("dialogue_display"):
+						await pc.get_node("dialogue_display").tree_exited
+					Global.emit_signal("all_metadata_found")
+				
 func open_json(file_path):
 	if FileAccess.file_exists(file_path):
 
@@ -330,3 +382,10 @@ func clear_values():
 	total_length2 = 0.0
 	pos_middle = Vector2()
 	correlates = false
+
+func _dialogue(topic:String):
+	if pc.has_node("dialogue_display"):
+		pc.remove_child(pc.get_node("dialogue_display"))
+	var dialogue = preload("res://dialogue/dialogue_display.tscn").instantiate()
+	pc.add_child(dialogue)
+	dialogue.load_dialogue("res://dialogue/dialogue.json", topic)

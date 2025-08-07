@@ -692,130 +692,152 @@
     ]
   },
   "m4.0": {
+    "text": "X north and X west, that would make it time zone UTC-X",
+    "function": "end_dialogue",
+    "option display": [
+      "..."
+    ]
+  },
+  "m5.0": {
+    "text": "Huh this shows that the GPS time is UTC-X",
+    "function": "end_dialogue",
+    "option display": [
+      "..."
+    ]
+  },
+  "m6.0": {
+    "text": "Which means somethings not quite right. It seems that somethings been changed.",
+    "function": "end_dialogue",
+    "option display": [
+      "..."
+    ]
+  },
+  "m7.0": {
     "text": "So, to review, you carved hidden files from raw hex, extracted it's metadata finding the timestamps and GPS data. AND you didn't overwrite, alter, or spill coffee on any evidence",
     "go to": [
-      "m4.1"
+      "m7.1"
     ],
     "option display": [
       "I'm a pro right"
     ]
   },
-  "m4.1": {
+  "m7.1": {
     "text": "You're either a natural... or I am finally getting better at training people. Either way, we're making progress",
     "go to": [
-      "m4.2"
+      "m7.2"
     ],
     "option display": [
       "Nice"
     ]
   },
-  "m4.2": {
+  "m7.2": {
     "text": "Now, go document everything. Then, we prep for full report drafting. The brass upstairs like their timelines clean, their evidence referenced and their conclusions airtight.",
     "go to": [
-      "m4.3"
+      "m7.3"
     ],
     "option display": [
       "Sure thing"
     ]
   },
-  "m4.3": {
+  "m7.3": {
     "text": "Excellent. Now we verify the hashes. Think of it as digital insurance. If those files ever end up in court the opposing sie will try to claim they were altered. We need proof they weren't",
     "go to": [
-      "m4.4"
+      "m7.4"
     ],
     "option display": [
       "Of course"
     ]
   },
-  "m4.4": {
+  "m7.4": {
     "text": "Run the hash on both the original forensic image an the carved JPEGs.",
     "go to": [
-      "m4.5",
-      "m4.6"
+      "m7.5",
+      "m7.6"
     ],
     "option display": [
       "Using SHA256?",
       "Using MD5?"
     ]
   },
-  "m4.5": {
+  "m7.5": {
     "text": "That's the standard these days. But MD5 and SHA1 is what we used previously, so let's stay consistent",
     "go to": [
-      "m4",
-      7
+      "m7.7"
     ],
     "option display": [
       "Okay"
     ]
   },
-  "m4.6": {
+  "m7.6": {
     "text": "MD5 is fast, but tends to be vulnerable to collisions. So typically more complex hash algorithms are used, but since MD5 and SHA1 is what we used previously we'll use it this time as well to stay consistent.",
-    "go to": "m4.7",
+    "go to": [
+      "m7.7"
+    ],
     "option display": [
       "Okay"
     ]
   },
-  "m4.7": {
+  "m7.7": {
     "text": "Let's start with the forensic image file",
     "function": "end_dialogue",
     "option display": [
       "Sure thing"
     ]
   },
-  "m5.0": {
+  "m8.0": {
     "text": "Nice, it matches the hash from acquisition, meaning you haven't tampered with it.",
     "go to": [
-      "m5.1"
+      "m8.1"
     ],
     "option display": [
       "Of course"
     ]
   },
-  "m5.1": {
+  "m8.1": {
     "text": "Now, let's hash each of the carve images and record those too",
     "function": "end_dialogue",
     "option display": [
       "Sure"
     ]
   },
-  "m6.0": {
+  "m9.0": {
     "text": "Perfect. Those hashes will go into your final report. If anyone questions whether those files were modified after extraction, you can show that the hash is identical to the one you recorded right after carving.",
     "go to": [
-      "m6.1"
+      "m9.1"
     ],
     "option display": [
       "Nice"
     ]
   },
-  "m6.1": {
+  "m9.1": {
     "text": "And remember digital forensics isn't just about finding the evidence. It's about proving you didn't change the evidence while fining it.",
     "go to": [
-      "m6.2",
+      "m9.2",
       "dispatch"
     ],
     "option display": [
       "Right"
     ]
   },
-  "m6.2": {
+  "m9.2": {
     "text": "##Digital Forensics, we've got a priortiy call, active scene. Suspected mobile device tampering. Location enroute.##",
     "go to": [
-      "m6.3"
+      "m9.3"
     ],
     "option display": [
       "..."
     ]
   },
-  "m6.3": {
+  "m9.3": {
     "text": "Do they wait until we've hit a rhythm?",
     "go to": [
-      "m6.4"
+      "m9.4"
     ],
     "option display": [
       "Should I lock down?"
     ]
   },
-  "m6.4": {
+  "m9.4": {
     "text": "You know the drill. Go home and we'll wrap this up in the morning with the final report.",
     "function": "end_dialogue",
     "option display": [

@@ -13,8 +13,17 @@ func _ready() -> void:
 		
 	if day != 1:
 		$evidence_bag.visible = false
-		
-		if day == 2 && Global.files_carved:
+		if day == 3 && Global.metadata_finished:
+			if has_node("full_dialogue_display"):
+				remove_child(get_node("full_dialogue_display"))
+			var dialogue = preload("res://dialogue/full_dialogue_display.tscn").instantiate()
+			add_child(dialogue)
+			dialogue.load_dialogue("res://dialogue/dialogue.json", "m9.0")
+			
+			await get_node("full_dialogue_display").tree_exited
+			get_tree().change_scene_to_file("res://quiz/end_quiz.tscn")
+			
+		if day == 2 && Global.hex_finished:
 			if has_node("full_dialogue_display"):
 				remove_child(get_node("full_dialogue_display"))
 			var dialogue = preload("res://dialogue/full_dialogue_display.tscn").instantiate()

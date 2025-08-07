@@ -2,7 +2,7 @@ extends Control
 
 @onready var files = preload("res://file_dialog/file.tscn")
 
-@export var file_icon: ImageTexture
+@export var file_icon: Texture2D
 
 var file: File
 var files_no:int = 0
@@ -44,8 +44,10 @@ func add_files(file_no:int):
 		# named file to force automatic naming system = img1, img2 etc
 		file.name = "img"
 		file._file_name = file.name
-		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://assets/file_dialog/icon-x3.png"))
-		#file_icon = load("res://assets/file_dialog/icon-x3.png")
+
+		var img:Texture2D = preload("res://assets/UI/file-icon.png")
+		file_icon = img
+
 		file._file_icon = file_icon
 		
 		#TODO: change to open in a HxD type window

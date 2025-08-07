@@ -50,6 +50,6 @@ func _on_back_pressed() -> void:
 func _on_dialogue_triggered(topic:String):
 	if has_node("dialogue_display"):
 		remove_child(get_node("dialogue_display"))
-	var dialogue = _dialogue.instantiate()
+	var dialogue = load("res://dialogue/dialogue_display.tscn").instantiate()
 	add_child(dialogue)
 	dialogue.load_dialogue("res://dialogue/dialogue.json", topic)

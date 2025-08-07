@@ -7,7 +7,8 @@ var magnification: int = 2
 var levels: Dictionary = {0:"note1",1:"note2",2:"note3",3:"note4",4:"note5",5:"note6",6:"note7",7:"note8"}
 var days: Array = []
 
-@export var unlocked: int = 2
+@export var unlocked: int = 0
+@export var temp_unlocked:int
 
 @export_category("Form Properties")
 @export var form_name:String
@@ -25,10 +26,11 @@ var first_file_opened:bool
 var first_image_carved:bool
 var found_first_signature:bool
 var found_signature_sandwich:bool
-var files_carved:bool
+var hex_finished:bool
 
 #day 3
 var first_image_opened:bool
+var metadata_finished:bool
 
 #general
 var debrief_given:bool
@@ -54,10 +56,13 @@ signal evidence_finished()
 
 #day 2
 signal signature_found(locations:Array)
+signal all_images_carved()
 
 #day 3
 signal metadata_selected(selected:Node)
 signal metadata_help(key:Node)
+signal all_metadata_found()
+
 #general
 signal level_unlocked(day:String)
 signal selected(selected_node:File, real_file:String)
@@ -84,9 +89,10 @@ func day_start():
 			first_image_carved = false
 			found_first_signature = false
 			found_signature_sandwich = false
-			files_carved = false
+			hex_finished = false
 			
 			first_image_opened = false
+			metadata_finished = false
 		1:
 			is_first_bag = false
 			file_created = true
@@ -97,9 +103,10 @@ func day_start():
 			first_image_carved = false
 			found_first_signature = false
 			found_signature_sandwich = false
-			files_carved = false
+			hex_finished = false
 			
 			first_image_opened = false
+			metadata_finished = false
 		2:
 			is_first_bag = false
 			file_created = true
@@ -110,6 +117,7 @@ func day_start():
 			first_image_carved = true
 			found_first_signature = true
 			found_signature_sandwich = true
-			files_carved = true
+			hex_finished = true
 			
 			first_image_opened = false
+			metadata_finished = false

@@ -5,7 +5,7 @@ class_name LoadFile
 @onready var files = preload("res://file_dialog/file.tscn")
 @onready var metadata_labels = preload("res://metadata/metadata_label.tscn")
 
-@export var file_icon: ImageTexture
+@export var file_icon: Texture2D
 @export var selected_file: String
 @export var file_idx:String
 
@@ -52,7 +52,8 @@ func _on_load_button_pressed() -> void:
 		#kill server python script
 		OS.create_process("cmd.exe", ["/C", "cd %cd%/python_files && kill.bat"])
 
-		metadata_thumbnail.texture = load(evidence_folder + selected_file)
+		var img:Texture2D = load(evidence_folder + selected_file)
+		metadata_thumbnail.texture = img
 		metadata_thumbnail.size = Vector2(44,32)
 		
 		var json_dict = open_json("res://python_files/metadata.json")
@@ -89,15 +90,27 @@ func _on_load_button_pressed() -> void:
 		else:
 			print("Type: ", type_string(typeof(json_dict)))
 		if !Global.first_image_opened:
-			Global.emit_signal("dialogue_triggered", "m2.0")
 			Global.first_image_opened = true
+			if parent.get_parent().get_parent().has_node("dialogue_display"):
+				parent.get_parent().get_parent().remove_child(parent.get_parent().get_parent().get_node("dialogue_display"))
+			var dialogue = load("res://dialogue/dialogue_display.tscn").instantiate()
+			parent.get_parent().get_parent().add_child(dialogue)
+			dialogue.load_dialogue("res://dialogue/dialogue.json", "m2.0")
+
+
 			
 	elif parent.name == "hex_viewer":
 		parent.open_file(evidence_folder + selected_file)
 		if !Global.first_file_opened && selected_file == "SD-image-file.001":
 			
-			Global.emit_signal("dialogue_triggered","h2.0")
 			Global.first_file_opened = true
+			
+			if parent.get_parent().get_parent().has_node("dialogue_display"):
+				parent.get_parent().get_parent().remove_child(parent.get_parent().get_parent().get_node("dialogue_display"))
+			var dialogue = preload("res://dialogue/dialogue_display.tscn").instantiate()
+			parent.get_parent().get_parent().add_child(dialogue)
+			dialogue.load_dialogue("res://dialogue/dialogue.json", "h2.0")
+
 
 		parent.load_file_open = false
 		
@@ -126,8 +139,9 @@ func add_files(file_no:int):
 		# named file to force automatic naming system = file1, file2 etc
 		file.name = "file"
 		file._file_name = file.name
-		#file_icon = load("res://assets/file_dialog/icon-x3.png")
-		file_icon = ImageTexture.create_from_image(Image.load_from_file("res://assets/UI/file-icon.png"))
+		#TODO: img DOES export this way - but files are not being found on export.
+		var img:Texture2D = preload("res://assets/UI/file-icon.png")
+		file_icon = img
 		#file_icon = ImageTexture.create_from_image(Image.load_from_file("res://jpg_folder/photo"+str(i)+".jpg"))
 		file._file_icon = file_icon
 		
@@ -154,7 +168,7 @@ func file_count(file_path:String) -> int:
 	var dir = DirAccess.open(file_path)
 	dir.list_dir_begin()
 	var files_no:int = 0
-	
+	print(ResourceLoader.list_directory(file_path))
 	while true:
 		var f = dir.get_next()
 		# if there is no more files found

@@ -2,6 +2,7 @@ extends NinePatchRect
 
 @onready var hex_viewer = get_parent()
 @onready var results_viewer = get_parent().get_node("v_sort/results_scroll_manager")
+@onready var pc = hex_viewer.get_parent().get_parent()
 
 var results = []
 
@@ -58,16 +59,28 @@ func _search(original_buffer, signature, chunk_size=4096):
 		if !Global.found_first_signature:
 			hex_viewer.first_search = signature
 			
-			Global.emit_signal("dialogue_triggered","h3.0")
 			Global.found_first_signature = true
+			
+			if pc.has_node("dialogue_display"):
+				pc.remove_child(pc.get_node("dialogue_display"))
+			var dialogue = load("res://dialogue/dialogue_display.tscn").instantiate()
+			pc.add_child(dialogue)
+			dialogue.load_dialogue("res://dialogue/dialogue.json", "h3.0")
+
+
 		else:
 			if !Global.found_signature_sandwich:
 				if signature != hex_viewer.first_search:
 					if hex_viewer.first_search.contains("ffd8ff") && signature.contains("ffd8ff"): 
 						pass
 					else:
-						Global.emit_signal("dialogue_triggered","h4.0")
 						Global.found_signature_sandwich = true
+						
+						if pc.has_node("dialogue_display"):
+							pc.remove_child(pc.get_node("dialogue_display"))
+						var dialogue = load("res://dialogue/dialogue_display.tscn").instantiate()
+						pc.add_child(dialogue)
+						dialogue.load_dialogue("res://dialogue/dialogue.json", "h4.0")
 	return results
 	
 func _dec_to_hex(x:int, y:int)-> String:

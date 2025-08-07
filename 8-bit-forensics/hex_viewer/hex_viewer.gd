@@ -6,7 +6,7 @@ var select_open:bool = false
 var already_carved:bool
 
 var file_no:int
-var file_icon: ImageTexture
+var file_icon: Texture2D
 
 var first_search:String
 
@@ -117,8 +117,8 @@ func _on_save_pressed() -> void:
 					icon.set_visible(true)
 					
 					Global.first_image_carved = true
-					$save.disabled = true
-					$save.release_focus()
+				$save.disabled = true
+				$save.release_focus()
 			else:
 				file_no = file_no
 				
