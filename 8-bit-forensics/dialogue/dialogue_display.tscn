@@ -77,7 +77,10 @@ offset_right = 373.0
 offset_bottom = 201.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_mptr3")
 
-[node name="dialogue_label" parent="panel" instance=ExtResource("2_ycikt")]
+[node name="container" type="VBoxContainer" parent="panel"]
+layout_mode = 2
+
+[node name="dialogue_label" parent="panel/container" instance=ExtResource("2_ycikt")]
 layout_mode = 2
 
 [node name="animation" type="AnimationPlayer" parent="."]

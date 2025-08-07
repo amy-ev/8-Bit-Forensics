@@ -1,11 +1,13 @@
 extends CanvasLayer
 
-@onready var dialogue_label = $panel/dialogue_label
+@onready var dialogue_label = $panel/container/dialogue_label
 var dialogue_dict:= {}
 var topic:String
 
 func _ready() -> void:
 	Global.connect("text_finished", _on_text_finished)
+	if has_node("panel/container/name"):
+		$panel/container/name.text = "Chief Quacky McQuackFace"
 
 func start(dialogue:String):
 	dialogue_label.start(dialogue)
@@ -41,6 +43,8 @@ func _on_text_finished():
 		
 func _on_select_option_selected(_option: String) -> void:
 	$npc.set_visible(true)
+	if has_node("panel/container/name"):
+		$panel/container/name.set_visible(true)
 	if dialogue_label.is_playing:
 		dialogue_label.skip()
 	else:
@@ -48,6 +52,8 @@ func _on_select_option_selected(_option: String) -> void:
 			if dialogue_dict[topic]["go to"].size() > 1:
 				if dialogue_dict[topic]["go to"][1] == "dispatch":
 					$npc.set_visible(false)
+					if has_node("panel/container/name"):
+						$panel/container/name.set_visible(false)
 
 			dialogue_text(dialogue_dict,dialogue_dict[topic]["go to"][0])
 		else:

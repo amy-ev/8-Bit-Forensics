@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ggsc0k0u24bc"]
+[gd_scene load_steps=11 format=3 uid="uid://ggsc0k0u24bc"]
 
 [ext_resource type="Script" uid="uid://bm2p2n6vqfkku" path="res://dialogue/dialogue_display.gd" id="1_rntwc"]
 [ext_resource type="Texture2D" uid="uid://qju74ko4d4mc" path="res://assets/dialogue/dialogue.png" id="2_i4pyp"]
 [ext_resource type="Texture2D" uid="uid://c3yl6q4k07f8q" path="res://assets/dialogue/dialogue-panel-bottom-wide.png" id="2_rntwc"]
 [ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="3_i4pyp"]
 [ext_resource type="PackedScene" uid="uid://c1f7ejp4myvjd" path="res://dialogue/dialogue_option.tscn" id="4_gkdle"]
+[ext_resource type="FontFile" uid="uid://ginkfwm14fgo" path="res://8-bit-forensics.ttf" id="4_i4pyp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8tx70"]
 texture = ExtResource("2_rntwc")
@@ -75,7 +76,15 @@ offset_right = 471.0
 offset_bottom = 264.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8tx70")
 
-[node name="dialogue_label" parent="panel" instance=ExtResource("3_i4pyp")]
+[node name="container" type="VBoxContainer" parent="panel"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="panel/container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_i4pyp")
+theme_override_font_sizes/font_size = 8
+
+[node name="dialogue_label" parent="panel/container" instance=ExtResource("3_i4pyp")]
 layout_mode = 2
 
 [node name="animation" type="AnimationPlayer" parent="."]
