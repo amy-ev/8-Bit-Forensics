@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 	
 	client.poll()
 	print("status: ", status)
+	print(get_parent().selected_file)
 	# selected file = the file_name metadata dynamically created
 	var selected_img = open_img("user://evidence_files/"+get_parent().selected_file)
 	

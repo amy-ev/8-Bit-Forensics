@@ -52,8 +52,8 @@ func _on_load_button_pressed() -> void:
 		await client.tree_exited
 		#kill server python script
 		OS.create_process("cmd.exe", ["/C", "cd " + user_path+"/python_files && kill.bat"])
-
-		var img:Texture2D = load(evidence_folder + selected_file)
+		var image = Image.load_from_file(evidence_folder + selected_file)
+		var img = ImageTexture.create_from_image(image)
 		metadata_thumbnail.texture = img
 		metadata_thumbnail.size = Vector2(44,32)
 		
@@ -62,6 +62,7 @@ func _on_load_button_pressed() -> void:
 		file_idx = file_idx.replacen(".jpg", "")
 
 		if typeof(json_dict) == TYPE_DICTIONARY:
+			print(file_idx)
 			if json_dict.has("file_%s" %file_idx):
 				if metadata_column.get_child_count() > 0:
 					for child in metadata_column.get_children():
@@ -135,27 +136,27 @@ func _on_load_button_pressed() -> void:
 func add_files(file_no:int):
 
 	for i in file_no:
+		
 		file = files.instantiate()
 		$file_container.add_child(file)
 		# named file to force automatic naming system = file1, file2 etc
 		file.name = "file"
 		file._file_name = file.name
-		#TODO: img DOES export this way - but files are not being found on export.
-		var img:Texture2D = preload("res://assets/UI/file-icon.png")
+		print("file: ",i)
+		var img:Texture2D = load("res://assets/UI/file-icon.png")
 		file_icon = img
-		#file_icon = ImageTexture.create_from_image(Image.load_from_file("res://jpg_folder/photo"+str(i)+".jpg"))
+
 		file._file_icon = file_icon
 		
-		#TODO: change to match a variety of files
-
 		if parent.name == "metadata_window":
 			file._file_icon.set_meta("file_name","image"+str(i+1)+".jpg")
+			file.set_meta("file_name","image"+str(i+1)+".jpg")
 			
 		elif parent.name == "hex_viewer":
 			if i == 0:
-				file._file_icon.set_meta("file_name","SD-image-file.001")
+				file.set_meta("file_name","SD-image-file.001")
 			else:
-				file._file_icon.set_meta("file_name","image"+str(i)+".jpg")
+				file.set_meta("file_name","image"+str(i)+".jpg")
 				
 		# dynamically size the file_container grid seperations 
 		$file_container.add_theme_constant_override("h_separation", file.get_node("select/select_shape").shape.size.x + 2)

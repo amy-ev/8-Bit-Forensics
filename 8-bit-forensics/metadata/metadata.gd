@@ -162,7 +162,7 @@ func compare_keys():
 				correlates = true
 				
 				var value_dict = []
-				var json_dict = open_json("res://python_files/metadata.json")
+				var json_dict = open_json("user://python_files/metadata.json")
 				
 				if typeof(json_dict) == TYPE_DICTIONARY:
 					if json_dict.has("file_%s" %current_image):

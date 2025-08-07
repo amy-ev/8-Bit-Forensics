@@ -51,7 +51,7 @@ func add_files(file_no:int):
 		file._file_icon = file_icon
 		
 		#TODO: change to open in a HxD type window
-		file._file_icon.set_meta("file_name","photo"+str(i)+".jpg")
+		file.set_meta("file_name","image"+str(i)+".jpg")
 
 		# dynamically size the file_container grid seperations 
 		$file_dialog/window/file_container.size.x = $file_dialog/window.size.x - (6 * Global.magnification) - 1

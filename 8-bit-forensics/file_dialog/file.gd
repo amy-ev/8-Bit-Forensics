@@ -8,10 +8,11 @@ class_name File
 
 func _process(_delta: float) -> void:
 	$file_name.text = _file_name
-	#$icon.texture = _file_icon
+	$icon.texture = _file_icon
 	
 func _on_select_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.is_pressed():
-		_selected_file = _file_icon.get_meta("file_name")
+		print(get_meta("file_name"))
+		_selected_file = get_meta("file_name")
 
 		Global.selected.emit(get_parent().get_node(str(self.name)), _selected_file)

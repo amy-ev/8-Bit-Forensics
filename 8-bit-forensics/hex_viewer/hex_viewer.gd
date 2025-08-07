@@ -110,7 +110,7 @@ func _on_save_pressed() -> void:
 				var icon = load("res://viewer/icon.tscn").instantiate()
 				get_parent().add_child(icon)
 
-				icon._file_icon.set_meta("file_name","image"+str(file_no)+".jpg")
+				icon.set_meta("file_name","image"+str(file_no)+".jpg")
 				icon._file_name = "file "+ str(file_no)
 				
 				if !Global.first_image_carved:
