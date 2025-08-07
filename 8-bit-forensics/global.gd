@@ -3,12 +3,12 @@ extends Node
 var selected_file:String
 
 var magnification: int = 2
+var user_path = ProjectSettings.globalize_path("user://")
 
 var levels: Dictionary = {0:"note1",1:"note2",2:"note3",3:"note4",4:"note5",5:"note6",6:"note7",7:"note8"}
 var days: Array = []
 
-@export var unlocked: int = 0
-@export var temp_unlocked:int
+@export var unlocked:int = int(get_save(user_path +"savefile.json"))
 
 @export_category("Form Properties")
 @export var form_name:String
@@ -74,6 +74,35 @@ signal note_selected(note_topic:String)
 signal answer(day:String, answer:int)
 signal quiz_response()
 
+func get_save(file_path):
+	if FileAccess.file_exists(file_path):
+		var file = FileAccess.open(file_path, FileAccess.READ)
+		
+		if FileAccess.get_open_error() != OK:
+			print("could not open file: ", file.get_open_error())
+	
+		var json = JSON.new()
+		var error = json.parse(file.get_as_text())
+		if error == OK:
+			var dict = json.data
+			var days = dict["days"]
+			file.close()
+			return days["unlocked"]
+		else:
+			print("error code:" , error)
+			file.close()
+
+func set_save(file_path):
+	print(unlocked)
+	var save_dict = {"days":{"unlocked": unlocked}}
+	if FileAccess.file_exists(file_path):
+		var file = FileAccess.open(file_path, FileAccess.WRITE)
+		
+		if FileAccess.get_open_error() != OK:
+			print("could not open file: ", file.get_open_error())
+		var json_string = JSON.stringify(save_dict)
+		file.store_line(json_string)
+		
 func day_start():
 	debrief_given = false
 	pc_debrief_given = false

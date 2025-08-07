@@ -21,7 +21,7 @@ func _input(event: InputEvent) -> void:
 func _open_note(note_topic:String):
 	var note_content = note.instantiate()
 	if !note_open:
-		note_content.get_child(0).get_child(0).text = note_topic
+		note_content.get_node("note_background/note_content").text = note_topic
 	#TODO: connect a json file with the corresponding educational notes
 		add_child(note_content)
 		note_open = true
@@ -60,3 +60,8 @@ func _on_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 		if note_open:
 			$note.queue_free()
 			note_open = false
+
+
+func _on_reset_debug_pressed() -> void:
+	Global.unlocked = 0
+	Global.set_save(Global.user_path + "savefile.json")

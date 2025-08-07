@@ -1,5 +1,9 @@
 extends TextureRect
 
+func _ready() -> void:
+	if Global.unlocked >= 3:
+		$menu/start.disabled = true
+
 func _on_start_pressed() -> void:
 	Global.day_start()
 	#get_tree().change_scene_to_file("res://main/desk.tscn")

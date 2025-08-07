@@ -166,9 +166,17 @@ offset_right = 51.0
 offset_bottom = 34.0
 text = "back"
 
+[node name="reset_debug" type="Button" parent="."]
+offset_left = 278.0
+offset_top = 235.0
+offset_right = 326.0
+offset_bottom = 266.0
+text = "reset"
+
 [connection signal="input_event" from="area" to="." method="_on_area_input_event"]
 [connection signal="pressed" from="unlock_debug" to="." method="_on_unlock_debug_pressed"]
 [connection signal="pressed" from="back_btn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="reset_debug" to="." method="_on_reset_debug_pressed"]
 
 [editable path="note1"]
 [editable path="note2"]

@@ -39,8 +39,22 @@ func _on_exit_pressed() -> void:
 	$panel/sort/answers/exit.release_focus()
 	if correct_answer == given_answer:
 		Global.emit_signal("quiz_response",true)
-		Global.unlocked += 1
-		print(get_tree_string_pretty())
+		
+		#to prevent repeating a level and infinitely increasing unlocked
+		if !Global.level_selected:
+			if Global.unlocked == 0:
+				Global.unlocked = 1
+			elif Global.unlocked == 1:
+				Global.unlocked = 2
+			elif Global.unlocked == 2:
+				Global.unlocked = 3
+			else:
+				Global.unlocked = Global.unlocked
+				
+			Global.set_save(Global.user_path + "savefile.json")
+		else:
+			Global.unlocked = int(Global.get_save(Global.user_path+"savefile.json"))
+			
 		if has_node("dialogue_answer"):
 			var response_dialogue = $dialogue_answer
 			await response_dialogue.tree_exited

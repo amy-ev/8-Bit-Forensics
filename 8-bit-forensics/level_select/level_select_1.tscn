@@ -93,5 +93,13 @@ offset_bottom = 160.0
 texture_normal = ExtResource("5_un5lr")
 texture_pressed = ExtResource("6_l3xca")
 
+[node name="play" type="Button" parent="."]
+offset_left = 115.0
+offset_top = 12.0
+offset_right = 156.0
+offset_bottom = 43.0
+text = "play"
+
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
