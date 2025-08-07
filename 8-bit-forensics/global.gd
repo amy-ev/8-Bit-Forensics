@@ -102,7 +102,20 @@ func set_save(file_path):
 			print("could not open file: ", file.get_open_error())
 		var json_string = JSON.stringify(save_dict)
 		file.store_line(json_string)
-		
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.is_pressed():
+			if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
+				DisplayServer.cursor_set_custom_image(load("res://assets/pressed_cursor_fullscreen.png"),0)
+			else:
+				DisplayServer.cursor_set_custom_image(load("res://assets/pressed_cursor_window.png"),0)
+		if event.is_released():
+			if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
+				DisplayServer.cursor_set_custom_image(load("res://assets/cursor_fullscreen.png"),0)
+			else:
+				DisplayServer.cursor_set_custom_image(load("res://assets/cursor_window.png"),0)
+			
 func day_start():
 	debrief_given = false
 	pc_debrief_given = false
