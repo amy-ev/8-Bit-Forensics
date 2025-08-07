@@ -102,7 +102,7 @@ func _on_save_pressed() -> void:
 		if (start_str == "ffd8ffe1" || start_str == "ffd8ffe0") && end_str == "ffd9":
 			if !already_carved:
 				file_no +=1
-				var file = FileAccess.open("res://evidence_files/image"+ str(file_no)+ ".jpg", FileAccess.WRITE)
+				var file = FileAccess.open("user://evidence_files/image"+ str(file_no)+ ".jpg", FileAccess.WRITE)
 
 				file.store_buffer(tabs.get_child(tabs.current_tab).get_node("hex_text")._wrapped_buffer)
 				file.close()

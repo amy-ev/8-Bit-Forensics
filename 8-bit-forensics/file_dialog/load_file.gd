@@ -13,6 +13,7 @@ var client:Node
 var current_rect: ColorRect
 
 var file: File
+var user_path = ProjectSettings.globalize_path("user://")
 
 @onready var parent = get_parent()
 var evidence_folder:String
@@ -20,13 +21,13 @@ var evidence_folder:String
 func _ready() -> void:
 	# for level select 
 	if !Global.level_selected:
-		evidence_folder = "res://evidence_files/"
+		evidence_folder = "user://evidence_files/"
 	else:
 		if Global.unlocked == 1:
-			evidence_folder = "res://hex_viewer_image/"
+			evidence_folder = "user://hex_viewer_image/"
 			
 		elif Global.unlocked == 2:
-			evidence_folder = "res://metadata_images/"
+			evidence_folder = "user://metadata_images/"
 			
 		
 	Global.connect("selected",_on_file_selected)
@@ -35,7 +36,7 @@ func _ready() -> void:
 
 	if parent.name == "metadata_window":
 		#start server python script
-		OS.create_process("cmd.exe", ["/C", "cd %cd%/python_files && start.bat"])
+		OS.create_process("cmd.exe", ["/C", "cd " + user_path+"/python_files && start.bat"])
 
 func _on_load_button_pressed() -> void:
 
@@ -50,13 +51,13 @@ func _on_load_button_pressed() -> void:
 		add_child(client)
 		await client.tree_exited
 		#kill server python script
-		OS.create_process("cmd.exe", ["/C", "cd %cd%/python_files && kill.bat"])
+		OS.create_process("cmd.exe", ["/C", "cd " + user_path+"/python_files && kill.bat"])
 
 		var img:Texture2D = load(evidence_folder + selected_file)
 		metadata_thumbnail.texture = img
 		metadata_thumbnail.size = Vector2(44,32)
 		
-		var json_dict = open_json("res://python_files/metadata.json")
+		var json_dict = open_json("user://python_files/metadata.json")
 		var file_idx = selected_file.replacen("image", "")
 		file_idx = file_idx.replacen(".jpg", "")
 
@@ -168,7 +169,6 @@ func file_count(file_path:String) -> int:
 	var dir = DirAccess.open(file_path)
 	dir.list_dir_begin()
 	var files_no:int = 0
-	print(ResourceLoader.list_directory(file_path))
 	while true:
 		var f = dir.get_next()
 		# if there is no more files found
@@ -186,7 +186,7 @@ func file_count(file_path:String) -> int:
 	
 func _on_exit_pressed() -> void:
 	if parent.name == "metadata_window":
-		OS.create_process("cmd.exe", ["/C", "cd %cd%/python_files && kill.bat"])
+		OS.create_process("cmd.exe", ["/C", "cd " + user_path+"/python_files && kill.bat"])
 		
 	elif parent.name == "hex_viewer":
 		parent.load_file_open = false

@@ -17,14 +17,14 @@ func _process(delta: float) -> void:
 	client.poll()
 	print("status: ", status)
 	# selected file = the file_name metadata dynamically created
-	var selected_img = open_img("res://evidence_files/"+get_parent().selected_file)
+	var selected_img = open_img("user://evidence_files/"+get_parent().selected_file)
 	
 	send_data(selected_img)
 	recv_data()
 
 func open_img(img_path):
 	#print(OS.get_executable_path().get_base_dir().path_join("example.jpg"))
-	#print(ProjectSettings.globalize_path("res://example.jpg"))
+	#print(ProjectSettings.globalize_path("res://example.jpg")) !!!!!!!
 	if FileAccess.file_exists(img_path):
 		var file = FileAccess.open(img_path, FileAccess.READ)
 		var img_data = file.get_buffer(file.get_length())
