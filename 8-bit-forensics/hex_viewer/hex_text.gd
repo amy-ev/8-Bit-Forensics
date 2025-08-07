@@ -155,7 +155,7 @@ func _draw() -> void:
 			#hex text viewer
 			var hex_string = ""
 			for i in range(row_begin_offset, row_end_offset):
-				hex_string += str(_hex_to_string[carved_buffer[i]], " ")
+				hex_string += str(_hex_to_string[carved_buffer[i]], "  ")
 			
 			draw_string(font, pos, hex_string,0,-1,FONT_SIZE,FONT_COLOUR)
 			pos.x += hex_text_gap +  separation -1

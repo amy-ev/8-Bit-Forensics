@@ -106,11 +106,17 @@ func _on_save_pressed() -> void:
 
 				file.store_buffer(tabs.get_child(tabs.current_tab).get_node("hex_text")._wrapped_buffer)
 				file.close()
-				
 				var icon = load("res://viewer/icon.tscn").instantiate()
-				get_parent().add_child(icon)
+				$icon_container.add_child(icon)
 
+				#get_parent().add_child(icon)
+				var img:Texture2D = load("res://assets/UI/file-icon.png")
+				file_icon = img
+
+				icon._file_icon = file_icon
+				
 				icon.set_meta("file_name","image"+str(file_no)+".jpg")
+				icon._file_icon.set_meta("file_name","image"+str(file_no)+".jpg")
 				icon._file_name = "file "+ str(file_no)
 				
 				if !Global.first_image_carved:
