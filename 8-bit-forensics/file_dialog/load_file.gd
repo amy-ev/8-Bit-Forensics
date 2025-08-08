@@ -16,6 +16,7 @@ var file: File
 var user_path = ProjectSettings.globalize_path("user://")
 
 @onready var parent = get_parent()
+@onready var pc = parent.get_parent().get_parent()
 var evidence_folder:String
 
 var metadata_count:int
@@ -63,7 +64,7 @@ func _on_load_button_pressed() -> void:
 		file_idx = file_idx.replacen(".jpg", "")
 
 		if typeof(json_dict) == TYPE_DICTIONARY:
-			print(file_idx)
+
 			if json_dict.has("file_%s" %file_idx):
 				if metadata_column.get_child_count() > 0:
 					for child in metadata_column.get_children():
@@ -94,11 +95,12 @@ func _on_load_button_pressed() -> void:
 			print("Type: ", type_string(typeof(json_dict)))
 		if !Global.first_image_opened:
 			Global.first_image_opened = true
-			if parent.get_parent().get_parent().has_node("dialogue_display"):
-				parent.get_parent().get_parent().remove_child(parent.get_parent().get_parent().get_node("dialogue_display"))
+			if pc.has_node("dialogue_display"):
+				pc.remove_child(pc.get_node("dialogue_display"))
 			var dialogue = load("res://dialogue/dialogue_display.tscn").instantiate()
-			parent.get_parent().get_parent().add_child(dialogue)
+			pc.add_child(dialogue)
 			dialogue.load_dialogue("res://dialogue/dialogue.json", "m2.0")
+			
 		var label = Label.new()
 		if parent.get_parent().has_node("Label"):
 			parent.get_parent().remove_child(parent.get_parent().get_node("Label"))
@@ -127,10 +129,10 @@ func _on_load_button_pressed() -> void:
 			
 			Global.first_file_opened = true
 			
-			if parent.get_parent().get_parent().has_node("dialogue_display"):
-				parent.get_parent().get_parent().remove_child(parent.get_parent().get_parent().get_node("dialogue_display"))
+			if pc.has_node("dialogue_display"):
+				pc.remove_child(pc.get_node("dialogue_display"))
 			var dialogue = preload("res://dialogue/dialogue_display.tscn").instantiate()
-			parent.get_parent().get_parent().add_child(dialogue)
+			pc.add_child(dialogue)
 			dialogue.load_dialogue("res://dialogue/dialogue.json", "h2.0")
 
 

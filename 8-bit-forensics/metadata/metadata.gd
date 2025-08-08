@@ -32,10 +32,25 @@ var total_length2 = 0.0
 var segment_lengths2 = []
 var scroll_value
 
-var GPS_noticed:bool
+var GPS_noticed_1:bool
+var GPS_noticed_2:bool
+
+var date_time_noticed_1:bool
+var date_time_noticed_2:bool
+var date_time_noticed_3:bool
+
+var model_noticed_1:bool
+var model_noticed_2:bool
+
+var make_noticed_1:bool
+
+var software_noticed_1:bool
+
 var time_noticed:bool
 var GPS_and_time_compared:bool
 var photoshop_noticed:bool
+
+var selected_img:PackedByteArray
 
 func _ready() -> void:
 	font = preload("res://8-bit-forensics.ttf")
@@ -49,7 +64,8 @@ func _on_select_pressed() -> void:
 	
 	for hbox in $scroll/data_container.get_children():
 		keys_and_values.append(hbox)
-		
+	selected_img = Global.get_image(Global.user_path + "evidence_files/" + Global.selected_file)
+
 	
 func _on_exit_pressed() -> void:
 	queue_free()
@@ -186,8 +202,19 @@ func compare_values(a,b):
 
 	if current_rows[0].contains("DateTime") || current_rows[1].contains("DateTime") || current_rows[0].contains("GPSTime") || current_rows[1].contains("GPSTime"):
 		print("date and time")
-		
-
+		if current_rows[0] == "DateTime" && (current_rows[1].contains("DateTimeOriginal") || current_rows[1].contains("DateTimeDigitized")) || current_rows[1] == "DateTime" && (current_rows[0].contains("DateTimeOriginal") || current_rows[0].contains("DateTimeDigitized")):
+			if selected_img == Global.img1:
+				if !date_time_noticed_1:
+					Global.img1_count += 1
+					get_parent().get_node("Label").text = str(Global.img1_count)
+					date_time_noticed_1 = true
+			
+		if (current_rows[0] == "DateTimeOriginal" && current_rows[1] == "DateTimeDigitized") || (current_rows[1] == "DateTimeOriginal" && current_rows[0] == "DateTimeDigitized"):
+			if selected_img == Global.img2:
+				if !date_time_noticed_2:
+					Global.img2_count += 1
+					get_parent().get_node("Label").text = str(Global.img2_count)
+					date_time_noticed_2 = true
 			
 		if current_rows[0].contains("GPSTime"):
 			a = format_gpstime(a)
@@ -206,19 +233,23 @@ func compare_values(a,b):
 			if current_rows[0].contains("GPSTime") && current_rows[1].contains("DateTime") || current_rows[0].contains("DateTime") && current_rows[1].contains("GPSTime"):
 				_dialogue("m5.0")
 				time_noticed = true
-			
-				if GPS_noticed && time_noticed && !GPS_and_time_compared:
-					await pc.get_node("dialogue_display").tree_exited
-					_dialogue("m6.0")
-
-					GPS_and_time_compared = true
-					if GPS_noticed && time_noticed && GPS_and_time_compared && photoshop_noticed:
-						await pc.get_node("dialogue_display").tree_exited
-						_dialogue("m7.0")
-						await get_tree().process_frame
-						if pc.has_node("dialogue_display"):
-							await pc.get_node("dialogue_display").tree_exited
-						Global.emit_signal("all_metadata_found")
+				if selected_img == Global.img3:
+					if !date_time_noticed_3:
+						Global.img3_count += 1
+						get_parent().get_node("Label").text = str(Global.img3_count)
+						date_time_noticed_3 = true
+				#if GPS_noticed_1 && GPS_noticed_2 && time_noticed && !GPS_and_time_compared:
+					#await pc.get_node("dialogue_display").tree_exited
+					#_dialogue("m6.0")
+#
+					#GPS_and_time_compared = true
+					#if GPS_noticed_1 && time_noticed && GPS_and_time_compared && photoshop_noticed:
+						#await pc.get_node("dialogue_display").tree_exited
+						#_dialogue("m7.0")
+						#await get_tree().process_frame
+						#if pc.has_node("dialogue_display"):
+							#await pc.get_node("dialogue_display").tree_exited
+						#Global.emit_signal("all_metadata_found")
 		
 		#TODO: 
 		#if current_rows[0].contains("Thumbnail") || current_rows[1].contains("Thumbnail"):
@@ -230,13 +261,16 @@ func compare_values(a,b):
 		print("make and model")
 
 			
-		if current_rows[0].contains("Make") && current_rows[1].contains("Model"):
-			if a.contains("Apple") && b.contains("iP"):
+		if current_rows[0].contains("Make") && current_rows[1].contains("Model") || current_rows[1].contains("Make") && current_rows[0].contains("Model"):
+			if a.contains("Apple") && b.contains("iP") || b.contains("Apple") && a.contains("iP"):
 					match_msg = "makes sense"
 					
-		elif current_rows[1].contains("Make") && current_rows[0].contains("Model"):
-			if b.contains("Apple") && a.contains("iP"):
-					match_msg = "makes sense"
+					if selected_img == Global.img2:
+						if !model_noticed_1:
+							Global.img2_count += 1
+						get_parent().get_node("Label").text = str(Global.img2_count)
+						model_noticed_1 = true
+					
 		
 		elif  current_rows[0].contains("Make") && current_rows[1].contains("Make"):
 			if a.contains(b) || b.contains(a):
@@ -249,24 +283,23 @@ func compare_values(a,b):
 			if current_rows[0].contains("Software") || current_rows[1].contains("Software"):
 				if a.contains("Photoshop") || b.contains("Photoshop"):
 					match_msg = "Photoshop?"
-					if !photoshop_noticed:
+					if !software_noticed_1:
 						_dialogue("m3.0")
-						var selected_img = Global.get_image(Global.user_path + "evidence_files/" + Global.selected_file)
 
 						if selected_img == Global.img1:
 							Global.img1_count += 1
 							get_parent().get_node("Label").text = str(Global.img1_count)
 						
-						photoshop_noticed = true
+						software_noticed_1 = true
 						
-						if GPS_noticed && time_noticed && GPS_and_time_compared && photoshop_noticed:
-							await pc.get_node("dialogue_display").tree_exited
-							_dialogue("m7.0")
-							await get_tree().process_frame
-							if pc.has_node("dialogue_display"):
-								await pc.get_node("dialogue_display").tree_exited
-							Global.emit_signal("all_metadata_found")
-		
+						#if GPS_noticed_1 && time_noticed && GPS_and_time_compared && photoshop_noticed:
+							#await pc.get_node("dialogue_display").tree_exited
+							#_dialogue("m7.0")
+							#await get_tree().process_frame
+							#if pc.has_node("dialogue_display"):
+								#await pc.get_node("dialogue_display").tree_exited
+							#Global.emit_signal("all_metadata_found")
+		#
 			else:
 				match_msg = "correlates"
 
@@ -278,21 +311,34 @@ func compare_values(a,b):
 		
 		if current_rows[0].contains("Longitude") && current_rows[1].contains("Latitude") || current_rows[0].contains("Latitude") && current_rows[1].contains("Longitude"):
 			match_msg = "long vs lat"
-			_dialogue("m4.0")
+			if !GPS_noticed_1 || !GPS_noticed_2:
+				
+				_dialogue("m4.0")
+				
+				if selected_img == Global.img1:
+					if !GPS_noticed_1:
+						Global.img1_count += 1
+						get_parent().get_node("Label").text = str(Global.img1_count)
 
-			GPS_noticed = true
-			if GPS_noticed && time_noticed && !GPS_and_time_compared:
-				await pc.get_node("dialogue_display").tree_exited
-				_dialogue("m6.0")
+						GPS_noticed_1 = true
+				elif selected_img == Global.img4:
+					if !GPS_noticed_2:
+						Global.img4_count += 1
+						get_parent().get_node("Label").text = str(Global.img4_count)
+						GPS_noticed_2 = true
 
-				GPS_and_time_compared = true
-				if GPS_noticed && time_noticed && GPS_and_time_compared && photoshop_noticed:
+				if GPS_noticed_1 && GPS_noticed_2 && time_noticed && !GPS_and_time_compared:
 					await pc.get_node("dialogue_display").tree_exited
-					_dialogue("m7.0")
-					await get_tree().process_frame
-					if pc.has_node("dialogue_display"):
-						await pc.get_node("dialogue_display").tree_exited
-					Global.emit_signal("all_metadata_found")
+					_dialogue("m6.0")
+
+					#GPS_and_time_compared = true
+					#if GPS_noticed_1 && GPS_noticed_2 && time_noticed && GPS_and_time_compared && photoshop_noticed:
+						#await pc.get_node("dialogue_display").tree_exited
+						#_dialogue("m7.0")
+						#await get_tree().process_frame
+						#if pc.has_node("dialogue_display"):
+							#await pc.get_node("dialogue_display").tree_exited
+						#Global.emit_signal("all_metadata_found")
 				
 func open_json(file_path):
 	if FileAccess.file_exists(file_path):
