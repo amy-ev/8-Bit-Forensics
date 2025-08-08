@@ -31,7 +31,14 @@ var hex_finished:bool
 #day 3
 var first_image_opened:bool
 var metadata_finished:bool
-
+var img1:PackedByteArray = get_image("res://metadata_images/image1.jpg")
+var img2:PackedByteArray = get_image("res://metadata_images/image2.jpg")
+var img3:PackedByteArray = get_image("res://metadata_images/image3.jpg")
+var img4:PackedByteArray = get_image("res://metadata_images/image4.jpg")
+var img1_count:int
+var img2_count:int
+var img3_count:int
+var img4_count:int
 #general
 var debrief_given:bool
 var pc_debrief_given:bool
@@ -105,6 +112,15 @@ func set_save(file_path):
 		var json_string = JSON.stringify(save_dict)
 		file.store_line(json_string)
 
+func get_image(file_path):
+	if FileAccess.file_exists(file_path):
+		var file = FileAccess.open(file_path, FileAccess.READ)
+		
+		var content = file.get_buffer(file.get_length())
+		file.close()
+		
+		return content
+	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():

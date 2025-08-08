@@ -18,6 +18,8 @@ var user_path = ProjectSettings.globalize_path("user://")
 @onready var parent = get_parent()
 var evidence_folder:String
 
+var metadata_count:int
+
 func _ready() -> void:
 	# for level select 
 	if !Global.level_selected:
@@ -39,7 +41,6 @@ func _ready() -> void:
 		OS.create_process("cmd.exe", ["/C", "cd " + user_path+"/python_files && start.bat"])
 
 func _on_load_button_pressed() -> void:
-
 	Global.selected_file = selected_file
 	
 	if parent.name == "metadata_window":
@@ -98,7 +99,26 @@ func _on_load_button_pressed() -> void:
 			var dialogue = load("res://dialogue/dialogue_display.tscn").instantiate()
 			parent.get_parent().get_parent().add_child(dialogue)
 			dialogue.load_dialogue("res://dialogue/dialogue.json", "m2.0")
-
+		var label = Label.new()
+		if parent.get_parent().has_node("Label"):
+			parent.get_parent().remove_child(parent.get_parent().get_node("Label"))
+			
+		parent.get_parent().add_child(label,true)
+		
+		var current_image = Global.get_image(evidence_folder + selected_file)
+		
+		if current_image == Global.img1:
+			metadata_count = Global.img1_count
+			label.text = str(metadata_count)
+		elif current_image == Global.img2:
+			metadata_count = Global.img2_count
+			label.text = str(metadata_count)
+		elif current_image == Global.img3:
+			metadata_count = Global.img3_count
+			label.text = str(metadata_count)
+		elif current_image == Global.img4:
+			metadata_count = Global.img4_count
+			label.text = str(metadata_count)
 
 			
 	elif parent.name == "hex_viewer":

@@ -249,16 +249,23 @@ func compare_values(a,b):
 			if current_rows[0].contains("Software") || current_rows[1].contains("Software"):
 				if a.contains("Photoshop") || b.contains("Photoshop"):
 					match_msg = "Photoshop?"
-					_dialogue("m3.0")
+					if !photoshop_noticed:
+						_dialogue("m3.0")
+						var selected_img = Global.get_image(Global.user_path + "evidence_files/" + Global.selected_file)
 
-					photoshop_noticed = true
-					if GPS_noticed && time_noticed && GPS_and_time_compared && photoshop_noticed:
-						await pc.get_node("dialogue_display").tree_exited
-						_dialogue("m7.0")
-						await get_tree().process_frame
-						if pc.has_node("dialogue_display"):
+						if selected_img == Global.img1:
+							Global.img1_count += 1
+							get_parent().get_node("Label").text = str(Global.img1_count)
+						
+						photoshop_noticed = true
+						
+						if GPS_noticed && time_noticed && GPS_and_time_compared && photoshop_noticed:
 							await pc.get_node("dialogue_display").tree_exited
-						Global.emit_signal("all_metadata_found")
+							_dialogue("m7.0")
+							await get_tree().process_frame
+							if pc.has_node("dialogue_display"):
+								await pc.get_node("dialogue_display").tree_exited
+							Global.emit_signal("all_metadata_found")
 		
 			else:
 				match_msg = "correlates"
