@@ -134,7 +134,7 @@
     ]
   },
   "Day 2.4": {
-    "text": "Nice! The image file is already mounted read-only, lets go on to the PC and launch your hex viewer, X, X, or your flavour of choice, and scroll through the raw data.",
+    "text": "Nice! The image file is already mounted read-only, lets go on to the PC and launch your hex viewer of choice, and scroll through the raw data.",
     "function": "end_dialogue",
     "option display": [
       "Okay"
@@ -150,25 +150,7 @@
     ]
   },
   "Day 3.1": {
-    "text": "With a little tool called X, nice and easy to view the key metadata without getting overwhelmed.",
-    "go to": [
-      "Day 3.2"
-    ],
-    "option display": [
-      "Nice"
-    ]
-  },
-  "Day 3.2": {
-    "text": "Later, we'll use the command line based x, but that shows a lot and we don't want rookies running for the hills.",
-    "go to": [
-      "Day 3.3"
-    ],
-    "option display": [
-      "Alright"
-    ]
-  },
-  "Day 3.3": {
-    "text": "Let's not waste time, launch up the PC.",
+    "text": "Let's not waste time, launch up the PC and load up your favourite metadata viewer.",
     "function": "end_dialogue",
     "option display": [
       "On it."
