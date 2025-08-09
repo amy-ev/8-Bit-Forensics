@@ -34,6 +34,8 @@ var scroll_value
 
 var finished_count:int
 
+var new_file_open: bool
+
 var noticed = {
 	"image1": [false,false,false],
 	"image2": [false,false,false,false],
@@ -51,13 +53,23 @@ func _on_select_pressed() -> void:
 	var load_files = _load_files.instantiate()
 	add_child(load_files)
 	
+	if has_node("comment"):
+		remove_child(get_node("comment"))
+		
+	clear_values()
+	current_select.clear()
+	current_rows.clear()
+	new_file_open = true
+	
+	queue_redraw()
+	
 	await load_files.tree_exited
 	
 	for hbox in $scroll/data_container.get_children():
 		keys_and_values.append(hbox)
 	if !Global.selected_file.is_empty():
 		selected_img = Global.get_image(Global.user_path + "evidence_files/" + Global.selected_file)
-		finished_count = 0
+
 
 func _on_exit_pressed() -> void:
 	queue_free()
@@ -75,7 +87,10 @@ func _process(delta: float) -> void:
 func _on_label_selected(selected:Node):
 	if has_node("comment"):
 		remove_child(get_node("comment"))
-
+	if new_file_open:
+		current_select.clear()
+		current_rows.clear()
+		new_file_open = false
 	clear_values()
 	
 	for rect in current_select:
@@ -137,6 +152,7 @@ func _on_label_selected(selected:Node):
 		
 		draw_allowed = false
 		queue_redraw()
+
 		
 	for rect in current_select:
 		rect.get_node("selected").visible = true
@@ -202,25 +218,29 @@ func compare_values(a,b):
 	if current_rows[0].contains("DateTime") || current_rows[1].contains("DateTime") || current_rows[0].contains("GPSTime") || current_rows[1].contains("GPSTime"):
 		print("date and time")
 		if current_rows[0] == "DateTime" && (current_rows[1].contains("DateTimeOriginal") || current_rows[1].contains("DateTimeDigitized")) || current_rows[1] == "DateTime" && (current_rows[0].contains("DateTimeOriginal") || current_rows[0].contains("DateTimeDigitized")):
+			match_msg = "interesting"
 			if selected_img == Global.img1:
 				if !noticed["image1"][0]:
 					Global.img1_count += 1
-					get_parent().get_node("Label").text = str(Global.img1_count)
+					$counter.text = str(Global.img1_count) + " / 3"
 					noticed["image1"][0] = true
 
 					if finished_image_metadata():
-						if finished_count < 1:
+						update_progress("image 1")
+						if finished_count < 4:
 							_dialogue("m3.0")
 
 		if (current_rows[0] == "DateTimeOriginal" && current_rows[1] == "DateTimeDigitized") || (current_rows[1] == "DateTimeOriginal" && current_rows[0] == "DateTimeDigitized"):
+			match_msg = "interesting"
 			if selected_img == Global.img2:
 				if !noticed["image2"][1]:
 					Global.img2_count += 1
-					get_parent().get_node("Label").text = str(Global.img2_count)
+					$counter.text = str(Global.img2_count) + " / 4"
 					noticed["image2"][1] = true
 					
 					if finished_image_metadata():
-						if finished_count < 1:
+						update_progress("image 2")
+						if finished_count < 4:
 							_dialogue("m3.0")
 
 		if current_rows[0].contains("GPSTime"):
@@ -244,23 +264,25 @@ func compare_values(a,b):
 						_dialogue("m6.0")
 
 						Global.img3_count += 1
-						get_parent().get_node("Label").text = str(Global.img3_count)
+						$counter.text = str(Global.img3_count) + " / 5"
 						noticed["image3"][2] = true
 						
 						if finished_image_metadata():
+							update_progress("image 3")
 							await pc.get_node("dialogue_display").tree_exited
-							if finished_count < 1:
+							if finished_count < 4:
 								_dialogue("m3.0")
 
 			elif current_rows[0].contains("GPSDate") && current_rows[1].contains("DateTime") || current_rows[0].contains("DateTime") && current_rows[1].contains("GPSDate"):
 				if selected_img == Global.img4:
 					if !noticed["image4"][3]:
 						Global.img4_count += 1
-						get_parent().get_node("Label").text = str(Global.img3_count)
+						$counter.text = str(Global.img4_count) + " / 5"
 						noticed["image4"][3] = true
 						
 						if finished_image_metadata():
-							if finished_count < 1:
+							update_progress("image 4")
+							if finished_count < 4:
 								_dialogue("m3.0")
 
 	elif current_rows[0].contains("Make") || current_rows[1].contains("Make") || current_rows[0].contains("Model") || current_rows[1].contains("Model"):
@@ -269,39 +291,46 @@ func compare_values(a,b):
 		if current_rows[0].contains("Make") && current_rows[1].contains("Model") || current_rows[1].contains("Make") && current_rows[0].contains("Model"):
 			if a.contains("Apple") && b.contains("iP") || b.contains("Apple") && a.contains("iP"):
 					match_msg = "makes sense"
-					
-					if selected_img == Global.img2:
-						if !noticed["image2"][0]:
-							Global.img2_count += 1
-							get_parent().get_node("Label").text = str(Global.img2_count)
-							noticed["image2"][0] = true
-							
-							if finished_image_metadata():
-								if finished_count < 1:
-									_dialogue("m3.0")
-							
-					elif selected_img == Global.img3:
-						if !noticed["image3"][4]:
-							Global.img3_count += 1
-							get_parent().get_node("Label").text = str(Global.img3_count)
-							noticed["image3"][4] = true
-							
-							if finished_image_metadata():
-								if finished_count < 1:
-									_dialogue("m3.0")
+			elif a.contains(b) || b.contains(a):
+				match_msg = "thats fine"
+			else:
+				match_msg = "they dont match"
+				if selected_img == Global.img2:
+					if !noticed["image2"][0]:
+						Global.img2_count += 1
+						$counter.text = str(Global.img2_count) + " / 4"
+						noticed["image2"][0] = true
+						
+						if finished_image_metadata():
+							update_progress("image 2")
+							if finished_count < 4:
+								_dialogue("m3.0")
+						
+				elif selected_img == Global.img3:
+					if !noticed["image3"][4]:
+						Global.img3_count += 1
+						$counter.text = str(Global.img3_count) + " / 5"
+						noticed["image3"][4] = true
+						
+						if finished_image_metadata():
+							update_progress("image 3")
+							if finished_count < 4:
+								_dialogue("m3.0")
 								
 		elif  current_rows[0].contains("Make") && current_rows[1].contains("Make"):
 			if a.contains(b) || b.contains(a):
 				match_msg = "the makes match"
 			else:
+				match_msg = "they dont match"
 				if selected_img == Global.img2:
-					if noticed["image2"][2]:
+					if !noticed["image2"][2]:
 						Global.img2_count += 1
-						get_parent().get_node("Label").text = str(Global.img2_count)
+						$counter.text = str(Global.img2_count) + " / 4"
 						noticed["image2"][2] = true
 						
 						if finished_image_metadata():
-							if finished_count < 1:
+							update_progress("image 2")
+							if finished_count < 4:
 								_dialogue("m3.0")
 							
 		elif  current_rows[0].contains("Model") && current_rows[1].contains("Model"):
@@ -309,14 +338,16 @@ func compare_values(a,b):
 				match_msg = "the models match"
 
 			else:
+				match_msg = "they dont match"
 				if selected_img == Global.img1:
 					if !noticed["image1"][2]:
 						Global.img1_count += 1
-						get_parent().get_node("Label").text = str(Global.img1_count)
+						$counter.text = str(Global.img1_count) + " / 3"
 						noticed["image1"][2] = true
 						
 						if finished_image_metadata():
-							if finished_count < 1:
+							update_progress("image 1")
+							if finished_count < 4:
 								_dialogue("m3.0")
 
 		else:
@@ -329,23 +360,26 @@ func compare_values(a,b):
 							_dialogue("m4.0")
 							
 							Global.img3_count += 1
-							get_parent().get_node("Label").text = str(Global.img3_count)
+							$counter.text = str(Global.img3_count) + " / 5"
 							noticed["image3"][3] = true
 							
 							if finished_image_metadata():
+								update_progress("image 3")
 								await pc.get_node("dialogue_display").tree_exited
-								if finished_count < 1:
+								if finished_count < 4:
 									_dialogue("m3.0")
 
 			elif current_rows[0].contains("Description") || current_rows[1].contains("Description"):
+				match_msg = "description"
 				if selected_img == Global.img3:
 					if !noticed["image3"][1]:
 						Global.img3_count += 1
-						get_parent().get_node("Label").text = str(Global.img3_count)
+						$counter.text = str(Global.img3_count) + " / 5"
 						noticed["image3"][1] = true
 						
 						if finished_image_metadata():
-							if finished_count < 1:
+							update_progress("image 3")
+							if finished_count < 4:
 								_dialogue("m3.0")
 
 			else:
@@ -365,83 +399,103 @@ func compare_values(a,b):
 					_dialogue("m5.0")
 					
 					Global.img1_count += 1
-					get_parent().get_node("Label").text = str(Global.img1_count)
+					$counter.text = str(Global.img1_count) + " / 3"
 					noticed["image1"][1] = true
 					
 					if finished_image_metadata():
+						update_progress("image 1")
 						await pc.get_node("dialogue_display").tree_exited
-						if finished_count < 1:
+						
+						if finished_count < 4:
 							_dialogue("m3.0")
 
 
 			elif selected_img == Global.img2:
 				if !noticed["image2"][3]:
 					Global.img2_count += 1
-					get_parent().get_node("Label").text = str(Global.img2_count)
+					$counter.text = str(Global.img2_count) + " / 4"
 					noticed["image2"][3] = true
 					
 					if finished_image_metadata():
-						if finished_count < 1:
+						update_progress("image 2")
+						if finished_count < 4:
 							_dialogue("m3.0")
 
 			elif selected_img == Global.img4:
 				if !noticed["image4"][0]:
 					Global.img4_count += 1
-					get_parent().get_node("Label").text = str(Global.img4_count)
+					$counter.text = str(Global.img4_count) + " / 5"
 					noticed["image4"][0] = true
 					
 					if finished_image_metadata():
-						if finished_count < 1:
+						update_progress("image 4")
+						if finished_count < 4:
 							_dialogue("m3.0")
 							
 		elif current_rows[0].contains("Altitude") && current_rows[1].contains("AltitudeRef") || current_rows[0].contains("AltitudeRef") && current_rows[1].contains("Altitude"):
+			match_msg = "altitude"
 			if selected_img == Global.img4:
 				if !noticed["image4"][1]:
 					Global.img4_count += 1
-					get_parent().get_node("Label").text = str(Global.img4_count)
+					$counter.text = str(Global.img4_count) + " / 5"
 					noticed["image4"][1] = true
 					
 					if finished_image_metadata():
-						if finished_count < 1:
+						update_progress("image 4")
+						if finished_count < 4:
 							_dialogue("m3.0")
 						
 	elif current_rows[0].contains("Artist") || current_rows[1].contains("Artist"):
+		match_msg = "artist"
 		if current_rows[0].contains("Copyright") || current_rows[1].contains("Copyright"):
 			if selected_img == Global.img3:
 				if !noticed["image3"][0]:
 					Global.img3_count += 1
-					get_parent().get_node("Label").text = str(Global.img3_count)
+					$counter.text = str(Global.img3_count) + " / 5"
 					noticed["image3"][0] = true
 					
 					if finished_image_metadata():
-						if finished_count < 1:
+						update_progress("image 3")
+						if finished_count < 4:
 							_dialogue("m3.0")
 						
 		elif current_rows[0].contains("Description") || current_rows[1].contains("Description"):
 			if selected_img == Global.img4:
 				if !noticed["image4"][4]:
 					Global.img4_count += 1
-					get_parent().get_node("Label").text = str(Global.img4_count)
+					$counter.text = str(Global.img4_count) + " / 5"
 					noticed["image4"][4] = true
 					
 					if finished_image_metadata():
-						if finished_count < 1:
+						update_progress("image 4")
+						if finished_count < 4:
 							_dialogue("m3.0")
 						
 	elif current_rows[0].contains("LensSpecification") && current_rows[1].contains("FocalLength") || current_rows[0].contains("FocalLength") && current_rows[1].contains("LensSpecification"):
+			match_msg = "lens specification"
 			if selected_img == Global.img4:
 				if !noticed["image4"][2]:
 					Global.img4_count += 1
-					get_parent().get_node("Label").text = str(Global.img4_count)
+					$counter.text = str(Global.img4_count) + " / 5"
 					noticed["image4"][2] = true
 					
 					if finished_image_metadata():
-						if finished_count < 1:
+						update_progress("image 4")
+						if finished_count < 4:
 							_dialogue("m3.0")
 	if finished_all_metadata():
 		if pc.has_node("dialogue_display"):
 			await pc.get_node("dialogue_display").tree_exited
 		_dialogue("m7.0")
+		if pc.has_node("dialogue_display"):
+			await pc.get_node("dialogue_display").tree_exited
+			set_visible(false)
+			Global.emit_signal("all_metadata_found")
+			pc.get_node("screen_animation").play("off")
+			
+			await pc.get_node("screen_animation").animation_finished
+			
+			get_tree().change_scene_to_file("res://main/desk.tscn")
 
 func open_json(file_path):
 	if FileAccess.file_exists(file_path):
@@ -518,6 +572,8 @@ func _draw() -> void:
 		if progress == 1.0:
 			#draw_string(font,Vector2(coords1[-1][0] + FONT_SIZE, coords1[-1][1] + FONT_SIZE/2),match_msg,0,-1,FONT_SIZE,FONT_COLOUR)
 			var comment = preload("res://metadata/comment.tscn").instantiate()
+			if has_node("comment"):
+				remove_child(get_node("comment"))
 			add_child(comment)
 			comment.get_node("dialogue_label").start(match_msg)
 			comment.position = Vector2(coords1[-1][0] + FONT_SIZE, coords1[-1][1] - comment.size.y / 2)
@@ -538,6 +594,7 @@ func clear_values():
 	total_length2 = 0.0
 	pos_middle = Vector2()
 	correlates = false
+	match_msg = ""
 
 func _dialogue(topic:String):
 	if pc.has_node("dialogue_display"):
@@ -553,21 +610,28 @@ func finished_all_metadata():
 		&& noticed["image3"][0] && noticed["image3"][1] && noticed["image3"][2] && noticed["image3"][3] \
 		&& noticed["image4"][0] && noticed["image4"][1] && noticed["image4"][2] && noticed["image4"][3]
 
-	
 func finished_image_metadata():
 	var image1 = noticed["image1"][0] && noticed["image1"][1] && noticed["image1"][2]
 	var image2 = noticed["image2"][0] && noticed["image2"][1] && noticed["image2"][2] && noticed["image2"][3]
-	var image3 = noticed["image3"][0] && noticed["image3"][1] && noticed["image3"][2] && noticed["image3"][3]
-	var image4 = noticed["image4"][0] && noticed["image4"][1] && noticed["image4"][2] && noticed["image4"][3]
+	var image3 = noticed["image3"][0] && noticed["image3"][1] && noticed["image3"][2] && noticed["image3"][3] && noticed["image3"][4]
+	var image4 = noticed["image4"][0] && noticed["image4"][1] && noticed["image4"][2] && noticed["image4"][3] && noticed["image4"][4]
+	
 	
 	finished_count = int(image1) + int(image2) + int(image3) + int(image4)
-	
-	match selected_img:
-		Global.img1:
-			return image1
-		Global.img2:
-			return image2
-		Global.img3:
-			return image3
-		Global.img4:
-			return image4
+	print(finished_count)
+	if selected_img == Global.img1:
+		finished_count 
+		return image1
+	elif selected_img == Global.img2:
+		return image2
+	elif selected_img == Global.img3:
+		return image3
+	elif selected_img == Global.img4:
+		return image4
+
+func update_progress(image:String):
+	var label = get_node("progress/"+ image)
+	label.clear()
+	label.push_strikethrough()
+	label.append_text(image)
+	label.pop()

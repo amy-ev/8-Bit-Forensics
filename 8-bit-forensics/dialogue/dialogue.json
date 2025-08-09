@@ -798,16 +798,16 @@
       "Sure"
     ]
   },
-  "m9.0": {
-    "text": "Perfect. Those hashes will go into your final report. If anyone questions whether those files were modified after extraction, you can show that the hash is identical to the one you recorded right after carving.",
+  "m9.1": {
+    "text": "##Digital Forensics, we've got a priortiy call, active scene. Suspected mobile device tampering. Location enroute.##",
     "go to": [
-      "m9.1"
+      "m9.2"
     ],
     "option display": [
-      "Nice"
+      "..."
     ]
   },
-  "m9.1": {
+  "m9.0": {
     "text": "And remember digital forensics isn't just about finding the evidence. It's about proving you didn't change the evidence while fining it.",
     "go to": [
       "m9.2",
@@ -818,24 +818,15 @@
     ]
   },
   "m9.2": {
-    "text": "##Digital Forensics, we've got a priortiy call, active scene. Suspected mobile device tampering. Location enroute.##",
-    "go to": [
-      "m9.3"
-    ],
-    "option display": [
-      "..."
-    ]
-  },
-  "m9.3": {
     "text": "Do they wait until we've hit a rhythm?",
     "go to": [
-      "m9.4"
+      "m9.3"
     ],
     "option display": [
       "Should I lock down?"
     ]
   },
-  "m9.4": {
+  "m9.3": {
     "text": "You know the drill. Go home and we'll wrap this up in the morning with the final report.",
     "function": "end_dialogue",
     "option display": [
