@@ -69,7 +69,7 @@ func _on_select_pressed() -> void:
 		keys_and_values.append(hbox)
 	if !Global.selected_file.is_empty():
 		selected_img = Global.get_image(Global.user_path + "evidence_files/" + Global.selected_file)
-
+		$thumbnail_column/thumbnail.set_visible(true)
 
 func _on_exit_pressed() -> void:
 	queue_free()

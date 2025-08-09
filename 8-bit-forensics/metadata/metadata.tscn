@@ -339,6 +339,7 @@ patch_margin_right = 2
 patch_margin_bottom = 2
 
 [node name="thumbnail" type="TextureRect" parent="thumbnail_column"]
+visible = false
 layout_mode = 0
 offset_left = 10.0
 offset_top = 36.0
@@ -347,12 +348,12 @@ offset_bottom = 68.0
 texture = ExtResource("4_daqaj")
 expand_mode = 1
 
-[node name="label" type="Label" parent="thumbnail_column/thumbnail"]
+[node name="label" type="Label" parent="thumbnail_column"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = -13.0
-offset_right = 39.0
-offset_bottom = -5.0
+offset_left = 13.0
+offset_top = 23.0
+offset_right = 49.0
+offset_bottom = 31.0
 theme = ExtResource("3_d1c4e")
 text = "Thumbnail"
 
