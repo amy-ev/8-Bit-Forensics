@@ -34,17 +34,22 @@ var scroll_value
 
 var GPS_noticed_1:bool
 var GPS_noticed_2:bool
+var GPS_noticed_3:bool
 
 var date_time_noticed_1:bool
 var date_time_noticed_2:bool
 var date_time_noticed_3:bool
+var date_time_noticed_4:bool
 
 var model_noticed_1:bool
 var model_noticed_2:bool
+var model_noticed_3:bool
 
 var make_noticed_1:bool
 
 var software_noticed_1:bool
+var description_noticed_1:bool
+var description_noticed_2:bool
 
 var time_noticed:bool
 var GPS_and_time_compared:bool
@@ -152,11 +157,11 @@ func _on_label_selected(selected:Node):
 func compare_keys():
 
 	#TODO: maybe move this out of the function
-	var compare_dict = {"DateTime":["DateTimeOriginal","DateTimeDigitized","GPSTimeStamp","GPSDateStamp","Thumbnail"],
-					"DateTimeOriginal":["DateTime","DateTimeDigitized","GPSTimeStamp","GPSDateStamp","Thumbnail"],
-					"DateTimeDigitized":["DateTime","DateTimeOriginal","GPSTimeStamp","GPSDateStamp","Thumbnail"],
-					"GPSTimeStamp":["DateTime","DateTimeOriginal","DateTimeDigitized","GPSDateStamp","Thumbnail"],
-					"GPSDateStamp":["DateTime","DateTimeOriginal","DateTimeDigitized","GPSTimeStamp","Thumbnail"],
+	var compare_dict = {"DateTime":["DateTimeOriginal","DateTimeDigitized","GPSTimeStamp","GPSDateStamp"],
+					"DateTimeOriginal":["DateTime","DateTimeDigitized","GPSTimeStamp","GPSDateStamp"],
+					"DateTimeDigitized":["DateTime","DateTimeOriginal","GPSTimeStamp","GPSDateStamp"],
+					"GPSTimeStamp":["DateTime","DateTimeOriginal","DateTimeDigitized","GPSDateStamp"],
+					"GPSDateStamp":["DateTime","DateTimeOriginal","DateTimeDigitized","GPSTimeStamp"],
 	 				"Make":["Model","Software","LensMake","LensModel"],
 					"Model":["Make","Software","LensMake","LensModel"],
 					"Software":["Make","Model","LensMake","LensModel"],
@@ -208,6 +213,10 @@ func compare_values(a,b):
 					Global.img1_count += 1
 					get_parent().get_node("Label").text = str(Global.img1_count)
 					date_time_noticed_1 = true
+					
+					if finished_image_metadata():
+						print("done!")
+						#TODO: FINISH
 			
 		if (current_rows[0] == "DateTimeOriginal" && current_rows[1] == "DateTimeDigitized") || (current_rows[1] == "DateTimeOriginal" && current_rows[0] == "DateTimeDigitized"):
 			if selected_img == Global.img2:
@@ -215,7 +224,11 @@ func compare_values(a,b):
 					Global.img2_count += 1
 					get_parent().get_node("Label").text = str(Global.img2_count)
 					date_time_noticed_2 = true
-			
+					
+					if finished_image_metadata():
+							print("done!")
+							#TODO: FINISH
+							
 		if current_rows[0].contains("GPSTime"):
 			a = format_gpstime(a)
 			
@@ -250,11 +263,12 @@ func compare_values(a,b):
 						#if pc.has_node("dialogue_display"):
 							#await pc.get_node("dialogue_display").tree_exited
 						#Global.emit_signal("all_metadata_found")
-		
-		#TODO: 
-		#if current_rows[0].contains("Thumbnail") || current_rows[1].contains("Thumbnail"):
-			#match_msg = "needs to be worked on"
-			
+			elif current_rows[0].contains("GPSDate") && current_rows[1].contains("DateTime") || current_rows[0].contains("DateTime") && current_rows[1].contains("GPSDate"):
+				if selected_img == Global.img4:
+					if !date_time_noticed_4:
+						Global.img4_count += 1
+						get_parent().get_node("Label").text = str(Global.img3_count)
+						date_time_noticed_4 = true
 
 
 	elif current_rows[0].contains("Make") || current_rows[1].contains("Make") || current_rows[0].contains("Model") || current_rows[1].contains("Model"):
@@ -266,19 +280,49 @@ func compare_values(a,b):
 					match_msg = "makes sense"
 					
 					if selected_img == Global.img2:
-						if !model_noticed_1:
+						if !model_noticed_2:
 							Global.img2_count += 1
-						get_parent().get_node("Label").text = str(Global.img2_count)
-						model_noticed_1 = true
-					
+							get_parent().get_node("Label").text = str(Global.img2_count)
+							model_noticed_2 = true
+							
+							if finished_image_metadata():
+								print("done!")
+								#TODO: FINISH
+							
+					elif selected_img == Global.img3:
+						if !model_noticed_3:
+							Global.img3_count += 1
+							get_parent().get_node("Label").text = str(Global.img3_count)
+							model_noticed_3 = true
 		
 		elif  current_rows[0].contains("Make") && current_rows[1].contains("Make"):
 			if a.contains(b) || b.contains(a):
 				match_msg = "the makes match"
-				
+			else:
+				if selected_img == Global.img2:
+					if !make_noticed_1:
+						Global.img1_count += 1
+						get_parent().get_node("Label").text = str(Global.img2_count)
+						make_noticed_1 = true
+						
+						if finished_image_metadata():
+							print("done!")
+							#TODO: FINISH
+							
 		elif  current_rows[0].contains("Model") && current_rows[1].contains("Model"):
 			if a.contains(b) || b.contains(a):
 				match_msg = "the models match"
+			else:
+				if selected_img == Global.img1:
+					if !model_noticed_1:
+						Global.img1_count += 1
+						get_parent().get_node("Label").text = str(Global.img1_count)
+						model_noticed_1 = true
+						
+						if finished_image_metadata():
+							print("done!")
+							#TODO: FINISH
+
 		else:
 			if current_rows[0].contains("Software") || current_rows[1].contains("Software"):
 				if a.contains("Photoshop") || b.contains("Photoshop"):
@@ -286,9 +330,9 @@ func compare_values(a,b):
 					if !software_noticed_1:
 						_dialogue("m3.0")
 
-						if selected_img == Global.img1:
-							Global.img1_count += 1
-							get_parent().get_node("Label").text = str(Global.img1_count)
+						if selected_img == Global.img3:
+							Global.img3_count += 1
+							get_parent().get_node("Label").text = str(Global.img3_count)
 						
 						software_noticed_1 = true
 						
@@ -299,7 +343,8 @@ func compare_values(a,b):
 							#if pc.has_node("dialogue_display"):
 								#await pc.get_node("dialogue_display").tree_exited
 							#Global.emit_signal("all_metadata_found")
-		#
+			#elif current_rows[0].contains("Description") || current_rows[1].contains("Description"):
+				##check the label and add to dict first
 			else:
 				match_msg = "correlates"
 
@@ -311,7 +356,7 @@ func compare_values(a,b):
 		
 		if current_rows[0].contains("Longitude") && current_rows[1].contains("Latitude") || current_rows[0].contains("Latitude") && current_rows[1].contains("Longitude"):
 			match_msg = "long vs lat"
-			if !GPS_noticed_1 || !GPS_noticed_2:
+			if !GPS_noticed_1 || !GPS_noticed_2 || !GPS_noticed_3:
 				
 				_dialogue("m4.0")
 				
@@ -321,11 +366,27 @@ func compare_values(a,b):
 						get_parent().get_node("Label").text = str(Global.img1_count)
 
 						GPS_noticed_1 = true
-				elif selected_img == Global.img4:
+						
+						if finished_image_metadata():
+							print("done!")
+							#TODO: FINISH
+
+				elif selected_img == Global.img2:
 					if !GPS_noticed_2:
+						Global.img2_count += 1
+						get_parent().get_node("Label").text = str(Global.img2_count)
+
+						GPS_noticed_2 = true
+						
+						if finished_image_metadata():
+							print("done!")
+							#TODO: FINISH
+
+				elif selected_img == Global.img4:
+					if !GPS_noticed_3:
 						Global.img4_count += 1
 						get_parent().get_node("Label").text = str(Global.img4_count)
-						GPS_noticed_2 = true
+						GPS_noticed_3 = true
 
 				if GPS_noticed_1 && GPS_noticed_2 && time_noticed && !GPS_and_time_compared:
 					await pc.get_node("dialogue_display").tree_exited
@@ -339,7 +400,7 @@ func compare_values(a,b):
 						#if pc.has_node("dialogue_display"):
 							#await pc.get_node("dialogue_display").tree_exited
 						#Global.emit_signal("all_metadata_found")
-				
+
 func open_json(file_path):
 	if FileAccess.file_exists(file_path):
 
@@ -442,3 +503,19 @@ func _dialogue(topic:String):
 	var dialogue = preload("res://dialogue/dialogue_display.tscn").instantiate()
 	pc.add_child(dialogue)
 	dialogue.load_dialogue("res://dialogue/dialogue.json", topic)
+
+
+func finished_all_metadata():
+	return GPS_noticed_1 && date_time_noticed_1
+	
+func finished_image_metadata():
+	if selected_img == Global.img1:
+		return GPS_noticed_1 && date_time_noticed_1 && model_noticed_1
+	elif selected_img == Global.img2:
+		return model_noticed_2 && date_time_noticed_2 && make_noticed_1 && GPS_noticed_2
+	elif selected_img == Global.img3:
+		#TODO
+		pass
+	elif selected_img == Global.img4:
+		#TODO
+		pass
