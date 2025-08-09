@@ -32,32 +32,12 @@ var total_length2 = 0.0
 var segment_lengths2 = []
 var scroll_value
 
-var GPS_noticed_1:bool
-var GPS_noticed_2:bool
-var GPS_noticed_3:bool
-var GPS_noticed_4:bool
-
-var date_time_noticed_1:bool
-var date_time_noticed_2:bool
-var date_time_noticed_3:bool
-var date_time_noticed_4:bool
-
-var model_noticed_1:bool
-var model_noticed_2:bool
-var model_noticed_3:bool
-var model_noticed_4:bool 
-
-var make_noticed_1:bool
-var software_noticed_1:bool
-var description_noticed_1:bool
-
-var artist_noticed_1:bool
-var artist_noticed_2:bool
-
-var lens_noticed_1:bool
-var time_noticed:bool
-var GPS_and_time_compared:bool
-var photoshop_noticed:bool
+var noticed = {
+	"image1": [false,false,false],
+	"image2": [false,false,false,false],
+	"image3": [false,false,false,false,false],
+	"image4": [false,false,false,false,false]
+}
 
 var selected_img:PackedByteArray
 
@@ -73,9 +53,9 @@ func _on_select_pressed() -> void:
 	
 	for hbox in $scroll/data_container.get_children():
 		keys_and_values.append(hbox)
-	selected_img = Global.get_image(Global.user_path + "evidence_files/" + Global.selected_file)
+	if !Global.selected_file.is_empty():
+		selected_img = Global.get_image(Global.user_path + "evidence_files/" + Global.selected_file)
 
-	
 func _on_exit_pressed() -> void:
 	queue_free()
 	
@@ -220,21 +200,21 @@ func compare_values(a,b):
 		print("date and time")
 		if current_rows[0] == "DateTime" && (current_rows[1].contains("DateTimeOriginal") || current_rows[1].contains("DateTimeDigitized")) || current_rows[1] == "DateTime" && (current_rows[0].contains("DateTimeOriginal") || current_rows[0].contains("DateTimeDigitized")):
 			if selected_img == Global.img1:
-				if !date_time_noticed_1:
+				if !noticed["image1"][0]:
 					Global.img1_count += 1
 					get_parent().get_node("Label").text = str(Global.img1_count)
-					date_time_noticed_1 = true
-					
+					noticed["image1"][0] = true
+
 					if finished_image_metadata():
 						print("done!")
 						#TODO: FINISH
 			
 		if (current_rows[0] == "DateTimeOriginal" && current_rows[1] == "DateTimeDigitized") || (current_rows[1] == "DateTimeOriginal" && current_rows[0] == "DateTimeDigitized"):
 			if selected_img == Global.img2:
-				if !date_time_noticed_2:
+				if !noticed["image2"][1]:
 					Global.img2_count += 1
 					get_parent().get_node("Label").text = str(Global.img2_count)
-					date_time_noticed_2 = true
+					noticed["image2"][1] = true
 					
 					if finished_image_metadata():
 							print("done!")
@@ -257,12 +237,12 @@ func compare_values(a,b):
 			if current_rows[0].contains("GPSTime") && current_rows[1].contains("DateTime") || current_rows[0].contains("DateTime") && current_rows[1].contains("GPSTime"):
 
 				if selected_img == Global.img3:
-					if !date_time_noticed_3:
+					if !noticed["image3"][2]:
 						_dialogue("m5.0")
 
 						Global.img3_count += 1
 						get_parent().get_node("Label").text = str(Global.img3_count)
-						date_time_noticed_3 = true
+						noticed["image3"][2] = true
 						
 						if finished_image_metadata():
 							print("done!")
@@ -270,10 +250,10 @@ func compare_values(a,b):
 
 			elif current_rows[0].contains("GPSDate") && current_rows[1].contains("DateTime") || current_rows[0].contains("DateTime") && current_rows[1].contains("GPSDate"):
 				if selected_img == Global.img4:
-					if !date_time_noticed_4:
+					if !noticed["image4"][3]:
 						Global.img4_count += 1
 						get_parent().get_node("Label").text = str(Global.img3_count)
-						date_time_noticed_4 = true
+						noticed["image4"][3] = true
 						
 						if finished_image_metadata():
 							print("done!")
@@ -287,20 +267,20 @@ func compare_values(a,b):
 					match_msg = "makes sense"
 					
 					if selected_img == Global.img2:
-						if !model_noticed_2:
+						if !noticed["image2"][0]:
 							Global.img2_count += 1
 							get_parent().get_node("Label").text = str(Global.img2_count)
-							model_noticed_2 = true
+							noticed["image2"][0] = true
 							
 							if finished_image_metadata():
 								print("done!")
 								#TODO: FINISH
 							
 					elif selected_img == Global.img3:
-						if !model_noticed_3:
+						if !noticed["image3"][4]:
 							Global.img3_count += 1
 							get_parent().get_node("Label").text = str(Global.img3_count)
-							model_noticed_3 = true
+							noticed["image3"][4] = true
 							
 							if finished_image_metadata():
 								print("done!")
@@ -311,10 +291,10 @@ func compare_values(a,b):
 				match_msg = "the makes match"
 			else:
 				if selected_img == Global.img2:
-					if !make_noticed_1:
-						Global.img1_count += 1
+					if noticed["image2"][2]:
+						Global.img2_count += 1
 						get_parent().get_node("Label").text = str(Global.img2_count)
-						make_noticed_1 = true
+						noticed["image2"][2] = true
 						
 						if finished_image_metadata():
 							print("done!")
@@ -325,10 +305,10 @@ func compare_values(a,b):
 				match_msg = "the models match"
 			else:
 				if selected_img == Global.img1:
-					if !model_noticed_1:
+					if !noticed["image1"][2]:
 						Global.img1_count += 1
 						get_parent().get_node("Label").text = str(Global.img1_count)
-						model_noticed_1 = true
+						noticed["image1"][2] = true
 						
 						if finished_image_metadata():
 							print("done!")
@@ -340,12 +320,12 @@ func compare_values(a,b):
 					match_msg = "Photoshop?"
 
 					if selected_img == Global.img3:
-						if !software_noticed_1:
+						if !noticed["image3"][3]:
 							_dialogue("m3.0")
 							
 							Global.img3_count += 1
 							get_parent().get_node("Label").text = str(Global.img3_count)
-							software_noticed_1 = true
+							noticed["image3"][3] = true
 							
 							if finished_image_metadata():
 								print("done!")
@@ -353,10 +333,10 @@ func compare_values(a,b):
 
 			elif current_rows[0].contains("Description") || current_rows[1].contains("Description"):
 				if selected_img == Global.img3:
-					if !model_noticed_4:
+					if !noticed["image3"][1]:
 						Global.img3_count += 1
 						get_parent().get_node("Label").text = str(Global.img3_count)
-						model_noticed_4 = true
+						noticed["image3"][1] = true
 						
 						if finished_image_metadata():
 							print("done!")
@@ -374,32 +354,32 @@ func compare_values(a,b):
 			match_msg = "long vs lat"
 
 			if selected_img == Global.img1:
-				if !GPS_noticed_1:
+				if !noticed["image1"][1]:
 					_dialogue("m4.0")
 					
 					Global.img1_count += 1
 					get_parent().get_node("Label").text = str(Global.img1_count)
-					GPS_noticed_1 = true
+					noticed["image1"][1] = true
 					
 					if finished_image_metadata():
 						print("done!")
 						#TODO: FINISH
 
 			elif selected_img == Global.img2:
-				if !GPS_noticed_2:
+				if !noticed["image2"][3]:
 					Global.img2_count += 1
 					get_parent().get_node("Label").text = str(Global.img2_count)
-					GPS_noticed_2 = true
+					noticed["image2"][3] = true
 					
 					if finished_image_metadata():
 						print("done!")
 						#TODO: FINISH
 
 			elif selected_img == Global.img4:
-				if !GPS_noticed_3:
+				if !noticed["image4"][0]:
 					Global.img4_count += 1
 					get_parent().get_node("Label").text = str(Global.img4_count)
-					GPS_noticed_3 = true
+					noticed["image4"][0] = true
 					
 					if finished_image_metadata():
 						print("done!")
@@ -407,10 +387,10 @@ func compare_values(a,b):
 							
 		elif current_rows[0].contains("Altitude") && current_rows[1].contains("AltitudeRef") || current_rows[0].contains("AltitudeRef") && current_rows[1].contains("Altitude"):
 			if selected_img == Global.img4:
-				if !GPS_noticed_4:
+				if !noticed["image4"][1]:
 					Global.img4_count += 1
 					get_parent().get_node("Label").text = str(Global.img4_count)
-					GPS_noticed_4 = true
+					noticed["image4"][1] = true
 					
 					if finished_image_metadata():
 						print("done!")
@@ -419,10 +399,10 @@ func compare_values(a,b):
 	elif current_rows[0].contains("Artist") || current_rows[1].contains("Artist"):
 		if current_rows[0].contains("Copyright") || current_rows[1].contains("Copyright"):
 			if selected_img == Global.img3:
-				if !artist_noticed_1:
+				if !noticed["image3"][0]:
 					Global.img3_count += 1
 					get_parent().get_node("Label").text = str(Global.img3_count)
-					artist_noticed_1 = true
+					noticed["image3"][0] = true
 					
 					if finished_image_metadata():
 						print("done!")
@@ -430,10 +410,10 @@ func compare_values(a,b):
 						
 		elif current_rows[0].contains("Description") || current_rows[1].contains("Description"):
 			if selected_img == Global.img4:
-				if !artist_noticed_2:
+				if !noticed["image4"][4]:
 					Global.img4_count += 1
 					get_parent().get_node("Label").text = str(Global.img4_count)
-					artist_noticed_2 = true
+					noticed["image4"][4] = true
 					
 					if finished_image_metadata():
 						print("done!")
@@ -441,10 +421,10 @@ func compare_values(a,b):
 						
 	elif current_rows[0].contains("LensSpecification") && current_rows[1].contains("FocalLength") || current_rows[0].contains("FocalLength") && current_rows[1].contains("LensSpecification"):
 			if selected_img == Global.img4:
-				if !lens_noticed_1:
+				if !noticed["image4"][2]:
 					Global.img4_count += 1
 					get_parent().get_node("Label").text = str(Global.img4_count)
-					lens_noticed_1 = true
+					noticed["image4"][2] = true
 					
 					if finished_image_metadata():
 						print("done!")
@@ -555,17 +535,21 @@ func _dialogue(topic:String):
 
 
 func finished_all_metadata():
-	return GPS_noticed_1 && date_time_noticed_1 && model_noticed_1 \
-		&& model_noticed_2 && date_time_noticed_2 && make_noticed_1 && GPS_noticed_2 \
-		&& artist_noticed_1 && model_noticed_4 && date_time_noticed_3 && software_noticed_1 && model_noticed_3 \
-		&& GPS_noticed_3 && GPS_noticed_4  && lens_noticed_1 && date_time_noticed_4 && artist_noticed_2
+	return noticed["image1"][0] && noticed["image1"][1] && noticed["image1"][2] \
+		&& noticed["image2"][0] && noticed["image2"][1] && noticed["image2"][2] && noticed["image2"][3] \
+		&& noticed["image3"][0] && noticed["image3"][1] && noticed["image3"][2] && noticed["image3"][3] \
+		&& noticed["image4"][0] && noticed["image4"][1] && noticed["image4"][2] && noticed["image4"][3]
+
 	
 func finished_image_metadata():
 	if selected_img == Global.img1:
-		return GPS_noticed_1 && date_time_noticed_1 && model_noticed_1
+		return noticed["image1"][0] && noticed["image1"][1] && noticed["image1"][2]
+		
 	elif selected_img == Global.img2:
-		return model_noticed_2 && date_time_noticed_2 && make_noticed_1 && GPS_noticed_2
+		return noticed["image2"][0] && noticed["image2"][1] && noticed["image2"][2] && noticed["image2"][3]
+
 	elif selected_img == Global.img3:
-		return artist_noticed_1 && model_noticed_4 && date_time_noticed_3 && software_noticed_1 && model_noticed_3
+		return noticed["image3"][0] && noticed["image3"][1] && noticed["image3"][2] && noticed["image3"][3]
+
 	elif selected_img == Global.img4:
-		return GPS_noticed_3 && GPS_noticed_4  && lens_noticed_1 && date_time_noticed_4 && artist_noticed_2
+		return noticed["image4"][0] && noticed["image4"][1] && noticed["image4"][2] && noticed["image4"][3]
