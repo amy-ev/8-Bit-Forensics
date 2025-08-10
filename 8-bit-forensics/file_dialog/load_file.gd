@@ -44,7 +44,7 @@ func _ready() -> void:
 func _on_load_button_pressed() -> void:
 	Global.selected_file = selected_file
 	if !selected_file.is_empty():
-		print(selected_file.is_empty())
+
 		if parent.name == "metadata_window":
 			var metadata_thumbnail = parent.get_node("thumbnail_column/thumbnail")
 			var metadata_column = parent.get_node("scroll/data_container")

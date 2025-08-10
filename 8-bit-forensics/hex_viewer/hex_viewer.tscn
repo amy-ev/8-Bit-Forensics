@@ -17,7 +17,7 @@
 offset_left = 24.0
 offset_top = 6.0
 offset_right = 336.0
-offset_bottom = 194.0
+offset_bottom = 202.0
 mouse_filter = 1
 texture = ExtResource("1_m7h7m")
 patch_margin_left = 2
@@ -28,8 +28,8 @@ script = ExtResource("2_cke5y")
 
 [node name="v_sort" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 309.0
-offset_bottom = 188.0
+offset_right = 312.0
+offset_bottom = 196.0
 theme_override_constants/separation = 0
 
 [node name="scroll_manager" type="HBoxContainer" parent="v_sort"]
@@ -43,7 +43,7 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="boundary" type="ColorRect" parent="v_sort/scroll_manager/sort"]
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
@@ -55,6 +55,7 @@ current_tab = 0
 
 [node name="original_file" parent="v_sort/scroll_manager/sort/window" instance=ExtResource("5_woy5n")]
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="scroll_bar" type="ColorRect" parent="v_sort/scroll_manager"]
 material = SubResource("ShaderMaterial_cm2t2")
@@ -81,19 +82,19 @@ script = ExtResource("9_f13me")
 
 [node name="load" type="Button" parent="."]
 layout_mode = 0
-offset_left = 279.0
-offset_top = 5.0
-offset_right = 302.0
-offset_bottom = 19.0
+offset_left = 283.0
+offset_top = 4.0
+offset_right = 306.0
+offset_bottom = 18.0
 theme = ExtResource("10_ywfrl")
 text = "open"
 
 [node name="save" type="Button" parent="."]
 layout_mode = 0
-offset_left = 254.0
-offset_top = 5.0
-offset_right = 277.0
-offset_bottom = 19.0
+offset_left = 258.0
+offset_top = 4.0
+offset_right = 281.0
+offset_bottom = 18.0
 theme = ExtResource("10_ywfrl")
 disabled = true
 text = "save"
@@ -101,26 +102,26 @@ text = "save"
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 162.0
-offset_right = 283.0
-offset_bottom = 169.0
-color = Color(1, 1, 1, 0.333333)
+offset_top = 170.0
+offset_right = 308.0
+offset_bottom = 177.0
+color = Color(0.741176, 0.647059, 0.513726, 0.509804)
 
 [node name="find" type="Button" parent="."]
 layout_mode = 0
 offset_left = 290.0
-offset_top = 167.0
+offset_top = 179.0
 offset_right = 301.0
-offset_bottom = 180.0
+offset_bottom = 192.0
 theme = ExtResource("10_ywfrl")
 text = "x"
 
 [node name="icon_container" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 115.0
-offset_top = 195.0
+offset_top = 200.0
 offset_right = 191.0
-offset_bottom = 215.0
+offset_bottom = 220.0
 theme_override_constants/separation = 8
 alignment = 1
 

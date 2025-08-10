@@ -10,7 +10,7 @@ var file_icon: Texture2D
 
 var first_search:String
 
-@onready var hex_text = $v_sort/scroll_manager/sort/window/original_file/hex_text
+@onready var hex_text = $v_sort/scroll_manager/sort/window/original_file/vbox_sort/hex_text
 @onready var scroll_bar = $v_sort/scroll_manager/scroll_bar
 @onready var tabs = $v_sort/scroll_manager/sort/window
 @onready var results_text = $v_sort/results_scroll_manager/results
@@ -74,10 +74,10 @@ func _on_load_pressed() -> void:
 func _on_window_tab_changed(tab: int) -> void:
 	var buffer
 	if tab != 0:
-		hex_text = get_node("v_sort/scroll_manager/sort/window/new_file"+str(tab)+"/hex_text")
+		hex_text = get_node("v_sort/scroll_manager/sort/window/new_file"+str(tab)+"/vbox_sort/hex_text")
 		buffer = hex_text._wrapped_buffer
 	else:
-		hex_text = $v_sort/scroll_manager/sort/window/original_file/hex_text
+		hex_text = $v_sort/scroll_manager/sort/window/original_file/vbox_sort/hex_text
 		buffer = _wrapped_buffer.buffer
 	results_text.results_recieved = false
 	results_text.queue_redraw()
@@ -88,7 +88,7 @@ func _on_window_tab_changed(tab: int) -> void:
 
 func _on_save_pressed() -> void:
 	if tabs.current_tab != 0:
-		var buffer = tabs.get_child(tabs.current_tab).get_node("hex_text")._wrapped_buffer
+		var buffer = tabs.get_child(tabs.current_tab).get_node("vbox_sort/hex_text")._wrapped_buffer
 		
 		var start_str = ""
 		var end_str = ""
@@ -100,31 +100,33 @@ func _on_save_pressed() -> void:
 			end_str += str(hex_text._hex_to_string[buffer[i]]+ "")
 
 		if (start_str == "ffd8ffe1" || start_str == "ffd8ffe0") && end_str == "ffd9":
+			var content:= PackedByteArray(tabs.get_child(tabs.current_tab).get_node("vbox_sort/hex_text")._wrapped_buffer)
+			
 			if !already_carved:
-				file_no +=1
-				var file = FileAccess.open("user://evidence_files/image"+ str(file_no)+ ".jpg", FileAccess.WRITE)
+				if content == Global.img1 || content == Global.img2 || content == Global.img3 || content == Global.img4:
+					file_no +=1
+					var file = FileAccess.open("user://evidence_files/image"+ str(file_no)+ ".jpg", FileAccess.WRITE)
 
-				file.store_buffer(tabs.get_child(tabs.current_tab).get_node("hex_text")._wrapped_buffer)
-				file.close()
-				var icon = load("res://viewer/icon.tscn").instantiate()
-				$icon_container.add_child(icon)
+					file.store_buffer(content)
+					file.close()
+					var icon = load("res://viewer/icon.tscn").instantiate()
+					$icon_container.add_child(icon)
 
-				#get_parent().add_child(icon)
-				var img:Texture2D = load("res://assets/UI/file-icon.png")
-				file_icon = img
+					var img:Texture2D = load("res://assets/UI/file-icon.png")
+					file_icon = img
 
-				icon._file_icon = file_icon
-				
-				icon.set_meta("file_name","image"+str(file_no)+".jpg")
-				icon._file_icon.set_meta("file_name","image"+str(file_no)+".jpg")
-				icon._file_name = "file "+ str(file_no)
-				
-				if !Global.first_image_carved:
-					icon.set_visible(true)
+					icon._file_icon = file_icon
 					
-					Global.first_image_carved = true
-				$save.disabled = true
-				$save.release_focus()
+					icon.set_meta("file_name","image"+str(file_no)+".jpg")
+					icon._file_icon.set_meta("file_name","image"+str(file_no)+".jpg")
+					icon._file_name = "file "+ str(file_no)
+					
+					if !Global.first_image_carved:
+						icon.set_visible(true)
+						
+						Global.first_image_carved = true
+					$save.disabled = true
+					$save.release_focus()
 			else:
 				file_no = file_no
 				

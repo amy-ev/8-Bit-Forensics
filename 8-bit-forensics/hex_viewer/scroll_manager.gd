@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-@onready var hex_text = $sort/window/original_file/hex_text
+@onready var hex_text = $sort/window/original_file/vbox_sort/hex_text
 @onready var scroll_bar = $scroll_bar
 
 var _last_scroll_time = 0
@@ -15,9 +15,9 @@ func _on_gui_input(event: InputEvent) -> void:
 				
 func _scroll(delta):
 	if get_node("sort/window").current_tab != 0:
-		hex_text = get_node("sort/window/new_file"+str(get_node("sort/window").current_tab)+"/hex_text")
+		hex_text = get_node("sort/window/new_file"+str(get_node("sort/window").current_tab)+"/vbox_sort/hex_text")
 	else:
-		hex_text = $sort/window/original_file/hex_text
+		hex_text = $sort/window/original_file/vbox_sort/hex_text
 	var now = Time.get_ticks_msec()
 	
 	if Input.is_key_pressed(KEY_CTRL):

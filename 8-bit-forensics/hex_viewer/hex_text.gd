@@ -36,7 +36,6 @@ func _ready() -> void:
 		
 	var char_size = font.get_string_size("a",0,-1,FONT_SIZE)
 	char_width = int(char_size.x)
-	print(char_width)
 	
 	offset_gap = char_width * 8
 	hex_text_gap =  char_width * (3 * _row_width - 2)
@@ -68,7 +67,7 @@ func get_visible_row_count()-> int:
 	return int(size.y)/ line_height
 	
 func _draw() -> void:
-	if get_parent().name == "original_file":
+	if get_parent().get_parent().name == "original_file":
 		if _wrapped_buffer == null:
 			return
 			#stop when len(buffer) is reached as it is the end of the file
