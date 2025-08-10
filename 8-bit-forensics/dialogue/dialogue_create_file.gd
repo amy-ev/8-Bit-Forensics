@@ -24,11 +24,11 @@ func _on_new_child(stage:Node):
 			start(the_stage[stage.button_pressed])
 	elif stage.name == "item_information":
 		set_visible(true)
-		start("fill in info")
+		start("fill in the information, matching any fields with the previously filled out evidence bag")
 		
 	elif stage.name =="create_file":
-		set_visible(true)
-		start("hash")
+		set_visible(false)
+		#start("hash")
 
 
 func _on_ok_pressed() -> void:

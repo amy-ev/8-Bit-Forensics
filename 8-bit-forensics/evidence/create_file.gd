@@ -7,6 +7,7 @@ extends ColorRect
 #TODO: PRODUCE A MD5 HASH
 
 func _ready() -> void:
+	screen.get_node("evidence_file").get_node("file_menu").disabled = true
 	Global.emit_signal("dialogue_triggered","e5.4")
 	Global.emit_signal("next_step",self)
 	

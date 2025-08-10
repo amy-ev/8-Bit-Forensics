@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bymujjs8bugxl"]
+[gd_scene load_steps=6 format=3 uid="uid://bymujjs8bugxl"]
 
 [ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_iu2nx"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="2_k7w4u"]
 [ext_resource type="Script" uid="uid://cwto8mfeu6gle" path="res://pc/hash.gd" id="2_olpnb"]
 [ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="4_olpnb"]
+[ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/UI/exit-button.png" id="5_lnx4f"]
 
 [node name="hash" type="NinePatchRect"]
-offset_right = 196.0
-offset_bottom = 63.0
+offset_left = 4.0
+offset_top = 158.0
+offset_right = 246.0
+offset_bottom = 196.0
 texture = ExtResource("1_iu2nx")
 patch_margin_left = 2
 patch_margin_top = 2
@@ -19,7 +22,7 @@ script = ExtResource("2_olpnb")
 layout_mode = 0
 offset_left = 41.0
 offset_top = 20.0
-offset_right = 192.0
+offset_right = 202.0
 offset_bottom = 32.0
 theme = ExtResource("2_k7w4u")
 placeholder_text = "cmd line"
@@ -44,52 +47,21 @@ text = "C:\\Users>"
 
 [node name="submit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 161.0
-offset_top = 35.0
-offset_right = 192.0
-offset_bottom = 49.0
+offset_left = 205.0
+offset_top = 19.0
+offset_right = 236.0
+offset_bottom = 33.0
 theme = ExtResource("4_olpnb")
 text = "submit"
 
-[node name="output" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 51.0
-offset_right = 196.0
-offset_bottom = 63.0
-texture = ExtResource("1_iu2nx")
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
-
-[node name="text" type="Label" parent="output"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 162.0
-offset_bottom = 10.0
-theme = ExtResource("2_k7w4u")
-autowrap_mode = 1
-
-[node name="output_type" type="Label" parent="."]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 53.0
-offset_right = 32.0
-offset_bottom = 61.0
-theme = ExtResource("2_k7w4u")
-text = "output:"
-horizontal_alignment = 2
-
-[node name="done" type="Button" parent="."]
+[node name="done" type="TextureButton" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 173.0
-offset_right = 196.0
+offset_left = 228.0
+offset_right = 242.0
 offset_bottom = 14.0
 theme = ExtResource("4_olpnb")
-text = "done"
+texture_normal = ExtResource("5_lnx4f")
 
 [connection signal="pressed" from="submit" to="." method="_on_submit_pressed"]
 [connection signal="pressed" from="done" to="." method="_on_done_pressed"]

@@ -56,8 +56,10 @@ script = ExtResource("1_c120u")
 
 [node name="window" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_right = 159.0
-offset_bottom = 41.0
+offset_left = 36.0
+offset_top = 53.0
+offset_right = 195.0
+offset_bottom = 94.0
 texture = ExtResource("1_a5nj3")
 patch_margin_left = 2
 patch_margin_top = 2

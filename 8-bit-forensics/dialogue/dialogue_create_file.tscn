@@ -25,6 +25,7 @@ offset_left = 9.0
 offset_top = 9.0
 offset_right = 81.0
 offset_bottom = 241.0
+autowrap_mode = 1
 
 [node name="ok" type="TextureButton" parent="."]
 offset_left = 70.0
