@@ -66,9 +66,10 @@ func _input(event: InputEvent) -> void:
 			add_child(select_window.instantiate())
 
 func _on_load_pressed() -> void:
-	if !search_open && !select_open:
-		add_child(load("res://file_dialog/load_file.tscn").instantiate())
+	if !search_open && !select_open && !load_file_open:
 		load_file_open = true
+		add_child(load("res://file_dialog/load_file.tscn").instantiate())
+
 
 
 func _on_window_tab_changed(tab: int) -> void:
