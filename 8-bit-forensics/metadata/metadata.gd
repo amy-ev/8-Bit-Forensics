@@ -5,6 +5,8 @@ extends NinePatchRect
 
 @export var current_image: String
 
+var load_file_open:bool
+
 var font: FontFile
 
 var FONT_SIZE:= 8
@@ -50,9 +52,15 @@ func _ready() -> void:
 	Global.connect("metadata_selected", _on_label_selected)
 
 func _on_select_pressed() -> void:
-	var load_files = _load_files.instantiate()
-	add_child(load_files)
-	
+	if !load_file_open:
+		var load_files = _load_files.instantiate()
+		add_child(load_files)
+		load_file_open = true
+		
+		await load_files.tree_exited
+		
+		load_file_open = false
+		
 	if has_node("comment"):
 		remove_child(get_node("comment"))
 		
@@ -63,7 +71,7 @@ func _on_select_pressed() -> void:
 	
 	queue_redraw()
 	
-	await load_files.tree_exited
+
 	
 	for hbox in $scroll/data_container.get_children():
 		keys_and_values.append(hbox)
@@ -72,6 +80,7 @@ func _on_select_pressed() -> void:
 		$thumbnail_column/thumbnail.set_visible(true)
 
 func _on_exit_pressed() -> void:
+	load_file_open = false
 	queue_free()
 	
 func _process(delta: float) -> void:
