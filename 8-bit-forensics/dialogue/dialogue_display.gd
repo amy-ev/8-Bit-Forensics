@@ -5,6 +5,7 @@ var dialogue_dict:= {}
 var topic:String
 
 func _ready() -> void:
+
 	Global.connect("text_finished", _on_text_finished)
 	if has_node("panel/container/name"):
 		$panel/container/name.text = "Chief Quacky McQuackFace"
@@ -58,6 +59,9 @@ func _on_select_option_selected(_option: String) -> void:
 			dialogue_text(dialogue_dict,dialogue_dict[topic]["go to"][0])
 		else:
 			queue_free()
+	if get_parent().has_node("screen/create_file"):
+		Global.emit_signal("inc_progressbar")
+		print()
 			
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_action_pressed("enter"):

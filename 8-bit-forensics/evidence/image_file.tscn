@@ -5,10 +5,10 @@
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="2_gk13f"]
 
 [node name="evidence_file" type="NinePatchRect"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 235.0
-offset_bottom = 151.0
+offset_left = 27.0
+offset_top = 8.0
+offset_right = 333.0
+offset_bottom = 139.0
 mouse_filter = 1
 texture = ExtResource("1_7bnno")
 patch_margin_left = 2
@@ -35,21 +35,31 @@ popup/item_0/id = 0
 layout_mode = 0
 offset_left = 6.0
 offset_top = 30.0
-offset_right = 57.0
-offset_bottom = 132.0
+offset_right = 165.0
+offset_bottom = 125.0
 mouse_filter = 1
 theme = ExtResource("2_gk13f")
 theme_override_font_sizes/font_size = 8
 
 [node name="evidence_tree_label" type="Label" parent="."]
 layout_mode = 1
-offset_left = 4.0
+offset_left = 8.0
 offset_top = 22.0
-offset_right = 56.0
+offset_right = 60.0
 offset_bottom = 30.0
 mouse_filter = 1
 theme = ExtResource("2_gk13f")
-text = "evidence tree"
+text = "Evidence Tree"
+
+[node name="file_list_label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 171.0
+offset_top = 22.0
+offset_right = 223.0
+offset_bottom = 30.0
+mouse_filter = 1
+theme = ExtResource("2_gk13f")
+text = "File List"
 
 [node name="blocker" type="ColorRect" parent="."]
 visible = false
@@ -60,3 +70,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
+
+[node name="file_list" type="Tree" parent="."]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 30.0
+offset_right = 300.0
+offset_bottom = 125.0
+theme = ExtResource("2_gk13f")
+allow_search = false
+hide_folding = true
+enable_recursive_folding = false
+hide_root = true
+
+[connection signal="item_selected" from="evidence_tree" to="." method="_on_evidence_tree_item_selected"]

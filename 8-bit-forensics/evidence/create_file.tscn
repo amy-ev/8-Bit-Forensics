@@ -47,19 +47,25 @@ _data = {
 }
 
 [node name="create_file" type="ColorRect"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 235.0
-offset_bottom = 151.0
+offset_left = 27.0
+offset_top = 8.0
+offset_right = 333.0
+offset_bottom = 226.0
 color = Color(1, 1, 1, 0)
 script = ExtResource("1_c120u")
 
 [node name="window" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = 36.0
-offset_top = 53.0
-offset_right = 195.0
-offset_bottom = 94.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -79.5
+offset_top = -41.0
+offset_right = 79.5
+grow_horizontal = 2
+grow_vertical = 0
 texture = ExtResource("1_a5nj3")
 patch_margin_left = 2
 patch_margin_top = 2
@@ -81,7 +87,6 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_ytjs6")
 }
-autoplay = "create"
 
 [node name="next" type="Button" parent="window"]
 layout_mode = 0

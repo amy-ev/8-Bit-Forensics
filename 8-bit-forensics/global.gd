@@ -60,6 +60,7 @@ signal answer_response(is_correct:bool)
 #day 1
 signal create_image_file()
 signal evidence_finished()
+signal inc_progressbar()
 
 #day 2
 signal signature_found(locations:Array)

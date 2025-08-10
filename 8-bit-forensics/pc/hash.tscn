@@ -7,10 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/UI/exit-button.png" id="5_lnx4f"]
 
 [node name="hash" type="NinePatchRect"]
-offset_left = 4.0
-offset_top = 158.0
-offset_right = 246.0
-offset_bottom = 196.0
+offset_left = 58.0
+offset_top = 148.0
+offset_right = 300.0
+offset_bottom = 186.0
 texture = ExtResource("1_iu2nx")
 patch_margin_left = 2
 patch_margin_top = 2

@@ -5,26 +5,26 @@
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="2_fuy1h"]
 
 [node name="select_drive" type="ColorRect"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 235.0
-offset_bottom = 151.0
+offset_left = 27.0
+offset_top = 8.0
+offset_right = 333.0
+offset_bottom = 226.0
 color = Color(1, 1, 1, 0)
 script = ExtResource("1_hbarf")
 
 [node name="window" type="NinePatchRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -98.5
-offset_top = -23.0
+offset_top = -69.0
 offset_right = 98.5
-offset_bottom = 23.0
+offset_bottom = -23.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 texture = ExtResource("1_fuy1h")
 patch_margin_left = 2
 patch_margin_top = 2

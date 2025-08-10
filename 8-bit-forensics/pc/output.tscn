@@ -6,13 +6,14 @@
 clip_contents = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = 8.0
-offset_top = 199.0
-offset_right = 352.0
-offset_bottom = 219.0
+offset_left = 58.0
+offset_top = 189.0
+offset_right = 300.0
+offset_bottom = 221.0
 
 [node name="output_type" type="Label" parent="."]
 custom_minimum_size = Vector2(28, 0)
+layout_mode = 0
 offset_top = 2.0
 offset_right = 28.0
 offset_bottom = 10.0
@@ -23,8 +24,8 @@ theme_override_colors/font_color = Color(0.847059, 0.752941, 0.615686, 1)
 layout_mode = 2
 offset_left = 31.0
 offset_top = 2.0
-offset_right = 350.0
-offset_bottom = 22.0
+offset_right = 243.0
+offset_bottom = 34.0
 theme = ExtResource("2_lotrr")
 theme_override_colors/font_color = Color(0.901961, 0.807843, 0.67451, 1)
 autowrap_mode = 1
