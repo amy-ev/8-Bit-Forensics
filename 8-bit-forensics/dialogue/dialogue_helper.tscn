@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://nyn50jbn28eh"]
+
+[ext_resource type="Texture2D" uid="uid://dgo8feyw0ddox" path="res://assets/dialogue/dialogue-panel-slim.png" id="1_0lh4s"]
+[ext_resource type="Script" uid="uid://gj0k3dhybv6n" path="res://dialogue/dialogue_helper.gd" id="1_mlhwn"]
+[ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="2_mlhwn"]
+[ext_resource type="Texture2D" uid="uid://dmsht0365lf24" path="res://assets/dialogue/next-button.png" id="3_sq7j4"]
+
+[node name="dialogue_helper" type="CanvasLayer"]
+script = ExtResource("1_mlhwn")
+
+[node name="panel" type="NinePatchRect" parent="."]
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 93.0
+offset_bottom = 108.0
+texture = ExtResource("1_0lh4s")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+
+[node name="dialogue_label" parent="panel" instance=ExtResource("2_mlhwn")]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 81.0
+offset_bottom = 96.0
+
+[node name="ok" type="TextureButton" parent="."]
+offset_left = 69.0
+offset_top = 85.0
+offset_right = 83.0
+offset_bottom = 99.0
+texture_normal = ExtResource("3_sq7j4")
+
+[connection signal="pressed" from="ok" to="." method="_on_ok_pressed"]

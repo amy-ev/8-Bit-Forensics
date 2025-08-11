@@ -119,7 +119,6 @@ func _on_load_button_pressed() -> void:
 				metadata_count = Global.img4_count
 				label.text = str(metadata_count) + " / 5"
 				
-				
 		elif parent.name == "hex_viewer":
 			parent.open_file(evidence_folder + selected_file)
 			if !Global.first_file_opened && selected_file == "SD-image-file.001":
@@ -131,7 +130,7 @@ func _on_load_button_pressed() -> void:
 				var dialogue = preload("res://dialogue/dialogue_display.tscn").instantiate()
 				pc.add_child(dialogue)
 				dialogue.load_dialogue("res://dialogue/dialogue.json", "h2.0")
-
+				Global.emit_signal("hex_search_help")
 
 			parent.load_file_open = false
 			
@@ -149,9 +148,9 @@ func _on_load_button_pressed() -> void:
 			search_results.results_recieved = false
 			search_results.queue_redraw()
 			
-			
 	queue_free()
-	
+
+
 func add_files(file_no:int):
 
 	for i in file_no:
@@ -208,7 +207,7 @@ func file_count(file_path:String) -> int:
 func _on_exit_pressed() -> void:
 	if parent.name == "metadata_window":
 		OS.create_process("cmd.exe", ["/C", "cd " + user_path+"/python_files && kill.bat"])
-		
+		parent.load_file_open = false
 	elif parent.name == "hex_viewer":
 		parent.load_file_open = false
 		

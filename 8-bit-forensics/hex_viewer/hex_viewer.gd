@@ -30,6 +30,7 @@ var start_end:= []
 
 
 func _ready() -> void:
+	Global.emit_signal("next_step",self)
 	hex_text.set_wrapped_buffer(_wrapped_buffer)
 	results_text.set_wrapped_buffer(_wrapped_buffer)
 

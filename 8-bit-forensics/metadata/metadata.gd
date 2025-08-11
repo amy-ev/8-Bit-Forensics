@@ -50,7 +50,8 @@ var selected_img:PackedByteArray
 func _ready() -> void:
 	font = preload("res://8-bit-forensics.ttf")
 	Global.connect("metadata_selected", _on_label_selected)
-
+	Global.emit_signal("next_step",self)
+	
 func _on_select_pressed() -> void:
 	if !load_file_open:
 		var load_files = _load_files.instantiate()

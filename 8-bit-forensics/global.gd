@@ -65,6 +65,8 @@ signal inc_progressbar()
 #day 2
 signal signature_found(locations:Array)
 signal all_images_carved()
+signal hex_search_help()
+signal hex_select_help()
 
 #day 3
 signal metadata_selected(selected:Node)

@@ -81,6 +81,7 @@ func _search(original_buffer, signature, chunk_size=4096):
 						var dialogue = load("res://dialogue/dialogue_display.tscn").instantiate()
 						pc.add_child(dialogue)
 						dialogue.load_dialogue("res://dialogue/dialogue.json", "h4.0")
+						Global.emit_signal("hex_select_help")
 	return results
 	
 func _dec_to_hex(x:int, y:int)-> String:

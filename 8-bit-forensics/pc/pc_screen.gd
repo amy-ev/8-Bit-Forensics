@@ -18,16 +18,19 @@ func _ready() -> void:
 	
 	match day:
 		1:
+			screen.add_child(preload("res://dialogue/helper.tscn").instantiate())
 			screen.add_child(preload("res://evidence/image_file.tscn").instantiate())
 			if !Global.pc_debrief_given:
 				_on_dialogue_triggered("e5.0")
 		2:
+			screen.add_child(preload("res://dialogue/helper.tscn").instantiate())
 			screen.add_child(preload("res://hex_viewer/hex_viewer.tscn").instantiate())
 			if !Global.pc_debrief_given:
 				_on_dialogue_triggered("h1.0")
 		3:
-			screen.add_child(preload("res://metadata/metadata.tscn").instantiate())
 			screen.add_child(preload("res://dialogue/helper.tscn").instantiate())
+			screen.add_child(preload("res://metadata/metadata.tscn").instantiate())
+			
 			if !Global.pc_debrief_given:
 				_on_dialogue_triggered("m1.0")
 				

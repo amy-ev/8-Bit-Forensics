@@ -28,15 +28,12 @@ func _on_new_child(stage:Node):
 		
 	elif stage.name =="create_file":
 		set_visible(false)
-		#start("hash")
-
 
 func _on_ok_pressed() -> void:
 	if dialogue_label.is_playing:
 		dialogue_label.skip()
 	else:
 		set_visible(false)
-		
 		
 func load_dialogue(file_path):
 	if FileAccess.file_exists(file_path):
