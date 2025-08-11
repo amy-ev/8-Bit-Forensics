@@ -76,7 +76,7 @@
     ]
   },
   "e4.0": {
-    "text": "Now comes the fun part: Forensic imagining. This is where we create a bit-for-bit copy of the card, preserving every file, fragment, and every bad decision the suspect ever made on it",
+    "text": "Now comes the fun part: Forensic imagining. This is where we create a bit-for-bit copy of the card, preserving every file, fragment, and every bad decision the suspect ever made on it.",
     "go to": [
       "e4.1"
     ],
@@ -94,7 +94,7 @@
     ]
   },
   "e4.2": {
-    "text": "Write blockers are like a bouncer at the club. They let us read what’s inside. But don’t let anything, or anyone, write back. No modification, no accidental changes, no Windows deciding it needs to ‘fix’ the filesystem.",
+    "text": "Write blockers are like a bouncer at the club. They let us read what’s inside. But don’t let anything, or anyone, write back. No modification, no accidental changes, no Windows deciding it needs to ‘fix’ the file system.",
     "go to": [
       "e4.3"
     ],
@@ -112,7 +112,7 @@
     ]
   },
   "e4.4": {
-    "text": "So lets start up the PC, we'll fire up X and create a forensic image.",
+    "text": "So, let’s start up the PC by doubling clicking on it, we'll fire up the software and create a forensic image.",
     "go to": [
       "e4.5"
     ],
@@ -142,7 +142,7 @@
     ]
   },
   "e5.2": {
-    "text": "We’re going for ‘dd’, we want an exact bit-for-bit copy without the added fluff embedded.",
+    "text": "We’re going for ‘dd’, we want an exact bit-for-bit copy, without the added fluff embedded.",
     "function": "end_dialogue",
     "option display": [
       "Alright"
@@ -165,7 +165,7 @@
     ]
   },
   "e5.5": {
-    "text": "And while we do that, lets talk hashes. Not the breakfast kind sadly. Cryptographic hashes.",
+    "text": "And while we do that, let’s talk hashes. Not the breakfast kind sadly. Cryptographic hashes.",
     "go to": [
       "e5.6"
     ],
@@ -235,7 +235,7 @@
     ]
   },
   "e6.3": {
-    "text": "Yeah, in this case its named 'SD-image-file.001'",
+    "text": "Yeah, in this case its named 'SD-image-file.001'.",
     "function": "end_dialogue",
     "option display": [
       "Okay"
@@ -285,7 +285,7 @@
     ]
   },
   "e8.2": {
-    "text": "Then its on to Phase 2: Analysis. And trust me, that’s where things get…strange.",
+    "text": "Then it’s on to Phase 2: Analysis. And trust me, that’s where things get…strange.",
     "function": "end_dialogue",
     "option display": [
       "Nice"
@@ -302,7 +302,7 @@
     ]
   },
   "e9.1": {
-    "text": "##Crime scene needs immediate support, suspected network device at a break in. Bring acquisition gear.##",
+    "text": "## Crime scene needs immediate support, suspected network device at a break in. Bring acquisition gear. ##",
     "go to": [
       "e9.2"
     ],
@@ -336,7 +336,7 @@
     ]
   },
   "h1.0": {
-    "text": "Now open up the image file.",
+    "text": "Now open the image file.",
     "function": "end_dialogue",
     "option display": [
       "Okay"
@@ -410,7 +410,7 @@
     ]
   },
   "h2.7": {
-    "text": "Our mission is to find those hex ranges and carve them out manually. Because if the suspected deleted the files but didn't overwrite them, they'll still be hiding in unallocated space like scared ducks.",
+    "text": "Our mission is to find those hex ranges and carve them out manually. Because if the suspect deleted the files but didn't overwrite them, they'll still be hiding in unallocated space like scared ducks.",
     "go to": [
       "h2.8"
     ],
@@ -419,7 +419,7 @@
     ]
   },
   "h2.8": {
-    "text": "Press Ctrl+F and search for the header or footer ~ FF D8 FF or FF D9",
+    "text": "Press Ctrl+F and search for the header or footer ~ FF D8 FF or FF D9.",
     "function": "end_dialogue",
     "option display": [
       "Okay"
@@ -467,7 +467,7 @@
     ]
   },
   "h5.0": {
-    "text": "Now let's save it as a .jpg. If you've carved it correctly you'll be able to open it and view the image.",
+    "text": "Now let's save it as a .jpg. If you've carved it correctly, you'll be able to open it and view the image.",
     "function": "end_dialogue",
     "option display": [
       "Cool"
@@ -483,7 +483,7 @@
     ]
   },
   "h6.1": {
-    "text": "Let's keep carving, see if there's anymore JPEG files to uncover.",
+    "text": "Let's keep carving, see if there's any more JPEG files to uncover.",
     "go to": [
       "h6.6",
       "h6.2"
@@ -494,7 +494,7 @@
     ]
   },
   "h6.2": {
-    "text": "We'll they weren't visible through the file system. Probably deleted. Maybe even intentionally hidden.",
+    "text": "Well, they weren't visible through the file system. Probably deleted. Maybe even intentionally hidden.",
     "go to": [
       "h6.3"
     ],
@@ -530,7 +530,7 @@
     ]
   },
   "h6.6": {
-    "text": "Keep your eyes peeled for anything that screams, 'I shouldn't be here'. The digital underground is a stranger, messy place.",
+    "text": "Keep your eyes peeled for anything that screams, 'I shouldn't be here'. The digital underground is a strange, messy place.",
     "function": "end_dialogue",
     "option display": [
       "Sure thing"
@@ -610,7 +610,7 @@
     ]
   },
   "h8.5": {
-    "text": "#Digitial forensics, please respond. We've got a warehouse break-in, possible tampered security DVR. Imaging requested ASAP.#",
+    "text": "## Digital forensics, please respond. We've got a warehouse break-in, possible tampered security DVR. Imaging requested ASAP. ##",
     "go to": [
       "h8.6"
     ],
@@ -619,7 +619,7 @@
     ]
   },
   "h8.6": {
-    "text": "You've got to be kidding me",
+    "text": "You've got to be kidding me.",
     "go to": [
       "h8.7"
     ],
@@ -628,7 +628,7 @@
     ]
   },
   "h8.7": {
-    "text": "Still no, Not until you're certified to touch anything more complex than a Raspberry Pi.",
+    "text": "Still no, not until you're certified to touch anything more complex than a Raspberry Pi.",
     "go to": [
       "h8.8"
     ],
@@ -644,7 +644,7 @@
     ]
   },
   "m1.0": {
-    "text": "First open up one of the images we carved yesterday",
+    "text": "First open one of the images we carved yesterday",
     "function": "end_dialogue",
     "option display": [
       "Okay"
@@ -676,7 +676,7 @@
     ]
   },
   "m3.0": {
-    "text": "Nice work, lets open up the next image",
+    "text": "Nice work, lets open the next image.",
     "function": "end_dialogue",
     "option display": [
       "Okay"
@@ -699,21 +699,21 @@
     ]
   },
   "m5.0": {
-    "text": "X north and X west, that would make it time zone UTC-X",
+    "text": "51 degrees north and 1 degree east, that would make it time zone UTC",
     "function": "end_dialogue",
     "option display": [
       "..."
     ]
   },
   "m6.0": {
-    "text": "Huh this shows that the GPS time is UTC-X",
+    "text": "Huh this shows that the GPS time is 10 hours ahead of the recorded date time. That would make it time zone UTC-10.",
     "function": "end_dialogue",
     "option display": [
       "..."
     ]
   },
   "m7.0": {
-    "text": "So, to review, you carved hidden files from raw hex, extracted it's metadata finding the timestamps and GPS data. AND you didn't overwrite, alter, or spill coffee on any evidence",
+    "text": "So, to review, you carved hidden files from raw hex, extracted the metadata, finding the timestamps and GPS data. AND you didn't overwrite, alter, or spill coffee on any evidence.",
     "go to": [
       "m7.1"
     ],
@@ -722,7 +722,7 @@
     ]
   },
   "m7.1": {
-    "text": "You're either a natural... or I am finally getting better at training people. Either way, we're making progress",
+    "text": "You're either a natural... or I am finally getting better at training people. Either way, we're making progress.",
     "go to": [
       "m7.2"
     ],
@@ -735,6 +735,41 @@
     "function": "end_dialogue",
     "option display": [
       "Sure thing"
+    ]
+  },
+  "m8.0": {
+    "text": "And remember digital forensics isn't just about finding the evidence. It's about proving you didn't change the evidence while finding it.",
+    "go to": [
+      "m8.1",
+      "dispatch"
+    ],
+    "option display": [
+      "Right"
+    ]
+  },
+  "m8.1": {
+    "text": "## Digital Forensics, we've got a priority call, active scene. Suspected mobile device tampering. Location enroute. ##",
+    "go to": [
+      "m8.2"
+    ],
+    "option display": [
+      "..."
+    ]
+  },
+  "m8.2": {
+    "text": "Do they wait until we've hit a rhythm?",
+    "go to": [
+      "m8.3"
+    ],
+    "option display": [
+      "Should I lock down?"
+    ]
+  },
+  "m8.3": {
+    "text": "You know the drill. Go home and we'll wrap this up in the morning with the final report.",
+    "function": "end_dialogue",
+    "option display": [
+      "You got it"
     ]
   },
   "m7.3": {
@@ -782,55 +817,29 @@
       "Sure thing"
     ]
   },
-  "m8.0": {
+  "m8.": {
     "text": "Nice, it matches the hash from acquisition, meaning you haven't tampered with it.",
     "go to": [
-      "m8.1"
+      "m9.1"
     ],
     "option display": [
       "Of course"
     ]
   },
-  "m8.1": {
+  "m81.": {
     "text": "Now, let's hash each of the carve images and record those too",
     "function": "end_dialogue",
     "option display": [
       "Sure"
     ]
   },
-  "m9.1": {
-    "text": "##Digital Forensics, we've got a priortiy call, active scene. Suspected mobile device tampering. Location enroute.##",
+  "m9.": {
+    "text": "Perfect. Those hashes will go into your final report. If anyone questions whether those files were modified after extraction, you can show that the hash is identical to the one you recorded right after carving.",
     "go to": [
-      "m9.2"
+      "m9.1"
     ],
     "option display": [
-      "..."
-    ]
-  },
-  "m9.0": {
-    "text": "And remember digital forensics isn't just about finding the evidence. It's about proving you didn't change the evidence while fining it.",
-    "go to": [
-      "m9.2",
-      "dispatch"
-    ],
-    "option display": [
-      "Right"
-    ]
-  },
-  "m9.2": {
-    "text": "Do they wait until we've hit a rhythm?",
-    "go to": [
-      "m9.3"
-    ],
-    "option display": [
-      "Should I lock down?"
-    ]
-  },
-  "m9.3": {
-    "text": "You know the drill. Go home and we'll wrap this up in the morning with the final report.",
-    "function": "end_dialogue",
-    "option display": [
-      "You got it"
+      "Nice"
     ]
   }
 }

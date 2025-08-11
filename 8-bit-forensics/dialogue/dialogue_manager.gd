@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 var desk_dialogue = "res://dialogue/debrief_dialogue.json"
-var pc_dialogue = "res://dialogue/pc_dialogue.json"
 
 @export var desk_debrief = {}
 var pc_debrief = {}

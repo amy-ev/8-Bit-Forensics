@@ -27,7 +27,7 @@
     ]
   },
   "Day 1.3": {
-    "text": "What we have here is a suspected case of X. Think less Mission Impossible and more Dan from accounting doing shady stuff on his lunch break.",
+    "text": "What we have here is a suspected case of cyberstalking. Think less Mission Impossible and more Dan from accounting doing shady stuff on his lunch break.",
     "go to": [
       "Day 1.4"
     ],
@@ -54,7 +54,7 @@
     ]
   },
   "Day 1.6": {
-    "text": "This little device was recovered from X of the suspect's X",
+    "text": "This little device was recovered from the glove box of the suspect's car.",
     "go to": [
       "Day 1.7"
     ],
@@ -63,7 +63,7 @@
     ]
   },
   "Day 1.7": {
-    "text": "There could be anything on it, embarrising selfies, a spreadsheet of company accounts. We love a mystery",
+    "text": "There could be anything on it, embarrassing selfies, a timeline of the victim’s whereabouts. Who knows. We love a mystery.",
     "go to": [
       "Day 1.8"
     ],
@@ -107,7 +107,7 @@
     ]
   },
   "Day 2.1": {
-    "text": "But enough about that. Lets get back to our SD card image.",
+    "text": "But enough about that. Let’s get back to our SD card image.",
     "go to": [
       "Day 2.2"
     ],
@@ -127,14 +127,14 @@
     ]
   },
   "Day 2.3": {
-    "text": "Ha! I don't think so. Unless you want the entire case to fall apart. We'll be woking from the forensic image you created yesterday. Let's launch up the pc and open your hex viewer of choice.",
+    "text": "Ha! I don't think so. Unless you want the entire case to fall apart. We'll be working from the forensic image you created yesterday. Let's launch up the pc and open the hex viewer.",
     "function": "end_dialogue",
     "option display": [
       "Ah"
     ]
   },
   "Day 2.4": {
-    "text": "Nice! The image file is already mounted read-only, lets go on to the PC and launch your hex viewer of choice, and scroll through the raw data.",
+    "text": "Nice! The image file is already mounted read-only, let’s go on to the PC, launch the hex viewer, and scroll through the raw data.",
     "function": "end_dialogue",
     "option display": [
       "Okay"
@@ -150,7 +150,7 @@
     ]
   },
   "Day 3.1": {
-    "text": "Let's not waste time, launch up the PC and load up your favourite metadata viewer.",
+    "text": "Let's not waste time, launch up the PC and load up the metadata viewer.",
     "function": "end_dialogue",
     "option display": [
       "On it."
