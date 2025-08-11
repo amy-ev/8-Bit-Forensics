@@ -37,7 +37,7 @@ func _on_key_selected(selected:Node):
 		
 func _on_button_pressed() -> void:
 	help_pressed = true
-	print(parent.name)
+	print("helper: ",parent.name)
 	if parent.name == "hex_viewer":
 		if search_dialogue || select_dialogue:
 			if get_parent().has_node("dialogue_helper"):
@@ -45,6 +45,13 @@ func _on_button_pressed() -> void:
 			var dialogue = preload("res://dialogue/dialogue_helper.tscn").instantiate()
 			get_parent().add_child(dialogue)
 			dialogue.get_node("panel/dialogue_label").start(msg)
+	elif parent.name == "hash":
+		msg = " certutil -hashfile <filename> HASH \n \n > MD5 \n >SHA1 \n > SHA256 \n > SHA512"
+		if get_parent().has_node("dialogue_helper"):
+			get_parent().remove_child(get_parent().get_node("dialogue_helper"))
+		var dialogue = preload("res://dialogue/dialogue_helper.tscn").instantiate()
+		get_parent().add_child(dialogue)
+		dialogue.get_node("panel/dialogue_label").start(msg)
 	
 func load_dialogue(file_path):
 	if FileAccess.file_exists(file_path):
@@ -72,7 +79,7 @@ func _on_new_child(stage:Node):
 	if get_parent().has_node("dialogue_helper"):
 		get_parent().remove_child(get_parent().get_node("dialogue_helper"))
 	
-	if parent.name == "hex_viewer":
+	if parent.name == "hex_viewer" || parent.name == "hash":
 		$button.toggle_mode = false
 	
 func search_dialogue_completed():
