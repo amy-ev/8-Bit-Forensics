@@ -226,9 +226,10 @@ func compare_keys():
 func compare_values(a,b):
 
 	if current_rows[0].contains("DateTime") || current_rows[1].contains("DateTime") || current_rows[0].contains("GPSTime") || current_rows[1].contains("GPSTime"):
-		print("date and time")
+		match_msg = "Date and Time Keys: " + a + " " + b
+		
 		if current_rows[0] == "DateTime" && (current_rows[1].contains("DateTimeOriginal") || current_rows[1].contains("DateTimeDigitized")) || current_rows[1] == "DateTime" && (current_rows[0].contains("DateTimeOriginal") || current_rows[0].contains("DateTimeDigitized")):
-			match_msg = "interesting"
+			match_msg = "DateTime vs DateTimeOriginal OR DateTimeDigitized: " + a + " " + b 
 			if selected_img == Global.img1:
 				if !noticed["image1"][0]:
 					Global.img1_count += 1
@@ -241,7 +242,7 @@ func compare_values(a,b):
 							_dialogue("m3.0")
 
 		if (current_rows[0] == "DateTimeOriginal" && current_rows[1] == "DateTimeDigitized") || (current_rows[1] == "DateTimeOriginal" && current_rows[0] == "DateTimeDigitized"):
-			match_msg = "interesting"
+			match_msg = "DateTimeOriginal vs DateTimeDigitized"
 			if selected_img == Global.img2:
 				if !noticed["image2"][1]:
 					Global.img2_count += 1
@@ -260,15 +261,14 @@ func compare_values(a,b):
 			b = format_gpstime(b)
 			
 		if current_rows[0].contains("GPSTime") && current_rows[1].contains("GPSDate") || current_rows[1].contains("GPSTime") && current_rows[0].contains("GPSDate"):
-			match_msg = a + " " + b
+			match_msg = "GPSDate vs GPSTime: "+ a + " " + b
 			
 		if a.contains(b) || b.contains(a):
-			match_msg = "these dates/times match!"
-			
+			match_msg = "GPSDate vs GPSTime MATCH: " + a + " " + b
 		else:
-			match_msg = "somethings not quite right with these"
+			match_msg = "GPSDate vs GPSTime MISMATCH: " + a + " " + b
 			if current_rows[0].contains("GPSTime") && current_rows[1].contains("DateTime") || current_rows[0].contains("DateTime") && current_rows[1].contains("GPSTime"):
-
+				match_msg = "GPSTime vs DateTime: " + a + " " + b
 				if selected_img == Global.img3:
 					if !noticed["image3"][2]:
 						_dialogue("m6.0")
@@ -284,6 +284,7 @@ func compare_values(a,b):
 								_dialogue("m3.0")
 
 			elif current_rows[0].contains("GPSDate") && current_rows[1].contains("DateTime") || current_rows[0].contains("DateTime") && current_rows[1].contains("GPSDate"):
+				match_msg = "GPSDate vs DateTime: " + a + " " + b
 				if selected_img == Global.img4:
 					if !noticed["image4"][3]:
 						Global.img4_count += 1
@@ -296,15 +297,16 @@ func compare_values(a,b):
 								_dialogue("m3.0")
 
 	elif current_rows[0].contains("Make") || current_rows[1].contains("Make") || current_rows[0].contains("Model") || current_rows[1].contains("Model"):
-		print("make and model")
+		match_msg = "Make vs Model OR LensMake vs LensModel OR Make vs LensMake OR Model vs LensModel: " + a + " " + b
 
 		if current_rows[0].contains("Make") && current_rows[1].contains("Model") || current_rows[1].contains("Make") && current_rows[0].contains("Model"):
+			match_msg = "Make vs Model: " + a + " " + b
 			if a.contains("Apple") && b.contains("iP") || b.contains("Apple") && a.contains("iP"):
-					match_msg = "makes sense"
+					match_msg = "Make vs Model Apple MATCH: " + a + " " + b
 			elif a.contains(b) || b.contains(a):
-				match_msg = "thats fine"
+				match_msg = "Make vs Model MATCH: " + a + " " + b
 			else:
-				match_msg = "they dont match"
+				match_msg = "Make vs Model MISMATCH: " + a + " " + b
 				if selected_img == Global.img2:
 					if !noticed["image2"][0]:
 						Global.img2_count += 1
@@ -329,9 +331,9 @@ func compare_values(a,b):
 								
 		elif  current_rows[0].contains("Make") && current_rows[1].contains("Make"):
 			if a.contains(b) || b.contains(a):
-				match_msg = "the makes match"
+				match_msg = "Make vs LensMake MATCH: " + a + " " + b
 			else:
-				match_msg = "they dont match"
+				match_msg = "Make vs LensMake MISMATCH" + a + " " + b
 				if selected_img == Global.img2:
 					if !noticed["image2"][2]:
 						Global.img2_count += 1
@@ -345,10 +347,10 @@ func compare_values(a,b):
 							
 		elif  current_rows[0].contains("Model") && current_rows[1].contains("Model"):
 			if a.contains(b) || b.contains(a):
-				match_msg = "the models match"
+				match_msg = "Model vs LensModel MATCH: " + a + " " + b
 
 			else:
-				match_msg = "they dont match"
+				match_msg = "Model vs LensModel MISMATCH" + a + " " + b
 				if selected_img == Global.img1:
 					if !noticed["image1"][2]:
 						Global.img1_count += 1
@@ -363,7 +365,7 @@ func compare_values(a,b):
 		else:
 			if current_rows[0].contains("Software") || current_rows[1].contains("Software"):
 				if a.contains("Photoshop") || b.contains("Photoshop"):
-					match_msg = "Photoshop?"
+					match_msg = "Make OR Model vs Software: " + a + " " + b
 
 					if selected_img == Global.img3:
 						if !noticed["image3"][3]:
@@ -380,7 +382,7 @@ func compare_values(a,b):
 									_dialogue("m3.0")
 
 			elif current_rows[0].contains("Description") || current_rows[1].contains("Description"):
-				match_msg = "description"
+				match_msg = "Make or Model vs Description: " + a + " " + b
 				if selected_img == Global.img3:
 					if !noticed["image3"][1]:
 						Global.img3_count += 1
@@ -393,16 +395,16 @@ func compare_values(a,b):
 								_dialogue("m3.0")
 
 			else:
-				match_msg = "correlates"
+				match_msg = "Make OR Model vs LensMake OR LensModel: " + a + " " + b
 
 	elif current_rows[0].contains("GPS") || current_rows[1].contains("GPS"): #will be true either way - only gps matches with gps
 		if current_rows[0].contains("Ref"):
-			match_msg = a + " " + b
+			match_msg = "GPS vs GPSRef: " + a + " " + b
 		elif current_rows[1].contains("Ref"):
-			match_msg = b + " " + a
+			match_msg = "GPS vs GPSRef: " + a + " " + b
 		
 		if current_rows[0].contains("Longitude") && current_rows[1].contains("Latitude") || current_rows[0].contains("Latitude") && current_rows[1].contains("Longitude"):
-			match_msg = "long vs lat"
+			match_msg = "GPSLongitude vs GPSLatitude: " + a + " " + b
 
 			if selected_img == Global.img1:
 				if !noticed["image1"][1]:
@@ -443,7 +445,7 @@ func compare_values(a,b):
 							_dialogue("m3.0")
 							
 		elif current_rows[0].contains("Altitude") && current_rows[1].contains("AltitudeRef") || current_rows[0].contains("AltitudeRef") && current_rows[1].contains("Altitude"):
-			match_msg = "altitude"
+			match_msg = "GPSAltitude vs GPSAltitudeRef: " + a + " " + b
 			if selected_img == Global.img4:
 				if !noticed["image4"][1]:
 					Global.img4_count += 1
@@ -456,8 +458,9 @@ func compare_values(a,b):
 							_dialogue("m3.0")
 						
 	elif current_rows[0].contains("Artist") || current_rows[1].contains("Artist"):
-		match_msg = "artist"
+		match_msg = "Artist: "  + a + " " + b
 		if current_rows[0].contains("Copyright") || current_rows[1].contains("Copyright"):
+			match_msg = "Artist vs Copyright: "  + a + " " + b
 			if selected_img == Global.img3:
 				if !noticed["image3"][0]:
 					Global.img3_count += 1
@@ -470,6 +473,7 @@ func compare_values(a,b):
 							_dialogue("m3.0")
 						
 		elif current_rows[0].contains("Description") || current_rows[1].contains("Description"):
+			match_msg = "Artist vs Description: "  + a + " " + b
 			if selected_img == Global.img4:
 				if !noticed["image4"][4]:
 					Global.img4_count += 1
@@ -482,7 +486,7 @@ func compare_values(a,b):
 							_dialogue("m3.0")
 						
 	elif current_rows[0].contains("LensSpecification") && current_rows[1].contains("FocalLength") || current_rows[0].contains("FocalLength") && current_rows[1].contains("LensSpecification"):
-			match_msg = "lens specification"
+			match_msg = "LensSpecification vs FocalLength: " + a + " " + b
 			if selected_img == Global.img4:
 				if !noticed["image4"][2]:
 					Global.img4_count += 1
@@ -493,6 +497,9 @@ func compare_values(a,b):
 						update_progress("image 4")
 						if finished_count < 4:
 							_dialogue("m3.0")
+	else:
+		match_msg = "Not Accounted For"  + a + " " + b
+		
 	if finished_all_metadata():
 		if pc.has_node("dialogue_display"):
 			await pc.get_node("dialogue_display").tree_exited
