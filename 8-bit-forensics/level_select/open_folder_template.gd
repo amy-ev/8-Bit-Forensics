@@ -4,21 +4,34 @@ func _ready() -> void:
 	$back.disabled = false
 	$next.disabled = false
 	
-	if has_node("play"):
+	if has_node("level1") && has_node("level2") && has_node("level3"):
 		var unlocked = int(Global.get_save(Global.user_path + "savefile.json"))
 
 		if unlocked >= 3:
-			if name.contains("3"):
-				$play.set_visible(true)
-		if unlocked >= 2:
-			if name.contains("2"):
-				$play.set_visible(true)
-		if unlocked >= 1:
-			if name.contains("1"):
-				$play.set_visible(true)
+			if has_node("play"):
+				_show_play()
+			$level1.set_visible(true)
+			$level2.set_visible(true)
+			$level3.set_visible(true)
+		elif unlocked >= 2:
+			if has_node("play"):
+				_show_play()
+			$level1.set_visible(true)
+			$level2.set_visible(true)
+			$level3.set_visible(false)
+		elif unlocked >= 1:
+			if has_node("play"):
+				_show_play()
+			$level1.set_visible(true)
+			$level2.set_visible(false)
+			$level3.set_visible(false)
 		else:
-			$play.set_visible(false)
-			
+			if has_node("play"):
+				_show_play()
+			$level1.set_visible(false)
+			$level2.set_visible(false)
+			$level3.set_visible(false)
+		
 func _on_next_pressed() -> void:
 	var level_num = self.name.substr(13,1)
 	$AnimationPlayer.play("open_"+str(int(level_num) +1))
@@ -56,3 +69,23 @@ func _on_play_pressed() -> void:
 	else:
 		Global.unlocked = 0
 	get_tree().change_scene_to_file("res://opening/waking_up.tscn")
+
+func _show_play():
+	var unlocked = int(Global.get_save(Global.user_path + "savefile.json"))
+	if unlocked >= 3:
+		if name.contains("1") || name.contains("2") || name.contains("3"):
+			get_node("play").set_visible(true)
+		else:
+			get_node("play").set_visible(false)
+	elif unlocked >= 2:
+		if name.contains("1") || name.contains("2"):
+			get_node("play").set_visible(true)
+		else:
+			get_node("play").set_visible(false)
+	elif unlocked >= 1:
+		if name.contains("1"):
+			get_node("play").set_visible(true)
+		else:
+			get_node("play").set_visible(false)
+	else:
+		get_node("play").set_visible(false)

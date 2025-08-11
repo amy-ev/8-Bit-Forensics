@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnoav72hte2jx"]
+[gd_scene load_steps=11 format=3 uid="uid://cnoav72hte2jx"]
 
 [ext_resource type="Texture2D" uid="uid://bfvlhbb3p2u8t" path="res://assets/level_select/level-select-sprite.png" id="1_4mb7p"]
 [ext_resource type="Script" uid="uid://6cfgq337t3aw" path="res://level_select/closed_folder.gd" id="2_62c0k"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://degu4rdt3kdc3" path="res://assets/level_select/forward-button-pressed.png" id="4_m71nh"]
 [ext_resource type="Texture2D" uid="uid://ba3epb7kav6hq" path="res://assets/level_select/back-button.png" id="5_m71nh"]
 [ext_resource type="Texture2D" uid="uid://crp1jrxoeu0bn" path="res://assets/level_select/back-button-pressed.png" id="6_jdtxx"]
+[ext_resource type="Texture2D" uid="uid://cihfgbf6g5ao5" path="res://assets/level_select/level-1-sprite.png" id="7_jdtxx"]
 
 [sub_resource type="Animation" id="Animation_fhlee"]
 length = 0.001
@@ -16,6 +17,18 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("level1:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -33,6 +46,18 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("level1:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
@@ -75,5 +100,12 @@ offset_bottom = 114.0
 disabled = true
 texture_normal = ExtResource("5_m71nh")
 texture_pressed = ExtResource("6_jdtxx")
+
+[node name="level1" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("7_jdtxx")
+centered = false
+hframes = 8
+vframes = 5
 
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]

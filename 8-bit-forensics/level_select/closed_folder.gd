@@ -1,6 +1,12 @@
 extends Sprite2D
 
 func _on_next_pressed() -> void:
+	var unlocked = int(Global.get_save(Global.user_path + "savefile.json"))
+	if unlocked >= 1:
+		$level1.set_visible(true)
+	else:
+		$level1.set_visible(false)
+	
 	$AnimationPlayer.play("open_1")
 	
 	await $AnimationPlayer.animation_finished
