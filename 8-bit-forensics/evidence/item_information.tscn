@@ -7,9 +7,9 @@
 
 [node name="item_information" type="ColorRect"]
 offset_left = 27.0
-offset_top = 8.0
+offset_top = 4.0
 offset_right = 333.0
-offset_bottom = 226.0
+offset_bottom = 222.0
 color = Color(1, 1, 1, 0)
 script = ExtResource("1_g7w0n")
 
@@ -21,9 +21,8 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -70.0
-offset_top = -81.0
+offset_top = -64.0
 offset_right = 70.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_kxa1e")
@@ -38,7 +37,7 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = 135.0
 offset_bottom = 77.0
-theme_override_constants/separation = 3
+theme_override_constants/separation = -1
 
 [node name="case_no" type="LineEdit" parent="window/sort"]
 layout_mode = 2
@@ -105,25 +104,29 @@ selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="navigation" type="HBoxContainer" parent="window/sort"]
+[node name="navigation" type="HBoxContainer" parent="window"]
 layout_mode = 2
+offset_left = 4.0
+offset_top = 47.0
+offset_right = 135.0
+offset_bottom = 60.0
 alignment = 2
 
-[node name="back" type="Button" parent="window/sort/navigation"]
+[node name="back" type="Button" parent="window/navigation"]
 layout_mode = 2
 theme = ExtResource("4_5ivit")
 text = "back"
 
-[node name="next" type="Button" parent="window/sort/navigation"]
+[node name="next" type="Button" parent="window/navigation"]
 layout_mode = 2
 theme = ExtResource("4_5ivit")
 text = "next"
 
-[node name="cancel" type="Button" parent="window/sort/navigation"]
+[node name="cancel" type="Button" parent="window/navigation"]
 layout_mode = 2
 theme = ExtResource("4_5ivit")
 text = "cancel"
 
-[connection signal="pressed" from="window/sort/navigation/back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="window/sort/navigation/next" to="." method="_on_next_pressed"]
-[connection signal="pressed" from="window/sort/navigation/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="window/navigation/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="window/navigation/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="window/navigation/cancel" to="." method="_on_cancel_pressed"]

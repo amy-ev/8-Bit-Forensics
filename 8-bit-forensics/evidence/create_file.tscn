@@ -48,9 +48,9 @@ _data = {
 
 [node name="create_file" type="ColorRect"]
 offset_left = 27.0
-offset_top = 8.0
+offset_top = 4.0
 offset_right = 333.0
-offset_bottom = 226.0
+offset_bottom = 222.0
 color = Color(1, 1, 1, 0)
 script = ExtResource("1_c120u")
 
@@ -62,8 +62,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -79.5
-offset_top = -41.0
+offset_top = -37.0
 offset_right = 79.5
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_a5nj3")

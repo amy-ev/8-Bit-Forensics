@@ -7,9 +7,9 @@ clip_contents = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = 58.0
-offset_top = 189.0
+offset_top = 196.0
 offset_right = 300.0
-offset_bottom = 221.0
+offset_bottom = 228.0
 
 [node name="output_type" type="Label" parent="."]
 custom_minimum_size = Vector2(28, 0)

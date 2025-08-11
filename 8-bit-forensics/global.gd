@@ -20,6 +20,7 @@ var is_first_bag:bool
 var file_created:bool
 var hash_verified:bool
 var evidence_collected:bool
+var hash_array:Array
 
 #day 2
 var first_file_opened:bool

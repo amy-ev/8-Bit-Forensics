@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7tqkpc2d8rx0"]
+[gd_scene load_steps=5 format=3 uid="uid://b7tqkpc2d8rx0"]
 
 [ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_7bnno"]
 [ext_resource type="Script" uid="uid://b1t3bsllgqr14" path="res://evidence/image_file.gd" id="1_84i5g"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="2_gk13f"]
+[ext_resource type="FontFile" uid="uid://ginkfwm14fgo" path="res://8-bit-forensics.ttf" id="4_gk13f"]
 
 [node name="evidence_file" type="NinePatchRect"]
 offset_left = 27.0
-offset_top = 8.0
+offset_top = 4.0
 offset_right = 333.0
-offset_bottom = 139.0
+offset_bottom = 148.0
 mouse_filter = 1
 texture = ExtResource("1_7bnno")
 patch_margin_left = 2
@@ -82,5 +83,25 @@ allow_search = false
 hide_folding = true
 enable_recursive_folding = false
 hide_root = true
+
+[node name="md5_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 126.0
+offset_right = 85.0
+offset_bottom = 133.0
+theme_override_colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
+theme_override_fonts/font = ExtResource("4_gk13f")
+theme_override_font_sizes/font_size = 8
+
+[node name="sha1_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 134.0
+offset_right = 91.0
+offset_bottom = 141.0
+theme_override_colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
+theme_override_fonts/font = ExtResource("4_gk13f")
+theme_override_font_sizes/font_size = 8
 
 [connection signal="item_selected" from="evidence_tree" to="." method="_on_evidence_tree_item_selected"]

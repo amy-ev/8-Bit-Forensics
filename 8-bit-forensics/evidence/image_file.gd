@@ -7,6 +7,7 @@ extends NinePatchRect
 var file_created:bool
 
 func _ready() -> void:
+
 	Global.emit_signal("next_step",self)
 	Global.connect("create_image_file", _on_file_created)
 	
@@ -50,6 +51,10 @@ func _on_file_created():
 	unpartitioned.set_text(0,"Unpartitioned Space [basic disk]")
 	unallocated2.set_text(0, "[unallocated space] ")
 	
+	while !Global.hash_array:
+		await get_tree().process_frame
+	$md5_label.text = "MD5: " + Global.hash_array[0]
+	$sha1_label.text = "SHA1: " + Global.hash_array[1]
 
 func _on_evidence_tree_item_selected() -> void:
 	var selected:String = $evidence_tree.get_selected().get_text($evidence_tree.get_selected_column())
