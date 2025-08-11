@@ -7,7 +7,6 @@ extends NinePatchRect
 var file_created:bool
 
 func _ready() -> void:
-
 	Global.emit_signal("next_step",self)
 	Global.connect("create_image_file", _on_file_created)
 	
@@ -34,6 +33,12 @@ func _on_file_created():
 	var unpartitioned = tree.create_item(partition_1,1)
 	var unallocated2 = tree.create_item(unpartitioned)
 	
+	sd_image_001.set_collapsed(true)
+	partition_1.set_collapsed(true)
+	fat16.set_collapsed(true)
+	root.set_collapsed(true)
+	unpartitioned.set_collapsed(true)
+	
 	sd_image_001.set_text(0,"SD-image-file.001")
 	partition_1.set_text(0, "Partition 1 [967MB]")
 	
@@ -44,7 +49,7 @@ func _on_file_created():
 	
 	unpartitioned.set_text(0,"Unpartitioned Space [basic disk]")
 	unallocated2.set_text(0, "[unallocated space] ")
-
+	
 
 func _on_evidence_tree_item_selected() -> void:
 	var selected:String = $evidence_tree.get_selected().get_text($evidence_tree.get_selected_column())
