@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bb2q2os4gnskm"]
+[gd_scene load_steps=19 format=3 uid="uid://bb2q2os4gnskm"]
 
 [ext_resource type="Texture2D" uid="uid://bfvlhbb3p2u8t" path="res://assets/level_select/level-select-sprite.png" id="1_un5lr"]
 [ext_resource type="Script" uid="uid://bjaghc73epk6k" path="res://level_select/open_folder_template.gd" id="2_c0r2y"]
@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://ciut7wb6o8k76" path="res://assets/level_select/level-2-sprite.png" id="8_atqvr"]
 [ext_resource type="Texture2D" uid="uid://ipvg6y0abwnj" path="res://assets/level_select/level-3-sprite.png" id="9_qbvn0"]
 [ext_resource type="Theme" uid="uid://tjw1gdqjhy5d" path="res://assets/level_select/play_button.tres" id="10_atqvr"]
+[ext_resource type="Texture2D" uid="uid://dc50ivmcd6a7w" path="res://assets/level_select/confidential-1-sprite.png" id="11_46xv8"]
+[ext_resource type="Texture2D" uid="uid://ceoclfpk4tpcn" path="res://assets/level_select/confidential-2-sprite.png" id="12_0wfg5"]
+[ext_resource type="Texture2D" uid="uid://03x8cqofobsw" path="res://assets/level_select/confidential-3-sprite.png" id="13_008aj"]
+[ext_resource type="Texture2D" uid="uid://bxd8a8c7w775o" path="res://assets/level_select/confidential-4-sprite.png" id="14_0wfg5"]
 
 [sub_resource type="Animation" id="Animation_8gg1b"]
 length = 0.001
@@ -73,6 +77,42 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("confidential1:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("confidential2:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("confidential3:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
 
 [sub_resource type="Animation" id="Animation_l3xca"]
 resource_name = "open_0_backwards"
@@ -113,6 +153,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("confidential1:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 6, 5, 4, 3, 2, 1, 0]
 }
 
 [sub_resource type="Animation" id="Animation_pbkm0"]
@@ -193,6 +245,42 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("confidential1:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("confidential2:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("confidential3:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 12, 13, 14]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qbvn0"]
 _data = {
@@ -220,6 +308,7 @@ offset_left = 280.0
 offset_top = 140.0
 offset_right = 300.0
 offset_bottom = 160.0
+toggle_mode = true
 texture_normal = ExtResource("3_c0r2y")
 texture_pressed = ExtResource("4_un5lr")
 
@@ -263,6 +352,37 @@ offset_right = 225.0
 offset_bottom = 228.0
 theme = ExtResource("10_atqvr")
 text = "play"
+
+[node name="confidential1" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("11_46xv8")
+centered = false
+hframes = 8
+vframes = 5
+frame = 7
+
+[node name="confidential2" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("12_0wfg5")
+centered = false
+hframes = 8
+vframes = 5
+frame = 7
+
+[node name="confidential3" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("13_008aj")
+centered = false
+hframes = 8
+vframes = 5
+frame = 7
+
+[node name="confidential4" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("14_0wfg5")
+centered = false
+hframes = 8
+vframes = 5
 
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

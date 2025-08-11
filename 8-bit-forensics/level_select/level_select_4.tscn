@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d2bfv5m5qudc7"]
+[gd_scene load_steps=18 format=3 uid="uid://d2bfv5m5qudc7"]
 
 [ext_resource type="Texture2D" uid="uid://bfvlhbb3p2u8t" path="res://assets/level_select/level-select-sprite.png" id="1_g6ke1"]
 [ext_resource type="Script" uid="uid://bjaghc73epk6k" path="res://level_select/open_folder_template.gd" id="2_p3ot5"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://cihfgbf6g5ao5" path="res://assets/level_select/level-1-sprite.png" id="7_p3ot5"]
 [ext_resource type="Texture2D" uid="uid://ciut7wb6o8k76" path="res://assets/level_select/level-2-sprite.png" id="8_mn6ym"]
 [ext_resource type="Texture2D" uid="uid://ipvg6y0abwnj" path="res://assets/level_select/level-3-sprite.png" id="9_31gbh"]
+[ext_resource type="Texture2D" uid="uid://dc50ivmcd6a7w" path="res://assets/level_select/confidential-1-sprite.png" id="10_5tgre"]
+[ext_resource type="Texture2D" uid="uid://ceoclfpk4tpcn" path="res://assets/level_select/confidential-2-sprite.png" id="11_go44k"]
+[ext_resource type="Texture2D" uid="uid://03x8cqofobsw" path="res://assets/level_select/confidential-3-sprite.png" id="12_s6uyr"]
+[ext_resource type="Texture2D" uid="uid://bxd8a8c7w775o" path="res://assets/level_select/confidential-4-sprite.png" id="13_go44k"]
 
 [sub_resource type="Animation" id="Animation_p3ot5"]
 length = 0.001
@@ -55,6 +59,54 @@ tracks/3/path = NodePath("level3:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [28]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("confidential1:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [28]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("confidential2:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [28]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("confidential3:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [28]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("confidential4:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -113,6 +165,54 @@ tracks/3/keys = {
 "update": 1,
 "values": [28, 27, 26, 25, 24, 23, 22, 21]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("confidential1:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 27, 26, 25, 24, 23, 22, 21]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("confidential2:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 27, 26, 25, 24, 23, 22, 21]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("confidential3:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 27, 26, 25, 24, 23, 22, 21]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("confidential4:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 27, 26, 25, 24, 23, 22, 21]
+}
 
 [sub_resource type="Animation" id="Animation_twx2e"]
 resource_name = "open_5"
@@ -166,6 +266,54 @@ tracks/3/keys = {
 "update": 1,
 "values": [28, 29, 30, 31, 32, 33, 34, 35]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("confidential1:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32, 33, 34, 35]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("confidential2:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32, 33, 34, 35]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("confidential3:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32, 33, 34, 35]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("confidential4:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32, 33, 34, 35]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5tgre"]
 _data = {
@@ -194,6 +342,7 @@ offset_top = 140.0
 offset_right = 300.0
 offset_bottom = 160.0
 disabled = true
+toggle_mode = true
 texture_normal = ExtResource("3_6p63i")
 texture_pressed = ExtResource("4_x0uqc")
 metadata/_edit_use_anchors_ = true
@@ -226,6 +375,38 @@ frame = 28
 [node name="level3" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("9_31gbh")
+centered = false
+hframes = 8
+vframes = 5
+frame = 28
+
+[node name="confidential1" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("10_5tgre")
+centered = false
+hframes = 8
+vframes = 5
+frame = 28
+
+[node name="confidential2" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("11_go44k")
+centered = false
+hframes = 8
+vframes = 5
+frame = 28
+
+[node name="confidential3" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("12_s6uyr")
+centered = false
+hframes = 8
+vframes = 5
+frame = 28
+
+[node name="confidential4" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("13_go44k")
 centered = false
 hframes = 8
 vframes = 5

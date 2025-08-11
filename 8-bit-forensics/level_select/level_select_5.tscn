@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ef1xg2d1ed8s"]
+[gd_scene load_steps=17 format=3 uid="uid://ef1xg2d1ed8s"]
 
 [ext_resource type="Texture2D" uid="uid://bfvlhbb3p2u8t" path="res://assets/level_select/level-select-sprite.png" id="1_r4rgc"]
 [ext_resource type="Script" uid="uid://bjaghc73epk6k" path="res://level_select/open_folder_template.gd" id="2_keav4"]
@@ -6,6 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://degu4rdt3kdc3" path="res://assets/level_select/forward-button-pressed.png" id="4_8bkdd"]
 [ext_resource type="Texture2D" uid="uid://ba3epb7kav6hq" path="res://assets/level_select/back-button.png" id="4_f1pno"]
 [ext_resource type="Texture2D" uid="uid://crp1jrxoeu0bn" path="res://assets/level_select/back-button-pressed.png" id="5_l5wml"]
+[ext_resource type="Texture2D" uid="uid://cihfgbf6g5ao5" path="res://assets/level_select/level-1-sprite.png" id="7_0jwml"]
+[ext_resource type="Texture2D" uid="uid://dc50ivmcd6a7w" path="res://assets/level_select/confidential-1-sprite.png" id="7_rjcaj"]
+[ext_resource type="Texture2D" uid="uid://ciut7wb6o8k76" path="res://assets/level_select/level-2-sprite.png" id="8_0bnm2"]
+[ext_resource type="Texture2D" uid="uid://ceoclfpk4tpcn" path="res://assets/level_select/confidential-2-sprite.png" id="8_i5mft"]
+[ext_resource type="Texture2D" uid="uid://ipvg6y0abwnj" path="res://assets/level_select/level-3-sprite.png" id="9_h2bc5"]
+[ext_resource type="Texture2D" uid="uid://03x8cqofobsw" path="res://assets/level_select/confidential-3-sprite.png" id="9_ipwxv"]
+[ext_resource type="Texture2D" uid="uid://bxd8a8c7w775o" path="res://assets/level_select/confidential-4-sprite.png" id="10_i5mft"]
 
 [sub_resource type="Animation" id="Animation_7i7hd"]
 length = 0.001
@@ -16,6 +23,18 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [35]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("confidential4:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -33,6 +52,18 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [35, 34, 33, 32, 31, 30, 29, 28]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("confidential4:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
@@ -76,6 +107,61 @@ offset_right = -13.0
 offset_bottom = 160.0
 texture_normal = ExtResource("4_f1pno")
 texture_pressed = ExtResource("5_l5wml")
+
+[node name="level1" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("7_0jwml")
+centered = false
+hframes = 8
+vframes = 5
+frame = 28
+
+[node name="level2" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("8_0bnm2")
+centered = false
+hframes = 8
+vframes = 5
+frame = 28
+
+[node name="level3" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("9_h2bc5")
+centered = false
+hframes = 8
+vframes = 5
+frame = 28
+
+[node name="confidential1" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("7_rjcaj")
+centered = false
+hframes = 8
+vframes = 5
+frame = 7
+
+[node name="confidential2" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("8_i5mft")
+centered = false
+hframes = 8
+vframes = 5
+frame = 7
+
+[node name="confidential3" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("9_ipwxv")
+centered = false
+hframes = 8
+vframes = 5
+frame = 7
+
+[node name="confidential4" type="Sprite2D" parent="."]
+texture = ExtResource("10_i5mft")
+centered = false
+hframes = 8
+vframes = 5
+frame = 35
 
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

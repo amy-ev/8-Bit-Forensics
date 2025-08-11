@@ -13,29 +13,43 @@ func _ready() -> void:
 			$level1.set_visible(true)
 			$level2.set_visible(true)
 			$level3.set_visible(true)
+			$confidential1.set_visible(false)
+			$confidential2.set_visible(false)
+			$confidential3.set_visible(false)
+			$confidential4.set_visible(true)
 		elif unlocked >= 2:
 			if has_node("play"):
 				_show_play()
 			$level1.set_visible(true)
 			$level2.set_visible(true)
 			$level3.set_visible(false)
+			$confidential1.set_visible(false)
+			$confidential2.set_visible(false)
+			$confidential3.set_visible(true)
+			$confidential4.set_visible(true)
 		elif unlocked >= 1:
 			if has_node("play"):
 				_show_play()
 			$level1.set_visible(true)
 			$level2.set_visible(false)
 			$level3.set_visible(false)
+			$confidential1.set_visible(false)
+			$confidential2.set_visible(true)
+			$confidential3.set_visible(true)
+			$confidential4.set_visible(true)
 		else:
-			if has_node("play"):
-				_show_play()
 			$level1.set_visible(false)
 			$level2.set_visible(false)
 			$level3.set_visible(false)
-		
+			$confidential1.set_visible(true)
+			$confidential2.set_visible(true)
+			$confidential3.set_visible(true)
+			$confidential4.set_visible(true)
+			
 func _on_next_pressed() -> void:
 	var level_num = self.name.substr(13,1)
-	$AnimationPlayer.play("open_"+str(int(level_num) +1))
 	$next.disabled = true
+	$AnimationPlayer.play("open_"+str(int(level_num) +1))
 	await $AnimationPlayer.animation_finished
 
 	queue_free()
@@ -45,8 +59,8 @@ func _on_next_pressed() -> void:
 
 func _on_back_pressed() -> void:
 	var level_num = self.name.substr(13,1)
-	$AnimationPlayer.play("open_"+str(int(level_num) - 1)+"_backwards")
 	$back.disabled = true
+	$AnimationPlayer.play("open_"+str(int(level_num) - 1)+"_backwards")
 	await $AnimationPlayer.animation_finished
 
 	queue_free()
