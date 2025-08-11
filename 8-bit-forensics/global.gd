@@ -48,9 +48,25 @@ var pc_debrief_given:bool
 #use to determine the folder contents.
 var level_selected:bool
 
-@export_category("Quiz Properties")
-@export var answers = ["a","b","a","c"]
-@export var quiz_dict = {"Day_1":["a","b","c"], "Day_2":["a","b","c"], "Day_3":["a","b","c"]}
+var correct_answers = [["a","b","a"],["c","a","b"],["b","c","c"]]
+
+var questions = {"0":["this is the first question of the first level","question 2","question 3"],
+					"1": ["question 1","question 2","question 3"],
+					"2": ["question 1","question 2","question 3"]}
+					
+var answer_options = {"0":[["a","b","c"],["a","b","c"],["a","b","c"]],\
+					"1":[["a","b","c"],["a","b","c"],["a","b","c"]],\
+					"2":[["a","b","c"],["a","b","c"],["a","b","c"]]}
+					
+var answers = {"0":[["first answer","second answer","third answer"],\
+					["first answer","second answer","third answer"],\
+					["first answer","second answer","third answer"]],\
+				"1": [["first answer","second answer","third answer"],\
+					["first answer","second answer","third answer"],\
+					["first answer","second answer","third answer"]],\
+				"2": [["first answer","second answer","third answer"],\
+					["first answer","second answer","third answer"],\
+					["first answer","second answer","third answer"]]}
 
 #dialogue based
 signal text_finished()
@@ -82,8 +98,9 @@ signal item_pressed(selected:Node)
 signal note_selected(note_topic:String)
 
 #quiz 
-signal answer(day:String, answer:int)
+signal answer(answer:int)
 signal quiz_response()
+signal exit_pressed()
 
 func get_save(file_path):
 	if FileAccess.file_exists(file_path):

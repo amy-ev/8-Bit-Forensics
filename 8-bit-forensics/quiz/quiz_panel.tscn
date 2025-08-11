@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0ocvq7kvvto"]
+
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_v51x7"]
+[ext_resource type="Script" uid="uid://b2shhio7ag25r" path="res://quiz/quiz_panel.gd" id="2_8jfgu"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="2_ulyy2"]
+[ext_resource type="PackedScene" uid="uid://c0wglcbgod0a4" path="res://dialogue/helper.tscn" id="3_8jfgu"]
+[ext_resource type="ButtonGroup" uid="uid://ugpr4nutnptu" path="res://evidence/image_type.tres" id="4_68n4m"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w11j2"]
+texture = ExtResource("1_v51x7")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[node name="panel" type="PanelContainer"]
+offset_right = 252.0
+offset_bottom = 202.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_w11j2")
+script = ExtResource("2_8jfgu")
+
+[node name="sort" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="question" type="Label" parent="sort"]
+layout_mode = 2
+theme = ExtResource("2_ulyy2")
+theme_override_font_sizes/font_size = 8
+text = "This is a temporary label of text for the question that would be asked at the end of the day?"
+horizontal_alignment = 3
+autowrap_mode = 2
+
+[node name="helper" parent="sort" instance=ExtResource("3_8jfgu")]
+visible = false
+
+[node name="answers" type="VBoxContainer" parent="sort"]
+layout_mode = 2
+
+[node name="a" type="CheckBox" parent="sort/answers"]
+layout_mode = 2
+theme = ExtResource("2_ulyy2")
+button_group = ExtResource("4_68n4m")
+text = "a) yes"
+flat = true
+
+[node name="b" type="CheckBox" parent="sort/answers"]
+layout_mode = 2
+theme = ExtResource("2_ulyy2")
+button_group = ExtResource("4_68n4m")
+text = "b) no"
+flat = true
+
+[node name="c" type="CheckBox" parent="sort/answers"]
+layout_mode = 2
+theme = ExtResource("2_ulyy2")
+button_group = ExtResource("4_68n4m")
+text = "c) maybe"
+flat = true
+
+[node name="exit" type="Button" parent="sort/answers"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_ulyy2")
+text = "finish"
+
+[connection signal="pressed" from="sort/answers/a" to="." method="_on_a_pressed"]
+[connection signal="pressed" from="sort/answers/b" to="." method="_on_b_pressed"]
+[connection signal="pressed" from="sort/answers/c" to="." method="_on_c_pressed"]
+[connection signal="pressed" from="sort/answers/exit" to="." method="_on_exit_pressed"]
