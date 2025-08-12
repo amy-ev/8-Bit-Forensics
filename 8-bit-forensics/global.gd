@@ -48,13 +48,13 @@ var pc_debrief_given:bool
 #use to determine the folder contents.
 var level_selected:bool
 
-var correct_answers = [["a","b","a"],["c","a","b"],["b","c","c"]]
+var correct_answers = [["b","a","a"],["a","b","c","b"],["c","d","c"]]
 
 var question_count = [3,3,3]
 
-var answer_options = {"0":[["a","b","c"],["a","b","c"],["a","b","c"]],\
+var answer_options = {"0":[["a","b","c","d"],["a","b","c"],["a","b","c"]],\
 					"1":[["a","b","c"],["a","b","c"],["a","b","c"]],\
-					"2":[["a","b","c","d","e"],["a","b","c"],["a","b","c"]]}
+					"2":[["a","b","c"],["a","b","c","d"],["a","b","c"]]}
 
 #dialogue based
 signal text_finished

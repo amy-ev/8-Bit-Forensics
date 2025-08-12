@@ -1,75 +1,81 @@
 {
     "0": {
         "questions": [
-            "question1",
-            "question2",
-            "question3"
+            "What does a hash value represent?",
+            "What is the purpose of using a hash function during a forensic investigation?",
+            "What does 'Chain of Custody' refer to?"
         ],
         "answers": [
             [
-                "a",
-                "b",
-                "c"
+                "The size of a file",
+                "The exact contents of a file at a given time",
+                "The file's location on a disk",
+                "When and where the file was created"
             ],
             [
-                "a",
-                "b",
-                "c"
+                "To verify data integrity",
+                "To encrypt the evidence file",
+                "To compress the evidence file"
             ],
             [
-                "a",
-                "b",
-                "c"
+                "A record of who has handled the evidence and when",
+                "A process of imaging hard drives",
+                "A timeline of events on what has been discovered from the evidence"
             ]
         ]
     },
     "1": {
         "questions": [
-            "question1",
-            "question2",
-            "question3"
+            "In hex carving, which of the following is essential to identify file boundaries?",
+            "What is the file header for a JPG image?",
+            "What is the main reason for manually hex carving during a forensic investigation?",
+            "What does the hex value 'FF D9' signify?"
         ],
         "answers": [
             [
-                "a",
-                "b",
-                "c"
+                "File signatures",
+                "File permissions",
+                "File size"
             ],
             [
-                "a",
-                "b",
-                "c"
+                "FF D9",
+                "FF D8 FF E0",
+                "FF D9 FF E1"
             ],
             [
-                "a",
-                "b",
-                "c"
+                "To remove metadata",
+                "To degragment hard drives",
+                "To recover deleted or corrupted files"
+            ],
+            [
+                "The start of a PDF document",
+                "The end of a JPG file",
+                "The end of a PNG image file"
             ]
         ]
     },
     "2": {
         "questions": [
-            "What is the file header for a JPG image?",
-            "question2",
-            "question3"
+            "What does EXIF stand for?",
+            "What camera setting is commonly recorded in EXIF data?",
+            "What is the risk of sharing photos with embedded EXIF data online?"
         ],
         "answers": [
             [
-                "FF D9",
-                "FF D8 FF E0",
-                "FF D9 FF E1",
-                "test",
-                "test"
+                "Exchangable Information File Format",
+                "External Image File",
+                "Exchangeable Image File Format"
             ],
             [
-                "a",
-                "b",
-                "c"
+                "Focal Length",
+                "Shutter Speed",
+                "Model",
+                "All of the above"
             ],
             [
-                "a",
-                "b",
-                "c"
+                "Corrupting the image",
+                "Lower image resolution",
+                "Revealing your location"
             ]
         ]
     }
