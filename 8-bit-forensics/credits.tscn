@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://8thc74e164il"]
+
+[ext_resource type="Script" uid="uid://bkf2xcy7vd4mw" path="res://credits.gd" id="1_nm7lk"]
+[ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="2_c1t8d"]
+
+[node name="credits" type="Node2D"]
+script = ExtResource("1_nm7lk")
+
+[node name="back_btn" type="Button" parent="."]
+offset_left = 15.0
+offset_top = 18.0
+offset_right = 38.0
+offset_bottom = 31.0
+theme = ExtResource("2_c1t8d")
+text = "back"
+
+[connection signal="pressed" from="back_btn" to="." method="_on_back_btn_pressed"]
