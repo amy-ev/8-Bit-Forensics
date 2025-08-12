@@ -1,4 +1,4 @@
-extends PanelContainer
+extends NinePatchRect
 
 signal exit_pressed()
 
@@ -16,12 +16,13 @@ func fill_panel():
 	for i in Global.answer_options[str(Global.unlocked)][quiz.current_count].size():
 		var checkbox:= CheckBox.new()
 		checkbox.set_button_group(radio_group)
-		checkbox.theme = load("res://assets/UI/pc_components.tres")
+		checkbox.theme = load("res://quiz/quiz_checkbox.tres")
 		checkbox.text = Global.answer_options[str(Global.unlocked)][quiz.current_count][i] + ") " + quiz_content[str(Global.unlocked)]["answers"][quiz.current_count][i]
 		$sort/answers.add_child(checkbox)
-
+		checkbox.set_autowrap_mode(TextServer.AUTOWRAP_WORD)
 		checkbox.name = Global.answer_options[str(Global.unlocked)][quiz.current_count][i]
 		checkbox.pressed.connect(_on_button_pressed.bind(checkbox))
+		
 	#move finish button to bottom on vbox
 	$sort/answers.move_child($sort/answers/exit,-1)
 

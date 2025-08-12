@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6sldv7wkulby"]
+[gd_scene load_steps=3 format=3 uid="uid://b6sldv7wkulby"]
 
 [ext_resource type="Script" uid="uid://bdo1hbivbrq8h" path="res://quiz/end_quiz.gd" id="1_amf4w"]
+[ext_resource type="Texture2D" uid="uid://b5tlifnionn35" path="res://assets/evidence/desk-background-wide.png" id="2_u6rb7"]
 
 [node name="quiz" type="Node2D"]
 script = ExtResource("1_amf4w")
+
+[node name="desk" type="TextureRect" parent="."]
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("2_u6rb7")
+stretch_mode = 2

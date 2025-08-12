@@ -25,7 +25,7 @@ func _on_answer_selected(answer:int):
 	given_answer =  Global.answer_options[str(Global.unlocked)][current_count][answer]
 
 func _on_exit_pressed() -> void:
-	var exit = get_child(0).get_node("sort/answers/exit")
+	var exit = get_child(1).get_node("sort/answers/exit")
 	exit.disabled = true
 	exit.release_focus()
 	if correct_answer == given_answer:
