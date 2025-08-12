@@ -35,18 +35,11 @@ func _open_note(note_topic:String):
 		
 func _show_note(day:String):
 	Global.days.append(day)
-	# change to loop through array of days and show all unlocked 
-	#print(day)
 	get_node(day).visible = true
-	#print(Global.days)
-	
-func _on_unlock_debug_pressed() -> void:
-	#move to the end of the day button + appending day to Global array
-	Global.unlocked += 1
-	_check_unlocked()
 
+	
 func _check_unlocked():
-	for i in Global.unlocked:
+	for i in (Global.unlocked + Global.unlocked):
 		for key in Global.levels:
 			var value = Global.levels[i]
 			Global.level_unlocked.emit(value)
@@ -60,8 +53,3 @@ func _on_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 		if note_open:
 			$note.queue_free()
 			note_open = false
-
-
-func _on_reset_debug_pressed() -> void:
-	Global.unlocked = 0
-	Global.set_save(Global.user_path + "savefile.json")

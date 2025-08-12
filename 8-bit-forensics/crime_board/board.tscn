@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://3we6fkgy57f7"]
+[gd_scene load_steps=26 format=3 uid="uid://3we6fkgy57f7"]
 
 [ext_resource type="Script" uid="uid://bqj7niuugeaqh" path="res://crime_board/board.gd" id="1_k2i71"]
 [ext_resource type="Texture2D" uid="uid://b40bctf5em701" path="res://assets/crime_board/crime-board-v2.png" id="2_730js"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://coxe61xprc5p0" path="res://assets/crime_board/strings/6-string.png" id="15_06hg8"]
 [ext_resource type="Texture2D" uid="uid://c1shho4dea7ix" path="res://assets/crime_board/notes/7-note.png" id="16_dbmes"]
 [ext_resource type="Texture2D" uid="uid://dtcr1ti431xbc" path="res://assets/crime_board/strings/7-string.png" id="17_2uoej"]
+[ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="18_vn7me"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd1ls"]
 size = Vector2(69, 93)
@@ -145,38 +146,16 @@ position = Vector2(0, -192)
 position = Vector2(3, 193)
 polygon = PackedVector2Array(-3, -1, 39, 23, 39, 116, 108, 116, 108, 23, 39, 23, -3, -1, 210, -1, 210, 56, 210, 125, 192, 125, 192, 122, 126, 122, 126, 215, 192, 215, 192, 125, 267, 125, 267, 56, 210, 56, 210, -1, 318, -1, 318, 26, 318, 110, 387, 110, 387, 26, 318, 26, 318, -1, 477, -1, 477, 131, 420, 131, 366, 131, 366, 170, 366, 203, 420, 203, 420, 131, 477, 131, 477, 269, 336, 269, 336, 230, 336, 170, 288, 170, 288, 230, 336, 230, 336, 269, -3, 269, 30, 227, 96, 227, 96, 149, 30, 149, 30, 227, -3, 269)
 
-[node name="unlock_debug" type="Button" parent="."]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 173.0
-offset_top = 234.0
-offset_right = 265.0
-offset_bottom = 265.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "unlock day"
-
 [node name="back_btn" type="Button" parent="."]
-offset_left = 6.0
-offset_top = 3.0
-offset_right = 51.0
-offset_bottom = 34.0
+offset_left = 15.0
+offset_top = 18.0
+offset_right = 38.0
+offset_bottom = 31.0
+theme = ExtResource("18_vn7me")
 text = "back"
 
-[node name="reset_debug" type="Button" parent="."]
-offset_left = 278.0
-offset_top = 235.0
-offset_right = 326.0
-offset_bottom = 266.0
-text = "reset"
-
 [connection signal="input_event" from="area" to="." method="_on_area_input_event"]
-[connection signal="pressed" from="unlock_debug" to="." method="_on_unlock_debug_pressed"]
 [connection signal="pressed" from="back_btn" to="." method="_on_back_btn_pressed"]
-[connection signal="pressed" from="reset_debug" to="." method="_on_reset_debug_pressed"]
 
 [editable path="note1"]
 [editable path="note2"]

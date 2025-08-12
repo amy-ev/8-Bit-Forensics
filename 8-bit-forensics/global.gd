@@ -5,7 +5,7 @@ var selected_file:String
 var magnification: int = 2
 var user_path = ProjectSettings.globalize_path("user://")
 
-var levels: Dictionary = {0:"note1",1:"note2",2:"note3",3:"note4",4:"note5",5:"note6",6:"note7",7:"note8"}
+var levels: Dictionary = {0:"note1",1:"note2",2:"note3",3:"note4",4:"note5",5:"note6",6:"note7"}
 var days: Array = []
 
 @export var unlocked:int = int(get_save(user_path +"savefile.json"))
