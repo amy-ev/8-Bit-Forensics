@@ -633,8 +633,12 @@ func format_gpstime(v:String)-> String:
 	var v_dict = v.split(",",false)
 	for i in v_dict.size():
 		v_dict[i] = str(int(float(v_dict[i])))
+		
 		while int(v_dict[i]) >= 100:
 			v_dict[i] = str(int(v_dict[i]) / 10)
+			
+		var format_dict = "%02d" % int(v_dict[i])
+		v_dict[i] = format_dict
 	v = ":".join(v_dict)
 	return v
 	
