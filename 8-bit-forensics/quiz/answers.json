@@ -49,15 +49,17 @@
     },
     "2": {
         "questions": [
-            "question1",
+            "What is the file header for a JPG image?",
             "question2",
             "question3"
         ],
         "answers": [
             [
-                "a",
-                "b",
-                "c"
+                "FF D9",
+                "FF D8 FF E0",
+                "FF D9 FF E1",
+                "test",
+                "test"
             ],
             [
                 "a",

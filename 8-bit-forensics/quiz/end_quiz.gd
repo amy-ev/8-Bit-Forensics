@@ -23,15 +23,11 @@ func _input(event: InputEvent) -> void:
 
 func _on_answer_selected(answer:int):
 	given_answer =  Global.answer_options[str(Global.unlocked)][current_count][answer]
-	print(typeof(given_answer))
-	var panel = get_child(0).get_node("sort/answers/exit")
-	panel.visible = true
-	panel.disabled = false
 
 func _on_exit_pressed() -> void:
-	var panel = get_child(0).get_node("sort/answers/exit")
-	panel.disabled = true
-	panel.release_focus()
+	var exit = get_child(0).get_node("sort/answers/exit")
+	exit.disabled = true
+	exit.release_focus()
 	if correct_answer == given_answer:
 		Global.emit_signal("quiz_response",true)
 		current_count += 1

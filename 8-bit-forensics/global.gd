@@ -54,7 +54,7 @@ var question_count = [3,3,3]
 
 var answer_options = {"0":[["a","b","c"],["a","b","c"],["a","b","c"]],\
 					"1":[["a","b","c"],["a","b","c"],["a","b","c"]],\
-					"2":[["a","b","c"],["a","b","c"],["a","b","c"]]}
+					"2":[["a","b","c","d","e"],["a","b","c"],["a","b","c"]]}
 
 #dialogue based
 signal text_finished
