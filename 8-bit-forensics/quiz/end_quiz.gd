@@ -6,14 +6,13 @@ var current_count:int
 
 var correct_answer = Global.answer_options[str(Global.unlocked)][current_count][Global.answer_options[str(Global.unlocked)][current_count].find(Global.correct_answers[Global.unlocked][current_count])]
 var given_answer
-var question:String = "this is the question"
 
 func _ready() -> void:
 	Global.connect("answer", _on_answer_selected)
 
 	scale = scale * Utility.window_mode()
 	
-	question_count = Global.questions[str(Global.unlocked)].size()
+	question_count = Global.question_count[Global.unlocked] 
 	add_child(preload("res://quiz/quiz_panel.tscn").instantiate(),true)
 	Global.connect("exit_pressed", _on_exit_pressed)
 	
@@ -24,7 +23,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_answer_selected(answer:int):
 	given_answer =  Global.answer_options[str(Global.unlocked)][current_count][answer]
-	
+	print(typeof(given_answer))
 	var panel = get_child(0).get_node("sort/answers/exit")
 	panel.visible = true
 	panel.disabled = false

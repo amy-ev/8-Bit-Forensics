@@ -50,45 +50,33 @@ var level_selected:bool
 
 var correct_answers = [["a","b","a"],["c","a","b"],["b","c","c"]]
 
-var questions = {"0":["this is the first question of the first level","question 2","question 3"],
-					"1": ["question 1","question 2","question 3"],
-					"2": ["question 1","question 2","question 3"]}
-					
+var question_count = [3,3,3]
+
 var answer_options = {"0":[["a","b","c"],["a","b","c"],["a","b","c"]],\
 					"1":[["a","b","c"],["a","b","c"],["a","b","c"]],\
 					"2":[["a","b","c"],["a","b","c"],["a","b","c"]]}
-					
-var answers = {"0":[["first answer","second answer","third answer"],\
-					["first answer","second answer","third answer"],\
-					["first answer","second answer","third answer"]],\
-				"1": [["first answer","second answer","third answer"],\
-					["first answer","second answer","third answer"],\
-					["first answer","second answer","third answer"]],\
-				"2": [["first answer","second answer","third answer"],\
-					["first answer","second answer","third answer"],\
-					["first answer","second answer","third answer"]]}
 
 #dialogue based
-signal text_finished()
+signal text_finished
 signal dialogue_triggered(topic:String)
 signal next_step(stage:Node)
 signal answer_response(is_correct:bool)
 
 #day 1
-signal create_image_file()
-signal evidence_finished()
-signal inc_progressbar()
+signal create_image_file
+signal evidence_finished
+signal inc_progressbar
 
 #day 2
 signal signature_found(locations:Array)
-signal all_images_carved()
-signal hex_search_help()
-signal hex_select_help()
+signal all_images_carved
+signal hex_search_help
+signal hex_select_help
 
 #day 3
 signal metadata_selected(selected:Node)
 signal metadata_help(key:Node)
-signal all_metadata_found()
+signal all_metadata_found
 
 #general
 signal level_unlocked(day:String)
@@ -99,8 +87,8 @@ signal note_selected(note_topic:String)
 
 #quiz 
 signal answer(answer:int)
-signal quiz_response()
-signal exit_pressed()
+signal quiz_response
+signal exit_pressed
 
 func get_save(file_path):
 	if FileAccess.file_exists(file_path):
