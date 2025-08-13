@@ -40,7 +40,7 @@ func _on_back_pressed() -> void:
 				get_parent().remove_child(get_node("dialogue_display"))
 			var dialogue = _full_dialogue.instantiate()
 			get_parent().add_child(dialogue)
-			dialogue.load_dialogue("res://dialogue/dialogue.json", "e4.0")
+			dialogue.load_dialogue("res://dialogue/json_files/dialogue.json", "e4.0")
 		
 	pc.disabled = false
 	coffee.disabled = false
@@ -52,4 +52,4 @@ func _on_dialogue_triggered(topic:String):
 		remove_child(get_node("dialogue_display"))
 	var dialogue = load("res://dialogue/dialogue_display.tscn").instantiate()
 	add_child(dialogue)
-	dialogue.load_dialogue("res://dialogue/dialogue.json", topic)
+	dialogue.load_dialogue("res://dialogue/json_files/dialogue.json", topic)

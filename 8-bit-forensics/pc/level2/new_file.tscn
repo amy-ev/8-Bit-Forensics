@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://db4sjj6kgif47"]
+
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="1_dpwpy"]
+[ext_resource type="Script" path="res://pc/level2/hex_text.gd" id="2_f1ns8"]
+[ext_resource type="FontFile" uid="uid://ginkfwm14fgo" path="res://8-bit-forensics.ttf" id="3_dpwpy"]
+
+[node name="original_file" type="MarginContainer"]
+offset_right = 235.0
+offset_bottom = 133.0
+theme_override_constants/margin_top = 2
+
+[node name="vbox_sort" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 2
+metadata/_tab_index = 0
+
+[node name="offset_top" type="Label" parent="vbox_sort"]
+layout_mode = 2
+theme = ExtResource("1_dpwpy")
+text = "[ Offset ]      00  01  02  03  04  05  06  07  08  09  0a  0b  0c  0d  0e  0f"
+
+[node name="hex_text" type="Control" parent="vbox_sort"]
+custom_minimum_size = Vector2(0, 124)
+layout_mode = 2
+theme = ExtResource("1_dpwpy")
+script = ExtResource("2_f1ns8")
+font = ExtResource("3_dpwpy")

@@ -82,6 +82,7 @@ func _on_play_pressed() -> void:
 		Global.unlocked = 2
 	else:
 		Global.unlocked = 0
+	Global.day_start()
 	get_tree().change_scene_to_file("res://opening/waking_up.tscn")
 
 func _show_play():

@@ -29,7 +29,7 @@ func _on_key_selected(selected:Node):
 		dialogue.set_visible(true)
 		if selected.has_node("metadata_label"):
 			var metadata_key = selected.get_node("metadata_label").text
-			load_dialogue("res://dialogue/metadata_dialogue.json")
+			load_dialogue("res://dialogue/json_files/metadata_dialogue.json")
 			dialogue.start(helper_dict[metadata_key]["text"])
 			
 		help_pressed = false

@@ -18,7 +18,7 @@ func _ready() -> void:
 				remove_child(get_node("full_dialogue_display"))
 			var dialogue = preload("res://dialogue/full_dialogue_display.tscn").instantiate()
 			add_child(dialogue)
-			dialogue.load_dialogue("res://dialogue/dialogue.json", "m8.0")
+			dialogue.load_dialogue("res://dialogue/json_files/dialogue.json", "m8.0")
 			
 			await get_node("full_dialogue_display").tree_exited
 			get_tree().change_scene_to_file("res://quiz/end_quiz.tscn")
@@ -28,7 +28,7 @@ func _ready() -> void:
 				remove_child(get_node("full_dialogue_display"))
 			var dialogue = preload("res://dialogue/full_dialogue_display.tscn").instantiate()
 			add_child(dialogue)
-			dialogue.load_dialogue("res://dialogue/dialogue.json", "h8.0")
+			dialogue.load_dialogue("res://dialogue/json_files/dialogue.json", "h8.0")
 			
 			await get_node("full_dialogue_display").tree_exited
 			get_tree().change_scene_to_file("res://quiz/end_quiz.tscn")
@@ -64,7 +64,7 @@ func _on_evidence_finished():
 		remove_child(get_node("full_dialogue_display"))
 	var dialogue = preload("res://dialogue/full_dialogue_display.tscn").instantiate()
 	add_child(dialogue)
-	dialogue.load_dialogue("res://dialogue/dialogue.json", "e9.0")
+	dialogue.load_dialogue("res://dialogue/json_files/dialogue.json", "e9.0")
 
 	await dialogue.tree_exited
 	get_tree().change_scene_to_file("res://quiz/end_quiz.tscn")

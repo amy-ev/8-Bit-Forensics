@@ -20,17 +20,17 @@ func _ready() -> void:
 		1:
 			add_child(preload("res://dialogue/dialogue_create_file.tscn").instantiate())
 			screen.add_child(preload("res://dialogue/helper.tscn").instantiate())
-			screen.add_child(preload("res://evidence/image_file.tscn").instantiate())
+			screen.add_child(preload("res://pc/level1/image_file.tscn").instantiate())
 			if !Global.pc_debrief_given:
 				_on_dialogue_triggered("e5.0")
 		2:
 			screen.add_child(preload("res://dialogue/helper.tscn").instantiate())
-			screen.add_child(preload("res://hex_viewer/hex_viewer.tscn").instantiate())
+			screen.add_child(preload("res://pc/level2/hex_viewer.tscn").instantiate())
 			if !Global.pc_debrief_given:
 				_on_dialogue_triggered("h1.0")
 		3:
 			screen.add_child(preload("res://dialogue/helper.tscn").instantiate())
-			screen.add_child(preload("res://metadata/metadata.tscn").instantiate())
+			screen.add_child(preload("res://pc/level3/metadata.tscn").instantiate())
 			
 			if !Global.pc_debrief_given:
 				_on_dialogue_triggered("m1.0")
@@ -51,7 +51,7 @@ func _on_dialogue_triggered(topic:String):
 		remove_child(get_node("dialogue_display"))
 	var dialogue = load("res://dialogue/dialogue_display.tscn").instantiate()
 	add_child(dialogue)
-	dialogue.load_dialogue("res://dialogue/dialogue.json", topic)
+	dialogue.load_dialogue("res://dialogue/json_files/dialogue.json", topic)
 
 func _on_hex_finished():
 	$back_btn.set_visible(true)

@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6iton1di25v8"]
+
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_7td0o"]
+[ext_resource type="Script" uid="uid://cwlhx0n2380sk" path="res://pc/level2/select.gd" id="1_i2vaj"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="4_7td0o"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="4_nf7w3"]
+[ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/UI/exit-button.png" id="5_7td0o"]
+
+[node name="select_test" type="NinePatchRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -42.0
+offset_right = 38.5
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7td0o")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+script = ExtResource("1_i2vaj")
+
+[node name="start_offset" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 16.0
+offset_right = 58.0
+offset_bottom = 24.0
+theme = ExtResource("4_nf7w3")
+text = "start offset:"
+
+[node name="start" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 24.0
+offset_right = 71.0
+offset_bottom = 36.0
+theme = ExtResource("4_nf7w3")
+placeholder_text = "00"
+alignment = 2
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="end_offset" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 40.0
+offset_right = 56.0
+offset_bottom = 48.0
+theme = ExtResource("4_nf7w3")
+text = "end offset:"
+
+[node name="end" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 48.0
+offset_right = 71.0
+offset_bottom = 60.0
+theme = ExtResource("4_nf7w3")
+placeholder_text = "00"
+alignment = 2
+
+[node name="cancel" type="Button" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 65.0
+offset_right = 56.0
+offset_bottom = 80.0
+theme = ExtResource("4_nf7w3")
+text = "cancel"
+script = ExtResource("4_7td0o")
+metadata/_custom_type_script = "uid://64yrohmth67e"
+
+[node name="ok" type="Button" parent="."]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 65.0
+offset_right = 73.0
+offset_bottom = 80.0
+theme = ExtResource("4_nf7w3")
+text = "ok"
+script = ExtResource("4_7td0o")
+metadata/_custom_type_script = "uid://64yrohmth67e"
+
+[node name="exit" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 77.0
+offset_bottom = 14.0
+theme = ExtResource("4_nf7w3")
+texture_normal = ExtResource("5_7td0o")
+
+[connection signal="mouse_entered" from="cancel" to="cancel" method="_on_mouse_entered"]
+[connection signal="pressed" from="cancel" to="." method="_on_cancel_pressed"]
+[connection signal="mouse_entered" from="ok" to="ok" method="_on_mouse_entered"]
+[connection signal="pressed" from="ok" to="." method="_on_ok_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

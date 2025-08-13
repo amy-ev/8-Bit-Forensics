@@ -5,7 +5,7 @@ var information_dict:={}
 
 func _ready() -> void:
 	set_visible(false)
-	load_dialogue("res://dialogue/image_file_dialogue.json")
+	load_dialogue("res://dialogue/json_files/image_file_dialogue.json")
 	Global.connect("next_step", _on_new_child)
 
 func start(dialogue:String):

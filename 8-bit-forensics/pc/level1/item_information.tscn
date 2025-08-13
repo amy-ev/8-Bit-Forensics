@@ -1,0 +1,142 @@
+[gd_scene load_steps=6 format=3 uid="uid://mhwpec40rwrn"]
+
+[ext_resource type="Script" path="res://pc/level1/item_information.gd" id="1_g7w0n"]
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_kxa1e"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="3_kxa1e"]
+[ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="4_5ivit"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="5_c767p"]
+
+[node name="item_information" type="ColorRect"]
+offset_left = 27.0
+offset_top = 4.0
+offset_right = 333.0
+offset_bottom = 222.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("1_g7w0n")
+
+[node name="window" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -64.0
+offset_right = 70.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_kxa1e")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="sort" type="VBoxContainer" parent="window"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 135.0
+offset_bottom = 77.0
+theme_override_constants/separation = -1
+
+[node name="case_no" type="LineEdit" parent="window/sort"]
+layout_mode = 2
+theme = ExtResource("3_kxa1e")
+placeholder_text = "case_no"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="evidence_no" type="LineEdit" parent="window/sort"]
+layout_mode = 2
+theme = ExtResource("3_kxa1e")
+placeholder_text = "evidence_no"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="unique_desc" type="LineEdit" parent="window/sort"]
+layout_mode = 2
+theme = ExtResource("3_kxa1e")
+placeholder_text = "unique_desc"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="examiner" type="LineEdit" parent="window/sort"]
+layout_mode = 2
+theme = ExtResource("3_kxa1e")
+placeholder_text = "examiner"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="notes" type="LineEdit" parent="window/sort"]
+layout_mode = 2
+theme = ExtResource("3_kxa1e")
+placeholder_text = "notes"
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="navigation" type="HBoxContainer" parent="window"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 47.0
+offset_right = 135.0
+offset_bottom = 60.0
+alignment = 2
+
+[node name="back" type="Button" parent="window/navigation"]
+layout_mode = 2
+theme = ExtResource("4_5ivit")
+text = "back"
+script = ExtResource("5_c767p")
+metadata/_custom_type_script = "uid://64yrohmth67e"
+
+[node name="next" type="Button" parent="window/navigation"]
+layout_mode = 2
+theme = ExtResource("4_5ivit")
+text = "next"
+script = ExtResource("5_c767p")
+metadata/_custom_type_script = "uid://64yrohmth67e"
+
+[node name="cancel" type="Button" parent="window/navigation"]
+layout_mode = 2
+theme = ExtResource("4_5ivit")
+text = "cancel"
+script = ExtResource("5_c767p")
+metadata/_custom_type_script = "uid://64yrohmth67e"
+
+[connection signal="mouse_entered" from="window/navigation/back" to="window/navigation/back" method="_on_mouse_entered"]
+[connection signal="pressed" from="window/navigation/back" to="." method="_on_back_pressed"]
+[connection signal="mouse_entered" from="window/navigation/next" to="window/navigation/next" method="_on_mouse_entered"]
+[connection signal="pressed" from="window/navigation/next" to="." method="_on_next_pressed"]
+[connection signal="mouse_entered" from="window/navigation/cancel" to="window/navigation/cancel" method="_on_mouse_entered"]
+[connection signal="pressed" from="window/navigation/cancel" to="." method="_on_cancel_pressed"]
