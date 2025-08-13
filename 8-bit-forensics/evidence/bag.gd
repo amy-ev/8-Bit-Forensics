@@ -27,6 +27,7 @@ func _on_cut_section_area_entered(area: Area2D) -> void:
 				tween.tween_property(area.get_parent(),"global_position", Vector2(area.get_parent().global_position.x - $bag/collision.shape.size.x, area.get_parent().global_position.y),0.5)
 				await $animation.animation_finished
 				$bag/collision.disabled = false
+				$boundary_bottom.queue_free()
 				$cut_section.queue_free()
 				area.get_parent().queue_free()
 		else:
@@ -58,7 +59,6 @@ func _on_bag_area_entered(area: Area2D) -> void:
 
 
 func _on_bag_area_exited(area: Area2D) -> void:
-	print(area.name)
 	if area.name == "moveable":
 		evidence_bagged = false
 	if area.name == "bag":

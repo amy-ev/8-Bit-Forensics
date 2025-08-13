@@ -14,7 +14,11 @@ func start(dialogue:String):
 
 
 func _on_text_timer_timeout() -> void:
-	#TODO: add a typing sound
+	if get_parent().get_parent().name != "dialogue_helper" && get_parent().get_parent().name != "dialogue_create_file":
+		if char_pos % 7 == 0:
+			audio.dialogue.play()
+		elif char_pos % 3 == 0:
+			audio.dialogue_2.play()
 	char_pos += 1
 	text = full_text.substr(0,char_pos)
 	if is_playing and char_pos == full_text.length():
@@ -27,3 +31,4 @@ func skip():
 	text = full_text.substr(0,char_pos)
 	timer.stop()
 	is_playing = false
+	Global.emit_signal("text_finished")

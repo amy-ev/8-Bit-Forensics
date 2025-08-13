@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://bymujjs8bugxl"]
+
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_iu2nx"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="2_k7w4u"]
+[ext_resource type="Script" uid="uid://cwto8mfeu6gle" path="res://pc/level1/hash.gd" id="2_olpnb"]
+[ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="4_olpnb"]
+[ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/UI/exit-button.png" id="5_lnx4f"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="5_qmbqj"]
+
+[node name="hash" type="NinePatchRect"]
+offset_left = 58.0
+offset_top = 158.0
+offset_right = 300.0
+offset_bottom = 196.0
+texture = ExtResource("1_iu2nx")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+script = ExtResource("2_olpnb")
+
+[node name="cmd" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 20.0
+offset_right = 202.0
+offset_bottom = 32.0
+theme = ExtResource("2_k7w4u")
+placeholder_text = "cmd line"
+
+[node name="title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 130.0
+offset_bottom = 10.0
+theme = ExtResource("2_k7w4u")
+text = "C:\\\\Windows\\system32\\cmd.exe"
+
+[node name="type" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 22.0
+offset_right = 41.0
+offset_bottom = 30.0
+theme = ExtResource("2_k7w4u")
+text = "C:\\Users>"
+
+[node name="submit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 19.0
+offset_right = 236.0
+offset_bottom = 33.0
+theme = ExtResource("4_olpnb")
+text = "submit"
+script = ExtResource("5_qmbqj")
+metadata/_custom_type_script = "uid://64yrohmth67e"
+
+[node name="done" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 228.0
+offset_right = 242.0
+offset_bottom = 14.0
+theme = ExtResource("4_olpnb")
+texture_normal = ExtResource("5_lnx4f")
+
+[connection signal="mouse_entered" from="submit" to="submit" method="_on_mouse_entered"]
+[connection signal="pressed" from="submit" to="." method="_on_submit_pressed"]
+[connection signal="pressed" from="done" to="." method="_on_done_pressed"]

@@ -4,14 +4,16 @@
 [ext_resource type="Script" uid="uid://cal61oih1da6a" path="res://evidence/moveable_evidence.gd" id="2_etui1"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_3j0qw"]
-points = PackedVector2Array(10, 0, 19, 0, 27, 8, 27, 15, 16, 27, 10, 27, 0, 17, 0, 10)
+points = PackedVector2Array(10, 0, 25, 0, 33, 8, 33, 17, 19, 30, 11, 30, 0, 19, 0, 11)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_etui1"]
-points = PackedVector2Array(10, 0, 19, 0, 27, 8, 27, 15, 16, 27, 10, 27, 0, 17, 0, 10)
+points = PackedVector2Array(10, 0, 25, 0, 33, 8, 33, 17, 19, 30, 11, 30, 0, 19, 0, 11)
 
 [node name="moveable_evidence" type="TextureRect"]
-offset_right = 27.0
-offset_bottom = 27.0
+offset_left = 358.0
+offset_top = 50.0
+offset_right = 391.0
+offset_bottom = 80.0
 texture = ExtResource("1_3j0qw")
 expand_mode = 1
 script = ExtResource("2_etui1")

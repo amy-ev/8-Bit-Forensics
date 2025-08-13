@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c34x0oaurb2o"]
+
+[ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_3dqkk"]
+[ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="2_keuck"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b1e65"]
+texture = ExtResource("1_3dqkk")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[node name="comment" type="PanelContainer"]
+offset_right = 64.0
+offset_bottom = 28.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_b1e65")
+
+[node name="dialogue_label" parent="." instance=ExtResource("2_keuck")]
+custom_minimum_size = Vector2(76, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.321569, 0.282353, 0.223529, 1)
+autowrap_mode = 1
+shortcut_keys_enabled = false
+vertical_alignment = 3

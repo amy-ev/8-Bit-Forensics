@@ -1,33 +1,32 @@
 extends CanvasLayer
 
 @onready var _dialogue = preload("res://dialogue/redirect_dialogue.tscn")
+@onready var _name = $evidence_form/columns/column2/continuity/name_label/name
+@onready var _signed = $evidence_form/columns/column2/continuity/signed_label/signed
+@onready var _date = $evidence_form/columns/column2/continuity/date_label/date
 
 func _ready() -> void:
 	print(get_parent())
 	if get_parent().name == "opened_bag":
 		print(Global.form_name)
-		$evidence_form/columns/column2/continuity/name_label/name.text = Global.form_name
-		$evidence_form/columns/column2/continuity/signed_label/signed.text = Global.form_signed
-		$evidence_form/columns/column2/continuity/date_label/date.text = Global.form_date
+		_name.text = Global.form_name
+		_signed.text = Global.form_signed
+		_date.text = Global.form_date
 		
-		$evidence_form/columns/column2/continuity/name_label/name.editable = false
-		$evidence_form/columns/column2/continuity/signed_label/signed.editable = false
-		$evidence_form/columns/column2/continuity/date_label/date.editable = false
+		_name.editable = false
+		_signed.editable = false
+		_date.editable = false
+		
 	else: 
-		$evidence_form/columns/column2/continuity/name_label/name.text = ""
-		$evidence_form/columns/column2/continuity/signed_label/signed.text = ""
-		$evidence_form/columns/column2/continuity/date_label/date.text = ""
+		_name.text = ""
+		_signed.text = ""
+		_date.text = ""
 		
-		$evidence_form/columns/column2/continuity/name_label/name.editable = true
-		$evidence_form/columns/column2/continuity/signed_label/signed.editable = true
-		$evidence_form/columns/column2/continuity/date_label/date.editable = true
-	#if Global.is_first_bag:
-		#$columns/column2/continuity/name_label/name.text = Global.form_name
-		#$columns/column2/continuity/signed_label/signed.text = Global.form_signed
-		#$columns/column2/continuity/date_label/date.text = Global.form_date
+		_name.editable = true
+		_signed.editable = true
+		_date.editable = true
 
 func _on_confirm_pressed() -> void:
-	print(Global.form_name)
 	var form_name = $evidence_form/columns/column2/continuity/name_label/name.text
 	var form_signed = $evidence_form/columns/column2/continuity/signed_label/signed.text
 	var form_date = $evidence_form/columns/column2/continuity/date_label/date.text
@@ -38,31 +37,32 @@ func _on_confirm_pressed() -> void:
 			Global.form_signed = form_signed
 			Global.form_date = form_date
 			get_parent().form_filled = true
+			
+			Global.emit_signal("dialogue_triggered","e2.0")
 			queue_free()
-			Global.is_first_bag = false
+
 		else:
+			if has_node("redirect_dialogue"):
+				remove_child(get_node("redirect_dialogue"))
 			var dialogue = _dialogue.instantiate()
 			add_child(dialogue)
 			dialogue.start("fill all")
 			
 	elif get_parent().name == "new_bag":
 		if form_name != Global.form_name || form_signed != Global.form_signed || form_date != Global.form_date:
+			if has_node("redirect_dialogue"):
+				remove_child(get_node("redirect_dialogue"))
 			var dialogue = _dialogue.instantiate()
 			add_child(dialogue)
 			dialogue.start("does not match")
 		else:
-			var dialogue = load("res://dialogue/dialogue_display.tscn").instantiate()
-			dialogue.get_node("npc_normal").set_visible(false)
-			dialogue.get_node("npc_good").set_visible(true)
-			
+
 			var animation = get_parent().get_node("animation")
 			animation.play("seal")
 			set_visible(false)
 			await animation.animation_finished
-			
+			Global.emit_signal("evidence_finished")
 			queue_free()
-			get_parent().add_child(dialogue)
-			dialogue.start("crime ! time to end day")
 
 			#trigger dialogue to end day
 	elif get_parent().name == "opened_bag":

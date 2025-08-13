@@ -1,0 +1,82 @@
+{
+    "0": {
+        "questions": [
+            "What does a hash value represent?",
+            "What is the purpose of using a hash function during a forensic investigation?",
+            "What does 'Chain of Custody' refer to?"
+        ],
+        "answers": [
+            [
+                "The size of a file",
+                "The exact contents of a file at a given time",
+                "The file's location on a disk",
+                "When and where the file was created"
+            ],
+            [
+                "To verify data integrity",
+                "To encrypt the evidence file",
+                "To compress the evidence file"
+            ],
+            [
+                "A record of who has handled the evidence and when",
+                "A process of imaging hard drives",
+                "A timeline of events on what has been discovered from the evidence"
+            ]
+        ]
+    },
+    "1": {
+        "questions": [
+            "In hex carving, which of the following is essential to identify file boundaries?",
+            "What is the file header for a JPG image?",
+            "What is the main reason for manually hex carving during a forensic investigation?",
+            "What does the hex value 'FF D9' signify?"
+        ],
+        "answers": [
+            [
+                "File signatures",
+                "File permissions",
+                "File size"
+            ],
+            [
+                "FF D9",
+                "FF D8 FF E0",
+                "FF D9 FF E1"
+            ],
+            [
+                "To remove metadata",
+                "To degragment hard drives",
+                "To recover deleted or corrupted files"
+            ],
+            [
+                "The start of a PDF document",
+                "The end of a JPG file",
+                "The end of a PNG image file"
+            ]
+        ]
+    },
+    "2": {
+        "questions": [
+            "What does EXIF stand for?",
+            "What camera setting is commonly recorded in EXIF data?",
+            "What is the risk of sharing photos with embedded EXIF data online?"
+        ],
+        "answers": [
+            [
+                "Exchangable Information File Format",
+                "External Image File",
+                "Exchangeable Image File Format"
+            ],
+            [
+                "Focal Length",
+                "Shutter Speed",
+                "Model",
+                "All of the above"
+            ],
+            [
+                "Corrupting the image",
+                "Lower image resolution",
+                "Revealing your location"
+            ]
+        ]
+    }
+}

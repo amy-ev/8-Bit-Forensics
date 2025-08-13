@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dbrfo4dk0w0t6"
+path="res://.godot/imported/HoliznaPATREON - Lo-Bit 9 ( LoFi , Nostalgic ).mp3-6c1cc1a4dac5e25e7869f2839fd3dc9c.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/HoliznaPATREON - Lo-Bit 9 ( LoFi , Nostalgic ).mp3"
+dest_files=["res://.godot/imported/HoliznaPATREON - Lo-Bit 9 ( LoFi , Nostalgic ).mp3-6c1cc1a4dac5e25e7869f2839fd3dc9c.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

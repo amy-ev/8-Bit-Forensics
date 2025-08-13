@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0ocvq7kvvto"]
+
+[ext_resource type="Texture2D" uid="uid://bs6tul4gsppov" path="res://assets/crime_board/notes/4-note.png" id="1_v51x7"]
+[ext_resource type="Script" uid="uid://b2shhio7ag25r" path="res://quiz/quiz_panel.gd" id="2_8jfgu"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="2_ulyy2"]
+[ext_resource type="PackedScene" uid="uid://c0wglcbgod0a4" path="res://dialogue/helper.tscn" id="3_8jfgu"]
+
+[node name="panel" type="NinePatchRect"]
+offset_left = 174.0
+offset_top = 24.0
+offset_right = 337.0
+offset_bottom = 253.0
+texture = ExtResource("1_v51x7")
+region_rect = Rect2(129, 123, 66, 93)
+patch_margin_left = 24
+patch_margin_top = 69
+patch_margin_right = 24
+patch_margin_bottom = 12
+script = ExtResource("2_8jfgu")
+
+[node name="sort" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 19.0
+offset_right = 145.0
+offset_bottom = 214.0
+theme_override_constants/separation = 28
+
+[node name="question" type="Label" parent="sort"]
+layout_mode = 2
+theme = ExtResource("2_ulyy2")
+theme_override_font_sizes/font_size = 8
+text = "This is a temporary label of text for the question that would be asked at the end of the day?"
+autowrap_mode = 2
+
+[node name="helper" parent="sort" instance=ExtResource("3_8jfgu")]
+visible = false
+
+[node name="answers" type="VBoxContainer" parent="sort"]
+layout_mode = 2
+
+[node name="exit" type="Button" parent="sort/answers"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_ulyy2")
+text = "finish"
+
+[connection signal="pressed" from="sort/answers/exit" to="." method="_on_exit_pressed"]

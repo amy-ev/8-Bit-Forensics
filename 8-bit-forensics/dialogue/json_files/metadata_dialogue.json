@@ -1,0 +1,176 @@
+{
+  "ImageWidth": {
+    "text": "The number of columns of image data. This is equal to the number of pixels per row."
+  },
+  "ImageLength": {
+    "text": "The number of rows of image data."
+  },
+  "BitsPerSample": {
+    "text": "The number of bits per image component."
+  },
+  "Compression": {
+    "text": "This represents how the image data was encoded."
+  },
+  "ResolutionUnit": {
+    "text": "The unit used for measuring XResolution and YResolution."
+  },
+  "ExifOffset": {
+    "text": "The offset to EXIF subsection IFD."
+  },
+  "Make": {
+    "text": "The manufacturer of the imaging equipment."
+  },
+  "Model": {
+    "text": "The model name or number of the equipment."
+  },
+  "Software": {
+    "text": "The name and version of the software or firmware of the imaging equipment."
+  },
+  "Orientation": {
+    "text": "The image orientation viewed in terms of rows and columns"
+  },
+  "YCbCrSubSampling": {
+    "text": "The sampling ratio of chrominance components in relation to the luminance component."
+  },
+  "YCbCrPositioning": {
+    "text": "The position of chrominance components in relation to the luminance component."
+  },
+  "DateTime": {
+    "text": "The date and time of image creation."
+  },
+  "XResolution": {
+    "text": "The number of pixels per ResolutionUnit in the ImageWidth direction"
+  },
+  "YResolution": {
+    "text": "The number of pixels per ResolutionUnit in the ImageLength direction"
+  },
+  "ExifVersion": {
+    "text": "The EXIF version number."
+  },
+  "ComponentsConfiguration": {
+    "text": "The information specific to the compressed data."
+  },
+  "ShutterSpeedValue": {
+    "text": "The length of time the imagining equipments sensor was exposed to light."
+  },
+  "DateTimeOriginal": {
+    "text": "The date and time when the original image data was generated."
+  },
+  "DateTimeDigitized": {
+    "text": "The date and time when the image was stored as digital data."
+  },
+  "ApertureValue": {
+    "text": "The lens aperture."
+  },
+  "BrightnessValue": {
+    "text": "The brightness level."
+  },
+  "MeteringMode": {
+    "text": "The setting used to determine how the imaging equipment measures the light."
+  },
+  "FlashPixVersion": {
+    "text": "The FlasPix format version."
+  },
+  "ColorSpace": {
+    "text": "The colour space specifier, typically sRGB is used to define the colour space."
+  },
+  "FocalLength": {
+    "text": "The actual focal length of the lens, in mm."
+  },
+  "ExifImageWidth": {
+    "text": "The valid image width, specific to compressed data."
+  },
+  "ExifImageHeight": {
+    "text": "The valid image height, specific to compressed data."
+  },
+  "FocalLengthIn35mmFilm": {
+    "text": "The equivalent focal length assuming a 35mm film camera, in mm."
+  },
+  "SceneCaptureType": {
+    "text": "The indication of the type of scene."
+  },
+  "Sharpness": {
+    "text": "The direction of sharpness processing applied."
+  },
+  "SubjectLocation": {
+    "text": "The location and area of the main subject in the scene."
+  },
+  "SensingMethod": {
+    "text": "The type of image sensor."
+  },
+  "ExposureTime": {
+    "text": "The exposure time, in seconds."
+  },
+  "FNumber": {
+    "text": "The ratio of the focal length to the aperture diameter of a lens."
+  },
+  "ExposureProgram": {
+    "text": "The program used to set exposure."
+  },
+  "ISOSpeedRatings": {
+    "text": "The ISO speed and ISO latitutde of the imaging equipment"
+  },
+  "ExposureMode": {
+    "text": "The exposure mode set."
+  },
+  "WhiteBalance": {
+    "text": "The white balance mode set."
+  },
+  "GPSVersionID": {
+    "text": "The version of GPSInfo."
+  },
+  "GPSLatitudeRef": {
+    "text": "The indication to whether the latitude is north or south."
+  },
+  "GPSLatitude": {
+    "text": "The latitude, presented as degrees, minutes, and seconds."
+  },
+  "GPSLongitudeRef": {
+    "text": "The indication to whether the longitude is east or west."
+  },
+  "GPSLongitude": {
+    "text": "The longitude, presnted as degrees, miniutes, and seconds."
+  },
+  "GPSAltitudeRef": {
+    "text": "The altitude used as the reference altitude. If the reference is sea level, and the altitude is above sea level, 0 is given. If the altitude is below sea level,1 is given, with the altitude being an absolute value."
+  },
+  "GPSAltitude": {
+    "text": "The altitude based on the AltitudeRef, in meters."
+  },
+  "GPSTimeStamp": {
+    "text": "The time, indicated as UTC, presented as hour, minute, and second."
+  },
+  "GPSDateStamp": {
+    "text": "The date information relative to UTC, presented as year, month, day."
+  },
+  "GPSImgDirectionRef": {
+    "text": "The reference for giving the ImgDirection, 'T' indicates true direction, 'M' indicates magnetic direction."
+  },
+  "GPSImgDirection": {
+    "text": "The direction of the image."
+  },
+  "ImageDescription": {
+    "text": "The character string giving the title of the image."
+  },
+  "Artist": {
+    "text": "The name of the image creator."
+  },
+  "Copyright": {
+    "text": "The copyright information."
+  },
+  "LensMake": {
+    "text": "The lens manufactor."
+  },
+  "LensModel": {
+    "text": "The lens's model name an model number."
+  },
+  "LensSpecification": {
+    "text": "The infomation of the lens of the imaging equipment, noting the minimum and maximum focal length, minimum f-number in the minimum focal length, an the minimum f-number in the maximum focal length."
+  },
+  "SubSecTimeOriginal": {
+    "text": "The record of fractions of seconds for DateTimeOriginal."
+  },
+  "SubsSecTimeDigitized": {
+    "text": "The record of fractions of seconds for DateTimeDigitized."
+  }
+}

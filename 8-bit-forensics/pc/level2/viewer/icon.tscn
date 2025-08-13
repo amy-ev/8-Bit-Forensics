@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://yjd061bxqclj"]
+
+[ext_resource type="Texture2D" uid="uid://cq8g1a3xywsfu" path="res://assets/UI/file-icon.png" id="1_t7dw3"]
+[ext_resource type="Script" uid="uid://mic5s54737pg" path="res://pc/level2/viewer/icon.gd" id="2_7pxwy"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="3_7pxwy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtqy3"]
+size = Vector2(16, 20)
+
+[node name="icon" type="TextureRect"]
+offset_left = 3.0
+offset_right = 19.0
+offset_bottom = 20.0
+texture = ExtResource("1_t7dw3")
+script = ExtResource("2_7pxwy")
+
+[node name="area" type="Area2D" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="area"]
+position = Vector2(8, 10)
+shape = SubResource("RectangleShape2D_qtqy3")
+
+[node name="file_name" type="Label" parent="."]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 20.0
+offset_right = 17.0
+offset_bottom = 27.0
+theme = ExtResource("3_7pxwy")
+text = "file 1"
+
+[connection signal="input_event" from="area" to="." method="_on_area_input_event"]

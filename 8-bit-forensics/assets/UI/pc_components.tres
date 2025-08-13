@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=54 format=3 uid="uid://b518a15p4qy0m"]
+[gd_resource type="Theme" load_steps=61 format=3 uid="uid://b518a15p4qy0m"]
 
 [ext_resource type="Texture2D" uid="uid://b5racejdl5xkx" path="res://assets/UI/checkbox-full.png" id="1_4qoqg"]
 [ext_resource type="Texture2D" uid="uid://wdcwbtfbqxkp" path="res://assets/evidence/button-disabled-2.png" id="1_fmhw4"]
@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="7_g44vn"]
 [ext_resource type="Texture2D" uid="uid://cgydxswieic3s" path="res://assets/UI/button-flat-pressed-v2.png" id="8_dm8my"]
 [ext_resource type="Texture2D" uid="uid://btd05ytkrrrkk" path="res://assets/UI/options-arrow.png" id="9_ga6xp"]
+[ext_resource type="Texture2D" uid="uid://d3yfm1j768vyo" path="res://assets/UI/tab-back.png" id="11_jttdc"]
+[ext_resource type="Texture2D" uid="uid://bn3tpwskodswf" path="res://assets/UI/tab-next.png" id="12_0lg3n"]
+[ext_resource type="Texture2D" uid="uid://crmkm8wb8el7i" path="res://assets/UI/tree-open.png" id="13_7s2m6"]
+[ext_resource type="Texture2D" uid="uid://c8slso4ud1tx2" path="res://assets/UI/tree-close.png" id="14_eftge"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dm8my"]
 content_margin_left = 4.0
@@ -284,7 +288,6 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.741176, 0.647059, 0.513726, 1)
-corner_radius_top_left = 2
 corner_radius_top_right = 2
 anti_aliasing = false
 
@@ -354,6 +357,20 @@ border_color = Color(0.545098, 0.490196, 0.384314, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbm74"]
+bg_color = Color(0.901961, 0.807843, 0.67451, 0.745098)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wacfs"]
+bg_color = Color(0.788235, 0.713726, 0.603922, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jttdc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qoqg"]
 
@@ -527,16 +544,35 @@ TabContainer/colors/font_hovered_color = Color(0.741176, 0.647059, 0.513726, 1)
 TabContainer/colors/font_selected_color = Color(0.321569, 0.282353, 0.223529, 1)
 TabContainer/colors/font_unselected_color = Color(0.321569, 0.282353, 0.223529, 1)
 TabContainer/constants/side_margin = 2
+TabContainer/icons/decrement = ExtResource("11_jttdc")
+TabContainer/icons/decrement_highlight = ExtResource("11_jttdc")
+TabContainer/icons/increment = ExtResource("12_0lg3n")
+TabContainer/icons/increment_highlight = ExtResource("12_0lg3n")
 TabContainer/styles/panel = SubResource("StyleBoxFlat_n325i")
 TabContainer/styles/tab_disabled = SubResource("StyleBoxFlat_wvqo8")
 TabContainer/styles/tab_focus = SubResource("StyleBoxFlat_402pl")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_bjwnd")
 TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_jvelq")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_mmqt0")
+TextEdit/constants/line_spacing = 3
+TextEdit/styles/focus = SubResource("StyleBoxFlat_gbm74")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_wacfs")
+TextEdit/styles/read_only = SubResource("StyleBoxEmpty_jttdc")
+Tree/colors/children_hl_line_color = Color(0.741176, 0.647059, 0.513726, 1)
 Tree/colors/font_color = Color(0.45098, 0.396078, 0.290196, 1)
 Tree/colors/font_hovered_color = Color(0.741176, 0.647059, 0.513726, 1)
 Tree/colors/font_selected_color = Color(0.321569, 0.282353, 0.223529, 1)
+Tree/colors/guide_color = Color(0.741176, 0.647059, 0.513726, 0.419608)
+Tree/colors/parent_hl_line_color = Color(0.741176, 0.647059, 0.513726, 1)
+Tree/colors/relationship_line_color = Color(0.847059, 0.752941, 0.615686, 1)
+Tree/constants/draw_guides = 0
+Tree/constants/draw_relationship_lines = 1
+Tree/constants/item_margin = 11
+Tree/constants/v_separation = 1
+Tree/icons/arrow = ExtResource("13_7s2m6")
+Tree/icons/arrow_collapsed = ExtResource("14_eftge")
 Tree/icons/checked = ExtResource("1_4qoqg")
+Tree/icons/select_arrow = ExtResource("13_7s2m6")
 Tree/icons/unchecked = ExtResource("2_eu4w8")
 Tree/styles/focus = SubResource("StyleBoxEmpty_4qoqg")
 Tree/styles/hovered = SubResource("StyleBoxEmpty_eu4w8")

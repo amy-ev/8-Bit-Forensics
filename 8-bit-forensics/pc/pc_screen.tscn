@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4qcqdfv02pnd"]
+[gd_scene load_steps=10 format=3 uid="uid://b4qcqdfv02pnd"]
 
 [ext_resource type="Script" uid="uid://bdgjl5jim21kt" path="res://pc/pc_screen.gd" id="1_76l2r"]
-[ext_resource type="PackedScene" uid="uid://krnwjg3pmi37" path="res://pc/keyboard.tscn" id="2_ngtsc"]
 [ext_resource type="Texture2D" uid="uid://catu7syl5tfw5" path="res://assets/pc/pc-on-wide.png" id="3_nld71"]
-[ext_resource type="PackedScene" uid="uid://c0wglcbgod0a4" path="res://dialogue/helper.tscn" id="4_ma4wb"]
-[ext_resource type="PackedScene" uid="uid://7dbr280v5upc" path="res://dialogue/dialogue_create_file.tscn" id="5_lv8oy"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="5_6p3y6"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="5_76l2r"]
 [ext_resource type="PackedScene" uid="uid://gw0ttp1001l6" path="res://dialogue/mini_dialogue.tscn" id="6_76l2r"]
 
 [sub_resource type="Animation" id="Animation_6p3y6"]
@@ -74,23 +73,11 @@ vframes = 2
 [node name="screen" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 72.0
-offset_top = 12.0
-offset_right = 312.0
-offset_bottom = 168.0
+offset_left = 108.0
+offset_top = 18.0
+offset_right = 468.0
+offset_bottom = 252.0
 mouse_filter = 2
-
-[node name="bottom_screen" type="Control" parent="."]
-clip_contents = true
-layout_mode = 3
-anchors_preset = 0
-offset_top = 180.0
-offset_right = 320.0
-offset_bottom = 372.0
-mouse_filter = 1
-
-[node name="keyboard-background" parent="bottom_screen" instance=ExtResource("2_ngtsc")]
-layout_mode = 0
 
 [node name="screen_animation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -98,12 +85,21 @@ libraries = {
 }
 autoplay = "on"
 
-[node name="helper" parent="." instance=ExtResource("4_ma4wb")]
-
-[node name="dialogue_create_file" parent="." instance=ExtResource("5_lv8oy")]
-visible = false
-
 [node name="mini_dialogue" parent="." instance=ExtResource("6_76l2r")]
 visible = false
 
+[node name="back_btn" type="Button" parent="."]
+visible = false
+z_index = 6
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 26.0
+offset_bottom = 17.0
+theme = ExtResource("5_6p3y6")
+text = "back"
+script = ExtResource("5_76l2r")
+metadata/_custom_type_script = "uid://64yrohmth67e"
+
 [connection signal="child_entered_tree" from="screen" to="." method="_on_screen_child_entered_tree"]
+[connection signal="mouse_entered" from="back_btn" to="back_btn" method="_on_mouse_entered"]
+[connection signal="pressed" from="back_btn" to="." method="_on_back_btn_pressed"]

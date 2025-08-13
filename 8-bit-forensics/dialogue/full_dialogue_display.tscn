@@ -1,0 +1,111 @@
+[gd_scene load_steps=11 format=3 uid="uid://ggsc0k0u24bc"]
+
+[ext_resource type="Script" uid="uid://bm2p2n6vqfkku" path="res://dialogue/dialogue_display.gd" id="1_rntwc"]
+[ext_resource type="Texture2D" uid="uid://qju74ko4d4mc" path="res://assets/dialogue/dialogue.png" id="2_i4pyp"]
+[ext_resource type="Texture2D" uid="uid://c3yl6q4k07f8q" path="res://assets/dialogue/dialogue-panel-bottom-wide.png" id="2_rntwc"]
+[ext_resource type="PackedScene" uid="uid://8byhhn3l3wo0" path="res://dialogue/dialogue.tscn" id="3_i4pyp"]
+[ext_resource type="PackedScene" uid="uid://c1f7ejp4myvjd" path="res://dialogue/dialogue_option.tscn" id="4_gkdle"]
+[ext_resource type="FontFile" uid="uid://ginkfwm14fgo" path="res://8-bit-forensics.ttf" id="4_i4pyp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8tx70"]
+texture = ExtResource("2_rntwc")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="Animation" id="Animation_1e8ho"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("npc:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_a13u3"]
+resource_name = "talk"
+length = 0.3
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("npc:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w78q7"]
+_data = {
+&"RESET": SubResource("Animation_1e8ho"),
+&"talk": SubResource("Animation_a13u3")
+}
+
+[node name="full_dialogue_display" type="CanvasLayer"]
+script = ExtResource("1_rntwc")
+
+[node name="blocker" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="npc" type="Sprite2D" parent="."]
+texture = ExtResource("2_i4pyp")
+centered = false
+hframes = 2
+
+[node name="panel" type="PanelContainer" parent="."]
+offset_left = 9.0
+offset_top = 177.0
+offset_right = 471.0
+offset_bottom = 264.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8tx70")
+
+[node name="container" type="VBoxContainer" parent="panel"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="panel/container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_i4pyp")
+theme_override_font_sizes/font_size = 8
+
+[node name="dialogue_label" parent="panel/container" instance=ExtResource("3_i4pyp")]
+layout_mode = 2
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_w78q7")
+}
+
+[node name="dialogue_option" parent="." instance=ExtResource("4_gkdle")]
+offset_left = 375.0
+offset_top = 155.0
+offset_right = 471.0
+offset_bottom = 174.0
+
+[node name="dialogue_option2" parent="." instance=ExtResource("4_gkdle")]
+offset_left = 375.0
+offset_top = 132.0
+offset_right = 471.0
+offset_bottom = 151.0
+
+[connection signal="option_selected" from="dialogue_option/select" to="." method="_on_select_option_selected"]
+[connection signal="option_selected" from="dialogue_option2/select" to="." method="_on_select_option_selected2"]
+
+[editable path="dialogue_option"]
+[editable path="dialogue_option2"]

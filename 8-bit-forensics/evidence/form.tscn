@@ -1,18 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://be441q1omxkco"]
+[gd_scene load_steps=8 format=3 uid="uid://be441q1omxkco"]
 
 [ext_resource type="Texture2D" uid="uid://b813dsxowvv5r" path="res://assets/evidence/form-border.png" id="1_1b8hc"]
 [ext_resource type="Script" uid="uid://d4asu5n8d2si" path="res://evidence/form.gd" id="1_1gyes"]
 [ext_resource type="Texture2D" uid="uid://d1iokpmlhoe4p" path="res://assets/evidence/separation.png" id="3_2kplo"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="4_2kplo"]
 [ext_resource type="Texture2D" uid="uid://dyb33se5e51wg" path="res://assets/evidence/dash.png" id="5_xafih"]
+[ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="6_xafih"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="7_jg7tw"]
 
 [node name="form_canvas" type="CanvasLayer"]
 script = ExtResource("1_1gyes")
 
+[node name="blocker" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
 [node name="evidence_form" type="NinePatchRect" parent="."]
 clip_contents = true
-offset_right = 256.0
-offset_bottom = 154.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -83.0
+offset_right = 128.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_1b8hc")
 patch_margin_left = 2
 patch_margin_top = 2
@@ -43,7 +62,7 @@ layout_mode = 2
 offset_right = 94.0
 offset_bottom = 144.0
 size_flags_horizontal = 3
-theme_override_constants/separation = 0
+theme_override_constants/separation = 1
 
 [node name="authority-label" type="RichTextLabel" parent="evidence_form/columns/column1/col_1"]
 custom_minimum_size = Vector2(0, 10)
@@ -70,15 +89,25 @@ end_cap_mode = 1
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
+theme_override_constants/line_separation = 2
 bbcode_enabled = true
-text = "identification ref. no.: [color=29241be5]and this is the line
+text = "identification ref. no.: [color=29241be5]the identification reference
 "
 scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
 
+[node name="underline5" type="Line2D" parent="evidence_form/columns/column1/col_1/ref_no-label"]
+position = Vector2(35, 8)
+points = PackedVector2Array(42, 0, 55, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
 [node name="underline" type="Line2D" parent="evidence_form/columns/column1/col_1/ref_no-label"]
-position = Vector2(-1, 16)
+position = Vector2(-1, 17)
 points = PackedVector2Array(2, 0, 91, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
@@ -87,7 +116,7 @@ begin_cap_mode = 1
 end_cap_mode = 1
 
 [node name="underline" type="Line2D" parent="evidence_form/columns/column1/col_1"]
-position = Vector2(-1, 29)
+position = Vector2(-1, 31)
 points = PackedVector2Array(1, 0, 91, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
@@ -98,8 +127,9 @@ end_cap_mode = 1
 custom_minimum_size = Vector2(41, 28)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
+theme_override_constants/line_separation = 2
 bbcode_enabled = true
-text = "description: [color=29241be5]the descrip-tion of the evidence     item"
+text = "description: [color=29241be5]the descripti-on of  the evidence item in the bag"
 scroll_active = false
 autowrap_mode = 1
 shortcut_keys_enabled = false
@@ -114,7 +144,7 @@ begin_cap_mode = 1
 end_cap_mode = 1
 
 [node name="underline2" type="Line2D" parent="evidence_form/columns/column1/col_1/description-label"]
-position = Vector2(-1, 16)
+position = Vector2(-1, 17)
 points = PackedVector2Array(2, 0, 90, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
@@ -123,7 +153,7 @@ begin_cap_mode = 1
 end_cap_mode = 1
 
 [node name="underline3" type="Line2D" parent="evidence_form/columns/column1/col_1/description-label"]
-position = Vector2(-1, 24)
+position = Vector2(-1, 26)
 points = PackedVector2Array(2, 0, 91, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
@@ -132,7 +162,7 @@ begin_cap_mode = 1
 end_cap_mode = 1
 
 [node name="underline2" type="Line2D" parent="evidence_form/columns/column1/col_1"]
-position = Vector2(-1, 57)
+position = Vector2(-1, 60)
 points = PackedVector2Array(1, 0, 91, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
@@ -144,13 +174,14 @@ custom_minimum_size = Vector2(80, 20)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
 bbcode_enabled = true
-text = "time/date seized: [color=29241be5]15/07/2025 12:17"
+text = "time/date seized: [color=29241be5]
+08/08/2008  08:00"
 scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
 
 [node name="underline2" type="Line2D" parent="evidence_form/columns/column1/col_1/time_date-label"]
-position = Vector2(-1, 16)
+position = Vector2(-1, 15)
 points = PackedVector2Array(2, 0, 91, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
@@ -159,7 +190,7 @@ begin_cap_mode = 1
 end_cap_mode = 1
 
 [node name="underline3" type="Line2D" parent="evidence_form/columns/column1/col_1"]
-position = Vector2(-1, 77)
+position = Vector2(-1, 79)
 points = PackedVector2Array(1, 0, 91, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
@@ -170,8 +201,9 @@ end_cap_mode = 1
 custom_minimum_size = Vector2(80, 18)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
+theme_override_constants/line_separation = 1
 bbcode_enabled = true
-text = "where seized: [color=29241be5] who knows"
+text = "where seized: [color=29241be5] where the item was seized"
 scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
@@ -186,7 +218,7 @@ begin_cap_mode = 1
 end_cap_mode = 1
 
 [node name="underline2" type="Line2D" parent="evidence_form/columns/column1/col_1/where-label"]
-position = Vector2(-1, 17)
+position = Vector2(-1, 16)
 points = PackedVector2Array(2, 0, 91, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
@@ -198,8 +230,9 @@ end_cap_mode = 1
 custom_minimum_size = Vector2(80, 18)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
+theme_override_constants/line_separation = 2
 bbcode_enabled = true
-text = "seized by:[color=29241be5] "
+text = "seized by:[color=29241be5] the person that seized the evidence"
 scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
@@ -227,7 +260,7 @@ custom_minimum_size = Vector2(23, 12)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
 bbcode_enabled = true
-text = "signed:[color=29241be5]"
+text = "signed:[color=29241be5] The.Signature"
 scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
@@ -242,7 +275,7 @@ begin_cap_mode = 1
 end_cap_mode = 1
 
 [node name="underline4" type="Line2D" parent="evidence_form/columns/column1/col_1"]
-position = Vector2(-1, 125)
+position = Vector2(-1, 131)
 points = PackedVector2Array(1, 0, 91, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
@@ -253,15 +286,24 @@ end_cap_mode = 1
 custom_minimum_size = Vector2(80, 18)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
+theme_override_constants/line_separation = 1
 bbcode_enabled = true
-text = "incident/crime no:[color=29241be5]
-fff"
+text = "incident/crime no:[color=29241be5] the crime number #0000"
 scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
 
+[node name="underline2" type="Line2D" parent="evidence_form/columns/column1/col_1/crime_no-label"]
+position = Vector2(-71, 8)
+points = PackedVector2Array(135, 0, 159, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
 [node name="underline" type="Line2D" parent="evidence_form/columns/column1/col_1/crime_no-label"]
-position = Vector2(-70, 16)
+position = Vector2(-70, 15)
 points = PackedVector2Array(70, 0, 159, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
@@ -284,24 +326,6 @@ offset_bottom = 151.0
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="underline" type="Line2D" parent="evidence_form/columns/column2/continuity"]
-position = Vector2(-1, 18)
-points = PackedVector2Array(2, 0, 72, 0)
-width = 1.0
-texture = ExtResource("5_xafih")
-texture_mode = 1
-begin_cap_mode = 1
-end_cap_mode = 1
-
-[node name="underline10" type="Line2D" parent="evidence_form/columns/column2/continuity"]
-position = Vector2(-1, 28)
-points = PackedVector2Array(2, 0, 72, 0)
-width = 1.0
-texture = ExtResource("5_xafih")
-texture_mode = 1
-begin_cap_mode = 1
-end_cap_mode = 1
-
 [node name="name" type="RichTextLabel" parent="evidence_form/columns/column2/continuity"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
@@ -309,16 +333,25 @@ theme = ExtResource("4_2kplo")
 theme_override_constants/line_separation = 2
 bbcode_enabled = true
 text = "name/rank/no: [color=393328]
-ffgff
-ffgff"
+the name of the per-son before you"
 scroll_active = false
+autowrap_mode = 1
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="underline2" type="Line2D" parent="evidence_form/columns/column2/continuity"]
-position = Vector2(-1, 38)
-points = PackedVector2Array(26, 0, 72, 0)
+[node name="underline" type="Line2D" parent="evidence_form/columns/column2/continuity/name"]
+position = Vector2(-1, 17)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline10" type="Line2D" parent="evidence_form/columns/column2/continuity/name"]
+position = Vector2(-1, 26)
+points = PackedVector2Array(2, 0, 72, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
 texture_mode = 1
@@ -330,26 +363,18 @@ custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
 bbcode_enabled = true
-text = "signed: [color=393328]name"
+text = "signed: [color=393328]The.Signature"
 scroll_active = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="underline3" type="Line2D" parent="evidence_form/columns/column2/continuity"]
-position = Vector2(-1, 47)
-points = PackedVector2Array(20, 0, 72, 0)
+[node name="underline2" type="Line2D" parent="evidence_form/columns/column2/continuity/signed"]
+position = Vector2(-1, 8)
+points = PackedVector2Array(26, 0, 72, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
 texture_mode = 1
-begin_cap_mode = 1
-end_cap_mode = 1
-
-[node name="underline5" type="Line2D" parent="evidence_form/columns/column2/continuity"]
-position = Vector2(-2, 50)
-points = PackedVector2Array(2, 0, 74, 0)
-width = 1.0
-texture = ExtResource("5_xafih")
 begin_cap_mode = 1
 end_cap_mode = 1
 
@@ -358,29 +383,26 @@ custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
 bbcode_enabled = true
-text = "date: [color=393328]24/01/2026"
+text = "date: [color=393328]08/08/2008"
 scroll_active = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="underline4" type="Line2D" parent="evidence_form/columns/column2/continuity"]
-z_index = 1
-position = Vector2(-1, 67)
-points = PackedVector2Array(2, 0, 72, 0)
+[node name="underline3" type="Line2D" parent="evidence_form/columns/column2/continuity/date"]
+position = Vector2(-1, 8)
+points = PackedVector2Array(20, 0, 72, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
 texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline6" type="Line2D" parent="evidence_form/columns/column2/continuity"]
-z_index = 1
-position = Vector2(-1, 77)
-points = PackedVector2Array(2, 0, 72, 0)
+[node name="underline5" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+position = Vector2(-2, 49)
+points = PackedVector2Array(2, 0, 74, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
-texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
@@ -400,8 +422,9 @@ custom_minimum_size = Vector2(72, 8)
 layout_mode = 2
 offset_top = 6.0
 offset_right = 82.0
-offset_bottom = 27.0
+offset_bottom = 28.0
 theme = ExtResource("4_2kplo")
+placeholder_text = " ..."
 context_menu_enabled = false
 emoji_menu_enabled = false
 shortcut_keys_enabled = false
@@ -416,10 +439,20 @@ autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="underline7" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+[node name="underline4" type="Line2D" parent="evidence_form/columns/column2/continuity/name_label"]
 z_index = 1
-position = Vector2(3, 88)
-points = PackedVector2Array(20, 0, 69, 0)
+position = Vector2(-1, 16)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline6" type="Line2D" parent="evidence_form/columns/column2/continuity/name_label"]
+z_index = 1
+position = Vector2(-1, 26)
+points = PackedVector2Array(2, 0, 72, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
 texture_mode = 1
@@ -430,20 +463,20 @@ end_cap_mode = 1
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
-text = "signed: name"
+text = "signed:"
 scroll_active = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
 [node name="signed" type="TextEdit" parent="evidence_form/columns/column2/continuity/signed_label"]
-custom_minimum_size = Vector2(30, 8)
 layout_mode = 2
 offset_left = 25.0
 offset_top = -2.0
-offset_right = 77.0
-offset_bottom = 19.0
+offset_right = 79.0
+offset_bottom = 9.0
 theme = ExtResource("4_2kplo")
+placeholder_text = "..."
 context_menu_enabled = false
 emoji_menu_enabled = false
 shortcut_keys_enabled = false
@@ -458,22 +491,13 @@ autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="underline9" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+[node name="underline7" type="Line2D" parent="evidence_form/columns/column2/continuity/signed_label"]
 z_index = 1
-position = Vector2(3, 97)
-points = PackedVector2Array(16, 0, 69, 0)
+position = Vector2(3, 8)
+points = PackedVector2Array(20, 0, 69, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
 texture_mode = 1
-begin_cap_mode = 1
-end_cap_mode = 1
-
-[node name="underline8" type="Line2D" parent="evidence_form/columns/column2/continuity"]
-z_index = 1
-position = Vector2(-2, 100)
-points = PackedVector2Array(2, 0, 74, 0)
-width = 1.0
-texture = ExtResource("5_xafih")
 begin_cap_mode = 1
 end_cap_mode = 1
 
@@ -491,9 +515,10 @@ drag_and_drop_selection_enabled = false
 layout_mode = 0
 offset_left = 19.0
 offset_top = -2.0
-offset_right = 73.0
-offset_bottom = 19.0
+offset_right = 82.0
+offset_bottom = 8.0
 theme = ExtResource("4_2kplo")
+placeholder_text = "..."
 context_menu_enabled = false
 emoji_menu_enabled = false
 shortcut_keys_enabled = false
@@ -508,23 +533,22 @@ autowrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="underline11" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+[node name="underline9" type="Line2D" parent="evidence_form/columns/column2/continuity/date_label"]
 z_index = 1
-position = Vector2(-1, 117)
-points = PackedVector2Array(2, 0, 72, 0)
+position = Vector2(3, 8)
+points = PackedVector2Array(16, 0, 69, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
 texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline12" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+[node name="underline8" type="Line2D" parent="evidence_form/columns/column2/continuity"]
 z_index = 1
-position = Vector2(-1, 127)
-points = PackedVector2Array(2, 0, 72, 0)
+position = Vector2(-2, 99)
+points = PackedVector2Array(2, 0, 74, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
-texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
@@ -532,39 +556,28 @@ end_cap_mode = 1
 custom_minimum_size = Vector2(0, 29)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
-text = "name/rank/no:
+text = "name/rank/no: 
+
 "
 scroll_active = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit" type="TextEdit" parent="evidence_form/columns/column2/continuity/name6"]
-custom_minimum_size = Vector2(72, 8)
-layout_mode = 2
-offset_top = 6.0
-offset_right = 82.0
-offset_bottom = 27.0
-theme = ExtResource("4_2kplo")
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
-empty_selection_clipboard_enabled = false
-wrap_mode = 1
-autowrap_mode = 1
-scroll_fit_content_height = true
-scroll_fit_content_width = true
-
-[node name="underline13" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+[node name="underline11" type="Line2D" parent="evidence_form/columns/column2/continuity/name6"]
 z_index = 1
-position = Vector2(3, 138)
-points = PackedVector2Array(20, 0, 69, 0)
+position = Vector2(-1, 16)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline12" type="Line2D" parent="evidence_form/columns/column2/continuity/name6"]
+z_index = 1
+position = Vector2(-1, 26)
+points = PackedVector2Array(2, 0, 72, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
 texture_mode = 1
@@ -575,39 +588,16 @@ end_cap_mode = 1
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
-text = "signed: name"
+text = "signed: "
 scroll_active = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="evidence_form/columns/column2/continuity/signed6"]
-custom_minimum_size = Vector2(30, 8)
-layout_mode = 2
-offset_left = 25.0
-offset_top = -2.0
-offset_right = 77.0
-offset_bottom = 19.0
-theme = ExtResource("4_2kplo")
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
-empty_selection_clipboard_enabled = false
-wrap_mode = 1
-autowrap_mode = 1
-scroll_fit_content_height = true
-scroll_fit_content_width = true
-
-[node name="underline14" type="Line2D" parent="evidence_form/columns/column2/continuity"]
+[node name="underline13" type="Line2D" parent="evidence_form/columns/column2/continuity/signed6"]
 z_index = 1
-position = Vector2(3, 147)
-points = PackedVector2Array(16, 0, 69, 0)
+position = Vector2(3, 8)
+points = PackedVector2Array(20, 0, 69, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
 texture_mode = 1
@@ -618,33 +608,21 @@ end_cap_mode = 1
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
-text = "date:"
+text = "date: "
 scroll_active = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="evidence_form/columns/column2/continuity/date6"]
-layout_mode = 0
-offset_left = 19.0
-offset_top = -2.0
-offset_right = 73.0
-offset_bottom = 8.0
-theme = ExtResource("4_2kplo")
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
-empty_selection_clipboard_enabled = false
-wrap_mode = 1
-autowrap_mode = 1
-scroll_fit_content_height = true
-scroll_fit_content_width = true
+[node name="underline14" type="Line2D" parent="evidence_form/columns/column2/continuity/date6"]
+z_index = 1
+position = Vector2(3, 8)
+points = PackedVector2Array(16, 0, 69, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
 
 [node name="column3" type="NinePatchRect" parent="evidence_form/columns"]
 custom_minimum_size = Vector2(76, 144)
@@ -655,30 +633,15 @@ patch_margin_right = 2
 axis_stretch_vertical = 1
 
 [node name="continuity" type="VBoxContainer" parent="evidence_form/columns/column3"]
-layout_mode = 2
-offset_left = 2.0
-offset_right = 76.0
-offset_bottom = 101.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -74.0
+offset_bottom = 151.0
+grow_horizontal = 0
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
-
-[node name="underline" type="Line2D" parent="evidence_form/columns/column3/continuity"]
-position = Vector2(-1, 18)
-points = PackedVector2Array(2, 0, 72, 0)
-width = 1.0
-texture = ExtResource("5_xafih")
-texture_mode = 1
-begin_cap_mode = 1
-end_cap_mode = 1
-
-[node name="underline10" type="Line2D" parent="evidence_form/columns/column3/continuity"]
-position = Vector2(-1, 28)
-points = PackedVector2Array(2, 0, 72, 0)
-width = 1.0
-texture = ExtResource("5_xafih")
-texture_mode = 1
-begin_cap_mode = 1
-end_cap_mode = 1
 
 [node name="name" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 30)
@@ -686,16 +649,25 @@ layout_mode = 2
 theme = ExtResource("4_2kplo")
 theme_override_constants/line_separation = 2
 bbcode_enabled = true
-text = "name/rank/no: [color=393328]
-"
+text = "name/rank/no: [color=393328]"
 scroll_active = false
+autowrap_mode = 1
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="underline2" type="Line2D" parent="evidence_form/columns/column3/continuity"]
-position = Vector2(-1, 38)
-points = PackedVector2Array(26, 0, 72, 0)
+[node name="underline" type="Line2D" parent="evidence_form/columns/column3/continuity/name"]
+position = Vector2(-1, 17)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline10" type="Line2D" parent="evidence_form/columns/column3/continuity/name"]
+position = Vector2(-1, 26)
+points = PackedVector2Array(2, 0, 72, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
 texture_mode = 1
@@ -707,26 +679,18 @@ custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
 bbcode_enabled = true
-text = "signed: [color=393328"
+text = "signed: [color=393328]"
 scroll_active = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="underline3" type="Line2D" parent="evidence_form/columns/column3/continuity"]
-position = Vector2(-1, 47)
-points = PackedVector2Array(20, 0, 72, 0)
+[node name="underline2" type="Line2D" parent="evidence_form/columns/column3/continuity/signed"]
+position = Vector2(-1, 8)
+points = PackedVector2Array(26, 0, 72, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
 texture_mode = 1
-begin_cap_mode = 1
-end_cap_mode = 1
-
-[node name="underline5" type="Line2D" parent="evidence_form/columns/column3/continuity"]
-position = Vector2(-2, 50)
-points = PackedVector2Array(2, 0, 74, 0)
-width = 1.0
-texture = ExtResource("5_xafih")
 begin_cap_mode = 1
 end_cap_mode = 1
 
@@ -741,27 +705,24 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="underline4" type="Line2D" parent="evidence_form/columns/column3/continuity"]
-z_index = 1
-position = Vector2(-1, 67)
-points = PackedVector2Array(2, 0, 72, 0)
+[node name="underline3" type="Line2D" parent="evidence_form/columns/column3/continuity/date"]
+position = Vector2(-1, 8)
+points = PackedVector2Array(20, 0, 72, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
 texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline6" type="Line2D" parent="evidence_form/columns/column3/continuity"]
-z_index = 1
-position = Vector2(-1, 77)
-points = PackedVector2Array(2, 0, 72, 0)
+[node name="underline5" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+position = Vector2(-2, 49)
+points = PackedVector2Array(2, 0, 74, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
-texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="name5" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
+[node name="name_label" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 29)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
@@ -772,31 +733,39 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit" type="TextEdit" parent="evidence_form/columns/column3/continuity/name5"]
-custom_minimum_size = Vector2(72, 8)
+[node name="underline4" type="Line2D" parent="evidence_form/columns/column3/continuity/name_label"]
+z_index = 1
+position = Vector2(-1, 16)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline6" type="Line2D" parent="evidence_form/columns/column3/continuity/name_label"]
+z_index = 1
+position = Vector2(-1, 26)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="signed_label" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
+custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
-offset_top = 6.0
-offset_right = 82.0
-offset_bottom = 27.0
 theme = ExtResource("4_2kplo")
-theme_override_font_sizes/font_size = 8
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
+text = "signed:"
+scroll_active = false
 shortcut_keys_enabled = false
-selecting_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
-empty_selection_clipboard_enabled = false
-wrap_mode = 1
-autowrap_mode = 1
-scroll_fit_content_height = true
-scroll_fit_content_width = true
 
-[node name="underline7" type="Line2D" parent="evidence_form/columns/column3/continuity"]
-position = Vector2(3, 88)
+[node name="underline7" type="Line2D" parent="evidence_form/columns/column3/continuity/signed_label"]
+z_index = 1
+position = Vector2(3, 8)
 points = PackedVector2Array(20, 0, 69, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
@@ -804,59 +773,7 @@ texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="signed5" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
-custom_minimum_size = Vector2(0, 9)
-layout_mode = 2
-theme = ExtResource("4_2kplo")
-text = "signed: name"
-scroll_active = false
-shortcut_keys_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="TextEdit2" type="TextEdit" parent="evidence_form/columns/column3/continuity/signed5"]
-custom_minimum_size = Vector2(30, 8)
-layout_mode = 2
-offset_left = 25.0
-offset_top = -2.0
-offset_right = 77.0
-offset_bottom = 19.0
-theme = ExtResource("4_2kplo")
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
-empty_selection_clipboard_enabled = false
-wrap_mode = 1
-autowrap_mode = 1
-scroll_fit_content_height = true
-scroll_fit_content_width = true
-
-[node name="underline9" type="Line2D" parent="evidence_form/columns/column3/continuity"]
-z_index = 1
-position = Vector2(3, 97)
-points = PackedVector2Array(16, 0, 69, 0)
-width = 1.0
-texture = ExtResource("5_xafih")
-texture_mode = 1
-begin_cap_mode = 1
-end_cap_mode = 1
-
-[node name="underline8" type="Line2D" parent="evidence_form/columns/column3/continuity"]
-z_index = 1
-position = Vector2(-2, 100)
-points = PackedVector2Array(2, 0, 74, 0)
-width = 1.0
-texture = ExtResource("5_xafih")
-begin_cap_mode = 1
-end_cap_mode = 1
-
-[node name="date5" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
+[node name="date_label" type="RichTextLabel" parent="evidence_form/columns/column3/continuity"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
@@ -866,45 +783,22 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="evidence_form/columns/column3/continuity/date5"]
-layout_mode = 0
-offset_left = 19.0
-offset_top = -2.0
-offset_right = 73.0
-offset_bottom = 19.0
-theme = ExtResource("4_2kplo")
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
-empty_selection_clipboard_enabled = false
-wrap_mode = 1
-autowrap_mode = 1
-scroll_fit_content_height = true
-scroll_fit_content_width = true
-
-[node name="underline11" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+[node name="underline9" type="Line2D" parent="evidence_form/columns/column3/continuity/date_label"]
 z_index = 1
-position = Vector2(-1, 117)
-points = PackedVector2Array(2, 0, 72, 0)
+position = Vector2(3, 8)
+points = PackedVector2Array(16, 0, 69, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
 texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
-[node name="underline12" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+[node name="underline8" type="Line2D" parent="evidence_form/columns/column3/continuity"]
 z_index = 1
-position = Vector2(-1, 127)
-points = PackedVector2Array(2, 0, 72, 0)
+position = Vector2(-2, 99)
+points = PackedVector2Array(2, 0, 74, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
-texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
 
@@ -912,39 +806,28 @@ end_cap_mode = 1
 custom_minimum_size = Vector2(0, 29)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
-text = "name/rank/no:
+text = "name/rank/no: 
+
 "
 scroll_active = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit" type="TextEdit" parent="evidence_form/columns/column3/continuity/name6"]
-custom_minimum_size = Vector2(72, 8)
-layout_mode = 2
-offset_top = 6.0
-offset_right = 82.0
-offset_bottom = 27.0
-theme = ExtResource("4_2kplo")
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
-empty_selection_clipboard_enabled = false
-wrap_mode = 1
-autowrap_mode = 1
-scroll_fit_content_height = true
-scroll_fit_content_width = true
-
-[node name="underline13" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+[node name="underline11" type="Line2D" parent="evidence_form/columns/column3/continuity/name6"]
 z_index = 1
-position = Vector2(3, 138)
-points = PackedVector2Array(20, 0, 69, 0)
+position = Vector2(-1, 16)
+points = PackedVector2Array(2, 0, 72, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="underline12" type="Line2D" parent="evidence_form/columns/column3/continuity/name6"]
+z_index = 1
+position = Vector2(-1, 26)
+points = PackedVector2Array(2, 0, 72, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
 texture_mode = 1
@@ -955,39 +838,16 @@ end_cap_mode = 1
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
-text = "signed: name"
+text = "signed: "
 scroll_active = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="evidence_form/columns/column3/continuity/signed6"]
-custom_minimum_size = Vector2(30, 8)
-layout_mode = 2
-offset_left = 25.0
-offset_top = -2.0
-offset_right = 77.0
-offset_bottom = 19.0
-theme = ExtResource("4_2kplo")
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
-empty_selection_clipboard_enabled = false
-wrap_mode = 1
-autowrap_mode = 1
-scroll_fit_content_height = true
-scroll_fit_content_width = true
-
-[node name="underline14" type="Line2D" parent="evidence_form/columns/column3/continuity"]
+[node name="underline13" type="Line2D" parent="evidence_form/columns/column3/continuity/signed6"]
 z_index = 1
-position = Vector2(3, 147)
-points = PackedVector2Array(16, 0, 69, 0)
+position = Vector2(3, 8)
+points = PackedVector2Array(20, 0, 69, 0)
 width = 1.0
 texture = ExtResource("5_xafih")
 texture_mode = 1
@@ -998,40 +858,38 @@ end_cap_mode = 1
 custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
-text = "date:"
+text = "date: "
 scroll_active = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="evidence_form/columns/column3/continuity/date6"]
-layout_mode = 0
-offset_left = 19.0
-offset_top = -2.0
-offset_right = 73.0
-offset_bottom = 8.0
-theme = ExtResource("4_2kplo")
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
-empty_selection_clipboard_enabled = false
-wrap_mode = 1
-autowrap_mode = 1
-scroll_fit_content_height = true
-scroll_fit_content_width = true
+[node name="underline14" type="Line2D" parent="evidence_form/columns/column3/continuity/date6"]
+z_index = 1
+position = Vector2(3, 8)
+points = PackedVector2Array(16, 0, 69, 0)
+width = 1.0
+texture = ExtResource("5_xafih")
+texture_mode = 1
+begin_cap_mode = 1
+end_cap_mode = 1
 
-[node name="confirm" type="Button" parent="evidence_form"]
-layout_mode = 2
-offset_left = 26.0
-offset_top = 122.0
-offset_right = 95.0
-offset_bottom = 153.0
+[node name="confirm" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -19.0
+offset_right = 48.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("6_xafih")
 text = "confirm"
+script = ExtResource("7_jg7tw")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
-[connection signal="pressed" from="evidence_form/confirm" to="." method="_on_confirm_pressed"]
+[connection signal="mouse_entered" from="confirm" to="confirm" method="_on_mouse_entered"]
+[connection signal="pressed" from="confirm" to="." method="_on_confirm_pressed"]

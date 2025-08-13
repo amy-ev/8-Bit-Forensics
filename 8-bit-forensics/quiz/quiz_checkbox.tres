@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://pb332373c7pc"]
+
+[ext_resource type="Texture2D" uid="uid://b5racejdl5xkx" path="res://assets/UI/checkbox-full.png" id="1_vqb3k"]
+[ext_resource type="Texture2D" uid="uid://bq30dedpbkfiq" path="res://assets/UI/checkbox-empty.png" id="2_m44wc"]
+[ext_resource type="FontFile" uid="uid://ginkfwm14fgo" path="res://8-bit-forensics.ttf" id="3_isama"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68n4m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hq7g6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mpnvr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eehdr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfh2r"]
+
+[resource]
+default_font = ExtResource("3_isama")
+default_font_size = 8
+CheckBox/colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
+CheckBox/colors/font_focus_color = Color(0.45098, 0.396078, 0.290196, 1)
+CheckBox/colors/font_hover_color = Color(0.643137, 0.552941, 0.415686, 1)
+CheckBox/colors/font_hover_pressed_color = Color(0.741176, 0.647059, 0.513726, 1)
+CheckBox/colors/font_pressed_color = Color(0.321569, 0.282353, 0.223529, 1)
+CheckBox/constants/check_v_offset = 1
+CheckBox/constants/h_separation = 0
+CheckBox/constants/icon_max_width = 12
+CheckBox/icons/checked = ExtResource("1_vqb3k")
+CheckBox/icons/radio_checked = ExtResource("1_vqb3k")
+CheckBox/icons/radio_unchecked = ExtResource("2_m44wc")
+CheckBox/icons/unchecked = ExtResource("2_m44wc")
+CheckBox/styles/disabled = SubResource("StyleBoxEmpty_68n4m")
+CheckBox/styles/focus = SubResource("StyleBoxEmpty_hq7g6")
+CheckBox/styles/hover = SubResource("StyleBoxEmpty_mpnvr")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_eehdr")
+CheckBox/styles/normal = SubResource("StyleBoxEmpty_eehdr")
+CheckBox/styles/pressed = SubResource("StyleBoxEmpty_lfh2r")

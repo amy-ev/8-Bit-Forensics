@@ -14,7 +14,7 @@ func _on_text_finished() -> void:
 
 func _on_option_confirmed(is_correct:bool):
 	if is_correct:
-		start("correct!")
+		pass
 	else:
 		start("wrong")
 

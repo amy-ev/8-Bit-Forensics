@@ -1,0 +1,20 @@
+{
+  "select_source":{
+    "physical":"The complete image of an entire physical storage device, ensuring all partitions, unallocated space and slack space is included. This allows for the visualisation of hidden partitions and deleted data.",
+    "logical":"The image of a specific volume that is presented as a separate drive, e.g C:// and D://.",
+    "image":"The pre-existing disk image.",
+    "contents":"The imaging of specific files or folders within a file system, this does not allow for the observation of deleted files or unallocated space.",
+    "fernico":"The imaging of devices that were created using the Fernico software."
+  },
+  "select_drive":{
+    "0":"This is your HDD.",
+    "1":"This is your SSD.",
+    "2":"This is the physical evidence inserted into the write-blocker."
+  },
+  "image_type":{
+    "dd": "The 'Raw Disk Image' image type is a bit-for-bit uncompressed copy of the data from the original source. A simple, unaltered copy, whereby the hash data is stored in a seperate log file.",
+    "SMART": "The 'Self-Monitoring Analysis and Reporting Technology' image type is a compressed, structured recreation of the data from the original source, developed by AccessData.",
+    "E01": "The 'Expert Witness Format' image type is a compressed, structured recreation of the data from the original source. This format contains a hash for each segment, storing it within the image file itself.",
+    "AFF": "The 'Advanced Forensic Format' image type is a compressed, structured recreation of the data from the original source. This format is an open-source forensic image format."
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "Day 1.0": {
+    "text": "Alright, rookie. First things first, welcome to the exciting world of digital forensics.",
+    "go to": [
+      "Day 1.1"
+    ],
+    "option display": [
+      "Hey!"
+    ]
+  },
+  "Day 1.1": {
+    "text": "Now this isn't one of those glamorous movie scenes with dramatic lighting. It's a dusty paper-filled office, your new home away from home.",
+    "go to": [
+      "Day 1.2"
+    ],
+    "option display": [
+      "Oh"
+    ]
+  },
+  "Day 1.2": {
+    "text": "But enough of that, let's walk you through your very first debrief.",
+    "go to": [
+      "Day 1.3"
+    ],
+    "option display": [
+      "Nice"
+    ]
+  },
+  "Day 1.3": {
+    "text": "What we have here is a suspected case of cyberstalking. Think less Mission Impossible and more Dan from accounting doing shady stuff on his lunch break.",
+    "go to": [
+      "Day 1.4"
+    ],
+    "option display": [
+      "What's the evidence?"
+    ]
+  },
+  "Day 1.4": {
+    "text": "Good question.",
+    "go to": [
+      "Day 1.5"
+    ],
+    "option display": [
+      "Thanks"
+    ]
+  },
+  "Day 1.5": {
+    "text": "This is the star of the show, a 1GB SD card. Looks harmless, right?",
+    "go to": [
+      "Day 1.6"
+    ],
+    "option display": [
+      "Right"
+    ]
+  },
+  "Day 1.6": {
+    "text": "This little device was recovered from the glove box of the suspect's car.",
+    "go to": [
+      "Day 1.7"
+    ],
+    "option display": [
+      "Interesting"
+    ]
+  },
+  "Day 1.7": {
+    "text": "There could be anything on it, embarrassing selfies, a timeline of the victim’s whereabouts. Who knows. We love a mystery.",
+    "go to": [
+      "Day 1.8"
+    ],
+    "option display": [
+      "We do"
+    ]
+  },
+  "Day 1.8": {
+    "text": "But before we even think about plugging it in, we follow procedure. Chain of Custody. Non-negotiable.",
+    "go to": [
+      "Day 1.9",
+      "Day 1.10"
+    ],
+    "option display": [
+      "Right",
+      "Whats that?"
+    ]
+  },
+  "Day 1.9": {
+    "text": "Reading is good, doing is better.",
+    "function": "end_dialogue",
+    "option display": [
+      "Sure"
+    ]
+  },
+  "Day 1.10": {
+    "text": "The Chain of Custody is your legal lifeline. It's how we prove to the courts when and where the evidence has been, and who interacted with it.",
+    "function": "end_dialogue",
+    "option display": [
+      "Interesting"
+    ]
+  },
+  "": {},
+  "Day 2.0": {
+    "text": "Morning, rookie. Crime scene was a bust, just a cracked router and a guy who think 'VPN' means Very Personal Nap.",
+    "go to": [
+      "Day 2.1"
+    ],
+    "option display": [
+      "..."
+    ]
+  },
+  "Day 2.1": {
+    "text": "But enough about that. Let’s get back to our SD card image.",
+    "go to": [
+      "Day 2.2"
+    ],
+    "option display": [
+      "Alright"
+    ]
+  },
+  "Day 2.2": {
+    "text": "Today's goal... File Carving. Specifically, we're going hex-deep and hunting for any hidden or corrupted files.",
+    "go to": [
+      "Day 2.3",
+      "Day 2.4"
+    ],
+    "option display": [
+      "From the SD card?",
+      "From the image?"
+    ]
+  },
+  "Day 2.3": {
+    "text": "Ha! I don't think so. Unless you want the entire case to fall apart. We'll be working from the forensic image you created yesterday. Let's launch up the pc and open the hex viewer.",
+    "function": "end_dialogue",
+    "option display": [
+      "Ah"
+    ]
+  },
+  "Day 2.4": {
+    "text": "Nice! The image file is already mounted read-only, let’s go on to the PC, launch the hex viewer, and scroll through the raw data.",
+    "function": "end_dialogue",
+    "option display": [
+      "Okay"
+    ]
+  },
+  "Day 3.0": {
+    "text": "Morning. Here-- No one investigates metadata without caffeine.",
+    "go to": [
+      "Day 3.1"
+    ],
+    "option display": [
+      "Where do we start?"
+    ]
+  },
+  "Day 3.1": {
+    "text": "Let's not waste time, launch up the PC and load up the metadata viewer.",
+    "function": "end_dialogue",
+    "option display": [
+      "On it."
+    ]
+  }
+}

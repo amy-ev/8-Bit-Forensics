@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3218f32yb8dd"]
+[gd_scene load_steps=9 format=3 uid="uid://b3218f32yb8dd"]
 
 [ext_resource type="Texture2D" uid="uid://b5tlifnionn35" path="res://assets/evidence/desk-background-wide.png" id="1_u6vuv"]
 [ext_resource type="Script" uid="uid://qdwm57in2ghk" path="res://evidence/desk.gd" id="2_h8nwr"]
 [ext_resource type="PackedScene" uid="uid://dullwxtc5crys" path="res://evidence/evidence.tscn" id="3_h8nwr"]
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="3_qedg2"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="4_pmmst"]
 [ext_resource type="PackedScene" uid="uid://cwyc4moqylni6" path="res://evidence/bag.tscn" id="4_vu08t"]
 [ext_resource type="PackedScene" uid="uid://babhg4xa6vxgo" path="res://evidence/scissors.tscn" id="5_uh1up"]
 [ext_resource type="PackedScene" uid="uid://dtyhuonm4qcao" path="res://evidence/pen.tscn" id="6_u6vuv"]
@@ -16,24 +18,28 @@ script = ExtResource("2_h8nwr")
 
 [node name="back" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 23.0
+offset_bottom = 14.0
+theme = ExtResource("3_qedg2")
 text = "back"
+script = ExtResource("4_pmmst")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="evidence" parent="." instance=ExtResource("3_h8nwr")]
 layout_mode = 0
-offset_left = 166.0
-offset_top = 82.0
-offset_right = 206.0
-offset_bottom = 122.0
+offset_left = 242.0
+offset_top = 143.0
+offset_right = 284.0
+offset_bottom = 183.0
 
 [node name="evidence_bag" parent="." instance=ExtResource("4_vu08t")]
-position = Vector2(128, 23)
+position = Vector2(183, 27)
 
 [node name="scissors" parent="." instance=ExtResource("5_uh1up")]
-position = Vector2(270, 123)
+position = Vector2(412, 210)
 
 [node name="pen" parent="." instance=ExtResource("6_u6vuv")]
-position = Vector2(289, 49)
+position = Vector2(421, 111)
 
+[connection signal="mouse_entered" from="back" to="back" method="_on_mouse_entered"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
