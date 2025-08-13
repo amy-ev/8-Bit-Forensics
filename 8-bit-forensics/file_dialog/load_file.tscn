@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdewl63aqvs7b"]
+[gd_scene load_steps=6 format=3 uid="uid://cdewl63aqvs7b"]
 
 [ext_resource type="Script" uid="uid://475xqrfyyjia" path="res://file_dialog/load_file.gd" id="1_gmshg"]
 [ext_resource type="Texture2D" uid="uid://b3124jc6q247v" path="res://assets/UI/load_file-window.png" id="2_obumy"]
 [ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/UI/exit-button.png" id="3_obumy"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="4_f73wo"]
 [ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="4_wwmjk"]
 
 [node name="load_file" type="NinePatchRect"]
@@ -28,6 +29,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_wwmjk")
 text = "confirm"
+script = ExtResource("4_f73wo")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="file_container" type="HFlowContainer" parent="."]
 custom_minimum_size = Vector2(88, 62)
@@ -53,5 +56,6 @@ texture_disabled = ExtResource("3_obumy")
 texture_focused = ExtResource("3_obumy")
 stretch_mode = 0
 
+[connection signal="mouse_entered" from="load_button" to="load_button" method="_on_mouse_entered"]
 [connection signal="pressed" from="load_button" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

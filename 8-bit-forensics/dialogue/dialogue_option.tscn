@@ -26,3 +26,5 @@ clip_text = true
 text_overrun_behavior = 3
 
 [node name="select" parent="." instance=ExtResource("3_11msp")]
+
+[connection signal="mouse_entered" from="select" to="select" method="_on_mouse_entered"]

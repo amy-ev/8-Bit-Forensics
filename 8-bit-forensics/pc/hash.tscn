@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bymujjs8bugxl"]
+[gd_scene load_steps=7 format=3 uid="uid://bymujjs8bugxl"]
 
 [ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_iu2nx"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="2_k7w4u"]
 [ext_resource type="Script" uid="uid://cwto8mfeu6gle" path="res://pc/hash.gd" id="2_olpnb"]
 [ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="4_olpnb"]
 [ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/UI/exit-button.png" id="5_lnx4f"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="5_qmbqj"]
 
 [node name="hash" type="NinePatchRect"]
 offset_left = 58.0
@@ -53,6 +54,8 @@ offset_right = 236.0
 offset_bottom = 33.0
 theme = ExtResource("4_olpnb")
 text = "submit"
+script = ExtResource("5_qmbqj")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="done" type="TextureButton" parent="."]
 visible = false
@@ -63,5 +66,6 @@ offset_bottom = 14.0
 theme = ExtResource("4_olpnb")
 texture_normal = ExtResource("5_lnx4f")
 
+[connection signal="mouse_entered" from="submit" to="submit" method="_on_mouse_entered"]
 [connection signal="pressed" from="submit" to="." method="_on_submit_pressed"]
 [connection signal="pressed" from="done" to="." method="_on_done_pressed"]

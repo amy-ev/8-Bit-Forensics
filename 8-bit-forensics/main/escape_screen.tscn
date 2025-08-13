@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgk8lnvkgq4fl"]
+[gd_scene load_steps=4 format=3 uid="uid://dgk8lnvkgq4fl"]
 
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="1_j7c43"]
 [ext_resource type="Script" uid="uid://dgaa22cubaed4" path="res://main/escape_screen.gd" id="1_mtg5q"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="3_ecdmd"]
 
 [node name="escape_screen" type="CanvasLayer"]
 layer = 3
@@ -37,11 +38,17 @@ horizontal_alignment = 1
 layout_mode = 2
 theme = ExtResource("1_j7c43")
 text = "exit"
+script = ExtResource("3_ecdmd")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="cancel" type="Button" parent="sort"]
 layout_mode = 2
 theme = ExtResource("1_j7c43")
 text = "cancel"
+script = ExtResource("3_ecdmd")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
+[connection signal="mouse_entered" from="sort/exit" to="sort/exit" method="_on_mouse_entered"]
 [connection signal="pressed" from="sort/exit" to="." method="_on_exit_pressed"]
+[connection signal="mouse_entered" from="sort/cancel" to="sort/cancel" method="_on_mouse_entered"]
 [connection signal="pressed" from="sort/cancel" to="." method="_on_cancel_pressed"]

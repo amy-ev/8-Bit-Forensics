@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvawuopyd7eqq"]
+[gd_scene load_steps=13 format=3 uid="uid://bvawuopyd7eqq"]
 
 [ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_m7h7m"]
 [ext_resource type="Script" uid="uid://b5k5r2302vhyn" path="res://hex_viewer/hex_viewer.gd" id="2_cke5y"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bgai2mgpfsmqx" path="res://hex_viewer/results.gd" id="8_ywfrl"]
 [ext_resource type="Script" uid="uid://clg30sk7l1qme" path="res://hex_viewer/results_scroll_bar.gd" id="9_f13me"]
 [ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="10_ywfrl"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="11_f13me"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cm2t2"]
 
@@ -88,6 +89,8 @@ offset_right = 306.0
 offset_bottom = 18.0
 theme = ExtResource("10_ywfrl")
 text = "open"
+script = ExtResource("11_f13me")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="save" type="Button" parent="."]
 layout_mode = 0
@@ -98,6 +101,8 @@ offset_bottom = 18.0
 theme = ExtResource("10_ywfrl")
 disabled = true
 text = "save"
+script = ExtResource("11_f13me")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -115,6 +120,8 @@ offset_right = 301.0
 offset_bottom = 192.0
 theme = ExtResource("10_ywfrl")
 text = "x"
+script = ExtResource("11_f13me")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="icon_container" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -132,6 +139,9 @@ alignment = 1
 [connection signal="gui_input" from="v_sort/results_scroll_manager" to="v_sort/results_scroll_manager" method="_on_gui_input"]
 [connection signal="ask_scroll" from="v_sort/results_scroll_manager/results_scroll_bar" to="v_sort/results_scroll_manager" method="_on_results_scroll_bar_ask_scroll"]
 [connection signal="gui_input" from="v_sort/results_scroll_manager/results_scroll_bar" to="v_sort/results_scroll_manager/results_scroll_bar" method="_on_gui_input"]
+[connection signal="mouse_entered" from="load" to="load" method="_on_mouse_entered"]
 [connection signal="pressed" from="load" to="." method="_on_load_pressed"]
+[connection signal="mouse_entered" from="save" to="save" method="_on_mouse_entered"]
 [connection signal="pressed" from="save" to="." method="_on_save_pressed"]
+[connection signal="mouse_entered" from="find" to="find" method="_on_mouse_entered"]
 [connection signal="pressed" from="find" to="." method="_on_find_pressed"]

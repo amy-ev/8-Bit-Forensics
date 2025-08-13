@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqwedwedwn32"]
+[gd_scene load_steps=6 format=3 uid="uid://dqwedwedwn32"]
 
 [ext_resource type="Script" uid="uid://qayymwuuheyr" path="res://evidence/item_information.gd" id="1_g7w0n"]
 [ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_kxa1e"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="3_kxa1e"]
 [ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="4_5ivit"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="5_c767p"]
 
 [node name="item_information" type="ColorRect"]
 offset_left = 27.0
@@ -116,17 +117,26 @@ alignment = 2
 layout_mode = 2
 theme = ExtResource("4_5ivit")
 text = "back"
+script = ExtResource("5_c767p")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="next" type="Button" parent="window/navigation"]
 layout_mode = 2
 theme = ExtResource("4_5ivit")
 text = "next"
+script = ExtResource("5_c767p")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="cancel" type="Button" parent="window/navigation"]
 layout_mode = 2
 theme = ExtResource("4_5ivit")
 text = "cancel"
+script = ExtResource("5_c767p")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
+[connection signal="mouse_entered" from="window/navigation/back" to="window/navigation/back" method="_on_mouse_entered"]
 [connection signal="pressed" from="window/navigation/back" to="." method="_on_back_pressed"]
+[connection signal="mouse_entered" from="window/navigation/next" to="window/navigation/next" method="_on_mouse_entered"]
 [connection signal="pressed" from="window/navigation/next" to="." method="_on_next_pressed"]
+[connection signal="mouse_entered" from="window/navigation/cancel" to="window/navigation/cancel" method="_on_mouse_entered"]
 [connection signal="pressed" from="window/navigation/cancel" to="." method="_on_cancel_pressed"]

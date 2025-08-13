@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://be441q1omxkco"]
+[gd_scene load_steps=8 format=3 uid="uid://be441q1omxkco"]
 
 [ext_resource type="Texture2D" uid="uid://b813dsxowvv5r" path="res://assets/evidence/form-border.png" id="1_1b8hc"]
 [ext_resource type="Script" uid="uid://d4asu5n8d2si" path="res://evidence/form.gd" id="1_1gyes"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="4_2kplo"]
 [ext_resource type="Texture2D" uid="uid://dyb33se5e51wg" path="res://assets/evidence/dash.png" id="5_xafih"]
 [ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="6_xafih"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="7_jg7tw"]
 
 [node name="form_canvas" type="CanvasLayer"]
 script = ExtResource("1_1gyes")
@@ -887,5 +888,8 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("6_xafih")
 text = "confirm"
+script = ExtResource("7_jg7tw")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
+[connection signal="mouse_entered" from="confirm" to="confirm" method="_on_mouse_entered"]
 [connection signal="pressed" from="confirm" to="." method="_on_confirm_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c7uj3p6t55tkk"]
+[gd_scene load_steps=20 format=3 uid="uid://c7uj3p6t55tkk"]
 
 [ext_resource type="Texture2D" uid="uid://bfvlhbb3p2u8t" path="res://assets/level_select/level-select-sprite.png" id="1_operq"]
 [ext_resource type="Script" uid="uid://bjaghc73epk6k" path="res://level_select/open_folder_template.gd" id="2_mnlm6"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ciut7wb6o8k76" path="res://assets/level_select/level-2-sprite.png" id="8_82m2j"]
 [ext_resource type="Texture2D" uid="uid://ipvg6y0abwnj" path="res://assets/level_select/level-3-sprite.png" id="9_x8hbp"]
 [ext_resource type="Theme" uid="uid://tjw1gdqjhy5d" path="res://assets/level_select/play_button.tres" id="10_82m2j"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="11_00ows"]
 [ext_resource type="Texture2D" uid="uid://dc50ivmcd6a7w" path="res://assets/level_select/confidential-1-sprite.png" id="11_wusn2"]
 [ext_resource type="Texture2D" uid="uid://ceoclfpk4tpcn" path="res://assets/level_select/confidential-2-sprite.png" id="12_i3cja"]
 [ext_resource type="Texture2D" uid="uid://03x8cqofobsw" path="res://assets/level_select/confidential-3-sprite.png" id="13_00ows"]
@@ -417,6 +418,8 @@ offset_right = 225.0
 offset_bottom = 228.0
 theme = ExtResource("10_82m2j")
 text = "play"
+script = ExtResource("11_00ows")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="confidential1" type="Sprite2D" parent="."]
 visible = false
@@ -451,4 +454,5 @@ vframes = 5
 
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="mouse_entered" from="play" to="play" method="_on_mouse_entered"]
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]

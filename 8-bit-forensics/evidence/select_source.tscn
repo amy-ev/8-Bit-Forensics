@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://4miedm4mv6bd"]
+[gd_scene load_steps=6 format=3 uid="uid://4miedm4mv6bd"]
 
 [ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_6dj5e"]
 [ext_resource type="ButtonGroup" uid="uid://ctj1fd00rkhrr" path="res://evidence/evidence_type.tres" id="1_qbvjl"]
 [ext_resource type="Script" uid="uid://b55rjs7odphuh" path="res://evidence/select_source.gd" id="1_qw0i8"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="5_kfjki"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="5_ymuii"]
 
 [node name="select_source" type="ColorRect"]
@@ -82,16 +83,25 @@ layout_mode = 2
 theme = ExtResource("5_ymuii")
 disabled = true
 text = "back"
+script = ExtResource("5_kfjki")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="next" type="Button" parent="window/sort/navigation"]
 layout_mode = 2
 theme = ExtResource("5_ymuii")
 text = "next"
+script = ExtResource("5_kfjki")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="cancel" type="Button" parent="window/sort/navigation"]
 layout_mode = 2
 theme = ExtResource("5_ymuii")
 text = "cancel"
+script = ExtResource("5_kfjki")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
+[connection signal="mouse_entered" from="window/sort/navigation/back" to="window/sort/navigation/back" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="window/sort/navigation/next" to="window/sort/navigation/next" method="_on_mouse_entered"]
 [connection signal="pressed" from="window/sort/navigation/next" to="." method="_on_next_pressed"]
+[connection signal="mouse_entered" from="window/sort/navigation/cancel" to="window/sort/navigation/cancel" method="_on_mouse_entered"]
 [connection signal="pressed" from="window/sort/navigation/cancel" to="." method="_on_cancel_pressed"]

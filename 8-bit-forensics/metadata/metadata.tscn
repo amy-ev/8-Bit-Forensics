@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d31sl6bl6j3b3"]
+[gd_scene load_steps=12 format=3 uid="uid://d31sl6bl6j3b3"]
 
 [ext_resource type="Script" uid="uid://b4546ogyrqq64" path="res://metadata/metadata.gd" id="1_2ct7u"]
 [ext_resource type="Texture2D" uid="uid://ck13skggxkb21" path="res://assets/UI/metadata-window.png" id="1_hpvqb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="4_daqaj"]
 [ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="5_daqaj"]
 [ext_resource type="FontFile" uid="uid://ginkfwm14fgo" path="res://8-bit-forensics.ttf" id="6_7dblc"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="6_d1c4e"]
 
 [sub_resource type="Animation" id="Animation_u6jsu"]
 length = 0.001
@@ -370,6 +371,8 @@ offset_right = 34.0
 offset_bottom = 18.0
 theme = ExtResource("5_daqaj")
 text = "open"
+script = ExtResource("6_d1c4e")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="counter" type="Label" parent="."]
 layout_mode = 0
@@ -433,4 +436,5 @@ text = "image 4"
 autowrap_mode = 0
 horizontal_alignment = 1
 
+[connection signal="mouse_entered" from="select" to="select" method="_on_mouse_entered"]
 [connection signal="pressed" from="select" to="." method="_on_select_pressed"]

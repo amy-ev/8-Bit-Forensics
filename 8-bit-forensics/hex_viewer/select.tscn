@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6iton1di25v8"]
+[gd_scene load_steps=6 format=3 uid="uid://b6iton1di25v8"]
 
 [ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_7td0o"]
 [ext_resource type="Script" uid="uid://cwlhx0n2380sk" path="res://hex_viewer/select.gd" id="1_i2vaj"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="4_7td0o"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="4_nf7w3"]
 [ext_resource type="Texture2D" uid="uid://c3gwpwgf7rtfd" path="res://assets/UI/exit-button.png" id="5_7td0o"]
 
@@ -78,6 +79,8 @@ offset_right = 56.0
 offset_bottom = 80.0
 theme = ExtResource("4_nf7w3")
 text = "cancel"
+script = ExtResource("4_7td0o")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="ok" type="Button" parent="."]
 layout_mode = 0
@@ -87,6 +90,8 @@ offset_right = 73.0
 offset_bottom = 80.0
 theme = ExtResource("4_nf7w3")
 text = "ok"
+script = ExtResource("4_7td0o")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="exit" type="TextureButton" parent="."]
 layout_mode = 0
@@ -96,6 +101,8 @@ offset_bottom = 14.0
 theme = ExtResource("4_nf7w3")
 texture_normal = ExtResource("5_7td0o")
 
+[connection signal="mouse_entered" from="cancel" to="cancel" method="_on_mouse_entered"]
 [connection signal="pressed" from="cancel" to="." method="_on_cancel_pressed"]
+[connection signal="mouse_entered" from="ok" to="ok" method="_on_mouse_entered"]
 [connection signal="pressed" from="ok" to="." method="_on_ok_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

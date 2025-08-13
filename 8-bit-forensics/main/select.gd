@@ -24,3 +24,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			emit_signal("option_selected",get_parent().name)
 		else:
 			Global.emit_signal("item_pressed",get_parent())
+
+
+func _on_mouse_entered() -> void:
+	audio.select.play(0.04)

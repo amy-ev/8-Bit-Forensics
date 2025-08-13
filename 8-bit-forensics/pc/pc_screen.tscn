@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4qcqdfv02pnd"]
+[gd_scene load_steps=10 format=3 uid="uid://b4qcqdfv02pnd"]
 
 [ext_resource type="Script" uid="uid://bdgjl5jim21kt" path="res://pc/pc_screen.gd" id="1_76l2r"]
 [ext_resource type="Texture2D" uid="uid://catu7syl5tfw5" path="res://assets/pc/pc-on-wide.png" id="3_nld71"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="5_6p3y6"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="5_76l2r"]
 [ext_resource type="PackedScene" uid="uid://gw0ttp1001l6" path="res://dialogue/mini_dialogue.tscn" id="6_76l2r"]
 
 [sub_resource type="Animation" id="Animation_6p3y6"]
@@ -96,6 +97,9 @@ offset_right = 26.0
 offset_bottom = 17.0
 theme = ExtResource("5_6p3y6")
 text = "back"
+script = ExtResource("5_76l2r")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [connection signal="child_entered_tree" from="screen" to="." method="_on_screen_child_entered_tree"]
+[connection signal="mouse_entered" from="back_btn" to="back_btn" method="_on_mouse_entered"]
 [connection signal="pressed" from="back_btn" to="." method="_on_back_btn_pressed"]

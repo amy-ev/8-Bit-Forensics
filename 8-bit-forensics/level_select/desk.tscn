@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://o33pyrovolve"]
+[gd_scene load_steps=6 format=3 uid="uid://o33pyrovolve"]
 
 [ext_resource type="Texture2D" uid="uid://b5tlifnionn35" path="res://assets/evidence/desk-background-wide.png" id="2_q1qqx"]
 [ext_resource type="Script" uid="uid://b7fuy1r5iu0v7" path="res://level_select/desk.gd" id="2_vnxcf"]
 [ext_resource type="PackedScene" uid="uid://cnoav72hte2jx" path="res://level_select/closed_folder.tscn" id="3_q1qqx"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="4_1muwh"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="5_5lftn"]
 
 [node name="base_level_select" type="Node2D"]
 script = ExtResource("2_vnxcf")
@@ -23,5 +24,8 @@ offset_right = 26.0
 offset_bottom = 17.0
 theme = ExtResource("4_1muwh")
 text = "back"
+script = ExtResource("5_5lftn")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
+[connection signal="mouse_entered" from="back_btn" to="back_btn" method="_on_mouse_entered"]
 [connection signal="pressed" from="back_btn" to="." method="_on_back_btn_pressed"]

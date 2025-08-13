@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://3we6fkgy57f7"]
+[gd_scene load_steps=27 format=3 uid="uid://3we6fkgy57f7"]
 
 [ext_resource type="Script" uid="uid://bqj7niuugeaqh" path="res://crime_board/board.gd" id="1_k2i71"]
 [ext_resource type="Texture2D" uid="uid://b40bctf5em701" path="res://assets/crime_board/crime-board-v2.png" id="2_730js"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://c1shho4dea7ix" path="res://assets/crime_board/notes/7-note.png" id="16_dbmes"]
 [ext_resource type="Texture2D" uid="uid://dtcr1ti431xbc" path="res://assets/crime_board/strings/7-string.png" id="17_2uoej"]
 [ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="18_vn7me"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="19_dcwip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd1ls"]
 size = Vector2(69, 93)
@@ -153,8 +154,11 @@ offset_right = 38.0
 offset_bottom = 31.0
 theme = ExtResource("18_vn7me")
 text = "back"
+script = ExtResource("19_dcwip")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [connection signal="input_event" from="area" to="." method="_on_area_input_event"]
+[connection signal="mouse_entered" from="back_btn" to="back_btn" method="_on_mouse_entered"]
 [connection signal="pressed" from="back_btn" to="." method="_on_back_btn_pressed"]
 
 [editable path="note1"]

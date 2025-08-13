@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://8thc74e164il"]
+[gd_scene load_steps=13 format=3 uid="uid://8thc74e164il"]
 
-[ext_resource type="Script" uid="uid://bkf2xcy7vd4mw" path="res://credits.gd" id="1_nm7lk"]
+[ext_resource type="Script" uid="uid://bkf2xcy7vd4mw" path="res://main/credits.gd" id="1_nm7lk"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="2_c1t8d"]
 [ext_resource type="Texture2D" uid="uid://dequnsqcajhl3" path="res://assets/train/train-background.png" id="2_pjc1l"]
 [ext_resource type="Texture2D" uid="uid://ca6spcqicha6x" path="res://assets/train/train.png" id="3_j6beo"]
 [ext_resource type="Texture2D" uid="uid://cy7iq5g40k78h" path="res://assets/train/cloud-large.png" id="5_4av4j"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="5_h30m1"]
 [ext_resource type="Texture2D" uid="uid://cl34ll7gtm6us" path="res://assets/train/cloud-small.png" id="6_5em78"]
 [ext_resource type="FontFile" uid="uid://ginkfwm14fgo" path="res://8-bit-forensics.ttf" id="6_h30m1"]
 
@@ -312,6 +313,8 @@ offset_right = 26.0
 offset_bottom = 17.0
 theme = ExtResource("2_c1t8d")
 text = "back"
+script = ExtResource("5_h30m1")
+metadata/_custom_type_script = "uid://64yrohmth67e"
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -407,4 +410,5 @@ text = "audio: HoliznaPATREON
     Amy Evemy"
 horizontal_alignment = 1
 
+[connection signal="mouse_entered" from="back_btn" to="back_btn" method="_on_mouse_entered"]
 [connection signal="pressed" from="back_btn" to="." method="_on_back_btn_pressed"]
