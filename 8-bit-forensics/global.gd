@@ -32,10 +32,10 @@ var hex_finished:bool
 #day 3
 var first_image_opened:bool
 var metadata_finished:bool
-var img1:PackedByteArray = get_image("res://metadata_images/image1.jpg")
-var img2:PackedByteArray = get_image("res://metadata_images/image2.jpg")
-var img3:PackedByteArray = get_image("res://metadata_images/image3.jpg")
-var img4:PackedByteArray = get_image("res://metadata_images/image4.jpg")
+var img1:PackedByteArray 
+var img2:PackedByteArray 
+var img3:PackedByteArray 
+var img4:PackedByteArray
 var img1_count:int
 var img2_count:int
 var img3_count:int
@@ -124,10 +124,9 @@ func set_save(file_path):
 func get_image(file_path):
 	if FileAccess.file_exists(file_path):
 		var file = FileAccess.open(file_path, FileAccess.READ)
-		
 		var content = file.get_buffer(file.get_length())
 		file.close()
-		
+
 		return content
 	
 func _input(event: InputEvent) -> void:
@@ -144,6 +143,7 @@ func _input(event: InputEvent) -> void:
 				DisplayServer.cursor_set_custom_image(load("res://assets/UI/cursor_window.png"),0)
 			
 func day_start():
+
 	debrief_given = false
 	pc_debrief_given = false
 	
@@ -190,3 +190,107 @@ func day_start():
 			
 			first_image_opened = false
 			metadata_finished = false
+
+
+#JPG FILES ARE NOT PRESENT ON EXPORT (even with it specifically set to export *.jpg)
+# recreating the manual carving of the images from the evidence files allows for the jpgs to be created on run time
+func create_images():
+	var content1:PackedByteArray = _select("149000","14ed6d")
+	img1 = content1 
+	var file1 = FileAccess.open(user_path + "metadata_images/image1.jpg", FileAccess.WRITE)
+	file1.store_buffer(content1)
+	file1.close()
+	
+	
+	var content2:PackedByteArray = _select("151000","1579ac")
+	img2 = content2
+	var file2 = FileAccess.open(user_path + "metadata_images/image2.jpg", FileAccess.WRITE)
+	file2.store_buffer(content2)
+	file2.close()
+	
+	var content3:PackedByteArray = _select("159000","15e958")
+	img3 = content3
+	var file3 = FileAccess.open(user_path + "metadata_images/image3.jpg", FileAccess.WRITE)
+	file3.store_buffer(content3)
+	file3.close()
+	
+	var content4:PackedByteArray = _select("161000","1664ce")
+	img4 = content4
+	var file4 = FileAccess.open(user_path + "metadata_images/image4.jpg", FileAccess.WRITE)
+	file4.store_buffer(content4)
+	file4.close()
+	
+
+func _select(start,end):
+	var buffer = open_file(user_path+"evidence_files/SD-image-file.001")
+	
+	start = _hex_to_dec(start)
+	end = _hex_to_dec(end)
+	
+	var carved_block:=PackedByteArray()
+	for i in range(start,end+1):
+		carved_block.append(buffer[i])
+	return carved_block
+
+func _hex_to_dec(input:String):
+	var x = []
+	var y = []
+	
+	var x_result:int
+	var y_result:int
+	
+	#row
+	var row = input.substr(0,input.length()-1)
+	row = row.lstrip('0')
+	for char in row:
+		x.insert(0,char)
+	
+	for i in range(x.size()):
+		x[i] = convert_hex(x[i])
+		x_result += int(x[i]) * (16 ** i)
+
+	#column
+	var column = input.substr(input.length()-1)
+	y.append(column)
+	
+	for i in range(y.size()):
+		y[i] = convert_hex(y[i])
+		y_result += int(y[i]) * (16 ** i)
+	
+	var hex_index:int
+	
+	if x_result == 0:
+		hex_index = x_result + y_result
+	else:
+		hex_index = (x_result) * 16
+		hex_index += y_result
+	return hex_index
+	
+func convert_hex(i:String):
+	i = i.to_upper()
+	match i:
+		"A":
+			return "10"
+		"B":
+			return "11"	
+		"C":
+			return "12"
+		"D":
+			return "13"
+		"E":
+			return "14"
+		"F":
+			return "15"
+		_:
+			return i
+
+func open_file(file_path:String):
+	if FileAccess.file_exists(file_path):
+		var file = FileAccess.open(file_path, FileAccess.READ)
+		var buffer = file.get_buffer(file.get_length())
+		file.close()
+		return buffer
+	else:
+		print("failed to open file")
+		return
+	

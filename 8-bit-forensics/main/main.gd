@@ -29,9 +29,13 @@ func _ready() -> void:
 		var source_name = source.substr(6,-1)
 		#recursively add every file and subfolder files to the destination directory (user://)
 		create_user_files(source,dest_path+source_name)
+
+	if !FileAccess.file_exists(Global.user_path + "metadata_images/image1.jpg") || !FileAccess.file_exists(Global.user_path + "metadata_images/image2.jpg") || !FileAccess.file_exists(Global.user_path + "metadata_images/image3.jpg") || !FileAccess.file_exists(Global.user_path + "metadata_images/image4.jpg"):
+		Global.create_images()
 		
 		#to prevent issues selecting a level and then returning to the main menu
-		Global.unlocked = int(Global.get_save(Global.user_path +"savefile.json"))
+	Global.unlocked = int(Global.get_save(Global.user_path +"savefile.json"))
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_action_pressed("fullscreen"):

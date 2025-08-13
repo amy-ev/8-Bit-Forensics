@@ -48,6 +48,11 @@ var noticed = {
 var selected_img:PackedByteArray
 
 func _ready() -> void:
+	print("PLEASE HELLO IS THIS THING EVEN ON ")
+	print(Global.img1)
+	Global.img1 = Global.get_image("res://metadata_images/image1.jpg")
+	print(Global.img1)
+	
 	font = preload("res://8-bit-forensics.ttf")
 	Global.connect("metadata_selected", _on_label_selected)
 	Global.emit_signal("next_step",self)

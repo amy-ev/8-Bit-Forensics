@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://b5bqlfpvkfvdh" path="res://assets/UI/window.png" id="1_m7h7m"]
 [ext_resource type="Script" uid="uid://b5k5r2302vhyn" path="res://pc/level2/hex_viewer.gd" id="2_cke5y"]
-[ext_resource type="Script" path="res://pc/level2/scroll_manager.gd" id="3_5olva"]
+[ext_resource type="Script" uid="uid://dijp07ip3yh7s" path="res://pc/level2/scroll_manager.gd" id="3_5olva"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="3_cke5y"]
 [ext_resource type="PackedScene" uid="uid://db4sjj6kgif47" path="res://pc/level2/new_file.tscn" id="5_woy5n"]
-[ext_resource type="Script" path="res://pc/level2/scroll_bar.gd" id="6_2nup8"]
-[ext_resource type="Script" path="res://pc/level2/results_scroll_manager.gd" id="7_2nup8"]
-[ext_resource type="Script" path="res://pc/level2/results.gd" id="8_ywfrl"]
-[ext_resource type="Script" path="res://pc/level2/results_scroll_bar.gd" id="9_f13me"]
+[ext_resource type="Script" uid="uid://ck2m7tv0m2jxu" path="res://pc/level2/scroll_bar.gd" id="6_2nup8"]
+[ext_resource type="Script" uid="uid://c1shiqlpmarvn" path="res://pc/level2/results_scroll_manager.gd" id="7_2nup8"]
+[ext_resource type="Script" uid="uid://bgai2mgpfsmqx" path="res://pc/level2/results.gd" id="8_ywfrl"]
+[ext_resource type="Script" uid="uid://clg30sk7l1qme" path="res://pc/level2/results_scroll_bar.gd" id="9_f13me"]
 [ext_resource type="Theme" uid="uid://i5c4gfr702a5" path="res://assets/UI/window_buttons.tres" id="10_ywfrl"]
 [ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="11_f13me"]
 
