@@ -38,6 +38,10 @@ window/stretch/scale_mode="integer"
 
 project/assembly_name="8-Bit-Forensics"
 
+[global_group]
+
+buttons=""
+
 [input]
 
 fullscreen={

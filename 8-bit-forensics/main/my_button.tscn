@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://djni4xvdyff7o"]
+
+[ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="1_qusrv"]
+[ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="2_xmq66"]
+
+[node name="my_button" type="Button" groups=["buttons"]]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("1_qusrv")
+script = ExtResource("2_xmq66")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
