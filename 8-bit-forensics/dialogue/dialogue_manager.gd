@@ -24,6 +24,14 @@ func _input(event: InputEvent) -> void:
 		dialogue_label.skip()
 
 func start(dialogue:String):
+	if dialogue.contains("This is the star of the show"):
+		var sd_card = preload("res://evidence/sd_card.tscn").instantiate()
+		add_child(sd_card)
+		sd_card.name = "sd_card"
+	else:
+		if has_node("sd_card"):
+			get_node("sd_card").queue_free()
+		
 	dialogue_label.start(dialogue)
 	$option_a.set_visible(false)
 	$option_b.set_visible(false)

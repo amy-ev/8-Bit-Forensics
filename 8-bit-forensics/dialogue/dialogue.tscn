@@ -13,6 +13,6 @@ fit_content = true
 script = ExtResource("1_k0ki1")
 
 [node name="text_timer" type="Timer" parent="."]
-wait_time = 0.03
+wait_time = 0.05
 
 [connection signal="timeout" from="text_timer" to="." method="_on_text_timer_timeout"]

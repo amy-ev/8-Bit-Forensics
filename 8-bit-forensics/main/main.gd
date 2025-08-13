@@ -2,7 +2,6 @@ extends Node2D
 
 func _ready() -> void:
 	scale = scale * Utility.window_mode()
-	
 	#pointing to the user:// directory
 	var dest_path = Global.user_path 
 	

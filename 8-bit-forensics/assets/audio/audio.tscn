@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://byxbrn8tbrdyr"]
+
+[ext_resource type="Script" uid="uid://b3m74o7wypu2m" path="res://assets/audio/audio.gd" id="1_qc0l7"]
+[ext_resource type="AudioStream" uid="uid://dbrfo4dk0w0t6" path="res://assets/audio/HoliznaPATREON - Lo-Bit 9 ( LoFi , Nostalgic ).mp3" id="2_vnuy2"]
+[ext_resource type="AudioStream" uid="uid://d2guhkjr5he7f" path="res://assets/audio/dialogue.wav" id="3_5tuxm"]
+[ext_resource type="AudioStream" uid="uid://chwq1aw86r0on" path="res://assets/audio/dialogue_v2.wav" id="4_snds3"]
+
+[node name="audio" type="Node"]
+script = ExtResource("1_qc0l7")
+
+[node name="background" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vnuy2")
+volume_db = -11.556
+autoplay = true
+
+[node name="dialogue" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5tuxm")
+bus = &"New Bus"
+
+[node name="dialogue_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_snds3")
+bus = &"New Bus"

@@ -16,9 +16,14 @@ config/features=PackedStringArray("4.4", "Mobile")
 config/icon="uid://eprimdtbchtl"
 config/windows_native_icon="res://assets/icon.ico"
 
+[audio]
+
+buses/default_bus_layout=""
+
 [autoload]
 
 Global="*res://global.gd"
+audio="*res://assets/audio/audio.tscn"
 
 [display]
 
