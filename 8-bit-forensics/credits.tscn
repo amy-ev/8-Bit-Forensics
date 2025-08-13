@@ -8,48 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cl34ll7gtm6us" path="res://assets/train/cloud-small.png" id="6_5em78"]
 [ext_resource type="FontFile" uid="uid://ginkfwm14fgo" path="res://8-bit-forensics.ttf" id="6_h30m1"]
 
-[sub_resource type="Animation" id="Animation_pjc1l"]
-resource_name = "moving"
-length = 10.7
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("train_background1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 1, 1.2, 1.5, 1.7, 2, 2.2, 2.5, 2.7, 3, 3.2, 3.5, 3.7, 4, 4.2, 4.5, 4.7, 5, 5.2, 5.5, 5.7, 6, 6.2, 6.5, 6.7, 7, 7.2, 7.5, 7.7, 8, 8.2, 8.5, 8.7, 9, 9.2, 9.5, 9.7, 10, 10.2, 10.5, 11),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-36, -2), Vector2(-90, 0), Vector2(-126, -2), Vector2(-180, 0), Vector2(-208, -2), Vector2(-250, 0), Vector2(-278, -2), Vector2(-320, 0), Vector2(-356, -2), Vector2(-390, 0), Vector2(-420, -2), Vector2(-469, 0), Vector2(-513, -2), Vector2(-579, 0), Vector2(-627, -2), Vector2(-691, 0), Vector2(-731, -2), Vector2(-797, 0), Vector2(-842, -2), Vector2(-907, 0), Vector2(-960, -2), Vector2(960, 0), Vector2(924, -2), Vector2(870, 0), Vector2(834, -2), Vector2(780, 0), Vector2(752, -2), Vector2(710, 0), Vector2(682, -2), Vector2(640, 0), Vector2(604, -2), Vector2(570, 0), Vector2(540, -2), Vector2(491, 0), Vector2(447, -2), Vector2(381, 0), Vector2(333, -2), Vector2(269, 0), Vector2(229, -2), Vector2(163, 0), Vector2(118, -2), Vector2(53, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("train_background2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 1, 1.2, 1.5, 1.7, 2, 2.2, 2.5, 2.7, 3, 3.2, 3.5, 3.7, 4, 4.2, 4.5, 4.7, 5, 5.2, 5.7, 6, 6.2, 6.5, 6.7, 7, 7.2, 7.5, 7.7, 8, 8.2, 8.5, 8.7, 9, 9.2, 9.5, 9.7, 10, 10.2, 10.5, 10.7, 11),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(960, 0), Vector2(924, -2), Vector2(870, 0), Vector2(834, -2), Vector2(780, 0), Vector2(752, -2), Vector2(710, 0), Vector2(682, -2), Vector2(640, 0), Vector2(604, -2), Vector2(570, 0), Vector2(540, -2), Vector2(491, 0), Vector2(447, -2), Vector2(381, 0), Vector2(333, -2), Vector2(269, 0), Vector2(229, -2), Vector2(163, 0), Vector2(118, -2), Vector2(53, 0), Vector2(0, -2), Vector2(-50, -2), Vector2(-90, 0), Vector2(-126, -2), Vector2(-180, 0), Vector2(-208, -2), Vector2(-250, 0), Vector2(-278, -2), Vector2(-320, 0), Vector2(-356, -2), Vector2(-390, 0), Vector2(-420, -2), Vector2(-469, 0), Vector2(-513, -2), Vector2(-579, 0), Vector2(-627, -2), Vector2(-691, 0), Vector2(-731, -2), Vector2(-797, 0), Vector2(-842, -2), Vector2(-907, 0), Vector2(-960, -2), Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("train_background2:z_index")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(5.2, 10.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, -1]
-}
-
 [sub_resource type="Animation" id="Animation_j6beo"]
 length = 0.001
 tracks/0/type = "value"
@@ -159,6 +117,48 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(349, 144)]
+}
+
+[sub_resource type="Animation" id="Animation_pjc1l"]
+resource_name = "moving"
+length = 10.7
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("train_background1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 1, 1.2, 1.5, 1.7, 2, 2.2, 2.5, 2.7, 3, 3.2, 3.5, 3.7, 4, 4.2, 4.5, 4.7, 5, 5.2, 5.5, 5.7, 6, 6.2, 6.5, 6.7, 7, 7.2, 7.5, 7.7, 8, 8.2, 8.5, 8.7, 9, 9.2, 9.5, 9.7, 10, 10.2, 10.5, 11),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-36, -2), Vector2(-90, 0), Vector2(-126, -2), Vector2(-180, 0), Vector2(-208, -2), Vector2(-250, 0), Vector2(-278, -2), Vector2(-320, 0), Vector2(-356, -2), Vector2(-390, 0), Vector2(-420, -2), Vector2(-469, 0), Vector2(-513, -2), Vector2(-579, 0), Vector2(-627, -2), Vector2(-691, 0), Vector2(-731, -2), Vector2(-797, 0), Vector2(-842, -2), Vector2(-907, 0), Vector2(-960, -2), Vector2(960, 0), Vector2(924, -2), Vector2(870, 0), Vector2(834, -2), Vector2(780, 0), Vector2(752, -2), Vector2(710, 0), Vector2(682, -2), Vector2(640, 0), Vector2(604, -2), Vector2(570, 0), Vector2(540, -2), Vector2(491, 0), Vector2(447, -2), Vector2(381, 0), Vector2(333, -2), Vector2(269, 0), Vector2(229, -2), Vector2(163, 0), Vector2(118, -2), Vector2(53, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("train_background2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 1, 1.2, 1.5, 1.7, 2, 2.2, 2.5, 2.7, 3, 3.2, 3.5, 3.7, 4, 4.2, 4.5, 4.7, 5, 5.2, 5.7, 6, 6.2, 6.5, 6.7, 7, 7.2, 7.5, 7.7, 8, 8.2, 8.5, 8.7, 9, 9.2, 9.5, 9.7, 10, 10.2, 10.5, 10.7, 11),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(960, 0), Vector2(924, -2), Vector2(870, 0), Vector2(834, -2), Vector2(780, 0), Vector2(752, -2), Vector2(710, 0), Vector2(682, -2), Vector2(640, 0), Vector2(604, -2), Vector2(570, 0), Vector2(540, -2), Vector2(491, 0), Vector2(447, -2), Vector2(381, 0), Vector2(333, -2), Vector2(269, 0), Vector2(229, -2), Vector2(163, 0), Vector2(118, -2), Vector2(53, 0), Vector2(0, -2), Vector2(-50, -2), Vector2(-90, 0), Vector2(-126, -2), Vector2(-180, 0), Vector2(-208, -2), Vector2(-250, 0), Vector2(-278, -2), Vector2(-320, 0), Vector2(-356, -2), Vector2(-390, 0), Vector2(-420, -2), Vector2(-469, 0), Vector2(-513, -2), Vector2(-579, 0), Vector2(-627, -2), Vector2(-691, 0), Vector2(-731, -2), Vector2(-797, 0), Vector2(-842, -2), Vector2(-907, 0), Vector2(-960, -2), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("train_background2:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5.2, 10.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, -1]
 }
 
 [sub_resource type="Animation" id="Animation_h30m1"]
@@ -394,16 +394,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.5
-offset_top = -3.5
-offset_right = 32.5
-offset_bottom = 3.5
+offset_left = -37.0
+offset_top = -6.0
+offset_right = 37.0
+offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
 theme_override_fonts/font = ExtResource("6_h30m1")
 theme_override_font_sizes/font_size = 8
-text = "audio:"
+text = "audio: HoliznaPATREON
+    Amy Evemy"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="back_btn" to="." method="_on_back_btn_pressed"]
