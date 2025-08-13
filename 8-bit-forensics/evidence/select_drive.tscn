@@ -41,12 +41,15 @@ offset_bottom = 42.0
 [node name="options" type="OptionButton" parent="window/sort"]
 layout_mode = 2
 theme = ExtResource("2_fuy1h")
+text_overrun_behavior = 3
+clip_text = true
+fit_to_longest_item = false
 item_count = 3
-popup/item_0/text = "\\\\. \\PHYSICALDRIVE0"
+popup/item_0/text = "\\\\. \\PHYSICALDRIVE0 - ST2000DM008-2FR102 [2000GB IDE]"
 popup/item_0/id = 0
-popup/item_1/text = "\\\\. \\PHYSICALDRIVE1"
+popup/item_1/text = "\\\\. \\PHYSICALDRIVE1 - CT500P2SSD8 [500GB SCSI]"
 popup/item_1/id = 1
-popup/item_2/text = "SD CARD ID"
+popup/item_2/text = "\\\\. \\PHYSICALDRIVE2 - Generic STORAGE DEVICE USB Device [1GB USB]"
 popup/item_2/id = 2
 
 [node name="navigation" type="HBoxContainer" parent="window/sort"]

@@ -260,7 +260,7 @@
     ]
   },
   "e7.2": {
-    "text": "Now let’s put the SD card safely back into its evidence bag. Press 'ESC' to return to the desk.",
+    "text": "Now let’s put the SD card safely back into its evidence bag. Press the back button to return to the desk.",
     "function": "end_dialogue",
     "option display": [
       "Alright"

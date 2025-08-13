@@ -60,6 +60,8 @@ func _thread(given_cmd:String) -> String:
 	
 func _on_done_pressed() -> void:
 	Global.hash_verified = true
+	pc.get_node("back_btn").set_visible(true)
+	pc.get_node("screen/helper").queue_free()
 	Global.emit_signal("dialogue_triggered","e7.0")
 	get_parent().remove_child(get_parent().get_node("output"))
 	queue_free()

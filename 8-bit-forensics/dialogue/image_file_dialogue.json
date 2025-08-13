@@ -13,8 +13,8 @@
   },
   "image_type":{
     "dd": "The 'Raw Disk Image' image type is a bit-for-bit uncompressed copy of the data from the original source. A simple, unaltered copy, whereby the hash data is stored in a seperate log file.",
-    "smart": "The 'Self-Monitoring Analysis and Reporting Technology' image type is a compressed, structured recreation of the data from the original source, developed by AccessData.",
-    "e01": "The 'Expert Witness Format' image type is a compressed, structured recreation of the data from the original source. This format contains a hash for each segment, storing it within the image file itself.",
-    "aff": "The 'Advanced Forensic Format' image type is a compressed, structured recreation of the data from the original source. This format is an open-source forensic image format."
+    "SMART": "The 'Self-Monitoring Analysis and Reporting Technology' image type is a compressed, structured recreation of the data from the original source, developed by AccessData.",
+    "E01": "The 'Expert Witness Format' image type is a compressed, structured recreation of the data from the original source. This format contains a hash for each segment, storing it within the image file itself.",
+    "AFF": "The 'Advanced Forensic Format' image type is a compressed, structured recreation of the data from the original source. This format is an open-source forensic image format."
   }
 }

@@ -20,10 +20,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -45.5
-offset_top = -61.0
-offset_right = 45.5
-offset_bottom = -8.0
+offset_left = -45.0
+offset_top = -70.0
+offset_right = 46.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_vpv5l")
@@ -45,11 +45,23 @@ theme = ExtResource("2_h768o")
 button_group = ExtResource("2_3ur1a")
 text = "dd"
 
-[node name="e01" type="CheckBox" parent="window/sort"]
+[node name="SMART" type="CheckBox" parent="window/sort"]
 layout_mode = 2
 theme = ExtResource("2_h768o")
 button_group = ExtResource("2_3ur1a")
-text = "e01"
+text = "SMART"
+
+[node name="E01" type="CheckBox" parent="window/sort"]
+layout_mode = 2
+theme = ExtResource("2_h768o")
+button_group = ExtResource("2_3ur1a")
+text = "E01"
+
+[node name="AFF" type="CheckBox" parent="window/sort"]
+layout_mode = 2
+theme = ExtResource("2_h768o")
+button_group = ExtResource("2_3ur1a")
+text = "AFF"
 
 [node name="navigation" type="HBoxContainer" parent="window/sort"]
 layout_mode = 2

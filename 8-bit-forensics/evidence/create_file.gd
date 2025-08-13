@@ -20,11 +20,7 @@ func _ready() -> void:
 		await get_tree().process_frame
 	Global.hash_array = thread.wait_to_finish()
 	thread = null
-	#$window/next.disabled = true
-	#
-	#await $window/animation.animation_finished
-	#$window/next.disabled = false
-	
+
 func _thread() -> Array:
 	var output = []
 	var MD5_hash:=""

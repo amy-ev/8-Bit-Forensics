@@ -23,7 +23,7 @@ func _ready() -> void:
 func _on_key_selected(selected:Node):
 	if help_pressed:
 		if get_parent().has_node("dialogue_create_file"):
-			get_parent().remove_child(get_parent().get_node("dialogue_create_file"))
+			get_parent().get_node("dialogue_create_file").queue_free()
 		var dialogue = _dialogue.instantiate()
 		get_parent().add_child(dialogue)
 		dialogue.set_visible(true)
@@ -46,7 +46,7 @@ func _on_button_pressed() -> void:
 			get_parent().add_child(dialogue)
 			dialogue.get_node("panel/dialogue_label").start(msg)
 	elif parent.name == "hash":
-		msg = " certutil -hashfile <filename> HASH \n \n > MD5 \n >SHA1 \n > SHA256 \n > SHA512"
+		msg = " certutil -hashfile <filename> HASH \n \n > MD5 \n > SHA1 \n > SHA256 \n > SHA512"
 		if get_parent().has_node("dialogue_helper"):
 			get_parent().remove_child(get_parent().get_node("dialogue_helper"))
 		var dialogue = preload("res://dialogue/dialogue_helper.tscn").instantiate()

@@ -40,6 +40,10 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_action_pressed("fullscreen"):
 		scale = scale * Utility.fullscreen_input(event)
+		
+	if event is InputEventKey and event.is_action_pressed("escape"):
+		if !has_node("escape_screen"):
+			add_child(preload("res://main/escape_screen.tscn").instantiate())
 
 func _on_evidence_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.is_double_click():

@@ -56,15 +56,18 @@ func open_file(file_path:String):
 		return
 		
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("find"):
-		if !search_open && !select_open && !load_file_open:
-			search_open = true
-			add_child(search_window.instantiate())
-			
-	if event.is_action_pressed("select_block"):
-		if !select_open && !search_open && !load_file_open:
-			select_open = true
-			add_child(select_window.instantiate())
+	if get_parent().get_parent().has_node("dialogue_display"):
+		pass
+	else:
+		if event.is_action_pressed("find"):
+			if !search_open && !select_open && !load_file_open:
+				search_open = true
+				add_child(search_window.instantiate())
+				
+		if event.is_action_pressed("select_block"):
+			if !select_open && !search_open && !load_file_open:
+				select_open = true
+				add_child(select_window.instantiate())
 
 func _on_load_pressed() -> void:
 	if !search_open && !select_open && !load_file_open:
