@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://drlfreuf2u18g"]
+[gd_scene load_steps=9 format=3 uid="uid://drlfreuf2u18g"]
 
 [ext_resource type="Texture2D" uid="uid://b5tlifnionn35" path="res://assets/evidence/desk-background-wide.png" id="1_aq2mp"]
 [ext_resource type="Script" uid="uid://c8pi0l45cfeqv" path="res://start_menu/menu.gd" id="1_woprb"]
 [ext_resource type="Theme" uid="uid://b518a15p4qy0m" path="res://assets/UI/pc_components.tres" id="3_xtr26"]
 [ext_resource type="Script" uid="uid://64yrohmth67e" path="res://main/my_button.gd" id="4_erm32"]
+[ext_resource type="Texture2D" uid="uid://ck2cj17jqek5x" path="res://assets/UI/audio-on.png" id="5_r7ow4"]
+[ext_resource type="Texture2D" uid="uid://cdwuq23satojg" path="res://assets/UI/audio-off.png" id="6_mv4hv"]
+[ext_resource type="Texture2D" uid="uid://yyutvljfg6l4" path="res://assets/UI/music-on.png" id="7_skl23"]
+[ext_resource type="Texture2D" uid="uid://cb26s580plvv6" path="res://assets/UI/music-off.png" id="8_42hdn"]
 
 [node name="background" type="TextureRect"]
 offset_right = 320.0
@@ -28,6 +32,7 @@ grow_vertical = 2
 [node name="start" type="Button" parent="menu" groups=["buttons"]]
 layout_mode = 2
 theme = ExtResource("3_xtr26")
+theme_override_colors/font_hover_pressed_color = Color(0.596078, 0.34902, 0.156863, 1)
 theme_override_font_sizes/font_size = 16
 text = "start"
 script = ExtResource("4_erm32")
@@ -57,6 +62,26 @@ text = "credits"
 script = ExtResource("4_erm32")
 metadata/_custom_type_script = "uid://64yrohmth67e"
 
+[node name="audio" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 3.0
+offset_right = 49.0
+offset_bottom = 23.0
+toggle_mode = true
+texture_normal = ExtResource("5_r7ow4")
+texture_pressed = ExtResource("6_mv4hv")
+
+[node name="music" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 25.0
+offset_bottom = 23.0
+toggle_mode = true
+texture_normal = ExtResource("7_skl23")
+texture_pressed = ExtResource("8_42hdn")
+
 [connection signal="mouse_entered" from="menu/start" to="menu/start" method="_on_mouse_entered"]
 [connection signal="pressed" from="menu/start" to="." method="_on_start_pressed"]
 [connection signal="mouse_entered" from="menu/information" to="menu/information" method="_on_mouse_entered"]
@@ -65,3 +90,7 @@ metadata/_custom_type_script = "uid://64yrohmth67e"
 [connection signal="pressed" from="menu/level_select" to="." method="_on_level_select_pressed"]
 [connection signal="mouse_entered" from="menu/credits" to="menu/credits" method="_on_mouse_entered"]
 [connection signal="pressed" from="menu/credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="audio" to="." method="_on_audio_mouse_entered"]
+[connection signal="toggled" from="audio" to="." method="_on_audio_toggled"]
+[connection signal="mouse_entered" from="music" to="." method="_on_music_mouse_entered"]
+[connection signal="toggled" from="music" to="." method="_on_music_toggled"]
