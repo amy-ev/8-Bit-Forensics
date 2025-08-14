@@ -84,16 +84,27 @@
   },
   "Day 1.9": {
     "text": "Reading is good, doing is better.",
-    "function": "end_dialogue",
+    "go to": [
+      "Day 1.11"
+    ],
     "option display": [
       "Sure"
     ]
   },
   "Day 1.10": {
     "text": "The Chain of Custody is your legal lifeline. It's how we prove to the courts when and where the evidence has been, and who interacted with it.",
-    "function": "end_dialogue",
+    "go to": [
+      "Day 1.11"
+    ],
     "option display": [
       "Interesting"
+    ]
+  },
+  "Day 1.11": {
+    "text": "First let's grab the evidence bag.",
+    "function": "end_dialogue",
+    "option display": [
+      "Okay!"
     ]
   },
   "": {},
