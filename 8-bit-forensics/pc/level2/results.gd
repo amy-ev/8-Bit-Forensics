@@ -78,8 +78,7 @@ func _on_results_found(results:Array):
 func update_scroll(buffer):
 	_total_rows = len(buffer) +1
 	row_index = clamp(row_index,0, max(_total_rows - OFFSET,0))
-	print("total rows: ", _total_rows)
-
+	
 func set_row_index(i):
 	var visible_rows = int(size.y)
 	var max_index = max(_total_rows - OFFSET ,0)

@@ -160,7 +160,6 @@ func add_files(file_no:int):
 		# named file to force automatic naming system = file1, file2 etc
 		file.name = "file"
 		file._file_name = file.name
-		print("file: ",i)
 		var img:Texture2D = load("res://assets/UI/file-icon.png")
 		file_icon = img
 
@@ -183,8 +182,7 @@ func add_files(file_no:int):
 
 
 func file_count(file_path:String) -> int:
-	#var dir = DirAccess.open("res://jpg_folder/").get_files()
-	# print(len(dir)
+
 	var dir = DirAccess.open(file_path)
 	dir.list_dir_begin()
 	var files_no:int = 0
@@ -225,7 +223,7 @@ func _on_file_selected(selected_node:File, real_file:String):
 	
 	selected_file = real_file
 	
-	print("selected_node: %s, real_file: %s, selected_file: %s "%[selected_node, real_file, selected_file])
+	print("selected_node: %s, real_file: %s"%[selected_node, real_file])
 	
 	if parent.name == "metadata_window":
 		file_idx = selected_file.replacen("image", "")

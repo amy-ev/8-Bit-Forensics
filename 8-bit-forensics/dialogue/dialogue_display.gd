@@ -61,7 +61,6 @@ func _on_select_option_selected(_option: String) -> void:
 			queue_free()
 	if get_parent().has_node("screen/create_file"):
 		Global.emit_signal("inc_progressbar")
-		print()
 			
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_action_pressed("enter"):

@@ -47,7 +47,6 @@ func _on_form_section_area_entered(area: Area2D) -> void:
 
 
 func _on_bag_area_entered(area: Area2D) -> void:
-	print(area.name)
 	if area.name == "moveable":
 		evidence_bagged = true
 	if area.name == "bag":
@@ -55,8 +54,6 @@ func _on_bag_area_entered(area: Area2D) -> void:
 		
 	if evidence_bagged && bag_bagged:
 		$form_section/drop_point.set_deferred("disabled",false)
-		#TODO: DIALOGUE TO FILL IN FORM
-
 
 
 func _on_bag_area_exited(area: Area2D) -> void:

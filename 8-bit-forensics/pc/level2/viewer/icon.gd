@@ -14,13 +14,11 @@ func _process(_delta: float) -> void:
 
 func _on_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_double_click():
-		print(_file_icon.get_meta("file_name"))
-		print(get_meta("file_name"))
 		
 		var image_viewer = preload("res://pc/level2/viewer/image_viewer.tscn").instantiate()
 		var image = Image.load_from_file("user://evidence_files/"+get_meta("file_name"))
 		var img = ImageTexture.create_from_image(image)
-		#var img:Texture2D = load("res://evidence_files/"+_file_icon.get_meta("file_name"))
+
 		image_viewer.get_node("image").texture = img
 		
 		var screen = get_parent().get_parent().get_parent()

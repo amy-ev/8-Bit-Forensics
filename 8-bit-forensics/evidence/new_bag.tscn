@@ -58,6 +58,7 @@ _data = {
 [node name="new_bag" type="RigidBody2D"]
 position = Vector2(183, 18)
 collision_layer = 2
+collision_mask = 5
 gravity_scale = 0.0
 script = ExtResource("1_bh4l2")
 

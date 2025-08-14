@@ -53,4 +53,3 @@ func inc_progress():
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property($window/progress,"value",target,1.0)
-	print(current)

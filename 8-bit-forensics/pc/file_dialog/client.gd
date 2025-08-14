@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	
 	client.poll()
 	print("status: ", status)
-	print(get_parent().selected_file)
+	print("sending file: ", get_parent().selected_file)
 	# selected file = the file_name metadata dynamically created
 	var selected_img = open_img("user://evidence_files/"+get_parent().selected_file)
 	
@@ -24,8 +24,7 @@ func _process(delta: float) -> void:
 	recv_data()
 
 func open_img(img_path):
-	#print(OS.get_executable_path().get_base_dir().path_join("example.jpg"))
-	#print(ProjectSettings.globalize_path("res://example.jpg")) !!!!!!!
+
 	if FileAccess.file_exists(img_path):
 		var file = FileAccess.open(img_path, FileAccess.READ)
 		var img_data = file.get_buffer(file.get_length())
@@ -57,7 +56,6 @@ func recv_data():
 		
 	var response = client.get_data(client.get_available_bytes())
 	var byte_array = PackedByteArray(response[1])
-	#print(byte_array.hex_encode())	#print(byte_array.get_string_from_utf8())
 
 	# when response has been recieved disconnect and close client.gd (allow for another instance to be created)
 	client.disconnect_from_host()

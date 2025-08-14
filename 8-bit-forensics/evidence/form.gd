@@ -6,9 +6,7 @@ extends CanvasLayer
 @onready var _date = $evidence_form/columns/column2/continuity/date_label/date
 
 func _ready() -> void:
-	print(get_parent())
 	if get_parent().name == "opened_bag":
-		print(Global.form_name)
 		_name.text = Global.form_name
 		_signed.text = Global.form_signed
 		_date.text = Global.form_date

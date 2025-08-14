@@ -48,10 +48,6 @@ var noticed = {
 var selected_img:PackedByteArray
 
 func _ready() -> void:
-	print("PLEASE HELLO IS THIS THING EVEN ON ")
-	print(Global.img1)
-	Global.img1 = Global.get_image("res://metadata_images/image1.jpg")
-	print(Global.img1)
 	
 	font = preload("res://8-bit-forensics.ttf")
 	Global.connect("metadata_selected", _on_label_selected)
@@ -734,7 +730,7 @@ func finished_image_metadata():
 	
 	
 	finished_count = int(image1) + int(image2) + int(image3) + int(image4)
-	print(finished_count)
+
 	if selected_img == Global.img1:
 		finished_count 
 		return image1

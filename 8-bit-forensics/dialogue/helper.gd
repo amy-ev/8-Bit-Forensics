@@ -37,7 +37,6 @@ func _on_key_selected(selected:Node):
 		
 func _on_button_pressed() -> void:
 	help_pressed = true
-	print("helper: ",parent.name)
 	if parent.name == "hex_viewer":
 		if search_dialogue || select_dialogue:
 			if get_parent().has_node("dialogue_helper"):

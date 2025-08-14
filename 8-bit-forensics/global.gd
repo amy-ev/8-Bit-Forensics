@@ -111,7 +111,6 @@ func get_save(file_path):
 		return "0"
 
 func set_save(file_path):
-	print(unlocked)
 	var save_dict = {"days":{"unlocked": unlocked}}
 	if FileAccess.file_exists(file_path):
 		var file = FileAccess.open(file_path, FileAccess.WRITE)
@@ -200,7 +199,6 @@ func create_images():
 	var file1 = FileAccess.open(user_path + "metadata_images/image1.jpg", FileAccess.WRITE)
 	file1.store_buffer(content1)
 	file1.close()
-	
 	
 	var content2:PackedByteArray = _select("151000","1579ac")
 	img2 = content2
