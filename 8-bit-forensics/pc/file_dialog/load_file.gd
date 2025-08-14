@@ -13,7 +13,6 @@ var client:Node
 var current_rect: ColorRect
 
 var file: File
-var user_path = ProjectSettings.globalize_path("user://")
 
 @onready var parent = get_parent()
 @onready var pc = parent.get_parent().get_parent()
@@ -41,7 +40,7 @@ func _ready() -> void:
 
 	if parent.name == "metadata_window":
 		#start server python script
-		OS.create_process("cmd.exe", ["/C", "cd " + user_path+"/python_files && start.bat"])
+		OS.create_process("cmd.exe", ["/C", "cd " + Global.user_path+"python_files && start.bat"])
 
 func _on_load_button_pressed() -> void:
 	Global.selected_file = selected_file
@@ -56,7 +55,7 @@ func _on_load_button_pressed() -> void:
 			add_child(client)
 			await client.tree_exited
 			#kill server python script
-			OS.create_process("cmd.exe", ["/C", "cd " + user_path+"/python_files && kill.bat"])
+			OS.create_process("cmd.exe", ["/C", "cd " + Global.user_path+"python_files && kill.bat"])
 			var image = Image.load_from_file(evidence_folder + selected_file)
 			var img = ImageTexture.create_from_image(image)
 			metadata_thumbnail.texture = img
@@ -206,7 +205,7 @@ func file_count(file_path:String) -> int:
 	
 func _on_exit_pressed() -> void:
 	if parent.name == "metadata_window":
-		OS.create_process("cmd.exe", ["/C", "cd " + user_path+"/python_files && kill.bat"])
+		OS.create_process("cmd.exe", ["/C", "cd " + Global.user_path+"python_files && kill.bat"])
 		parent.load_file_open = false
 	elif parent.name == "hex_viewer":
 		parent.load_file_open = false

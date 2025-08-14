@@ -26,13 +26,13 @@ func _thread() -> Array:
 	var MD5_hash:=""
 	var SHA1_hash:=""
 	
-	var err: int = OS.execute("cmd.exe", ["/C", "cd %cd%/evidence_files && certutil -hashfile SD-image-file.001 MD5"], output, true)
+	var err: int = OS.execute("cmd.exe", ["/C", "cd " + Global.user_path+"evidence_files && certutil -hashfile SD-image-file.001 MD5"], output, true)
 	if err != 0:
 		printerr("error: %d"%err)
 	for i in output:
 		MD5_hash = i.get_slice("\n",1)
 		
-	err = OS.execute("cmd.exe", ["/C", "cd %cd%/evidence_files && certutil -hashfile SD-image-file.001 SHA1"], output, true)
+	err = OS.execute("cmd.exe", ["/C", "cd " + Global.user_path+"evidence_files && certutil -hashfile SD-image-file.001 SHA1"], output, true)
 	if err != 0:
 		printerr("error: %d"%err)
 	for i in output:

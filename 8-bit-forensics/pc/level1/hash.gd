@@ -49,7 +49,7 @@ func _thread(given_cmd:String) -> String:
 			if hash_type[i] in given_cmd:
 				
 				# to prevent the player from actually writing to the cmd line
-				var err:int = OS.execute("cmd.exe", ["/C", "cd %cd%/evidence_files && certutil -hashfile SD-image-file.001 "+hash_type[i]], output, true)
+				var err:int = OS.execute("cmd.exe", ["/C", "cd " +Global.user_path +"evidence_files && certutil -hashfile SD-image-file.001 "+hash_type[i]], output, true)
 
 				if err != 0:
 					printerr("error: %d"%err)

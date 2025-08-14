@@ -18,7 +18,7 @@ func _ready() -> void:
 
 			dest_file.store_buffer(content)
 			dest_file.close()
-	
+
 	var source_folders = [
 		"res://evidence_files",
 		"res://python_files",
@@ -35,7 +35,7 @@ func _ready() -> void:
 		
 		#to prevent issues selecting a level and then returning to the main menu
 	Global.unlocked = int(Global.get_save(Global.user_path +"savefile.json"))
-
+	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_action_pressed("fullscreen"):
