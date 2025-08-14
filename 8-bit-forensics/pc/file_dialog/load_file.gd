@@ -22,17 +22,19 @@ var evidence_folder:String
 var metadata_count:int
 
 func _ready() -> void:
+	print(Global.level_selected)
+	print(Global.unlocked)
 	# for level select 
 	if !Global.level_selected:
-		evidence_folder = "user://evidence_files/"
+		evidence_folder =Global.user_path + "evidence_files/"
 	else:
 		if Global.unlocked == 1:
-			evidence_folder = "user://evidence_files/"
+			evidence_folder = Global.user_path + "evidence_files/"
 			
 		elif Global.unlocked == 2:
-			evidence_folder = "user://metadata_images/"
+			evidence_folder = Global.user_path + "metadata_images/"
 			
-		
+	print(evidence_folder)
 	Global.connect("selected",_on_file_selected)
 	
 	add_files(file_count(evidence_folder))

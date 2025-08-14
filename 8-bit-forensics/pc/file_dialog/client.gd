@@ -3,8 +3,20 @@ const HOST = "127.0.0.1"
 const PORT = 8000
 var client = StreamPeerTCP.new()
 
-
+var evidence_folder:String
 func _ready():
+	
+	if !Global.level_selected:
+		evidence_folder = Global.user_path + "evidence_files/"
+	else:
+		if Global.unlocked == 1:
+			evidence_folder = Global.user_path + "evidence_files/"
+		elif Global.unlocked == 2:
+			evidence_folder = Global.user_path + "metadata_images/"
+		else:
+			evidence_folder = Global.user_path + "evidence_files/"
+			
+	print(evidence_folder)
 	client.connect_to_host(HOST,PORT)
 	client.set_no_delay(true)
 	
@@ -18,7 +30,7 @@ func _process(delta: float) -> void:
 	print("status: ", status)
 	print("sending file: ", get_parent().selected_file)
 	# selected file = the file_name metadata dynamically created
-	var selected_img = open_img("user://evidence_files/"+get_parent().selected_file)
+	var selected_img = open_img(evidence_folder+get_parent().selected_file)
 	
 	send_data(selected_img)
 	recv_data()

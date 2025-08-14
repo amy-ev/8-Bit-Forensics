@@ -5,6 +5,8 @@ extends NinePatchRect
 
 @export var current_image: String
 
+var evidence_folder:String
+
 var load_file_open:bool
 
 var font: FontFile
@@ -49,6 +51,16 @@ var selected_img:PackedByteArray
 
 func _ready() -> void:
 	
+	if !Global.level_selected:
+		evidence_folder = Global.user_path + "evidence_files/"
+	else:
+		if Global.unlocked == 1:
+			evidence_folder = Global.user_path +"evidence_files/"
+		elif Global.unlocked == 2:
+			evidence_folder = Global.user_path +"metadata_images/"
+		else:
+			evidence_folder = Global.user_path +"evidence_files/"
+	
 	font = preload("res://8-bit-forensics.ttf")
 	Global.connect("metadata_selected", _on_label_selected)
 	Global.emit_signal("next_step",self)
@@ -78,7 +90,8 @@ func _on_select_pressed() -> void:
 	for hbox in $scroll/data_container.get_children():
 		keys_and_values.append(hbox)
 	if !Global.selected_file.is_empty():
-		selected_img = Global.get_image(Global.user_path + "evidence_files/" + Global.selected_file)
+		print(Global.selected_file)
+		selected_img = Global.get_image(evidence_folder + Global.selected_file)
 		$thumbnail_column/thumbnail.set_visible(true)
 
 func _on_exit_pressed() -> void:

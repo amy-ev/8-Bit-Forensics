@@ -2,6 +2,8 @@ extends CanvasLayer
 
 
 func _on_exit_pressed() -> void:
+	#to avoid unlock reverting on escape of level selecting
+	Global.unlocked = Global.get_save(Global.user_path +"savefile.json")
 	get_tree().change_scene_to_file("res://main/main.tscn")
 
 

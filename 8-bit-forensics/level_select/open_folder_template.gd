@@ -83,7 +83,7 @@ func _on_play_pressed() -> void:
 	else:
 		Global.unlocked = 0
 	Global.day_start()
-	get_tree().change_scene_to_file("res://opening/waking_up.tscn")
+	get_tree().change_scene_to_file("res://opening/train.tscn")
 
 func _show_play():
 	var unlocked = int(Global.get_save(Global.user_path + "savefile.json"))
