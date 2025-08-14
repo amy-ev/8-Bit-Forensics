@@ -383,7 +383,7 @@ custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
 bbcode_enabled = true
-text = "date: [color=393328]08/08/2008"
+text = "date: [color=393328]08/08/2025"
 scroll_active = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
@@ -523,8 +523,10 @@ offset_right = 82.0
 offset_bottom = 8.0
 theme = ExtResource("4_2kplo")
 theme_override_colors/font_placeholder_color = Color(0.45098, 0.396078, 0.290196, 1)
+theme_override_colors/font_readonly_color = Color(0.321569, 0.282353, 0.223529, 1)
 theme_override_colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
 placeholder_text = "..."
+editable = false
 context_menu_enabled = false
 emoji_menu_enabled = false
 shortcut_keys_enabled = false
