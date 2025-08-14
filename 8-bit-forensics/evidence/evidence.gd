@@ -72,6 +72,7 @@ func _on_mouse_exited() -> void:
 func _on_evidence_boundary_area_entered(area: Area2D) -> void:
 	print(area.name)
 	if area.name == "bag":
+		area.input_pickable = false
 		mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func _on_evidence_boundary_area_exited(area: Area2D) -> void:

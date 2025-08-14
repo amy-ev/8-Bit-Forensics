@@ -30,6 +30,7 @@ func _on_cut_section_area_entered(area: Area2D) -> void:
 				$boundary_bottom.queue_free()
 				$cut_section.queue_free()
 				area.get_parent().queue_free()
+				$bag.input_pickable = true
 		else:
 			pass
 

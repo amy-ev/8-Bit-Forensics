@@ -64,6 +64,7 @@ size = Vector2(114, 99)
 
 [node name="evidence_bag" type="RigidBody2D"]
 collision_layer = 2
+collision_mask = 5
 gravity_scale = 0.0
 script = ExtResource("1_siw8v")
 
@@ -75,7 +76,7 @@ vframes = 2
 
 [node name="bag" type="Area2D" parent="."]
 collision_layer = 5
-collision_mask = 2
+collision_mask = 66
 
 [node name="collision" type="CollisionShape2D" parent="bag"]
 position = Vector2(75, 108)

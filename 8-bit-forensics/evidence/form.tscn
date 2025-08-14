@@ -70,7 +70,7 @@ layout_mode = 2
 theme = ExtResource("4_2kplo")
 theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
-text = "authority: [color=29241be5]authority"
+text = "authority: [color=29241be5]KENT"
 fit_content = true
 scroll_active = false
 autowrap_mode = 2
@@ -91,7 +91,7 @@ layout_mode = 2
 theme = ExtResource("4_2kplo")
 theme_override_constants/line_separation = 2
 bbcode_enabled = true
-text = "identification ref. no.: [color=29241be5]the identification reference
+text = "identification ref. no.: [color=29241be5] M18709161
 "
 scroll_active = false
 autowrap_mode = 2
@@ -129,7 +129,7 @@ layout_mode = 2
 theme = ExtResource("4_2kplo")
 theme_override_constants/line_separation = 2
 bbcode_enabled = true
-text = "description: [color=29241be5]the descripti-on of  the evidence item in the bag"
+text = "description: [color=29241be5]1GB Sandisk SD card. BB0721205013D."
 scroll_active = false
 autowrap_mode = 1
 shortcut_keys_enabled = false
@@ -175,7 +175,7 @@ layout_mode = 2
 theme = ExtResource("4_2kplo")
 bbcode_enabled = true
 text = "time/date seized: [color=29241be5]
-08/08/2008  08:00"
+15/08/2025  23:55"
 scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
@@ -203,7 +203,7 @@ layout_mode = 2
 theme = ExtResource("4_2kplo")
 theme_override_constants/line_separation = 1
 bbcode_enabled = true
-text = "where seized: [color=29241be5] where the item was seized"
+text = "where seized: [color=29241be5] glove box of green beetle AX52 BEE"
 scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
@@ -232,7 +232,7 @@ layout_mode = 2
 theme = ExtResource("4_2kplo")
 theme_override_constants/line_separation = 2
 bbcode_enabled = true
-text = "seized by:[color=29241be5] the person that seized the evidence"
+text = "seized by:[color=29241be5] John Doe."
 scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
@@ -260,7 +260,7 @@ custom_minimum_size = Vector2(23, 12)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
 bbcode_enabled = true
-text = "signed:[color=29241be5] The.Signature"
+text = "signed:[color=29241be5] J. Doe"
 scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
@@ -288,7 +288,7 @@ layout_mode = 2
 theme = ExtResource("4_2kplo")
 theme_override_constants/line_separation = 1
 bbcode_enabled = true
-text = "incident/crime no:[color=29241be5] the crime number #0000"
+text = "incident/crime no:[color=29241be5]PI-GE0N -001"
 scroll_active = false
 autowrap_mode = 2
 shortcut_keys_enabled = false
@@ -333,9 +333,9 @@ theme = ExtResource("4_2kplo")
 theme_override_constants/line_separation = 2
 bbcode_enabled = true
 text = "name/rank/no: [color=393328]
-the name of the per-son before you"
+Chief Quacky McQuackFace"
 scroll_active = false
-autowrap_mode = 1
+autowrap_mode = 2
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
@@ -363,7 +363,7 @@ custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 theme = ExtResource("4_2kplo")
 bbcode_enabled = true
-text = "signed: [color=393328]The.Signature"
+text = "signed: [color=393328]C. Quacky"
 scroll_active = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
@@ -424,6 +424,8 @@ offset_top = 6.0
 offset_right = 82.0
 offset_bottom = 28.0
 theme = ExtResource("4_2kplo")
+theme_override_colors/font_placeholder_color = Color(0.45098, 0.396078, 0.290196, 1)
+theme_override_colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
 placeholder_text = " ..."
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -476,6 +478,8 @@ offset_top = -2.0
 offset_right = 79.0
 offset_bottom = 9.0
 theme = ExtResource("4_2kplo")
+theme_override_colors/font_placeholder_color = Color(0.45098, 0.396078, 0.290196, 1)
+theme_override_colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
 placeholder_text = "..."
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -518,6 +522,8 @@ offset_top = -2.0
 offset_right = 82.0
 offset_bottom = 8.0
 theme = ExtResource("4_2kplo")
+theme_override_colors/font_placeholder_color = Color(0.45098, 0.396078, 0.290196, 1)
+theme_override_colors/font_color = Color(0.321569, 0.282353, 0.223529, 1)
 placeholder_text = "..."
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -880,10 +886,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -19.0
-offset_right = 48.0
-offset_bottom = -6.0
+offset_left = -40.0
+offset_top = -49.0
+offset_right = 40.0
+offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("6_xafih")
