@@ -32,7 +32,6 @@ func _ready() -> void:
 
 	if !FileAccess.file_exists(Global.user_path + "metadata_images/image1.jpg") || !FileAccess.file_exists(Global.user_path + "metadata_images/image2.jpg") || !FileAccess.file_exists(Global.user_path + "metadata_images/image3.jpg") || !FileAccess.file_exists(Global.user_path + "metadata_images/image4.jpg"):
 		Global.create_images()
-		
 		#to prevent issues selecting a level and then returning to the main menu
 	Global.unlocked = int(Global.get_save(Global.user_path +"savefile.json"))
 	

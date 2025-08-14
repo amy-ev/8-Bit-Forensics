@@ -121,7 +121,7 @@ func set_save(file_path):
 		file.store_line(json_string)
 
 func get_image(file_path):
-	print(file_path)
+	#print(file_path)
 	if FileAccess.file_exists(file_path):
 		var file = FileAccess.open(file_path, FileAccess.READ)
 		var content = file.get_buffer(file.get_length())

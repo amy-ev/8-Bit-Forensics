@@ -16,7 +16,7 @@ func _on_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> 
 	if event is InputEventMouseButton and event.is_double_click():
 		
 		var image_viewer = preload("res://pc/level2/viewer/image_viewer.tscn").instantiate()
-		var image = Image.load_from_file("user://evidence_files/"+get_meta("file_name"))
+		var image = Image.load_from_file(Global.user_path+"evidence_files/"+get_meta("file_name"))
 		var img = ImageTexture.create_from_image(image)
 
 		image_viewer.get_node("image").texture = img

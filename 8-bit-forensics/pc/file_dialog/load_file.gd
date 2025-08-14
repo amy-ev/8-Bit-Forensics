@@ -61,7 +61,7 @@ func _on_load_button_pressed() -> void:
 			metadata_thumbnail.texture = img
 			metadata_thumbnail.size = Vector2(44,32)
 			
-			var json_dict = open_json("user://python_files/metadata.json")
+			var json_dict = open_json(Global.user_path + "python_files/metadata.json")
 			var file_idx = selected_file.replacen("image", "")
 			file_idx = file_idx.replacen(".jpg", "")
 
@@ -105,21 +105,9 @@ func _on_load_button_pressed() -> void:
 				
 			var label = parent.get_node("counter")
 			
-			var current_image = Global.get_image(evidence_folder + selected_file)
+			var current_image = Global.get_image(evidence_folder + Global.selected_file)
 			
-			if current_image == Global.img1:
-				metadata_count = Global.img1_count
-				label.text = str(metadata_count) + " / 3"
-			elif current_image == Global.img2:
-				metadata_count = Global.img2_count
-				label.text = str(metadata_count) + " / 4"
-			elif current_image == Global.img3:
-				metadata_count = Global.img3_count
-				label.text = str(metadata_count) + " / 5"
-			elif current_image == Global.img4:
-				metadata_count = Global.img4_count
-				label.text = str(metadata_count) + " / 5"
-				
+
 		elif parent.name == "hex_viewer":
 			parent.open_file(evidence_folder + selected_file)
 			if !Global.first_file_opened && selected_file == "SD-image-file.001":

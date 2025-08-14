@@ -48,7 +48,7 @@ var noticed = {
 }
 
 var selected_img:PackedByteArray
-
+var metadata_count:int
 func _ready() -> void:
 	
 	if !Global.level_selected:
@@ -74,7 +74,12 @@ func _on_select_pressed() -> void:
 		await load_files.tree_exited
 		
 		load_file_open = false
-		
+		Global.img1 = Global.get_image(Global.user_path +"metadata_images/image1.jpg")
+		Global.img2 = Global.get_image(Global.user_path +"metadata_images/image2.jpg")
+		Global.img3 = Global.get_image(Global.user_path +"metadata_images/image3.jpg")
+		Global.img4 = Global.get_image(Global.user_path +"metadata_images/image4.jpg")
+
+			
 	if has_node("comment"):
 		remove_child(get_node("comment"))
 		
@@ -85,15 +90,28 @@ func _on_select_pressed() -> void:
 	
 	queue_redraw()
 	
-
-	
 	for hbox in $scroll/data_container.get_children():
 		keys_and_values.append(hbox)
 	if !Global.selected_file.is_empty():
 		print(Global.selected_file)
 		selected_img = Global.get_image(evidence_folder + Global.selected_file)
 		$thumbnail_column/thumbnail.set_visible(true)
-
+		
+		var label = $counter
+		
+		if selected_img == Global.img1:
+			metadata_count = Global.img1_count
+			label.text = str(metadata_count) + " / 3"
+		elif selected_img == Global.img2:
+			metadata_count = Global.img2_count
+			label.text = str(metadata_count) + " / 4"
+		elif selected_img == Global.img3:
+			metadata_count = Global.img3_count
+			label.text = str(metadata_count) + " / 5"
+		elif selected_img == Global.img4:
+			metadata_count = Global.img4_count
+			label.text = str(metadata_count) + " / 5"
+			
 func _on_exit_pressed() -> void:
 	load_file_open = false
 	queue_free()
@@ -217,7 +235,7 @@ func compare_keys():
 				correlates = true
 				
 				var value_dict = []
-				var json_dict = open_json("user://python_files/metadata.json")
+				var json_dict = open_json(Global.user_path + "python_files/metadata.json")
 				
 				if typeof(json_dict) == TYPE_DICTIONARY:
 					if json_dict.has("file_%s" %current_image):

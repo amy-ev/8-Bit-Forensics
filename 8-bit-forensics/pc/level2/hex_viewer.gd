@@ -108,30 +108,30 @@ func _on_save_pressed() -> void:
 			var content:= PackedByteArray(tabs.get_child(tabs.current_tab).get_node("vbox_sort/hex_text")._wrapped_buffer)
 			
 			if !already_carved:
-				if content == Global.img1 || content == Global.img2 || content == Global.img3 || content == Global.img4:
-					file_no +=1
-					var file = FileAccess.open("user://evidence_files/image"+ str(file_no)+ ".jpg", FileAccess.WRITE)
+				#if content == Global.img1 || content == Global.img2 || content == Global.img3 || content == Global.img4:
+				file_no +=1
+				var file = FileAccess.open(Global.user_path+"evidence_files/image"+ str(file_no)+ ".jpg", FileAccess.WRITE)
 
-					file.store_buffer(content)
-					file.close()
-					var icon = load("res://pc/level2/viewer/icon.tscn").instantiate()
-					$icon_container.add_child(icon)
+				file.store_buffer(content)
+				file.close()
+				var icon = load("res://pc/level2/viewer/icon.tscn").instantiate()
+				$icon_container.add_child(icon)
 
-					var img:Texture2D = load("res://assets/UI/file-icon.png")
-					file_icon = img
+				var img:Texture2D = load("res://assets/UI/file-icon.png")
+				file_icon = img
 
-					icon._file_icon = file_icon
+				icon._file_icon = file_icon
+				
+				icon.set_meta("file_name","image"+str(file_no)+".jpg")
+				icon._file_icon.set_meta("file_name","image"+str(file_no)+".jpg")
+				icon._file_name = "file "+ str(file_no)
+				
+				if !Global.first_image_carved:
+					icon.set_visible(true)
 					
-					icon.set_meta("file_name","image"+str(file_no)+".jpg")
-					icon._file_icon.set_meta("file_name","image"+str(file_no)+".jpg")
-					icon._file_name = "file "+ str(file_no)
-					
-					if !Global.first_image_carved:
-						icon.set_visible(true)
-						
-						Global.first_image_carved = true
-					$save.disabled = true
-					$save.release_focus()
+					Global.first_image_carved = true
+				$save.disabled = true
+				$save.release_focus()
 			else:
 				file_no = file_no
 				
