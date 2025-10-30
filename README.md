@@ -16,10 +16,10 @@ Using a dialogue-based, story-driven gameplay to educate the players on typical 
 - Hex Viewer functionalities; searching for file signatures, as well as selecting and saving blocks to manually carve image files
 - Analysing metadata from files extracted using the hex-viewing capabilities
 - End of level quizzes, used to reiterate important information learnt
-<img width="480" height="1080" alt="Evidence Bag" src="https://github.com/user-attachments/assets/1f1a3bbd-6c91-48cf-8335-51d66d9a7293" />
-<img width="480" height="1080" alt="Forensic Image File" src="https://github.com/user-attachments/assets/fd52e1f6-839b-4671-baa3-d8aa7075facc" />
-<img width="480" height="1080" alt="Hex Viewer" src="https://github.com/user-attachments/assets/2796040d-08e6-457b-a677-af3c7acba76a" />
-<img width="480" height="1080" alt="Desk" src="https://github.com/user-attachments/assets/2bd0265f-32a4-4632-90d6-6d106669ff3a" />
+<img width="360" height="1080" alt="Evidence Bag" src="https://github.com/user-attachments/assets/1f1a3bbd-6c91-48cf-8335-51d66d9a7293" />
+<img width="360" height="1080" alt="Forensic Image File" src="https://github.com/user-attachments/assets/fd52e1f6-839b-4671-baa3-d8aa7075facc" />
+<img width="360" height="1080" alt="Hex Viewer" src="https://github.com/user-attachments/assets/2796040d-08e6-457b-a677-af3c7acba76a" />
+<img width="360" height="1080" alt="Desk" src="https://github.com/user-attachments/assets/2bd0265f-32a4-4632-90d6-6d106669ff3a" />
 
 
 ## Tech Stack 📂
@@ -53,3 +53,4 @@ git clone https://github.com/amy-ev/8-Bit-Forensics.git
 _Shift+F11 can be used to fullscreen the game_ <br>
 
 _Follow the in-game instructions and prompts to interact with the evidence, analyse image files and carry out a light-hearted digital forensics investigation_
+
