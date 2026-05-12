@@ -1,7 +1,7 @@
 ## 8-Bit-Forensics 💾
 _A Digital Forensics Educational Game_ <br>
 
-<img width="960" height="1080" alt="NPC Game Guide" src="https://github.com/user-attachments/assets/95eb0e8e-8944-4889-baba-9a42454a7e8c" />
+<img width="100%" height="1080" alt="NPC Game Guide" src="https://github.com/user-attachments/assets/95eb0e8e-8944-4889-baba-9a42454a7e8c" />
 
 ## Features 🧪
 Typical digital forensic software functionalities were created, acting as the core concepts of the game. <br>
